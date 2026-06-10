@@ -126,6 +126,4 @@ The generated page includes:
 - Some APIs expose both simple and rich variants where Android has separate usage patterns.
 - The example app is the best reference for current component coverage and configuration.
 
-## Repository
 
-- Source: https://github.com/ux4g-negd/ux4g-flutter-design-system
