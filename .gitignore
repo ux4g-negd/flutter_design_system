@@ -28,13 +28,26 @@ migrate_working_dir/
 .dart_tool/
 .flutter-plugins-dependencies
 /build/
+example/build/
+example/.dart_tool/
 /coverage/
 
+# Gemini AI config (contains API tokens)
+.gemini/
+
 # Custom ignores
-*.py
-*.ps1
 analysis_report.txt
 example/macos/Flutter/GeneratedPluginRegistrant.swift
 example/windows/flutter/generated_plugin_registrant.cc
 example/windows/flutter/generated_plugin_registrant.h
 example/windows/flutter/generated_plugins.cmake
+
+# Temporary scripts and patches
+scratch/
+*.patch
+figma_test.json
+*.py
+clean_diff.txt
+diff.txt
+temp_*.dart
+fix_*.dart

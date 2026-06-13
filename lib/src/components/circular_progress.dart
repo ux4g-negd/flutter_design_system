@@ -161,6 +161,7 @@ class Ux4gCircularProgress extends StatelessWidget {
     final materialTheme = Theme.of(context);
     final ux4gColors = materialTheme.extension<Ux4gColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
+    final isDark = materialTheme.brightness == Brightness.dark;
 
     final ringSize = _resolvedDiameter();
     final resolvedStrokeWidth = _resolvedStrokeWidth(ringSize);
@@ -233,7 +234,15 @@ class Ux4gCircularProgress extends StatelessWidget {
                   progressColor: resolvedProgressColor,
                   trackColor: resolvedTrackColor,
                   backgroundColor: backgroundColor,
-                  progressGradient: progressGradient,
+                  progressGradient: progressGradient ??
+                      (progressColor == null
+                          ? LinearGradient(
+                              colors: [
+                                isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary200,
+                              ],
+                            )
+                          : null),
                   strokeCap: strokeCap,
                   startAngle: startAngle,
                 ),

@@ -69,12 +69,12 @@ class Ux4gFeedbackFormNps extends StatefulWidget {
     this.successBackgroundColor,
     this.selectedScoreBackgroundColor,
     this.selectedScoreTextColor,
-    this.lowScoreBackgroundColor = const Color(0xFFFFECEE),
-    this.lowScoreTextColor = const Color(0xFF8A1A16),
-    this.mediumScoreBackgroundColor = const Color(0xFFFFE7BF),
-    this.mediumScoreTextColor = const Color(0xFFAD4E00),
-    this.highScoreBackgroundColor = const Color(0xFFDDF8D8),
-    this.highScoreTextColor = const Color(0xFF00522C),
+    this.lowScoreBackgroundColor = Ux4gPalette.red100,
+    this.lowScoreTextColor = Ux4gPalette.red800,
+    this.mediumScoreBackgroundColor = Ux4gPalette.orange100,
+    this.mediumScoreTextColor = Ux4gPalette.orange800,
+    this.highScoreBackgroundColor = Ux4gPalette.green100,
+    this.highScoreTextColor = Ux4gPalette.green800,
   });
 
   @override
@@ -198,18 +198,40 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
             // Determine colors based on selected score range
             Color scoreBg;
             Color scoreText;
+            final isDark = materialTheme.brightness == Brightness.dark;
+            final resolvedLowBg = isDark && widget.lowScoreBackgroundColor == Ux4gPalette.red100
+                ? Ux4gPalette.red900
+                : widget.lowScoreBackgroundColor;
+            final resolvedLowText = isDark && widget.lowScoreTextColor == Ux4gPalette.red800
+                ? Ux4gPalette.red300
+                : widget.lowScoreTextColor;
+
+            final resolvedMediumBg = isDark && widget.mediumScoreBackgroundColor == Ux4gPalette.orange100
+                ? Ux4gPalette.orange900
+                : widget.mediumScoreBackgroundColor;
+            final resolvedMediumText = isDark && widget.mediumScoreTextColor == Ux4gPalette.orange800
+                ? Ux4gPalette.orange300
+                : widget.mediumScoreTextColor;
+
+            final resolvedHighBg = isDark && widget.highScoreBackgroundColor == Ux4gPalette.green100
+                ? Ux4gPalette.green900
+                : widget.highScoreBackgroundColor;
+            final resolvedHighText = isDark && widget.highScoreTextColor == Ux4gPalette.green800
+                ? Ux4gPalette.green300
+                : widget.highScoreTextColor;
+
             if (highlightBg != null && highlightText != null) {
               scoreBg = highlightBg;
               scoreText = highlightText;
             } else if (_selectedScore != null && _selectedScore! <= 3) {
-              scoreBg = widget.lowScoreBackgroundColor;
-              scoreText = widget.lowScoreTextColor;
+              scoreBg = resolvedLowBg;
+              scoreText = resolvedLowText;
             } else if (_selectedScore != null && _selectedScore! <= 6) {
-              scoreBg = widget.mediumScoreBackgroundColor;
-              scoreText = widget.mediumScoreTextColor;
+              scoreBg = resolvedMediumBg;
+              scoreText = resolvedMediumText;
             } else {
-              scoreBg = widget.highScoreBackgroundColor;
-              scoreText = widget.highScoreTextColor;
+              scoreBg = resolvedHighBg;
+              scoreText = resolvedHighText;
             }
 
             return GestureDetector(

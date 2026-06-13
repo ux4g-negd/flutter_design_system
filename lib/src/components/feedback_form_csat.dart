@@ -91,21 +91,21 @@ class Ux4gFeedbackFormCsat extends StatefulWidget {
     this.successIconColor,
     this.successBackgroundColor,
     this.selectedBackgroundColors = const [
-      Color(0xFFFFECEE), // face_0
-      Color(0xFFFFF8F8), // face_1
-      Color(0xFFFFF7E6), // face_2
-      Color(0xFFF2FCEF), // face_3
-      Color(0xFFDDF8D8), // face_4
+      Ux4gPalette.red100, // face_0
+      Ux4gPalette.red50, // face_1
+      Ux4gPalette.orange50, // face_2
+      Ux4gPalette.green50, // face_3
+      Ux4gPalette.green100, // face_4
     ],
     this.selectedIconColors = const [
-      Color(0xFFDB372D), // face_0
-      Color(0xFFDB372D), // face_1
-      Color(0xFFFA8C16), // face_2
-      Color(0xFF128937), // face_3
-      Color(0xFF128937), // face_4
+      Ux4gPalette.red600, // face_0
+      Ux4gPalette.red600, // face_1
+      Ux4gPalette.orange600, // face_2
+      Ux4gPalette.green600, // face_3
+      Ux4gPalette.green600, // face_4
     ],
-    this.unselectedBackgroundColor = const Color(0xFFF5F5F5),
-    this.unselectedIconColor = const Color(0xFF737373),
+    this.unselectedBackgroundColor = Ux4gPalette.neutral100,
+    this.unselectedIconColor = Ux4gPalette.neutral500,
   });
 
   @override
@@ -180,6 +180,41 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
         uxColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final onBackground =
         uxColors?.onBackground ?? materialTheme.colorScheme.onSurface;
+    final isDark = materialTheme.brightness == Brightness.dark;
+
+    final selectedBgColors = isDark &&
+            (widget.selectedBackgroundColors.length == 5 &&
+             widget.selectedBackgroundColors[0] == Ux4gPalette.red100 &&
+             widget.selectedBackgroundColors[1] == Ux4gPalette.red50)
+        ? const [
+            Ux4gPalette.red900,
+            Ux4gPalette.red950,
+            Ux4gPalette.orange950,
+            Ux4gPalette.green950,
+            Ux4gPalette.green900,
+          ]
+        : widget.selectedBackgroundColors;
+
+    final selectedIconColors = isDark &&
+            (widget.selectedIconColors.length == 5 &&
+             widget.selectedIconColors[0] == Ux4gPalette.red600 &&
+             widget.selectedIconColors[2] == Ux4gPalette.orange600)
+        ? const [
+            Ux4gPalette.red300,
+            Ux4gPalette.red300,
+            Ux4gPalette.orange300,
+            Ux4gPalette.green300,
+            Ux4gPalette.green300,
+          ]
+        : widget.selectedIconColors;
+
+    final unselectedBgColor = isDark && widget.unselectedBackgroundColor == Ux4gPalette.neutral100
+        ? Ux4gPalette.neutral800
+        : widget.unselectedBackgroundColor;
+
+    final unselectedIconColor = isDark && widget.unselectedIconColor == Ux4gPalette.neutral500
+        ? Ux4gPalette.neutral400
+        : widget.unselectedIconColor;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -201,15 +236,15 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
           children: List.generate(5, (index) {
             final isSelected = _selectedScore == index;
             final bgColor = isSelected
-                ? (index < widget.selectedBackgroundColors.length
-                      ? widget.selectedBackgroundColors[index]
-                      : widget.unselectedBackgroundColor)
-                : widget.unselectedBackgroundColor;
+                ? (index < selectedBgColors.length
+                      ? selectedBgColors[index]
+                      : unselectedBgColor)
+                : unselectedBgColor;
             final iconColor = isSelected
-                ? (index < widget.selectedIconColors.length
-                      ? widget.selectedIconColors[index]
-                      : widget.unselectedIconColor)
-                : widget.unselectedIconColor;
+                ? (index < selectedIconColors.length
+                      ? selectedIconColors[index]
+                      : unselectedIconColor)
+                : unselectedIconColor;
 
             return GestureDetector(
               onTap: () {
