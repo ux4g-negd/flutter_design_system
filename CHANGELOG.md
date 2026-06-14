@@ -1,3 +1,15 @@
+## 0.4.2
+
+* Fixed `Ux4gInputField` properties usage in `example/lib/main.dart`.
+
+## 0.4.1
+
+* Updated pub.dev default example to display the Showcase app.
+
+## 0.4.0
+
+* Updates and bug fixes in `Ux4gStatusBanner`.
+
 ## 0.3.1
 
 * Updated README for installation instructions.
