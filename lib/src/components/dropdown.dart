@@ -45,12 +45,14 @@ class Ux4gActionDropdown extends StatefulWidget {
   final List<Ux4gActionDropdownOption> options;
   final ValueChanged<Ux4gActionDropdownOption> onOptionClick;
   final Ux4gDropdownTriggerBuilder triggerBuilder;
+  final String? selectedOptionId;
 
   const Ux4gActionDropdown({
     super.key,
     required this.options,
     required this.onOptionClick,
     required this.triggerBuilder,
+    this.selectedOptionId,
   });
 
   @override
@@ -60,7 +62,19 @@ class Ux4gActionDropdown extends StatefulWidget {
 class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
   bool _isExpanded = false;
   final LayerLink _layerLink = LayerLink();
+  final Object _tapGroupId = Object();
   OverlayEntry? _overlayEntry;
+
+  @override
+  void didUpdateWidget(Ux4gActionDropdown oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.selectedOptionId != oldWidget.selectedOptionId) {
+      setState(() {});
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _overlayEntry?.markNeedsBuild();
+      });
+    }
+  }
 
   void _toggleDropdown() {
     if (_isExpanded) {
@@ -83,21 +97,24 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
   }
 
   OverlayEntry _createOverlayEntry() {
+    final appTheme = Theme.of(context);
     return OverlayEntry(
-      builder: (context) {
+      builder: (overlayContext) {
         final renderBox = this.context.findRenderObject() as RenderBox?;
         final size = renderBox?.hasSize == true ? renderBox!.size : Size.zero;
 
-        return Stack(
-          children: [
-            GestureDetector(
-              onTap: _closeDropdown,
-              behavior: HitTestBehavior.translucent,
-              child: Container(),
-            ),
-            Positioned(
-              width: 200,
-              child: CompositedTransformFollower(
+        return Theme(
+          data: appTheme,
+          child: Builder(
+            builder: (context) {
+              return TapRegion(
+                groupId: _tapGroupId,
+                onTapOutside: (_) => _closeDropdown(),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      width: 200,
+                      child: CompositedTransformFollower(
                 link: _layerLink,
                 showWhenUnlinked: false,
                 offset: Offset(0, size.height + 4),
@@ -118,17 +135,24 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
                         final typography = Theme.of(
                           context,
                         ).extension<Ux4gTypography>();
+                        final uxColors = Theme.of(context).extension<Ux4gColors>();
+                        final materialTheme = Theme.of(context);
+                        final isSelected = widget.selectedOptionId != null && widget.selectedOptionId == option.id;
+
                         return ListTile(
                           dense: true,
+                          selected: isSelected,
+                          selectedTileColor: (uxColors?.primary ?? materialTheme.colorScheme.primary).withValues(alpha: 0.08),
                           title: Text(
                             option.label,
-                            style:
-                                typography?.lL_default ??
-                                Theme.of(context).textTheme.labelLarge,
+                            style: (typography?.lL_default ?? Theme.of(context).textTheme.labelLarge)?.copyWith(
+                              color: isSelected ? (uxColors?.primary ?? materialTheme.colorScheme.primary) : null,
+                              fontWeight: isSelected ? FontWeight.w600 : null,
+                            ),
                           ),
                           trailing: option.showTrailingArrow
-                              ? const Icon(Icons.keyboard_arrow_right, size: 20)
-                              : null,
+                              ? Icon(Icons.keyboard_arrow_right, size: 20, color: isSelected ? (uxColors?.primary ?? materialTheme.colorScheme.primary) : null)
+                              : (isSelected ? Icon(Icons.check, size: 20, color: uxColors?.primary ?? materialTheme.colorScheme.primary) : null),
                           onTap: () {
                             _closeDropdown();
                             widget.onOptionClick(option);
@@ -139,8 +163,12 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
                   ),
                 ),
               ),
-            ),
-          ],
+              ),
+                  ],
+                ),
+              );
+            },
+          ),
         );
       },
     );
@@ -148,9 +176,15 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return CompositedTransformTarget(
-      link: _layerLink,
-      child: widget.triggerBuilder(context, _toggleDropdown),
+    return TapRegion(
+      groupId: _tapGroupId,
+      onTapOutside: (_) {
+        if (_isExpanded) _closeDropdown();
+      },
+      child: CompositedTransformTarget(
+        link: _layerLink,
+        child: widget.triggerBuilder(context, _toggleDropdown),
+      ),
     );
   }
 }
@@ -200,12 +234,14 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
   String _searchQuery = "";
   final LayerLink _layerLink = LayerLink();
   final GlobalKey _dropdownKey = GlobalKey();
+  final Object _tapGroupId = Object();
   OverlayEntry? _overlayEntry;
 
   @override
   void didUpdateWidget(Ux4gSelectionDropdown oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.selectedOptionIds != oldWidget.selectedOptionIds) {
+      setState(() {});
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _overlayEntry?.markNeedsBuild();
       });
@@ -237,22 +273,23 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
   }
 
   OverlayEntry _createOverlayEntry() {
+    final appTheme = Theme.of(context);
     return OverlayEntry(
-      builder: (context) {
+      builder: (overlayContext) {
         final renderBox =
             _dropdownKey.currentContext?.findRenderObject() as RenderBox?;
         final size = renderBox?.hasSize == true ? renderBox!.size : Size.zero;
 
-        return Stack(
-          children: [
-            Positioned.fill(
-              child: GestureDetector(
-                onTap: _closeDropdown,
-                behavior: HitTestBehavior.opaque,
-                child: Container(color: Colors.transparent),
-              ),
-            ),
-            CompositedTransformFollower(
+        return Theme(
+          data: appTheme,
+          child: Builder(
+            builder: (context) {
+              return TapRegion(
+                groupId: _tapGroupId,
+                onTapOutside: (_) => _closeDropdown(),
+                child: Stack(
+                  children: [
+                    CompositedTransformFollower(
               link: _layerLink,
               showWhenUnlinked: false,
               offset: Offset(0, size.height + 4),
@@ -269,8 +306,12 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
                   child: _buildDropdownList(),
                 ),
               ),
-            ),
-          ],
+              ),
+                  ],
+                ),
+              );
+            },
+          ),
         );
       },
     );
@@ -440,6 +481,10 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
         uxTypography?.lXL_default ?? materialTheme.textTheme.labelLarge,
     };
 
+    final isDark = materialTheme.brightness == Brightness.dark;
+    final defaultBgColor = isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0;
+    final defaultBorderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+
     final borderColor = switch (widget.status) {
       Ux4gDropdownStatus.disabled =>
         (uxColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(
@@ -450,8 +495,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
       Ux4gDropdownStatus.defaultStatus =>
         _isExpanded
             ? (uxColors?.primary ?? materialTheme.colorScheme.primary)
-            : (uxColors?.onSurface ?? materialTheme.colorScheme.onSurface)
-                  .withValues(alpha: 0.2),
+            : defaultBorderColor,
     };
 
     final descriptionColor = widget.status == Ux4gDropdownStatus.error
@@ -467,8 +511,8 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
             widget.label!,
             style:
                 widget.labelTextStyle ??
-                (uxTypography?.hS_default ??
-                        materialTheme.textTheme.headlineSmall)
+                (uxTypography?.lL_default ??
+                        materialTheme.textTheme.labelLarge)
                     ?.copyWith(
                       color: widget.status == Ux4gDropdownStatus.disabled
                           ? (uxColors?.onSurface ??
@@ -480,8 +524,13 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
           ),
           const SizedBox(height: Ux4gSpace.space4),
         ],
-        CompositedTransformTarget(
-          link: _layerLink,
+        TapRegion(
+          groupId: _tapGroupId,
+          onTapOutside: (_) {
+            if (_isExpanded) _closeDropdown();
+          },
+          child: CompositedTransformTarget(
+            link: _layerLink,
           child: GestureDetector(
             key: _dropdownKey,
             onTap: _toggleDropdown,
@@ -496,7 +545,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
                     ? (uxColors?.onSurface ??
                               materialTheme.colorScheme.onSurface)
                           .withValues(alpha: 0.04)
-                    : (uxColors?.surface ?? materialTheme.colorScheme.surface),
+                    : defaultBgColor,
                 borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
                 border: Border.all(color: borderColor),
               ),
@@ -518,10 +567,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
                         ? Text(
                             widget.placeholder,
                             style: (textStyle ?? const TextStyle()).copyWith(
-                              color:
-                                  (uxColors?.onSurface ??
-                                          materialTheme.colorScheme.onSurface)
-                                      .withValues(alpha: 0.38),
+                              color: isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
                             ),
                           )
                         : (widget.mode == Ux4gDropdownMode.single
@@ -565,6 +611,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
               ),
             ),
           ),
+        ),
         ),
         if (widget.description != null) ...[
           const SizedBox(height: 4),

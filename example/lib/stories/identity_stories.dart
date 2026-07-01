@@ -4,6 +4,9 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
+String _aadhaarStoryValue = '';
+String _panStoryValue = '';
+
 // ── Aadhaar Input Field ──────────────────────────────────────────────────────
 
 final aadhaarInputFieldComponent = WidgetbookComponent(
@@ -12,7 +15,6 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
-        String value = '';
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
@@ -106,8 +108,8 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
               child: SizedBox(
                 width: 320,
                 child: Ux4gAadhaarInputField(
-                  value: value,
-                  onValueChange: (v) => setState(() => value = v),
+                  value: _aadhaarStoryValue,
+                  onValueChange: (v) => setState(() => _aadhaarStoryValue = v),
                   label: context.knobs.string(
                     label: 'Label',
                     initialValue: 'Aadhaar Number',
@@ -154,7 +156,6 @@ final panInputFieldComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
-        String value = '';
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
@@ -248,8 +249,8 @@ final panInputFieldComponent = WidgetbookComponent(
               child: SizedBox(
                 width: 320,
                 child: Ux4gPanInputField(
-                  value: value,
-                  onValueChange: (v) => setState(() => value = v),
+                  value: _panStoryValue,
+                  onValueChange: (v) => setState(() => _panStoryValue = v),
                   label: context.knobs.string(
                     label: 'Label',
                     initialValue: 'PAN Card Number',

@@ -5,10 +5,11 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
-const _mutedText = Color(0xFF6B7280);
-const _primaryColor = Color(0xFF432CBB);
+bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral500 : const Color(0xFF6B7280);
+Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -68,11 +69,11 @@ class LanguageSwitcherScreen extends StatelessWidget {
             // App Header
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
               title: '',
-              leadingSpacing: 2,
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                SizedBox(width: 3),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -80,26 +81,8 @@ class LanguageSwitcherScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SizedBox(width: 3),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // Content
             Expanded(
@@ -118,17 +101,9 @@ class LanguageSwitcherScreen extends StatelessWidget {
                     Text('Interface Language',
                         style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                     const SizedBox(height: 8),
-                    // Dropdown
-                    Ux4gSelectionDropdown(
-                      options: const [
-                        Ux4gDropdownOption(id: 'en', label: 'English (United States)'),
-                        Ux4gDropdownOption(id: 'hi', label: 'Hindi (हिन्दी)'),
-                        Ux4gDropdownOption(id: 'ta', label: 'Tamil (தமிழ்)'),
-                      ],
-                      selectedOptionIds: const ['en'],
+                    _LanguageSwitcherDropdown(
+                      selectedId: 'en',
                       onSelectionChange: (_) {},
-                      size: Ux4gDropdownSize.m,
-                      leadingIcon: Icons.language,
                     ),
                     const SizedBox(height: 12),
                     Text('Auto-detected from your browser preferences. Changing this updates the portal immediately — no page reload needed.',
@@ -145,7 +120,7 @@ class LanguageSwitcherScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -179,10 +154,11 @@ class LanguageSwitcherCardScreen extends StatelessWidget {
             // App Header
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
               title: '',
-              leadingSpacing: 2,
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -190,25 +166,8 @@ class LanguageSwitcherCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // White card content
             Expanded(
@@ -232,16 +191,9 @@ class LanguageSwitcherCardScreen extends StatelessWidget {
                         Text('Interface Language',
                             style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                         const SizedBox(height: 8),
-                        // Dropdown
-                        Ux4gSelectionDropdown(
-                          options: const [
-                            Ux4gDropdownOption(id: 'en', label: 'English (United States)', leadingIcon: Icons.language),
-                            Ux4gDropdownOption(id: 'hi', label: 'Hindi (हिन्दी)', leadingIcon: Icons.language),
-                            Ux4gDropdownOption(id: 'ta', label: 'Tamil (தமிழ்)', leadingIcon: Icons.language),
-                          ],
-                          selectedOptionIds: const ['en'],
+                        _LanguageSwitcherDropdown(
+                          selectedId: 'en',
                           onSelectionChange: (_) {},
-                          size: Ux4gDropdownSize.m,
                         ),
                         const SizedBox(height: 12),
                         Text('Auto-detected from your browser preferences. Changing this updates the portal immediately — no page reload needed.',
@@ -260,7 +212,7 @@ class LanguageSwitcherCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -287,82 +239,37 @@ class _LanguageSwitcherMockup extends StatefulWidget {
 }
 
 class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
-  List<String> _selectedIds = ['en'];
+  String _selectedId = 'en';
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
-      child: Scaffold(
-        backgroundColor: widget.isCard ? const Color(0xFFF2EFFF) : Colors.white,
+    final isDark = _isDark(context);
+    return Scaffold(
+        backgroundColor: widget.isCard
+            ? (isDark ? Ux4gPalette.primary800 : Color(0xFFF2EFFF))
+            : (isDark ? Ux4gPalette.neutral950 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
                 title: '',
-                leadingSpacing: 2,
+                leadingSpacing: 8,
                 leadingWidgets: [
                   SvgPicture.asset(
-                    'assets/national_amblam_logo.svg',
-                    height: 40,
-                  ),
-                  SizedBox(width: 3),
+                    Ux4gIcons.nationalEmblem, 
+                    height: 40, colorFilter: _isDark(context) ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
                       orientation: Ux4gDividerOrientation.vertical,
-                      color: const Color(0xFFD1D5DB),
+                      color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
                     ),
                   ),
-                  SizedBox(width: 3),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
                 ],
-              ),
-
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) => const Text(
-                        '\u{1f1ee}\u{1f1f3}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
               ),
 
               // Content
@@ -371,14 +278,14 @@ class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
                   padding: const EdgeInsets.all(16),
                   child: widget.isCard
                       ? Ux4gCard(
-                          backgroundColor: Colors.white,
+                          backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(),
+                            child: _buildContent(context),
                           ),
                         )
-                      : _buildContent(),
+                      : _buildContent(context),
                 ),
               ),
 
@@ -388,19 +295,19 @@ class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
+                      style: TextStyle(fontSize: 11, color: _getMutedText(context)),
                     ),
                     const SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => const Text(
+                      errorBuilder: (_, __, ___) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
-                          color: Color(0xFF432CBB),
+                          color: _getPrimaryColor(context),
                         ),
                       ),
                     ),
@@ -410,64 +317,290 @@ class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
             ],
           ),
         ),
-      ),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Choose your interface language',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: _getTitleColor(context),
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
+        Text(
           'Switch the portal to a language you read most comfortably. You can change this anytime from the header.',
-          style: TextStyle(fontSize: 14, color: _subtleText),
+          style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
         ),
         const SizedBox(height: 24),
 
         // Interface Language label
-        const Text(
+        Text(
           'Interface Language',
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: _titleColor,
+            color: _getTitleColor(context),
           ),
         ),
         const SizedBox(height: 8),
 
         // Dropdown field
-        Ux4gSelectionDropdown(
-          options: const [
-            Ux4gDropdownOption(id: 'en', label: 'English (United States)'),
-            Ux4gDropdownOption(id: 'hi', label: 'Hindi (हिन्दी)'),
-            Ux4gDropdownOption(id: 'ta', label: 'Tamil (தமிழ்)'),
-            Ux4gDropdownOption(id: 'te', label: 'Telugu (తెలుగు)'),
-          ],
-          selectedOptionIds: _selectedIds,
-          onSelectionChange: (ids) => setState(() => _selectedIds = ids),
-          size: Ux4gDropdownSize.m,
-          leadingIcon: Icons.language,
-          valueTextStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          ),
+        _LanguageSwitcherDropdown(
+          selectedId: _selectedId,
+          onSelectionChange: (id) => setState(() => _selectedId = id),
         ),
         const SizedBox(height: 12),
 
-        const Text(
+        Text(
           'Auto-detected from your browser preferences. Changing this updates the portal immediately — no page reload needed.',
-          style: TextStyle(fontSize: 13, color: _mutedText),
+          style: TextStyle(fontSize: 13, color: _getMutedText(context)),
         ),
       ],
+    );
+  }
+}
+
+class _LanguageSwitcherDropdown extends StatefulWidget {
+  final String selectedId;
+  final ValueChanged<String> onSelectionChange;
+
+  const _LanguageSwitcherDropdown({
+    required this.selectedId,
+    required this.onSelectionChange,
+  });
+
+  @override
+  State<_LanguageSwitcherDropdown> createState() => _LanguageSwitcherDropdownState();
+}
+
+class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
+  final LayerLink _layerLink = LayerLink();
+  final GlobalKey _triggerKey = GlobalKey();
+  OverlayEntry? _overlayEntry;
+  bool _isOpen = false;
+
+  static const _languages = [
+    {'id': 'en', 'native': 'English', 'english': 'United States'},
+    {'id': 'hi', 'native': 'हिंदी', 'english': 'Hindi'},
+    {'id': 'mr', 'native': 'मराठी', 'english': 'Marathi'},
+    {'id': 'ta', 'native': 'தமிழ்', 'english': 'Tamil'},
+    {'id': 'te', 'native': 'తెలుగు', 'english': 'Telegu'},
+    {'id': 'bn', 'native': 'বাংলা', 'english': 'Bengali'},
+  ];
+
+  void _toggle() {
+    if (_isOpen) {
+      _close();
+    } else {
+      _open();
+    }
+  }
+
+  void _open() {
+    _overlayEntry = _createOverlayEntry();
+    Overlay.of(context).insert(_overlayEntry!);
+    setState(() => _isOpen = true);
+  }
+
+  void _close() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+    setState(() => _isOpen = false);
+  }
+
+  @override
+  void dispose() {
+    _close();
+    super.dispose();
+  }
+
+  OverlayEntry _createOverlayEntry() {
+    final appTheme = Theme.of(context);
+    return OverlayEntry(
+      builder: (overlayContext) {
+        final renderBox = _triggerKey.currentContext?.findRenderObject() as RenderBox?;
+        final size = renderBox?.hasSize == true ? renderBox!.size : Size.zero;
+
+        return Theme(
+          data: appTheme,
+          child: Builder(
+            builder: (context) {
+              return TapRegion(
+                groupId: _triggerKey,
+                onTapOutside: (_) => _close(),
+                child: Stack(
+                  children: [
+                    CompositedTransformFollower(
+                link: _layerLink,
+                showWhenUnlinked: false,
+                offset: Offset(0, size.height + 4),
+                child: Material(
+                  elevation: 8,
+                  borderRadius: BorderRadius.circular(8),
+                  color: _isDark(context) ? Ux4gPalette.neutral900 : Colors.white,
+                  clipBehavior: Clip.antiAlias,
+                  child: Container(
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                      ),
+                    ),
+                    constraints: const BoxConstraints(maxHeight: 380),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ..._languages.map((lang) {
+                            final isSelected = widget.selectedId == lang['id'];
+                            return InkWell(
+                              onTap: () {
+                                widget.onSelectionChange(lang['id']!);
+                                _close();
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                color: isSelected
+                                    ? (_isDark(context) ? Ux4gPalette.primary950 : const Color(0xFFF3E8FF))
+                                    : null,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            lang['native']!,
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                                              color: isSelected
+                                                  ? (_isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB))
+                                                  : _getTitleColor(context),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 2),
+                                          Text(
+                                            lang['english']!,
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400,
+                                              color: isSelected
+                                                  ? (_isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB))
+                                                  : _getMutedText(context),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    if (isSelected)
+                                      Icon(
+                                        Icons.check,
+                                        size: 20,
+                                        color: _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                          Divider(
+                            height: 1,
+                            color: _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                          ),
+                          InkWell(
+                            onTap: _close,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              child: Center(
+                                child: Text(
+                                  'See all 22 scheduled languages',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: _getPrimaryColor(context),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final selectedLang = _languages.firstWhere(
+      (l) => l['id'] == widget.selectedId,
+      orElse: () => _languages.first,
+    );
+
+    return TapRegion(
+      groupId: _triggerKey,
+      child: CompositedTransformTarget(
+        link: _layerLink,
+      child: GestureDetector(
+        key: _triggerKey,
+        onTap: _toggle,
+        child: Container(
+          height: 48,
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          decoration: BoxDecoration(
+            color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: _isOpen
+                  ? _getPrimaryColor(context)
+                  : (_isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFD1D5DB)),
+              width: _isOpen ? 1.5 : 1,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                Icons.language,
+                size: 20,
+                color: _getSubtleText(context),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  '${selectedLang['native']} (${selectedLang['english']})',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: _getTitleColor(context),
+                  ),
+                ),
+              ),
+              Icon(
+                _isOpen ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                color: _getSubtleText(context),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
     );
   }
 }

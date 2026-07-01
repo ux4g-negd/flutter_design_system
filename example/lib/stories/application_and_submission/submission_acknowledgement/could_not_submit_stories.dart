@@ -4,15 +4,13 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _cardBg = Color(0xFFF4F3FF);
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _errorColor = Color(0xFFDC2626);
-const Color _errorBg = Color(0xFFFEE2E2);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+// ───────────────────────────────────────────────────────────────────────
+// Constants
+// ───────────────────────────────────────────────────────────────────────
+
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final couldNotSubmitComponent = WidgetbookComponent(
   name: 'Could Not Submit',
@@ -62,8 +60,19 @@ class _ErrorIcon extends StatelessWidget {
     return Container(
       width: 56,
       height: 56,
-      decoration: BoxDecoration(shape: BoxShape.circle, color: _errorBg),
-      child: const Icon(Icons.error_outline, color: _errorColor, size: 30),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.red900
+            : Ux4gPalette.red50,
+      ),
+      child: Icon(
+        Icons.error,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.red500
+            : Ux4gPalette.red600,
+        size: 30,
+      ),
     );
   }
 }
@@ -77,7 +86,9 @@ class _ErrorToastCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.neutral900
+            : Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -90,32 +101,51 @@ class _ErrorToastCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.error, color: _errorColor, size: 20),
+          Icon(
+            Icons.error,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Ux4gPalette.red500
+                : Ux4gPalette.red600,
+            size: 20,
+          ),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
+                Text(
                   'Could not submit',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: _titleColor,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
                   ),
                 ),
                 const SizedBox(height: 4),
-                const Text(
+                Text(
                   'Network or server issue',
-                  style: TextStyle(fontSize: 13, color: _subtleText),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral400
+                        : Ux4gPalette.neutral500,
+                  ),
                 ),
               ],
             ),
           ),
           GestureDetector(
             onTap: onClose,
-            child: const Icon(Icons.close, size: 18, color: _subtleText),
+            child: Icon(
+              Icons.close,
+              size: 18,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.neutral400
+                  : Ux4gPalette.neutral500,
+            ),
           ),
         ],
       ),
@@ -136,14 +166,14 @@ class CouldNotSubmitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
-    const titleColor = Color(0xFF111827);
-    const subtleText = Color(0xFF4B5563);
-    const errorColor = Color(0xFFDC2626);
-    const errorBg = Color(0xFFFEE2E2);
+    
+    
+    
+    
+    
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -158,11 +188,18 @@ class CouldNotSubmitScreen extends StatelessWidget {
                       Ux4gAppHeader(
                         variant: Ux4gAppHeaderVariant.light,
                         leadingWidgets: [
-                          SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                          const SizedBox(width: 1),
+                          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                           Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                          const SizedBox(width: 1),
-                          SvgPicture.asset('assets/Union.svg', height: 32),
+                          SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
                         ],
                       ),
                       const Divider(height: 1, color: Color(0xFFE5E7EB)),
@@ -177,32 +214,54 @@ class CouldNotSubmitScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Back link
+                        GestureDetector(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_back,
+                                size: 18,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Return to services',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(height: 32),
-
+                        
                         // Error icon
                         Center(
                           child: Container(
                             width: 56, height: 56,
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: errorBg),
-                            child: const Icon(Icons.error_outline, color: errorColor, size: 30),
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50),
+                            child: const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 30),
                           ),
                         ),
                         const SizedBox(height: 20),
 
                         // Title
-                        const Center(
+                        Center(
                           child: Text(
                             'Could Not Submit\nApplication',
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: titleColor, height: 1.2),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
                           ),
                         ),
                         const SizedBox(height: 12),
-                        const Center(
+                        Center(
                           child: Text(
                             'We could not submit your application due to\na network or server error. Your data is saved —\ntry again.',
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14, color: subtleText, height: 1.4),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
                           ),
                         ),
                         const SizedBox(height: 32),
@@ -212,19 +271,25 @@ class CouldNotSubmitScreen extends StatelessWidget {
                           header: const Ux4gJourneyHeader(title: 'What happens next'),
                           steps: const [
                             Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.current,
-                              title: 'Document verification',
-                              helpingText: '3-5 working days',
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '1',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
                             ),
                             Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.upcoming,
-                              title: 'Field inspection (if required)',
-                              helpingText: 'Inspector will contact you',
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '2',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
                             ),
                             Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.upcoming,
-                              title: 'Certificate issued',
-                              helpingText: 'Within 30 days · Legal SLA',
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '3',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
                             ),
                           ],
                         ),
@@ -245,7 +310,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () {},
-                          child: const Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: titleColor)),
+                          child: Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                         ),
                       ),
                     ],
@@ -260,7 +325,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                     children: [
                       const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                       const SizedBox(height: 6),
-                      Image.asset('assets/digital_india_logo.png', height: 24),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
@@ -271,11 +336,11 @@ class CouldNotSubmitScreen extends StatelessWidget {
             Positioned(
               left: 16,
               right: 16,
-              top: 80,
+              top: 24,
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16, offset: const Offset(0, -4)),
@@ -284,21 +349,21 @@ class CouldNotSubmitScreen extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.error, color: errorColor, size: 20),
+                    const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: titleColor)),
+                          Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                           const SizedBox(height: 4),
-                          const Text('Network or server issue', style: TextStyle(fontSize: 13, color: subtleText)),
+                          Text('Network or server issue', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: const Icon(Icons.close, size: 18, color: subtleText),
+                      child: Icon(Icons.close, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
                     ),
                   ],
                 ),
@@ -321,14 +386,14 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
-    const titleColor = Color(0xFF111827);
-    const subtleText = Color(0xFF4B5563);
-    const errorColor = Color(0xFFDC2626);
-    const errorBg = Color(0xFFFEE2E2);
+    
+    
+    
+    
+    
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
       body: SafeArea(
         child: Stack(
           children: [
@@ -342,11 +407,18 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                       Ux4gAppHeader(
                         variant: Ux4gAppHeaderVariant.light,
                         leadingWidgets: [
-                          SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                          const SizedBox(width: 1),
+                          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                           Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                          const SizedBox(width: 1),
-                          SvgPicture.asset('assets/Union.svg', height: 32),
+                          SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
                         ],
                       ),
                       const Divider(height: 1, color: Color(0xFFE5E7EB)),
@@ -361,7 +433,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 20, spreadRadius: 2, offset: const Offset(0, 4)),
@@ -370,25 +442,47 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Back link
+                          GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.arrow_back,
+                                  size: 18,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  'Return to services',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           const SizedBox(height: 32),
-
+                          
                           // Error icon
                           Center(
                             child: Container(
                               width: 56, height: 56,
-                              decoration: const BoxDecoration(shape: BoxShape.circle, color: errorBg),
-                              child: const Icon(Icons.error_outline, color: errorColor, size: 30),
+                              decoration: const BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50),
+                              child: const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 30),
                             ),
                           ),
                           const SizedBox(height: 20),
 
                           // Title
-                          const Center(
-                            child: Text('Could Not Submit\nApplication', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: titleColor, height: 1.2)),
+                          Center(
+                            child: Text('Could Not Submit\nApplication', textAlign: TextAlign.center, style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                           ),
                           const SizedBox(height: 12),
-                          const Center(
-                            child: Text('We could not submit your application due to\na network or server error. Your data is saved —\ntry again.', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: subtleText, height: 1.4)),
+                          Center(
+                            child: Text('We could not submit your application due to\na network or server error. Your data is saved —\ntry again.', textAlign: TextAlign.center, style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                           ),
                           const SizedBox(height: 32),
 
@@ -397,19 +491,25 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                             header: const Ux4gJourneyHeader(title: 'What happens next'),
                             steps: const [
                               Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.current,
-                                title: 'Document verification',
-                                helpingText: '3-5 working days',
+                                state: Ux4gJourneyStepState.completed,
+                                stepNumber: '1',
+                                date: 'Date',
+                                title: 'Title',
+                                helpingText: 'Helping Text',
                               ),
                               Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.upcoming,
-                                title: 'Field inspection (if required)',
-                                helpingText: 'Inspector will contact you',
+                                state: Ux4gJourneyStepState.completed,
+                                stepNumber: '2',
+                                date: 'Date',
+                                title: 'Title',
+                                helpingText: 'Helping Text',
                               ),
                               Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.upcoming,
-                                title: 'Certificate issued',
-                                helpingText: 'Within 30 days · Legal SLA',
+                                state: Ux4gJourneyStepState.completed,
+                                stepNumber: '3',
+                                date: 'Date',
+                                title: 'Title',
+                                helpingText: 'Helping Text',
                               ),
                             ],
                           ),
@@ -431,7 +531,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () {},
-                          child: const Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: titleColor)),
+                          child: Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                         ),
                       ),
                     ],
@@ -446,7 +546,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                     children: [
                       const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                       const SizedBox(height: 6),
-                      Image.asset('assets/digital_india_logo.png', height: 24),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
@@ -457,11 +557,11 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
             Positioned(
               left: 16,
               right: 16,
-              top: 80,
+              top: 24,
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16, offset: const Offset(0, -4)),
@@ -470,21 +570,21 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.error, color: errorColor, size: 20),
+                    const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: titleColor)),
+                          Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                           const SizedBox(height: 4),
-                          const Text('Network or server issue', style: TextStyle(fontSize: 13, color: subtleText)),
+                          Text('Network or server issue', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: const Icon(Icons.close, size: 18, color: subtleText),
+                      child: Icon(Icons.close, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
                     ),
                   ],
                 ),
@@ -515,7 +615,9 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gPalette.neutral900
+          : Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -534,22 +636,33 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                           SvgPicture.asset(
                             _nationalEmblemLogoPath,
                             height: 40,
+                            colorFilter:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? const ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  )
+                                : null,
                             errorBuilder: (c, e, s) => const Icon(
                               Icons.account_balance,
                               size: 32,
                               color: Colors.grey,
                             ),
                           ),
-                          const SizedBox(width: 1),
                           Container(
                             height: 32,
                             width: 1,
                             color: const Color(0xFFD1D5DB),
                           ),
-                          const SizedBox(width: 1),
                           SvgPicture.asset(
                             _unionLogoPath,
                             height: 32,
+                            colorFilter: ColorFilter.mode(
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600,
+                              BlendMode.srcIn,
+                            ),
                             errorBuilder: (c, e, s) => const Icon(
                               Icons.blur_on,
                               size: 32,
@@ -573,66 +686,96 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Back link
+                        GestureDetector(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_back,
+                                size: 18,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Return to services',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(height: 32),
 
                         // Error icon
-                        const Center(child: _ErrorIcon()),
+                        Center(child: _ErrorIcon()),
                         const SizedBox(height: 20),
 
                         // Title
-                        const Center(
+                        Center(
                           child: Text(
                             'Could Not Submit\nApplication',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w800,
-                              color: _titleColor,
-                              height: 1.2,
-                            ),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
+                        ),
                           ),
                         ),
                         const SizedBox(height: 12),
-                        const Center(
+                        Center(
                           child: Text(
                             'We could not submit your application due to\na network or server error. Your data is saved —\ntry again.',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: _subtleText,
-                              height: 1.4,
-                            ),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
+                        ),
                           ),
                         ),
                         const SizedBox(height: 32),
 
-                        // What happens next
-                        const Text(
-                          'What happens next',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: _titleColor,
+                        // What happens next - Journey Timeline
+                        Ux4gJourneyTimeline(
+                          header: const Ux4gJourneyHeader(
+                            title: 'What happens next',
                           ),
-                        ),
-                        const SizedBox(height: 20),
-
-                        // Timeline steps
-                        _TimelineItem(
-                          number: '1',
-                          title: 'Document verification',
-                          subtitle: '3-5 working days',
-                        ),
-                        _TimelineItem(
-                          number: '2',
-                          title: 'Field inspection (if required)',
-                          subtitle: 'Inspector will contact you',
-                        ),
-                        _TimelineItem(
-                          number: '3',
-                          title: 'Certificate issued',
-                          subtitle: 'Within 30 days · Legal SLA',
-                          isLast: true,
+                          steps: const [
+                            Ux4gJourneyStep(
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '1',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
+                            ),
+                            Ux4gJourneyStep(
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '2',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
+                            ),
+                            Ux4gJourneyStep(
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '3',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -652,6 +795,15 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                         onPressed: () => setState(() => _showToast = true),
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
+                        height: 48,
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600,
+                        contentColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral50,
                       ),
                       const SizedBox(height: 12),
                       Ux4gButton(
@@ -660,19 +812,30 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
-                        contentColor: _primaryColor,
-                        borderColor: _primaryColor,
+                        height: 48,
+                        contentColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600,
+                        borderColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.primary600
+                            : Ux4gPalette.primary300,
                       ),
                       const SizedBox(height: 12),
                       Center(
                         child: GestureDetector(
                           onTap: () {},
-                          child: const Text(
+                          child: Text(
                             'Contact support',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: _titleColor,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
                             ),
                           ),
                         ),
@@ -698,6 +861,9 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                       Image.asset(
                         _digitalIndiaLogoPath,
                         height: 24,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : null,
                         errorBuilder: (c, e, s) => const Text(
                           'Digital India',
                           style: TextStyle(
@@ -717,7 +883,7 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
               Positioned(
                 left: 16,
                 right: 16,
-                top: 80,
+                top: 24,
                 child: _ErrorToastCard(
                   onClose: () => setState(() => _showToast = false),
                 ),
@@ -744,7 +910,9 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _cardBg,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.primary900
+            : Ux4gPalette.primary50,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -756,7 +924,9 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
       ),
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
-        backgroundColor: _cardBg,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.primary900
+            : Ux4gPalette.primary50,
         body: SafeArea(
           child: Stack(
             children: [
@@ -775,22 +945,34 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                             SvgPicture.asset(
                               _nationalEmblemLogoPath,
                               height: 40,
+                              colorFilter:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? const ColorFilter.mode(
+                                      Colors.white,
+                                      BlendMode.srcIn,
+                                    )
+                                  : null,
                               errorBuilder: (c, e, s) => const Icon(
                                 Icons.account_balance,
                                 size: 32,
                                 color: Colors.grey,
                               ),
                             ),
-                            const SizedBox(width: 1),
                             Container(
                               height: 32,
                               width: 1,
                               color: const Color(0xFFD1D5DB),
                             ),
-                            const SizedBox(width: 1),
                             SvgPicture.asset(
                               _unionLogoPath,
                               height: 32,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                                BlendMode.srcIn,
+                              ),
                               errorBuilder: (c, e, s) => const Icon(
                                 Icons.blur_on,
                                 size: 32,
@@ -814,7 +996,9 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                       child: Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral900
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -828,66 +1012,96 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // Back link
+                            GestureDetector(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.arrow_back,
+                                    size: 18,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Ux4gPalette.primary300
+                                        : Ux4gPalette.primary600,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    'Return to services',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color:
+                                          Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Ux4gPalette.primary300
+                                          : Ux4gPalette.primary600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             const SizedBox(height: 32),
 
                             // Error icon
-                            const Center(child: _ErrorIcon()),
+                            Center(child: _ErrorIcon()),
                             const SizedBox(height: 20),
 
                             // Title
-                            const Center(
+                            Center(
                               child: Text(
                                 'Could Not Submit\nApplication',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w800,
-                                  color: _titleColor,
-                                  height: 1.2,
-                                ),
+                                style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
+                        ),
                               ),
                             ),
                             const SizedBox(height: 12),
-                            const Center(
+                            Center(
                               child: Text(
                                 'We could not submit your application due to\na network or server error. Your data is saved —\ntry again.',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: _subtleText,
-                                  height: 1.4,
-                                ),
+                                style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
+                        ),
                               ),
                             ),
                             const SizedBox(height: 32),
 
-                            // What happens next
-                            const Text(
-                              'What happens next',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                            // What happens next - Journey Timeline
+                            Ux4gJourneyTimeline(
+                              header: const Ux4gJourneyHeader(
+                                title: 'What happens next',
                               ),
-                            ),
-                            const SizedBox(height: 20),
-
-                            // Timeline steps
-                            _TimelineItem(
-                              number: '1',
-                              title: 'Document verification',
-                              subtitle: '3-5 working days',
-                            ),
-                            _TimelineItem(
-                              number: '2',
-                              title: 'Field inspection (if required)',
-                              subtitle: 'Inspector will contact you',
-                            ),
-                            _TimelineItem(
-                              number: '3',
-                              title: 'Certificate issued',
-                              subtitle: 'Within 30 days · Legal SLA',
-                              isLast: true,
+                              steps: const [
+                                Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.completed,
+                                  stepNumber: '1',
+                                  date: 'Date',
+                                  title: 'Title',
+                                  helpingText: 'Helping Text',
+                                ),
+                                Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.completed,
+                                  stepNumber: '2',
+                                  date: 'Date',
+                                  title: 'Title',
+                                  helpingText: 'Helping Text',
+                                ),
+                                Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.completed,
+                                  stepNumber: '3',
+                                  date: 'Date',
+                                  title: 'Title',
+                                  helpingText: 'Helping Text',
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -908,6 +1122,15 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                           onPressed: () => setState(() => _showToast = true),
                           size: Ux4gButtonSize.large,
                           width: double.infinity,
+                          height: 48,
+                          backgroundColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
+                          contentColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral900
+                              : Ux4gPalette.neutral50,
                         ),
                         const SizedBox(height: 12),
                         Ux4gButton(
@@ -916,19 +1139,30 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                           variant: Ux4gButtonVariant.outline,
                           size: Ux4gButtonSize.large,
                           width: double.infinity,
-                          contentColor: _primaryColor,
-                          borderColor: _primaryColor,
+                          height: 48,
+                          contentColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
+                          borderColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary600
+                              : Ux4gPalette.primary300,
                         ),
                         const SizedBox(height: 12),
                         Center(
                           child: GestureDetector(
                             onTap: () {},
-                            child: const Text(
+                            child: Text(
                               'Contact support',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: _titleColor,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                           ),
@@ -954,6 +1188,9 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                         Image.asset(
                           _digitalIndiaLogoPath,
                           height: 24,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : null,
                           errorBuilder: (c, e, s) => const Text(
                             'Digital India',
                             style: TextStyle(
@@ -973,7 +1210,7 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                 Positioned(
                   left: 16,
                   right: 16,
-                  top: 80,
+                  top: 24,
                   child: _ErrorToastCard(
                     onClose: () => setState(() => _showToast = false),
                   ),
@@ -981,89 +1218,6 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// ───────────────────────────────────────────────────────────────────────
-// Timeline item (local to this file)
-// ───────────────────────────────────────────────────────────────────────
-
-class _TimelineItem extends StatelessWidget {
-  final String number;
-  final String title;
-  final String subtitle;
-  final bool isLast;
-
-  const _TimelineItem({
-    required this.number,
-    required this.title,
-    required this.subtitle,
-    this.isLast = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            children: [
-              Container(
-                width: 28,
-                height: 28,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _primaryColor,
-                ),
-                child: Center(
-                  child: Text(
-                    number,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              if (!isLast)
-                Expanded(
-                  child: Container(
-                    width: 2,
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    color: const Color(0xFFE5E7EB),
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: isLast ? 0 : 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: _titleColor,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(fontSize: 13, color: _subtleText),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

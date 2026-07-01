@@ -51,3 +51,4 @@ clean_diff.txt
 diff.txt
 temp_*.dart
 fix_*.dart
+*.html

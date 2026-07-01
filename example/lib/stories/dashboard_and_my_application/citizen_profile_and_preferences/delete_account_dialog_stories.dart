@@ -3,9 +3,18 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _dangerColor = Color(0xFFDB372D);
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+Color _getScaffoldBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral300;
+Color _getCardBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+
+const Color _dangerColor = Ux4gPalette.red600;
 
 final deleteAccountDialogComponent = WidgetbookComponent(
   name: 'Delete Account Dialog',
@@ -81,22 +90,27 @@ class _DeleteAccountDialogMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Container(
         width: 360,
         height: 400,
         decoration: BoxDecoration(
-          color: const Color(0xFFFAFAFA),
+          color: _getScaffoldBg(context),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Center(
           child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            padding: const EdgeInsets.all(24),
+            margin: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: _getCardBg(context),
               borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: isDark ? Ux4gPalette.red800 : Ux4gPalette.red300,
+              ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.15),
@@ -109,24 +123,19 @@ class _DeleteAccountDialogMockup extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Title
-                const Text(
+                Text(
                   'Delete your account?',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: _titleColor,
+                  style: typography.hS_default.copyWith(
+                    color: _getTitleColor(context),
                   ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 12),
                 // Description
-                const Text(
+                Text(
                   'This permanently deletes your account and all associated data. You will have a 30-day grace period to restore it — after that, deletion is final and cannot be undone.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: _subtleText,
-                    height: 1.5,
+                  style: typography.bM_default.copyWith(
+                    color: _getSubtleText(context),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -140,20 +149,25 @@ class _DeleteAccountDialogMockup extends StatelessWidget {
                     variant: Ux4gButtonVariant.primary,
                     backgroundColor: _dangerColor,
                     contentColor: Colors.white,
-                    height: 48,
+                    height: 40,
+                    textStyle: typography.lL_default,
                   ),
                 ),
-                const SizedBox(height: 12),
-                // Cancel text button
-                GestureDetector(
-                  onTap: () {},
-                  child: const Text(
-                    'Cancel',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: _titleColor,
-                    ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: Ux4gButton(
+                    text: 'Cancel',
+                    onPressed: () {},
+                    variant: Ux4gButtonVariant.outline,
+                    height: 40,
+                    borderColor: isDark
+                        ? Ux4gPalette.neutral600
+                        : Ux4gPalette.neutral300,
+                    contentColor: isDark
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
+                    textStyle: typography.lL_default,
                   ),
                 ),
               ],

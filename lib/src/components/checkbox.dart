@@ -20,6 +20,7 @@ class Ux4gCheckbox extends StatelessWidget {
   final String? description;
   final Ux4gCheckboxSize size;
   final bool isRequired;
+  final bool hasError;
   final Ux4gCheckboxDescriptionVariant descriptionVariant;
   final bool enabled;
 
@@ -31,6 +32,7 @@ class Ux4gCheckbox extends StatelessWidget {
     this.description,
     this.size = Ux4gCheckboxSize.medium,
     this.isRequired = false,
+    this.hasError = false,
     this.descriptionVariant = Ux4gCheckboxDescriptionVariant.helper,
     this.enabled = true,
   });
@@ -68,15 +70,18 @@ class Ux4gCheckbox extends StatelessWidget {
             const TextStyle(),
     };
 
+    final hasDescription = description != null && description!.trim().isNotEmpty;
+    final hasLabel = label != null && label!.trim().isNotEmpty;
+
     return InkWell(
       onTap: enabled ? () => onChanged(value == null ? true : !value!) : null,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: hasDescription ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 2),
+              padding: EdgeInsets.only(top: hasDescription ? 2 : 0),
               child: SizedBox(
                 width: size.size,
                 height: size.size,
@@ -84,6 +89,8 @@ class Ux4gCheckbox extends StatelessWidget {
                   value: value,
                   tristate: true,
                   onChanged: enabled ? onChanged : null,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
                   activeColor:
                       ux4gColors?.primary ?? materialTheme.colorScheme.primary,
                   checkColor:
@@ -93,25 +100,29 @@ class Ux4gCheckbox extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   side: BorderSide(
-                    color: enabled
+                    color: !enabled
                         ? (ux4gColors?.onSurface ??
                                   materialTheme.colorScheme.onSurface)
-                              .withValues(alpha: 0.6)
-                        : (ux4gColors?.onSurface ??
-                                  materialTheme.colorScheme.onSurface)
-                              .withValues(alpha: 0.12),
+                              .withValues(alpha: 0.12)
+                        : (hasError || descriptionVariant == Ux4gCheckboxDescriptionVariant.error
+                            ? (ux4gColors?.error ?? materialTheme.colorScheme.error)
+                            : (materialTheme.brightness == Brightness.dark
+                                ? Ux4gPalette.neutral700
+                                : Ux4gPalette.neutral200)),
                     width: 1.5,
                   ),
                 ),
               ),
             ),
-            if (label != null || description != null) ...[
+            if (hasLabel || hasDescription) ...[
               const SizedBox(width: 8),
               Expanded(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (label != null)
+                    if (hasLabel)
                       Text.rich(
                         TextSpan(
                           children: [
@@ -140,7 +151,7 @@ class Ux4gCheckbox extends StatelessWidget {
                           ],
                         ),
                       ),
-                    if (description != null) ...[
+                    if (hasDescription) ...[
                       const SizedBox(height: 4),
                       Text(
                         description!,

@@ -8,9 +8,36 @@ const Color _bg = Color(0xFFFAFAFA);
 const Color _cardBg = Color(0xFFF4F3FF);
 const Color _titleColor = Color(0xFF111827);
 const Color _subtleText = Color(0xFF4B5563);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+
+bool _isDarkMode(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+
+Color _getCardBg(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
+
+
+Color _getUploadedBg(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green50;
+Color _getUploadedBorder(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green300;
+Color _getUploadedText(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800;
+Color _getUploadedIcon(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600;
+Color _getSuccessTagBg(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100;
+Color _getUploadedTitle(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+Color _getUploadedDesc(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+Color _getUploadedBtnText(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+Color _getUploadedBtnBorder(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.primary600 : Ux4gPalette.primary300;
+
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final documentUploadSuccessComponent = WidgetbookComponent(
   name: 'Document upload success',
@@ -37,8 +64,8 @@ final documentUploadSuccessComponent = WidgetbookComponent(
           code: code,
           center: true,
           child: isCardStyle
-              ? const _DocumentUploadSuccessCardMockup()
-              : const _DocumentUploadSuccessMockup(),
+              ? _DocumentUploadSuccessCardMockup()
+              : _DocumentUploadSuccessMockup(),
         );
       },
     ),
@@ -93,7 +120,9 @@ class DocumentUploadSuccessScreen extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gPalette.neutral900
+          : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -102,14 +131,21 @@ class DocumentUploadSuccessScreen extends StatelessWidget {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 1),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                 Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
 
             // Main Content
             Expanded(
@@ -130,36 +166,36 @@ class DocumentUploadSuccessScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
 
-                    const Text('Upload documents', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827))),
-                    const SizedBox(height: 8),
-                    const Text('PDF or JPG, max 5 MB each. Self-attested.', style: TextStyle(fontSize: 15, color: Color(0xFF4B5563))),
-                    const SizedBox(height: 24),
+                    Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                    const SizedBox(height: 4),
+                    Text('PDF or JPG, max 5 MB each. Self-attested.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                    const SizedBox(height: 20),
 
-                    const Text('All 4 documents uploaded', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFF111827))),
-                    const SizedBox(height: 16),
+                    const Text('All 4 documents uploaded', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                    const SizedBox(height: 20),
 
                     // Success Banner
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF0FDF4),
+                        color: _getUploadedBg(context),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xFFDCFCE7)),
+                        border: Border.all(color: _getUploadedBorder(context), width: 1.0),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.check_circle, color: Color(0xFF16A34A), size: 20),
+                          Icon(Icons.check_circle, color: _getUploadedIcon(context), size: 20),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text('All required documents uploaded.', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF166534))),
+                                Text('All required documents uploaded.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(color: _getUploadedText(context))),
                                 const SizedBox(height: 4),
                                 Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                  decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(4)),
-                                  child: const Text('Success', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF166534))),
+                                  decoration: BoxDecoration(color: _getSuccessTagBg(context), borderRadius: BorderRadius.circular(4)),
+                                  child: Text('Success', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: _getUploadedText(context))),
                                 ),
                               ],
                             ),
@@ -179,9 +215,44 @@ class DocumentUploadSuccessScreen extends StatelessWidget {
                     _UploadedItem(title: 'Caste certificate', fileName: 'caste_cert.pdf', size: '1.1 MB'),
 
                     const SizedBox(height: 32),
-                    const Text(
-                      'All documents must be self-attested. AI flags quality issues; officers make the final call.',
-                      style: TextStyle(fontSize: 13, color: Color(0xFF6B7280), height: 1.4),
+                    Builder(
+                      builder: (context) {
+                        bool isChecked = true;
+                        return StatefulBuilder(
+                          builder: (context, setState) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: Checkbox(
+                                    value: isChecked,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        isChecked = value ?? false;
+                                      });
+                                    },
+                                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    'All documents must be self-attested. AI flags quality issues; officers make the final call.',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                                      height: 1.4,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -193,9 +264,9 @@ class DocumentUploadSuccessScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Proceed to review', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Proceed to review', onPressed: () {}, size: Ux4gButtonSize.medium, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.medium, width: double.infinity, height: 48),
                 ],
               ),
             ),
@@ -208,7 +279,7 @@ class DocumentUploadSuccessScreen extends StatelessWidget {
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -228,9 +299,8 @@ class _UploadedItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0FDF4),
+        color: _getUploadedBg(context),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFDCFCE7)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,15 +308,15 @@ class _UploadedItem extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.check_circle, color: Color(0xFF16A34A), size: 20),
+              Icon(Icons.check_circle, color: _getUploadedIcon(context), size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF111827))),
+                    Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                     const SizedBox(height: 4),
-                    Text('$fileName · $size · Uploaded just now', style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                    Text('$fileName · $size · Uploaded just now', style: const TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                   ],
                 ),
               ),
@@ -255,9 +325,9 @@ class _UploadedItem extends StatelessWidget {
           const SizedBox(height: 16),
           Row(
             children: [
-              Ux4gButton(text: 'View', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 100),
+              Ux4gButton(text: 'View', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 100, height: 48, contentColor: _getUploadedBtnText(context), borderColor: _getUploadedBtnBorder(context)),
               const SizedBox(width: 12),
-              Ux4gButton(text: 'Re-upload', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 120),
+              Ux4gButton(text: 'Re-upload', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 120, height: 48, contentColor: _getUploadedBtnText(context), borderColor: _getUploadedBtnBorder(context)),
             ],
           ),
         ],
@@ -284,20 +354,27 @@ class DocumentUploadSuccessCardScreen extends StatelessWidget {
           children: [
             // Header
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
-                      SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                      const SizedBox(width: 1),
+                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                       Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
-                      SvgPicture.asset('assets/Union.svg', height: 32),
+                      SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
                     ],
                   ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
                 ],
               ),
             ),
@@ -309,7 +386,7 @@ class DocumentUploadSuccessCardScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4)),
@@ -328,9 +405,9 @@ class DocumentUploadSuccessCardScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 32),
-                      const Text('Upload documents', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2)),
-                      const SizedBox(height: 8),
-                      const Text('All required documents uploaded.', style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4)),
+                      Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2)),
+                      const SizedBox(height: 4),
+                      Text('All required documents uploaded.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                       const SizedBox(height: 32),
 
                       _UploadedItem(title: 'Aadhaar Card', fileName: 'aadhaar_card.pdf', size: '1.2 MB'),
@@ -347,9 +424,9 @@ class DocumentUploadSuccessCardScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Proceed to review', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Proceed to review', onPressed: () {}, size: Ux4gButtonSize.medium, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.medium, width: double.infinity, height: 48),
                 ],
               ),
             ),
@@ -360,7 +437,7 @@ class DocumentUploadSuccessCardScreen extends StatelessWidget {
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -380,9 +457,8 @@ class _UploadedItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0FDF4),
+        color: _getUploadedBg(context),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFDCFCE7)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -390,15 +466,15 @@ class _UploadedItem extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.check_circle, color: Color(0xFF16A34A), size: 20),
+              Icon(Icons.check_circle, color: _getUploadedIcon(context), size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF111827))),
+                    Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                     const SizedBox(height: 4),
-                    Text('$fileName · $size · Uploaded', style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                    Text('$fileName · $size · Uploaded', style: const TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                   ],
                 ),
               ),
@@ -407,9 +483,9 @@ class _UploadedItem extends StatelessWidget {
           const SizedBox(height: 16),
           Row(
             children: [
-              Ux4gButton(text: 'View', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 80),
+              Ux4gButton(text: 'View', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 80, height: 48),
               const SizedBox(width: 12),
-              Ux4gButton(text: 'Re-upload', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 110),
+              Ux4gButton(text: 'Re-upload', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 110, height: 48),
             ],
           ),
         ],
@@ -424,13 +500,13 @@ class _UploadedItem extends StatelessWidget {
 // ───────────────────────────────────────────────────────────────────────
 
 class _DocumentUploadSuccessMockup extends StatelessWidget {
-  const _DocumentUploadSuccessMockup();
+  _DocumentUploadSuccessMockup();
 
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -439,18 +515,25 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingWidgets: [
-                  SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  const SizedBox(width: 1),
+                  SvgPicture.asset(_nationalEmblemLogoPath, height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                   Container(
                     height: 32,
                     width: 1,
-                    color: const Color(0xFFD1D5DB),
+                    color: Color(0xFFD1D5DB),
                   ),
-                  const SizedBox(width: 1),
-                  SvgPicture.asset(_unionLogoPath, height: 32),
+                  SvgPicture.asset(
+                    _unionLogoPath,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.primary300
+                          : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ],
               ),
-              const Divider(height: 1, color: Color(0xFFE5E7EB)),
+              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
@@ -489,44 +572,44 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                           Ux4gStepItem(title: ''),
                         ],
                       ),
-                      const SizedBox(height: 32),
-                      const Text(
-                        'Upload documents',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w800,
-                          color: _titleColor,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'PDF or JPG, max 5 MB each. Self-attested.',
-                        style: TextStyle(fontSize: 15, color: _subtleText),
-                      ),
-                      const SizedBox(height: 24),
-                      const Text(
+                      SizedBox(height: 32),
+                      Text(
+  'Upload documents',
+  style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith(
+    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+  ),
+),
+SizedBox(height: 4),
+                      Text(
+  'PDF or JPG, max 5 MB each. Self-attested.',
+  style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
+    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+  ),
+),
+                      SizedBox(height: 20),
+                      Text(
                         'All 4 documents uploaded',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
-                          color: _titleColor,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
 
                       // Success Banner
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF0FDF4),
+                          color: _getUploadedBg(context),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: const Color(0xFFDCFCE7)),
+                        border: Border.all(color: _getUploadedBorder(context), width: 1.0),
                         ),
                         child: Row(
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.check_circle,
-                              color: Color(0xFF16A34A),
+                              color: _getUploadedIcon(context),
                               size: 20,
                             ),
                             const SizedBox(width: 12),
@@ -534,12 +617,10 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
+                                  Text(
                                     'All required documents uploaded.',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xFF166534),
+                                    style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
+                                      color: _getUploadedText(context),
                                     ),
                                   ),
                                   const SizedBox(height: 4),
@@ -549,15 +630,15 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                                       vertical: 2,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFDCFCE7),
+                                      color: _getSuccessTagBg(context),
                                       borderRadius: BorderRadius.circular(4),
                                     ),
-                                    child: const Text(
+                                    child: Text(
                                       'Success',
                                       style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
-                                        color: Color(0xFF166534),
+                                        color: _getUploadedText(context),
                                       ),
                                     ),
                                   ),
@@ -594,14 +675,45 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                       ),
 
                       const SizedBox(height: 32),
-                      const Text(
-                        'All documents must be self-attested. AI flags quality issues; officers make the final call.',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFF6B7280),
-                          height: 1.4,
-                        ),
-                      ),
+                      Builder(
+                      builder: (context) {
+                        bool isChecked = true;
+                        return StatefulBuilder(
+                          builder: (context, setState) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: Checkbox(
+                                    value: isChecked,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        isChecked = value ?? false;
+                                      });
+                                    },
+                                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    'All documents must be self-attested. AI flags quality issues; officers make the final call.',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                                      height: 1.4,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    ),
                     ],
                   ),
                 ),
@@ -616,16 +728,18 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                     Ux4gButton(
                       text: 'Proceed to review',
                       onPressed: () {},
-                      size: Ux4gButtonSize.large,
+                      size: Ux4gButtonSize.medium,
                       width: double.infinity,
+                      height: 48,
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
+                      size: Ux4gButtonSize.medium,
                       width: double.infinity,
+                      height: 48,
                     ),
                   ],
                 ),
@@ -640,7 +754,7 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
                       style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
                     ),
                     const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    Image.asset(_digitalIndiaLogoPath, height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -653,37 +767,44 @@ class _DocumentUploadSuccessMockup extends StatelessWidget {
 }
 
 class _DocumentUploadSuccessCardMockup extends StatelessWidget {
-  const _DocumentUploadSuccessCardMockup();
+  _DocumentUploadSuccessCardMockup();
 
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: _cardBg,
+        backgroundColor: _getCardBg(context),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                color: Colors.white,
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
                       variant: Ux4gAppHeaderVariant.light,
                       title: '',
                       leadingWidgets: [
-                        SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                        const SizedBox(width: 1),
+                        SvgPicture.asset(_nationalEmblemLogoPath, height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                         Container(
                           height: 32,
                           width: 1,
-                          color: const Color(0xFFD1D5DB),
+                          color: Color(0xFFD1D5DB),
                         ),
-                        const SizedBox(width: 1),
-                        SvgPicture.asset(_unionLogoPath, height: 32),
+                        SvgPicture.asset(
+                          _unionLogoPath,
+                          height: 32,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       ],
                     ),
-                    const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
                   ],
                 ),
               ),
@@ -696,7 +817,7 @@ class _DocumentUploadSuccessCardMockup extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -738,25 +859,20 @@ class _DocumentUploadSuccessCardMockup extends StatelessWidget {
                             Ux4gStepItem(title: ''),
                           ],
                         ),
-                        const SizedBox(height: 32),
-                        const Text(
-                          'Upload documents',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w800,
-                            color: _titleColor,
-                            height: 1.2,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        const Text(
-                          'All required documents uploaded.',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: _subtleText,
-                            height: 1.4,
-                          ),
-                        ),
+                        SizedBox(height: 32),
+                        Text(
+  'Upload documents',
+  style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith(
+    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+  ),
+),
+SizedBox(height: 4),
+                        Text(
+  'All required documents uploaded.',
+  style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
+    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+  ),
+),
                         const SizedBox(height: 32),
 
                         const _UploadedMockItem(
@@ -785,16 +901,18 @@ class _DocumentUploadSuccessCardMockup extends StatelessWidget {
                     Ux4gButton(
                       text: 'Proceed to review',
                       onPressed: () {},
-                      size: Ux4gButtonSize.large,
+                      size: Ux4gButtonSize.medium,
                       width: double.infinity,
+                      height: 48,
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
+                      size: Ux4gButtonSize.medium,
                       width: double.infinity,
+                      height: 48,
                     ),
                   ],
                 ),
@@ -809,7 +927,7 @@ class _DocumentUploadSuccessCardMockup extends StatelessWidget {
                       style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
                     ),
                     const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    Image.asset(_digitalIndiaLogoPath, height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -834,9 +952,8 @@ class _UploadedMockItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0FDF4),
+        color: _getUploadedBg(context),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFDCFCE7)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -844,30 +961,30 @@ class _UploadedMockItem extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(
+              Icon(
                 Icons.check_circle,
-                color: Color(0xFF16A34A),
+                color: _getUploadedIcon(context),
                 size: 20,
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF111827),
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Text(
                       '$fileName · $size · Uploaded just now',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 13,
-                        color: Color(0xFF4B5563),
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
                       ),
                     ),
                   ],

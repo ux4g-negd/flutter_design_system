@@ -5,9 +5,11 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
-const _primaryColor = Color(0xFF432CBB);
+bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral500 : const Color(0xFF6B7280);
+Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -105,38 +107,20 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
               // App Header
               Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
                 title: '',
-                leadingSpacing: 2,
+                leadingSpacing: 8,
                 leadingWidgets: [
-                  SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                  SizedBox(width:3),
+                  SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
                       orientation: Ux4gDividerOrientation.vertical,
-                      color: const Color(0xFFD1D5DB),
+                      color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
                     ),
                   ),
-                  SizedBox(width:3),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
                 ],
-              ),
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                    const SizedBox(width: 8),
-                    Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                    const SizedBox(width: 4),
-                    Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                    const Spacer(),
-                    Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                  ],
-                ),
               ),
               // Content
               Expanded(
@@ -149,7 +133,7 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
                           style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
                       const SizedBox(height: 8),
                       Text('India\'s 22 scheduled languages plus English. Tap any tile to switch — "Coming soon" tiles mean translation is in progress.',
-                          style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                          style: TextStyle(fontSize: 14, color: _getSubtleText(context))),
                       const SizedBox(height: 20),
                       // Search field
                       Ux4gSearchField(
@@ -161,7 +145,7 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
                         size: Ux4gSearchFieldSize.medium,
                         placeholder: 'Search for Language',
                         showVoiceIcon: true,
-                        showClearIcon: true,
+                        showClearIcon: false,
                         onClearClick: () {
                           setState(() { _searchValue = ''; _selectedIndex = -1; _isDropdownOpen = false; });
                         },
@@ -172,9 +156,9 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
                         Container(
                           margin: const EdgeInsets.only(top: 4),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: const Color(0xFFE5E7EB)),
+                            border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFE5E7EB)),
                             boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))],
                           ),
                           child: Column(
@@ -194,9 +178,9 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                                   decoration: BoxDecoration(
-                                    color: isSelected ? const Color(0xFFF2EFFF) : null,
+                                    color: isSelected ? (_isDark(context) ? Ux4gPalette.primary800 : Color(0xFFF2EFFF)) : null,
                                     border: i < filteredLanguages.length - 1
-                                        ? const Border(bottom: BorderSide(color: Color(0xFFE5E7EB), width: 1))
+                                        ? Border(bottom: BorderSide(color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFE5E7EB), width: 1))
                                         : null,
                                   ),
                                   child: Row(
@@ -205,13 +189,13 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(lang['name']!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: isSelected ? Color(0xFF4A2BC2) : Color(0xFF111827))),
+                                            Text(lang['name']!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: isSelected ? _getPrimaryColor(context) : _getTitleColor(context))),
                                             const SizedBox(height: 2),
-                                            Text(lang['sub']!, style: TextStyle(fontSize: 12, color: isSelected ? Color(0xFF4A2BC2) : Color(0xFF6B7280))),
+                                            Text(lang['sub']!, style: TextStyle(fontSize: 12, color: isSelected ? _getPrimaryColor(context) : _getMutedText(context))),
                                           ],
                                         ),
                                       ),
-                                      if (isSelected) Icon(Icons.check, color: Color(0xFF4A2BC2), size: 20),
+                                      if (isSelected) Icon(Icons.check, color: _getPrimaryColor(context), size: 20),
                                     ],
                                   ),
                                 ),
@@ -229,9 +213,9 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
+                    Text('Powered by -', style: TextStyle(fontSize: 11, color: _getMutedText(context))),
                     const SizedBox(width: 4),
-                    Image.asset('assets/digital_india_logo.png', height: 20),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                   ],
                 ),
               ),
@@ -296,50 +280,34 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
       },
       behavior: HitTestBehavior.translucent,
       child: Scaffold(
-        backgroundColor: const Color(0xFFF2EFFF),
+        backgroundColor: Color(0xFFF2EFFF),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
                 title: '',
-                leadingSpacing: 2,
+                leadingSpacing: 8,
                 leadingWidgets: [
-                  SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                  SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
                       orientation: Ux4gDividerOrientation.vertical,
-                      color: const Color(0xFFD1D5DB),
+                      color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
                     ),
                   ),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
                 ],
-              ),
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                    const SizedBox(width: 8),
-                    Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                    const SizedBox(width: 4),
-                    Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                    const Spacer(),
-                    Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                  ],
-                ),
               ),
               // White card content
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
                   child: Ux4gCard(
-                    backgroundColor: Colors.white,
+                    backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
                     cornerRadius: 16,
                     child: Padding(
                       padding: const EdgeInsets.all(16),
@@ -350,7 +318,7 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
                               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
                           const SizedBox(height: 8),
                           Text('India\'s 22 scheduled languages plus English. Tap any tile to switch — "Coming soon" tiles mean translation is in progress.',
-                              style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                              style: TextStyle(fontSize: 14, color: _getSubtleText(context))),
                           const SizedBox(height: 20),
                           // Search field
                           Ux4gSearchField(
@@ -362,7 +330,7 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
                             size: Ux4gSearchFieldSize.medium,
                             placeholder: 'Search for Language',
                             showVoiceIcon: true,
-                            showClearIcon: true,
+                            showClearIcon: false,
                             onClearClick: () {
                               setState(() { _searchValue = ''; _selectedIndex = -1; _isDropdownOpen = false; });
                             },
@@ -373,9 +341,9 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
                             Container(
                               margin: const EdgeInsets.only(top: 4),
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: const Color(0xFFE5E7EB)),
+                            color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFE5E7EB)),
                                 boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))],
                               ),
                               child: Column(
@@ -395,9 +363,9 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                                       decoration: BoxDecoration(
-                                        color: isSelected ? const Color(0xFFF2EFFF) : null,
+                                        color: isSelected ? (_isDark(context) ? Ux4gPalette.primary800 : Color(0xFFF2EFFF)) : null,
                                         border: i < filteredLanguages.length - 1
-                                            ? const Border(bottom: BorderSide(color: Color(0xFFE5E7EB), width: 1))
+                                            ? Border(bottom: BorderSide(color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFE5E7EB), width: 1))
                                             : null,
                                       ),
                                       child: Row(
@@ -406,13 +374,13 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Text(lang['name']!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: isSelected ? Color(0xFF4A2BC2) : Color(0xFF111827))),
+                                                Text(lang['name']!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: isSelected ? _getPrimaryColor(context) : _getTitleColor(context))),
                                                 const SizedBox(height: 2),
-                                                Text(lang['sub']!, style: TextStyle(fontSize: 12, color: isSelected ? Color(0xFF4A2BC2) : Color(0xFF6B7280))),
+                                                Text(lang['sub']!, style: TextStyle(fontSize: 12, color: isSelected ? _getPrimaryColor(context) : _getMutedText(context))),
                                               ],
                                             ),
                                           ),
-                                          if (isSelected) Icon(Icons.check, color: Color(0xFF4A2BC2), size: 20),
+                                          if (isSelected) Icon(Icons.check, color: _getPrimaryColor(context), size: 20),
                                         ],
                                       ),
                                     ),
@@ -432,9 +400,9 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
+                    Text('Powered by -', style: TextStyle(fontSize: 11, color: _getMutedText(context))),
                     const SizedBox(width: 4),
-                    Image.asset('assets/digital_india_logo.png', height: 20),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                   ],
                 ),
               ),
@@ -478,9 +446,8 @@ class _AllScheduledLanguagesMockupState
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
-      child: GestureDetector(
+    final isDark = _isDark(context);
+    return GestureDetector(
         onTap: () {
           // Close dropdown on outside tap and restore selected value
           if (_isDropdownOpen) {
@@ -495,77 +462,29 @@ class _AllScheduledLanguagesMockupState
         },
         behavior: HitTestBehavior.translucent,
         child: Scaffold(
-          backgroundColor: widget.isCard
-              ? const Color(0xFFF2EFFF)
-              : Colors.white,
+          backgroundColor: widget.isCard ? (isDark ? Ux4gPalette.primary800 : Color(0xFFF2EFFF)) : (isDark ? Ux4gPalette.neutral950 : Colors.white),
           body: SafeArea(
             child: Column(
               children: [
                 // App Header
                 Ux4gAppHeader(
                   variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
                   title: '',
-                  leadingSpacing: 2,
+                  leadingSpacing: 8,
                   leadingWidgets: [
                     SvgPicture.asset(
-                      'assets/national_amblam_logo.svg',
-                      height: 40,
-                    ),
-                    SizedBox(width: 3),
+                      Ux4gIcons.nationalEmblem, 
+                      height: 40, colorFilter: _isDark(context) ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                     SizedBox(
                       height: 32,
                       child: Ux4gDivider(
                         orientation: Ux4gDividerOrientation.vertical,
-                        color: const Color(0xFFD1D5DB),
+                        color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
                       ),
                     ),
-                    SizedBox(width: 3),
-                    SvgPicture.asset('assets/Union.svg', height: 32),
+                    SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
                   ],
-                ),
-
-                // Gov bar
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  color: const Color(0xFF1E3A8A),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/india_flag.png',
-                        height: 14,
-                        width: 22,
-                        errorBuilder: (_, __, ___) => const Text(
-                          '\u{1f1ee}\u{1f1f3}',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Text(
-                        'Government of India',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      const Icon(
-                        Icons.open_in_new,
-                        size: 11,
-                        color: Colors.white,
-                      ),
-                      const Spacer(),
-                      const Icon(
-                        Icons.accessibility_new,
-                        size: 16,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
                 ),
 
                 // Content
@@ -574,14 +493,14 @@ class _AllScheduledLanguagesMockupState
                     padding: const EdgeInsets.all(16),
                     child: widget.isCard
                         ? Ux4gCard(
-                            backgroundColor: Colors.white,
+                            backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
                             cornerRadius: 16,
                             child: Padding(
                               padding: const EdgeInsets.all(16),
-                              child: _buildContent(),
+                              child: _buildContent(context),
                             ),
                           )
-                        : _buildContent(),
+                        : _buildContent(context),
                   ),
                 ),
 
@@ -591,22 +510,22 @@ class _AllScheduledLanguagesMockupState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Powered by -',
                         style: TextStyle(
                           fontSize: 11,
-                          color: Color(0xFF6B7280),
+                          color: _getMutedText(context),
                         ),
                       ),
                       const SizedBox(width: 4),
                       Image.asset(
-                        'assets/digital_india_logo.png',
+                        Ux4gIcons.digitalIndiaLogoPng, 
                         height: 20,
-                        errorBuilder: (_, __, ___) => const Text(
+                        errorBuilder: (_, __, ___) => Text(
                           'Digital India',
                           style: TextStyle(
                             fontSize: 10,
-                            color: Color(0xFF432CBB),
+                            color: _getPrimaryColor(context),
                           ),
                         ),
                       ),
@@ -617,11 +536,10 @@ class _AllScheduledLanguagesMockupState
             ),
           ),
         ),
-      ),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     // Filter languages based on search
     final query = _searchValue.toLowerCase();
     final isExactSelection = _languages.any(
@@ -637,18 +555,18 @@ class _AllScheduledLanguagesMockupState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'All scheduled languages',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: _getTitleColor(context),
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
+        Text(
           'India\'s 22 scheduled languages plus English. Tap any tile to switch — "Coming soon" tiles mean translation is in progress.',
-          style: TextStyle(fontSize: 14, color: _subtleText),
+          style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
         ),
         const SizedBox(height: 20),
 
@@ -665,7 +583,7 @@ class _AllScheduledLanguagesMockupState
           size: Ux4gSearchFieldSize.medium,
           placeholder: 'Search for Language',
           showVoiceIcon: true,
-          showClearIcon: true,
+          showClearIcon: false,
           onClearClick: () {
             setState(() {
               _searchValue = '';
@@ -681,9 +599,9 @@ class _AllScheduledLanguagesMockupState
           Container(
             margin: const EdgeInsets.only(top: 4),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: const Color(0xFFE5E7EB)),
+                            color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFE5E7EB)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.08),
@@ -712,9 +630,9 @@ class _AllScheduledLanguagesMockupState
                       vertical: 12,
                     ),
                     decoration: BoxDecoration(
-                      color: isSelected ? const Color(0xFFF2EFFF) : null,
+                      color: isSelected ? (_isDark(context) ? Ux4gPalette.primary800 : Color(0xFFF2EFFF)) : null,
                       border: i < filteredLanguages.length - 1
-                          ? const Border(
+                          ? Border(
                               bottom: BorderSide(
                                 color: Color(0xFFE5E7EB),
                                 width: 1,
@@ -734,8 +652,8 @@ class _AllScheduledLanguagesMockupState
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                   color: isSelected
-                                      ? const Color(0xFF4A2BC2)
-                                      : _titleColor,
+                                      ? _getPrimaryColor(context)
+                                      : _getTitleColor(context),
                                 ),
                               ),
                               const SizedBox(height: 2),
@@ -744,17 +662,17 @@ class _AllScheduledLanguagesMockupState
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: isSelected
-                                      ? const Color(0xFF4A2BC2)
-                                      : const Color(0xFF6B7280),
+                                      ? _getPrimaryColor(context)
+                                      : _getMutedText(context),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         if (isSelected)
-                          const Icon(
+                          Icon(
                             Icons.check,
-                            color: Color(0xFF4A2BC2),
+                            color: _getPrimaryColor(context),
                             size: 20,
                           ),
                       ],

@@ -213,10 +213,34 @@ class Ux4gSocialLinkList extends StatelessWidget {
       );
     }).toList();
 
-    if (direction == Axis.horizontal) {
-      return Row(mainAxisAlignment: alignment, children: children);
-    } else {
-      return Column(mainAxisAlignment: alignment, children: children);
+    WrapAlignment wrapAlignment;
+    switch (alignment) {
+      case MainAxisAlignment.center:
+        wrapAlignment = WrapAlignment.center;
+        break;
+      case MainAxisAlignment.end:
+        wrapAlignment = WrapAlignment.end;
+        break;
+      case MainAxisAlignment.spaceAround:
+        wrapAlignment = WrapAlignment.spaceAround;
+        break;
+      case MainAxisAlignment.spaceBetween:
+        wrapAlignment = WrapAlignment.spaceBetween;
+        break;
+      case MainAxisAlignment.spaceEvenly:
+        wrapAlignment = WrapAlignment.spaceEvenly;
+        break;
+      case MainAxisAlignment.start:
+        wrapAlignment = WrapAlignment.start;
+        break;
     }
+
+    return Wrap(
+      direction: direction,
+      alignment: wrapAlignment,
+      spacing: 8.0,
+      runSpacing: 8.0,
+      children: children,
+    );
   }
 }

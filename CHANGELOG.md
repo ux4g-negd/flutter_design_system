@@ -1,3 +1,10 @@
+## 0.4.3
+
+* Updates and styling improvements in `Ux4gButton`.
+* Minor fixes in `Ux4gCircularProgress` and `Ux4gFeedbackFormCsat`.
+* Added right control indicator support and layout enhancements in `Ux4gPagination`.
+* Enhancements and bug fixes in `Ux4gStatusBanner`.
+
 ## 0.4.2
 
 * Fixed `Ux4gInputField` properties usage in `example/lib/main.dart`.

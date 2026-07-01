@@ -199,24 +199,32 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
             Color scoreBg;
             Color scoreText;
             final isDark = materialTheme.brightness == Brightness.dark;
-            final resolvedLowBg = isDark && widget.lowScoreBackgroundColor == Ux4gPalette.red100
+            final resolvedLowBg =
+                isDark && widget.lowScoreBackgroundColor == Ux4gPalette.red100
                 ? Ux4gPalette.red900
                 : widget.lowScoreBackgroundColor;
-            final resolvedLowText = isDark && widget.lowScoreTextColor == Ux4gPalette.red800
+            final resolvedLowText =
+                isDark && widget.lowScoreTextColor == Ux4gPalette.red800
                 ? Ux4gPalette.red300
                 : widget.lowScoreTextColor;
 
-            final resolvedMediumBg = isDark && widget.mediumScoreBackgroundColor == Ux4gPalette.orange100
+            final resolvedMediumBg =
+                isDark &&
+                    widget.mediumScoreBackgroundColor == Ux4gPalette.orange100
                 ? Ux4gPalette.orange900
                 : widget.mediumScoreBackgroundColor;
-            final resolvedMediumText = isDark && widget.mediumScoreTextColor == Ux4gPalette.orange800
+            final resolvedMediumText =
+                isDark && widget.mediumScoreTextColor == Ux4gPalette.orange800
                 ? Ux4gPalette.orange300
                 : widget.mediumScoreTextColor;
 
-            final resolvedHighBg = isDark && widget.highScoreBackgroundColor == Ux4gPalette.green100
+            final resolvedHighBg =
+                isDark &&
+                    widget.highScoreBackgroundColor == Ux4gPalette.green100
                 ? Ux4gPalette.green900
                 : widget.highScoreBackgroundColor;
-            final resolvedHighText = isDark && widget.highScoreTextColor == Ux4gPalette.green800
+            final resolvedHighText =
+                isDark && widget.highScoreTextColor == Ux4gPalette.green800
                 ? Ux4gPalette.green300
                 : widget.highScoreTextColor;
 

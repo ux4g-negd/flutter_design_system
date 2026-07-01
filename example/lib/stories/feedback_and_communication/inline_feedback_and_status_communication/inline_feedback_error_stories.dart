@@ -4,11 +4,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _errorRed = Color(0xFFDC2626);
-
 final inlineFeedbackErrorComponent = WidgetbookComponent(
   name: 'Inline Feedback Error',
   useCases: [
@@ -17,7 +12,7 @@ final inlineFeedbackErrorComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.object.dropdown<String>(
           label: 'Variant',
-          options: ['Default', 'Card Style'],
+          options: const ['Default', 'Card Style'],
           initialOption: 'Default',
         );
         final isCard = variant == 'Card Style';
@@ -46,6 +41,7 @@ final inlineFeedbackErrorComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 
 const _inlineFeedbackErrorCode = r"""import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
 class InlineFeedbackErrorScreen extends StatelessWidget {
@@ -53,21 +49,45 @@ class InlineFeedbackErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos
+            // App Header with logos and elevation
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Expanded(
@@ -82,15 +102,19 @@ class InlineFeedbackErrorScreen extends StatelessWidget {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
                       leadingIcon: Icons.arrow_back,
-                      contentColor: const Color(0xFF432CBB),
+                      contentColor: primaryColor,
                       size: Ux4gButtonSize.small,
                     ),
                     const SizedBox(height: 20),
-                    Text('Enter your Mobile Number',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                    Text(
+                      'Enter your Mobile Number',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: titleColor),
+                    ),
                     const SizedBox(height: 8),
-                    Text('Provide your mobile number for OTP verification and updates.',
-                      style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                    Text(
+                      'Provide your mobile number for OTP verification and updates.',
+                      style: TextStyle(fontSize: 13, color: subtleColor),
+                    ),
                     const SizedBox(height: 20),
                     // Input field with error
                     Ux4gInputField(
@@ -110,7 +134,9 @@ class InlineFeedbackErrorScreen extends StatelessWidget {
                         onPressed: () {},
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
-                        backgroundColor: const Color(0xFF4A2BC2),
+                        height: 48,
+                        backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                        contentColor: isDark ? Colors.black : Colors.white,
                       ),
                     ),
                   ],
@@ -130,73 +156,102 @@ class InlineFeedbackErrorScreen extends StatelessWidget {
 // ───────────────────────────────────────────────────────────────────────
 
 const _inlineFeedbackErrorCardCode = r"""import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
-/// Card Style variant — the form content sits inside a light purple card.
 class InlineFeedbackErrorCardScreen extends StatelessWidget {
   const InlineFeedbackErrorCardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos
+            // App Header with logos and elevation
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                width: double.infinity,
                 padding: const EdgeInsets.all(16),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Back button
-                      Ux4gButton(
-                        text: 'Back',
-                        onPressed: () {},
-                        variant: Ux4gButtonVariant.ghost,
-                        leadingIcon: Icons.arrow_back,
-                        contentColor: const Color(0xFF432CBB),
-                        size: Ux4gButtonSize.small,
-                      ),
-                      const SizedBox(height: 20),
-                      Text('Enter your Mobile Number',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
-                      const SizedBox(height: 8),
-                      Text('Provide your mobile number for OTP verification and updates.',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
-                      const SizedBox(height: 20),
-                      // Input field with error
-                      Ux4gInputField(
-                        value: '98765432',
-                        onValueChange: (_) {},
-                        label: 'Mobile Number',
-                        prefixText: '+91',
-                        status: Ux4gInputFieldStatus.error,
-                        caption: 'Enter a valid 10-digit mobile number',
-                      ),
-                    ],
-                  ),
+                decoration: BoxDecoration(
+                  color: cardBg,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Back button
+                    Ux4gButton(
+                      text: 'Back',
+                      onPressed: () {},
+                      variant: Ux4gButtonVariant.ghost,
+                      leadingIcon: Icons.arrow_back,
+                      contentColor: primaryColor,
+                      size: Ux4gButtonSize.small,
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Enter your Mobile Number',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: titleColor),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Provide your mobile number for OTP verification and updates.',
+                      style: TextStyle(fontSize: 13, color: subtleColor),
+                    ),
+                    const SizedBox(height: 20),
+                    // Input field with error
+                    Ux4gInputField(
+                      value: '98765432',
+                      onValueChange: (_) {},
+                      label: 'Mobile Number',
+                      prefixText: '+91',
+                      status: Ux4gInputFieldStatus.error,
+                      caption: 'Enter a valid 10-digit mobile number',
+                    ),
+                  ],
                 ),
               ),
+            ),
             const Spacer(),
             // Continue button at bottom
             Padding(
@@ -208,7 +263,10 @@ class InlineFeedbackErrorCardScreen extends StatelessWidget {
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
-                  backgroundColor: const Color(0xFF4A2BC2),
+                  height: 48,
+                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  contentColor: isDark ? Colors.black : Colors.white,
+                  borderRadius: 8,
                 ),
               ),
             ),
@@ -231,39 +289,51 @@ class _InlineFeedbackErrorMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard 
+            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF)) 
+            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
-              // App Header with logos
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/national_amblam_logo.svg',
-                      height: 40,
+              // App Header with logos and elevation
+              Ux4gAppHeader(
+                elevation: 2,
+                variant: Ux4gAppHeaderVariant.light,
+                title: '',
+                leadingSpacing: 8,
+                leadingWidgets: [
+                  SvgPicture.asset(
+                    Ux4gIcons.nationalEmblem,
+                    height: 40,
+                    colorFilter: isDark
+                        ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                        : null,
+                  ),
+                  SizedBox(
+                    height: 32,
+                    child: Ux4gDivider(
+                      orientation: Ux4gDividerOrientation.vertical,
+                      color: const Color(0xFFD1D5DB),
                     ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      height: 32,
-                      child: Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        color: const Color(0xFFD1D5DB),
-                      ),
+                  ),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
                     ),
-                    const SizedBox(width: 8),
-                    SvgPicture.asset('assets/Union.svg', height: 32),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               // Content
@@ -271,13 +341,13 @@ class _InlineFeedbackErrorMockup extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: _buildDefaultContent(),
+                    child: _buildDefaultContent(primaryColor, titleColor, subtleColor),
                   ),
                 ),
               if (isCard)
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: _buildCardContent(),
+                  child: _buildCardContent(cardBg, primaryColor, titleColor, subtleColor),
                 ),
 
               if (isCard) const Spacer(),
@@ -293,7 +363,10 @@ class _InlineFeedbackErrorMockup extends StatelessWidget {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
-                      backgroundColor: const Color(0xFF4A2BC2),
+                      height: 48,
+                      backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                      contentColor: isDark ? Colors.black : Colors.white,
+                      borderRadius: 8,
                     ),
                   ),
                 ),
@@ -304,7 +377,7 @@ class _InlineFeedbackErrorMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildFormFields() {
+  Widget _buildFormFields(Color primaryColor, Color titleColor, Color subtleColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -316,27 +389,27 @@ class _InlineFeedbackErrorMockup extends StatelessWidget {
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
             leadingIcon: Icons.arrow_back,
-            contentColor: _primaryColor,
+            contentColor: primaryColor,
             size: Ux4gButtonSize.small,
           ),
         ),
         const SizedBox(height: 20),
 
         // Title
-        const Text(
+        Text(
           'Enter your Mobile Number',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: titleColor,
           ),
         ),
         const SizedBox(height: 8),
 
         // Description
-        const Text(
+        Text(
           'Provide your mobile number for OTP verification and updates.',
-          style: TextStyle(fontSize: 13, color: _subtleText),
+          style: TextStyle(fontSize: 13, color: subtleColor),
         ),
         const SizedBox(height: 20),
 
@@ -353,82 +426,44 @@ class _InlineFeedbackErrorMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildFormFields(),
-        const Spacer(),
-        // Continue button
-        SizedBox(
-          width: double.infinity,
-          child: Ux4gButton(
-            text: 'Continue',
-            onPressed: () {},
-            variant: Ux4gButtonVariant.primary,
-            size: Ux4gButtonSize.large,
-            backgroundColor: const Color(0xFF4A2BC2),
-          ),
-        ),
-      ],
+  Widget _buildDefaultContent(Color primaryColor, Color titleColor, Color subtleColor) {
+    return Builder(
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildFormFields(primaryColor, titleColor, subtleColor),
+            const Spacer(),
+            // Continue button
+            SizedBox(
+              width: double.infinity,
+              child: Ux4gButton(
+                text: 'Continue',
+                onPressed: () {},
+                variant: Ux4gButtonVariant.primary,
+                size: Ux4gButtonSize.large,
+                height: 48,
+                backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                contentColor: isDark ? Colors.black : Colors.white,
+                borderRadius: 8,
+              ),
+            ),
+          ],
+        );
+      }
     );
   }
 
-  Widget _buildCardContent() {
+  Widget _buildCardContent(Color cardBg, Color primaryColor, Color titleColor, Color subtleColor) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Back button
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Ux4gButton(
-              text: 'Back',
-              onPressed: () {},
-              variant: Ux4gButtonVariant.ghost,
-              leadingIcon: Icons.arrow_back,
-              contentColor: _primaryColor,
-              size: Ux4gButtonSize.small,
-            ),
-          ),
-          const SizedBox(height: 20),
-
-          // Title
-          const Text(
-            'Enter your Mobile Number',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
-              color: _titleColor,
-            ),
-          ),
-          const SizedBox(height: 8),
-
-          // Description
-          const Text(
-            'Provide your mobile number for OTP verification and updates.',
-            style: TextStyle(fontSize: 13, color: _subtleText),
-          ),
-          const SizedBox(height: 20),
-
-          // Input field with error
-          Ux4gInputField(
-            value: '98765432',
-            onValueChange: (_) {},
-            label: 'Mobile Number',
-            prefixText: '+91',
-            status: Ux4gInputFieldStatus.error,
-            caption: 'Enter a valid 10-digit mobile number',
-          ),
-        ],
-      ),
+      child: _buildFormFields(primaryColor, titleColor, subtleColor),
     );
   }
 }

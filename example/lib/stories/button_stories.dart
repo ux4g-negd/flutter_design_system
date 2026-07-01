@@ -9,7 +9,32 @@ final buttonComponent = WidgetbookComponent(
   useCases: [
     WidgetbookUseCase(
       name: 'Primary',
-      builder: (context) => ComponentDocs(
+      builder: (context) {
+        final typography = Theme.of(context).extension<Ux4gTypography>();
+        final size = context.knobs.list(
+          label: 'Size',
+          options: Ux4gButtonSize.values,
+          initialOption: Ux4gButtonSize.medium,
+          labelBuilder: (v) => v.name,
+        );
+
+        double? width;
+        double height;
+        TextStyle? textStyle;
+
+        switch (size) {
+          case Ux4gButtonSize.small:
+            height = 32;
+            textStyle = typography?.lL_default;
+          case Ux4gButtonSize.medium:
+            height = 40;
+            textStyle = typography?.lXL_default;
+          case Ux4gButtonSize.large:
+            height = 48;
+            textStyle = typography?.lXL_default;
+        }
+
+        return ComponentDocs(
         name: 'Ux4gButton',
         description:
             'The primary action button. Supports loading state, disabled state, '
@@ -143,6 +168,11 @@ Ux4gButton(
             type: 'double?',
             description: 'Button elevation.',
           ),
+          PropRow(
+            name: 'textStyle',
+            type: 'TextStyle?',
+            description: 'Custom text style.',
+          ),
         ],
         child: Ux4gButton(
           onPressed: () {},
@@ -151,72 +181,212 @@ Ux4gButton(
             initialValue: 'Primary Button',
           ),
           variant: Ux4gButtonVariant.primary,
-          size: context.knobs.list(
-            label: 'Size',
-            options: Ux4gButtonSize.values,
-            initialOption: Ux4gButtonSize.medium,
-            labelBuilder: (v) => v.name,
-          ),
+          size: size,
+          width: width,
+          height: height,
+          textStyle: textStyle,
           enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
           isLoading: context.knobs.boolean(
             label: 'Loading',
             initialValue: false,
           ),
         ),
-      ),
+      );
+      },
     ),
     WidgetbookUseCase(
       name: 'Variants',
-      builder: (context) => ComponentDocs(
-        name: 'Ux4gButton — Variants',
-        description:
-            'Four visual variants: Primary, Secondary, Outline, and Ghost.',
-        code:
-            '''Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, onPressed: () {});
-Ux4gButton(text: 'Secondary', variant: Ux4gButtonVariant.secondary, onPressed: () {});
-Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, onPressed: () {});
-Ux4gButton(text: 'Ghost', variant: Ux4gButtonVariant.ghost, onPressed: () {});''',
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: Ux4gButtonVariant.values
-              .map(
-                (v) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: Ux4gButton(
-                    onPressed: () {},
-                    text: v.name[0].toUpperCase() + v.name.substring(1),
-                    variant: v,
-                  ),
-                ),
-              )
-              .toList(),
-        ),
-      ),
+      builder: (context) {
+        final colors = Theme.of(context).extension<Ux4gColors>()!;
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final colorTheme = context.knobs.list<String>(
+          label: 'Color Theme',
+          options: const ['Primary', 'Red', 'Neutral'],
+          initialOption: 'Primary',
+        );
+
+        final isRed = colorTheme == 'Red';
+        final isNeutral = colorTheme == 'Neutral';
+
+        final bgColor = isRed
+            ? colors.error
+            : (isNeutral
+                ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
+                : null);
+        final fgColor = isRed
+            ? colors.onError
+            : (isNeutral
+                ? (isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900)
+                : null);
+        final outlineFgColor = isRed
+            ? colors.error
+            : (isNeutral
+                ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
+                : null);
+
+        final tonalBgColor = isRed
+            ? (isDark ? Ux4gPalette.red800 : Ux4gPalette.red100)
+            : (isNeutral
+                ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
+                : (isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100));
+        final tonalFgColor = isRed
+            ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red600)
+            : (isNeutral
+                ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
+                : (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600));
+
+        final bgStr = isRed
+            ? 'backgroundColor: ux4gColors.error, '
+            : (isNeutral
+                ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
+                : '');
+        final fgStr = isRed
+            ? 'contentColor: ux4gColors.onError, '
+            : (isNeutral
+                ? 'contentColor: isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900, '
+                : '');
+        final outlineFgStr = isRed
+            ? 'contentColor: ux4gColors.error, borderColor: ux4gColors.error, '
+            : (isNeutral
+                ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, borderColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                : '');
+        final ghostFgStr = isRed
+            ? 'contentColor: ux4gColors.error, '
+            : (isNeutral
+                ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                : '');
+
+        final tonalBgStr = isRed
+            ? 'backgroundColor: isDark ? Ux4gPalette.red800 : Ux4gPalette.red100, '
+            : (isNeutral
+                ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
+                : 'backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, ');
+        final tonalFgStr = isRed
+            ? 'contentColor: isDark ? Ux4gPalette.red300 : Ux4gPalette.red600, '
+            : (isNeutral
+                ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                : 'contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, ');
+
+        return ComponentDocs(
+          name: 'Ux4gButton — Variants',
+          description:
+              'Different visual variants, loading states, and icon configurations including Tonal options.',
+          code: '''// Basic
+Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}onPressed: () {});
+Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, ${outlineFgStr}onPressed: () {});
+Ux4gButton(text: 'Ghost', variant: Ux4gButtonVariant.ghost, ${ghostFgStr}onPressed: () {});
+
+// Loading
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.outline, ${outlineFgStr}isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.ghost, ${ghostFgStr}isLoading: true, onPressed: () {});
+
+// Icons
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}leadingIcon: Icons.add, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}leadingIcon: Icons.add, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}trailingIcon: Icons.arrow_drop_down, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}trailingIcon: Icons.arrow_drop_down, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {});''',
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: [
+                  Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, onPressed: () {}),
+                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, onPressed: () {}),
+                  Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, contentColor: outlineFgColor, borderColor: outlineFgColor, onPressed: () {}),
+                  Ux4gButton(text: 'Ghost', variant: Ux4gButtonVariant.ghost, contentColor: outlineFgColor, onPressed: () {}),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: [
+                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, isLoading: true, onPressed: () {}),
+                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, isLoading: true, onPressed: () {}),
+                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.outline, contentColor: outlineFgColor, borderColor: outlineFgColor, isLoading: true, onPressed: () {}),
+                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.ghost, contentColor: outlineFgColor, isLoading: true, onPressed: () {}),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: [
+                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, leadingIcon: Icons.add, onPressed: () {}),
+                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, leadingIcon: Icons.add, onPressed: () {}),
+                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
+                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
+                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
+                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     ),
     WidgetbookUseCase(
       name: 'Sizes',
       builder: (context) => ComponentDocs(
         name: 'Ux4gButton — Sizes',
-        description: 'Three size options controlling height and padding.',
+        description:
+            'Five size options ranging from XS to XL controlling height, width, and padding.',
         code:
-            '''Ux4gButton(text: 'Small',  size: Ux4gButtonSize.small,  onPressed: () {});
+            '''Ux4gButton(text: 'XS', width: 72, height: 24, padding: EdgeInsets.zero, onPressed: () {});
+Ux4gButton(text: 'Small',  size: Ux4gButtonSize.small,  onPressed: () {});
 Ux4gButton(text: 'Medium', size: Ux4gButtonSize.medium, onPressed: () {});
-Ux4gButton(text: 'Large',  size: Ux4gButtonSize.large,  onPressed: () {});''',
+Ux4gButton(text: 'Large',  size: Ux4gButtonSize.large,  onPressed: () {});
+Ux4gButton(text: 'XL', width: 109, height: 56, onPressed: () {});''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: Ux4gButtonSize.values
-              .map(
-                (s) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: Ux4gButton(
-                    onPressed: () {},
-                    text: s.name.toUpperCase(),
-                    variant: Ux4gButtonVariant.primary,
-                    size: s,
-                  ),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Ux4gButton(
+                onPressed: () {},
+                text: 'XS',
+                width: 72,
+                height: 24,
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                textStyle: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
                 ),
-              )
-              .toList(),
+              ),
+            ),
+            ...Ux4gButtonSize.values.map(
+              (s) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Ux4gButton(
+                  onPressed: () {},
+                  text: s.name.toUpperCase(),
+                  variant: Ux4gButtonVariant.primary,
+                  size: s,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Ux4gButton(
+                onPressed: () {},
+                text: 'XL',
+                width: 109,
+                height: 56,
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     ),

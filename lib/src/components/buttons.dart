@@ -7,13 +7,14 @@ import 'loader.dart';
 enum Ux4gButtonVariant { primary, secondary, outline, ghost }
 
 enum Ux4gButtonSize {
-  small(Ux4gSpace.space12, Ux4gSpace.space8),
-  medium(28.0, 18.0),
-  large(Ux4gSpace.space20, Ux4gSpace.space12);
+  small(16.0, 7.0, 32.0),
+  medium(20.0, 10.0, 40.0),
+  large(24.0, 14.0, 48.0);
 
   final double horizontalPadding;
   final double verticalPadding;
-  const Ux4gButtonSize(this.horizontalPadding, this.verticalPadding);
+  final double defaultHeight;
+  const Ux4gButtonSize(this.horizontalPadding, this.verticalPadding, this.defaultHeight);
 }
 
 class Ux4gButton extends StatelessWidget {
@@ -38,6 +39,7 @@ class Ux4gButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double? elevation;
+  final TextStyle? textStyle;
 
   const Ux4gButton({
     super.key,
@@ -62,6 +64,7 @@ class Ux4gButton extends StatelessWidget {
     this.width,
     this.height,
     this.elevation,
+    this.textStyle,
   }) : assert(
          text != null ||
              child != null ||
@@ -95,30 +98,32 @@ class Ux4gButton extends StatelessWidget {
     final effectiveBorderWidth =
         borderWidth ?? (variant == Ux4gButtonVariant.outline ? 1.0 : 0.0);
 
-    final textStyle =
+    final defaultTextStyle =
         switch (size) {
-          Ux4gButtonSize.small => ux4gTypography?.lS_default,
-          Ux4gButtonSize.medium => ux4gTypography?.lM_default,
-          Ux4gButtonSize.large => ux4gTypography?.lL_default,
+          Ux4gButtonSize.small => ux4gTypography?.lL_default,
+          Ux4gButtonSize.medium => ux4gTypography?.lXL_default,
+          Ux4gButtonSize.large => ux4gTypography?.lXL_default,
         } ??
         materialTheme.textTheme.labelLarge ??
         const TextStyle();
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: SizedBox(
-        width: width,
-        height: height,
-        child: OutlinedButton(
-          onPressed: (enabled && !isLoading) ? onPressed : null,
-          style: OutlinedButton.styleFrom(
-            backgroundColor: effectiveBgColor,
-            foregroundColor: effectiveContentColor,
-            disabledBackgroundColor: effectiveDisabledBgColor,
-            disabledForegroundColor: effectiveDisabledContentColor,
-            elevation: elevation ?? 0,
-            padding:
-                padding ??
+    final effectiveTextStyle = textStyle ?? defaultTextStyle;
+    final effectiveHeight = height ?? size.defaultHeight;
+
+    return SizedBox(
+      width: width,
+      height: effectiveHeight,
+      child: OutlinedButton(
+        onPressed: enabled ? (isLoading ? () {} : onPressed) : null,
+        style: OutlinedButton.styleFrom(
+          minimumSize: Size(width ?? 0, effectiveHeight),
+          backgroundColor: effectiveBgColor,
+          foregroundColor: effectiveContentColor,
+          disabledBackgroundColor: effectiveDisabledBgColor,
+          disabledForegroundColor: effectiveDisabledContentColor,
+          elevation: elevation ?? 0,
+          padding:
+              padding ??
                 EdgeInsets.symmetric(
                   horizontal: size.horizontalPadding,
                   vertical: size.verticalPadding,
@@ -156,11 +161,17 @@ class Ux4gButton extends StatelessWidget {
                 ),
                 if (text != null || child != null) const SizedBox(width: 8),
               ],
-              DefaultTextStyle(
-                style: textStyle.copyWith(color: effectiveContentColor),
-                child:
-                    child ??
-                    (text != null ? Text(text!) : const SizedBox.shrink()),
+              Flexible(
+                child: DefaultTextStyle(
+                  style: effectiveTextStyle.copyWith(
+                    color: effectiveContentColor,
+                  ),
+                  child:
+                      child ??
+                      (text != null
+                          ? Text(text!, overflow: TextOverflow.ellipsis)
+                          : const SizedBox.shrink()),
+                ),
               ),
               if (trailingIcon != null) ...[
                 if (text != null || child != null || leadingIcon != null)
@@ -174,7 +185,6 @@ class Ux4gButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 
@@ -226,6 +236,7 @@ class Ux4gOutlineButton extends Ux4gButton {
     super.padding,
     super.width,
     super.height,
+    super.textStyle,
   }) : super(
          variant: Ux4gButtonVariant.outline,
          contentColor: color,
@@ -247,6 +258,7 @@ class Ux4gTextButton extends Ux4gButton {
     super.padding,
     super.width,
     super.height,
+    super.textStyle,
   }) : super(variant: Ux4gButtonVariant.ghost, contentColor: color);
 }
 

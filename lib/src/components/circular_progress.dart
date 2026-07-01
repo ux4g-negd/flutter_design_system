@@ -82,7 +82,7 @@ class Ux4gCircularProgress extends StatelessWidget {
 
   double _resolvedStrokeWidth(double ringSize) {
     if (strokeWidth != null) return strokeWidth!;
-    return (ringSize * 0.12).clamp(3.0, 20.0);
+    return (ringSize * 0.1).clamp(3.0, 12.0);
   }
 
   double _scale(double ringSize, double factor, double min, double max) {
@@ -170,8 +170,7 @@ class Ux4gCircularProgress extends StatelessWidget {
         (ux4gColors?.primary ?? materialTheme.colorScheme.primary);
     final resolvedTrackColor =
         trackColor ??
-        (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface)
-            .withValues(alpha: 0.16);
+        (isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300);
     final resolvedGap = gap.clamp(4.0, 16.0);
 
     // Whether the centerValueText / centerDescription should render inside the ring
@@ -234,13 +233,14 @@ class Ux4gCircularProgress extends StatelessWidget {
                   progressColor: resolvedProgressColor,
                   trackColor: resolvedTrackColor,
                   backgroundColor: backgroundColor,
-                  progressGradient: progressGradient ??
+                  progressGradient:
+                      progressGradient ??
                       (progressColor == null
-                          ? LinearGradient(
-                              colors: [
-                                isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                                isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary200,
-                              ],
+                          ? SweepGradient(
+                              transform: const GradientRotation(-math.pi / 2),
+                              colors: isDark
+                                  ? [Ux4gPalette.primary700, Ux4gPalette.primary300]
+                                  : [Ux4gPalette.primary200, Ux4gPalette.primary600],
                             )
                           : null),
                   strokeCap: strokeCap,
@@ -316,7 +316,7 @@ class Ux4gCircularProgress extends StatelessWidget {
           ),
         if ((label != null || description != null) && footer != null)
           SizedBox(height: _scale(ringSize, 0.06, 4, 10)),
-        ?footer,
+        if (footer != null) footer!,
       ],
     );
 
@@ -506,11 +506,21 @@ class _Ux4gCircularProgressPainter extends CustomPainter {
       ..strokeCap = StrokeCap.butt
       ..isAntiAlias = true;
 
-    // Only draw track where progress isn't
-    if (value < 1.0) {
-      final trackStartAngle = startAngle + (math.pi * 2 * value);
-      final trackSweepAngle = math.pi * 2 * (1 - value);
-      canvas.drawArc(rect, trackStartAngle, trackSweepAngle, false, trackPaint);
+    if (strokeCap == StrokeCap.round) {
+      // For round caps: draw track as a full circle underneath,
+      // then the progress arc sits cleanly on top without an
+      // ugly blob at the start junction.
+      if (value < 1.0) {
+        canvas.drawArc(rect, 0, math.pi * 2, false, trackPaint);
+      }
+    } else {
+      // For butt caps: draw track only where progress isn't
+      if (value < 1.0) {
+        final trackStartAngle = startAngle + (math.pi * 2 * value);
+        final trackSweepAngle = math.pi * 2 * (1 - value);
+        canvas.drawArc(
+            rect, trackStartAngle, trackSweepAngle, false, trackPaint);
+      }
     }
 
     if (value <= 0) return;
@@ -527,7 +537,26 @@ class _Ux4gCircularProgressPainter extends CustomPainter {
       progressPaint.color = progressColor;
     }
 
-    canvas.drawArc(rect, startAngle, math.pi * 2 * value, false, progressPaint);
+    final sweepAngle = math.pi * 2 * value;
+
+    if (strokeCap == StrokeCap.round && value < 1.0) {
+      // The round cap extends backward from startAngle by ~half a
+      // strokeWidth, creating a visible blob. Offset the start forward
+      // by the cap's angular extent so it tucks behind the track.
+      final capOffset = math.atan2(strokeWidth * 0.5, radius);
+      final adjustedSweep = sweepAngle - capOffset;
+      if (adjustedSweep > 0) {
+        canvas.drawArc(
+          rect,
+          startAngle + capOffset,
+          adjustedSweep,
+          false,
+          progressPaint,
+        );
+      }
+    } else {
+      canvas.drawArc(rect, startAngle, sweepAngle, false, progressPaint);
+    }
   }
 
   @override

@@ -5,6 +5,7 @@ import '../theme/theme.dart';
 class Ux4gLoader extends StatefulWidget {
   final double size;
   final Color? color;
+  final List<Color>? gradientColors;
   final double percentage; // 0 to 100
   final double strokeWidth;
   final int rotationDurationMillis;
@@ -13,6 +14,7 @@ class Ux4gLoader extends StatefulWidget {
     super.key,
     this.size = 40,
     this.color,
+    this.gradientColors,
     this.percentage = 100,
     this.strokeWidth = 4,
     this.rotationDurationMillis = 1200,
@@ -52,6 +54,7 @@ class _Ux4gLoaderState extends State<Ux4gLoader>
           size: Size(widget.size, widget.size),
           painter: _LoaderPainter(
             color: color,
+            gradientColors: widget.gradientColors,
             percentage: widget.percentage,
             strokeWidth: widget.strokeWidth,
           ),
@@ -63,11 +66,13 @@ class _Ux4gLoaderState extends State<Ux4gLoader>
 
 class _LoaderPainter extends CustomPainter {
   final Color color;
+  final List<Color>? gradientColors;
   final double percentage;
   final double strokeWidth;
 
   _LoaderPainter({
     required this.color,
+    this.gradientColors,
     required this.percentage,
     required this.strokeWidth,
   });
@@ -79,10 +84,22 @@ class _LoaderPainter extends CustomPainter {
     final normalized = (percentage / 100).clamp(0.0, 1.0);
     final sweepAngle = 2 * math.pi * normalized;
 
+    final List<Color> sweepColors =
+        (gradientColors != null && gradientColors!.length >= 2)
+            ? gradientColors!
+            : [color.withValues(alpha: 0.0), color];
+
+    final List<double> stops = sweepColors.length == 2
+        ? [0.0, normalized]
+        : List<double>.generate(
+            sweepColors.length,
+            (i) => (i / (sweepColors.length - 1)) * normalized,
+          );
+
     final paint = Paint()
       ..shader = SweepGradient(
-        colors: [color.withValues(alpha: 0.0), color],
-        stops: [0.0, normalized],
+        colors: sweepColors,
+        stops: stops,
       ).createShader(Rect.fromCircle(center: center, radius: radius))
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
@@ -98,7 +115,7 @@ class _LoaderPainter extends CustomPainter {
     );
 
     final capPaint = Paint()
-      ..color = color
+      ..color = sweepColors.last
       ..style = PaintingStyle.fill
       ..isAntiAlias = true;
 
@@ -110,6 +127,7 @@ class _LoaderPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _LoaderPainter oldDelegate) {
     return oldDelegate.color != color ||
+        oldDelegate.gradientColors != gradientColors ||
         oldDelegate.percentage != percentage ||
         oldDelegate.strokeWidth != strokeWidth;
   }

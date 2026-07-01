@@ -244,11 +244,15 @@ class Ux4gLinearProgress extends StatelessWidget {
           height: height,
           radius: radius,
           resolvedColor: resolvedColor,
-          gradientColors: gradientColors ??
+          gradientColors:
+              gradientColors ??
               (color == null
                   ? (isDark
-                      ? const [Ux4gPalette.primary300, Ux4gPalette.primary950]
-                      : const [Ux4gPalette.primary600, Ux4gPalette.primary200])
+                        ? const [Ux4gPalette.primary300, Ux4gPalette.primary950]
+                        : const [
+                            Ux4gPalette.primary600,
+                            Ux4gPalette.primary200,
+                          ])
                   : null),
           trackColor: resolvedTrack,
           showPercentage:

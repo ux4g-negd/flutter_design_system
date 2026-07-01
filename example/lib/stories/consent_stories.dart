@@ -6,29 +6,15 @@ import 'package:widgetbook/widgetbook.dart';
 import '../widgets/component_docs.dart';
 
 // ── Asset paths (copied into example/assets/) ──────────────────────────
-const _nationalEmblemPath = 'assets/national_amblam_logo.svg';
-const _unionLogoPath = 'assets/Union.svg';
-const _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
-
+const _nationalEmblemPath = Ux4gIcons.nationalEmblem;
+const _unionLogoPath = Ux4gIcons.union;
+const _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 // ── Shared design tokens used across all Consent patterns ───────────────
-
-
-
-
-
-
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
-
-
-
-
-
-
 // ───────────────────────────────────────────────────────────────────────
 // Consent Capture pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final consentCaptureComponent = WidgetbookComponent(
   name: 'Consent Capture',
   useCases: [
@@ -42,14 +28,12 @@ final consentCaptureComponent = WidgetbookComponent(
           description:
               'Switch between the standard flat layout and the card-style layout on a soft-purple background.',
         );
-
         final code = variant == 'Card style'
             ? _consentCaptureCardCode
             : _consentCaptureCode;
         final child = variant == 'Card style'
             ? const _ConsentCaptureCardMockup()
             : const _ConsentCaptureMobileMockup();
-
         return ComponentDocs(
           name: 'Consent Capture',
           description:
@@ -67,11 +51,9 @@ final consentCaptureComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 // Shared helpers
 // ───────────────────────────────────────────────────────────────────────
-
 class _PhoneFrame extends StatelessWidget {
   const _PhoneFrame({required this.child});
   final Widget child;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,7 +63,11 @@ class _PhoneFrame extends StatelessWidget {
       decoration: BoxDecoration(
         color: (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+        border: Border.all(
+          color: (_isDark(context)
+              ? Ux4gPalette.neutral800
+              : Ux4gPalette.neutral200),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.08),
@@ -97,7 +83,6 @@ class _PhoneFrame extends StatelessWidget {
 
 class _ConsentHeader extends StatelessWidget {
   _ConsentHeader();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -121,7 +106,9 @@ class _ConsentHeader extends StatelessWidget {
                   ? Ux4gPalette.neutral600
                   : _isDark(context)
                   ? Ux4gPalette.neutral600
-                  : (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                  : (_isDark(context)
+                        ? Ux4gPalette.neutral600
+                        : Ux4gPalette.neutral300),
             ),
             SvgPicture.asset(
               _unionLogoPath,
@@ -143,7 +130,9 @@ class _ConsentHeader extends StatelessWidget {
                   border: Border.all(
                     color: _isDark(context)
                         ? Ux4gPalette.neutral700
-                        : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                        : (_isDark(context)
+                              ? Ux4gPalette.neutral800
+                              : Ux4gPalette.neutral200),
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -158,9 +147,15 @@ class _ConsentHeader extends StatelessWidget {
             ),
           ],
           horizontalPadding: 16,
-          leadingSpacing: 12,
+          leadingSpacing: 8,
         ),
-        Divider(height: 1, thickness: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+        Divider(
+          height: 1,
+          thickness: 1,
+          color: (_isDark(context)
+              ? Ux4gPalette.neutral800
+              : Ux4gPalette.neutral200),
+        ),
       ],
     );
   }
@@ -168,7 +163,6 @@ class _ConsentHeader extends StatelessWidget {
 
 class _ConsentFooter extends StatelessWidget {
   const _ConsentFooter();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -180,7 +174,9 @@ class _ConsentFooter extends StatelessWidget {
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+              color: (_isDark(context)
+                  ? Ux4gPalette.neutral500
+                  : Ux4gPalette.neutral400),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -209,7 +205,11 @@ Widget _buildDataCard({
     decoration: BoxDecoration(
       color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+      border: Border.all(
+        color: (_isDark(context)
+            ? Ux4gPalette.neutral800
+            : Ux4gPalette.neutral200),
+      ),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +222,9 @@ Widget _buildDataCard({
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                color: (_isDark(context)
+                    ? Ux4gPalette.neutral50
+                    : Ux4gPalette.gray900),
               ),
             ),
             Ux4gTag(
@@ -247,7 +249,9 @@ Widget _buildDataCard({
           'Purpose · $purpose',
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -257,7 +261,9 @@ Widget _buildDataCard({
           'Retention · $retention',
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -270,10 +276,8 @@ Widget _buildDataCard({
 // ───────────────────────────────────────────────────────────────────────
 // Flat Layout Mockup
 // ───────────────────────────────────────────────────────────────────────
-
 class _ConsentCaptureMobileMockup extends StatefulWidget {
   const _ConsentCaptureMobileMockup();
-
   @override
   State<_ConsentCaptureMobileMockup> createState() =>
       _ConsentCaptureMobileMockupState();
@@ -283,7 +287,6 @@ class _ConsentCaptureMobileMockupState
     extends State<_ConsentCaptureMobileMockup> {
   bool _isInfoConsentGiven = true;
   bool _isEmailUpdatesConsentGiven = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -317,33 +320,33 @@ class _ConsentCaptureMobileMockupState
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Headline
                   Text(
                     'Your Data, Your Control',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                      height: 1.2,
-                      letterSpacing: -0.3,
-                    ),
+                    style: Theme.of(context)
+                        .extension<Ux4gTypography>()!
+                        .hM_default
+                        .copyWith(
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.gray900,
+                        ),
                   ),
                   SizedBox(height: 8),
-
                   // Description
                   Text(
                     'To process your Income Certificate application, the Revenue Department will use the following data:',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral500),
                       height: 1.4,
                     ),
                   ),
                   SizedBox(height: 24),
-
                   // Data cards
                   _buildDataCard(
                     context: context,
@@ -366,10 +369,13 @@ class _ConsentCaptureMobileMockupState
                     retention: '1 year',
                   ),
                   SizedBox(height: 24),
-
-                  Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                  Divider(
+                    height: 1,
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200),
+                  ),
                   SizedBox(height: 20),
-
                   // Checkboxes
                   Ux4gCheckbox(
                     value: _isInfoConsentGiven,
@@ -390,11 +396,11 @@ class _ConsentCaptureMobileMockupState
                     isRequired: false,
                   ),
                   SizedBox(height: 24),
-
                   // Actions
                   Ux4gButton(
                     text: 'Proceed',
                     onPressed: _isInfoConsentGiven == true ? () {} : null,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -403,6 +409,10 @@ class _ConsentCaptureMobileMockupState
                     text: 'Decline and exit',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context)
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -421,10 +431,8 @@ class _ConsentCaptureMobileMockupState
 // ───────────────────────────────────────────────────────────────────────
 // Card Style Layout Mockup
 // ───────────────────────────────────────────────────────────────────────
-
 class _ConsentCaptureCardMockup extends StatefulWidget {
   const _ConsentCaptureCardMockup();
-
   @override
   State<_ConsentCaptureCardMockup> createState() =>
       _ConsentCaptureCardMockupState();
@@ -433,7 +441,6 @@ class _ConsentCaptureCardMockup extends StatefulWidget {
 class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
   bool _isInfoConsentGiven = true;
   bool _isEmailUpdatesConsentGiven = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -446,7 +453,10 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                   ? Ux4gPalette.primary900
                   : _isDark(context)
                   ? Ux4gPalette.primary900
-                  : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100), // Soft purple/blue card style bg
+                  : (_isDark(context)
+                        ? Ux4gPalette.primary900
+                        : Ux4gPalette
+                              .primary100), // Soft purple/blue card style bg
               child: Column(
                 children: [
                   Expanded(
@@ -491,33 +501,33 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               ),
                             ),
                             SizedBox(height: 16),
-
                             // Headline
                             Text(
                               'Your Data, Your Control',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
+                              style: Theme.of(context)
+                                  .extension<Ux4gTypography>()!
+                                  .hM_default
+                                  .copyWith(
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.gray900,
+                                  ),
                             ),
                             SizedBox(height: 8),
-
                             // Description
                             Text(
                               'To process your Income Certificate application, the Revenue Department will use the following data:',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral500),
                                 height: 1.45,
                               ),
                             ),
                             SizedBox(height: 20),
-
                             // Data cards
                             _buildDataCard(
                               context: context,
@@ -540,10 +550,13 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               retention: '1 year',
                             ),
                             SizedBox(height: 20),
-
-                            Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                            Divider(
+                              height: 1,
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
+                            ),
                             SizedBox(height: 16),
-
                             // Checkboxes
                             Ux4gCheckbox(
                               value: _isInfoConsentGiven,
@@ -566,13 +579,13 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               isRequired: false,
                             ),
                             SizedBox(height: 20),
-
                             // Actions
                             Ux4gButton(
                               text: 'Proceed',
                               onPressed: _isInfoConsentGiven == true
                                   ? () {}
                                   : null,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -581,6 +594,10 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               text: 'Decline and exit',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
+                              contentColor: _isDark(context)
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -603,7 +620,6 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
 // ───────────────────────────────────────────────────────────────────────
 // Source Code Snippets
 // ───────────────────────────────────────────────────────────────────────
-
 const _consentCaptureCode = r'''// Consent Capture – Flat Layout
 Column(
   children: [
@@ -612,9 +628,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -632,10 +648,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -653,21 +668,13 @@ Column(
               child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
             ),
             SizedBox(height: 16),
-
             // Headline
             Text(
               'Your Data, Your Control',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                height: 1.2,
-                letterSpacing: -0.3,
-              ),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
             ),
             SizedBox(height: 8),
-
             // Description
             Text(
               'To process your Income Certificate application, the Revenue Department will use the following data:',
@@ -679,7 +686,6 @@ Column(
               ),
             ),
             SizedBox(height: 24),
-
             // 1. Aadhaar Number Card
             Container(
               width: double.infinity,
@@ -715,7 +721,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 2. Address Card
             Container(
               width: double.infinity,
@@ -751,7 +756,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 3. Email Card
             Container(
               width: double.infinity,
@@ -787,10 +791,8 @@ Column(
               ),
             ),
             SizedBox(height: 24),
-
             Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
             SizedBox(height: 20),
-
             // Checkboxes
             Ux4gCheckbox(
               value: _isInfoConsentGiven,
@@ -806,11 +808,11 @@ Column(
               isRequired: false,
             ),
             SizedBox(height: 24),
-
             // Actions
             Ux4gButton(
               text: 'Proceed',
               onPressed: _isInfoConsentGiven ? () {} : null,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -819,6 +821,8 @@ Column(
               text: 'Decline and exit',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -827,7 +831,6 @@ Column(
         ),
       ),
     ),
-
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
@@ -843,13 +846,12 @@ Column(
             ),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
   ],
 )''';
-
 const _consentCaptureCardCode = r'''// Consent Capture – Card Style Layout
 Column(
   children: [
@@ -858,9 +860,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -878,10 +880,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: Container(
         color: _isDark(context) ? Ux4gPalette.primary900 : _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
@@ -917,21 +918,13 @@ Column(
                         child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
                       ),
                       SizedBox(height: 16),
-
                       // Headline
                       Text(
                         'Your Data, Your Control',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                          height: 1.2,
-                          letterSpacing: -0.3,
-                        ),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                       ),
                       SizedBox(height: 8),
-
                       // Description
                       Text(
                         'To process your Income Certificate application, the Revenue Department will use the following data:',
@@ -943,7 +936,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // 1. Aadhaar Number Card
                       Container(
                         width: double.infinity,
@@ -979,7 +971,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 2. Address Card
                       Container(
                         width: double.infinity,
@@ -1015,7 +1006,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 3. Email Card
                       Container(
                         width: double.infinity,
@@ -1051,10 +1041,8 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                       SizedBox(height: 16),
-
                       // Checkboxes
                       Ux4gCheckbox(
                         value: _isInfoConsentGiven,
@@ -1070,11 +1058,11 @@ Column(
                         isRequired: false,
                       ),
                       SizedBox(height: 20),
-
                       // Actions
                       Ux4gButton(
                         text: 'Proceed',
                         onPressed: _isInfoConsentGiven ? () {} : null,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -1083,6 +1071,8 @@ Column(
                         text: 'Decline and exit',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -1106,7 +1096,7 @@ Column(
                     ),
                   ),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -1116,11 +1106,9 @@ Column(
     ),
   ],
 )''';
-
 // ───────────────────────────────────────────────────────────────────────
 // Consent Capture (Consent Not Given) pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final consentCaptureWithWarningComponent = WidgetbookComponent(
   name: 'Consent Capture (Consent Not Given)',
   useCases: [
@@ -1134,14 +1122,12 @@ final consentCaptureWithWarningComponent = WidgetbookComponent(
           description:
               'Switch between the standard flat layout and the card-style layout with warning banner.',
         );
-
         final code = variant == 'Card style'
             ? _consentCaptureWarningCardCode
             : _consentCaptureWarningCode;
         final child = variant == 'Card style'
             ? const _ConsentCaptureWarningCardMockup()
             : const _ConsentCaptureWarningMobileMockup();
-
         return ComponentDocs(
           name: 'Consent Capture (Consent Not Given)',
           description:
@@ -1159,10 +1145,8 @@ final consentCaptureWithWarningComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 // Mockups for Consent Not Given
 // ───────────────────────────────────────────────────────────────────────
-
 class _ConsentCaptureWarningMobileMockup extends StatefulWidget {
   const _ConsentCaptureWarningMobileMockup();
-
   @override
   State<_ConsentCaptureWarningMobileMockup> createState() =>
       _ConsentCaptureWarningMobileMockupState();
@@ -1172,7 +1156,6 @@ class _ConsentCaptureWarningMobileMockupState
     extends State<_ConsentCaptureWarningMobileMockup> {
   bool _isInfoConsentGiven = false;
   bool _isEmailUpdatesConsentGiven = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -1206,33 +1189,33 @@ class _ConsentCaptureWarningMobileMockupState
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Headline
                   Text(
                     'Your Data, Your Control',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                      height: 1.2,
-                      letterSpacing: -0.3,
-                    ),
+                    style: Theme.of(context)
+                        .extension<Ux4gTypography>()!
+                        .hM_default
+                        .copyWith(
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.gray900,
+                        ),
                   ),
                   SizedBox(height: 8),
-
                   // Description
                   Text(
                     'To process your Income Certificate application, the Revenue Department will use the following data:',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral500),
                       height: 1.4,
                     ),
                   ),
                   SizedBox(height: 24),
-
                   // Data cards
                   _buildDataCard(
                     context: context,
@@ -1255,10 +1238,13 @@ class _ConsentCaptureWarningMobileMockupState
                     retention: '1 year',
                   ),
                   SizedBox(height: 24),
-
-                  Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                  Divider(
+                    height: 1,
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200),
+                  ),
                   SizedBox(height: 20),
-
                   if (!_isInfoConsentGiven) ...[
                     Ux4gStatusBanner(
                       variant: Ux4gBannerVariant.warningLight,
@@ -1290,7 +1276,6 @@ class _ConsentCaptureWarningMobileMockupState
                     ),
                     SizedBox(height: 16),
                   ],
-
                   // Checkboxes
                   Ux4gCheckbox(
                     value: _isInfoConsentGiven,
@@ -1311,11 +1296,11 @@ class _ConsentCaptureWarningMobileMockupState
                     isRequired: false,
                   ),
                   SizedBox(height: 24),
-
                   // Actions
                   Ux4gButton(
                     text: 'Proceed',
                     onPressed: _isInfoConsentGiven == true ? () {} : null,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -1324,6 +1309,10 @@ class _ConsentCaptureWarningMobileMockupState
                     text: 'Decline and exit',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context)
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -1341,7 +1330,6 @@ class _ConsentCaptureWarningMobileMockupState
 
 class _ConsentCaptureWarningCardMockup extends StatefulWidget {
   const _ConsentCaptureWarningCardMockup();
-
   @override
   State<_ConsentCaptureWarningCardMockup> createState() =>
       _ConsentCaptureWarningCardMockupState();
@@ -1351,7 +1339,6 @@ class _ConsentCaptureWarningCardMockupState
     extends State<_ConsentCaptureWarningCardMockup> {
   bool _isInfoConsentGiven = false;
   bool _isEmailUpdatesConsentGiven = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -1364,7 +1351,9 @@ class _ConsentCaptureWarningCardMockupState
                   ? Ux4gPalette.primary900
                   : _isDark(context)
                   ? Ux4gPalette.primary900
-                  : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+                  : (_isDark(context)
+                        ? Ux4gPalette.primary900
+                        : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -1409,33 +1398,33 @@ class _ConsentCaptureWarningCardMockupState
                               ),
                             ),
                             SizedBox(height: 16),
-
                             // Headline
                             Text(
                               'Your Data, Your Control',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
+                              style: Theme.of(context)
+                                  .extension<Ux4gTypography>()!
+                                  .hM_default
+                                  .copyWith(
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.gray900,
+                                  ),
                             ),
                             SizedBox(height: 8),
-
                             // Description
                             Text(
                               'To process your Income Certificate application, the Revenue Department will use the following data:',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral500),
                                 height: 1.45,
                               ),
                             ),
                             SizedBox(height: 20),
-
                             // Data cards
                             _buildDataCard(
                               context: context,
@@ -1458,10 +1447,13 @@ class _ConsentCaptureWarningCardMockupState
                               retention: '1 year',
                             ),
                             SizedBox(height: 20),
-
-                            Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                            Divider(
+                              height: 1,
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
+                            ),
                             SizedBox(height: 16),
-
                             if (!_isInfoConsentGiven) ...[
                               Ux4gStatusBanner(
                                 variant: Ux4gBannerVariant.warningLight,
@@ -1493,7 +1485,6 @@ class _ConsentCaptureWarningCardMockupState
                               ),
                               SizedBox(height: 16),
                             ],
-
                             // Checkboxes
                             Ux4gCheckbox(
                               value: _isInfoConsentGiven,
@@ -1516,13 +1507,13 @@ class _ConsentCaptureWarningCardMockupState
                               isRequired: false,
                             ),
                             SizedBox(height: 20),
-
                             // Actions
                             Ux4gButton(
                               text: 'Proceed',
                               onPressed: _isInfoConsentGiven == true
                                   ? () {}
                                   : null,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -1531,6 +1522,10 @@ class _ConsentCaptureWarningCardMockupState
                               text: 'Decline and exit',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
+                              contentColor: _isDark(context)
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -1553,7 +1548,6 @@ class _ConsentCaptureWarningCardMockupState
 // ───────────────────────────────────────────────────────────────────────
 // Source Code Snippets for Consent Not Given
 // ───────────────────────────────────────────────────────────────────────
-
 const _consentCaptureWarningCode =
     r'''// Consent Capture – Flat Layout (Consent Not Given)
 Column(
@@ -1563,9 +1557,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -1583,10 +1577,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -1604,21 +1597,13 @@ Column(
               child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
             ),
             SizedBox(height: 16),
-
             // Headline
             Text(
               'Your Data, Your Control',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                height: 1.2,
-                letterSpacing: -0.3,
-              ),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
             ),
             SizedBox(height: 8),
-
             // Description
             Text(
               'To process your Income Certificate application, the Revenue Department will use the following data:',
@@ -1630,7 +1615,6 @@ Column(
               ),
             ),
             SizedBox(height: 24),
-
             // 1. Aadhaar Number Card
             Container(
               width: double.infinity,
@@ -1666,7 +1650,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 2. Address Card
             Container(
               width: double.infinity,
@@ -1702,7 +1685,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 3. Email Card
             Container(
               width: double.infinity,
@@ -1738,10 +1720,8 @@ Column(
               ),
             ),
             SizedBox(height: 24),
-
             Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
             SizedBox(height: 20),
-
             if (!_isInfoConsentGiven) ...[
               Ux4gStatusBanner(
                 variant: Ux4gBannerVariant.warningLight,
@@ -1761,7 +1741,6 @@ Column(
               ),
               SizedBox(height: 16),
             ],
-
             // Checkboxes
             Ux4gCheckbox(
               value: _isInfoConsentGiven,
@@ -1777,11 +1756,11 @@ Column(
               isRequired: false,
             ),
             SizedBox(height: 24),
-
             // Actions
             Ux4gButton(
               text: 'Proceed',
               onPressed: _isInfoConsentGiven ? () {} : null,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -1790,6 +1769,8 @@ Column(
               text: 'Decline and exit',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -1798,7 +1779,6 @@ Column(
         ),
       ),
     ),
-
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
@@ -1814,13 +1794,12 @@ Column(
             ),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
   ],
 )''';
-
 const _consentCaptureWarningCardCode =
     r'''// Consent Capture – Card Style Layout (Consent Not Given)
 Column(
@@ -1830,9 +1809,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -1850,10 +1829,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: Container(
         color: _isDark(context) ? Ux4gPalette.primary900 : _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
@@ -1889,21 +1867,13 @@ Column(
                         child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
                       ),
                       SizedBox(height: 16),
-
                       // Headline
                       Text(
                         'Your Data, Your Control',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                          height: 1.2,
-                          letterSpacing: -0.3,
-                        ),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                       ),
                       SizedBox(height: 8),
-
                       // Description
                       Text(
                         'To process your Income Certificate application, the Revenue Department will use the following data:',
@@ -1915,7 +1885,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // 1. Aadhaar Number Card
                       Container(
                         width: double.infinity,
@@ -1951,7 +1920,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 2. Address Card
                       Container(
                         width: double.infinity,
@@ -1987,7 +1955,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 3. Email Card
                       Container(
                         width: double.infinity,
@@ -2023,10 +1990,8 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                       SizedBox(height: 16),
-
                       if (!_isInfoConsentGiven) ...[
                         Ux4gStatusBanner(
                           variant: Ux4gBannerVariant.warningLight,
@@ -2046,7 +2011,6 @@ Column(
                         ),
                         SizedBox(height: 16),
                       ],
-
                       // Checkboxes
                       Ux4gCheckbox(
                         value: _isInfoConsentGiven,
@@ -2062,11 +2026,11 @@ Column(
                         isRequired: false,
                       ),
                       SizedBox(height: 20),
-
                       // Actions
                       Ux4gButton(
                         text: 'Proceed',
                         onPressed: _isInfoConsentGiven ? () {} : null,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -2075,6 +2039,8 @@ Column(
                         text: 'Decline and exit',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -2098,7 +2064,7 @@ Column(
                     ),
                   ),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -2108,11 +2074,9 @@ Column(
     ),
   ],
 )''';
-
 // ───────────────────────────────────────────────────────────────────────
 // Consent Management pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final consentManagementComponent = WidgetbookComponent(
   name: 'Consent Management',
   useCases: [
@@ -2126,14 +2090,12 @@ final consentManagementComponent = WidgetbookComponent(
           description:
               'Switch between the standard flat layout and the card-style layout for managing active/withdrawn consents.',
         );
-
         final code = variant == 'Card style'
             ? _consentManagementCardCode
             : _consentManagementCode;
         final child = variant == 'Card style'
             ? const _ConsentManagementCardMockup()
             : const _ConsentManagementMobileMockup();
-
         return ComponentDocs(
           name: 'Consent Management',
           description:
@@ -2150,10 +2112,8 @@ final consentManagementComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 // Mockups for Consent Management
 // ───────────────────────────────────────────────────────────────────────
-
 class _ConsentManagementMobileMockup extends StatefulWidget {
   const _ConsentManagementMobileMockup();
-
   @override
   State<_ConsentManagementMobileMockup> createState() =>
       _ConsentManagementMobileMockupState();
@@ -2164,7 +2124,6 @@ class _ConsentManagementMobileMockupState
   bool _isAadhaarActive = true;
   bool _isAddressActive = true;
   bool _isEmailActive = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -2198,33 +2157,33 @@ class _ConsentManagementMobileMockupState
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Headline
                   Text(
                     'Your Data, Your Control',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                      height: 1.2,
-                      letterSpacing: -0.3,
-                    ),
+                    style: Theme.of(context)
+                        .extension<Ux4gTypography>()!
+                        .hM_default
+                        .copyWith(
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.gray900,
+                        ),
                   ),
                   SizedBox(height: 8),
-
                   // Description
                   Text(
                     'A complete record of all consents you have given, including date, time, IP address, and policy version. You can withdraw any active consent below.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral500),
                       height: 1.4,
                     ),
                   ),
                   SizedBox(height: 24),
-
                   // Consents cards
                   _buildManagementCard(
                     context: context,
@@ -2253,7 +2212,6 @@ class _ConsentManagementMobileMockupState
                         setState(() => _isEmailActive = !_isEmailActive),
                   ),
                   SizedBox(height: 20),
-
                   // Download history link
                   Align(
                     alignment: Alignment.centerLeft,
@@ -2264,24 +2222,31 @@ class _ConsentManagementMobileMockupState
                         padding: EdgeInsets.symmetric(vertical: 4),
                         child: Text(
                           'Download consent history (PDF)',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context)
+                              .extension<Ux4gTypography>()!
+                              .lL_default
+                              .copyWith(
+                                color: _isDark(context)
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                              ),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(height: 20),
-
-                  Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                  Divider(
+                    height: 1,
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200),
+                  ),
                   SizedBox(height: 20),
-
                   // Actions
                   Ux4gButton(
                     text: 'Confirm',
                     onPressed: () {},
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -2290,6 +2255,10 @@ class _ConsentManagementMobileMockupState
                     text: 'Cancel',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context)
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -2307,7 +2276,6 @@ class _ConsentManagementMobileMockupState
 
 class _ConsentManagementCardMockup extends StatefulWidget {
   const _ConsentManagementCardMockup();
-
   @override
   State<_ConsentManagementCardMockup> createState() =>
       _ConsentManagementCardMockupState();
@@ -2318,7 +2286,6 @@ class _ConsentManagementCardMockupState
   bool _isAadhaarActive = true;
   bool _isAddressActive = true;
   bool _isEmailActive = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -2331,7 +2298,9 @@ class _ConsentManagementCardMockupState
                   ? Ux4gPalette.primary900
                   : _isDark(context)
                   ? Ux4gPalette.primary900
-                  : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+                  : (_isDark(context)
+                        ? Ux4gPalette.primary900
+                        : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -2376,33 +2345,33 @@ class _ConsentManagementCardMockupState
                               ),
                             ),
                             SizedBox(height: 16),
-
                             // Headline
                             Text(
                               'Your Data, Your Control',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
+                              style: Theme.of(context)
+                                  .extension<Ux4gTypography>()!
+                                  .hM_default
+                                  .copyWith(
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.gray900,
+                                  ),
                             ),
                             SizedBox(height: 8),
-
                             // Description
                             Text(
                               'A complete record of all consents you have given, including date, time, IP address, and policy version. You can withdraw any active consent below.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral500),
                                 height: 1.45,
                               ),
                             ),
                             SizedBox(height: 20),
-
                             // Consents cards
                             _buildManagementCard(
                               context: context,
@@ -2434,7 +2403,6 @@ class _ConsentManagementCardMockupState
                               ),
                             ),
                             SizedBox(height: 20),
-
                             // Download history link
                             Align(
                               alignment: Alignment.centerLeft,
@@ -2445,26 +2413,31 @@ class _ConsentManagementCardMockupState
                                   padding: EdgeInsets.symmetric(vertical: 4),
                                   child: Text(
                                     'Download consent history (PDF)',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Theme.of(
-                                        context,
-                                      ).colorScheme.primary,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    style: Theme.of(context)
+                                        .extension<Ux4gTypography>()!
+                                        .lL_default
+                                        .copyWith(
+                                          color: _isDark(context)
+                                              ? Ux4gPalette.primary300
+                                              : Ux4gPalette.primary600,
+                                        ),
                                   ),
                                 ),
                               ),
                             ),
                             SizedBox(height: 20),
-
-                            Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                            Divider(
+                              height: 1,
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
+                            ),
                             SizedBox(height: 16),
-
                             // Actions
                             Ux4gButton(
                               text: 'Confirm',
                               onPressed: () {},
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -2473,6 +2446,10 @@ class _ConsentManagementCardMockupState
                               text: 'Cancel',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
+                              contentColor: _isDark(context)
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -2506,7 +2483,11 @@ Widget _buildManagementCard({
     decoration: BoxDecoration(
       color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+      border: Border.all(
+        color: (_isDark(context)
+            ? Ux4gPalette.neutral800
+            : Ux4gPalette.neutral200),
+      ),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2519,7 +2500,9 @@ Widget _buildManagementCard({
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                color: (_isDark(context)
+                    ? Ux4gPalette.neutral50
+                    : Ux4gPalette.gray900),
               ),
             ),
             Ux4gTag(
@@ -2552,7 +2535,9 @@ Widget _buildManagementCard({
           dateVersion,
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -2568,11 +2553,14 @@ Widget _buildManagementCard({
               children: [
                 Text(
                   isActive ? 'Withdraw' : 'Restore',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(context)
+                      .extension<Ux4gTypography>()!
+                      .lL_default
+                      .copyWith(
+                        color: _isDark(context)
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600,
+                      ),
                 ),
                 SizedBox(width: 4),
                 Icon(
@@ -2592,7 +2580,6 @@ Widget _buildManagementCard({
 // ───────────────────────────────────────────────────────────────────────
 // Source Code Snippets for Consent Management
 // ───────────────────────────────────────────────────────────────────────
-
 const _consentManagementCode = r'''// Consent Management – Flat Layout
 Column(
   children: [
@@ -2601,9 +2588,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -2621,10 +2608,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -2642,21 +2628,13 @@ Column(
               child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
             ),
             SizedBox(height: 16),
-
             // Headline
             Text(
               'Your Data, Your Control',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                height: 1.2,
-                letterSpacing: -0.3,
-              ),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
             ),
             SizedBox(height: 8),
-
             // Description
             Text(
               'A complete record of all consents you have given, including date, time, IP address, and policy version. You can withdraw any active consent below.',
@@ -2668,7 +2646,6 @@ Column(
               ),
             ),
             SizedBox(height: 24),
-
             // 1. Aadhaar Number Card
             Container(
               width: double.infinity,
@@ -2705,9 +2682,9 @@ Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(_isAadhaarActive ? 'Withdraw' : 'Restore',
-                          style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700)),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                         SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary, size: 14),
+                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
                       ],
                     ),
                   ),
@@ -2715,7 +2692,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 2. Address Card
             Container(
               width: double.infinity,
@@ -2752,9 +2728,9 @@ Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(_isAddressActive ? 'Withdraw' : 'Restore',
-                          style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700)),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                         SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary, size: 14),
+                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
                       ],
                     ),
                   ),
@@ -2762,7 +2738,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 3. Email Card
             Container(
               width: double.infinity,
@@ -2799,9 +2774,9 @@ Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(_isEmailActive ? 'Withdraw' : 'Restore',
-                          style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700)),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                         SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary, size: 14),
+                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
                       ],
                     ),
                   ),
@@ -2809,7 +2784,6 @@ Column(
               ),
             ),
             SizedBox(height: 20),
-
             // Download PDF link
             Align(
               alignment: Alignment.centerLeft,
@@ -2819,24 +2793,19 @@ Column(
                   padding: EdgeInsets.symmetric(vertical: 4),
                   child: Text(
                     'Download consent history (PDF)',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                   ),
                 ),
               ),
             ),
             SizedBox(height: 20),
-
             Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
             SizedBox(height: 20),
-
             // Actions
             Ux4gButton(
               text: 'Confirm',
               onPressed: () {},
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -2845,6 +2814,8 @@ Column(
               text: 'Cancel',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -2853,7 +2824,6 @@ Column(
         ),
       ),
     ),
-
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
@@ -2869,13 +2839,12 @@ Column(
             ),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
   ],
 )''';
-
 const _consentManagementCardCode = r'''// Consent Management – Card Style Layout
 Column(
   children: [
@@ -2884,9 +2853,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -2904,10 +2873,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: Container(
         color: _isDark(context) ? Ux4gPalette.primary900 : _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
@@ -2943,21 +2911,13 @@ Column(
                         child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
                       ),
                       SizedBox(height: 16),
-
                       // Headline
                       Text(
                         'Your Data, Your Control',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                          height: 1.2,
-                          letterSpacing: -0.3,
-                        ),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                       ),
                       SizedBox(height: 8),
-
                       // Description
                       Text(
                         'A complete record of all consents you have given, including date, time, IP address, and policy version. You can withdraw any active consent below.',
@@ -2969,7 +2929,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // 1. Aadhaar Number Card
                       Container(
                         width: double.infinity,
@@ -3006,9 +2965,9 @@ Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(_isAadhaarActive ? 'Withdraw' : 'Restore',
-                                    style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700)),
+                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                                   SizedBox(width: 4),
-                                  Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary, size: 14),
+                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
                                 ],
                               ),
                             ),
@@ -3016,7 +2975,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 2. Address Card
                       Container(
                         width: double.infinity,
@@ -3053,9 +3011,9 @@ Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(_isAddressActive ? 'Withdraw' : 'Restore',
-                                    style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700)),
+                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                                   SizedBox(width: 4),
-                                  Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary, size: 14),
+                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
                                 ],
                               ),
                             ),
@@ -3063,7 +3021,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 3. Email Card
                       Container(
                         width: double.infinity,
@@ -3100,9 +3057,9 @@ Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(_isEmailActive ? 'Withdraw' : 'Restore',
-                                    style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w700)),
+                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                                   SizedBox(width: 4),
-                                  Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary, size: 14),
+                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
                                 ],
                               ),
                             ),
@@ -3110,7 +3067,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // Download PDF link
                       Align(
                         alignment: Alignment.centerLeft,
@@ -3120,24 +3076,19 @@ Column(
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               'Download consent history (PDF)',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).colorScheme.primary,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(height: 20),
-
                       Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                       SizedBox(height: 16),
-
                       // Actions
                       Ux4gButton(
                         text: 'Confirm',
                         onPressed: () {},
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -3146,6 +3097,8 @@ Column(
                         text: 'Cancel',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -3169,7 +3122,7 @@ Column(
                     ),
                   ),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -3178,11 +3131,9 @@ Column(
       ),
   ],
 )''';
-
 // ───────────────────────────────────────────────────────────────────────
 // Data Sharing Consent pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final dataSharingConsentComponent = WidgetbookComponent(
   name: 'Data Sharing Consent',
   useCases: [
@@ -3196,14 +3147,12 @@ final dataSharingConsentComponent = WidgetbookComponent(
           description:
               'Switch between the standard flat layout and the card-style layout for data sharing consent.',
         );
-
         final code = variant == 'Card style'
             ? _dataSharingConsentCardCode
             : _dataSharingConsentCode;
         final child = variant == 'Card style'
             ? const _DataSharingConsentCardMockup()
             : const _DataSharingConsentMobileMockup();
-
         return ComponentDocs(
           name: 'Data Sharing Consent',
           description:
@@ -3220,10 +3169,8 @@ final dataSharingConsentComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 // Mockups for Data Sharing Consent
 // ───────────────────────────────────────────────────────────────────────
-
 class _DataSharingConsentMobileMockup extends StatelessWidget {
   const _DataSharingConsentMobileMockup();
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -3257,23 +3204,22 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Headline
                   Center(
                     child: Text(
                       'Your Data, Your Control',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w800,
-                        color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                        height: 1.2,
-                        letterSpacing: -0.3,
-                      ),
+                      style: Theme.of(context)
+                          .extension<Ux4gTypography>()!
+                          .hM_default
+                          .copyWith(
+                            color: _isDark(context)
+                                ? Ux4gPalette.neutral50
+                                : Ux4gPalette.gray900,
+                          ),
                     ),
                   ),
                   SizedBox(height: 12),
-
                   // Title & Badge Row
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -3284,7 +3230,9 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                          color: (_isDark(context)
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.gray900),
                         ),
                       ),
                       SizedBox(height: 8),
@@ -3292,40 +3240,45 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                         text: 'DPDP Act 2023',
                         customBackgroundColor: _isDark(context)
                             ? Ux4gPalette.primary900
-                            : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
-                        customContentColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                            : (_isDark(context)
+                                  ? Ux4gPalette.primary900
+                                  : Ux4gPalette.primary100),
+                        customContentColor: (_isDark(context)
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600),
                         shape: Ux4gTagShape.circular,
                         size: Ux4gTagSize.m,
                       ),
                     ],
                   ),
                   SizedBox(height: 12),
-
                   // Scheme Info
                   Text(
                     'Scheme: PM Kisan',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.primary300
+                          : Ux4gPalette.primary600),
                     ),
                   ),
                   SizedBox(height: 8),
-
                   // Description
                   Text(
                     'To enable Direct Benefit Transfer for PM Kisan, the Agriculture Department will share your details with the following third parties.',
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral500),
                       height: 1.4,
                     ),
                   ),
                   SizedBox(height: 20),
-
                   // Sharing cards
                   _buildSharingCard(
-context: context,
+                    context: context,
                     title: 'Bank of India',
                     shared: 'Aadhaar, Name',
                     purpose: 'Account matching',
@@ -3334,7 +3287,7 @@ context: context,
                   ),
                   SizedBox(height: 12),
                   _buildSharingCard(
-context: context,
+                    context: context,
                     title: 'Payment Corp',
                     shared: 'Transaction ID',
                     purpose: 'Payment processing',
@@ -3343,7 +3296,7 @@ context: context,
                   ),
                   SizedBox(height: 12),
                   _buildSharingCard(
-context: context,
+                    context: context,
                     title: 'SMS Gateway',
                     shared: 'Mobile Number',
                     purpose: 'Status alerts',
@@ -3351,7 +3304,6 @@ context: context,
                     isRequired: false,
                   ),
                   SizedBox(height: 20),
-
                   // Warning banner
                   Ux4gStatusBanner(
                     variant: Ux4gBannerVariant.warningLight,
@@ -3378,16 +3330,20 @@ context: context,
                     ),
                   ),
                   SizedBox(height: 24),
-
-                  Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                  Divider(
+                    height: 1,
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200),
+                  ),
                   SizedBox(height: 20),
-
                   // Actions
                   Ux4gButton(
                     text: 'Manage',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     leadingIcon: Icons.edit_outlined,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -3398,10 +3354,15 @@ context: context,
                     variant: Ux4gButtonVariant.outline,
                     contentColor: _isDark(context)
                         ? Ux4gPalette.neutral400
-                        : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                        : (_isDark(context)
+                              ? Ux4gPalette.neutral400
+                              : Ux4gPalette.neutral700),
                     borderColor: _isDark(context)
                         ? Ux4gPalette.neutral600
-                        : (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                        : (_isDark(context)
+                              ? Ux4gPalette.neutral600
+                              : Ux4gPalette.neutral300),
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -3419,7 +3380,6 @@ context: context,
 
 class _DataSharingConsentCardMockup extends StatelessWidget {
   const _DataSharingConsentCardMockup();
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -3430,7 +3390,9 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
             child: Container(
               color: _isDark(context)
                   ? Ux4gPalette.primary900
-                  : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+                  : (_isDark(context)
+                        ? Ux4gPalette.primary900
+                        : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -3477,23 +3439,22 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 16),
-
                             // Headline
                             Center(
                               child: Text(
                                 'Your Data, Your Control',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w800,
-                                  color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                                  height: 1.2,
-                                  letterSpacing: -0.3,
-                                ),
+                                style: Theme.of(context)
+                                    .extension<Ux4gTypography>()!
+                                    .hM_default
+                                    .copyWith(
+                                      color: _isDark(context)
+                                          ? Ux4gPalette.neutral50
+                                          : Ux4gPalette.gray900,
+                                    ),
                               ),
                             ),
                             SizedBox(height: 12),
-
                             // Title & Badge Row
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -3504,7 +3465,9 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w700,
-                                    color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                    color: (_isDark(context)
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.gray900),
                                   ),
                                 ),
                                 SizedBox(height: 8),
@@ -3512,40 +3475,45 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                   text: 'DPDP Act 2023',
                                   customBackgroundColor: _isDark(context)
                                       ? Ux4gPalette.primary900
-                                      : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
-                                  customContentColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                      : (_isDark(context)
+                                            ? Ux4gPalette.primary900
+                                            : Ux4gPalette.primary100),
+                                  customContentColor: (_isDark(context)
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600),
                                   shape: Ux4gTagShape.circular,
                                   size: Ux4gTagSize.m,
                                 ),
                               ],
                             ),
                             SizedBox(height: 12),
-
                             // Scheme Info
                             Text(
                               'Scheme: PM Kisan',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
-                                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600),
                               ),
                             ),
                             SizedBox(height: 8),
-
                             // Description
                             Text(
                               'To enable Direct Benefit Transfer for PM Kisan, the Agriculture Department will share your details with the following third parties.',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral500),
                                 height: 1.45,
                               ),
                             ),
                             SizedBox(height: 20),
-
                             // Sharing cards
                             _buildSharingCard(
-context: context,
+                              context: context,
                               title: 'Bank of India',
                               shared: 'Aadhaar, Name',
                               purpose: 'Account matching',
@@ -3554,7 +3522,7 @@ context: context,
                             ),
                             SizedBox(height: 12),
                             _buildSharingCard(
-context: context,
+                              context: context,
                               title: 'Payment Corp',
                               shared: 'Transaction ID',
                               purpose: 'Payment processing',
@@ -3563,7 +3531,7 @@ context: context,
                             ),
                             SizedBox(height: 12),
                             _buildSharingCard(
-context: context,
+                              context: context,
                               title: 'SMS Gateway',
                               shared: 'Mobile Number',
                               purpose: 'Status alerts',
@@ -3571,7 +3539,6 @@ context: context,
                               isRequired: false,
                             ),
                             SizedBox(height: 20),
-
                             // Warning banner
                             Ux4gStatusBanner(
                               variant: Ux4gBannerVariant.warningLight,
@@ -3598,16 +3565,20 @@ context: context,
                               ),
                             ),
                             SizedBox(height: 20),
-
-                            Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                            Divider(
+                              height: 1,
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
+                            ),
                             SizedBox(height: 16),
-
                             // Actions
                             Ux4gButton(
                               text: 'Manage',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.outline,
                               leadingIcon: Icons.edit_outlined,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -3618,10 +3589,15 @@ context: context,
                               variant: Ux4gButtonVariant.outline,
                               contentColor: _isDark(context)
                                   ? Ux4gPalette.neutral400
-                                  : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                                  : (_isDark(context)
+                                        ? Ux4gPalette.neutral400
+                                        : Ux4gPalette.neutral700),
                               borderColor: _isDark(context)
                                   ? Ux4gPalette.neutral600
-                                  : (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                                  : (_isDark(context)
+                                        ? Ux4gPalette.neutral600
+                                        : Ux4gPalette.neutral300),
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -3656,7 +3632,11 @@ Widget _buildSharingCard({
     decoration: BoxDecoration(
       color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+      border: Border.all(
+        color: (_isDark(context)
+            ? Ux4gPalette.neutral800
+            : Ux4gPalette.neutral200),
+      ),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -3669,7 +3649,9 @@ Widget _buildSharingCard({
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                color: (_isDark(context)
+                    ? Ux4gPalette.neutral50
+                    : Ux4gPalette.gray900),
               ),
             ),
             Ux4gTag(
@@ -3687,7 +3669,9 @@ Widget _buildSharingCard({
                         : const Color(0xFF8A1A16)
                   : _isDark(context)
                   ? Ux4gPalette.neutral400
-                  : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                  : (_isDark(context)
+                        ? Ux4gPalette.neutral400
+                        : Ux4gPalette.neutral600),
               shape: Ux4gTagShape.circular,
               size: Ux4gTagSize.m,
             ),
@@ -3698,7 +3682,9 @@ Widget _buildSharingCard({
           'Data shared · $shared',
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -3708,7 +3694,9 @@ Widget _buildSharingCard({
           'Purpose · $purpose',
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -3718,7 +3706,9 @@ Widget _buildSharingCard({
           'Duration · $duration',
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -3731,7 +3721,6 @@ Widget _buildSharingCard({
 // ───────────────────────────────────────────────────────────────────────
 // Source Code Snippets for Data Sharing Consent
 // ───────────────────────────────────────────────────────────────────────
-
 const _dataSharingConsentCode = r'''// Data Sharing Consent – Flat Layout
 Column(
   children: [
@@ -3740,9 +3729,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -3760,10 +3749,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -3783,23 +3771,15 @@ Column(
               ),
             ),
             SizedBox(height: 16),
-
             // Headline
             Center(
               child: Text(
                 'Your Data, Your Control',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                  height: 1.2,
-                  letterSpacing: -0.3,
-                ),
+                style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
               ),
             ),
             SizedBox(height: 12),
-
             // Title & Badge Row
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -3823,7 +3803,6 @@ Column(
               ],
             ),
             SizedBox(height: 12),
-
             // Scheme Info
             Text(
               'Scheme: PM Kisan',
@@ -3834,14 +3813,12 @@ Column(
               ),
             ),
             SizedBox(height: 8),
-
             // Description
             Text(
               'To enable Direct Benefit Transfer for PM Kisan, the Agriculture Department will share your details with the following third parties.',
               style: TextStyle(fontSize: 14, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.4),
             ),
             SizedBox(height: 20),
-
             // 1. Bank of India Card
             Container(
               width: double.infinity,
@@ -3879,7 +3856,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 2. Payment Corp Card
             Container(
               width: double.infinity,
@@ -3917,7 +3893,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 3. SMS Gateway Card
             Container(
               width: double.infinity,
@@ -3955,7 +3930,6 @@ Column(
               ),
             ),
             SizedBox(height: 20),
-
             // Warning banner
             Ux4gStatusBanner(
               variant: Ux4gBannerVariant.warningLight,
@@ -3974,16 +3948,15 @@ Column(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
             SizedBox(height: 24),
-
             Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
             SizedBox(height: 20),
-
             // Actions
             Ux4gButton(
               text: 'Manage',
               onPressed: () {},
               variant: Ux4gButtonVariant.outline,
               leadingIcon: Icons.edit_outlined,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -3994,6 +3967,7 @@ Column(
               variant: Ux4gButtonVariant.outline,
               contentColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
               borderColor: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -4002,7 +3976,6 @@ Column(
         ),
       ),
     ),
-
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
@@ -4018,13 +3991,12 @@ Column(
             ),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
   ],
 )''';
-
 const _dataSharingConsentCardCode =
     r'''// Data Sharing Consent – Card Style Layout
 Column(
@@ -4034,9 +4006,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -4054,10 +4026,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: Container(
         color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
@@ -4095,23 +4066,15 @@ Column(
                         ),
                       ),
                       SizedBox(height: 16),
-
                       // Headline
                       Center(
                         child: Text(
                           'Your Data, Your Control',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w800,
-                            color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                            height: 1.2,
-                            letterSpacing: -0.3,
-                          ),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // Title & Badge Row
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -4135,7 +4098,6 @@ Column(
                         ],
                       ),
                       SizedBox(height: 12),
-
                       // Scheme Info
                       Text(
                         'Scheme: PM Kisan',
@@ -4146,7 +4108,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 8),
-
                       // Description
                       Text(
                         'To enable Direct Benefit Transfer for PM Kisan, the Agriculture Department will share your details with the following third parties.',
@@ -4157,7 +4118,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // 1. Bank of India Card
                       Container(
                         width: double.infinity,
@@ -4195,7 +4155,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 2. Payment Corp Card
                       Container(
                         width: double.infinity,
@@ -4233,7 +4192,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 3. SMS Gateway Card
                       Container(
                         width: double.infinity,
@@ -4271,7 +4229,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // Warning banner
                       Ux4gStatusBanner(
                         variant: Ux4gBannerVariant.warningLight,
@@ -4290,16 +4247,15 @@ Column(
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
                       SizedBox(height: 20),
-
                       Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                       SizedBox(height: 16),
-
                       // Actions
                       Ux4gButton(
                         text: 'Manage',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.outline,
                         leadingIcon: Icons.edit_outlined,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -4310,6 +4266,7 @@ Column(
                         variant: Ux4gButtonVariant.outline,
                         contentColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
                         borderColor: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -4333,7 +4290,7 @@ Column(
                     ),
                   ),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -4342,11 +4299,9 @@ Column(
       ),
     ),
 )''';
-
 // ───────────────────────────────────────────────────────────────────────
 // Manage Data Sharing Consents pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final dataSharingConsentManagementComponent = WidgetbookComponent(
   name: 'Manage Data Sharing Consents',
   useCases: [
@@ -4360,14 +4315,12 @@ final dataSharingConsentManagementComponent = WidgetbookComponent(
           description:
               'Switch between the standard flat layout and the card-style layout for managing consents.',
         );
-
         final code = variant == 'Card style'
             ? _manageDataSharingConsentsCardCode
             : _manageDataSharingConsentsCode;
         final child = variant == 'Card style'
             ? const _ManageDataSharingConsentsCardMockup()
             : const _ManageDataSharingConsentsMobileMockup();
-
         return ComponentDocs(
           name: 'Manage Data Sharing Consents',
           description:
@@ -4384,10 +4337,8 @@ final dataSharingConsentManagementComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 // Mockups for Manage Data Sharing Consents
 // ───────────────────────────────────────────────────────────────────────
-
 class _ManageDataSharingConsentsMobileMockup extends StatefulWidget {
   const _ManageDataSharingConsentsMobileMockup();
-
   @override
   State<_ManageDataSharingConsentsMobileMockup> createState() =>
       _ManageDataSharingConsentsMobileMockupState();
@@ -4396,7 +4347,6 @@ class _ManageDataSharingConsentsMobileMockup extends StatefulWidget {
 class _ManageDataSharingConsentsMobileMockupState
     extends State<_ManageDataSharingConsentsMobileMockup> {
   bool _isSmsGatewayWithdrawn = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -4412,52 +4362,57 @@ class _ManageDataSharingConsentsMobileMockupState
                   // Headline
                   Text(
                     'Manage Your Data Sharing Consents',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                      height: 1.2,
-                      letterSpacing: -0.3,
-                    ),
+                    style: Theme.of(context)
+                        .extension<Ux4gTypography>()!
+                        .hM_default
+                        .copyWith(
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.gray900,
+                        ),
                   ),
                   SizedBox(height: 8),
-
                   // Scheme Info
                   Text(
                     'Scheme: PM Kisan',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.primary300
+                          : Ux4gPalette.primary600),
                     ),
                   ),
                   SizedBox(height: 8),
-
                   // Description
                   Text(
                     'You can review and withdraw optional consents below.',
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral500),
                       height: 1.45,
                     ),
                   ),
                   SizedBox(height: 20),
-
                   // Sharing cards
-                  _buildDataSharingManagementCard(context: context, 
+                  _buildDataSharingManagementCard(
+                    context: context,
                     title: 'Bank of India',
                     shared: 'Aadhaar, Name',
                     status: 'Required',
                   ),
                   SizedBox(height: 12),
-                  _buildDataSharingManagementCard(context: context, 
+                  _buildDataSharingManagementCard(
+                    context: context,
                     title: 'Payment Corp',
                     shared: 'Transaction ID',
                     status: 'Required',
                   ),
                   SizedBox(height: 12),
-                  _buildDataSharingManagementCard(context: context, 
+                  _buildDataSharingManagementCard(
+                    context: context,
                     title: 'SMS Gateway',
                     shared: 'Mobile Number',
                     isOptional: true,
@@ -4469,7 +4424,6 @@ class _ManageDataSharingConsentsMobileMockupState
                     },
                   ),
                   SizedBox(height: 20),
-
                   // Warning banner
                   Ux4gStatusBanner(
                     variant: Ux4gBannerVariant.warningLight,
@@ -4496,14 +4450,18 @@ class _ManageDataSharingConsentsMobileMockupState
                     ),
                   ),
                   SizedBox(height: 20),
-
-                  Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                  Divider(
+                    height: 1,
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200),
+                  ),
                   SizedBox(height: 16),
-
                   // Actions
                   Ux4gButton(
                     text: 'Confirm changes',
                     onPressed: _isSmsGatewayWithdrawn ? () {} : null,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -4512,6 +4470,10 @@ class _ManageDataSharingConsentsMobileMockupState
                     text: 'Cancel',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context)
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
+                    height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
@@ -4529,7 +4491,6 @@ class _ManageDataSharingConsentsMobileMockupState
 
 class _ManageDataSharingConsentsCardMockup extends StatefulWidget {
   const _ManageDataSharingConsentsCardMockup();
-
   @override
   State<_ManageDataSharingConsentsCardMockup> createState() =>
       _ManageDataSharingConsentsCardMockupState();
@@ -4538,7 +4499,6 @@ class _ManageDataSharingConsentsCardMockup extends StatefulWidget {
 class _ManageDataSharingConsentsCardMockupState
     extends State<_ManageDataSharingConsentsCardMockup> {
   bool _isSmsGatewayWithdrawn = false;
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -4549,7 +4509,9 @@ class _ManageDataSharingConsentsCardMockupState
             child: Container(
               color: _isDark(context)
                   ? Ux4gPalette.primary900
-                  : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+                  : (_isDark(context)
+                        ? Ux4gPalette.primary900
+                        : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -4576,52 +4538,57 @@ class _ManageDataSharingConsentsCardMockupState
                             // Headline
                             Text(
                               'Manage Your Data Sharing Consents',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
+                              style: Theme.of(context)
+                                  .extension<Ux4gTypography>()!
+                                  .hM_default
+                                  .copyWith(
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.gray900,
+                                  ),
                             ),
                             SizedBox(height: 8),
-
                             // Scheme Info
                             Text(
                               'Scheme: PM Kisan',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
-                                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600),
                               ),
                             ),
                             SizedBox(height: 8),
-
                             // Description
                             Text(
                               'You can review and withdraw optional consents below.',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral500),
                                 height: 1.45,
                               ),
                             ),
                             SizedBox(height: 20),
-
                             // Sharing cards
-                            _buildDataSharingManagementCard(context: context, 
+                            _buildDataSharingManagementCard(
+                              context: context,
                               title: 'Bank of India',
                               shared: 'Aadhaar, Name',
                               status: 'Required',
                             ),
                             SizedBox(height: 12),
-                            _buildDataSharingManagementCard(context: context, 
+                            _buildDataSharingManagementCard(
+                              context: context,
                               title: 'Payment Corp',
                               shared: 'Transaction ID',
                               status: 'Required',
                             ),
                             SizedBox(height: 12),
-                            _buildDataSharingManagementCard(context: context, 
+                            _buildDataSharingManagementCard(
+                              context: context,
                               title: 'SMS Gateway',
                               shared: 'Mobile Number',
                               isOptional: true,
@@ -4634,7 +4601,6 @@ class _ManageDataSharingConsentsCardMockupState
                               },
                             ),
                             SizedBox(height: 20),
-
                             // Warning banner
                             Ux4gStatusBanner(
                               variant: Ux4gBannerVariant.warningLight,
@@ -4661,14 +4627,18 @@ class _ManageDataSharingConsentsCardMockupState
                               ),
                             ),
                             SizedBox(height: 20),
-
-                            Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                            Divider(
+                              height: 1,
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
+                            ),
                             SizedBox(height: 16),
-
                             // Actions
                             Ux4gButton(
                               text: 'Confirm changes',
                               onPressed: _isSmsGatewayWithdrawn ? () {} : null,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -4677,6 +4647,10 @@ class _ManageDataSharingConsentsCardMockupState
                               text: 'Cancel',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
+                              contentColor: _isDark(context)
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                              height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
                             ),
@@ -4712,7 +4686,11 @@ Widget _buildDataSharingManagementCard({
     decoration: BoxDecoration(
       color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+      border: Border.all(
+        color: (_isDark(context)
+            ? Ux4gPalette.neutral800
+            : Ux4gPalette.neutral200),
+      ),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -4725,7 +4703,9 @@ Widget _buildDataSharingManagementCard({
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                color: (_isDark(context)
+                    ? Ux4gPalette.neutral50
+                    : Ux4gPalette.gray900),
               ),
             ),
             Ux4gTag(
@@ -4736,14 +4716,20 @@ Widget _buildDataSharingManagementCard({
                         : const Color(0xFFF3F4F6)
                   : _isDark(context)
                   ? Ux4gPalette.green900
-                  : (_isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50),
+                  : (_isDark(context)
+                        ? Ux4gPalette.green900
+                        : Ux4gPalette.green50),
               customContentColor: isWithdrawn
                   ? _isDark(context)
                         ? Ux4gPalette.neutral400
-                        : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600)
+                        : (_isDark(context)
+                              ? Ux4gPalette.neutral400
+                              : Ux4gPalette.neutral600)
                   : _isDark(context)
                   ? Ux4gPalette.green300
-                  : (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+                  : (_isDark(context)
+                        ? Ux4gPalette.green300
+                        : Ux4gPalette.green700),
               shape: Ux4gTagShape.circular,
               size: Ux4gTagSize.m,
             ),
@@ -4754,7 +4740,9 @@ Widget _buildDataSharingManagementCard({
           'Data shared · $shared',
           style: TextStyle(
             fontSize: 13,
-            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+            color: (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -4765,7 +4753,9 @@ Widget _buildDataSharingManagementCard({
             'Status · $status',
             style: TextStyle(
               fontSize: 13,
-              color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+              color: (_isDark(context)
+                  ? Ux4gPalette.neutral400
+                  : Ux4gPalette.neutral500),
               fontWeight: FontWeight.w400,
               height: 1.25,
             ),
@@ -4779,7 +4769,9 @@ Widget _buildDataSharingManagementCard({
               isWithdrawn ? 'Undo' : 'Withdraw',
               style: TextStyle(
                 fontSize: 14,
-                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                color: (_isDark(context)
+                    ? Ux4gPalette.primary300
+                    : Ux4gPalette.primary600),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -4793,7 +4785,6 @@ Widget _buildDataSharingManagementCard({
 // ───────────────────────────────────────────────────────────────────────
 // Source Code Snippets for Manage Data Sharing Consents
 // ───────────────────────────────────────────────────────────────────────
-
 const _manageDataSharingConsentsCode =
     r'''// Manage Data Sharing Consents – Flat Layout
 Column(
@@ -4803,9 +4794,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -4823,10 +4814,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -4836,16 +4826,9 @@ Column(
             // Headline
             Text(
               'Manage Your Data Sharing Consents',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
-                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                height: 1.2,
-                letterSpacing: -0.3,
-              ),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
             ),
             SizedBox(height: 8),
-
             // Scheme Info
             Text(
               'Scheme: PM Kisan',
@@ -4856,7 +4839,6 @@ Column(
               ),
             ),
             SizedBox(height: 8),
-
             // Description
             Text(
               'You can review and withdraw optional consents below.',
@@ -4867,7 +4849,6 @@ Column(
               ),
             ),
             SizedBox(height: 20),
-
             // 1. Bank of India Card
             Container(
               width: double.infinity,
@@ -4903,7 +4884,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 2. Payment Corp Card
             Container(
               width: double.infinity,
@@ -4939,7 +4919,6 @@ Column(
               ),
             ),
             SizedBox(height: 12),
-
             // 3. SMS Gateway Card (Optional)
             Container(
               width: double.infinity,
@@ -4985,7 +4964,6 @@ Column(
               ),
             ),
             SizedBox(height: 20),
-
             // Warning banner
             Ux4gStatusBanner(
               variant: Ux4gBannerVariant.warningLight,
@@ -5004,14 +4982,13 @@ Column(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
             SizedBox(height: 20),
-
             Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
             SizedBox(height: 16),
-
             // Actions
             Ux4gButton(
               text: 'Confirm changes',
               onPressed: _isSmsGatewayWithdrawn ? () {} : null,
+              height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -5020,6 +4997,8 @@ Column(
               text: 'Cancel',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
             ),
@@ -5028,7 +5007,6 @@ Column(
         ),
       ),
     ),
-
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
@@ -5044,13 +5022,12 @@ Column(
             ),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
   ],
 )''';
-
 const _manageDataSharingConsentsCardCode =
     r'''// Manage Data Sharing Consents – Card Style Layout
 Column(
@@ -5060,9 +5037,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -5080,10 +5057,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: Container(
         color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue bg
@@ -5111,16 +5087,9 @@ Column(
                       // Headline
                       Text(
                         'Manage Your Data Sharing Consents',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                          height: 1.2,
-                          letterSpacing: -0.3,
-                        ),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                       ),
                       SizedBox(height: 8),
-
                       // Scheme Info
                       Text(
                         'Scheme: PM Kisan',
@@ -5131,7 +5100,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 8),
-
                       // Description
                       Text(
                         'You can review and withdraw optional consents below.',
@@ -5142,7 +5110,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // 1. Bank of India Card
                       Container(
                         width: double.infinity,
@@ -5178,7 +5145,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 2. Payment Corp Card
                       Container(
                         width: double.infinity,
@@ -5214,7 +5180,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // 3. SMS Gateway Card (Optional)
                       Container(
                         width: double.infinity,
@@ -5260,7 +5225,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // Warning banner
                       Ux4gStatusBanner(
                         variant: Ux4gBannerVariant.warningLight,
@@ -5279,14 +5243,13 @@ Column(
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
                       SizedBox(height: 20),
-
                       Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                       SizedBox(height: 16),
-
                       // Actions
                       Ux4gButton(
                         text: 'Confirm changes',
                         onPressed: _isSmsGatewayWithdrawn ? () {} : null,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -5295,6 +5258,8 @@ Column(
                         text: 'Cancel',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -5303,7 +5268,6 @@ Column(
                 ),
               ),
             ),
-
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
@@ -5319,7 +5283,7 @@ Column(
                     ),
                   ),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -5329,11 +5293,9 @@ Column(
     ),
   ],
 )''';
-
 // ───────────────────────────────────────────────────────────────────────
 // Withdraw Consent Dialog pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final withdrawConsentDialogComponent = WidgetbookComponent(
   name: 'Withdraw Consent Dialog',
   useCases: [
@@ -5355,7 +5317,6 @@ final withdrawConsentDialogComponent = WidgetbookComponent(
 
 class _WithdrawConsentDialogMockup extends StatelessWidget {
   const _WithdrawConsentDialogMockup();
-
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -5371,14 +5332,14 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                 children: [
                   Text(
                     'Manage Your Data Sharing Consents',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: _isDark(context)
-                          ? Colors.white
-                          : (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                      height: 1.2,
-                    ),
+                    style: Theme.of(context)
+                        .extension<Ux4gTypography>()!
+                        .hM_default
+                        .copyWith(
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.gray900,
+                        ),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -5386,7 +5347,9 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.primary300
+                          : Ux4gPalette.primary600),
                     ),
                   ),
                   SizedBox(height: 12),
@@ -5397,12 +5360,16 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: _isDark(context)
                           ? Ux4gPalette.gray900
-                          : (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                          : (_isDark(context)
+                                ? Ux4gPalette.gray900
+                                : Ux4gPalette.gray100),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: _isDark(context)
                             ? Ux4gPalette.neutral700
-                            : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                            : (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
                       ),
                     ),
                   ),
@@ -5413,12 +5380,16 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: _isDark(context)
                           ? Ux4gPalette.gray900
-                          : (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                          : (_isDark(context)
+                                ? Ux4gPalette.gray900
+                                : Ux4gPalette.gray100),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: _isDark(context)
                             ? Ux4gPalette.neutral700
-                            : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                            : (_isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : Ux4gPalette.neutral200),
                       ),
                     ),
                   ),
@@ -5457,17 +5428,19 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         width: 76,
                         height: 76,
                         decoration: BoxDecoration(
-                          color: Color(
-                            0xFFFFEBD5,
-                          ), // Soft peach/amber matching mockup
+                          color: _isDark(context)
+                              ? Ux4gPalette.orange800
+                              : Ux4gPalette
+                                    .orange100, // Soft peach/amber matching mockup
                           shape: BoxShape.circle,
                         ),
                         child: Center(
                           child: Icon(
                             Icons.warning_rounded, // Solid warning triangle
-                            color: Color(
-                              0xFFEA580C,
-                            ), // Vivid warning orange/amber
+                            color: _isDark(context)
+                                ? Ux4gPalette.orange500
+                                : Ux4gPalette
+                                      .orange600, // Vivid warning orange/amber
                             size: 38,
                           ),
                         ),
@@ -5477,13 +5450,14 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                       Text(
                         'Withdraw Consent?',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: _isDark(context)
-                              ? Colors.white
-                              : (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                        ),
+                        style: Theme.of(context)
+                            .extension<Ux4gTypography>()!
+                            .hM_default
+                            .copyWith(
+                              color: _isDark(context)
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.gray900,
+                            ),
                       ),
                       SizedBox(height: 12),
                       // Centered description
@@ -5494,7 +5468,9 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                           fontSize: 14.5,
                           color: _isDark(context)
                               ? Ux4gPalette.neutral400
-                              : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                              : (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral600),
                           height: 1.45,
                         ),
                       ),
@@ -5507,6 +5483,7 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                           0xFF4B2BD9,
                         ), // Deep violet/indigo purple from mockup
                         contentColor: Colors.white,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -5517,8 +5494,9 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
                         contentColor: _isDark(context)
-                            ? Colors.white
-                            : const Color(0xFF1F2937),
+                            ? Ux4gPalette.neutral50
+                            : Ux4gPalette.neutral900,
+                        height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
                       ),
@@ -5531,7 +5509,9 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                           fontSize: 12.5,
                           color: _isDark(context)
                               ? Ux4gPalette.neutral400
-                              : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                              : (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral600),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -5573,13 +5553,13 @@ Ux4gModal.show(
             width: 76,
             height: 76,
             decoration: BoxDecoration(
-              color: _isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50,
+              color: _isDark(context) ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Icon(
                 Icons.warning_rounded,
-                color: _isDark(context) ? Ux4gPalette.orange400 : Ux4gPalette.orange600,
+                color: _isDark(context) ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
                 size: 38,
               ),
             ),
@@ -5589,11 +5569,7 @@ Ux4gModal.show(
           Text(
             'Withdraw Consent?',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-            ),
+            style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
           ),
           SizedBox(height: 12),
           // Centered description
@@ -5615,6 +5591,7 @@ Ux4gModal.show(
             },
             backgroundColor: const Color(0xFF4B2BD9),
             contentColor: Colors.white,
+            height: 48,
             size: Ux4gButtonSize.large,
             width: double.infinity,
           ),
@@ -5626,7 +5603,8 @@ Ux4gModal.show(
               Navigator.of(context).pop();
             },
             variant: Ux4gButtonVariant.ghost,
-            contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray800,
+                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    height: 48,
             size: Ux4gButtonSize.large,
             width: double.infinity,
           ),
@@ -5647,11 +5625,9 @@ Ux4gModal.show(
     ),
   ),
 );''';
-
 // ───────────────────────────────────────────────────────────────────────
 // Consent History pattern
 // ───────────────────────────────────────────────────────────────────────
-
 final consentHistoryComponent = WidgetbookComponent(
   name: 'Consent History',
   useCases: [
@@ -5665,14 +5641,12 @@ final consentHistoryComponent = WidgetbookComponent(
           description:
               'Switch between the standard flat layout and the card-style layout on a soft-purple background.',
         );
-
         final code = variant == 'Card style'
             ? _consentHistoryCardCode
             : _consentHistoryCode;
         final child = variant == 'Card style'
             ? const _ConsentHistoryCardMockup()
             : const _ConsentHistoryMockup();
-
         return ComponentDocs(
           name: 'Consent History',
           description:
@@ -5686,7 +5660,6 @@ final consentHistoryComponent = WidgetbookComponent(
     ),
   ],
 );
-
 const _consentHistoryCode = r'''// Consent History Screen Pattern
 Column(
   children: [
@@ -5695,9 +5668,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -5715,10 +5688,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     // Scrollable Content
     Expanded(
       child: SingleChildScrollView(
@@ -5734,12 +5706,7 @@ Column(
                 children: [
                   Text(
                     'Consent History',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                      letterSpacing: -0.3,
-                    ),
+                    style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -5754,7 +5721,6 @@ Column(
               ),
             ),
             SizedBox(height: 20),
-
             // Horizontal Scrollable Choice Chips
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -5814,7 +5780,6 @@ Column(
               ),
             ),
             SizedBox(height: 20),
-
             // Cards List (All inlined for copy-paste)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -5959,7 +5924,6 @@ Column(
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Card 2: Payment Corp
                   Container(
                     width: double.infinity,
@@ -6099,7 +6063,6 @@ Column(
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Card 3: SMS Gateway
                   Container(
                     width: double.infinity,
@@ -6239,7 +6202,6 @@ Column(
                     ),
                   ),
                   SizedBox(height: 16),
-
                   // Card 4: Housing Board
                   Container(
                     width: double.infinity,
@@ -6382,7 +6344,6 @@ Column(
               ),
             ),
             SizedBox(height: 8),
-
             // Footer / Navigation Actions
             Center(
               child: Column(
@@ -6399,11 +6360,7 @@ Column(
                     onTap: () {},
                     child: Text(
                       'Download Consent History (PDF)',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                     ),
                   ),
                   SizedBox(height: 24),
@@ -6425,7 +6382,6 @@ Column(
         ),
       ),
     ),
-
     // Footer Logo
     Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 8),
@@ -6441,7 +6397,7 @@ Column(
             ),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
@@ -6450,14 +6406,12 @@ Column(
 
 class _ConsentHistoryMockup extends StatefulWidget {
   const _ConsentHistoryMockup();
-
   @override
   State<_ConsentHistoryMockup> createState() => _ConsentHistoryMockupState();
 }
 
 class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
   final Set<String> _selectedFilters = {'PM-Kisan', 'PMAY'};
-
   void _toggleFilter(String filter) {
     setState(() {
       if (filter == 'All') {
@@ -6539,15 +6493,15 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
         statusColor: _isDark(context)
             ? Ux4gPalette.gray800
             : const Color(0xFFF1F3F4),
-        textColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray800,
+        textColor: _isDark(context)
+            ? Ux4gPalette.neutral50
+            : Ux4gPalette.gray800,
       ),
     ];
-
     final displayedConsents = allConsents.where((item) {
       if (_selectedFilters.contains('All')) return true;
       return _selectedFilters.contains(item.filterKey);
     }).toList();
-
     return _PhoneFrame(
       child: Column(
         children: [
@@ -6565,14 +6519,14 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                       children: [
                         Text(
                           'Consent History',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w800,
-                            color: _isDark(context)
-                                ? Colors.white
-                                : (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                            letterSpacing: -0.3,
-                          ),
+                          style: Theme.of(context)
+                              .extension<Ux4gTypography>()!
+                              .hM_default
+                              .copyWith(
+                                color: _isDark(context)
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.gray900,
+                              ),
                         ),
                         SizedBox(height: 8),
                         Text(
@@ -6581,7 +6535,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                             fontSize: 14,
                             color: _isDark(context)
                                 ? Ux4gPalette.neutral400
-                                : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                : (_isDark(context)
+                                      ? Ux4gPalette.neutral400
+                                      : Ux4gPalette.neutral500),
                             height: 1.4,
                           ),
                         ),
@@ -6627,7 +6583,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                 style: TextStyle(
                                   color: _isDark(context)
                                       ? Ux4gPalette.neutral400
-                                      : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                      : (_isDark(context)
+                                            ? Ux4gPalette.neutral400
+                                            : Ux4gPalette.neutral500),
                                 ),
                               ),
                             ),
@@ -6647,7 +6605,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                     border: Border.all(
                                       color: _isDark(context)
                                           ? Ux4gPalette.neutral700
-                                          : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                                          : (_isDark(context)
+                                                ? Ux4gPalette.neutral800
+                                                : Ux4gPalette.neutral200),
                                     ),
                                     boxShadow: [
                                       BoxShadow(
@@ -6674,7 +6634,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                               fontWeight: FontWeight.w700,
                                               color: _isDark(context)
                                                   ? Colors.white
-                                                  : (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                                  : (_isDark(context)
+                                                        ? Ux4gPalette.neutral50
+                                                        : Ux4gPalette.gray900),
                                             ),
                                           ),
                                           Ux4gTag(
@@ -6699,7 +6661,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                           'View',
                                           style: TextStyle(
                                             fontSize: 14,
-                                            color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                            color: (_isDark(context)
+                                                ? Ux4gPalette.primary300
+                                                : Ux4gPalette.primary600),
                                             fontWeight: FontWeight.w600,
                                             decoration:
                                                 TextDecoration.underline,
@@ -6722,7 +6686,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                             fontSize: 13,
                             color: _isDark(context)
                                 ? Ux4gPalette.neutral400
-                                : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                : (_isDark(context)
+                                      ? Ux4gPalette.neutral400
+                                      : Ux4gPalette.neutral500),
                           ),
                         ),
                         SizedBox(height: 8),
@@ -6730,11 +6696,14 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                           onTap: () {},
                           child: Text(
                             'Download Consent History (PDF)',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                              fontWeight: FontWeight.w700,
-                            ),
+                            style: Theme.of(context)
+                                .extension<Ux4gTypography>()!
+                                .lL_default
+                                .copyWith(
+                                  color: _isDark(context)
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600,
+                                ),
                           ),
                         ),
                         SizedBox(height: 24),
@@ -6744,7 +6713,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                             'Back',
                             style: TextStyle(
                               fontSize: 16,
-                              color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600),
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -6767,16 +6738,18 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                     fontSize: 11,
                     color: _isDark(context)
                         ? Ux4gPalette.neutral500
-                        : (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                        : (_isDark(context)
+                              ? Ux4gPalette.neutral500
+                              : Ux4gPalette.neutral400),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(height: 6),
                 Image.asset(
-            _digitalIndiaLogoPath,
-            height: 22,
-            color: _isDark(context) ? Colors.white : null,
-          ),
+                  _digitalIndiaLogoPath,
+                  height: 22,
+                  color: _isDark(context) ? Colors.white : null,
+                ),
               ],
             ),
           ),
@@ -6794,17 +6767,28 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
       onClick: () => _toggleFilter(label),
       selectedBackgroundColor: _isDark(context)
           ? Ux4gPalette.primary900
-          : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
-      selectedBorderColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-      selectedTextColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-      unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-
+          : (_isDark(context)
+                ? Ux4gPalette.primary900
+                : Ux4gPalette.primary100),
+      selectedBorderColor: (_isDark(context)
+          ? Ux4gPalette.primary300
+          : Ux4gPalette.primary600),
+      selectedTextColor: (_isDark(context)
+          ? Ux4gPalette.primary300
+          : Ux4gPalette.primary600),
+      unselectedBackgroundColor: _isDark(context)
+          ? Ux4gPalette.gray900
+          : Colors.white,
       unselectedBorderColor: _isDark(context)
           ? Ux4gPalette.neutral700
-          : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+          : (_isDark(context)
+                ? Ux4gPalette.neutral800
+                : Ux4gPalette.neutral200),
       unselectedTextColor: _isDark(context)
           ? Ux4gPalette.neutral400
-          : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+          : (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral600),
     );
   }
 
@@ -6820,7 +6804,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
               fontSize: 13.5,
               color: _isDark(context)
                   ? Ux4gPalette.neutral400
-                  : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                  : (_isDark(context)
+                        ? Ux4gPalette.neutral400
+                        : Ux4gPalette.neutral500),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -6831,7 +6817,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
             fontSize: 13.5,
             color: _isDark(context)
                 ? Ux4gPalette.neutral400
-                : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                : (_isDark(context)
+                      ? Ux4gPalette.neutral400
+                      : Ux4gPalette.neutral500),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -6840,7 +6828,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
             value,
             style: TextStyle(
               fontSize: 13.5,
-              color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+              color: _isDark(context)
+                  ? Ux4gPalette.neutral50
+                  : Ux4gPalette.gray900,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -6852,7 +6842,6 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
 
 class _ConsentHistoryCardMockup extends StatefulWidget {
   const _ConsentHistoryCardMockup();
-
   @override
   State<_ConsentHistoryCardMockup> createState() =>
       _ConsentHistoryCardMockupState();
@@ -6860,7 +6849,6 @@ class _ConsentHistoryCardMockup extends StatefulWidget {
 
 class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
   final Set<String> _selectedFilters = {'PM-Kisan', 'PMAY'};
-
   void _toggleFilter(String filter) {
     setState(() {
       if (filter == 'All') {
@@ -6942,15 +6930,15 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
         statusColor: _isDark(context)
             ? Ux4gPalette.gray800
             : const Color(0xFFF1F3F4),
-        textColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray800,
+        textColor: _isDark(context)
+            ? Ux4gPalette.neutral50
+            : Ux4gPalette.gray800,
       ),
     ];
-
     final displayedConsents = allConsents.where((item) {
       if (_selectedFilters.contains('All')) return true;
       return _selectedFilters.contains(item.filterKey);
     }).toList();
-
     return _PhoneFrame(
       child: Column(
         children: [
@@ -6959,7 +6947,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
             child: Container(
               color: _isDark(context)
                   ? Ux4gPalette.primary900
-                  : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+                  : (_isDark(context)
+                        ? Ux4gPalette.primary900
+                        : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -6985,14 +6975,14 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                           children: [
                             Text(
                               'Consent History',
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: _isDark(context)
-                                    ? Colors.white
-                                    : (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
-                                letterSpacing: -0.3,
-                              ),
+                              style: Theme.of(context)
+                                  .extension<Ux4gTypography>()!
+                                  .hM_default
+                                  .copyWith(
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.gray900,
+                                  ),
                             ),
                             SizedBox(height: 8),
                             Text(
@@ -7001,7 +6991,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                 fontSize: 13,
                                 color: _isDark(context)
                                     ? Ux4gPalette.neutral400
-                                    : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                    : (_isDark(context)
+                                          ? Ux4gPalette.neutral400
+                                          : Ux4gPalette.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -7040,7 +7032,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                     style: TextStyle(
                                       color: _isDark(context)
                                           ? Ux4gPalette.neutral400
-                                          : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                          : (_isDark(context)
+                                                ? Ux4gPalette.neutral400
+                                                : Ux4gPalette.neutral500),
                                     ),
                                   ),
                                 ),
@@ -7061,7 +7055,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                         border: Border.all(
                                           color: _isDark(context)
                                               ? Ux4gPalette.neutral700
-                                              : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                                              : (_isDark(context)
+                                                    ? Ux4gPalette.neutral800
+                                                    : Ux4gPalette.neutral200),
                                         ),
                                       ),
                                       child: Column(
@@ -7079,7 +7075,11 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                                   fontWeight: FontWeight.w700,
                                                   color: _isDark(context)
                                                       ? Colors.white
-                                                      : (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                                      : (_isDark(context)
+                                                            ? Ux4gPalette
+                                                                  .neutral50
+                                                            : Ux4gPalette
+                                                                  .gray900),
                                                 ),
                                               ),
                                               Ux4gTag(
@@ -7111,7 +7111,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                               'View',
                                               style: TextStyle(
                                                 fontSize: 13,
-                                                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                                color: (_isDark(context)
+                                                    ? Ux4gPalette.primary300
+                                                    : Ux4gPalette.primary600),
                                                 fontWeight: FontWeight.w600,
                                                 decoration:
                                                     TextDecoration.underline,
@@ -7134,7 +7136,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                       fontSize: 12,
                                       color: _isDark(context)
                                           ? Ux4gPalette.neutral400
-                                          : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                          : (_isDark(context)
+                                                ? Ux4gPalette.neutral400
+                                                : Ux4gPalette.neutral500),
                                     ),
                                   ),
                                   SizedBox(height: 8),
@@ -7142,11 +7146,14 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                     onTap: () {},
                                     child: Text(
                                       'Download Consent History (PDF)',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                                        fontWeight: FontWeight.w700,
-                                      ),
+                                      style: Theme.of(context)
+                                          .extension<Ux4gTypography>()!
+                                          .lL_default
+                                          .copyWith(
+                                            color: _isDark(context)
+                                                ? Ux4gPalette.primary300
+                                                : Ux4gPalette.primary600,
+                                          ),
                                     ),
                                   ),
                                   SizedBox(height: 24),
@@ -7154,6 +7161,14 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                     text: 'Back',
                                     onPressed: () {},
                                     variant: Ux4gButtonVariant.ghost,
+                                    textStyle: Theme.of(context)
+                                        .extension<Ux4gTypography>()!
+                                        .lXL_default
+                                        .copyWith(
+                                          color: _isDark(context)
+                                              ? Ux4gPalette.primary300
+                                              : Ux4gPalette.primary600,
+                                        ),
                                   ),
                                 ],
                               ),
@@ -7174,16 +7189,18 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                             fontSize: 11,
                             color: _isDark(context)
                                 ? Ux4gPalette.neutral500
-                                : (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                                : (_isDark(context)
+                                      ? Ux4gPalette.neutral500
+                                      : Ux4gPalette.neutral400),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         SizedBox(height: 6),
                         Image.asset(
-            _digitalIndiaLogoPath,
-            height: 22,
-            color: _isDark(context) ? Colors.white : null,
-          ),
+                          _digitalIndiaLogoPath,
+                          height: 22,
+                          color: _isDark(context) ? Colors.white : null,
+                        ),
                       ],
                     ),
                   ),
@@ -7205,17 +7222,28 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
       onClick: () => _toggleFilter(label),
       selectedBackgroundColor: _isDark(context)
           ? Ux4gPalette.primary900
-          : (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
-      selectedBorderColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-      selectedTextColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-      unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-
+          : (_isDark(context)
+                ? Ux4gPalette.primary900
+                : Ux4gPalette.primary100),
+      selectedBorderColor: (_isDark(context)
+          ? Ux4gPalette.primary300
+          : Ux4gPalette.primary600),
+      selectedTextColor: (_isDark(context)
+          ? Ux4gPalette.primary300
+          : Ux4gPalette.primary600),
+      unselectedBackgroundColor: _isDark(context)
+          ? Ux4gPalette.gray900
+          : Colors.white,
       unselectedBorderColor: _isDark(context)
           ? Ux4gPalette.neutral700
-          : (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+          : (_isDark(context)
+                ? Ux4gPalette.neutral800
+                : Ux4gPalette.neutral200),
       unselectedTextColor: _isDark(context)
           ? Ux4gPalette.neutral400
-          : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+          : (_isDark(context)
+                ? Ux4gPalette.neutral400
+                : Ux4gPalette.neutral600),
     );
   }
 
@@ -7231,7 +7259,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
               fontSize: 12.5,
               color: _isDark(context)
                   ? Ux4gPalette.neutral400
-                  : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                  : (_isDark(context)
+                        ? Ux4gPalette.neutral400
+                        : Ux4gPalette.neutral500),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -7242,7 +7272,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
             fontSize: 12.5,
             color: _isDark(context)
                 ? Ux4gPalette.neutral400
-                : (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                : (_isDark(context)
+                      ? Ux4gPalette.neutral400
+                      : Ux4gPalette.neutral500),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -7251,7 +7283,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
             value,
             style: TextStyle(
               fontSize: 12.5,
-              color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+              color: _isDark(context)
+                  ? Ux4gPalette.neutral50
+                  : Ux4gPalette.gray900,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -7270,7 +7304,6 @@ class _ConsentHistoryItem {
   final String status;
   final Color statusColor;
   final Color textColor;
-
   _ConsentHistoryItem({
     required this.title,
     required this.scheme,
@@ -7291,9 +7324,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -7311,10 +7344,9 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
-
     Expanded(
       child: Container(
         color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple background
@@ -7341,12 +7373,7 @@ Column(
                     children: [
                       Text(
                         'Consent History',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
-                          letterSpacing: -0.3,
-                        ),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
                       ),
                       SizedBox(height: 8),
                       Text(
@@ -7358,7 +7385,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // Horizontal Scrollable Choice Chips
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -7407,7 +7433,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // Card 1: Bank of India
                       Container(
                         width: double.infinity,
@@ -7455,7 +7480,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 12),
-
                       // Card 2: Payment Corp
                       Container(
                         width: double.infinity,
@@ -7503,7 +7527,6 @@ Column(
                         ),
                       ),
                       SizedBox(height: 20),
-
                       // Footer Actions
                       Center(
                         child: Column(
@@ -7515,17 +7538,14 @@ Column(
                             SizedBox(height: 8),
                             Text(
                               'Download Consent History (PDF)',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                                fontWeight: FontWeight.w700,
-                              ),
+                              style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                             ),
                             SizedBox(height: 24),
                             Ux4gButton(
                               text: 'Back',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
+                              textStyle: Theme.of(context).extension<Ux4gTypography>()!.lXL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                             ),
                           ],
                         ),
@@ -7546,7 +7566,7 @@ Column(
                     style: TextStyle(fontSize: 11, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -7556,14 +7576,11 @@ Column(
     ),
   ],
 )
-
 // Helper widget for Consent History code strings
 class _ConsentRow extends StatelessWidget {
   final String label;
   final String value;
-
   _ConsentRow({required this.label, required this.value});
-
   @override
   Widget build(BuildContext context) {
     return Row(

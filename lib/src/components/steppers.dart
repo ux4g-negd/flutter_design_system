@@ -8,6 +8,8 @@ enum StepperOrientation { horizontal, vertical }
 
 enum StepperLineStyle { solid, dashed }
 
+enum StepperLinePlacement { center, bottom }
+
 class Ux4gStepItem {
   final String title;
   final String? description;
@@ -33,8 +35,14 @@ class Ux4gStepper extends StatelessWidget {
   final int currentStep;
   final StepperOrientation orientation;
   final StepperLineStyle lineStyle;
+  final StepperLinePlacement linePlacement;
   final List<Ux4gStepItem> steps;
   final double stepSize;
+  final bool showLabels;
+  final bool edgeLabelAlignment;
+  final bool activeStepBackground;
+  final double stepSpacing;
+  final bool alignIconWithDescription;
 
   const Ux4gStepper({
     super.key,
@@ -42,8 +50,14 @@ class Ux4gStepper extends StatelessWidget {
     required this.currentStep,
     this.orientation = StepperOrientation.horizontal,
     this.lineStyle = StepperLineStyle.solid,
+    this.linePlacement = StepperLinePlacement.center,
     this.steps = const [],
     this.stepSize = 32,
+    this.showLabels = true,
+    this.edgeLabelAlignment = false,
+    this.activeStepBackground = false,
+    this.stepSpacing = 24.0,
+    this.alignIconWithDescription = false,
   });
 
   @override
@@ -53,8 +67,12 @@ class Ux4gStepper extends StatelessWidget {
         totalSteps: totalSteps,
         currentStep: currentStep,
         lineStyle: lineStyle,
+        linePlacement: linePlacement,
         steps: steps,
         stepSize: stepSize,
+        showLabels: showLabels,
+        edgeLabelAlignment: edgeLabelAlignment,
+        activeStepBackground: activeStepBackground,
       );
     }
 
@@ -64,6 +82,9 @@ class Ux4gStepper extends StatelessWidget {
       lineStyle: lineStyle,
       steps: steps,
       stepSize: stepSize,
+      showLabels: showLabels,
+      stepSpacing: stepSpacing,
+      alignIconWithDescription: alignIconWithDescription,
     );
   }
 }
@@ -72,19 +93,100 @@ class _HorizontalStepper extends StatelessWidget {
   final int totalSteps;
   final int currentStep;
   final StepperLineStyle lineStyle;
+  final StepperLinePlacement linePlacement;
   final List<Ux4gStepItem> steps;
   final double stepSize;
+  final bool showLabels;
+  final bool edgeLabelAlignment;
+  final bool activeStepBackground;
 
   const _HorizontalStepper({
     required this.totalSteps,
     required this.currentStep,
     required this.lineStyle,
+    required this.linePlacement,
     required this.steps,
     required this.stepSize,
+    required this.showLabels,
+    required this.edgeLabelAlignment,
+    required this.activeStepBackground,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (linePlacement == StepperLinePlacement.bottom) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(totalSteps, (i) {
+          final stepIndex = i + 1;
+          final isCompleted = currentStep > stepIndex;
+          final isActive = currentStep == stepIndex;
+          final isPending = currentStep < stepIndex;
+          final stepData = i < steps.length ? steps[i] : null;
+
+          final showActiveBg = activeStepBackground && isActive;
+          final isDark = Theme.of(context).brightness == Brightness.dark;
+          final bgColor = showActiveBg
+              ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+              : Colors.transparent;
+
+          return Expanded(
+            child: Container(
+              color: bgColor,
+              padding: const EdgeInsets.only(top: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: stepSize,
+                    height: stepSize,
+                    child: Center(
+                      child: _StepIcon(
+                        stepIndex: stepIndex,
+                        isCompleted: isCompleted,
+                        isActive: isActive,
+                        isPending: isPending,
+                        isError: stepData?.isError ?? false,
+                        size: stepSize,
+                      ),
+                    ),
+                  ),
+                  if (showLabels) ...[
+                    const SizedBox(height: 8),
+                    _StepLabels(
+                      title: stepData?.title ?? 'Step $stepIndex',
+                      description: stepData?.description,
+                      statusLabel: stepData?.statusLabel,
+                      isCompleted: isCompleted,
+                      isActive: isActive,
+                      isPending: isPending,
+                      isError: stepData?.isError ?? false,
+                      textAlign: TextAlign.center,
+                      titleStyle: stepData?.titleStyle,
+                      descriptionStyle: stepData?.descriptionStyle,
+                      statusStyle: stepData?.statusStyle,
+                    ),
+                  ],
+                  const SizedBox(height: 12),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: i == 0 ? 0 : 4.0,
+                      right: i == totalSteps - 1 ? 0 : 4.0,
+                    ),
+                    child: _StepperLine(
+                      isCompleted: isCompleted,
+                      orientation: StepperOrientation.horizontal,
+                      lineStyle: lineStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
+      );
+    }
+
     return Stack(
       children: [
         Padding(
@@ -95,7 +197,9 @@ class _HorizontalStepper extends StatelessWidget {
               return Expanded(
                 child: Row(
                   children: [
-                    if (i == 0)
+                    if (edgeLabelAlignment && i == 0)
+                      SizedBox(width: stepSize)
+                    else if (i == 0)
                       const Expanded(child: SizedBox())
                     else
                       Expanded(
@@ -105,8 +209,12 @@ class _HorizontalStepper extends StatelessWidget {
                           lineStyle: lineStyle,
                         ),
                       ),
-                    SizedBox(width: stepSize),
-                    if (i == totalSteps - 1)
+                    if (!(edgeLabelAlignment && i == 0) &&
+                        !(edgeLabelAlignment && i == totalSteps - 1))
+                      SizedBox(width: stepSize),
+                    if (edgeLabelAlignment && i == totalSteps - 1)
+                      SizedBox(width: stepSize)
+                    else if (i == totalSteps - 1)
                       const Expanded(child: SizedBox())
                     else
                       Expanded(
@@ -131,9 +239,23 @@ class _HorizontalStepper extends StatelessWidget {
             final isPending = currentStep < stepIndex;
             final stepData = i < steps.length ? steps[i] : null;
 
+            TextAlign textAlign = TextAlign.center;
+            CrossAxisAlignment columnAlignment = CrossAxisAlignment.center;
+            if (edgeLabelAlignment) {
+              if (i == 0) {
+                textAlign = TextAlign.left;
+                columnAlignment = CrossAxisAlignment.start;
+              }
+              if (i == totalSteps - 1) {
+                textAlign = TextAlign.right;
+                columnAlignment = CrossAxisAlignment.end;
+              }
+            }
+
             return Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: columnAlignment,
                 children: [
                   SizedBox(
                     width: stepSize,
@@ -149,23 +271,25 @@ class _HorizontalStepper extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: _StepLabels(
-                      title: stepData?.title ?? 'Step $stepIndex',
-                      description: stepData?.description,
-                      statusLabel: stepData?.statusLabel,
-                      isCompleted: isCompleted,
-                      isActive: isActive,
-                      isPending: isPending,
-                      isError: stepData?.isError ?? false,
-                      textAlign: TextAlign.center,
-                      titleStyle: stepData?.titleStyle,
-                      descriptionStyle: stepData?.descriptionStyle,
-                      statusStyle: stepData?.statusStyle,
+                  if (showLabels) ...[
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: _StepLabels(
+                        title: stepData?.title ?? 'Step $stepIndex',
+                        description: stepData?.description,
+                        statusLabel: stepData?.statusLabel,
+                        isCompleted: isCompleted,
+                        isActive: isActive,
+                        isPending: isPending,
+                        isError: stepData?.isError ?? false,
+                        textAlign: textAlign,
+                        titleStyle: stepData?.titleStyle,
+                        descriptionStyle: stepData?.descriptionStyle,
+                        statusStyle: stepData?.statusStyle,
+                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             );
@@ -182,6 +306,9 @@ class _VerticalStepper extends StatelessWidget {
   final StepperLineStyle lineStyle;
   final List<Ux4gStepItem> steps;
   final double stepSize;
+  final bool showLabels;
+  final double stepSpacing;
+  final bool alignIconWithDescription;
 
   const _VerticalStepper({
     required this.totalSteps,
@@ -189,6 +316,9 @@ class _VerticalStepper extends StatelessWidget {
     required this.lineStyle,
     required this.steps,
     required this.stepSize,
+    required this.showLabels,
+    required this.stepSpacing,
+    required this.alignIconWithDescription,
   });
 
   @override
@@ -209,6 +339,19 @@ class _VerticalStepper extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    if (alignIconWithDescription &&
+                        stepData != null &&
+                        stepData.title.isNotEmpty)
+                      SizedBox(
+                        height: 28,
+                        child: i > 0
+                            ? _StepperLine(
+                                isCompleted: currentStep > i,
+                                orientation: StepperOrientation.vertical,
+                                lineStyle: lineStyle,
+                              )
+                            : null,
+                      ),
                     _StepIcon(
                       stepIndex: stepIndex,
                       isCompleted: isCompleted,
@@ -218,38 +361,50 @@ class _VerticalStepper extends StatelessWidget {
                       size: stepSize,
                     ),
                     if (i < totalSteps - 1)
-                      Expanded(
-                        child: _StepperLine(
-                          isCompleted: isCompleted,
-                          orientation: StepperOrientation.vertical,
-                          lineStyle: lineStyle,
+                      if (showLabels)
+                        Expanded(
+                          child: _StepperLine(
+                            isCompleted: isCompleted,
+                            orientation: StepperOrientation.vertical,
+                            lineStyle: lineStyle,
+                          ),
+                        )
+                      else
+                        SizedBox(
+                          height: stepSpacing,
+                          child: _StepperLine(
+                            isCompleted: isCompleted,
+                            orientation: StepperOrientation.vertical,
+                            lineStyle: lineStyle,
+                          ),
                         ),
-                      ),
                   ],
                 ),
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: 4,
-                    bottom: i < totalSteps - 1 ? 24 : 0,
-                  ),
-                  child: _StepLabels(
-                    title: stepData?.title ?? 'Step $stepIndex',
-                    description: stepData?.description,
-                    statusLabel: stepData?.statusLabel,
-                    isCompleted: isCompleted,
-                    isActive: isActive,
-                    isPending: isPending,
-                    isError: stepData?.isError ?? false,
-                    textAlign: TextAlign.start,
-                    titleStyle: stepData?.titleStyle,
-                    descriptionStyle: stepData?.descriptionStyle,
-                    statusStyle: stepData?.statusStyle,
+              if (showLabels) ...[
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 4,
+                      bottom: i < totalSteps - 1 ? stepSpacing : 0,
+                    ),
+                    child: _StepLabels(
+                      title: stepData?.title ?? 'Step $stepIndex',
+                      description: stepData?.description,
+                      statusLabel: stepData?.statusLabel,
+                      isCompleted: isCompleted,
+                      isActive: isActive,
+                      isPending: isPending,
+                      isError: stepData?.isError ?? false,
+                      textAlign: TextAlign.start,
+                      titleStyle: stepData?.titleStyle,
+                      descriptionStyle: stepData?.descriptionStyle,
+                      statusStyle: stepData?.statusStyle,
+                    ),
                   ),
                 ),
-              ),
+              ],
             ],
           ),
         );
@@ -408,7 +563,9 @@ class _StepLabels extends StatelessWidget {
     return Column(
       crossAxisAlignment: textAlign == TextAlign.center
           ? CrossAxisAlignment.center
-          : CrossAxisAlignment.start,
+          : (textAlign == TextAlign.right
+              ? CrossAxisAlignment.end
+              : CrossAxisAlignment.start),
       children: [
         Text(
           title,
@@ -556,7 +713,7 @@ class _LinePainter extends CustomPainter {
   }
 }
 
-enum Ux4gCapsuleStepperLayout { linear, rightAligned, centered, split }
+enum Ux4gCapsuleStepperLayout { linear, rightAligned, centered, centeredBetween, split }
 
 class Ux4gCapsuleStepper extends StatelessWidget {
   final int totalSteps;
@@ -638,6 +795,17 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
+          else if (layout == Ux4gCapsuleStepperLayout.centeredBetween)
+            _CenteredBetweenCapsuleStepper(
+              totalSteps: totalSteps,
+              currentStep: currentStep,
+              stepLabel: stepLabel,
+              description: description,
+              onNext: onNext,
+              onPrevious: onPrevious,
+              activeColor: resolvedActiveColor,
+              inactiveColor: resolvedInactiveColor,
+            )
           else
             _SplitCapsuleStepper(
               totalSteps: totalSteps,
@@ -676,6 +844,9 @@ class _CapsuleIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final row = Row(
       mainAxisSize: mainAxisSize,
+      mainAxisAlignment: mainAxisSize == MainAxisSize.max 
+          ? MainAxisAlignment.spaceBetween 
+          : MainAxisAlignment.start,
       children: List.generate(totalSteps, (i) {
         final isActive = i + 1 == currentStep;
 
@@ -1007,6 +1178,7 @@ class _CenteredCapsuleStepper extends StatelessWidget {
           currentStep: currentStep,
           activeColor: activeColor,
           inactiveColor: inactiveColor,
+          mainAxisSize: MainAxisSize.max,
         ),
         const SizedBox(height: 16),
         Row(
@@ -1036,7 +1208,7 @@ class _CenteredCapsuleStepper extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         Text(
           stepLabel,
           style:
@@ -1056,6 +1228,104 @@ class _CenteredCapsuleStepper extends StatelessWidget {
                     ?.copyWith(color: onSurface.withValues(alpha: 0.5)),
             textAlign: TextAlign.center,
           ),
+      ],
+    );
+  }
+}
+
+class _CenteredBetweenCapsuleStepper extends StatelessWidget {
+  final int totalSteps;
+  final int currentStep;
+  final String stepLabel;
+  final String? description;
+  final VoidCallback onNext;
+  final VoidCallback onPrevious;
+  final Color activeColor;
+  final Color inactiveColor;
+
+  const _CenteredBetweenCapsuleStepper({
+    required this.totalSteps,
+    required this.currentStep,
+    required this.stepLabel,
+    required this.description,
+    required this.onNext,
+    required this.onPrevious,
+    required this.activeColor,
+    required this.inactiveColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final materialTheme = Theme.of(context);
+    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gTypography = materialTheme.extension<Ux4gTypography>();
+
+    final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
+    final onSurface =
+        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
+
+    return Column(
+      children: [
+        _CapsuleIndicator(
+          totalSteps: totalSteps,
+          currentStep: currentStep,
+          activeColor: activeColor,
+          inactiveColor: inactiveColor,
+          mainAxisSize: MainAxisSize.max,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Step $currentStep of $totalSteps',
+          style:
+              (ux4gTypography?.lM_strong ??
+                      materialTheme.textTheme.labelMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ))
+                  ?.copyWith(color: onSurface),
+        ),
+        const SizedBox(height: 4),
+        Row(
+          children: [
+            _StepperIconButton(
+              icon: Ux4gIcons.arrowLeft,
+              enabled: currentStep > 1,
+              onClick: onPrevious,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    stepLabel,
+                    style:
+                        (ux4gTypography?.lL_strong ??
+                                materialTheme.textTheme.labelLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ))
+                            ?.copyWith(color: primary),
+                    textAlign: TextAlign.center,
+                  ),
+                  if (description != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      description!,
+                      style:
+                          (ux4gTypography?.lM_default ??
+                                  materialTheme.textTheme.labelMedium)
+                              ?.copyWith(color: onSurface.withValues(alpha: 0.5)),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            _StepperIconButton(
+              icon: Ux4gIcons.arrowRight,
+              enabled: currentStep < totalSteps,
+              onClick: onNext,
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -1104,58 +1374,64 @@ class _SplitCapsuleStepper extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              stepLabel,
-              style:
-                  (ux4gTypography?.lL_strong ??
-                          materialTheme.textTheme.labelLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ))
-                      ?.copyWith(color: primary),
-            ),
-            Text(
-              'Step $currentStep of $totalSteps',
-              style:
-                  (ux4gTypography?.lM_strong ??
-                          materialTheme.textTheme.labelMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ))
-                      ?.copyWith(color: onSurface),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
             Expanded(
-              child: description == null
-                  ? const SizedBox()
-                  : Text(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    stepLabel,
+                    style:
+                        (ux4gTypography?.lL_strong ??
+                                materialTheme.textTheme.labelLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ))
+                            ?.copyWith(color: primary),
+                  ),
+                  if (description != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
                       description!,
                       style:
                           (ux4gTypography?.lM_default ??
                                   materialTheme.textTheme.labelMedium)
-                              ?.copyWith(
-                                color: onSurface.withValues(alpha: 0.5),
-                              ),
+                              ?.copyWith(color: onSurface.withValues(alpha: 0.5)),
                     ),
+                  ],
+                ],
+              ),
             ),
-            const SizedBox(width: 12),
-            Row(
+            const SizedBox(width: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                _StepperIconButton(
-                  icon: Ux4gIcons.arrowLeft,
-                  enabled: currentStep > 1,
-                  onClick: onPrevious,
+                Text(
+                  'Step $currentStep of $totalSteps',
+                  style:
+                      (ux4gTypography?.lM_strong ??
+                              materialTheme.textTheme.labelMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ))
+                          ?.copyWith(color: onSurface),
                 ),
-                const SizedBox(width: 8),
-                _StepperIconButton(
-                  icon: Ux4gIcons.arrowRight,
-                  enabled: currentStep < totalSteps,
-                  onClick: onNext,
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _StepperIconButton(
+                      icon: Ux4gIcons.arrowLeft,
+                      enabled: currentStep > 1,
+                      onClick: onPrevious,
+                    ),
+                    const SizedBox(width: 8),
+                    _StepperIconButton(
+                      icon: Ux4gIcons.arrowRight,
+                      enabled: currentStep < totalSteps,
+                      onClick: onNext,
+                    ),
+                  ],
                 ),
               ],
             ),

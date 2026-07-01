@@ -5,9 +5,40 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
+
+// ignore: unused_element
+
+bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+
+// ignore: unused_element
+
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
+
+// ignore: unused_element
+
+Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
+
+// ignore: unused_element
+
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+
+// ignore: unused_element
+
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+
+// ignore: unused_element
+
+Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+
+// ignore: unused_element
+
+Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+
+// ignore: unused_element
+
 const _primaryColor = Color(0xFF432CBB);
+
+
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -64,10 +95,12 @@ class LiveChatSupportScreen extends StatelessWidget {
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
+              leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 const SizedBox(width: 3),
                 SizedBox(
                   height: 32,
@@ -77,25 +110,15 @@ class LiveChatSupportScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 3),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // Content
             Expanded(
@@ -115,22 +138,40 @@ class LiveChatSupportScreen extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFECFDF5),
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xFFD1FAE5)),
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green300,
+                        ),
                       ),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.check_circle, color: Color(0xFF00522C), size: 22),
+                          Icon(
+                            Icons.check_circle,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+                            size: 22,
+                          ),
                           const SizedBox(width: 10),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Queue agent available',
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFF00522C))),
+                              Text(
+                                'Queue agent available',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                                ),
+                              ),
                               const SizedBox(height: 2),
-                              Text('Estimated wait time: 1-2 mins',
-                                  style: TextStyle(fontSize: 12, color: Color(0xFF00522C))),
+                              Text(
+                                'Estimated wait time: 1-2 mins',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                                ),
+                              ),
                             ],
                           ),
                         ],
@@ -148,6 +189,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                         text: 'Start Chat Session',
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -159,6 +201,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                         text: 'Email support instead',
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                         borderColor: const Color(0xFF432CBB),
                         contentColor: const Color(0xFF432CBB),
                       ),
@@ -175,7 +218,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -208,10 +251,12 @@ class LiveChatSupportCardScreen extends StatelessWidget {
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
+              leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -221,25 +266,15 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // White card content
             Expanded(
@@ -264,22 +299,40 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                           width: double.infinity,
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFECFDF5),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green50,
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: const Color(0xFFD1FAE5)),
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green300,
+                            ),
                           ),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(Icons.check_circle, color: Color(0xFF00522C), size: 22),
+                              Icon(
+                                Icons.check_circle,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+                                size: 22,
+                              ),
                               const SizedBox(width: 10),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Queue agent available',
-                                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFF00522C))),
+                                  Text(
+                                    'Queue agent available',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                                    ),
+                                  ),
                                   const SizedBox(height: 2),
-                                  Text('Estimated wait time: 1-2 mins',
-                                      style: TextStyle(fontSize: 12, color: Color(0xFF00522C))),
+                                  Text(
+                                    'Estimated wait time: 1-2 mins',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -297,6 +350,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                             text: 'Start Chat Session',
                             variant: Ux4gButtonVariant.primary,
                             size: Ux4gButtonSize.large,
+                            height: 48,
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -308,6 +362,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                             text: 'Email support instead',
                             variant: Ux4gButtonVariant.outline,
                             size: Ux4gButtonSize.large,
+                            height: 48,
                             borderColor: const Color(0xFF432CBB),
                             contentColor: const Color(0xFF432CBB),
                           ),
@@ -326,7 +381,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -350,22 +405,24 @@ class _LiveChatSupportMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
+                elevation: 2,
+                leadingSpacing: 8,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(
-                    'assets/national_amblam_logo.svg',
+                    Ux4gIcons.nationalEmblem,
                     height: 40,
+                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
-                  const SizedBox(width: 3),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
@@ -373,53 +430,15 @@ class _LiveChatSupportMockup extends StatelessWidget {
                       color: const Color(0xFFD1D5DB),
                     ),
                   ),
-                  const SizedBox(width: 3),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ],
-              ),
-
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) => const Text(
-                        '\u{1f1ee}\u{1f1f3}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
               ),
 
               // Content
@@ -428,14 +447,14 @@ class _LiveChatSupportMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: isCard
                       ? Ux4gCard(
-                          backgroundColor: Colors.white,
+                          backgroundColor: _getCardBg(context),
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(),
+                            child: _buildContent(context),
                           ),
                         )
-                      : _buildContent(),
+                      : _buildContent(context),
                 ),
               ),
 
@@ -451,9 +470,10 @@ class _LiveChatSupportMockup extends StatelessWidget {
                         text: 'Start Chat Session',
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     SizedBox(
                       width: double.infinity,
                       child: Ux4gButton(
@@ -461,6 +481,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                         text: 'Email support instead',
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                         borderColor: _primaryColor,
                         contentColor: _primaryColor,
                       ),
@@ -468,7 +489,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12),
 
               // Powered by
               Padding(
@@ -476,15 +497,15 @@ class _LiveChatSupportMockup extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
                       style: TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => const Text(
+                      errorBuilder: (_, __, ___) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -502,70 +523,76 @@ class _LiveChatSupportMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Live Chat Support',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: _getTitleColor(context),
           ),
         ),
-        const SizedBox(height: 8),
-        const Text(
+        SizedBox(height: 8),
+        Text(
           'Chat with a support agent for real-time help with your application.',
-          style: TextStyle(fontSize: 14, color: _subtleText),
+          style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24),
 
         // Status card
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: const Color(0xFFF2FCEF),
+            color: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: const Color(0xFF80DA88)),
+            border: Border.all(
+              color: _isDark(context) ? Ux4gPalette.green600 : Ux4gPalette.green300,
+            ),
           ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(
+              Icon(
                 Icons.check_circle,
-                color: Color(0xFF00522C),
+                color: _isDark(context) ? Ux4gPalette.green500 : Ux4gPalette.green600,
                 size: 22,
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Queue agent available',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF065F46),
+                      color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green800,
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  const Text(
+                  SizedBox(height: 2),
+                  Text(
                     'Estimated wait time: 1-2 mins',
-                    style: TextStyle(fontSize: 12, color: Color(0xFF00522C)),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24),
 
-        const Text(
+        Text(
           'Connect now to discuss your application with our support team. Average response time under 2 minutes.',
-          style: TextStyle(fontSize: 14, color: _subtleText),
+          style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
         ),
-        const SizedBox(height: 32),
+        SizedBox(height: 32),
       ],
     );
   }

@@ -29,6 +29,7 @@ class Ux4gStatusBanner extends StatelessWidget {
   final Color? borderColor;
   final WrapAlignment actionsAlignment;
   final double? width;
+  final double? height;
 
   /// Outer margin around the banner. Defaults to
   /// `EdgeInsets.symmetric(horizontal: 16, vertical: 8)` to preserve
@@ -56,8 +57,9 @@ class Ux4gStatusBanner extends StatelessWidget {
     this.borderColor,
     this.actionsAlignment = WrapAlignment.start,
     this.width,
+    this.height,
     this.margin = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    this.padding = const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
   });
 
   @override
@@ -136,6 +138,8 @@ class Ux4gStatusBanner extends StatelessWidget {
 
     return Container(
       width: width ?? double.infinity,
+      height: height,
+      constraints: BoxConstraints(minHeight: height ?? 48),
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
@@ -150,86 +154,70 @@ class Ux4gStatusBanner extends StatelessWidget {
           ),
         ],
       ),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final isMobile = constraints.maxWidth < 500;
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            crossAxisAlignment: (subtitle != null || subtitleWidget != null)
+                ? CrossAxisAlignment.start
+                : CrossAxisAlignment.center,
             children: [
-              Row(
-                crossAxisAlignment: (subtitle != null || subtitleWidget != null)
-                    ? CrossAxisAlignment.start
-                    : CrossAxisAlignment.center,
-                children: [
-                  if (leadingIcon != null) ...[
-                    leadingIcon!,
-                    const SizedBox(width: 16),
-                  ],
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+              if (leadingIcon != null) ...[
+                leadingIcon!,
+                const SizedBox(width: 16),
+              ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 12,
+                      runSpacing: 6,
                       children: [
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 12,
-                          runSpacing: 6,
-                          children: [
-                            Text(
-                              title,
-                              style: (titleStyle ?? bMStrong).copyWith(
-                                color: titleStyle?.color ?? textColor,
-                              ),
-                            ),
-                            ?badge,
-                          ],
-                        ),
-                        if (subtitleWidget != null) ...[
-                          const SizedBox(height: 4),
-                          subtitleWidget!,
-                        ] else if (subtitle != null) ...[
-                          const SizedBox(height: 4),
-                          Text(
-                            subtitle!,
-                            style: (subtitleStyle ?? bMDefault).copyWith(
-                              color: subtitleStyle?.color ?? subtitleColor,
-                            ),
+                        Text(
+                          title,
+                          style: (titleStyle ?? bMStrong).copyWith(
+                            color: titleStyle?.color ?? textColor,
                           ),
-                        ],
+                        ),
+                        if (badge != null) badge!,
                       ],
                     ),
-                  ),
-                  if (trailingIcon != null) ...[
-                    const SizedBox(width: 16),
-                    trailingIcon!,
+                    if (subtitleWidget != null) ...[
+                      const SizedBox(height: 4),
+                      subtitleWidget!,
+                    ] else if (subtitle != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle!,
+                        style: (subtitleStyle ?? bMDefault).copyWith(
+                          color: subtitleStyle?.color ?? subtitleColor,
+                        ),
+                      ),
+                    ],
                   ],
-                  if (!isMobile && actions != null && actions!.isNotEmpty) ...[
-                    const SizedBox(width: 16),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: actions!.map((action) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: action,
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ],
-              ),
-              if (isMobile && actions != null && actions!.isNotEmpty) ...[
-                const SizedBox(height: 4),
-                Wrap(
-                  alignment: actionsAlignment,
-                  spacing: 12,
-                  runSpacing: 12,
-                  children: actions!,
                 ),
+              ),
+              if (trailingIcon != null) ...[
+                const SizedBox(width: 16),
+                trailingIcon!,
               ],
             ],
-          );
-        },
+          ),
+          if (actions != null && actions!.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Wrap(
+              alignment: actionsAlignment,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 12,
+              runSpacing: 12,
+              children: actions!,
+            ),
+          ],
+        ],
       ),
     );
   }

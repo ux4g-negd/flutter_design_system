@@ -227,6 +227,11 @@ class _Ux4gTooltipState extends State<Ux4gTooltip>
     final anchorRect = anchorTopLeft & box.size;
     final screenSize = overlayBox.size;
     final effectivePlacement = _resolvePlacement(anchorRect, screenSize);
+    
+    // Capture the theme from the widget's location (Widgetbook preview area)
+    // rather than using the root Overlay's context (which uses system theme).
+    final appTheme = Theme.of(this.context);
+
     return Positioned.fill(
       child: Stack(
         children: [
@@ -261,7 +266,11 @@ class _Ux4gTooltipState extends State<Ux4gTooltip>
                     end: 1,
                   ).animate(_fadeAnimation),
                   alignment: _scaleAlignmentFor(effectivePlacement),
-                  child: _TooltipBubble(
+                  child: Theme(
+                    data: appTheme,
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: _TooltipBubble(
                     text: widget.tooltipText,
                     title: widget.title,
                     icon: widget.icon,
@@ -273,6 +282,8 @@ class _Ux4gTooltipState extends State<Ux4gTooltip>
                     cornerRadius: widget.cornerRadius,
                     arrowWidth: widget.arrowWidth,
                     arrowHeight: widget.arrowHeight,
+                  ),
+                  ),
                   ),
                 ),
               ),
@@ -559,8 +570,12 @@ class _TooltipBubble extends StatelessWidget {
         ) ??
         const TextStyle();
 
-    final bgColor = backgroundColor ?? onSurface;
-    final fgColor = contentColor ?? surface;
+    final isDark = materialTheme.brightness == Brightness.dark;
+
+    final bgColor = backgroundColor ??
+        (isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700);
+    final fgColor = contentColor ??
+        (isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50);
 
     return CustomPaint(
       painter: _TooltipPainter(

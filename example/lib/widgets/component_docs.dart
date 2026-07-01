@@ -108,7 +108,10 @@ class _ComponentDocsState extends State<ComponentDocs>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 10,
+                        runSpacing: 8,
                         children: [
                           Text(
                             widget.name,
@@ -119,7 +122,6 @@ class _ComponentDocsState extends State<ComponentDocs>
                                   : const Color(0xFF0F172A),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           _Chip(label: 'Component', color: scheme.primary),
                         ],
                       ),
@@ -236,7 +238,7 @@ class _ComponentDocsState extends State<ComponentDocs>
 
                   // Tab views
                   SizedBox(
-                    height: 500,
+                    height: MediaQuery.of(context).size.height * 0.75,
                     child: TabBarView(
                       controller: _tab,
                       children: [
@@ -299,17 +301,24 @@ class _PreviewPane extends StatelessWidget {
           bottomRight: Radius.circular(12),
         ),
       ),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: center
-            ? Center(
-                child: mobileMockup
-                    ? SizedBox(width: 360, height: 760, child: child)
-                    : child,
-              )
-            : (mobileMockup
-                  ? SizedBox(width: 360, height: 760, child: child)
-                  : child),
+      child: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.all(24),
+            sliver: SliverFillRemaining(
+              hasScrollBody: false,
+              child: center
+                  ? Center(
+                      child: mobileMockup
+                          ? SizedBox(width: 360, height: 760, child: child)
+                          : child,
+                    )
+                  : (mobileMockup
+                        ? SizedBox(width: 360, height: 760, child: child)
+                        : child),
+            ),
+          ),
+        ],
       ),
     );
   }

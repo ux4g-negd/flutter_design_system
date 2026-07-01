@@ -109,8 +109,8 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   /// Border color for [outlined] variant.
   final Color? borderColor;
 
-  /// Height of the header (excluding status bar).
-  final double height;
+  /// Height of the header (excluding status bar). If null, it adapts to screen size.
+  final double? height;
 
   /// Horizontal padding.
   final double horizontalPadding;
@@ -123,6 +123,9 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
 
   /// Elevation (shadow depth).
   final double elevation;
+
+  /// Whether to wrap the header with SafeArea to avoid status bar overlap.
+  final bool useSafeArea;
 
   const Ux4gAppHeader({
     super.key,
@@ -143,11 +146,12 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.borderColor,
-    this.height = 56,
+    this.height,
     this.horizontalPadding = Ux4gSpace.space12,
     this.leadingSpacing = Ux4gSpace.space8,
     this.actionSpacing = Ux4gSpace.space4,
     this.elevation = 0,
+    this.useSafeArea = true,
   });
 
   Color _resolveBackgroundColor(
@@ -179,13 +183,17 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight(height ?? 56.0);
 
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
     final ux4gColors = materialTheme.extension<Ux4gColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
+
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 600;
+    final resolvedHeight = height ?? (isSmallScreen ? 48.0 : 56.0);
 
     final bg = _resolveBackgroundColor(ux4gColors, materialTheme);
     final fg = _resolveForegroundColor(ux4gColors, materialTheme);
@@ -273,6 +281,40 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
           )
         : null;
 
+    final content = SizedBox(
+      height: resolvedHeight,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+        child: Row(
+          children: [
+            // Leading
+            if (leadingSection != null) ...[
+              leadingSection,
+              SizedBox(width: leadingSpacing),
+            ],
+
+            // Title
+            Expanded(
+              child:
+                  titleWidget ??
+                  Text(
+                    title,
+                    style: resolvedTitleStyle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+            ),
+
+            // Trailing actions
+            if (trailingSection != null) ...[
+              SizedBox(width: actionSpacing),
+              trailingSection,
+            ],
+          ],
+        ),
+      ),
+    );
+
     return Container(
       decoration: BoxDecoration(
         color: bg,
@@ -287,42 +329,7 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
               ]
             : null,
       ),
-      child: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          height: height,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-            child: Row(
-              children: [
-                // Leading
-                if (leadingSection != null) ...[
-                  leadingSection,
-                  SizedBox(width: leadingSpacing),
-                ],
-
-                // Title
-                Expanded(
-                  child:
-                      titleWidget ??
-                      Text(
-                        title,
-                        style: resolvedTitleStyle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                ),
-
-                // Trailing actions
-                if (trailingSection != null) ...[
-                  SizedBox(width: actionSpacing),
-                  trailingSection,
-                ],
-              ],
-            ),
-          ),
-        ),
-      ),
+      child: useSafeArea ? SafeArea(bottom: false, child: content) : content,
     );
   }
 }

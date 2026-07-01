@@ -6,13 +6,11 @@ import 'package:widgetbook/widgetbook.dart';
 import '../../widgets/component_docs.dart';
 
 // ── Asset paths (referenced from example/assets/) ───────────────────────
-const _nationalEmblemPath = 'assets/national_amblam_logo.svg';
-const _unionLogoPath = 'assets/Union.svg';
-const _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+const _nationalEmblemPath = Ux4gIcons.nationalEmblem;
+const _unionLogoPath = Ux4gIcons.union;
+const _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 // ── Shared design tokens ───────────────────────────────────────────────
-
-
 
 final declarationBeforeSubmissionComponent = WidgetbookComponent(
   name: 'Declaration Before Submission',
@@ -139,7 +137,9 @@ class _DeclarationBeforeSubmissionMockupState
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w800,
-                      color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral50
+                          : Ux4gPalette.gray900),
                       letterSpacing: -0.5,
                     ),
                   ),
@@ -148,7 +148,9 @@ class _DeclarationBeforeSubmissionMockupState
                     'Read the declaration in full. Scroll to the end before you can agree.',
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral600),
                       height: 1.5,
                     ),
                   ),
@@ -157,9 +159,15 @@ class _DeclarationBeforeSubmissionMockupState
                     height: 220,
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.gray900
+                          : Ux4gPalette.gray100),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                      border: Border.all(
+                        color: (_isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : Ux4gPalette.neutral200),
+                      ),
                     ),
                     child: Stack(
                       children: [
@@ -179,7 +187,9 @@ class _DeclarationBeforeSubmissionMockupState
                                 '5. I understand that the data provided by me will be used for the purpose of processing this application and related government services.',
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral400
+                                      : Ux4gPalette.neutral700),
                                   height: 1.6,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -202,7 +212,9 @@ class _DeclarationBeforeSubmissionMockupState
                                     const Color(
                                       0xFFF9FAFB,
                                     ).withValues(alpha: 0),
-                                    (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                                    (_isDark(context)
+                                        ? Ux4gPalette.gray900
+                                        : Ux4gPalette.gray100),
                                   ],
                                 ),
                               ),
@@ -211,7 +223,9 @@ class _DeclarationBeforeSubmissionMockupState
                                   'Scroll to read all',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: (_isDark(context) ? Ux4gPalette.primary400 : Ux4gPalette.primary600),
+                                    color: (_isDark(context)
+                                        ? Ux4gPalette.primary400
+                                        : Ux4gPalette.primary600),
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -230,7 +244,9 @@ class _DeclarationBeforeSubmissionMockupState
                         width: 24,
                         child: Checkbox(
                           value: _agreed,
-                          activeColor: (_isDark(context) ? Ux4gPalette.primary400 : Ux4gPalette.primary600),
+                          activeColor: (_isDark(context)
+                              ? Ux4gPalette.primary400
+                              : Ux4gPalette.primary600),
                           onChanged: _reachedEnd
                               ? (val) {
                                   setState(() {
@@ -254,14 +270,18 @@ class _DeclarationBeforeSubmissionMockupState
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral50
+                                      : Ux4gPalette.gray900),
                                   height: 1.4,
                                 ),
                               ),
                               TextSpan(
                                 text: ' *',
                                 style: TextStyle(
-                                  color: (_isDark(context) ? Ux4gPalette.red400 : Ux4gPalette.red700),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.red400
+                                      : Ux4gPalette.red700),
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -276,9 +296,15 @@ class _DeclarationBeforeSubmissionMockupState
                   Container(
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: (_isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.orange900
+                          : Ux4gPalette.orange50),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: (_isDark(context) ? Ux4gPalette.orange800 : Ux4gPalette.orange100)),
+                      border: Border.all(
+                        color: (_isDark(context)
+                            ? Ux4gPalette.orange800
+                            : Ux4gPalette.orange100),
+                      ),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,7 +313,9 @@ class _DeclarationBeforeSubmissionMockupState
                           padding: EdgeInsets.only(top: 2),
                           child: Icon(
                             Icons.error,
-                            color: (_isDark(context) ? Ux4gPalette.orange400 : Ux4gPalette.orange600),
+                            color: (_isDark(context)
+                                ? Ux4gPalette.orange400
+                                : Ux4gPalette.orange600),
                             size: 18,
                           ),
                         ),
@@ -297,7 +325,9 @@ class _DeclarationBeforeSubmissionMockupState
                             'Furnishing false information is a punishable offence under Section 193 IPC — up to 7 years imprisonment.',
                             style: TextStyle(
                               fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800),
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.orange300
+                                  : Ux4gPalette.orange800),
                               height: 1.5,
                               fontWeight: FontWeight.w500,
                             ),
@@ -312,6 +342,8 @@ class _DeclarationBeforeSubmissionMockupState
                     onPressed: _agreed ? () {} : null,
                     width: double.infinity,
                     variant: Ux4gButtonVariant.primary,
+                    height: 48,
+                    size: Ux4gButtonSize.large,
                   ),
                 ],
               ),
@@ -326,16 +358,18 @@ class _DeclarationBeforeSubmissionMockupState
                   'Powered by -',
                   style: TextStyle(
                     fontSize: 11,
-                    color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral500
+                        : Ux4gPalette.neutral400),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(height: 6),
                 Image.asset(
-            _digitalIndiaLogoPath,
-            height: 22,
-            color: _isDark(context) ? Colors.white : null,
-          ),
+                  _digitalIndiaLogoPath,
+                  height: 22,
+                  color: _isDark(context) ? Colors.white : null,
+                ),
               ],
             ),
           ),
@@ -388,7 +422,9 @@ class _DeclarationBeforeSubmissionCardMockupState
           _ConsentHeader(),
           Expanded(
             child: Container(
-              color: (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+              color: (_isDark(context)
+                  ? Ux4gPalette.primary900
+                  : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -397,7 +433,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray800 : Colors.white,
+                          color: _isDark(context)
+                              ? Ux4gPalette.gray800
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -415,7 +453,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w800,
-                                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.gray900),
                                 letterSpacing: -0.5,
                               ),
                             ),
@@ -424,7 +464,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                               'Read the declaration in full. Scroll to the end before you can agree.',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral600),
                                 height: 1.5,
                               ),
                             ),
@@ -433,10 +475,14 @@ class _DeclarationBeforeSubmissionCardMockupState
                               height: 200,
                               padding: EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.gray900
+                                    : Ux4gPalette.gray100),
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(
-                                  color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral800
+                                      : Ux4gPalette.neutral200),
                                 ),
                               ),
                               child: Stack(
@@ -457,7 +503,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                                           '5. I understand that the data provided by me will be used for the purpose of processing this application and related government services.',
                                           style: TextStyle(
                                             fontSize: 14,
-                                            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                                            color: (_isDark(context)
+                                                ? Ux4gPalette.neutral400
+                                                : Ux4gPalette.neutral700),
                                             height: 1.6,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -482,7 +530,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                                               const Color(
                                                 0xFFF9FAFB,
                                               ).withValues(alpha: 0),
-                                              (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                                              (_isDark(context)
+                                                  ? Ux4gPalette.gray900
+                                                  : Ux4gPalette.gray100),
                                             ],
                                           ),
                                         ),
@@ -491,7 +541,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                                             'Scroll to read all',
                                             style: TextStyle(
                                               fontSize: 13,
-                                              color: (_isDark(context) ? Ux4gPalette.primary400 : Ux4gPalette.primary600),
+                                              color: (_isDark(context)
+                                                  ? Ux4gPalette.primary400
+                                                  : Ux4gPalette.primary600),
                                               fontWeight: FontWeight.w700,
                                             ),
                                           ),
@@ -510,7 +562,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                                   width: 24,
                                   child: Checkbox(
                                     value: _agreed,
-                                    activeColor: (_isDark(context) ? Ux4gPalette.primary400 : Ux4gPalette.primary600),
+                                    activeColor: (_isDark(context)
+                                        ? Ux4gPalette.primary400
+                                        : Ux4gPalette.primary600),
                                     onChanged: _reachedEnd
                                         ? (val) {
                                             setState(() {
@@ -534,14 +588,18 @@ class _DeclarationBeforeSubmissionCardMockupState
                                           style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
-                                            color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                            color: (_isDark(context)
+                                                ? Ux4gPalette.neutral50
+                                                : Ux4gPalette.gray900),
                                             height: 1.4,
                                           ),
                                         ),
                                         TextSpan(
                                           text: ' *',
                                           style: TextStyle(
-                                            color: (_isDark(context) ? Ux4gPalette.red400 : Ux4gPalette.red700),
+                                            color: (_isDark(context)
+                                                ? Ux4gPalette.red400
+                                                : Ux4gPalette.red700),
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -556,10 +614,14 @@ class _DeclarationBeforeSubmissionCardMockupState
                             Container(
                               padding: EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: (_isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.orange900
+                                    : Ux4gPalette.orange50),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: (_isDark(context) ? Ux4gPalette.orange800 : Ux4gPalette.orange100),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.orange800
+                                      : Ux4gPalette.orange100),
                                 ),
                               ),
                               child: Row(
@@ -569,7 +631,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                                     padding: EdgeInsets.only(top: 2),
                                     child: Icon(
                                       Icons.error,
-                                      color: (_isDark(context) ? Ux4gPalette.orange400 : Ux4gPalette.orange600),
+                                      color: (_isDark(context)
+                                          ? Ux4gPalette.orange400
+                                          : Ux4gPalette.orange600),
                                       size: 18,
                                     ),
                                   ),
@@ -579,7 +643,9 @@ class _DeclarationBeforeSubmissionCardMockupState
                                       'Furnishing false information is a punishable offence under Section 193 IPC — up to 7 years imprisonment.',
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: (_isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800),
+                                        color: (_isDark(context)
+                                            ? Ux4gPalette.orange300
+                                            : Ux4gPalette.orange800),
                                         height: 1.5,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -594,6 +660,8 @@ class _DeclarationBeforeSubmissionCardMockupState
                               onPressed: _agreed ? () {} : null,
                               width: double.infinity,
                               variant: Ux4gButtonVariant.primary,
+                              height: 48,
+                              size: Ux4gButtonSize.large,
                             ),
                           ],
                         ),
@@ -609,16 +677,18 @@ class _DeclarationBeforeSubmissionCardMockupState
                           'Powered by -',
                           style: TextStyle(
                             fontSize: 11,
-                            color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                            color: (_isDark(context)
+                                ? Ux4gPalette.neutral500
+                                : Ux4gPalette.neutral400),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         SizedBox(height: 6),
                         Image.asset(
-            _digitalIndiaLogoPath,
-            height: 22,
-            color: _isDark(context) ? Colors.white : null,
-          ),
+                          _digitalIndiaLogoPath,
+                          height: 22,
+                          color: _isDark(context) ? Colors.white : null,
+                        ),
                       ],
                     ),
                   ),
@@ -645,7 +715,11 @@ class _PhoneFrame extends StatelessWidget {
       decoration: BoxDecoration(
         color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+        border: Border.all(
+          color: _isDark(context)
+              ? Ux4gPalette.neutral800
+              : Ux4gPalette.neutral200,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.08),
@@ -678,7 +752,13 @@ class _ConsentHeader extends StatelessWidget {
                   ? ColorFilter.mode(Colors.white, BlendMode.srcIn)
                   : null,
             ),
-            Container(width: 1, height: 28, color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300)),
+            Container(
+              width: 1,
+              height: 28,
+              color: (_isDark(context)
+                  ? Ux4gPalette.neutral600
+                  : Ux4gPalette.neutral300),
+            ),
             SvgPicture.asset(
               _unionLogoPath,
               height: 32,
@@ -696,7 +776,11 @@ class _ConsentHeader extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                  border: Border.all(
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200),
+                  ),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Center(
@@ -710,9 +794,15 @@ class _ConsentHeader extends StatelessWidget {
             ),
           ],
           horizontalPadding: 16,
-          leadingSpacing: 12,
+          leadingSpacing: 8,
         ),
-        Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+        Divider(
+          height: 1,
+          thickness: 1,
+          color: _isDark(context)
+              ? Ux4gPalette.neutral800
+              : Ux4gPalette.neutral200,
+        ),
       ],
     );
   }
@@ -778,7 +868,9 @@ class _DeclarationWithDigitalSignMockupState
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w800,
-                      color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral50
+                          : Ux4gPalette.gray900),
                       letterSpacing: -0.5,
                     ),
                   ),
@@ -789,7 +881,9 @@ class _DeclarationWithDigitalSignMockupState
                         : 'You have agreed. Now sign by typing your full name as per Aadhaar.',
                     style: TextStyle(
                       fontSize: 14,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral600),
                       height: 1.5,
                     ),
                   ),
@@ -798,9 +892,15 @@ class _DeclarationWithDigitalSignMockupState
                     height: 150,
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.gray900
+                          : Ux4gPalette.gray100),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                      border: Border.all(
+                        color: (_isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : Ux4gPalette.neutral200),
+                      ),
                     ),
                     child: SingleChildScrollView(
                       child: Text(
@@ -810,7 +910,9 @@ class _DeclarationWithDigitalSignMockupState
                         'I make this declaration believing the contents to be true.',
                         style: TextStyle(
                           fontSize: 14,
-                          color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                          color: (_isDark(context)
+                              ? Ux4gPalette.neutral400
+                              : Ux4gPalette.neutral700),
                           height: 1.6,
                           fontWeight: FontWeight.w500,
                         ),
@@ -826,7 +928,9 @@ class _DeclarationWithDigitalSignMockupState
                         width: 24,
                         child: Checkbox(
                           value: _agreed,
-                          activeColor: (_isDark(context) ? Ux4gPalette.primary200 : Ux4gPalette.primary800),
+                          activeColor: (_isDark(context)
+                              ? Ux4gPalette.primary200
+                              : Ux4gPalette.primary800),
                           onChanged: (val) {
                             setState(() {
                               _agreed = val ?? false;
@@ -848,14 +952,18 @@ class _DeclarationWithDigitalSignMockupState
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral50
+                                      : Ux4gPalette.gray900),
                                   height: 1.4,
                                 ),
                               ),
                               TextSpan(
                                 text: ' *',
                                 style: TextStyle(
-                                  color: (_isDark(context) ? Ux4gPalette.red400 : Ux4gPalette.red700),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.red400
+                                      : Ux4gPalette.red700),
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -872,20 +980,26 @@ class _DeclarationWithDigitalSignMockupState
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.neutral400
+                          : Ux4gPalette.neutral700),
                     ),
                   ),
                   SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.gray800 : Colors.white,
+                      color: _isDark(context)
+                          ? Ux4gPalette.gray800
+                          : Colors.white,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300)),
+                      border: Border.all(
+                        color: (_isDark(context)
+                            ? Ux4gPalette.neutral600
+                            : Ux4gPalette.neutral300),
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 4,
-                    ),
+                    height: 48,
+                    padding: EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       controller: _nameController,
                       onChanged: (val) {
@@ -895,12 +1009,18 @@ class _DeclarationWithDigitalSignMockupState
                       },
                       decoration: InputDecoration(
                         hintText: 'Enter your full name',
-                        hintStyle: TextStyle(color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                        hintStyle: TextStyle(
+                          color: (_isDark(context)
+                              ? Ux4gPalette.neutral500
+                              : Ux4gPalette.neutral400),
+                        ),
                         border: InputBorder.none,
                         suffixIcon: _isSigned
                             ? Icon(
                                 Icons.check_circle,
-                                color: (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.green300
+                                    : Ux4gPalette.green700),
                                 size: 20,
                               )
                             : null,
@@ -913,7 +1033,9 @@ class _DeclarationWithDigitalSignMockupState
                       Icon(
                         Icons.info_outline,
                         size: 16,
-                        color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                        color: (_isDark(context)
+                            ? Ux4gPalette.neutral400
+                            : Ux4gPalette.neutral500),
                       ),
                       SizedBox(width: 8),
                       Expanded(
@@ -921,7 +1043,9 @@ class _DeclarationWithDigitalSignMockupState
                           'Your name will be matched against your aadhaar records.',
                           style: TextStyle(
                             fontSize: 13,
-                            color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                            color: (_isDark(context)
+                                ? Ux4gPalette.neutral400
+                                : Ux4gPalette.neutral500),
                           ),
                         ),
                       ),
@@ -931,9 +1055,15 @@ class _DeclarationWithDigitalSignMockupState
                   Container(
                     padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: (_isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50),
+                      color: (_isDark(context)
+                          ? Ux4gPalette.orange900
+                          : Ux4gPalette.orange50),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: (_isDark(context) ? Ux4gPalette.orange800 : Ux4gPalette.orange100)),
+                      border: Border.all(
+                        color: (_isDark(context)
+                            ? Ux4gPalette.orange800
+                            : Ux4gPalette.orange100),
+                      ),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -942,7 +1072,9 @@ class _DeclarationWithDigitalSignMockupState
                           padding: EdgeInsets.only(top: 2),
                           child: Icon(
                             Icons.error,
-                            color: (_isDark(context) ? Ux4gPalette.orange400 : Ux4gPalette.orange600),
+                            color: (_isDark(context)
+                                ? Ux4gPalette.orange400
+                                : Ux4gPalette.orange600),
                             size: 18,
                           ),
                         ),
@@ -952,7 +1084,9 @@ class _DeclarationWithDigitalSignMockupState
                             'Furnishing false information is a punishable offence under Section 193 IPC — up to 7 years imprisonment.',
                             style: TextStyle(
                               fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800),
+                              color: (_isDark(context)
+                                  ? Ux4gPalette.orange300
+                                  : Ux4gPalette.orange800),
                               height: 1.5,
                               fontWeight: FontWeight.w500,
                             ),
@@ -967,6 +1101,8 @@ class _DeclarationWithDigitalSignMockupState
                     onPressed: (_agreed && _isSigned) ? () {} : null,
                     width: double.infinity,
                     variant: Ux4gButtonVariant.primary,
+                    height: 48,
+                    size: Ux4gButtonSize.large,
                   ),
                 ],
               ),
@@ -981,16 +1117,18 @@ class _DeclarationWithDigitalSignMockupState
                   'Powered by -',
                   style: TextStyle(
                     fontSize: 11,
-                    color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                    color: (_isDark(context)
+                        ? Ux4gPalette.neutral500
+                        : Ux4gPalette.neutral400),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(height: 6),
                 Image.asset(
-            _digitalIndiaLogoPath,
-            height: 22,
-            color: _isDark(context) ? Colors.white : null,
-          ),
+                  _digitalIndiaLogoPath,
+                  height: 22,
+                  color: _isDark(context) ? Colors.white : null,
+                ),
               ],
             ),
           ),
@@ -1051,7 +1189,9 @@ class _DeclarationWithDigitalSignCardMockupState
           _ConsentHeader(),
           Expanded(
             child: Container(
-              color: (_isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100),
+              color: (_isDark(context)
+                  ? Ux4gPalette.primary900
+                  : Ux4gPalette.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -1060,7 +1200,9 @@ class _DeclarationWithDigitalSignCardMockupState
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray800 : Colors.white,
+                          color: _isDark(context)
+                              ? Ux4gPalette.gray800
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -1078,7 +1220,9 @@ class _DeclarationWithDigitalSignCardMockupState
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w800,
-                                color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.gray900),
                                 letterSpacing: -0.5,
                               ),
                             ),
@@ -1089,7 +1233,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                   : 'You have agreed. Now sign by typing your full name as per Aadhaar.',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral600),
                                 height: 1.5,
                               ),
                             ),
@@ -1098,10 +1244,14 @@ class _DeclarationWithDigitalSignCardMockupState
                               height: 150,
                               padding: EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.gray900
+                                    : Ux4gPalette.gray100),
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(
-                                  color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral800
+                                      : Ux4gPalette.neutral200),
                                 ),
                               ),
                               child: SingleChildScrollView(
@@ -1112,7 +1262,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                   'I make this declaration believing the contents to be true.',
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                                    color: (_isDark(context)
+                                        ? Ux4gPalette.neutral400
+                                        : Ux4gPalette.neutral700),
                                     height: 1.6,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -1128,7 +1280,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                   width: 24,
                                   child: Checkbox(
                                     value: _agreed,
-                                    activeColor: (_isDark(context) ? Ux4gPalette.primary200 : Ux4gPalette.primary800),
+                                    activeColor: (_isDark(context)
+                                        ? Ux4gPalette.primary200
+                                        : Ux4gPalette.primary800),
                                     onChanged: (val) {
                                       setState(() {
                                         _agreed = val ?? false;
@@ -1150,14 +1304,18 @@ class _DeclarationWithDigitalSignCardMockupState
                                           style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
-                                            color: (_isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                            color: (_isDark(context)
+                                                ? Ux4gPalette.neutral50
+                                                : Ux4gPalette.gray900),
                                             height: 1.4,
                                           ),
                                         ),
                                         TextSpan(
                                           text: ' *',
                                           style: TextStyle(
-                                            color: (_isDark(context) ? Ux4gPalette.red400 : Ux4gPalette.red700),
+                                            color: (_isDark(context)
+                                                ? Ux4gPalette.red400
+                                                : Ux4gPalette.red700),
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -1174,22 +1332,26 @@ class _DeclarationWithDigitalSignCardMockupState
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral700),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.neutral400
+                                    : Ux4gPalette.neutral700),
                               ),
                             ),
                             SizedBox(height: 8),
                             Container(
                               decoration: BoxDecoration(
-                                color: _isDark(context) ? Ux4gPalette.gray800 : Colors.white,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.gray800
+                                    : Colors.white,
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral600
+                                      : Ux4gPalette.neutral300),
                                 ),
                               ),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 4,
-                              ),
+                              height: 48,
+                              padding: EdgeInsets.symmetric(horizontal: 16),
                               child: TextField(
                                 controller: _nameController,
                                 onChanged: (val) {
@@ -1201,13 +1363,17 @@ class _DeclarationWithDigitalSignCardMockupState
                                 decoration: InputDecoration(
                                   hintText: 'Enter your full name',
                                   hintStyle: TextStyle(
-                                    color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                                    color: (_isDark(context)
+                                        ? Ux4gPalette.neutral500
+                                        : Ux4gPalette.neutral400),
                                   ),
                                   border: InputBorder.none,
                                   suffixIcon: _isSigned
                                       ? Icon(
                                           Icons.check_circle,
-                                          color: (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+                                          color: (_isDark(context)
+                                              ? Ux4gPalette.green300
+                                              : Ux4gPalette.green700),
                                           size: 20,
                                         )
                                       : null,
@@ -1220,7 +1386,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                 Icon(
                                   Icons.info_outline,
                                   size: 16,
-                                  color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.neutral400
+                                      : Ux4gPalette.neutral500),
                                 ),
                                 SizedBox(width: 8),
                                 Expanded(
@@ -1228,7 +1396,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                     'Your name will be matched against your aadhaar records.',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: (_isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                                      color: (_isDark(context)
+                                          ? Ux4gPalette.neutral400
+                                          : Ux4gPalette.neutral500),
                                     ),
                                   ),
                                 ),
@@ -1238,10 +1408,14 @@ class _DeclarationWithDigitalSignCardMockupState
                             Container(
                               padding: EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: (_isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50),
+                                color: (_isDark(context)
+                                    ? Ux4gPalette.orange900
+                                    : Ux4gPalette.orange50),
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: (_isDark(context) ? Ux4gPalette.orange800 : Ux4gPalette.orange100),
+                                  color: (_isDark(context)
+                                      ? Ux4gPalette.orange800
+                                      : Ux4gPalette.orange100),
                                 ),
                               ),
                               child: Row(
@@ -1251,7 +1425,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                     padding: EdgeInsets.only(top: 2),
                                     child: Icon(
                                       Icons.error,
-                                      color: (_isDark(context) ? Ux4gPalette.orange400 : Ux4gPalette.orange600),
+                                      color: (_isDark(context)
+                                          ? Ux4gPalette.orange400
+                                          : Ux4gPalette.orange600),
                                       size: 18,
                                     ),
                                   ),
@@ -1261,7 +1437,9 @@ class _DeclarationWithDigitalSignCardMockupState
                                       'Furnishing false information is a punishable offence under Section 193 IPC — up to 7 years imprisonment.',
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: (_isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800),
+                                        color: (_isDark(context)
+                                            ? Ux4gPalette.orange300
+                                            : Ux4gPalette.orange800),
                                         height: 1.5,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -1276,6 +1454,8 @@ class _DeclarationWithDigitalSignCardMockupState
                               onPressed: (_agreed && _isSigned) ? () {} : null,
                               width: double.infinity,
                               variant: Ux4gButtonVariant.primary,
+                              height: 48,
+                              size: Ux4gButtonSize.large,
                             ),
                           ],
                         ),
@@ -1291,16 +1471,18 @@ class _DeclarationWithDigitalSignCardMockupState
                           'Powered by -',
                           style: TextStyle(
                             fontSize: 11,
-                            color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                            color: (_isDark(context)
+                                ? Ux4gPalette.neutral500
+                                : Ux4gPalette.neutral400),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         SizedBox(height: 6),
                         Image.asset(
-            _digitalIndiaLogoPath,
-            height: 22,
-            color: _isDark(context) ? Colors.white : null,
-          ),
+                          _digitalIndiaLogoPath,
+                          height: 22,
+                          color: _isDark(context) ? Colors.white : null,
+                        ),
                       ],
                     ),
                   ),
@@ -1323,9 +1505,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -1343,7 +1525,7 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
 
@@ -1411,7 +1593,8 @@ Column(
             SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(color: _isDark(context) ? Ux4gPalette.gray800 : Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300))),
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              height: 48,
+padding: EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: TextEditingController(text: 'Ramesh Kumar'),
                 decoration: const InputDecoration(
@@ -1461,6 +1644,8 @@ Column(
               onPressed: null, // Enable when agreed and signed
               width: double.infinity,
               variant: Ux4gButtonVariant.primary,
+height: 48,
+size: Ux4gButtonSize.large,
             ),
           ],
         ),
@@ -1475,7 +1660,7 @@ Column(
         children: [
           Text('Powered by -', style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400), fontWeight: FontWeight.w500)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
@@ -1491,9 +1676,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -1511,7 +1696,7 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
 
@@ -1596,7 +1781,8 @@ Column(
                       SizedBox(height: 8),
                       Container(
                         decoration: BoxDecoration(color: _isDark(context) ? Ux4gPalette.gray800 : Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300))),
-                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        height: 48,
+padding: EdgeInsets.symmetric(horizontal: 16),
                         child: TextField(
                           controller: TextEditingController(text: 'Ramesh Kumar'),
                           decoration: const InputDecoration(
@@ -1646,6 +1832,8 @@ Column(
                         onPressed: null, // Enable when agreed and signed
                         width: double.infinity,
                         variant: Ux4gButtonVariant.primary,
+height: 48,
+size: Ux4gButtonSize.large,
                       ),
                     ],
                   ),
@@ -1660,7 +1848,7 @@ Column(
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400), fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -1680,9 +1868,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -1700,7 +1888,7 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
 
@@ -1847,6 +2035,8 @@ Column(
               onPressed: null, // Disabled until agreed
               width: double.infinity,
               variant: Ux4gButtonVariant.primary,
+height: 48,
+size: Ux4gButtonSize.large,
             ),
           ],
         ),
@@ -1864,7 +2054,7 @@ Column(
             style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400), fontWeight: FontWeight.w500),
           ),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
     ),
@@ -1880,9 +2070,9 @@ Column(
       variant: Ux4gAppHeaderVariant.light,
       title: '',
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         Container(width: 1, height: 28, color: (_isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -1900,7 +2090,7 @@ Column(
         ),
       ],
       horizontalPadding: 16,
-      leadingSpacing: 12,
+      leadingSpacing: 8,
     ),
     Divider(height: 1, color: (_isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
 
@@ -2016,6 +2206,8 @@ Column(
                         onPressed: null, // Disabled until agreed
                         width: double.infinity,
                         variant: Ux4gButtonVariant.primary,
+height: 48,
+size: Ux4gButtonSize.large,
                       ),
                     ],
                   ),
@@ -2030,7 +2222,7 @@ Column(
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400), fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
             ),
@@ -2041,5 +2233,5 @@ Column(
   ],
 )''';
 
-
-bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;

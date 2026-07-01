@@ -4,16 +4,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-// ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
-const _primaryColor = Color(0xFF432CBB);
-const _successGreen = Color(0xFF16A34A);
-const _successBg = Color(0xFFF2FCEF);
-const _successBorder = Color(0xFF80DA88);
-const _successTextColor = Color(0xFF00522C);
-const _fileBg = Color(0xFFF3F4F6);
-
 // ── Component ────────────────────────────────────────────────────────────
 
 final serviceCompletionComponent = WidgetbookComponent(
@@ -67,47 +57,40 @@ class ServiceCompletionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              color: Colors.white,
-              child: Row(
-                children: [
-                  SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                  const SizedBox(width: 8),
-                  SizedBox(
-                    height: 32,
-                    child: Ux4gDivider(
-                      orientation: Ux4gDividerOrientation.vertical,
-                      color: const Color(0xFFD1D5DB),
-                    ),
+            Ux4gAppHeader(
+              elevation: 2,
+              variant: Ux4gAppHeaderVariant.light,
+              title: '',
+              leadingSpacing: 8,
+              leadingWidgets: [
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
                   ),
-                  const SizedBox(width: 8),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
-                ],
-              ),
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
             ),
             // Content
             Expanded(
@@ -123,75 +106,118 @@ class ServiceCompletionScreen extends StatelessWidget {
                       variant: Ux4gButtonVariant.ghost,
                       size: Ux4gButtonSize.small,
                       leadingIcon: Icons.arrow_back,
-                      contentColor: const Color(0xFF111827),
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                     ),
                     const SizedBox(height: 20),
                     Text('Service Completed',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                     const SizedBox(height: 6),
                     Text('Your income certificate has been downloaded.',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                        style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                     const SizedBox(height: 20),
                     // Success banner
-                    Ux4gCard(
-                      backgroundColor: const Color(0xFFF2FCEF),
-                      borderColor: const Color(0xFF80DA88),
-                      borderWidth: 1,
-                      cornerRadius: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+                    Builder(
+                      builder: (context) {
+                        final isDark = Theme.of(context).brightness == Brightness.dark;
+                        final successBg = isDark ? Ux4gPalette.green900 : Ux4gPalette.green50;
+                        final successBorder = isDark ? Ux4gPalette.green600 : Ux4gPalette.green300;
+                        final successTextColor = isDark ? Ux4gPalette.green300 : Ux4gPalette.green800;
+                        final successIconColor = isDark ? Ux4gPalette.green50 : Ux4gPalette.green600;
+
+                        return Ux4gCard(
+                          backgroundColor: successBg,
+                          borderColor: successBorder,
+                          borderWidth: 1,
+                          cornerRadius: 10,
+                          child: Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.check_circle, size: 20, color: Color(0xFF16A34A)),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text('Income Certificate Downloaded.',
-                                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFF00522C))),
+                                Row(
+                                  children: [
+                                    Icon(Icons.check_circle, size: 20, color: successIconColor),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        'Income Certificate Downloaded.',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700,
+                                          color: successTextColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 6),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 28),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Your certificate has been saved to your device.',
+                                        style: TextStyle(fontSize: 13, color: successTextColor),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          'View',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold,
+                                            color: successTextColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 6),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 28),
-                              child: Text('Your certificate has been saved to your\ndevice.',
-                                  style: TextStyle(fontSize: 13, color: Color(0xFF00522C))),
-                            ),
-                            const SizedBox(height: 4),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 28),
-                              child: Ux4gButton(
-                                onPressed: () {},
-                                text: 'View',
-                                variant: Ux4gButtonVariant.ghost,
-                                size: Ux4gButtonSize.small,
-                                contentColor: const Color(0xFF00522C),
-                                padding: EdgeInsets.zero,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        );
+                      }
                     ),
                     const SizedBox(height: 16),
                     // File info
-                    Ux4gCard(
-                      backgroundColor: const Color(0xFFF3F4F6),
-                      cornerRadius: 8,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                        child: Row(
-                          children: [
-                            Text('income_certificate_2026.pdf',
-                                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                            const SizedBox(width: 8),
-                            Text('28 KB · PDF',
-                                style: TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
-                          ],
-                        ),
-                      ),
+                    Builder(
+                      builder: (context) {
+                        final isDark = Theme.of(context).brightness == Brightness.dark;
+                        final fileCardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral50;
+                        final fileCardTitleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+                        final fileCardSubColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+
+                        return Ux4gCard(
+                          backgroundColor: fileCardBg,
+                          cornerRadius: 8,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'income_certificate_2026.pdf',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                    color: fileCardTitleColor,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '28 KB · PDF',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: fileCardSubColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
                     ),
                     const Spacer(),
                   ],
@@ -206,9 +232,10 @@ class ServiceCompletionScreen extends StatelessWidget {
                 text: 'Save to DigiLocker',
                 variant: Ux4gButtonVariant.outline,
                 size: Ux4gButtonSize.large,
+                height: 48,
                 width: double.infinity,
-                borderColor: const Color(0xFF432CBB),
-                contentColor: const Color(0xFF432CBB),
+                borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
                 borderRadius: 8,
               ),
             ),
@@ -220,8 +247,10 @@ class ServiceCompletionScreen extends StatelessWidget {
                 text: 'Download Again',
                 variant: Ux4gButtonVariant.primary,
                 size: Ux4gButtonSize.large,
+                height: 48,
                 width: double.infinity,
-                backgroundColor: const Color(0xFF4A2BC2),
+                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                contentColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                 borderRadius: 8,
               ),
             ),
@@ -233,7 +262,7 @@ class ServiceCompletionScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -260,47 +289,40 @@ class ServiceCompletionCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              color: Colors.white,
-              child: Row(
-                children: [
-                  SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                  const SizedBox(width: 8),
-                  SizedBox(
-                    height: 32,
-                    child: Ux4gDivider(
-                      orientation: Ux4gDividerOrientation.vertical,
-                      color: const Color(0xFFD1D5DB),
-                    ),
+            Ux4gAppHeader(
+              elevation: 2,
+              variant: Ux4gAppHeaderVariant.light,
+              title: '',
+              leadingSpacing: 8,
+              leadingWidgets: [
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
                   ),
-                  const SizedBox(width: 8),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
-                ],
-              ),
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
             ),
             // White card content
             Padding(
@@ -320,76 +342,119 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                         variant: Ux4gButtonVariant.ghost,
                         size: Ux4gButtonSize.small,
                         leadingIcon: Icons.arrow_back,
-                        contentColor: const Color(0xFF111827),
+                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                       ),
                       const SizedBox(height: 20),
                       Text('Service Completed',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                       const SizedBox(height: 6),
                       Text('Your income certificate has been downloaded.',
-                          style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                          style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                       const SizedBox(height: 20),
                       // Success banner
-                      Ux4gCard(
-                        backgroundColor: const Color(0xFFF2FCEF),
-                        borderColor: const Color(0xFF80DA88),
-                        borderWidth: 1,
-                        cornerRadius: 10,
-                        child: Padding(
-                          padding: const EdgeInsets.all(14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                      Builder(
+                        builder: (context) {
+                          final isDark = Theme.of(context).brightness == Brightness.dark;
+                          final successBg = isDark ? Ux4gPalette.green900 : Ux4gPalette.green50;
+                          final successBorder = isDark ? Ux4gPalette.green600 : Ux4gPalette.green300;
+                          final successTextColor = isDark ? Ux4gPalette.green300 : Ux4gPalette.green800;
+                          final successIconColor = isDark ? Ux4gPalette.green50 : Ux4gPalette.green600;
+
+                          return Ux4gCard(
+                            backgroundColor: successBg,
+                            borderColor: successBorder,
+                            borderWidth: 1,
+                            cornerRadius: 10,
+                            child: Padding(
+                              padding: const EdgeInsets.all(14),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Icon(Icons.check_circle, size: 20, color: Color(0xFF16A34A)),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: Text('Income Certificate Downloaded.',
-                                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFF00522C))),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.check_circle, size: 20, color: successIconColor),
+                                      const SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          'Income Certificate Downloaded.',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                            color: successTextColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 28),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Your certificate has been saved to your device.',
+                                          style: TextStyle(fontSize: 13, color: successTextColor),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        GestureDetector(
+                                          onTap: () {},
+                                          child: Text(
+                                            'View',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              color: successTextColor,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 6),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 28),
-                                child: Text('Your certificate has been saved to your\ndevice.',
-                                    style: TextStyle(fontSize: 13, color: Color(0xFF00522C))),
-                              ),
-                              const SizedBox(height: 4),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 28),
-                                child: Ux4gButton(
-                                  onPressed: () {},
-                                  text: 'View',
-                                  variant: Ux4gButtonVariant.ghost,
-                                  size: Ux4gButtonSize.small,
-                                  contentColor: const Color(0xFF00522C),
-                                  padding: EdgeInsets.zero,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                            ),
+                          );
+                        }
                       ),
                       const SizedBox(height: 16),
-                      // File info
-                      Ux4gCard(
-                        backgroundColor: const Color(0xFFF3F4F6),
-                        cornerRadius: 8,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                          child: Row(
-                            children: [
-                              Text('income_certificate_2026.pdf',
-                                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                              const SizedBox(width: 8),
-                              Text('28 KB · PDF',
-                                  style: TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
-                            ],
+                    // File info
+                    Builder(
+                      builder: (context) {
+                        final isDark = Theme.of(context).brightness == Brightness.dark;
+                        final fileCardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral50;
+                        final fileCardTitleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+                        final fileCardSubColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+
+                        return Ux4gCard(
+                          backgroundColor: fileCardBg,
+                          cornerRadius: 8,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'income_certificate_2026.pdf',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                    color: fileCardTitleColor,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '28 KB · PDF',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: fileCardSubColor,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }
+                    ),
                     ],
                   ),
                 ),
@@ -404,9 +469,10 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                 text: 'Save to DigiLocker',
                 variant: Ux4gButtonVariant.outline,
                 size: Ux4gButtonSize.large,
+                height: 48,
                 width: double.infinity,
-                borderColor: const Color(0xFF432CBB),
-                contentColor: const Color(0xFF432CBB),
+                borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
                 borderRadius: 8,
               ),
             ),
@@ -418,8 +484,10 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                 text: 'Download Again',
                 variant: Ux4gButtonVariant.primary,
                 size: Ux4gButtonSize.large,
+                height: 48,
                 width: double.infinity,
-                backgroundColor: const Color(0xFF4A2BC2),
+                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                contentColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                 borderRadius: 8,
               ),
             ),
@@ -431,7 +499,7 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -455,94 +523,57 @@ class _ServiceCompletionMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: Theme.of(context).brightness == Brightness.dark),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard ? (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
-              // App Header with logos
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+              // App Header
+              Ux4gAppHeader(
+                elevation: 2,
+                variant: Ux4gAppHeaderVariant.light,
+                title: '',
+                leadingSpacing: 8,
+                leadingWidgets: [
+                  SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
                 ),
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/national_amblam_logo.svg',
-                      height: 40,
+                  SizedBox(
+                    height: 32,
+                    child: Ux4gDivider(
+                      orientation: Ux4gDividerOrientation.vertical,
+                      color: const Color(0xFFD1D5DB),
                     ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      height: 32,
-                      child: Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        color: const Color(0xFFD1D5DB),
-                      ),
+                  ),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
                     ),
-                    const SizedBox(width: 8),
-                    SvgPicture.asset('assets/Union.svg', height: 32),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) =>
-                          const Text('🇮🇳', style: TextStyle(fontSize: 14)),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
 
               // Content
               if (!isCard)
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: _buildMainContent(),
+                    child: _buildMainContent(context),
                   ),
                 ),
               if (isCard)
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: _buildCardContent(),
+                  child: _buildCardContent(context),
                 ),
 
               if (isCard) const Spacer(),
@@ -550,11 +581,11 @@ class _ServiceCompletionMockup extends StatelessWidget {
               // Buttons + Powered by at bottom
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: _buildSaveButton(),
+                child: _buildSaveButton(context),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-                child: _buildDownloadButton(),
+                child: _buildDownloadButton(context),
               ),
 
               // Powered by
@@ -569,7 +600,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
                       errorBuilder: (_, __, ___) => const Text(
                         'Digital India',
@@ -589,7 +620,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildMainContent() {
+  Widget _buildMainContent(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -600,141 +631,172 @@ class _ServiceCompletionMockup extends StatelessWidget {
           variant: Ux4gButtonVariant.ghost,
           size: Ux4gButtonSize.small,
           leadingIcon: Icons.arrow_back,
-          contentColor: _titleColor,
+          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
         ),
         const SizedBox(height: 20),
 
         // Title
-        const Text(
+        Text(
           'Service Completed',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
           ),
         ),
         const SizedBox(height: 6),
-        const Text(
+        Text(
           'Your income certificate has been downloaded.',
-          style: TextStyle(fontSize: 13, color: _subtleText),
+          style: TextStyle(
+            fontSize: 13,
+            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+          ),
         ),
         const SizedBox(height: 20),
 
         // Success banner using Ux4gCard
-        Ux4gCard(
-          backgroundColor: _successBg,
-          borderColor: _successBorder,
-          borderWidth: 1,
-          cornerRadius: 10,
-          child: Padding(
-            padding: const EdgeInsets.all(14),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Icon(Icons.check_circle, size: 20, color: _successGreen),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'Income Certificate Downloaded.',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: _successTextColor,
+        (() {
+          final isDark = Theme.of(context).brightness == Brightness.dark;
+          final successBg = isDark ? Ux4gPalette.green900 : Ux4gPalette.green50;
+          final successBorder = isDark ? Ux4gPalette.green600 : Ux4gPalette.green300;
+          final successTextColor = isDark ? Ux4gPalette.green300 : Ux4gPalette.green800;
+          final successIconColor = isDark ? Ux4gPalette.green50 : Ux4gPalette.green600;
+
+          return Ux4gCard(
+            backgroundColor: successBg,
+            borderColor: successBorder,
+            borderWidth: 1,
+            cornerRadius: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(Icons.check_circle, size: 20, color: successIconColor),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Income Certificate Downloaded.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: successTextColor,
+                          ),
                         ),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Your certificate has been saved to your device.',
+                          style: TextStyle(fontSize: 13, color: successTextColor),
+                        ),
+                        const SizedBox(height: 4),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            'View',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: successTextColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(height: 6),
-                const Padding(
-                  padding: EdgeInsets.only(left: 28),
-                  child: Text(
-                    'Your certificate has been saved to your\ndevice.',
-                    style: TextStyle(fontSize: 13, color: _successTextColor),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Padding(
-                  padding: const EdgeInsets.only(left: 28),
-                  child: Ux4gButton(
-                    onPressed: () {},
-                    text: 'View',
-                    variant: Ux4gButtonVariant.ghost,
-                    size: Ux4gButtonSize.small,
-                    contentColor: _successTextColor,
-                    padding: EdgeInsets.zero,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        })(),
         const SizedBox(height: 16),
 
         // File info row using Ux4gCard
-        Ux4gCard(
-          backgroundColor: _fileBg,
-          cornerRadius: 8,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            child: Row(
-              children: const [
-                Text(
-                  'income_certificate_2026.pdf',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: _titleColor,
+        (() {
+          final isDark = Theme.of(context).brightness == Brightness.dark;
+          final fileCardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral50;
+          final fileCardTitleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+          final fileCardSubColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+
+          return Ux4gCard(
+            backgroundColor: fileCardBg,
+            cornerRadius: 8,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              child: Row(
+                children: [
+                  Text(
+                    'income_certificate_2026.pdf',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: fileCardTitleColor,
+                    ),
                   ),
-                ),
-                SizedBox(width: 8),
-                Text(
-                  '28 KB · PDF',
-                  style: TextStyle(fontSize: 12, color: Color(0xFF6B7280)),
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  Text(
+                    '28 KB · PDF',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: fileCardSubColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        })(),
       ],
     );
   }
 
-  Widget _buildSaveButton() {
+  Widget _buildSaveButton(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Ux4gButton(
       onPressed: () {},
       text: 'Save to DigiLocker',
       variant: Ux4gButtonVariant.outline,
       size: Ux4gButtonSize.large,
+      height: 48,
       width: double.infinity,
-      borderColor: _primaryColor,
-      contentColor: _primaryColor,
+      borderColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+      contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
       borderRadius: 8,
     );
   }
 
-  Widget _buildDownloadButton() {
+  Widget _buildDownloadButton(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Ux4gButton(
       onPressed: () {},
       text: 'Download Again',
       variant: Ux4gButtonVariant.primary,
       size: Ux4gButtonSize.large,
+      height: 48,
       width: double.infinity,
-      backgroundColor: const Color(0xFF4A2BC2),
+      backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+      contentColor: isDark ? Colors.black : Colors.white,
       borderRadius: 8,
     );
   }
 
-  Widget _buildCardContent() {
+  Widget _buildCardContent(context) {
     return Ux4gCard(
       backgroundColor: Colors.white,
       cornerRadius: 16,
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: _buildMainContent(),
+        child: _buildMainContent(context),
       ),
     );
   }

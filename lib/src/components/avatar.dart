@@ -174,6 +174,10 @@ class Ux4gAvatarGroup extends StatelessWidget {
     final resolvedBorderColor =
         borderColor ??
         (ux4gColors?.surface ?? materialTheme.colorScheme.surface);
+    final isDark = materialTheme.brightness == Brightness.dark;
+    final overflowBgColor = isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
+    final overflowTextColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary900;
+
     final actualLimit = maxLimit ?? items.length;
     final exceedsLimit = items.length > actualLimit;
     final visibleItems = exceedsLimit
@@ -207,7 +211,12 @@ class Ux4gAvatarGroup extends StatelessWidget {
           GestureDetector(
             onTap: onRemainingClick,
             child: _buildGroupAvatar(
-              Ux4gAvatar(size: size, initials: "+$remainingCount"),
+              Ux4gAvatar(
+                size: size,
+                initials: "+$remainingCount",
+                containerColor: overflowBgColor,
+                contentColor: overflowTextColor,
+              ),
               resolvedBorderColor,
             ),
           ),
@@ -219,6 +228,7 @@ class Ux4gAvatarGroup extends StatelessWidget {
     if (!collapsed) return avatar;
     return Container(
       decoration: BoxDecoration(
+        color: resolvedBorderColor,
         shape: BoxShape.circle,
         border: Border.all(color: resolvedBorderColor, width: borderWidth),
       ),
@@ -258,8 +268,14 @@ class Ux4gProfileAvatar extends StatelessWidget {
     final materialTheme = Theme.of(context);
     final ux4gColors = materialTheme.extension<Ux4gColors>();
     final indicatorSize = badgeSize ?? _getIndicatorSize();
+    final double r = size.size / 2;
+    // Distance from corner of bounding box to the 45-degree point on the circle
+    final double circleOffset = r - (r / 1.41421356);
+    // Adjust by half the indicator size to center the badge on the edge
+    final double offset = circleOffset - (indicatorSize / 2);
 
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Ux4gAvatar(
           size: size,
@@ -269,8 +285,8 @@ class Ux4gProfileAvatar extends StatelessWidget {
         ),
         if (variant != null)
           Positioned(
-            right: 0,
-            bottom: 0,
+            right: offset,
+            bottom: offset,
             child: GestureDetector(
               onTap: onVariantClick,
               child: _buildVariant(ux4gColors, materialTheme, indicatorSize),
@@ -298,29 +314,56 @@ class Ux4gProfileAvatar extends StatelessWidget {
     double size,
   ) {
     if (variant is Ux4gProfileBadge) {
-      final icon = switch (variant as Ux4gProfileBadge) {
-        Ux4gProfileBadge.verified => Icons.verified,
-        Ux4gProfileBadge.star => Icons.stars,
-        Ux4gProfileBadge.admin => Icons.shield,
-      };
-      return Icon(icon, size: size, color: Colors.blue);
+      if (variant == Ux4gProfileBadge.verified) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            Icon(Icons.verified, size: size + 4, color: Colors.white),
+            Icon(Icons.verified, size: size, color: Colors.blue),
+          ],
+        );
+      } else if (variant == Ux4gProfileBadge.star) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            Icon(Icons.star_rounded, size: size + 4, color: Colors.white),
+            Icon(Icons.star_rounded, size: size, color: Colors.amber),
+          ],
+        );
+      } else {
+        // Admin
+        return Container(
+          width: size + 4,
+          height: size + 4,
+          decoration: const BoxDecoration(
+            color: Color(0xFF4B39EF), // Purple
+            shape: BoxShape.circle,
+            border: Border.fromBorderSide(BorderSide(color: Colors.white, width: 2)),
+          ),
+          child: Icon(Icons.shield, size: size * 0.6, color: Colors.white),
+        );
+      }
     } else if (variant is Ux4gProfileAction) {
       final icon = switch (variant as Ux4gProfileAction) {
         Ux4gProfileAction.edit => Icons.edit,
         Ux4gProfileAction.camera => Icons.camera_alt,
-        Ux4gProfileAction.remove => Icons.remove_circle,
+        Ux4gProfileAction.remove => Icons.remove,
       };
+      final bgColor = variant == Ux4gProfileAction.remove
+          ? Colors.red
+          : const Color(0xFF4B39EF);
       return Container(
-        width: size,
-        height: size,
+        width: size + 4,
+        height: size + 4,
         decoration: BoxDecoration(
-          color: ux4gColors?.surface ?? materialTheme.colorScheme.surface,
+          color: bgColor,
           shape: BoxShape.circle,
+          border: Border.all(color: Colors.white, width: 2),
         ),
         child: Icon(
           icon,
-          size: size * 0.8,
-          color: ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface,
+          size: size * 0.6,
+          color: Colors.white,
         ),
       );
     }
@@ -355,8 +398,14 @@ class Ux4gStatusAvatar extends StatelessWidget {
     final materialTheme = Theme.of(context);
     final ux4gColors = materialTheme.extension<Ux4gColors>();
     final indicatorSize = statusSize ?? _getStatusIndicatorSize();
+    final double r = size.size / 2;
+    // Distance from corner of bounding box to the 45-degree point on the circle
+    final double circleOffset = r - (r / 1.41421356);
+    // Adjust by half the indicator size to center the badge on the edge
+    final double offset = circleOffset - (indicatorSize / 2);
 
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Ux4gAvatar(
           size: size,
@@ -365,8 +414,8 @@ class Ux4gStatusAvatar extends StatelessWidget {
           icon: avatarIcon,
         ),
         Positioned(
-          right: 0,
-          bottom: 0,
+          right: offset,
+          bottom: offset,
           child: Container(
             width: indicatorSize,
             height: indicatorSize,

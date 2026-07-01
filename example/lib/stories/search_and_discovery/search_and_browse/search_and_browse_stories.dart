@@ -3,11 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const Color _greenColor = Color(0xFF16A34A);
+const Color _primaryColor = Ux4gPalette.primary600;
 
 final searchAndBrowseComponent = WidgetbookComponent(
   name: 'Search & Browse Services',
@@ -43,8 +39,10 @@ class SearchAndBrowseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -52,6 +50,7 @@ class SearchAndBrowseScreen extends StatelessWidget {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.filled,
               title: 'National Services Portal',
+              titleStyle: typography.tS_default.copyWith(color: Colors.white),
               showBackButton: true,
               onBackPressed: () => Navigator.pop(context),
             ),
@@ -63,11 +62,13 @@ class SearchAndBrowseScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Title + subtitle
-                    const Text('Find any government service',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+                    Text('Find any government service',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800,
+                        color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                     const SizedBox(height: 4),
-                    const Text('Search 3,000+ services & schemes',
-                      style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                    Text('Search 3,000+ services & schemes',
+                      style: TextStyle(fontSize: 13,
+                        color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                     const SizedBox(height: 16),
 
                     // Search bar
@@ -81,8 +82,9 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     // Browse by category
-                    const Text('Browse by category',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                    Text('Browse by category',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,
+                        color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                     const SizedBox(height: 12),
                     // 2-column grid of category cards
                     GridView.count(
@@ -105,21 +107,24 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Color(0xFFE5E7EB)),
+                        border: Border.all(color: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('FEATURED SCHEME',
-                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF432CBB))),
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
+                              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                           const SizedBox(height: 4),
                           Text('PM Awas Yojana (Urban)',
-                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700,
+                              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                           const SizedBox(height: 4),
                           Text('Subsidised housing loans — interest subsidy up to ₹2.67 lakh.',
-                            style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                            style: TextStyle(fontSize: 13,
+                              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                           const SizedBox(height: 12),
                           SizedBox(
                             width: double.infinity,
@@ -127,6 +132,8 @@ class SearchAndBrowseScreen extends StatelessWidget {
                               text: 'Check eligibility',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.primary,
+                              backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
                             ),
                           ),
                         ],
@@ -135,8 +142,9 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     // Popular services
-                    const Text('Popular services',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                    Text('Popular services',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,
+                        color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                     const SizedBox(height: 12),
                     _ServiceCard(
                       title: 'Income Certificate',
@@ -164,25 +172,29 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Color(0xFFE5E7EB)),
+                        border: Border.all(color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Not sure what you\'re eligible for?',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700,
+                              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
                           const SizedBox(height: 4),
                           Text('Take a 2-minute quiz to find schemes you qualify for.',
-                            style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                            style: TextStyle(fontSize: 13,
+                              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                           const SizedBox(height: 12),
                           SizedBox(
                             width: double.infinity,
                             child: Ux4gButton(
                               text: 'Find my schemes',
                               onPressed: () {},
-                              variant: Ux4gButtonVariant.outline,
+                              variant: Ux4gButtonVariant.secondary,
+                              backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+                              contentColor: isDark ? Ux4gPalette.primary200 : Ux4gPalette.primary700,
                             ),
                           ),
                         ],
@@ -207,21 +219,27 @@ class _CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 24, color: Color(0xFF432CBB)),
+          Icon(icon, size: 24,
+            color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
           const SizedBox(height: 8),
-          Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-          Text(count, style: TextStyle(fontSize: 11, color: Color(0xFF4B5563))),
+          Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600,
+            color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+          Text(count, style: TextStyle(fontSize: 11,
+            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
         ],
       ),
     );
@@ -237,27 +255,40 @@ class _ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-          Text(dept, style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
+          Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600,
+            color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+          Text(dept, style: TextStyle(fontSize: 12,
+            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
           const SizedBox(height: 6),
           Row(
             children: [
-              Text(fee, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF16A34A))),
-              Text('  ·  $time', style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
+              Text(fee, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600,
+                color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600)),
+              Text('  ·  $time', style: TextStyle(fontSize: 12,
+                color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
             ],
           ),
           const SizedBox(height: 8),
-          Ux4gButton(text: 'Apply', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small),
+          Ux4gButton(
+            text: 'Apply', onPressed: () {},
+            variant: Ux4gButtonVariant.outline,
+            size: Ux4gButtonSize.small,
+            borderColor: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.primary300,
+            contentColor: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.primary600,
+          ),
         ],
       ),
     );
@@ -274,30 +305,30 @@ class _SearchAndBrowseMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
+        backgroundColor: isDark
+            ? Ux4gPalette.neutral950
+            : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             children: [
               // App Header - filled purple
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 color: _primaryColor,
                 child: Row(
                   children: [
                     const Icon(Icons.arrow_back, color: Colors.white, size: 20),
                     const SizedBox(width: 12),
-                    const Text(
+                    Text(
                       'National Services Portal',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: typography.tS_default.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -315,25 +346,31 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
-                        color: const Color(0xFFF2EFFF),
+                        color: isDark
+                            ? Ux4gPalette.primary950
+                            : Ux4gPalette.primary50,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Title
-                            const Text(
+                            Text(
                               'Find any government service',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 4),
-                            const Text(
+                            Text(
                               'Search 3,000+ services & schemes',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: _subtleText,
+                                color: isDark
+                                    ? Ux4gPalette.neutral200
+                                    : Ux4gPalette.neutral700,
                               ),
                             ),
                             const SizedBox(height: 16),
@@ -348,16 +385,27 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                       horizontal: 12,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(color: _borderColor),
+                                      color: isDark
+                                          ? Ux4gPalette.neutral900
+                                          : Colors.white,
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(8),
+                                        bottomLeft: Radius.circular(8),
+                                      ),
+                                      border: Border.all(
+                                        color: isDark
+                                            ? Ux4gPalette.neutral800
+                                            : Ux4gPalette.neutral200,
+                                      ),
                                     ),
                                     child: Row(
                                       children: [
                                         Icon(
                                           Icons.search,
                                           size: 20,
-                                          color: _subtleText,
+                                          color: isDark
+                                              ? Ux4gPalette.neutral200
+                                              : Ux4gPalette.neutral700,
                                         ),
                                         const SizedBox(width: 8),
                                         Expanded(
@@ -365,36 +413,48 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                             'Search services...',
                                             style: TextStyle(
                                               fontSize: 14,
-                                              color: _subtleText,
+                                              color: isDark
+                                                  ? Ux4gPalette.neutral400
+                                                  : Ux4gPalette.neutral700,
                                             ),
                                           ),
                                         ),
                                         Icon(
                                           Icons.mic,
                                           size: 20,
-                                          color: _subtleText,
+                                          color: isDark
+                                              ? Ux4gPalette.neutral200
+                                              : Ux4gPalette.neutral700,
                                         ),
                                         const SizedBox(width: 8),
                                         Icon(
                                           Icons.close,
                                           size: 18,
-                                          color: _subtleText,
+                                          color: isDark
+                                              ? Ux4gPalette.neutral200
+                                              : Ux4gPalette.neutral700,
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                                const SizedBox(width: 8),
                                 Container(
                                   width: 44,
                                   height: 44,
                                   decoration: BoxDecoration(
-                                    color: _primaryColor,
-                                    borderRadius: BorderRadius.circular(8),
+                                    color: isDark
+                                        ? Ux4gPalette.primary300
+                                        : Ux4gPalette.primary600,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(8),
+                                      bottomRight: Radius.circular(8),
+                                    ),
                                   ),
-                                  child: const Icon(
+                                  child: Icon(
                                     Icons.search,
-                                    color: Colors.white,
+                                    color: isDark
+                                        ? Ux4gPalette.primary950
+                                        : Colors.white,
                                     size: 20,
                                   ),
                                 ),
@@ -411,12 +471,14 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Browse by category
-                            const Text(
+                            Text(
                               'Browse by category',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -426,16 +488,18 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                             const SizedBox(height: 24),
 
                             // Featured scheme
-                            _buildFeaturedScheme(),
+                            _buildFeaturedScheme(context),
                             const SizedBox(height: 24),
 
                             // Popular services
-                            const Text(
+                            Text(
                               'Popular services',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -444,6 +508,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                               'Revenue Department',
                               'Free',
                               '20 mins',
+                              context,
                             ),
                             const SizedBox(height: 12),
                             _buildServiceCard(
@@ -451,6 +516,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                               'Social Welfare Dept',
                               'Free',
                               '15 mins',
+                              context,
                             ),
                             const SizedBox(height: 12),
                             _buildServiceCard(
@@ -458,11 +524,12 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                               'Transport Department',
                               '₹200',
                               '30 days',
+                              context,
                             ),
                             const SizedBox(height: 24),
 
                             // Quiz CTA
-                            _buildQuizCta(),
+                            _buildQuizCta(context),
                           ],
                         ),
                       ),
@@ -496,43 +563,66 @@ class _SearchAndBrowseMockup extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        childAspectRatio: 1.35,
+        mainAxisExtent: 112,
       ),
       itemCount: categories.length,
       itemBuilder: (context, index) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         final (icon, label, count) = categories[index];
         return Container(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  color: _primaryColor.withValues(alpha: 0.06),
-                  borderRadius: BorderRadius.circular(10),
+                  color: isDark
+                      ? Ux4gPalette.primary950
+                      : Ux4gPalette.primary50,
+                  shape: BoxShape.circle,
                 ),
-                child: Icon(icon, size: 20, color: _primaryColor),
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: isDark
+                      ? Ux4gPalette.primary300
+                      : Ux4gPalette.primary600,
+                ),
               ),
               const SizedBox(height: 10),
               Text(
                 label,
-                style: const TextStyle(
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: _titleColor,
+                  color: isDark
+                      ? Ux4gPalette.neutral50
+                      : Ux4gPalette.neutral900,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 count,
-                style: const TextStyle(fontSize: 11, color: _subtleText),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11,
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -541,12 +631,13 @@ class _SearchAndBrowseMockup extends StatelessWidget {
     );
   }
 
-  static Widget _buildFeaturedScheme() {
+  static Widget _buildFeaturedScheme(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF2EFFF),
+        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -557,23 +648,26 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: _primaryColor,
+              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
               letterSpacing: 0.5,
             ),
           ),
           const SizedBox(height: 6),
-          const Text(
+          Text(
             'PM Awas Yojana (Urban)',
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Subsidised housing loans — interest subsidy up to\n₹2.67 lakh.',
-            style: TextStyle(fontSize: 13, color: _subtleText),
+            style: TextStyle(
+              fontSize: 13,
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
           ),
           const SizedBox(height: 12),
           SizedBox(
@@ -582,6 +676,10 @@ class _SearchAndBrowseMockup extends StatelessWidget {
               text: 'Check eligibility',
               onPressed: () {},
               variant: Ux4gButtonVariant.primary,
+              backgroundColor: isDark
+                  ? Ux4gPalette.primary300
+                  : Ux4gPalette.primary600,
+              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
               height: 44,
             ),
           ),
@@ -595,42 +693,57 @@ class _SearchAndBrowseMockup extends StatelessWidget {
     String dept,
     String fee,
     String time,
+    BuildContext context,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _borderColor),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: _titleColor,
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 2),
-          Text(dept, style: const TextStyle(fontSize: 12, color: _subtleText)),
+          Text(
+            dept,
+            style: TextStyle(
+              fontSize: 12,
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
+          ),
           const SizedBox(height: 8),
           Row(
             children: [
               Text(
                 fee,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: _greenColor,
+                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
                 ),
               ),
               Text(
                 '  ·  $time',
-                style: const TextStyle(fontSize: 12, color: _subtleText),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -640,36 +753,48 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
+            borderColor: isDark
+                ? Ux4gPalette.neutral600
+                : Ux4gPalette.primary300,
+            contentColor: isDark
+                ? Ux4gPalette.neutral50
+                : Ux4gPalette.primary600,
           ),
         ],
       ),
     );
   }
 
-  static Widget _buildQuizCta() {
+  static Widget _buildQuizCta(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF2EFFF),
+        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _primaryColor.withValues(alpha: 0.3)),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Not sure what you\'re eligible for?',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Take a 2-minute quiz to find schemes you qualify for.',
-            style: TextStyle(fontSize: 13, color: _subtleText),
+            style: TextStyle(
+              fontSize: 13,
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
           ),
           const SizedBox(height: 12),
           SizedBox(
@@ -677,7 +802,13 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             child: Ux4gButton(
               text: 'Find my schemes',
               onPressed: () {},
-              variant: Ux4gButtonVariant.outline,
+              variant: Ux4gButtonVariant.secondary,
+              backgroundColor: isDark
+                  ? Ux4gPalette.primary800
+                  : Ux4gPalette.primary100,
+              contentColor: isDark
+                  ? Ux4gPalette.primary200
+                  : Ux4gPalette.primary700,
               height: 44,
             ),
           ),

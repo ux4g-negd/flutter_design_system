@@ -4,12 +4,30 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+// ignore: unused_element
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Colors.white : const Color(0xFF111827);
+// ignore: unused_element
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
+// ignore: unused_element
+Color _getBorderColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+// ignore: unused_element
+Color _getScaffoldBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+// ignore: unused_element
+Color _getCardBg(BuildContext context) =>
+    _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+// ignore: unused_element
+Color _getHeaderBg(BuildContext context) =>
+    _isDark(context) ? const Color(0xFF161925) : Colors.white;
+// ignore: unused_element
 const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
 
 final noApplicationsComponent = WidgetbookComponent(
   name: 'No Applications',
@@ -46,27 +64,37 @@ class NoApplicationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _getScaffoldBg(context),
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
+              leadingSpacing: 4,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
-                const SizedBox(width: 8),
-                const Text('Government of India', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 36),
+                SizedBox(height: 24, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Color(0xFFD1D5DB))),
+                SvgPicture.asset(Ux4gIcons.union, height: 28),
               ],
+              titleWidget: Text(
+                'Government of India',
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF111827)),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
               actions: [
                 Ux4gAppHeaderAction(icon: Icons.notifications_outlined, onPressed: () {}),
               ],
               showAvatar: true,
-              avatarInitials: 'R',
+              avatar: const Ux4gStatusAvatar(
+                size: Ux4gAvatarSize.s,
+                imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                initials: 'R',
+                variant: Ux4gStatusVariant.online,
+              ),
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Color(0xFFE5E7EB)),
 
             // Content
             Expanded(
@@ -77,52 +105,58 @@ class NoApplicationsScreen extends StatelessWidget {
                   children: [
                     // Greeting
                     Text('Good morning, Ramesh', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFF111827))),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Text("You haven't started any applications yet", style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Empty state
                     Center(
                       child: Column(
                         children: [
                           // Illustration icon
-                          Container(
+                          SvgPicture.asset(
+                            Ux4gIcons.inbox,
                             width: 64,
                             height: 64,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF3F0FF),
-                              borderRadius: BorderRadius.circular(12),
+                            colorFilter: ColorFilter.mode(
+                              _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              BlendMode.srcIn,
                             ),
-                            child: Icon(Icons.laptop_mac_outlined, size: 32, color: Color(0xFF432CBB)),
+                            errorBuilder: (c, e, s) => Icon(
+                              Icons.inbox_outlined,
+                              size: 64,
+                              color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                            ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20),
                           Text('No active applications', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Color(0xFF111827))),
-                          const SizedBox(height: 8),
+                          SizedBox(height: 8),
                           Text(
                             'Start your application easily by clicking on the\nbutton below',
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24),
                           Ux4gButton(
                             text: 'Start application',
                             onPressed: () {},
-                            variant: Ux4gButtonVariant.outline,
+                            variant: Ux4gButtonVariant.primary,
+                            backgroundColor: Color(0xFFEDE9FE),
                             contentColor: Color(0xFF432CBB),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Popular services
                     Text('Popular services to get started', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     _ServiceCard(title: 'Caste Certificate', subtitle: 'SC / ST / OBC category proof'),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     _ServiceCard(title: 'Domicile Certificate', subtitle: 'Proof of residence in the state'),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     _ServiceCard(title: 'Income Certificate', subtitle: 'Proof of annual family income'),
                   ],
                 ),
@@ -153,13 +187,13 @@ class _ServiceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(subtitle, style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           Row(
             children: [
               Text('Start now', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Color(0xFF432CBB))),
-              const SizedBox(width: 4),
+              SizedBox(width: 4),
               Icon(Icons.arrow_forward, size: 14, color: Color(0xFF432CBB)),
             ],
           ),
@@ -180,48 +214,58 @@ class _NoApplicationsMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _getScaffoldBg(context),
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Container(
-              color: Colors.white,
+              color: _getHeaderBg(context),
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
-                    title: '',
+                    leadingSpacing: 4,
                     leadingWidgets: [
                       SvgPicture.asset(
                         _nationalEmblemLogoPath,
                         height: 36,
-                        errorBuilder: (c, e, s) => const Icon(
+                        colorFilter: _isDark(context)
+                            ? const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              )
+                            : null,
+                        errorBuilder: (c, e, s) => Icon(
                           Icons.account_balance,
                           size: 28,
                           color: Colors.grey,
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      SizedBox(
+                        height: 24,
+                        child: Ux4gDivider(
+                          orientation: Ux4gDividerOrientation.vertical,
+                          color: _getBorderColor(context),
+                        ),
+                      ),
                       SvgPicture.asset(
                         _unionLogoPath,
-                        height: 28,
-                        errorBuilder: (c, e, s) => const Icon(
-                          Icons.blur_on,
-                          size: 28,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Text(
-                        'Government of India',
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: _titleColor,
-                        ),
+                        height: 26,
+                        errorBuilder: (c, e, s) =>
+                            Icon(Icons.blur_on, size: 28, color: Colors.blue),
                       ),
                     ],
+                    titleWidget: Text(
+                      'Government of India',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: _getTitleColor(context),
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     actions: [
                       Ux4gAppHeaderAction(
                         icon: Icons.notifications_outlined,
@@ -229,9 +273,15 @@ class _NoApplicationsMockup extends StatelessWidget {
                       ),
                     ],
                     showAvatar: true,
-                    avatarInitials: 'R',
+                    avatar: const Ux4gStatusAvatar(
+                      size: Ux4gAvatarSize.s,
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',
+                      initials: 'R',
+                      variant: Ux4gStatusVariant.online,
+                    ),
                   ),
-                  const Divider(height: 1, color: _borderColor),
+                  Divider(height: 1, color: _getBorderColor(context)),
                 ],
               ),
             ),
@@ -244,88 +294,107 @@ class _NoApplicationsMockup extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Greeting
-                    const Text(
+                    Text(
                       'Good morning, Ramesh',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                        color: _getTitleColor(context),
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
+                    SizedBox(height: 4),
+                    Text(
                       "You haven't started any applications yet",
-                      style: TextStyle(fontSize: 13, color: _subtleText),
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: _getSubtleText(context),
+                      ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Empty state
                     Center(
                       child: Column(
                         children: [
                           // Illustration icon
-                          Container(
+                          SvgPicture.asset(
+                            Ux4gIcons.inbox,
                             width: 64,
                             height: 64,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF3F0FF),
-                              borderRadius: BorderRadius.circular(12),
+                            colorFilter: ColorFilter.mode(
+                              _isDark(context)
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600,
+                              BlendMode.srcIn,
                             ),
-                            child: const Icon(
-                              Icons.laptop_mac_outlined,
-                              size: 32,
-                              color: _primaryColor,
+                            errorBuilder: (c, e, s) => Icon(
+                              Icons.inbox_outlined,
+                              size: 64,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600,
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          const Text(
+                          SizedBox(height: 20),
+                          Text(
                             'No active applications',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
-                              color: _titleColor,
+                              color: _getTitleColor(context),
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          const Text(
+                          SizedBox(height: 8),
+                          Text(
                             'Start your application easily by clicking on the\nbutton below',
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 13, color: _subtleText),
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: _getSubtleText(context),
+                            ),
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24),
                           Ux4gButton(
                             text: 'Start application',
                             onPressed: () {},
-                            variant: Ux4gButtonVariant.outline,
-                            contentColor: _primaryColor,
+                            variant: Ux4gButtonVariant.primary,
+                            backgroundColor: _isDark(context)
+                                ? const Color(0xFF2E1C89)
+                                : const Color(0xFFEDE9FE),
+                            contentColor: _isDark(context)
+                                ? const Color(0xFFE0E7FF)
+                                : _primaryColor,
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Popular services
-                    const Text(
+                    Text(
                       'Popular services to get started',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: _titleColor,
+                        color: _getTitleColor(context),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     _buildServiceCard(
+                      context,
                       'Caste Certificate',
                       'SC / ST / OBC category proof',
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     _buildServiceCard(
+                      context,
                       'Domicile Certificate',
                       'Proof of residence in the state',
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     _buildServiceCard(
+                      context,
                       'Income Certificate',
                       'Proof of annual family income',
                     ),
@@ -339,12 +408,16 @@ class _NoApplicationsMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildServiceCard(String title, String subtitle) {
+  Widget _buildServiceCard(
+    BuildContext context,
+    String title,
+    String subtitle,
+  ) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border.all(color: _borderColor),
+        border: Border.all(color: _getBorderColor(context)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -352,19 +425,19 @@ class _NoApplicationsMockup extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: _titleColor,
+              color: _getTitleColor(context),
             ),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(
             subtitle,
-            style: const TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(fontSize: 12, color: _getSubtleText(context)),
           ),
-          const SizedBox(height: 8),
-          const Row(
+          SizedBox(height: 8),
+          Row(
             children: [
               Text(
                 'Start now',

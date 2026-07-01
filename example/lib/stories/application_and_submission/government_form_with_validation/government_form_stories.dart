@@ -4,13 +4,25 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _bg = Color(0xFFFAFAFA);
-const Color _cardBg = Color(0xFFF4F3FF);
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+Color _bg(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+    ? Ux4gPalette.neutral900
+    : Ux4gPalette.neutral50;
+Color _cardBg(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+    ? Ux4gPalette.primary900
+    : Ux4gPalette.primary50;
+Color _titleColor(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+    ? Ux4gPalette.neutral50
+    : Ux4gPalette.neutral900;
+Color _subtleText(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark
+    ? Ux4gPalette.neutral400
+    : Ux4gPalette.neutral600;
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final governmentFormWithValidationComponent = WidgetbookComponent(
   name: 'Government form with validation',
@@ -20,7 +32,7 @@ final governmentFormWithValidationComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.list(
           label: 'Layout Variant',
-          options: const ['Default', 'Card style'],
+          options: ['Default', 'Card style'],
           initialOption: 'Default',
         );
 
@@ -37,8 +49,8 @@ final governmentFormWithValidationComponent = WidgetbookComponent(
           code: code,
           center: true,
           child: isCardStyle
-              ? const _GovernmentFormCardMockup()
-              : const _GovernmentFormMockup(),
+              ? _GovernmentFormCardMockup()
+              : _GovernmentFormMockup(),
         );
       },
     ),
@@ -50,7 +62,7 @@ final governmentFormWithValidationComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 
 class _PhoneFrame extends StatelessWidget {
-  const _PhoneFrame({required this.child, super.key});
+  _PhoneFrame({required this.child, super.key});
   final Widget child;
 
   @override
@@ -60,18 +72,15 @@ class _PhoneFrame extends StatelessWidget {
       height: 760,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: _bg,
+        color: _bg(context),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
-            blurRadius: 24,
-            offset: const Offset(0, 6),
-          ),
-        ],
+        border: Border.all(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Ux4gPalette.neutral800
+              : Ux4gPalette.neutral200,
+        ),
       ),
-      child: child,
+      child: ScaffoldMessenger(child: child),
     );
   }
 }
@@ -80,393 +89,21 @@ class _PhoneFrame extends StatelessWidget {
 // Source Code Strings
 // ───────────────────────────────────────────────────────────────────────
 
-const _governmentFormDefaultCode = r"""import 'package:flutter/material.dart';
+const String _governmentFormDefaultCode =
+    r"""import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GovernmentFormScreen extends StatefulWidget {
-  const GovernmentFormScreen({super.key});
+  GovernmentFormScreen({super.key});
 
   @override
-  State<GovernmentFormScreen> createState() => _GovernmentFormScreenState();
+  State<GovernmentFormScreen> createState() => GovernmentFormScreenState();
 }
 
-class _GovernmentFormScreenState extends State<GovernmentFormScreen> {
+class GovernmentFormScreenState extends State<GovernmentFormScreen> {
   bool _acceptTerms = false;
-  String _fullName = 'Ramesh Kumar';
-  String _mobileNumber = '';
-  String _emailAddress = '';
-  String _aadhaarNumber = '';
-  String? _selectedState;
-  String? _maritalStatus;
-  String _reason = '';
-  double _income = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
-
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Ux4gAppHeader(
-              variant: Ux4gAppHeaderVariant.light,
-              title: '',
-              leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
-                SvgPicture.asset('assets/Union.svg', height: 32),
-              ],
-            ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
-
-            Ux4gStatusBanner(
-              variant: Ux4gBannerVariant.successLight,
-              title: '',
-              margin: EdgeInsets.zero,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              backgroundColor: const Color(0xFFF0FDF4),
-              borderColor: Colors.transparent,
-              actionsAlignment: WrapAlignment.end,
-              actions: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.check_circle_outline, color: Color(0xFF065F46), size: 16),
-                    const SizedBox(width: 6),
-                    const Text(
-                      'Saved 3:14 PM',
-                      style: TextStyle(color: Color(0xFF065F46), fontSize: 12, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-              ],
-              width: double.infinity,
-            ),
-
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Ux4gStepper(
-                      totalSteps: 4,
-                      currentStep: 2,
-                      stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: 'Eligibility', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                        Ux4gStepItem(title: 'Personal', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                        Ux4gStepItem(title: 'Documents', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                        Ux4gStepItem(title: ''),
-                      ],
-                    ),
-                    const SizedBox(height: 32),
-
-                    const Text(
-                      'Personal information',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Please enter your details.',
-                      style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4),
-                    ),
-                    const SizedBox(height: 32),
-
-                    Ux4gInputField(
-                      label: 'Full name',
-                      value: _fullName,
-                      onValueChange: (val) => setState(() => _fullName = val),
-                      size: Ux4gInputFieldSize.medium,
-                      style: const TextStyle(color: Color(0xFF111827)),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        const Text('From Aadhaar · ', style: TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
-                        const Text('Update via UIDAI', style: TextStyle(fontSize: 12, color: primaryColor, fontWeight: FontWeight.w600)),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.open_in_new, size: 12, color: primaryColor),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-
-                    Ux4gInputField(label: 'Mobile number', value: _mobileNumber, onValueChange: (val) => setState(() => _mobileNumber = val), size: Ux4gInputFieldSize.medium),
-                    const SizedBox(height: 24),
-                    Ux4gInputField(label: 'Email address', value: _emailAddress, onValueChange: (val) => setState(() => _emailAddress = val), size: Ux4gInputFieldSize.medium),
-                    const SizedBox(height: 24),
-                    Ux4gInputField(label: 'Aadhaar number', value: _aadhaarNumber, onValueChange: (val) => setState(() => _aadhaarNumber = val), size: Ux4gInputFieldSize.medium),
-                    const SizedBox(height: 24),
-
-                    Ux4gSelectionDropdown(
-                      label: 'State of residence',
-                      options: const [
-                        Ux4gDropdownOption(id: 'dl', label: 'Delhi'),
-                        Ux4gDropdownOption(id: 'mh', label: 'Maharashtra'),
-                        Ux4gDropdownOption(id: 'up', label: 'Uttar Pradesh'),
-                      ],
-                      selectedOptionIds: _selectedState != null ? [_selectedState!] : [],
-                      onSelectionChange: (ids) => setState(() => _selectedState = ids.isNotEmpty ? ids.first : null),
-                      placeholder: 'Please select..',
-                      size: Ux4gDropdownSize.m,
-                    ),
-                    const SizedBox(height: 24),
-
-                    const Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xFF374151))),
-                    const SizedBox(height: 8),
-                    Ux4gRadioButton(value: 'Single', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Single'),
-                    Ux4gRadioButton(value: 'Married', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Married'),
-                    Ux4gRadioButton(value: 'Divorced', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Divorced or widowed'),
-                    Ux4gRadioButton(value: 'Option4', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Option 4'),
-                    const SizedBox(height: 24),
-
-                    Ux4gTextArea(label: 'Brief reason for application (optional)', value: _reason, onValueChange: (val) => setState(() => _reason = val), placeholder: 'Placeholder'),
-                    const SizedBox(height: 24),
-
-                    Ux4gSlider(
-                      label: 'Annual Income (Lakh ₹) *',
-                      isRequired: true,
-                      value: _income,
-                      onValueChange: (val) => setState(() => _income = val),
-                      min: 0, max: 10, steps: 9,
-                      showMarksAndValues: true,
-                      startValueText: '0',
-                      endValueText: '10+',
-                    ),
-                    const SizedBox(height: 32),
-
-                    const Text('Receive application status updates via SMS', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
-                    const SizedBox(height: 16),
-
-                    Ux4gCheckbox(
-                      label: 'Accept terms and conditions *',
-                      isRequired: true,
-                      value: _acceptTerms,
-                      onChanged: (val) => setState(() => _acceptTerms = val ?? false),
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(text: 'Continue', onPressed: _acceptTerms ? () {} : null, size: Ux4gButtonSize.large, width: double.infinity),
-                  const SizedBox(height: 12),
-                  Ux4gButton(text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
-                ],
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-""";
-
-const _governmentFormCardCode = r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-class GovernmentFormCardScreen extends StatefulWidget {
-  const GovernmentFormCardScreen({super.key});
-
-  @override
-  State<GovernmentFormCardScreen> createState() => _GovernmentFormCardScreenState();
-}
-
-class _GovernmentFormCardScreenState extends State<GovernmentFormCardScreen> {
-  bool _acceptTerms = false;
-  String _fullName = 'Ramesh Kumar';
-  String _mobileNumber = '';
-  String _emailAddress = '';
-  String _aadhaarNumber = '';
-  String? _selectedState;
-  String? _maritalStatus;
-  String _reason = '';
-  double _income = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
-
-    return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              color: Colors.white,
-              child: Column(
-                children: [
-                  Ux4gAppHeader(
-                    variant: Ux4gAppHeaderVariant.light,
-                    title: '',
-                    leadingWidgets: [
-                      SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                      const SizedBox(width: 1),
-                      Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
-                      SvgPicture.asset('assets/Union.svg', height: 32),
-                    ],
-                  ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4)),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Ux4gStatusBanner(
-                            variant: Ux4gBannerVariant.successLight,
-                            title: '',
-                            margin: EdgeInsets.zero,
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            backgroundColor: const Color(0xFFF0FDF4),
-                            borderColor: Colors.transparent,
-                            actionsAlignment: WrapAlignment.end,
-                            actions: [
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.check_circle_outline, color: Color(0xFF065F46), size: 16),
-                                  const SizedBox(width: 6),
-                                  const Text(
-                                    'Saved 3:14 PM',
-                                    style: TextStyle(color: Color(0xFF065F46), fontSize: 12, fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                            ],
-                            width: double.infinity,
-                          ),
-                          const SizedBox(height: 32),
-                          Ux4gStepper(
-                            totalSteps: 4, currentStep: 2, stepSize: 20,
-                            steps: const [
-                              Ux4gStepItem(title: 'Eligibility', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                              Ux4gStepItem(title: 'Personal', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                              Ux4gStepItem(title: 'Documents', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                              Ux4gStepItem(title: ''),
-                            ],
-                          ),
-                          const SizedBox(height: 32),
-                          const Text('Personal information', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2)),
-                          const SizedBox(height: 8),
-                          const Text('Please enter your details.', style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4)),
-                          const SizedBox(height: 32),
-                          Ux4gInputField(label: 'Full name', value: _fullName, onValueChange: (val) => setState(() => _fullName = val), size: Ux4gInputFieldSize.medium, style: const TextStyle(color: Color(0xFF111827))),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              const Text('From Aadhaar · ', style: TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
-                              const Text('Update via UIDAI', style: TextStyle(fontSize: 12, color: primaryColor, fontWeight: FontWeight.w600)),
-                              const SizedBox(width: 4),
-                              const Icon(Icons.open_in_new, size: 12, color: primaryColor),
-                            ],
-                          ),
-                          const SizedBox(height: 24),
-                          Ux4gInputField(label: 'Mobile number', value: _mobileNumber, onValueChange: (val) => setState(() => _mobileNumber = val), size: Ux4gInputFieldSize.medium),
-                          const SizedBox(height: 24),
-                          Ux4gSelectionDropdown(
-                            label: 'State of residence',
-                            options: const [Ux4gDropdownOption(id: 'dl', label: 'Delhi'), Ux4gDropdownOption(id: 'mh', label: 'Maharashtra')],
-                            selectedOptionIds: _selectedState != null ? [_selectedState!] : [],
-                            onSelectionChange: (ids) => setState(() => _selectedState = ids.isNotEmpty ? ids.first : null),
-                            placeholder: 'Please select..',
-                            size: Ux4gDropdownSize.m,
-                          ),
-                          const SizedBox(height: 24),
-                          Ux4gSlider(label: 'Annual Income (Lakh ₹) *', isRequired: true, value: _income, onValueChange: (val) => setState(() => _income = val), min: 0, max: 10, steps: 9, showMarksAndValues: true, startValueText: '0', endValueText: '10+'),
-                          const SizedBox(height: 32),
-                          Ux4gCheckbox(label: 'Accept terms and conditions *', isRequired: true, value: _acceptTerms, onChanged: (val) => setState(() => _acceptTerms = val ?? false)),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(text: 'Continue', onPressed: _acceptTerms ? () {} : null, size: Ux4gButtonSize.large, width: double.infinity),
-                  const SizedBox(height: 12),
-                  Ux4gButton(text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-""";
-
-// ───────────────────────────────────────────────────────────────────────
-// Mockups
-// ───────────────────────────────────────────────────────────────────────
-
-class _GovernmentFormMockup extends StatefulWidget {
-  const _GovernmentFormMockup({super.key});
-
-  @override
-  State<_GovernmentFormMockup> createState() => _GovernmentFormMockupState();
-}
-
-class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
-  bool _acceptTerms = false;
+  bool _showBanner = false;
   String _fullName = 'Ramesh Kumar';
   String _mobileNumber = '';
   String _emailAddress = '';
@@ -482,304 +119,820 @@ class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
 
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.neutral900
+            : Ux4gPalette.neutral0,
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Stack(
             children: [
-              Ux4gAppHeader(
-                variant: Ux4gAppHeaderVariant.light,
-                title: '',
-                leadingWidgets: [
-                  SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  const SizedBox(width: 1),
-                  Container(
-                    height: 32,
-                    width: 1,
-                    color: const Color(0xFFD1D5DB),
-                  ),
-                  const SizedBox(width: 1),
-                  SvgPicture.asset(_unionLogoPath, height: 32),
-                ],
-              ),
-              const Divider(height: 1, color: Color(0xFFE5E7EB)),
-              Ux4gStatusBanner(
-                variant: Ux4gBannerVariant.successLight,
-                title: '',
-                margin: EdgeInsets.zero,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 6,
-                ),
-                backgroundColor: const Color(0xFFF0FDF4),
-                borderColor: Colors.transparent,
-                actionsAlignment: WrapAlignment.end,
-                actions: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.check_circle_outline,
-                        color: Color(0xFF065F46),
-                        size: 16,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Ux4gAppHeader(
+                    variant: Ux4gAppHeaderVariant.light,
+                    title: '',
+                    leadingWidgets: [
+                      SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
+                      SizedBox(
+                        height: 32,
+                        child: Ux4gDivider(
+                          orientation: Ux4gDividerOrientation.vertical,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral700
+                              : Ux4gPalette.neutral300,
+                        ),
                       ),
-                      const SizedBox(width: 6),
-                      const Text(
-                        'Saved 3:14 PM',
-                        style: TextStyle(
-                          color: Color(0xFF065F46),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
+                      SvgPicture.asset(
+                        _unionLogoPath,
+                        height: 32,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
+                          BlendMode.srcIn,
                         ),
                       ),
                     ],
                   ),
-                ],
-                width: double.infinity,
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 24,
+                  Divider(
+                    height: 1,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Ux4gStepper(
-                        totalSteps: 4,
-                        currentStep: 2,
-                        stepSize: 20,
-                        steps: const [
-                          Ux4gStepItem(
-                            title: 'Eligibility',
-                            titleStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Ux4gStepItem(
-                            title: 'Personal',
-                            titleStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Ux4gStepItem(
-                            title: 'Documents',
-                            titleStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Ux4gStepItem(title: ''),
-                        ],
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 8, top: 8),
+                      child: Ux4gButton(
+                        text: 'Back',
+                        variant: Ux4gButtonVariant.ghost,
+                        onPressed: () {},
+                        leadingIcon: Icons.arrow_back,
+                        contentColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary900,
                       ),
-                      const SizedBox(height: 32),
-                      const Text(
-                        'Personal information',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w800,
-                          color: _titleColor,
-                        ),
+                    ),
+                  ),
+
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 24,
                       ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Please enter your details.',
-                        style: TextStyle(fontSize: 15, color: _subtleText),
-                      ),
-                      const SizedBox(height: 32),
-                      Ux4gInputField(
-                        label: 'Full name',
-                        value: _fullName,
-                        onValueChange: (val) => setState(() => _fullName = val),
-                        size: Ux4gInputFieldSize.medium,
-                        style: const TextStyle(color: Color(0xFF111827)),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'From Aadhaar · ',
+                          Ux4gStepper(
+                            totalSteps: 4,
+                            currentStep: 2,
+                            stepSize: 20,
+                            steps: [
+                              Ux4gStepItem(
+                                title: 'Eligibility',
+                                titleStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Ux4gStepItem(
+                                title: 'Personal',
+                                titleStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Ux4gStepItem(
+                                title: 'Documents',
+                                titleStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Ux4gStepItem(title: ''),
+                            ],
+                          ),
+                          SizedBox(height: 32),
+                          Text(
+                            'Personal information',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hM_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: _titleColor(context)),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Please enter your details.',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 15)).copyWith(color: _subtleText(context)),
+                          ),
+                          SizedBox(height: 32),
+                          Ux4gInputField(
+                            label: 'Full name',
+                            value: _fullName,
+                            enabled: false,
+                            onValueChange: (val) =>
+                                setState(() => _fullName = val),
+                            size: Ux4gInputFieldSize.medium,
+                            labelStyle: TextStyle(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gPalette.neutral200
+                                  : Ux4gPalette.neutral700,
+                            ),
                             style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF6B7280),
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
                             ),
                           ),
-                          const Text(
-                            'Update via UIDAI',
+                          SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Text(
+                                'From Aadhaar · Update via UIDAI',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(width: 4),
+                              Icon(
+                                Icons.open_in_new,
+                                size: 12,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gInputField(
+                            label: 'Mobile number',
+                            value: _mobileNumber,
+                            onValueChange: (val) =>
+                                setState(() => _mobileNumber = val),
+                            size: Ux4gInputFieldSize.medium,
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gInputField(
+                            label: 'Email address',
+                            value: _emailAddress,
+                            onValueChange: (val) =>
+                                setState(() => _emailAddress = val),
+                            size: Ux4gInputFieldSize.medium,
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gInputField(
+                            label: 'Aadhaar number',
+                            value: _aadhaarNumber,
+                            onValueChange: (val) =>
+                                setState(() => _aadhaarNumber = val),
+                            size: Ux4gInputFieldSize.medium,
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gSelectionDropdown(
+                            label: 'State of residence',
+                            options: [
+                              Ux4gDropdownOption(id: 'dl', label: 'Delhi'),
+                              Ux4gDropdownOption(
+                                id: 'mh',
+                                label: 'Maharashtra',
+                              ),
+                              Ux4gDropdownOption(
+                                id: 'up',
+                                label: 'Uttar Pradesh',
+                              ),
+                            ],
+                            selectedOptionIds: _selectedState != null
+                                ? [_selectedState!]
+                                : [],
+                            onSelectionChange: (ids) => setState(
+                              () => _selectedState = ids.isNotEmpty
+                                  ? ids.first
+                                  : null,
+                            ),
+                            placeholder: 'Please select..',
+                            size: Ux4gDropdownSize.m,
+                          ),
+                          SizedBox(height: 24),
+                          Text(
+                            'Your marital status',
                             style: TextStyle(
-                              fontSize: 12,
-                              color: primaryColor,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral300
+                                  : Ux4gPalette.neutral700,
                             ),
                           ),
-                          const SizedBox(width: 4),
-                          const Icon(
-                            Icons.open_in_new,
-                            size: 12,
-                            color: primaryColor,
+                          Ux4gRadioButton(
+                            value: 'Single',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Single',
                           ),
+                          Ux4gRadioButton(
+                            value: 'Married',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Married',
+                          ),
+                          Ux4gRadioButton(
+                            value: 'Divorced',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Divorced or widowed',
+                          ),
+                          Ux4gRadioButton(
+                            value: 'Option4',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Option 4',
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gTextArea(
+                            label: 'Brief reason for application (optional)',
+                            value: _reason,
+                            onValueChange: (v) => setState(() => _reason = v),
+                            placeholder: 'Placeholder',
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gSlider(
+                            label: 'Annual Income (Lakh ₹)',
+                            isRequired: true,
+                            rightLabelWidget: Text(
+                              '₹${_income.toInt()}',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
+                              ),
+                            ),
+                            value: _income,
+                            onValueChange: (v) => setState(() => _income = v),
+                            min: 0,
+                            max: 10,
+                            steps: 9,
+                            showMarksAndValues: true,
+                            valueFormatter: (val) => val == 10 ? '10+' : val.toInt().toString(),
+                          ),
+                          SizedBox(height: 32),
+                          Text(
+                            'Receive application status updates via SMS',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.lXL_default ?? TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Ux4gCheckbox(
+                            label: 'Accept terms and conditions',
+                            isRequired: true,
+                            value: _acceptTerms,
+                            onChanged: (v) =>
+                                setState(() => _acceptTerms = v ?? false),
+                          ),
+      
                         ],
                       ),
-                      const SizedBox(height: 24),
-                      Ux4gInputField(
-                        label: 'Mobile number',
-                        value: _mobileNumber,
-                        onValueChange: (val) =>
-                            setState(() => _mobileNumber = val),
-                        size: Ux4gInputFieldSize.medium,
-                      ),
-                      const SizedBox(height: 24),
-                      Ux4gInputField(
-                        label: 'Email address',
-                        value: _emailAddress,
-                        onValueChange: (val) =>
-                            setState(() => _emailAddress = val),
-                        size: Ux4gInputFieldSize.medium,
-                      ),
-                      const SizedBox(height: 24),
-                      Ux4gInputField(
-                        label: 'Aadhaar number',
-                        value: _aadhaarNumber,
-                        onValueChange: (val) =>
-                            setState(() => _aadhaarNumber = val),
-                        size: Ux4gInputFieldSize.medium,
-                      ),
-                      const SizedBox(height: 24),
-                      Ux4gSelectionDropdown(
-                        label: 'State of residence',
-                        options: const [
-                          Ux4gDropdownOption(id: 'dl', label: 'Delhi'),
-                          Ux4gDropdownOption(id: 'mh', label: 'Maharashtra'),
-                          Ux4gDropdownOption(id: 'up', label: 'Uttar Pradesh'),
-                        ],
-                        selectedOptionIds: _selectedState != null
-                            ? [_selectedState!]
-                            : [],
-                        onSelectionChange: (ids) => setState(
-                          () => _selectedState = ids.isNotEmpty
-                              ? ids.first
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    child: Column(
+                      children: [
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Continue',
+                          onPressed: _acceptTerms
+                              ? () {
+                                  setState(() => _showBanner = true);
+                                  Future.delayed(Duration(seconds: 3), () {
+                                    if (mounted)
+                                      setState(() => _showBanner = false);
+                                  });
+                                }
                               : null,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
                         ),
-                        placeholder: 'Please select..',
-                        size: Ux4gDropdownSize.m,
-                      ),
-                      const SizedBox(height: 24),
-                      const Text(
-                        'Your marital status',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF374151),
+                        SizedBox(height: 12),
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Save as Draft',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          contentColor: primaryColor,
                         ),
-                      ),
-                      Ux4gRadioButton(
-                        value: 'Single',
-                        groupValue: _maritalStatus,
-                        onChanged: (v) => setState(() => _maritalStatus = v),
-                        label: 'Single',
-                      ),
-                      Ux4gRadioButton(
-                        value: 'Married',
-                        groupValue: _maritalStatus,
-                        onChanged: (v) => setState(() => _maritalStatus = v),
-                        label: 'Married',
-                      ),
-                      Ux4gRadioButton(
-                        value: 'Divorced',
-                        groupValue: _maritalStatus,
-                        onChanged: (v) => setState(() => _maritalStatus = v),
-                        label: 'Divorced or widowed',
-                      ),
-                      Ux4gRadioButton(
-                        value: 'Option4',
-                        groupValue: _maritalStatus,
-                        onChanged: (v) => setState(() => _maritalStatus = v),
-                        label: 'Option 4',
-                      ),
-                      const SizedBox(height: 24),
-                      Ux4gTextArea(
-                        label: 'Brief reason for application (optional)',
-                        value: _reason,
-                        onValueChange: (v) => setState(() => _reason = v),
-                      ),
-                      const SizedBox(height: 24),
-                      Ux4gSlider(
-                        label: 'Annual Income (Lakh ₹) *',
-                        isRequired: true,
-                        value: _income,
-                        onValueChange: (v) => setState(() => _income = v),
-                        min: 0,
-                        max: 10,
-                        steps: 9,
-                        showMarksAndValues: true,
-                        startValueText: '0',
-                        endValueText: '10+',
-                      ),
-                      const SizedBox(height: 32),
-                      const Text(
-                        'Receive application status updates via SMS',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF111827),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 24),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral600
+                                : Ux4gPalette.neutral400,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      Ux4gCheckbox(
-                        label: 'Accept terms and conditions *',
-                        isRequired: true,
-                        value: _acceptTerms,
-                        onChanged: (v) =>
-                            setState(() => _acceptTerms = v ?? false),
-                      ),
-                      const SizedBox(height: 24),
-                    ],
+                        SizedBox(height: 6),
+                        Image.asset(_digitalIndiaLogoPath, height: 24),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              if (_showBanner)
+                Positioned(
+                  top: 74,
+                  left: 16,
+                  right: 16,
+                  child: Ux4gStatusBanner(
+                    height: 44,
+                    variant: Ux4gBannerVariant.successLight,
+                    title: '',
+                    margin: EdgeInsets.zero,
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    backgroundColor: const Color(0xFFF0FDF4),
+                    borderColor: Colors.transparent,
+                    trailingIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.check_circle_outline,
+                          color: Color(0xFF065F46),
+                          size: 14,
+                        ),
+                        SizedBox(width: 6),
+                        Text(
+                          'Saved 3:14 PM',
+                          style: TextStyle(
+                            color: Color(0xFF065F46),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    width: double.infinity,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      text: 'Continue',
-                      onPressed: _acceptTerms ? () {} : null,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+""";
+
+const String _governmentFormCardCode =
+    r"""import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+
+""";
+
+// ───────────────────────────────────────────────────────────────────────
+// Mockups
+// ───────────────────────────────────────────────────────────────────────
+
+class _GovernmentFormMockup extends StatefulWidget {
+  _GovernmentFormMockup({super.key});
+
+  @override
+  State<_GovernmentFormMockup> createState() => _GovernmentFormMockupState();
+}
+
+class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
+  bool _acceptTerms = false;
+  bool _showBanner = false;
+  String _fullName = 'Ramesh Kumar';
+  String _mobileNumber = '';
+  String _emailAddress = '';
+  String _aadhaarNumber = '';
+  String? _selectedState;
+  String? _maritalStatus;
+  String _reason = '';
+  double _income = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    const primaryColor = Color(0xFF432CBB);
+
+    return _PhoneFrame(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.neutral900
+            : Ux4gPalette.neutral0,
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Ux4gAppHeader(
+                    variant: Ux4gAppHeaderVariant.light,
+                    title: '',
+                    leadingWidgets: [
+                      SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
+                      SizedBox(
+                        height: 32,
+                        child: Ux4gDivider(
+                          orientation: Ux4gDividerOrientation.vertical,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral700
+                              : Ux4gPalette.neutral300,
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        _unionLogoPath,
+                        height: 32,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    height: 1,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 8, top: 8),
+                      child: Ux4gButton(
+                        text: 'Back',
+                        variant: Ux4gButtonVariant.ghost,
+                        onPressed: () {},
+                        leadingIcon: Icons.arrow_back,
+                        contentColor:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary900,
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
+                  ),
+
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 24,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Ux4gStepper(
+                            totalSteps: 4,
+                            currentStep: 2,
+                            stepSize: 20,
+                            steps: [
+                              Ux4gStepItem(
+                                title: 'Eligibility',
+                                titleStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Ux4gStepItem(
+                                title: 'Personal',
+                                titleStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Ux4gStepItem(
+                                title: 'Documents',
+                                titleStyle: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Ux4gStepItem(title: ''),
+                            ],
+                          ),
+                          SizedBox(height: 32),
+                          Text(
+                            'Personal information',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hM_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: _titleColor(context)),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Please enter your details.',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 15)).copyWith(color: _subtleText(context)),
+                          ),
+                          SizedBox(height: 32),
+                          Ux4gInputField(
+                            label: 'Full name',
+                            value: _fullName,
+                            enabled: false,
+                            onValueChange: (val) =>
+                                setState(() => _fullName = val),
+                            size: Ux4gInputFieldSize.medium,
+                            labelStyle: TextStyle(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gPalette.neutral200
+                                  : Ux4gPalette.neutral700,
+                            ),
+                            style: TextStyle(
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Text(
+                                'From Aadhaar · Update via UIDAI',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(width: 4),
+                              Icon(
+                                Icons.open_in_new,
+                                size: 12,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gInputField(
+                            label: 'Mobile number',
+                            value: _mobileNumber,
+                            onValueChange: (val) =>
+                                setState(() => _mobileNumber = val),
+                            size: Ux4gInputFieldSize.medium,
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gInputField(
+                            label: 'Email address',
+                            value: _emailAddress,
+                            onValueChange: (val) =>
+                                setState(() => _emailAddress = val),
+                            size: Ux4gInputFieldSize.medium,
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gInputField(
+                            label: 'Aadhaar number',
+                            value: _aadhaarNumber,
+                            onValueChange: (val) =>
+                                setState(() => _aadhaarNumber = val),
+                            size: Ux4gInputFieldSize.medium,
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gSelectionDropdown(
+                            label: 'State of residence',
+                            options: [
+                              Ux4gDropdownOption(id: 'dl', label: 'Delhi'),
+                              Ux4gDropdownOption(
+                                id: 'mh',
+                                label: 'Maharashtra',
+                              ),
+                              Ux4gDropdownOption(
+                                id: 'up',
+                                label: 'Uttar Pradesh',
+                              ),
+                            ],
+                            selectedOptionIds: _selectedState != null
+                                ? [_selectedState!]
+                                : [],
+                            onSelectionChange: (ids) => setState(
+                              () => _selectedState = ids.isNotEmpty
+                                  ? ids.first
+                                  : null,
+                            ),
+                            placeholder: 'Please select..',
+                            size: Ux4gDropdownSize.m,
+                          ),
+                          SizedBox(height: 24),
+                          Text(
+                            'Your marital status',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral300
+                                  : Ux4gPalette.neutral700,
+                            ),
+                          ),
+                          Ux4gRadioButton(
+                            value: 'Single',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Single',
+                          ),
+                          Ux4gRadioButton(
+                            value: 'Married',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Married',
+                          ),
+                          Ux4gRadioButton(
+                            value: 'Divorced',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Divorced or widowed',
+                          ),
+                          Ux4gRadioButton(
+                            value: 'Option4',
+                            groupValue: _maritalStatus,
+                            onChanged: (v) =>
+                                setState(() => _maritalStatus = v),
+                            label: 'Option 4',
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gTextArea(
+                            label: 'Brief reason for application (optional)',
+                            value: _reason,
+                            onValueChange: (v) => setState(() => _reason = v),
+                            placeholder: 'Placeholder',
+                          ),
+                          SizedBox(height: 24),
+                          Ux4gSlider(
+                            label: 'Annual Income (Lakh ₹)',
+                            isRequired: true,
+                            rightLabelWidget: Text(
+                              '₹${_income.toInt()}',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
+                              ),
+                            ),
+                            value: _income,
+                            onValueChange: (v) => setState(() => _income = v),
+                            min: 0,
+                            max: 10,
+                            steps: 9,
+                            showMarksAndValues: true,
+                            valueFormatter: (val) => val == 10 ? '10+' : val.toInt().toString(),
+                          ),
+                          SizedBox(height: 32),
+                          Text(
+                            'Receive application status updates via SMS',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.lXL_default ?? TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Ux4gCheckbox(
+                            label: 'Accept terms and conditions',
+                            isRequired: true,
+                            value: _acceptTerms,
+                            onChanged: (v) =>
+                                setState(() => _acceptTerms = v ?? false),
+                          ),
+      
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    child: Column(
+                      children: [
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Continue',
+                          onPressed: _acceptTerms
+                              ? () {
+                                  setState(() => _showBanner = true);
+                                  Future.delayed(Duration(seconds: 3), () {
+                                    if (mounted)
+                                      setState(() => _showBanner = false);
+                                  });
+                                }
+                              : null,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                        ),
+                        SizedBox(height: 12),
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Save as Draft',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          contentColor: primaryColor,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 24),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral600
+                                : Ux4gPalette.neutral400,
+                          ),
+                        ),
+                        SizedBox(height: 6),
+                        Image.asset(_digitalIndiaLogoPath, height: 24),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+              if (_showBanner)
+                Positioned(
+                  top: 74,
+                  left: 16,
+                  right: 16,
+                  child: Ux4gStatusBanner(
+                    height: 44,
+                    variant: Ux4gBannerVariant.successLight,
+                    title: '',
+                    margin: EdgeInsets.zero,
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    backgroundColor: const Color(0xFFF0FDF4),
+                    borderColor: Colors.transparent,
+                    trailingIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.check_circle_outline,
+                          color: Color(0xFF065F46),
+                          size: 14,
+                        ),
+                        SizedBox(width: 6),
+                        Text(
+                          'Saved 3:14 PM',
+                          style: TextStyle(
+                            color: Color(0xFF065F46),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    width: double.infinity,
+                  ),
+                ),
             ],
           ),
         ),
@@ -789,7 +942,7 @@ class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
 }
 
 class _GovernmentFormCardMockup extends StatefulWidget {
-  const _GovernmentFormCardMockup({super.key});
+  _GovernmentFormCardMockup({super.key});
 
   @override
   State<_GovernmentFormCardMockup> createState() =>
@@ -798,6 +951,7 @@ class _GovernmentFormCardMockup extends StatefulWidget {
 
 class _GovernmentFormCardMockupState extends State<_GovernmentFormCardMockup> {
   bool _acceptTerms = false;
+  bool _showBanner = false;
   String _fullName = 'Ramesh Kumar';
   String _mobileNumber = '';
   String _emailAddress = '';
@@ -813,275 +967,345 @@ class _GovernmentFormCardMockupState extends State<_GovernmentFormCardMockup> {
 
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: _cardBg,
+        backgroundColor: _cardBg(context),
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Stack(
             children: [
-              Container(
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    Ux4gAppHeader(
-                      variant: Ux4gAppHeaderVariant.light,
-                      title: '',
-                      leadingWidgets: [
-                        SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                        const SizedBox(width: 1),
-                        Container(
-                          height: 32,
-                          width: 1,
-                          color: const Color(0xFFD1D5DB),
-                        ),
-                        const SizedBox(width: 1),
-                        SvgPicture.asset(_unionLogoPath, height: 32),
-                      ],
-                    ),
-                    const Divider(height: 1, color: Color(0xFFE5E7EB)),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 32,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(24),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.05),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral900
+                        : Ux4gPalette.neutral0,
+                    child: Column(
+                      children: [
+                        Ux4gAppHeader(
+                          variant: Ux4gAppHeaderVariant.light,
+                          title: '',
+                          leadingWidgets: [
+                            SvgPicture.asset(
+                              _nationalEmblemLogoPath,
+                              height: 40,
+                            ),
+                            SizedBox(
+                              height: 32,
+                              child: Ux4gDivider(
+                                orientation: Ux4gDividerOrientation.vertical,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.neutral700
+                                    : Ux4gPalette.neutral300,
+                              ),
+                            ),
+                            SvgPicture.asset(
+                              _unionLogoPath,
+                              height: 32,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                                BlendMode.srcIn,
+                              ),
                             ),
                           ],
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Ux4gStatusBanner(
-                              variant: Ux4gBannerVariant.successLight,
-                              title: '',
-                              margin: EdgeInsets.zero,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              backgroundColor: const Color(0xFFF0FDF4),
-                              borderColor: Colors.transparent,
-                              actionsAlignment: WrapAlignment.end,
-                              actions: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(
-                                      Icons.check_circle_outline,
-                                      color: Color(0xFF065F46),
-                                      size: 16,
+                        Divider(
+                          height: 1,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral800
+                              : Ux4gPalette.neutral200,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 8,
+                              top: 8,
+                              bottom: 8,
+                            ),
+                            child: Ux4gButton(
+                              text: 'Back',
+                              variant: Ux4gButtonVariant.ghost,
+                              onPressed: () {},
+                              leadingIcon: Icons.arrow_back,
+                              contentColor:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary900,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 32,
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral900
+                                  : Ux4gPalette.neutral0,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 32),
+                                Ux4gStepper(
+                                  totalSteps: 4,
+                                  currentStep: 2,
+                                  stepSize: 20,
+                                  steps: [
+                                    Ux4gStepItem(
+                                      title: 'Eligibility',
+                                      titleStyle: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
-                                    const SizedBox(width: 6),
-                                    const Text(
-                                      'Saved 3:14 PM',
+                                    Ux4gStepItem(
+                                      title: 'Personal',
+                                      titleStyle: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Ux4gStepItem(
+                                      title: 'Documents',
+                                      titleStyle: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Ux4gStepItem(title: ''),
+                                  ],
+                                ),
+                                SizedBox(height: 32),
+                                Text(
+                                  'Personal information',
+                                  style: (Theme.of(context).extension<Ux4gTypography>()?.hM_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: _titleColor(context)),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  'Please enter your details.',
+                                  style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 15)).copyWith(color: _subtleText(context)),
+                                ),
+                                SizedBox(height: 32),
+                                Ux4gInputField(
+                                  label: 'Full name',
+                                  value: _fullName,
+                                  enabled: false,
+                                  onValueChange: (v) =>
+                                      setState(() => _fullName = v),
+                                  size: Ux4gInputFieldSize.medium,
+                                  style: TextStyle(
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.neutral900,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'From Aadhaar · Update via UIDAI',
                                       style: TextStyle(
-                                        color: Color(0xFF065F46),
                                         fontSize: 12,
+                                        color:
+                                            Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Ux4gPalette.primary300
+                                            : Ux4gPalette.primary600,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
+                                    SizedBox(width: 4),
+                                    Icon(
+                                      Icons.open_in_new,
+                                      size: 12,
+                                      color:
+                                          Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Ux4gPalette.primary300
+                                          : Ux4gPalette.primary600,
+                                    ),
                                   ],
                                 ),
-                              ],
-                              width: double.infinity,
-                            ),
-                            const SizedBox(height: 32),
-                            Ux4gStepper(
-                              totalSteps: 4,
-                              currentStep: 2,
-                              stepSize: 20,
-                              steps: const [
-                                Ux4gStepItem(
-                                  title: 'Eligibility',
-                                  titleStyle: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                SizedBox(height: 24),
+                                Ux4gInputField(
+                                  label: 'Mobile number',
+                                  value: _mobileNumber,
+                                  onValueChange: (v) =>
+                                      setState(() => _mobileNumber = v),
+                                  size: Ux4gInputFieldSize.medium,
                                 ),
-                                Ux4gStepItem(
-                                  title: 'Personal',
-                                  titleStyle: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
+                                SizedBox(height: 24),
+                                Ux4gSelectionDropdown(
+                                  label: 'State of residence',
+                                  options: [
+                                    Ux4gDropdownOption(
+                                      id: 'dl',
+                                      label: 'Delhi',
+                                    ),
+                                    Ux4gDropdownOption(
+                                      id: 'mh',
+                                      label: 'Maharashtra',
+                                    ),
+                                  ],
+                                  selectedOptionIds: _selectedState != null
+                                      ? [_selectedState!]
+                                      : [],
+                                  onSelectionChange: (ids) => setState(
+                                    () => _selectedState = ids.isNotEmpty
+                                        ? ids.first
+                                        : null,
                                   ),
+                                  placeholder: 'Please select..',
+                                  size: Ux4gDropdownSize.m,
                                 ),
-                                Ux4gStepItem(
-                                  title: 'Documents',
-                                  titleStyle: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
+                                SizedBox(height: 24),
+                                Ux4gSlider(
+                                  label: 'Annual Income (Lakh ₹)',
+                                  isRequired: true,
+                                  rightLabelWidget: Text(
+                                    '₹${_income.toInt()}',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: Theme.of(context).brightness == Brightness.dark
+                                          ? Ux4gPalette.neutral50
+                                          : Ux4gPalette.neutral900,
+                                    ),
                                   ),
+                                  value: _income,
+                                  onValueChange: (val) =>
+                                      setState(() => _income = val),
+                                  min: 0,
+                                  max: 10,
+                                  steps: 9,
+                                  showMarksAndValues: true,
+                                  valueFormatter: (val) => val == 10 ? '10+' : val.toInt().toString(),
                                 ),
-                                Ux4gStepItem(title: ''),
-                              ],
-                            ),
-                            const SizedBox(height: 32),
-                            const Text(
-                              'Personal information',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w800,
-                                color: _titleColor,
-                                height: 1.2,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            const Text(
-                              'Please enter your details.',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: _subtleText,
-                                height: 1.4,
-                              ),
-                            ),
-                            const SizedBox(height: 32),
-                            Ux4gInputField(
-                              label: 'Full name',
-                              value: _fullName,
-                              onValueChange: (v) =>
-                                  setState(() => _fullName = v),
-                              size: Ux4gInputFieldSize.medium,
-                              style: const TextStyle(color: Color(0xFF111827)),
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                const Text(
-                                  'From Aadhaar · ',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF6B7280),
+                                SizedBox(height: 32),
+                                Ux4gCheckbox(
+                                  label: 'Accept terms and conditions',
+                                  isRequired: true,
+                                  value: _acceptTerms,
+                                  onChanged: (val) => setState(
+                                    () => _acceptTerms = val ?? false,
                                   ),
-                                ),
-                                const Text(
-                                  'Update via UIDAI',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: primaryColor,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(width: 4),
-                                const Icon(
-                                  Icons.open_in_new,
-                                  size: 12,
-                                  color: primaryColor,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 24),
-                            Ux4gInputField(
-                              label: 'Mobile number',
-                              value: _mobileNumber,
-                              onValueChange: (v) =>
-                                  setState(() => _mobileNumber = v),
-                              size: Ux4gInputFieldSize.medium,
-                            ),
-                            const SizedBox(height: 24),
-                            Ux4gSelectionDropdown(
-                              label: 'State of residence',
-                              options: const [
-                                Ux4gDropdownOption(id: 'dl', label: 'Delhi'),
-                                Ux4gDropdownOption(
-                                  id: 'mh',
-                                  label: 'Maharashtra',
-                                ),
-                              ],
-                              selectedOptionIds: _selectedState != null
-                                  ? [_selectedState!]
-                                  : [],
-                              onSelectionChange: (ids) => setState(
-                                () => _selectedState = ids.isNotEmpty
-                                    ? ids.first
-                                    : null,
-                              ),
-                              placeholder: 'Please select..',
-                              size: Ux4gDropdownSize.m,
-                            ),
-                            const SizedBox(height: 24),
-                            Ux4gSlider(
-                              label: 'Annual Income (Lakh ₹) *',
-                              isRequired: true,
-                              value: _income,
-                              onValueChange: (val) =>
-                                  setState(() => _income = val),
-                              min: 0,
-                              max: 10,
-                              steps: 9,
-                              showMarksAndValues: true,
-                              startValueText: '0',
-                              endValueText: '10+',
-                            ),
-                            const SizedBox(height: 32),
-                            Ux4gCheckbox(
-                              label: 'Accept terms and conditions *',
-                              isRequired: true,
-                              value: _acceptTerms,
-                              onChanged: (val) =>
-                                  setState(() => _acceptTerms = val ?? false),
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 24),
+                        ],
                       ),
-                      const SizedBox(height: 24),
-                    ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    child: Column(
+                      children: [
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Continue',
+                          onPressed: _acceptTerms
+                              ? () {
+                                  setState(() => _showBanner = true);
+                                  Future.delayed(Duration(seconds: 3), () {
+                                    if (mounted)
+                                      setState(() => _showBanner = false);
+                                  });
+                                }
+                              : null,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                        ),
+                        SizedBox(height: 12),
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Save as Draft',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          contentColor: primaryColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 24),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral600
+                                : Ux4gPalette.neutral400,
+                          ),
+                        ),
+                        SizedBox(height: 6),
+                        Image.asset(_digitalIndiaLogoPath, height: 24),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              if (_showBanner)
+                Positioned(
+                  top: 74,
+                  left: 16,
+                  right: 16,
+                  child: Ux4gStatusBanner(
+                    height: 44,
+                    variant: Ux4gBannerVariant.successLight,
+                    title: '',
+                    margin: EdgeInsets.zero,
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    backgroundColor: const Color(0xFFF0FDF4),
+                    borderColor: Colors.transparent,
+                    trailingIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.check_circle_outline,
+                          color: Color(0xFF065F46),
+                          size: 14,
+                        ),
+                        SizedBox(width: 6),
+                        Text(
+                          'Saved 3:14 PM',
+                          style: TextStyle(
+                            color: Color(0xFF065F46),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    width: double.infinity,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      text: 'Continue',
-                      onPressed: _acceptTerms ? () {} : null,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                    ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
-                    ),
-                    const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
-                  ],
-                ),
-              ),
             ],
           ),
         ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'dart:async';
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
+import 'toast.dart';
 
 class UploadedFile {
   final String id;
@@ -69,6 +71,10 @@ class Ux4gFileUpload extends StatefulWidget {
   final Color? buttonColor;
   final Color? buttonBorderColor;
   final ButtonStyle? buttonStyle;
+  final String? errorTitle;
+  final String? errorText;
+  final TextStyle? errorTitleStyle;
+  final TextStyle? errorTextStyle;
 
   const Ux4gFileUpload({
     super.key,
@@ -78,12 +84,8 @@ class Ux4gFileUpload extends StatefulWidget {
     this.onUpload,
     this.allowedExtensions = const [
       'jpg',
-      'jpeg',
       'png',
-      'gif',
       'pdf',
-      'doc',
-      'docx',
     ],
     this.borderStyle = Ux4gFileUploadBorderStyle.solid,
     this.variant = Ux4gFileUploadVariant.standard,
@@ -91,6 +93,10 @@ class Ux4gFileUpload extends StatefulWidget {
     this.buttonColor,
     this.buttonBorderColor,
     this.buttonStyle,
+    this.errorTitle,
+    this.errorText,
+    this.errorTitleStyle,
+    this.errorTextStyle,
   });
 
   @override
@@ -100,15 +106,32 @@ class Ux4gFileUpload extends StatefulWidget {
 class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
   final List<UploadedFile> _files = [];
   final ImagePicker _picker = ImagePicker();
+  
+  bool _hasGlobalError = false;
+  String? _currentErrorTitle;
+  String? _currentErrorText;
 
   Future<void> _pickFile({bool fromCamera = false}) async {
+    setState(() {
+      _hasGlobalError = false;
+    });
+
     try {
       XFile? file;
 
       if (fromCamera) {
         file = await _picker.pickImage(source: ImageSource.camera);
       } else {
-        file = await _picker.pickImage(source: ImageSource.gallery);
+        FilePickerResult? result = await FilePicker.pickFiles(
+          type: FileType.custom,
+          allowedExtensions: widget.allowedExtensions,
+        );
+
+        if (result != null && result.files.single.path != null) {
+          file = XFile(result.files.single.path!, name: result.files.single.name);
+        } else if (result != null && result.files.single.bytes != null) {
+          file = XFile.fromData(result.files.single.bytes!, name: result.files.single.name);
+        }
       }
 
       if (file == null) return;
@@ -223,22 +246,27 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
   }
 
   void _showErrorDialog(String title, String message) {
-    final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
+    setState(() {
+      _hasGlobalError = true;
+      _currentErrorTitle = widget.errorTitle ?? title;
+      _currentErrorText = widget.errorText ?? message;
+    });
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 4),
-            Text(message),
-          ],
+        content: Ux4gToast(
+          category: Ux4gToastCategory.error,
+          title: title,
+          subtitle: message,
+          showCloseButton: true,
+          onCloseClick: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
         ),
-        backgroundColor: error,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        padding: const EdgeInsets.all(16),
+        behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 4),
       ),
     );
@@ -257,6 +285,10 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         ux4gColors?.onBackground ?? materialTheme.colorScheme.onSurface;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
+    final errorColor =
+        ux4gColors?.error ?? materialTheme.colorScheme.error;
+
+    final borderColor = _hasGlobalError ? errorColor : primary.withValues(alpha: 0.3);
 
     final lmStrong =
         ux4gTypography?.lM_strong ??
@@ -276,7 +308,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         widget.borderStyle == Ux4gFileUploadBorderStyle.dashed
             ? CustomPaint(
                 painter: _DashedBorderPainter(
-                  color: primary.withValues(alpha: 0.3),
+                  color: borderColor,
                   strokeWidth: 2,
                   borderRadius: 12,
                 ),
@@ -288,6 +320,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                     onPrimary,
                     onBackground,
                     onSurface,
+                    errorColor,
                     lmStrong,
                     bsDefault,
                   ),
@@ -297,7 +330,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: primary.withValues(alpha: 0.3),
+                    color: borderColor,
                     width: 2,
                     strokeAlign: BorderSide.strokeAlignOutside,
                   ),
@@ -310,6 +343,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                     onPrimary,
                     onBackground,
                     onSurface,
+                    errorColor,
                     lmStrong,
                     bsDefault,
                   ),
@@ -342,6 +376,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     Color onPrimary,
     Color onBackground,
     Color onSurface,
+    Color errorColor,
     TextStyle lM_strong,
     TextStyle bS_default,
   ) {
@@ -350,46 +385,64 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Upload icon
-          Icon(Icons.cloud_upload_outlined, size: 36, color: primary),
+          if (_hasGlobalError)
+            Icon(Icons.error_outline, size: 36, color: errorColor)
+          else
+            Icon(Icons.cloud_upload_outlined, size: 36, color: primary),
           const SizedBox(height: 12),
 
           // Header
           Text(
-            'Drop file here',
-            style: lM_strong.copyWith(
-              color: onBackground,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
+            _hasGlobalError
+                ? (_currentErrorTitle ?? 'Could not scan')
+                : 'Drop file here',
+            style: _hasGlobalError
+                ? (widget.errorTitleStyle ??
+                    lM_strong.copyWith(
+                      color: onBackground,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ))
+                : lM_strong.copyWith(
+                    color: onBackground,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 6),
 
           // Description
           Text(
-            'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
-            style: bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
+            _hasGlobalError
+                ? (_currentErrorText ?? 'File exceeds the upload limit.')
+                : 'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
+            style: _hasGlobalError
+                ? (widget.errorTextStyle ?? bS_default.copyWith(color: errorColor))
+                : bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
 
           // Or divider
-          Row(
-            children: [
-              Expanded(child: Divider(color: onSurface.withValues(alpha: 0.2))),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Text(
-                  'Or',
-                  style: bS_default.copyWith(
-                    color: onSurface.withValues(alpha: 0.5),
+          if (!_hasGlobalError) ...[
+            Row(
+              children: [
+                Expanded(child: Divider(color: onSurface.withValues(alpha: 0.2))),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Text(
+                    'Or',
+                    style: bS_default.copyWith(
+                      color: onSurface.withValues(alpha: 0.5),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(child: Divider(color: onSurface.withValues(alpha: 0.2))),
-            ],
-          ),
-          const SizedBox(height: 16),
+                Expanded(child: Divider(color: onSurface.withValues(alpha: 0.2))),
+              ],
+            ),
+            const SizedBox(height: 16),
+          ],
 
           // Single Upload button
           OutlinedButton.icon(
@@ -428,33 +481,49 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Upload icon
-        Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            color: primary.withValues(alpha: 0.1),
-            shape: BoxShape.circle,
+        if (_hasGlobalError)
+          Icon(Icons.error_outline, size: 32, color: errorColor)
+        else
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              color: primary.withValues(alpha: 0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(Icons.cloud_upload_outlined, size: 32, color: primary),
           ),
-          child: Icon(Icons.cloud_upload_outlined, size: 32, color: primary),
-        ),
         const SizedBox(height: 16),
 
         // Header
         Text(
-          'Upload Documents',
-          style: lM_strong.copyWith(
-            color: onBackground,
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-          ),
+          _hasGlobalError
+              ? (_currentErrorTitle ?? 'Could not scan')
+              : 'Upload Documents',
+          style: _hasGlobalError
+              ? (widget.errorTitleStyle ??
+                  lM_strong.copyWith(
+                    color: onBackground,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ))
+              : lM_strong.copyWith(
+                  color: onBackground,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 8),
 
         // Description
         Text(
-          'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
-          style: bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
+          _hasGlobalError
+              ? (_currentErrorText ?? 'File exceeds the upload limit.')
+              : 'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
+          style: _hasGlobalError
+              ? (widget.errorTextStyle ?? bS_default.copyWith(color: errorColor))
+              : bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 20),
@@ -562,14 +631,18 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                   Text(
                     file.name,
                     style: tsStrong.copyWith(
-                      color: _getFileNameColor(
-                        file.status,
-                        ux4gColors,
-                        materialTheme,
-                      ),
+                      color: onSurface,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    file.formattedSize,
+                    style: bmDefault.copyWith(
+                      color: onSurface.withValues(alpha: 0.6),
+                      fontSize: 12,
+                    ),
+                    maxLines: 1,
                   ),
                   if (file.status == UploadStatus.error)
                     Text(
@@ -645,27 +718,6 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         ),
       ),
     );
-  }
-
-  Color _getFileNameColor(
-    UploadStatus status,
-    Ux4gColors? ux4gColors,
-    ThemeData materialTheme,
-  ) {
-    final onSurface =
-        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final success = ux4gColors?.success ?? Colors.green;
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
-
-    switch (status) {
-      case UploadStatus.idle:
-      case UploadStatus.uploading:
-        return onSurface;
-      case UploadStatus.success:
-        return success;
-      case UploadStatus.error:
-        return error;
-    }
   }
 
   Widget _getFileIcon(

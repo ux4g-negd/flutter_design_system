@@ -1,13 +1,9 @@
+import 'dart:ui' show PointerDeviceKind;
+
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
-
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const Color _greenColor = Color(0xFF16A34A);
 
 final searchResultsListComponent = WidgetbookComponent(
   name: 'Search Results List',
@@ -34,7 +30,9 @@ final searchResultsListComponent = WidgetbookComponent(
 // Source Code String
 // ───────────────────────────────────────────────────────────────────────
 
-const _searchResultsListCode = r"""import 'package:flutter/material.dart';
+const _searchResultsListCode = r"""import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
 class SearchResultsListScreen extends StatefulWidget {
@@ -58,8 +56,10 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -67,6 +67,9 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.filled,
               title: 'National Services Portal',
+              titleStyle: Ux4gTheme.typography(
+                context,
+              ).tS_default.copyWith(color: Colors.white),
               showBackButton: true,
               onBackPressed: () => Navigator.pop(context),
             ),
@@ -74,7 +77,7 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
             // Search bar
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              color: Colors.white,
+              color: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0,
               child: Builder(
                 builder: (context) {
                   final filtered = _options
@@ -84,11 +87,13 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
                     value: _searchValue,
                     onValueChange: (v) => setState(() => _searchValue = v),
                     variant: Ux4gSearchFieldVariant.autocomplete,
+                    size: Ux4gSearchFieldSize.large,
                     placeholder: 'Search services...',
                     showVoiceIcon: true,
                     showClearIcon: true,
                     options: filtered,
                     onOptionSelected: (s) => setState(() => _searchValue = s),
+                    onSubmitClick: (_) {},
                     buttonStyle: Ux4gSearchFieldButtonStyle.filled,
                   );
                 },
@@ -99,7 +104,12 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 children: [
-                  Text('48 results', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  Text(
+                    '48 results',
+                    style: typography.tS_default.copyWith(
+                      color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    ),
+                  ),
                   const Spacer(),
                   Ux4gButton(
                     text: 'Filters',
@@ -107,17 +117,33 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.small,
                     leadingIcon: Icons.tune,
+                    borderColor: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral600
+                        : Ux4gPalette.neutral300,
+                    contentColor:
+                        Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
                   ),
                 ],
               ),
             ),
             // Filter chips
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const AlwaysScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
+            ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(
+                dragDevices: const {
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.mouse,
+                  PointerDeviceKind.trackpad,
+                  PointerDeviceKind.stylus,
+                },
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
                   Ux4gChoiceChip(text: 'All · 48', selected: _selectedChip == 0, onClick: () => setState(() => _selectedChip = 0)),
                   const SizedBox(width: 8),
                   Ux4gChoiceChip(text: 'Certificates · 22', selected: _selectedChip == 1, onClick: () => setState(() => _selectedChip = 1)),
@@ -129,7 +155,8 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
                   Ux4gChoiceChip(text: 'Documents · 8', selected: false, onClick: () {}),
                   const SizedBox(width: 8),
                   Ux4gChoiceChip(text: 'Applications · 5', selected: false, onClick: () {}),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 12),
@@ -167,13 +194,17 @@ class _ResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Row(
         children: [
@@ -181,34 +212,64 @@ class _ResultCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                Text(
+                  title,
+                  style: typography.tS_default.copyWith(
+                    color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                  ),
+                ),
                 const SizedBox(height: 4),
                 Row(
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
-                        color: Color(0xFFE5E5E5),
+                        color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: Text(isPaid ? 'Paid' : 'Free',
-                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600,
-                          color: Color(0xFF171717))),
+                      child: Text(
+                        isPaid ? 'Paid' : 'Free',
+                        style: typography.lM_default.copyWith(
+                          color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        ),
+                      ),
                     ),
                     if (isPaid) ...[
                       const SizedBox(width: 4),
-                      Text(fee, style: TextStyle(fontSize: 11, color: Color(0xFF4B5563))),
+                      Text(
+                        fee,
+                        style: typography.lS_default.copyWith(
+                          color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                        ),
+                      ),
                     ],
                     const SizedBox(width: 6),
-                    Icon(Icons.access_time, size: 12, color: Color(0xFF4B5563)),
+                    Icon(
+                      Icons.access_time,
+                      size: 12,
+                      color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                    ),
                     const SizedBox(width: 3),
-                    Text(time, style: TextStyle(fontSize: 11, color: Color(0xFF4B5563))),
+                    Text(
+                      time,
+                      style: typography.lS_default.copyWith(
+                        color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      ),
+                    ),
                   ],
                 ),
               ],
             ),
           ),
-          Ux4gButton(text: 'Apply', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small),
+          Ux4gButton(
+            text: 'Apply',
+            onPressed: () {},
+            variant: Ux4gButtonVariant.outline,
+            size: Ux4gButtonSize.small,
+            borderColor: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
+            contentColor: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+            textStyle: typography.lL_default,
+          ),
         ],
       ),
     );
@@ -242,30 +303,30 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
+        backgroundColor: isDark
+            ? Ux4gPalette.neutral950
+            : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             children: [
               // App Header - filled purple
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                color: _primaryColor,
-                child: const Row(
+                height: 70,
+                padding: const EdgeInsets.only(left: 24, right: 16),
+                color: Ux4gPalette.primary600,
+                child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                    SizedBox(width: 12),
+                    const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                    const SizedBox(width: 16),
                     Text(
                       'National Services Portal',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: typography.tS_default.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -278,10 +339,10 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
               // Search bar area
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
+                  horizontal: 16,
                   vertical: 10,
                 ),
-                color: Colors.white,
+                color: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0,
                 child: Builder(
                   builder: (context) {
                     final filtered = _options
@@ -295,11 +356,13 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
                       value: _searchValue,
                       onValueChange: (v) => setState(() => _searchValue = v),
                       variant: Ux4gSearchFieldVariant.autocomplete,
+                      size: Ux4gSearchFieldSize.large,
                       placeholder: 'Search services...',
                       showVoiceIcon: true,
                       showClearIcon: true,
                       options: filtered,
                       onOptionSelected: (s) => setState(() => _searchValue = s),
+                      onSubmitClick: (_) {},
                       buttonStyle: Ux4gSearchFieldButtonStyle.filled,
                     );
                   },
@@ -310,16 +373,16 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 8,
+                  vertical: 4,
                 ),
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       '48 results',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: _titleColor,
+                      style: typography.tS_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral50
+                            : Ux4gPalette.neutral900,
                       ),
                     ),
                     const Spacer(),
@@ -329,57 +392,76 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
                       leadingIcon: Icons.tune,
+                      borderColor: isDark
+                          ? Ux4gPalette.neutral600
+                          : Ux4gPalette.neutral300,
+                      contentColor: isDark
+                          ? Ux4gPalette.neutral50
+                          : Ux4gPalette.neutral900,
+                      width: 100,
+                      height: 38,
                     ),
                   ],
                 ),
               ),
 
               // Filter chips
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                physics: const AlwaysScrollableScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Ux4gChoiceChip(
-                      text: 'All · 48',
-                      selected: _selectedChip == 0,
-                      onClick: () => setState(() => _selectedChip = 0),
-                    ),
-                    const SizedBox(width: 8),
-                    Ux4gChoiceChip(
-                      text: 'Certificates · 22',
-                      selected: _selectedChip == 1,
-                      onClick: () => setState(() => _selectedChip = 1),
-                    ),
-                    const SizedBox(width: 8),
-                    Ux4gChoiceChip(
-                      text: 'Schemes · 14',
-                      selected: _selectedChip == 2,
-                      onClick: () => setState(() => _selectedChip = 2),
-                    ),
-                    const SizedBox(width: 8),
-                    Ux4gChoiceChip(
-                      text: 'Services · 12',
-                      selected: _selectedChip == 3,
-                      onClick: () => setState(() => _selectedChip = 3),
-                    ),
-                    const SizedBox(width: 8),
-                    Ux4gChoiceChip(
-                      text: 'Documents · 8',
-                      selected: false,
-                      onClick: () {},
-                    ),
-                    const SizedBox(width: 8),
-                    Ux4gChoiceChip(
-                      text: 'Applications · 5',
-                      selected: false,
-                      onClick: () {},
-                    ),
-                  ],
+              const SizedBox(height: 10),
+              ScrollConfiguration(
+                behavior: ScrollConfiguration.of(context).copyWith(
+                  dragDevices: const {
+                    PointerDeviceKind.touch,
+                    PointerDeviceKind.mouse,
+                    PointerDeviceKind.trackpad,
+                    PointerDeviceKind.stylus,
+                  },
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    children: [
+                      Ux4gChoiceChip(
+                        text: 'All · 48',
+                        selected: _selectedChip == 0,
+                        onClick: () => setState(() => _selectedChip = 0),
+                      ),
+                      const SizedBox(width: 8),
+                      Ux4gChoiceChip(
+                        text: 'Certificates · 22',
+                        selected: _selectedChip == 1,
+                        onClick: () => setState(() => _selectedChip = 1),
+                      ),
+                      const SizedBox(width: 8),
+                      Ux4gChoiceChip(
+                        text: 'Schemes · 14',
+                        selected: _selectedChip == 2,
+                        onClick: () => setState(() => _selectedChip = 2),
+                      ),
+                      const SizedBox(width: 8),
+                      Ux4gChoiceChip(
+                        text: 'Services · 12',
+                        selected: _selectedChip == 3,
+                        onClick: () => setState(() => _selectedChip = 3),
+                      ),
+                      const SizedBox(width: 8),
+                      Ux4gChoiceChip(
+                        text: 'Documents · 8',
+                        selected: false,
+                        onClick: () {},
+                      ),
+                      const SizedBox(width: 8),
+                      Ux4gChoiceChip(
+                        text: 'Applications · 5',
+                        selected: false,
+                        onClick: () {},
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 15),
 
               // Results list
               Expanded(
@@ -422,33 +504,70 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
 
               // Pagination dots
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.fromLTRB(0, 12, 0, 24),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
-                      Icons.chevron_left,
-                      size: 20,
-                      color: _subtleText,
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? Ux4gPalette.primary800
+                            : Ux4gPalette.primary100,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.chevron_left,
+                        size: 19,
+                        color: isDark
+                            ? Ux4gPalette.primary200
+                            : Ux4gPalette.primary600,
+                      ),
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 11),
+                    Container(
+                      width: 31,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600,
+                        borderRadius: BorderRadius.circular(99),
+                      ),
+                    ),
+                    const SizedBox(width: 7),
                     ...List.generate(
-                      8,
+                      7,
                       (i) => Container(
-                        width: i == 0 ? 10 : 8,
-                        height: i == 0 ? 10 : 8,
+                        width: 9,
+                        height: 9,
                         margin: const EdgeInsets.symmetric(horizontal: 3),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: i == 0 ? _primaryColor : _borderColor,
+                          color: isDark
+                              ? Ux4gPalette.primary800
+                              : Ux4gPalette.primary100,
                         ),
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Icon(
-                      Icons.chevron_right,
-                      size: 20,
-                      color: _subtleText,
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? Ux4gPalette.primary800
+                            : Ux4gPalette.primary100,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.chevron_right,
+                        size: 19,
+                        color: isDark
+                            ? Ux4gPalette.primary200
+                            : Ux4gPalette.primary600,
+                      ),
                     ),
                   ],
                 ),
@@ -461,13 +580,18 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
   }
 
   Widget _buildResultCard(String title, String fee, String time, bool isPaid) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: _borderColor),
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        border: Border(
+          bottom: BorderSide(
+            color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          ),
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -478,10 +602,10 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: _titleColor,
+                  style: typography.tS_default.copyWith(
+                    color: isDark
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -493,15 +617,17 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFE5E5E5),
+                        color: isDark
+                            ? Ux4gPalette.neutral800
+                            : Ux4gPalette.neutral200,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
                         isPaid ? 'Paid' : 'Free',
-                        style: const TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF171717),
+                        style: typography.lM_default.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
                         ),
                       ),
                     ),
@@ -509,18 +635,29 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
                       const SizedBox(width: 4),
                       Text(
                         fee,
-                        style: const TextStyle(
-                          fontSize: 11,
-                          color: _subtleText,
+                        style: typography.lS_default.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
                         ),
                       ),
                     ],
                     const SizedBox(width: 6),
-                    const Icon(Icons.access_time, size: 12, color: _subtleText),
+                    Icon(
+                      Icons.access_time,
+                      size: 12,
+                      color: isDark
+                          ? Ux4gPalette.neutral200
+                          : Ux4gPalette.neutral700,
+                    ),
                     const SizedBox(width: 3),
                     Text(
                       time,
-                      style: const TextStyle(fontSize: 11, color: _subtleText),
+                      style: typography.lS_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral200
+                            : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -533,9 +670,20 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
+            borderColor: isDark
+                ? Ux4gPalette.neutral600
+                : Ux4gPalette.neutral300,
+            contentColor: isDark
+                ? Ux4gPalette.neutral50
+                : Ux4gPalette.neutral900,
+            textStyle: typography.lL_default,
           ),
           const SizedBox(width: 4),
-          const Icon(Icons.keyboard_arrow_down, size: 20, color: _subtleText),
+          Icon(
+            Icons.keyboard_arrow_down,
+            size: 20,
+            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+          ),
         ],
       ),
     );

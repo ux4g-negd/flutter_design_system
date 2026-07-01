@@ -4,12 +4,12 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
 
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+
+
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final validationErrorComponent = WidgetbookComponent(
   name: 'Validation Error',
@@ -19,7 +19,7 @@ final validationErrorComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.list(
           label: 'Variant',
-          options: const ['Default', 'Card style'],
+          options: ['Default', 'Card style'],
           initialOption: 'Default',
           description:
               'Switch between the standard flat layout and the card-style layout.',
@@ -69,7 +69,7 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,26 +80,25 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(
-                  'assets/national_amblam_logo.svg', 
-                  height: 40, 
-                  errorBuilder: (c, e, s) => const Icon(Icons.account_balance, size: 32, color: Colors.grey)
+                  Ux4gIcons.nationalEmblem,  
+                  height: 40,
+                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
+                  errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                 ),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
                 SvgPicture.asset(
-                  'assets/union.svg', 
-                  height: 32, 
-                  errorBuilder: (c, e, s) => const Icon(Icons.blur_on, size: 32, color: Colors.blue)
-                ),
-              ],
+                  Ux4gIcons.union, 
+                  height: 32,
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                  errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
+                ),],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
 
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -107,56 +106,52 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: ''),
+                      steps: [Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents', 
                           isError: true,
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF4B5563)),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
                         ),
-                        Ux4gStepItem(title: ''),
-                      ],
+                        Ux4gStepItem(title: ''),],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Global Error Banner
                     Ux4gStatusBanner(
                       variant: Ux4gBannerVariant.errorLight,
                       title: 'Documents — 1 error found. Tap to jump.',
                       margin: EdgeInsets.zero,
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      backgroundColor: const Color(0xFFFFF8F8), // red50
-                      borderColor: const Color(0xFFFFDADC),     // red200
-                      actionsAlignment: WrapAlignment.start,
-                      titleStyle: const TextStyle(color: Color(0xFF8A1A16), fontWeight: FontWeight.w500),
-                      actions: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Text(
-                            'Jump to error',
-                            style: TextStyle(
-                              color: Color(0xFF8A1A16), // red800
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
-                            ),
+                      leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500, size: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200,     // red200
+                      titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, fontWeight: FontWeight.w500),
+                      subtitleWidget: GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'Jump to error',
+                          style: TextStyle(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Title & Subtitle
-                    const Text(
+                    Text(
                       'Verify your details',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
+                    SizedBox(height: 8),
+                    Text(
                       'Confirm the information below to proceed.',
-                      style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4),
+                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Form Fields
                     Ux4gInputField(
@@ -166,7 +161,7 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     Ux4gInputField(
                       label: 'PAN number',
@@ -176,9 +171,9 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                       size: Ux4gInputFieldSize.medium,
                       status: Ux4gInputFieldStatus.error,
                       caption: 'Enter a valid 10-character PAN.',
-                      style: const TextStyle(color: Color(0xFF6B7280)),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Checkbox
                     Ux4gCheckbox(
@@ -194,24 +189,24 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
-                    text: 'Continue',
+height: 48, text: 'Continue',
                     onPressed: () {}, // Active but would re-validate
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
-                    text: 'Back',
+height: 48, text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
-                    borderColor: const Color(0xFFD1D5DB),
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
                   ),
                 ],
               ),
@@ -219,16 +214,17 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  SizedBox(height: 6),
                   Image.asset(
-                    'assets/digital_india_logo.png', 
-                    height: 24, 
-                    errorBuilder: (c, e, s) => const Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
+                    Ux4gIcons.digitalIndiaLogoPng,  
+                    height: 24,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
+                    errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                   ),
                 ],
               ),
@@ -260,14 +256,14 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -275,21 +271,21 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                     title: '',
                     leadingWidgets: [
                       SvgPicture.asset(
-                        'assets/national_amblam_logo.svg', 
-                        height: 40, 
-                        errorBuilder: (c, e, s) => const Icon(Icons.account_balance, size: 32, color: Colors.grey)
+                        Ux4gIcons.nationalEmblem,  
+                        height: 40,
+                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
+                        errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                       ),
-                      const SizedBox(width: 1),
-                      Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
+                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
                       SvgPicture.asset(
-                        'assets/union.svg', 
-                        height: 32, 
-                        errorBuilder: (c, e, s) => const Icon(Icons.blur_on, size: 32, color: Colors.blue)
+                        Ux4gIcons.union, 
+                        height: 32,
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                        errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                       ),
                     ],
                   ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                 ],
               ),
             ),
@@ -297,7 +293,7 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -305,24 +301,22 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: ''),
+                      steps: [Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents', 
                           isError: true,
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF4B5563)),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
                         ),
-                        Ux4gStepItem(title: ''),
-                      ],
+                        Ux4gStepItem(title: ''),],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // White Card
                     Container(
-                      padding: const EdgeInsets.all(24),
+                      padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
@@ -333,38 +327,36 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                             variant: Ux4gBannerVariant.errorLight,
                             title: 'Documents — 1 error found. Tap to jump.',
                             margin: EdgeInsets.zero,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                            backgroundColor: const Color(0xFFFFF8F8), // red50
-                            borderColor: const Color(0xFFFFDADC),     // red200
-                            actionsAlignment: WrapAlignment.start,
-                            titleStyle: const TextStyle(color: Color(0xFF8A1A16), fontWeight: FontWeight.w500),
-                            actions: [
-                              GestureDetector(
-                                onTap: () {},
-                                child: const Text(
-                                  'Jump to error',
-                                  style: TextStyle(
-                                    color: Color(0xFF8A1A16), // red800
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14,
-                                  ),
+                            leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500, size: 20),
+                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
+                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200,     // red200
+                            titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, fontWeight: FontWeight.w500),
+                            subtitleWidget: GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                'Jump to error',
+                                style: TextStyle(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Title & Subtitle
-                          const Text(
+                          Text(
                             'Verify your details',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
                           ),
-                          const SizedBox(height: 8),
-                          const Text(
+                          SizedBox(height: 8),
+                          Text(
                             'Confirm the information below to proceed.',
-                            style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4),
+                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Form Fields
                           Ux4gInputField(
@@ -374,7 +366,7 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                             placeholder: '',
                             size: Ux4gInputFieldSize.medium,
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24),
 
                           Ux4gInputField(
                             label: 'PAN number',
@@ -384,9 +376,9 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                             size: Ux4gInputFieldSize.medium,
                             status: Ux4gInputFieldStatus.error,
                             caption: 'Enter a valid 10-character PAN.',
-                            style: const TextStyle(color: Color(0xFF6B7280)),
+                            style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Checkbox
                           Ux4gCheckbox(
@@ -405,23 +397,23 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
-                    text: 'Continue',
+height: 48, text: 'Continue',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
-                    text: 'Back',
+height: 48, text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
                   ),
                 ],
               ),
@@ -429,16 +421,17 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  SizedBox(height: 6),
                   Image.asset(
-                    'assets/digital_india_logo.png', 
-                    height: 24, 
-                    errorBuilder: (c, e, s) => const Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
+                    Ux4gIcons.digitalIndiaLogoPng,  
+                    height: 24,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
+                    errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                   ),
                 ],
               ),
@@ -470,7 +463,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -483,29 +476,29 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                 SvgPicture.asset(
                   _nationalEmblemLogoPath,
                   height: 40,
-                  errorBuilder: (c, e, s) => const Icon(
+                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                  errorBuilder: (c, e, s) => Icon(
                     Icons.account_balance,
                     size: 32,
                     color: Colors.grey,
                   ),
                 ),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
                 SvgPicture.asset(
                   _unionLogoPath,
                   height: 32,
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn),
                   errorBuilder: (c, e, s) =>
-                      const Icon(Icons.blur_on, size: 32, color: Colors.blue),
+                      Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
 
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 32,
                 ),
@@ -516,8 +509,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: ''),
+                      steps: [Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents',
@@ -525,66 +517,67 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF4B5563),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
                           ),
                         ),
-                        Ux4gStepItem(title: ''),
-                      ],
+                        Ux4gStepItem(title: ''),],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Global Error Banner
                     Ux4gStatusBanner(
                       variant: Ux4gBannerVariant.errorLight,
                       title: 'Documents — 1 error found. Tap to jump.',
                       margin: EdgeInsets.zero,
-                      padding: const EdgeInsets.symmetric(
+                      leadingIcon: Icon(
+                        Icons.error,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500,
+                        size: 20,
+                      ),
+                      padding: EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 12,
                       ),
-                      backgroundColor: const Color(0xFFFFF8F8), // red50
-                      borderColor: const Color(0xFFFFDADC), // red200
-                      actionsAlignment: WrapAlignment.start,
-                      titleStyle: const TextStyle(
-                        color: Color(0xFF8A1A16),
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200, // red200
+                      titleStyle: TextStyle(
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800,
                         fontWeight: FontWeight.w500,
                       ),
-                      actions: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Text(
-                            'Jump to error',
-                            style: TextStyle(
-                              color: Color(0xFF8A1A16), // red800
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
-                            ),
+                      subtitleWidget: GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'Jump to error',
+                          style: TextStyle(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Title & Subtitle
-                    const Text(
+                    Text(
                       'Verify your details',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                         height: 1.2,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
+                    SizedBox(height: 8),
+                    Text(
                       'Confirm the information below to proceed.',
                       style: TextStyle(
                         fontSize: 15,
-                        color: _subtleText,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
                         height: 1.4,
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Form Fields
                     Ux4gInputField(
@@ -594,7 +587,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     Ux4gInputField(
                       label: 'PAN number',
@@ -604,9 +597,9 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       size: Ux4gInputFieldSize.medium,
                       status: Ux4gInputFieldStatus.error,
                       caption: 'Enter a valid 10-character PAN.',
-                      style: const TextStyle(color: Color(0xFF6B7280)),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Checkbox
                     Ux4gCheckbox(
@@ -623,24 +616,24 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
-                    text: 'Continue',
+height: 48, text: 'Continue',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
-                    text: 'Back',
+height: 48, text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
-                    borderColor: const Color(0xFFD1D5DB),
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
                   ),
                 ],
               ),
@@ -648,19 +641,20 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,
-                    errorBuilder: (c, e, s) => const Text(
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null,
+                    errorBuilder: (c, e, s) => Text(
                       'Digital India',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -695,14 +689,14 @@ class _ValidationErrorCardMockupState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -712,23 +706,23 @@ class _ValidationErrorCardMockupState
                       SvgPicture.asset(
                         _nationalEmblemLogoPath,
                         height: 40,
-                        errorBuilder: (c, e, s) => const Icon(
+                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                        errorBuilder: (c, e, s) => Icon(
                           Icons.account_balance,
                           size: 32,
                           color: Colors.grey,
                         ),
                       ),
-                      const SizedBox(width: 1),
                       Container(
                         height: 32,
                         width: 1,
-                        color: const Color(0xFFD1D5DB),
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
                       ),
-                      const SizedBox(width: 1),
                       SvgPicture.asset(
                         _unionLogoPath,
                         height: 32,
-                        errorBuilder: (c, e, s) => const Icon(
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn),
+                        errorBuilder: (c, e, s) => Icon(
                           Icons.blur_on,
                           size: 32,
                           color: Colors.blue,
@@ -736,7 +730,7 @@ class _ValidationErrorCardMockupState
                       ),
                     ],
                   ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                 ],
               ),
             ),
@@ -744,7 +738,7 @@ class _ValidationErrorCardMockupState
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 32,
                 ),
@@ -755,8 +749,7 @@ class _ValidationErrorCardMockupState
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: ''),
+                      steps: [Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents',
@@ -764,19 +757,18 @@ class _ValidationErrorCardMockupState
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF4B5563),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
                           ),
                         ),
-                        Ux4gStepItem(title: ''),
-                      ],
+                        Ux4gStepItem(title: ''),],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // White Card
                     Container(
-                      padding: const EdgeInsets.all(24),
+                      padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
@@ -787,53 +779,55 @@ class _ValidationErrorCardMockupState
                             variant: Ux4gBannerVariant.errorLight,
                             title: 'Documents — 1 error found. Tap to jump.',
                             margin: EdgeInsets.zero,
-                            padding: const EdgeInsets.symmetric(
+                            leadingIcon: Icon(
+                              Icons.error,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500,
+                              size: 20,
+                            ),
+                            padding: EdgeInsets.symmetric(
                               horizontal: 16,
                               vertical: 12,
                             ),
-                            backgroundColor: const Color(0xFFFFF8F8), // red50
-                            borderColor: const Color(0xFFFFDADC), // red200
-                            actionsAlignment: WrapAlignment.start,
-                            titleStyle: const TextStyle(
-                              color: Color(0xFF8A1A16),
+                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
+                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200, // red200
+                            titleStyle: TextStyle(
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800,
                               fontWeight: FontWeight.w500,
                             ),
-                            actions: [
-                              GestureDetector(
-                                onTap: () {},
-                                child: const Text(
-                                  'Jump to error',
-                                  style: TextStyle(
-                                    color: Color(0xFF8A1A16), // red800
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14,
-                                  ),
+                            subtitleWidget: GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                'Jump to error',
+                                style: TextStyle(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Title & Subtitle
-                          const Text(
+                          Text(
                             'Verify your details',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
-                              color: _titleColor,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                               height: 1.2,
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          const Text(
+                          SizedBox(height: 8),
+                          Text(
                             'Confirm the information below to proceed.',
                             style: TextStyle(
                               fontSize: 15,
-                              color: _subtleText,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
                               height: 1.4,
                             ),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Form Fields
                           Ux4gInputField(
@@ -844,7 +838,7 @@ class _ValidationErrorCardMockupState
                             placeholder: '',
                             size: Ux4gInputFieldSize.medium,
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24),
 
                           Ux4gInputField(
                             label: 'PAN number',
@@ -855,9 +849,9 @@ class _ValidationErrorCardMockupState
                             size: Ux4gInputFieldSize.medium,
                             status: Ux4gInputFieldStatus.error,
                             caption: 'Enter a valid 10-character PAN.',
-                            style: const TextStyle(color: Color(0xFF6B7280)),
+                            style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Checkbox
                           Ux4gCheckbox(
@@ -877,23 +871,23 @@ class _ValidationErrorCardMockupState
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
-                    text: 'Continue',
+height: 48, text: 'Continue',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
-                    text: 'Back',
+height: 48, text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
                   ),
                 ],
               ),
@@ -901,19 +895,20 @@ class _ValidationErrorCardMockupState
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,
-                    errorBuilder: (c, e, s) => const Text(
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null,
+                    errorBuilder: (c, e, s) => Text(
                       'Digital India',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

@@ -25,25 +25,32 @@ class DemoScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Buttons', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            Ux4gButton(
-              onPressed: () {},
-              text: 'Primary Action',
+            const Text(
+              'Buttons',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 8),
+            Ux4gButton(onPressed: () {}, text: 'Primary Action'),
             const SizedBox(height: 16),
-            const Text('Card', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const Text(
+              'Card',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 8),
             Ux4gCard(
               title: 'Welcome to UX4G',
               subtitle: 'A modern design system',
-              body: 'This is a simple demo of the UX4G Flutter Design System components.',
+              body:
+                  'This is a simple demo of the UX4G Flutter Design System components.',
               footerType: Ux4gCardFooterType.primaryOnly,
               primaryButtonText: 'Continue',
               onPrimaryClick: () {},
             ),
             const SizedBox(height: 16),
-            const Text('Input Field', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const Text(
+              'Input Field',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 8),
             Ux4gInputField(
               value: '',

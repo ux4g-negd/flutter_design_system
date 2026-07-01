@@ -40,6 +40,7 @@ class Ux4gSearchField extends StatefulWidget {
   final ValueChanged<String>? onOptionSelected;
   final bool enabled;
   final bool readOnly;
+  final TextStyle? placeholderStyle;
 
   const Ux4gSearchField({
     super.key,
@@ -62,6 +63,7 @@ class Ux4gSearchField extends StatefulWidget {
     this.onOptionSelected,
     this.enabled = true,
     this.readOnly = false,
+    this.placeholderStyle,
   });
 
   @override
@@ -126,13 +128,9 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
   }
 
   OverlayEntry _createOverlayEntry() {
+    final appTheme = Theme.of(context);
     return OverlayEntry(
-      builder: (context) {
-        final materialTheme = Theme.of(context);
-        final ux4gColors = materialTheme.extension<Ux4gColors>();
-        final surface =
-            ux4gColors?.surface ?? materialTheme.colorScheme.surface;
-
+      builder: (overlayContext) {
         final renderBox =
             _fieldKey.currentContext?.findRenderObject() as RenderBox?;
         final width = renderBox?.size.width ?? 0;
@@ -143,19 +141,31 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
 
         if (!isVisible) return const SizedBox.shrink();
 
-        return Positioned(
-          width: width,
-          child: CompositedTransformFollower(
-            link: _layerLink,
-            showWhenUnlinked: false,
-            offset: Offset(0, widget.size.height + 4),
-            child: Material(
-              elevation: 6,
-              borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
-              clipBehavior: Clip.antiAlias,
-              color: surface,
-              child: _buildAutocompleteList(),
-            ),
+        return Theme(
+          data: appTheme,
+          child: Builder(
+            builder: (context) {
+              final materialTheme = Theme.of(context);
+              final ux4gColors = materialTheme.extension<Ux4gColors>();
+              final surface =
+                  ux4gColors?.surface ?? materialTheme.colorScheme.surface;
+
+              return Positioned(
+                width: width,
+                child: CompositedTransformFollower(
+                  link: _layerLink,
+                  showWhenUnlinked: false,
+                  offset: Offset(0, widget.size.height + 4),
+                  child: Material(
+                    elevation: 6,
+                    borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+                    clipBehavior: Clip.antiAlias,
+                    color: surface,
+                    child: _buildAutocompleteList(),
+                  ),
+                ),
+              );
+            },
           ),
         );
       },
@@ -236,8 +246,12 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
                     itemCount: filteredOptions.length,
-                    separatorBuilder: (context, index) =>
-                        Divider(height: 1, color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                    separatorBuilder: (context, index) => Divider(
+                      height: 1,
+                      color: isDark
+                          ? Ux4gPalette.neutral800
+                          : Ux4gPalette.neutral200,
+                    ),
                     itemBuilder: (context, index) {
                       final option = filteredOptions[index];
                       final parts = option.split(' - ');
@@ -259,7 +273,11 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                             horizontal: 12,
                             vertical: 12,
                           ),
-                          color: isSelected ? (isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50) : null,
+                          color: isSelected
+                              ? (isDark
+                                    ? Ux4gPalette.primary950
+                                    : Ux4gPalette.primary50)
+                              : null,
                           child: Row(
                             children: [
                               Expanded(
@@ -272,7 +290,9 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         color: isSelected
-                                            ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+                                            ? (isDark
+                                                  ? Ux4gPalette.primary300
+                                                  : Ux4gPalette.primary600)
                                             : onSurface,
                                       ),
                                     ),
@@ -283,7 +303,9 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                                         style: TextStyle(
                                           fontSize: 12,
                                           color: isSelected
-                                              ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+                                              ? (isDark
+                                                    ? Ux4gPalette.primary300
+                                                    : Ux4gPalette.primary600)
                                               : onSurface.withValues(
                                                   alpha: 0.5,
                                                 ),
@@ -296,7 +318,9 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                               if (isSelected)
                                 Icon(
                                   Icons.check,
-                                  color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                  color: isDark
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600,
                                   size: 20,
                                 ),
                             ],
@@ -410,9 +434,9 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                           ),
                           decoration: InputDecoration(
                             hintText: widget.placeholder,
-                            hintStyle: bmDefault.copyWith(
-                              color: onSurface.withValues(alpha: 0.4),
-                              fontWeight: FontWeight.w400,
+                            hintStyle: (widget.placeholderStyle ?? bmDefault).copyWith(
+                              color: widget.placeholderStyle?.color ?? onSurface.withValues(alpha: 0.4),
+                              fontWeight: widget.placeholderStyle?.fontWeight ?? FontWeight.w400,
                             ),
                             isDense: true,
                             border: InputBorder.none,

@@ -7,9 +7,9 @@ import 'package:widgetbook/widgetbook.dart';
 import '../widgets/component_docs.dart';
 
 // -- Asset paths (copied into example/assets/) --------------------------
-const _nationalEmblemPath = 'assets/national_amblam_logo.svg';
-const _unionLogoPath = 'assets/Union.svg';
-const _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+const _nationalEmblemPath = Ux4gIcons.nationalEmblem;
+const _unionLogoPath = Ux4gIcons.union;
+const _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 // -- Shared design tokens used across all SignIn patterns ---------------
 const _bg = Ux4gPalette.neutral50;
@@ -1305,7 +1305,7 @@ class _BrandHeader extends StatelessWidget {
             ),
           ],
           horizontalPadding: 16,
-          leadingSpacing: 12,
+          leadingSpacing: 8,
         ),
         Ux4gDivider(color: _getBorder(context)),
       ],
@@ -1351,6 +1351,7 @@ class _BackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ux4gButton(
+      height: 48,
       text: 'Back',
       onPressed: () {},
       variant: Ux4gButtonVariant.ghost,
@@ -1372,6 +1373,7 @@ class _RegisterLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Ux4gButton(
+        height: 48,
         text: 'New user? Register here',
         onPressed: () {},
         variant: Ux4gButtonVariant.ghost,
@@ -1995,7 +1997,7 @@ Container(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(
             height: 28,
             child: Ux4gDivider(
@@ -2003,10 +2005,10 @@ Container(
               color: Ux4gPalette.neutral300,
             ),
           ),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
       Ux4gDivider(color: Ux4gPalette.neutral200),
 
@@ -2134,6 +2136,7 @@ Container(
 
             Center(
               child: Ux4gButton(
+height: 48,
                 text: 'New user? Register here',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
@@ -2152,7 +2155,7 @@ Container(
               Text('Powered by -',
                 style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lS_default.copyWith(color: Ux4gPalette.neutral400)),
               SizedBox(height: 6),
-              Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+              Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
             ],
           ),
         ),    ],
@@ -2165,9 +2168,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -2178,6 +2181,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -2234,7 +2238,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -2246,9 +2250,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -2259,6 +2263,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -2350,7 +2355,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -2362,9 +2367,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -2425,7 +2430,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -2624,9 +2629,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -2765,7 +2770,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -3031,9 +3036,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -3199,7 +3204,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -3450,9 +3455,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -3613,7 +3618,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -3765,9 +3770,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -3796,6 +3801,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -3858,7 +3864,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -4077,9 +4083,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -4108,6 +4114,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -4191,7 +4198,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -4382,9 +4389,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -4473,7 +4480,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -4570,6 +4577,7 @@ class _VerifyMobileOtpMockupState extends State<_VerifyMobileOtpMockup> {
                   // "Change mobile number" � ghost-style link button.
                   Center(
                     child: Ux4gButton(
+                      height: 48,
                       text: 'Change mobile number',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -4594,9 +4602,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -4646,6 +4654,7 @@ Column(
 
           // "Change mobile number" � ghost-style link button.
           Center(child: Ux4gButton(
+height: 48,
             text: 'Change mobile number',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -4663,7 +4672,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -4782,6 +4791,7 @@ class _VerifyMobileOtpCardMockupState
 
                           Center(
                             child: Ux4gButton(
+                              height: 48,
                               text: 'Change mobile number',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
@@ -4812,9 +4822,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -4883,6 +4893,7 @@ Column(
                     SizedBox(height: 4),
 
                     Center(child: Ux4gButton(
+height: 48,
                       text: 'Change mobile number',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -4903,7 +4914,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -4998,6 +5009,7 @@ class _VerifyMobileVoiceMockupState extends State<_VerifyMobileVoiceMockup> {
                   // Secondary action � voice-call fallback for users
                   // who couldn't receive the SMS.
                   Ux4gButton(
+                    height: 48,
                     text: 'Get OTP via voice call',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
@@ -5024,9 +5036,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -5037,6 +5049,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -5079,6 +5092,7 @@ Column(
 
           // Voice-call fallback CTA.
           Ux4gButton(
+height: 48,
             text: 'Get OTP via voice call',
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
@@ -5098,7 +5112,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -5208,6 +5222,7 @@ class _VerifyMobileVoiceCardMockupState
                           SizedBox(height: 12),
 
                           Ux4gButton(
+                            height: 48,
                             text: 'Get OTP via voice call',
                             onPressed: () {},
                             variant: Ux4gButtonVariant.outline,
@@ -5240,9 +5255,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -5272,6 +5287,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -5311,6 +5327,7 @@ Column(
                     SizedBox(height: 12),
 
                     Ux4gButton(
+height: 48,
                       text: 'Get OTP via voice call',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
@@ -5333,7 +5350,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -5430,12 +5447,17 @@ class _VerifyMobileAttemptWarningMockupState
                           : Ux4gPalette.orange800,
                       height: 1.3,
                     ),
-                    leadingIcon: Icon(
-                      Icons.error_outline,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.orange500
-                          : Ux4gPalette.orange600,
-                      size: 20,
+                    leadingIcon: SvgPicture.asset(
+                      Ux4gIcons.fillRevInfo,
+
+                      width: 20,
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.orange500
+                            : Ux4gPalette.orange600,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     subtitleWidget: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -5512,9 +5534,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -5525,6 +5547,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -5564,11 +5587,13 @@ Column(
               color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
               height: 1.3,
             ),
-            leadingIcon: Icon(
-              Icons.error_outline,
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-              size: 20,
-            ),
+            leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600, BlendMode.srcIn),
+),
             subtitleWidget: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -5627,7 +5652,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -5741,14 +5766,17 @@ class _VerifyMobileAttemptWarningCardMockupState
                                   : Ux4gPalette.orange800,
                               height: 1.3,
                             ),
-                            leadingIcon: Icon(
-                              Icons.error_outline,
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gPalette.orange500
-                                  : Ux4gPalette.orange600,
-                              size: 20,
+                            leadingIcon: SvgPicture.asset(
+                              Ux4gIcons.fillRevInfo,
+
+                              width: 20,
+                              height: 20,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.orange500
+                                    : Ux4gPalette.orange600,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             subtitleWidget: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -5832,9 +5860,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -5864,6 +5892,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -5902,11 +5931,13 @@ Column(
                         color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
                         height: 1.3,
                       ),
-                      leadingIcon: Icon(
-                        Icons.error_outline,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-                        size: 20,
-                      ),
+                      leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600, BlendMode.srcIn),
+),
                       subtitleWidget: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -5968,7 +5999,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -6062,12 +6093,17 @@ class _VerifyMobileLastAttemptMockupState
                           : Ux4gPalette.red800,
                       height: 1.3,
                     ),
-                    leadingIcon: Icon(
-                      Icons.error_outline,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.red500
-                          : Ux4gPalette.red600,
-                      size: 20,
+                    leadingIcon: SvgPicture.asset(
+                      Ux4gIcons.fillRevInfo,
+
+                      width: 20,
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.red500
+                            : Ux4gPalette.red600,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     subtitleWidget: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -6144,9 +6180,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -6157,6 +6193,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -6196,11 +6233,13 @@ Column(
               color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
               height: 1.3,
             ),
-            leadingIcon: Icon(
-              Icons.error_outline,
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600,
-              size: 20,
-            ),
+            leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, BlendMode.srcIn),
+),
             subtitleWidget: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -6259,7 +6298,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -6371,14 +6410,17 @@ class _VerifyMobileLastAttemptCardMockupState
                                   : Ux4gPalette.red800,
                               height: 1.3,
                             ),
-                            leadingIcon: Icon(
-                              Icons.error_outline,
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gPalette.red500
-                                  : Ux4gPalette.red600,
-                              size: 20,
+                            leadingIcon: SvgPicture.asset(
+                              Ux4gIcons.fillRevInfo,
+
+                              width: 20,
+                              height: 20,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.red500
+                                    : Ux4gPalette.red600,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             subtitleWidget: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -6462,9 +6504,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -6494,6 +6536,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -6532,11 +6575,13 @@ Column(
                         color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
                         height: 1.3,
                       ),
-                      leadingIcon: Icon(
-                        Icons.error_outline,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600,
-                        size: 20,
-                      ),
+                      leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, BlendMode.srcIn),
+),
                       subtitleWidget: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -6598,7 +6643,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -6715,12 +6760,17 @@ class _VerifyAccountLockedMockupState
                           : Ux4gPalette.red800,
                       height: 1.35,
                     ),
-                    leadingIcon: Icon(
-                      Icons.error_outline,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.red500
-                          : Ux4gPalette.red600,
-                      size: 20,
+                    leadingIcon: SvgPicture.asset(
+                      Ux4gIcons.fillRevInfo,
+
+                      width: 20,
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.red500
+                            : Ux4gPalette.red600,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -6739,6 +6789,7 @@ class _VerifyAccountLockedMockupState
                           ),
                         ),
                         Ux4gButton(
+                          height: 48,
                           text: 'Call 1800-XXX-XXXX',
                           onPressed: () {},
                           variant: Ux4gButtonVariant.ghost,
@@ -6769,9 +6820,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -6782,6 +6833,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -6833,8 +6885,13 @@ Column(
               fontSize: 14, fontWeight: FontWeight.w400,
               color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
             ),
-            leadingIcon: Icon(Icons.error_outline,
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 20),
+            leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, BlendMode.srcIn),
+),
           ),
           SizedBox(height: 20),
 
@@ -6844,6 +6901,7 @@ Column(
               Text('Need help?  ',
                 style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500)),
               Ux4gButton(
+height: 48,
                 text: 'Call 1800-XXX-XXXX',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
@@ -6863,7 +6921,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -6997,14 +7055,17 @@ class _VerifyAccountLockedCardMockupState
                                   : Ux4gPalette.red800,
                               height: 1.35,
                             ),
-                            leadingIcon: Icon(
-                              Icons.error_outline,
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gPalette.red500
-                                  : Ux4gPalette.red600,
-                              size: 20,
+                            leadingIcon: SvgPicture.asset(
+                              Ux4gIcons.fillRevInfo,
+
+                              width: 20,
+                              height: 20,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.red500
+                                    : Ux4gPalette.red600,
+                                BlendMode.srcIn,
+                              ),
                             ),
                           ),
                           SizedBox(height: 20),
@@ -7022,6 +7083,7 @@ class _VerifyAccountLockedCardMockupState
                                   ),
                                 ),
                                 Ux4gButton(
+                                  height: 48,
                                   text: 'Call 1800-XXX-XXXX',
                                   onPressed: () {},
                                   variant: Ux4gButtonVariant.ghost,
@@ -7184,9 +7246,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -7246,7 +7308,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -7486,29 +7548,66 @@ class _SessionExpiringDialogMockupState
     final isExpiringSoon = widget.state == 'Expiring soon';
 
     // Exact colors per user instruction
-    Color iconBgColor = isDark ? const Color(0xFF5D2F80) : const Color(0xFFE9DAF3);
-    Color primaryAccent = isDark ? const Color(0xFFA391FF) : const Color(0xFF4A2BC2);
-    Color outlineBorder = isDark ? const Color(0xFF525252) : const Color(0xFFD9D9D9);
-    Color textColor = isDark ? const Color(0xFFFAFAFA) : const Color(0xFF171717);
-    Color descColor = isDark ? const Color(0xFFE5E5E5) : const Color(0xFF404040);
-    Color progressBg = isDark ? const Color(0xFF525252) : const Color(0xFFE5E5E5);
+    Color iconBgColor;
+    Color iconColor;
+    Color countColor;
+    Color progressColor;
+    Color buttonBgColor;
+    Color buttonTextColor;
 
-    late final IconData badgeIcon;
+    Color outlineBorder = isDark
+        ? const Color(0xFF525252)
+        : const Color(0xFFD9D9D9);
+    Color textColor = isDark
+        ? const Color(0xFFFAFAFA)
+        : const Color(0xFF171717);
+    Color descColor = isDark
+        ? const Color(0xFFE5E5E5)
+        : const Color(0xFF404040);
+    Color progressBg = isDark
+        ? const Color(0xFF525252)
+        : const Color(0xFFE5E5E5);
+
+    late final Widget badgeWidget;
     late final String title;
     late final String body;
 
     switch (widget.state) {
       case 'Expiring soon':
-        primaryAccent = Ux4gPalette.secondary600;
-        iconBgColor = Ux4gPalette.secondary50;
-        badgeIcon = Icons.warning_amber_rounded;
+        iconBgColor = isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100;
+        iconColor = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+        countColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+        progressColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange600;
+        buttonBgColor = isDark
+            ? Ux4gPalette.primary300
+            : Ux4gPalette.primary600;
+        buttonTextColor = isDark
+            ? Ux4gPalette.primary900
+            : Ux4gPalette.primary50;
+
+        badgeWidget = SvgPicture.asset(
+          Ux4gIcons.warningFill,
+
+          width: 28,
+          height: 28,
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+        );
         title = 'Your session is expiring soon';
         body = "You'll be signed out in less than a minute";
         break;
       case 'Session ended':
-        primaryAccent = isDark ? const Color(0xFFFAFAFA) : const Color(0xFF171717);
-        iconBgColor = isDark ? const Color(0xFF404040) : const Color(0xFFE5E5E5);
-        badgeIcon = Icons.access_time;
+        iconBgColor = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100;
+        iconColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+        countColor = iconColor;
+        progressColor = iconColor;
+        buttonBgColor = isDark
+            ? Ux4gPalette.primary300
+            : Ux4gPalette.primary600;
+        buttonTextColor = isDark
+            ? Ux4gPalette.neutral900
+            : Ux4gPalette.neutral50;
+
+        badgeWidget = Icon(Icons.access_time, color: iconColor, size: 28);
         title = 'Session ended';
         body =
             'Your form progress has been saved. Sign in again to '
@@ -7516,7 +7615,22 @@ class _SessionExpiringDialogMockupState
         break;
       case 'Expiring':
       default:
-        badgeIcon = Icons.lock_outline_rounded;
+        iconBgColor = isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100;
+        iconColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+        countColor = iconColor;
+        progressColor = iconColor;
+        buttonBgColor = iconColor;
+        buttonTextColor = isDark
+            ? Ux4gPalette.primary900
+            : Ux4gPalette.primary50;
+
+        badgeWidget = SvgPicture.asset(
+          Ux4gIcons.lockFill,
+
+          width: 28,
+          height: 28,
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+        );
         title = 'Your session is expiring';
         body =
             "You've been inactive for a while. For your security, "
@@ -7549,14 +7663,10 @@ class _SessionExpiringDialogMockupState
               color: iconBgColor,
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              badgeIcon,
-              color: primaryAccent,
-              size: 28,
-            ),
+            child: Center(child: badgeWidget),
           ),
           const SizedBox(height: 20),
-          
+
           // Heading
           Text(
             title,
@@ -7567,7 +7677,7 @@ class _SessionExpiringDialogMockupState
             ),
           ),
           const SizedBox(height: 8),
-          
+
           if (!isEnded) ...[
             // Timer
             Text(
@@ -7575,14 +7685,14 @@ class _SessionExpiringDialogMockupState
               style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.w800,
-                color: primaryAccent,
+                color: countColor,
                 height: 1.0,
                 letterSpacing: -0.5,
               ),
             ),
             const SizedBox(height: 16),
           ],
-          
+
           // Description
           Text(
             body,
@@ -7594,20 +7704,20 @@ class _SessionExpiringDialogMockupState
               height: 1.4,
             ),
           ),
-          
+
           if (!isEnded) ...[
             const SizedBox(height: 20),
             // Progress Bar
             Ux4gAnimatedLinearProgress(
               value: progress,
-              color: primaryAccent,
+              color: progressColor,
               trackColor: progressBg,
               height: 6,
             ),
           ],
-          
+
           const SizedBox(height: 24),
-          
+
           // Buttons
           Row(
             children: [
@@ -7616,8 +7726,11 @@ class _SessionExpiringDialogMockupState
                   text: isEnded ? 'Sign in to continue' : 'Stay signed in',
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
-                  backgroundColor: primaryAccent,
-                  contentColor: isDark ? const Color(0xFF171717) : Ux4gPalette.neutral50,
+                  backgroundColor: buttonBgColor,
+                  contentColor: buttonTextColor,
+                  textStyle: Theme.of(
+                    context,
+                  ).extension<Ux4gTypography>()?.lXL_default,
                   height: 48,
                 ),
               ),
@@ -7630,6 +7743,9 @@ class _SessionExpiringDialogMockupState
                     variant: Ux4gButtonVariant.outline,
                     contentColor: textColor,
                     borderColor: outlineBorder,
+                    textStyle: Theme.of(
+                      context,
+                    ).extension<Ux4gTypography>()?.lXL_default,
                     height: 48,
                   ),
                 ),
@@ -7656,8 +7772,13 @@ const _sessionExpiringCode =
 Builder(
   builder: (context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final iconBgColor = isDark ? const Color(0xFF5D2F80) : const Color(0xFFE9DAF3);
-    final primaryAccent = isDark ? const Color(0xFFA391FF) : const Color(0xFF4A2BC2);
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+    final iconBgColor = isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100;
+    final iconColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final countColor = iconColor;
+    final progressColor = iconColor;
+    final buttonBgColor = iconColor;
+    final buttonTextColor = isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
     final outlineBorder = isDark ? const Color(0xFF525252) : const Color(0xFFD9D9D9);
     final textColor = isDark ? const Color(0xFFFAFAFA) : const Color(0xFF171717);
     final descColor = isDark ? const Color(0xFFE5E5E5) : const Color(0xFF404040);
@@ -7688,10 +7809,14 @@ Builder(
               color: iconBgColor,
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              Icons.lock_outline_rounded,
-              color: primaryAccent,
-              size: 28,
+            child: Center(
+              child: SvgPicture.asset(
+                Ux4gIcons.lockFill,
+                
+                width: 28,
+                height: 28,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+              ),
             ),
           ),
           const SizedBox(height: 20),
@@ -7709,7 +7834,7 @@ Builder(
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w800,
-              color: primaryAccent,
+              color: countColor,
               height: 1.0,
               letterSpacing: -0.5,
             ),
@@ -7729,7 +7854,7 @@ Builder(
           const SizedBox(height: 20),
           Ux4gAnimatedLinearProgress(
             value: secondsLeft / totalSeconds,
-            color: primaryAccent,
+            color: progressColor,
             trackColor: progressBg,
             height: 6,
           ),
@@ -7741,8 +7866,9 @@ Builder(
                   text: 'Stay signed in',
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
-                  backgroundColor: primaryAccent,
-                  contentColor: isDark ? const Color(0xFF171717) : Ux4gPalette.neutral50,
+                  backgroundColor: buttonBgColor,
+                  contentColor: buttonTextColor,
+                  textStyle: typography?.lXL_default,
                   height: 48,
                 ),
               ),
@@ -7754,6 +7880,7 @@ Builder(
                   variant: Ux4gButtonVariant.outline,
                   contentColor: textColor,
                   borderColor: outlineBorder,
+                  textStyle: typography?.lXL_default,
                   height: 48,
                 ),
               ),
@@ -7767,83 +7894,212 @@ Builder(
 
 const _sessionExpiringSoonCode =
     r'''// "Your session is expiring soon" — final-minute warning state.
-// Same modal shell, but the badge and countdown switch to
-// [Ux4gPalette.secondary600] (orange).
-SizedBox(
-  width: 360,
-  child: Ux4gModalContent(
-    onDismiss: () {},
-    backgroundColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF171717) : Ux4gPalette.neutral50,
-    cornerRadius: 20,
-    alignment: Ux4gModalAlignment.centered,
-    leadingItem: Ux4gModalLeadingItem.icon,
-    leadingIcon: Icons.warning_amber_rounded,
-    leadingIconTint: Ux4gPalette.secondary600,
-    showCloseButton: false,
-    showDividers: false,
-    showSubtitle: false,
-    showDescription: false,
-    headerTitle: 'Your session is expiring soon',
-    bodyContent: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(formattedTime, // e.g. "00:57"
-          style: TextStyle(
-            fontSize: 40,
-            fontWeight: FontWeight.w800,
-            color: Ux4gPalette.secondary600,
-          )),
-        SizedBox(height: 16),
-        Text("You'll be signed out in less than a minute",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
-        SizedBox(height: 20),
-        Ux4gAnimatedLinearProgress(
-          value: secondsLeft / totalSeconds,
-          height: 8,
-          color: Ux4gPalette.secondary600,
-          duration: Duration(milliseconds: 800),
-        ),
-      ],
-    ),
-    footerButtons: Ux4gModalFooterButtons.twoButtons,
-    footerAlign: Ux4gModalFooterAlign.center,
-    primaryButtonText: 'Stay signed in',
-    secondaryButtonText: 'Sign out now',
-    onPrimaryClick: () {},
-    onSecondaryClick: () {},
-  ),
+Builder(
+  builder: (context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+    final iconBgColor = isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100;
+    final iconColor = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+    final countColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final progressColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange600;
+    final buttonBgColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final buttonTextColor = isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
+    final outlineBorder = isDark ? const Color(0xFF525252) : const Color(0xFFD9D9D9);
+    final textColor = isDark ? const Color(0xFFFAFAFA) : const Color(0xFF171717);
+    final descColor = isDark ? const Color(0xFFE5E5E5) : const Color(0xFF404040);
+    final progressBg = isDark ? const Color(0xFF525252) : const Color(0xFFE5E5E5);
+
+    return Container(
+      width: 400,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF171717) : Ux4gPalette.neutral50,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 16,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              color: iconBgColor,
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: SvgPicture.asset(
+                Ux4gIcons.warningFill,
+                
+                width: 28,
+                height: 28,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Your session is expiring soon',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            formattedTime, // e.g. "00:57"
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.w800,
+              color: countColor,
+              height: 1.0,
+              letterSpacing: -0.5,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            "You'll be signed out in less than a minute",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: descColor,
+              height: 1.4,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Ux4gAnimatedLinearProgress(
+            value: secondsLeft / totalSeconds,
+            color: progressColor,
+            trackColor: progressBg,
+            height: 6,
+          ),
+          const SizedBox(height: 24),
+          Row(
+            children: [
+              Expanded(
+                child: Ux4gButton(
+                  text: 'Stay signed in',
+                  onPressed: () {},
+                  variant: Ux4gButtonVariant.primary,
+                  backgroundColor: buttonBgColor,
+                  contentColor: buttonTextColor,
+                  textStyle: typography?.lXL_default,
+                  height: 48,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Ux4gButton(
+                  text: 'Sign out now',
+                  onPressed: () {},
+                  variant: Ux4gButtonVariant.outline,
+                  contentColor: textColor,
+                  borderColor: outlineBorder,
+                  textStyle: typography?.lXL_default,
+                  height: 48,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  },
 )''';
 
 const _sessionEndedCode =
     r'''// "Session ended" — terminal state. No countdown, no progress.
 // Single full-width primary button replaces the dual-button row.
-SizedBox(
-  width: 360,
-  child: Ux4gModalContent(
-    onDismiss: () {},
-    backgroundColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF171717) : Ux4gPalette.neutral50,
-    cornerRadius: 20,
-    alignment: Ux4gModalAlignment.centered,
-    leadingItem: Ux4gModalLeadingItem.icon,
-    leadingIcon: Icons.access_time,
-    leadingIconTint: Ux4gPalette.gray800,
-    showCloseButton: false,
-    showDividers: false,
-    showSubtitle: false,
-    showDescription: false,
-    headerTitle: 'Session ended',
-    bodyContent: Text(
-      'Your form progress has been saved. Sign in again to '
-      'continue where you left off.',
-      textAlign: TextAlign.center,
-      style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500),
-    ),
-    footerButtons: Ux4gModalFooterButtons.oneButton,
-    footerAlign: Ux4gModalFooterAlign.center,
-    primaryButtonText: 'Sign in to continue',
-    onPrimaryClick: () {},
-  ),
+Builder(
+  builder: (context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+    final iconBgColor = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100;
+    final iconColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    final buttonBgColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final buttonTextColor = isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
+    final textColor = isDark ? const Color(0xFFFAFAFA) : const Color(0xFF171717);
+    final descColor = isDark ? const Color(0xFFE5E5E5) : const Color(0xFF404040);
+
+    return Container(
+      width: 400,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF171717) : Ux4gPalette.neutral50,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 16,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              color: iconBgColor,
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Icon(Icons.access_time, color: iconColor, size: 28),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Session ended',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Your form progress has been saved. Sign in again to '
+            'continue where you left off.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: descColor,
+              height: 1.4,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Row(
+            children: [
+              Expanded(
+                child: Ux4gButton(
+                  text: 'Sign in to continue',
+                  onPressed: () {},
+                  variant: Ux4gButtonVariant.primary,
+                  backgroundColor: buttonBgColor,
+                  contentColor: buttonTextColor,
+                  textStyle: typography?.lXL_default,
+                  height: 48,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  },
 )''';
 
 // ───────────────────────────────────────────────────────────────────────
@@ -7905,18 +8161,18 @@ class _AuthIncorrectOtpMockup extends StatelessWidget {
                     showSeparator: false,
                   ),
                   const SizedBox(height: 24),
-
-                  // Verify CTA — sits right under the OTP block with
-                  // a small gap (no Expanded spacer above it).
-                  Ux4gButton(
-                    text: 'Verify OTP',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    height: 48,
-                    width: 326,
-                  ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+            child: Ux4gButton(
+              text: 'Verify OTP',
+              onPressed: () {},
+              size: Ux4gButtonSize.large,
+              height: 48,
+              width: double.infinity,
             ),
           ),
 
@@ -7933,9 +8189,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -7946,6 +8202,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -8000,7 +8257,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -8051,7 +8308,9 @@ class _AuthIncorrectOtpCardMockupState
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral50,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -8118,6 +8377,7 @@ class _AuthIncorrectOtpCardMockupState
 
                           Center(
                             child: Ux4gButton(
+                              height: 48,
                               text: 'Change mobile number',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
@@ -8150,9 +8410,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -8222,6 +8482,7 @@ Column(
                     SizedBox(height: 4),
 
                     Center(child: Ux4gButton(
+height: 48,
                       text: 'Change mobile number',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -8242,7 +8503,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -8335,12 +8596,17 @@ class _AuthOtpAttemptWarningMockup extends StatelessWidget {
                           : Ux4gPalette.orange800,
                       height: 1.3,
                     ),
-                    leadingIcon: Icon(
-                      Icons.error_outline,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.orange500
-                          : Ux4gPalette.orange600,
-                      size: 20,
+                    leadingIcon: SvgPicture.asset(
+                      Ux4gIcons.fillRevInfo,
+
+                      width: 20,
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.orange500
+                            : Ux4gPalette.orange600,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     subtitleWidget: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -8391,17 +8657,18 @@ class _AuthOtpAttemptWarningMockup extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
-
-                  // Verify CTA — sits right under the warning banner.
-                  Ux4gButton(
-                    text: 'Verify OTP',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    height: 48,
-                    width: 326,
-                  ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+            child: Ux4gButton(
+              text: 'Verify OTP',
+              onPressed: () {},
+              size: Ux4gButtonSize.large,
+              height: 48,
+              width: double.infinity,
             ),
           ),
 
@@ -8419,9 +8686,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -8432,6 +8699,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -8476,11 +8744,13 @@ Column(
               color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
               height: 1.3,
             ),
-            leadingIcon: Icon(
-              Icons.error_outline,
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-              size: 20,
-            ),
+            leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600, BlendMode.srcIn),
+),
             subtitleWidget: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -8542,7 +8812,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),  ],
@@ -8578,7 +8848,9 @@ class _AuthOtpAttemptWarningCardMockup extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral50,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -8636,7 +8908,8 @@ class _AuthOtpAttemptWarningCardMockup extends StatelessWidget {
                                 Theme.of(context).brightness == Brightness.dark
                                 ? Ux4gPalette.orange900
                                 : Ux4gPalette.orange50,
-                            borderColor: Theme.of(context).brightness == Brightness.dark
+                            borderColor:
+                                Theme.of(context).brightness == Brightness.dark
                                 ? Ux4gPalette.orange600
                                 : Ux4gPalette.orange300,
                             title: 'Incorrect OTP',
@@ -8645,17 +8918,24 @@ class _AuthOtpAttemptWarningCardMockup extends StatelessWidget {
                             titleStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: Theme.of(context).brightness == Brightness.dark
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
                                   ? Ux4gPalette.orange300
                                   : Ux4gPalette.orange800,
                               height: 1.3,
                             ),
-                            leadingIcon: Icon(
-                              Icons.error_outline,
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.orange500
-                                  : Ux4gPalette.orange600,
-                              size: 20,
+                            leadingIcon: SvgPicture.asset(
+                              Ux4gIcons.fillRevInfo,
+
+                              width: 20,
+                              height: 20,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.orange500
+                                    : Ux4gPalette.orange600,
+                                BlendMode.srcIn,
+                              ),
                             ),
                             subtitleWidget: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -8683,7 +8963,8 @@ class _AuthOtpAttemptWarningCardMockup extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color:
-                                        Theme.of(context).brightness == Brightness.dark
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
                                         ? Ux4gPalette.orange800
                                         : Ux4gPalette.orange100,
                                     borderRadius: BorderRadius.circular(6),
@@ -8738,9 +9019,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -8773,6 +9054,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -8815,11 +9097,13 @@ Column(
                         color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
                         height: 1.3,
                       ),
-                      leadingIcon: Icon(
-                        Icons.error_outline,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-                        size: 20,
-                      ),
+                      leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600, BlendMode.srcIn),
+),
                       subtitleWidget: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -8881,7 +9165,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -8954,20 +9238,29 @@ class _AuthOtpLastAttemptMockup extends StatelessWidget {
                   // is the final attempt before lockout.
                   Ux4gStatusBanner(
                     variant: Ux4gBannerVariant.errorLight,
-                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red600 : Ux4gPalette.red300,
+                    backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.red900
+                        : Ux4gPalette.red50,
+                    borderColor: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.red600
+                        : Ux4gPalette.red300,
                     title: 'Incorrect OTP',
                     margin: EdgeInsets.zero,
                     padding: const EdgeInsets.fromLTRB(12, 12, 10, 12),
                     titleStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.red300
+                          : Ux4gPalette.red800,
                       height: 1.3,
                     ),
                     leadingIcon: Icon(
                       Icons.error,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.red500
+                          : Ux4gPalette.red600,
                       size: 20,
                     ),
                     subtitleWidget: Row(
@@ -8979,7 +9272,11 @@ class _AuthOtpLastAttemptMockup extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.red300
+                                  : Ux4gPalette.red800,
                               height: 1.3,
                             ),
                           ),
@@ -8991,14 +9288,21 @@ class _AuthOtpLastAttemptMockup extends StatelessWidget {
                             vertical: 5,
                           ),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red100,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.red800
+                                : Ux4gPalette.red100,
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
                             'Attempt 2 of 3',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.red300
+                                  : Ux4gPalette.red800,
                               fontWeight: FontWeight.w500,
                               height: 1.2,
                             ),
@@ -9008,17 +9312,18 @@ class _AuthOtpLastAttemptMockup extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
-
-                  // Verify CTA — sits right under the error banner.
-                  Ux4gButton(
-                    text: 'Verify OTP',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    height: 48,
-                    width: 326,
-                  ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+            child: Ux4gButton(
+              text: 'Verify OTP',
+              onPressed: () {},
+              size: Ux4gButtonSize.large,
+              height: 48,
+              width: double.infinity,
             ),
           ),
 
@@ -9058,7 +9363,9 @@ class _AuthOtpLastAttemptCardMockup extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral50,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -9112,20 +9419,34 @@ class _AuthOtpLastAttemptCardMockup extends StatelessWidget {
 
                           Ux4gStatusBanner(
                             variant: Ux4gBannerVariant.errorLight,
-                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red600 : Ux4gPalette.red300,
+                            backgroundColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.red900
+                                : Ux4gPalette.red50,
+                            borderColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.red600
+                                : Ux4gPalette.red300,
                             title: 'Incorrect OTP',
                             margin: EdgeInsets.zero,
                             padding: const EdgeInsets.fromLTRB(12, 12, 10, 12),
                             titleStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.red300
+                                  : Ux4gPalette.red800,
                               height: 1.3,
                             ),
                             leadingIcon: Icon(
                               Icons.error,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.red500
+                                  : Ux4gPalette.red600,
                               size: 20,
                             ),
                             subtitleWidget: Row(
@@ -9137,7 +9458,11 @@ class _AuthOtpLastAttemptCardMockup extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                      color:
+                                          Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Ux4gPalette.red300
+                                          : Ux4gPalette.red800,
                                       height: 1.3,
                                     ),
                                   ),
@@ -9149,14 +9474,22 @@ class _AuthOtpLastAttemptCardMockup extends StatelessWidget {
                                     vertical: 5,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red100,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Ux4gPalette.red800
+                                        : Ux4gPalette.red100,
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                   child: Text(
                                     'Attempt 2 of 3',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                      color:
+                                          Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Ux4gPalette.red300
+                                          : Ux4gPalette.red800,
                                       fontWeight: FontWeight.w500,
                                       height: 1.2,
                                     ),
@@ -9198,9 +9531,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -9211,6 +9544,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -9320,7 +9654,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -9334,9 +9668,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -9369,6 +9703,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -9477,7 +9812,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -9524,19 +9859,26 @@ class _AuthOtpRetryUnlockedMockupState
                   // Success banner — design-system Ux4gStatusBanner.
                   Ux4gStatusBanner(
                     variant: Ux4gBannerVariant.successLight,
-                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+                    backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.green800
+                        : Ux4gPalette.green100,
                     title: 'You can now try signing in again.',
                     margin: EdgeInsets.zero,
                     padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
                     titleStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.green300
+                          : Ux4gPalette.green800,
                       height: 1.3,
                     ),
                     leadingIcon: Icon(
                       Icons.check_circle,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.green500
+                          : Ux4gPalette.green600,
                       size: 20,
                     ),
                   ),
@@ -9584,16 +9926,18 @@ class _AuthOtpRetryUnlockedMockupState
                     },
                   ),
                   const SizedBox(height: 24),
-
-                  Ux4gButton(
-                    text: 'Verify OTP',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    height: 48,
-                    width: 326,
-                  ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+            child: Ux4gButton(
+              text: 'Verify OTP',
+              onPressed: () {},
+              size: Ux4gButtonSize.large,
+              height: 48,
+              width: double.infinity,
             ),
           ),
           const _BrandFooter(),
@@ -9642,7 +9986,9 @@ class _AuthOtpRetryUnlockedCardMockupState
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral50,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -9660,19 +10006,30 @@ class _AuthOtpRetryUnlockedCardMockupState
 
                           Ux4gStatusBanner(
                             variant: Ux4gBannerVariant.successLight,
-                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+                            backgroundColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.green800
+                                : Ux4gPalette.green100,
                             title: 'You can now try signing in again.',
                             margin: EdgeInsets.zero,
                             padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
                             titleStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.green300
+                                  : Ux4gPalette.green800,
                               height: 1.3,
                             ),
                             leadingIcon: Icon(
                               Icons.check_circle,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.green500
+                                  : Ux4gPalette.green600,
                               size: 20,
                             ),
                           ),
@@ -9751,9 +10108,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -9764,6 +10121,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -9841,7 +10199,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -9855,9 +10213,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -9890,6 +10248,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -9968,7 +10327,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -10016,8 +10375,13 @@ class _AuthOtpSuspiciousActivityMockupState
                   // Warning banner — multi-line description in subtitle.
                   Ux4gStatusBanner(
                     variant: Ux4gBannerVariant.warningLight,
-                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange900 : Ux4gPalette.orange50,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange600 : Ux4gPalette.orange300,
+                    backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.orange900
+                        : Ux4gPalette.orange50,
+                    borderColor: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.orange600
+                        : Ux4gPalette.orange300,
                     title: 'Suspicious activity detected',
                     subtitle:
                         'We detected a sign-in from a new device. Please '
@@ -10027,19 +10391,30 @@ class _AuthOtpSuspiciousActivityMockupState
                     titleStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.orange300
+                          : Ux4gPalette.orange800,
                       height: 1.3,
                     ),
                     subtitleStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.orange300
+                          : Ux4gPalette.orange800,
                       height: 1.4,
                     ),
-                    leadingIcon: Icon(
-                      Icons.error_outline,
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-                      size: 20,
+                    leadingIcon: SvgPicture.asset(
+                      Ux4gIcons.fillRevInfo,
+
+                      width: 20,
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.orange500
+                            : Ux4gPalette.orange600,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -10086,16 +10461,18 @@ class _AuthOtpSuspiciousActivityMockupState
                     },
                   ),
                   const SizedBox(height: 32),
-
-                  Ux4gButton(
-                    text: 'Verify OTP',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    height: 48,
-                    width: 326,
-                  ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+            child: Ux4gButton(
+              text: 'Verify OTP',
+              onPressed: () {},
+              size: Ux4gButtonSize.large,
+              height: 48,
+              width: double.infinity,
             ),
           ),
           const _BrandFooter(),
@@ -10144,7 +10521,9 @@ class _AuthOtpSuspiciousActivityCardMockupState
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral50,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -10162,8 +10541,14 @@ class _AuthOtpSuspiciousActivityCardMockupState
 
                           Ux4gStatusBanner(
                             variant: Ux4gBannerVariant.warningLight,
-                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange900 : Ux4gPalette.orange50,
-                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange600 : Ux4gPalette.orange300,
+                            backgroundColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.orange900
+                                : Ux4gPalette.orange50,
+                            borderColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.orange600
+                                : Ux4gPalette.orange300,
                             title: 'Suspicious activity detected',
                             subtitle:
                                 'We detected a sign-in from a new device. '
@@ -10173,19 +10558,34 @@ class _AuthOtpSuspiciousActivityCardMockupState
                             titleStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.orange300
+                                  : Ux4gPalette.orange800,
                               height: 1.3,
                             ),
                             subtitleStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.orange300
+                                  : Ux4gPalette.orange800,
                               height: 1.4,
                             ),
-                            leadingIcon: Icon(
-                              Icons.error_outline,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-                              size: 20,
+                            leadingIcon: SvgPicture.asset(
+                              Ux4gIcons.fillRevInfo,
+
+                              width: 20,
+                              height: 20,
+                              colorFilter: ColorFilter.mode(
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gPalette.orange500
+                                    : Ux4gPalette.orange600,
+                                BlendMode.srcIn,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -10264,9 +10664,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -10277,6 +10677,7 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -10305,11 +10706,13 @@ Column(
               fontWeight: FontWeight.w400,
               color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
             ),
-            leadingIcon: Icon(
-              Icons.error_outline,
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-              size: 20,
-            ),
+            leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600, BlendMode.srcIn),
+),
           ),
           SizedBox(height: 24),
 
@@ -10362,7 +10765,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -10376,9 +10779,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
@@ -10411,6 +10814,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -10438,11 +10842,13 @@ Column(
                         fontWeight: FontWeight.w400,
                         color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
                       ),
-                      leadingIcon: Icon(
-                        Icons.error_outline,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
-                        size: 20,
-                      ),
+                      leadingIcon: SvgPicture.asset(
+  Ux4gIcons.fillRevInfo,
+  
+  width: 20,
+  height: 20,
+  colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange500 : Ux4gPalette.orange600, BlendMode.srcIn),
+),
                     ),
                     SizedBox(height: 20),
 
@@ -10497,7 +10903,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -10640,7 +11046,9 @@ class _AadhaarVerifyMethodCardMockupState
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -10657,7 +11065,7 @@ class _AadhaarVerifyMethodCardMockupState
                           const SizedBox(height: 12),
 
                           Text(
-                    'Verify with Aadhaar',
+                            'Verify with Aadhaar',
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
@@ -10668,7 +11076,7 @@ class _AadhaarVerifyMethodCardMockupState
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'Choose how you want to authenticate. Your '
+                            'Choose how you want to authenticate. Your '
                             'Aadhaar number is never stored.',
                             style: TextStyle(
                               fontSize: 14,
@@ -10773,26 +11181,30 @@ class _BrandHeaderWithMenu extends StatelessWidget {
             ),
           ],
           horizontalPadding: 16,
-          leadingSpacing: 12,
+          leadingSpacing: 8,
           actions: [
             Ux4gAppHeaderAction(
               customWidget: SizedBox(
                 width: 40,
                 height: 40,
                 child: Material(
-                  color: _isDark(context) ? Ux4gPalette.neutral800 : Colors.white,
+                  color: _isDark(context)
+                      ? Ux4gPalette.neutral800
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     onTap: onMenuPressed,
                     child: Ink(
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.neutral800 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                           color: _isDark(context)
-                              ? Ux4gPalette.primary700
-                              : Ux4gPalette.primary100,
+                              ? Ux4gPalette.primary600
+                              : Ux4gPalette.primary300,
                           width: 1.5,
                         ),
                       ),
@@ -10800,7 +11212,9 @@ class _BrandHeaderWithMenu extends StatelessWidget {
                         child: Icon(
                           Icons.menu,
                           size: 20,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: _isDark(context)
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
                         ),
                       ),
                     ),
@@ -10932,12 +11346,20 @@ class _AadhaarVerifyFooterRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Ux4gButton(
+                textStyle: Theme.of(
+                  context,
+                ).extension<Ux4gTypography>()?.lXL_default,
+                height: 48,
                 text: cancelLabel,
                 onPressed: onCancel,
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.medium,
               ),
               Ux4gButton(
+                textStyle: Theme.of(
+                  context,
+                ).extension<Ux4gTypography>()?.lXL_default,
+                height: 48,
                 text: continueLabel,
                 onPressed: onContinue,
                 size: Ux4gButtonSize.medium,
@@ -10957,9 +11379,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
       actions: [
         Ux4gAppHeaderAction(icon: Icons.menu, onPressed: () {}),
@@ -10973,6 +11395,8 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
             text: 'Back',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -11033,12 +11457,16 @@ Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Cancel',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.medium,
               ),
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Continue',
                 onPressed: () {},
                 size: Ux4gButtonSize.medium,
@@ -11058,7 +11486,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -11073,9 +11501,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
       actions: [
         Ux4gAppHeaderAction(icon: Icons.menu, onPressed: () {}),
@@ -11111,6 +11539,8 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -11142,12 +11572,16 @@ Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                     text: 'Cancel',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.medium,
                   ),
                   Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                     text: 'Continue',
                     onPressed: () {},
                     size: Ux4gButtonSize.medium,
@@ -11164,7 +11598,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -11208,6 +11642,10 @@ class _AadhaarOtpEnterMockupState extends State<_AadhaarOtpEnterMockup> {
                   // takes the user to the method picker, not just the
                   // previous screen. Built from Ux4gButton (ghost).
                   Ux4gButton(
+                    textStyle: Theme.of(
+                      context,
+                    ).extension<Ux4gTypography>()?.lXL_default,
+                    height: 48,
                     text: 'Change method',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
@@ -11321,7 +11759,9 @@ class _AadhaarOtpEnterCardMockupState
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -11335,6 +11775,10 @@ class _AadhaarOtpEnterCardMockupState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Ux4gButton(
+                            textStyle: Theme.of(
+                              context,
+                            ).extension<Ux4gTypography>()?.lXL_default,
+                            height: 48,
                             text: 'Change method',
                             onPressed: () {},
                             variant: Ux4gButtonVariant.ghost,
@@ -11349,7 +11793,7 @@ class _AadhaarOtpEnterCardMockupState
                           const SizedBox(height: 12),
 
                           Text(
-                    'Enter OTP',
+                            'Enter OTP',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
@@ -11360,7 +11804,7 @@ class _AadhaarOtpEnterCardMockupState
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'A 6-digit OTP has been sent to the mobile '
+                            'A 6-digit OTP has been sent to the mobile '
                             'number linked to your Aadhaar.',
                             style: TextStyle(
                               fontSize: 14,
@@ -11421,15 +11865,17 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
       actions: [
         Ux4gAppHeaderAction(
           customWidget: SizedBox(
             width: 40, height: 40,
             child: Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
               onPressed: () {},
               variant: Ux4gButtonVariant.outline,
               size: Ux4gButtonSize.small,
@@ -11453,6 +11899,8 @@ Column(
         children: [
           // "Change method" — back to the method picker.
           Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
             text: 'Change method',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -11505,12 +11953,16 @@ Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Back',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.medium,
               ),
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Verify OTP',
                 onPressed: () {},
                 size: Ux4gButtonSize.medium,
@@ -11530,7 +11982,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -11544,15 +11996,17 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
       actions: [
         Ux4gAppHeaderAction(
           customWidget: SizedBox(
             width: 40, height: 40,
             child: Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
               onPressed: () {},
               variant: Ux4gButtonVariant.outline,
               size: Ux4gButtonSize.small,
@@ -11597,6 +12051,8 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                       text: 'Change method',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -11652,12 +12108,16 @@ Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                         text: 'Back',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
                         size: Ux4gButtonSize.medium,
                       ),
                       Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                         text: 'Verify OTP',
                         onPressed: () {},
                         size: Ux4gButtonSize.medium,
@@ -11677,7 +12137,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -11708,6 +12168,10 @@ class _AadhaarFaceAuthPermissionMockup extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Ux4gButton(
+                    textStyle: Theme.of(
+                      context,
+                    ).extension<Ux4gTypography>()?.lXL_default,
+                    height: 48,
                     text: 'Change method',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
@@ -11795,7 +12259,9 @@ class _AadhaarFaceAuthPermissionCardMockup extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -11809,6 +12275,10 @@ class _AadhaarFaceAuthPermissionCardMockup extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Ux4gButton(
+                            textStyle: Theme.of(
+                              context,
+                            ).extension<Ux4gTypography>()?.lXL_default,
+                            height: 48,
                             text: 'Change method',
                             onPressed: () {},
                             variant: Ux4gButtonVariant.ghost,
@@ -11823,7 +12293,7 @@ class _AadhaarFaceAuthPermissionCardMockup extends StatelessWidget {
                           const SizedBox(height: 12),
 
                           Text(
-                    'Face Authentication',
+                            'Face Authentication',
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
@@ -11834,7 +12304,7 @@ class _AadhaarFaceAuthPermissionCardMockup extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'Allow camera access to capture your face '
+                            'Allow camera access to capture your face '
                             'for Aadhaar biometric verification.',
                             style: TextStyle(
                               fontSize: 14,
@@ -11879,7 +12349,9 @@ class _CameraPrivacyInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Ux4gCard(
       cornerRadius: 12,
-      backgroundColor: _isDark(context) ? Ux4gPalette.secondary900 : Ux4gPalette.secondary50,
+      backgroundColor: _isDark(context)
+          ? Ux4gPalette.secondary900
+          : Ux4gPalette.secondary50,
       borderColor: Colors.transparent,
       borderWidth: 0,
       child: Padding(
@@ -11903,7 +12375,11 @@ class _CameraPrivacyInfoCard extends StatelessWidget {
               'Your face scan data is processed locally and never '
               'stored on our servers.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, color: _getSubtleText(context), height: 1.4),
+              style: TextStyle(
+                fontSize: 14,
+                color: _getSubtleText(context),
+                height: 1.4,
+              ),
             ),
           ],
         ),
@@ -11919,9 +12395,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
       actions: [
         // Bordered hamburger tile — see _BrandHeaderWithMenu for the
@@ -11937,6 +12413,8 @@ Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
             text: 'Change method',
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
@@ -11992,12 +12470,16 @@ Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Cancel',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.medium,
               ),
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Allow Camera',
                 onPressed: () {},
                 size: Ux4gButtonSize.medium,
@@ -12017,7 +12499,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -12031,9 +12513,9 @@ Column(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
       actions: [
         // Bordered hamburger tile — see _BrandHeaderWithMenu.
@@ -12069,6 +12551,8 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                       text: 'Change method',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
@@ -12126,12 +12610,16 @@ Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                         text: 'Cancel',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
                         size: Ux4gButtonSize.medium,
                       ),
                       Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                         text: 'Allow Camera',
                         onPressed: () {},
                         size: Ux4gButtonSize.medium,
@@ -12150,7 +12638,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -12183,6 +12671,7 @@ class _AadhaarVerifiedSuccessMockup extends StatelessWidget {
                 children: [
                   // Inline success banner — Ux4gStatusBanner.successLight.
                   Ux4gStatusBanner(
+                    height: 44,
                     variant: Ux4gBannerVariant.successLight,
                     title: 'Aadhaar identity verified successfully',
                     margin: EdgeInsets.zero,
@@ -12190,12 +12679,16 @@ class _AadhaarVerifiedSuccessMockup extends StatelessWidget {
                     titleStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                      color: _isDark(context)
+                          ? Ux4gPalette.green300
+                          : Ux4gPalette.green700,
                       height: 1.3,
                     ),
                     leadingIcon: Icon(
                       Icons.check_circle,
-                      color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green,
+                      color: _isDark(context)
+                          ? Ux4gPalette.green400
+                          : Ux4gPalette.green,
                       size: 20,
                     ),
                   ),
@@ -12243,6 +12736,9 @@ class _AadhaarVerifiedSuccessMockup extends StatelessWidget {
                 Divider(height: 1, thickness: 1, color: _getBorder(context)),
                 const SizedBox(height: 12),
                 Ux4gButton(
+                  textStyle: Theme.of(
+                    context,
+                  ).extension<Ux4gTypography>()?.lXL_default,
                   text: 'Continue to Service',
                   onPressed: () {},
                   size: Ux4gButtonSize.large,
@@ -12288,7 +12784,9 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -12302,6 +12800,7 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Ux4gStatusBanner(
+                            height: 44,
                             variant: Ux4gBannerVariant.successLight,
                             title: 'Aadhaar identity verified successfully',
                             margin: EdgeInsets.zero,
@@ -12309,19 +12808,23 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                             titleStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.green300
+                                  : Ux4gPalette.green700,
                               height: 1.3,
                             ),
                             leadingIcon: Icon(
                               Icons.check_circle,
-                              color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.green400
+                                  : Ux4gPalette.green,
                               size: 20,
                             ),
                           ),
                           const SizedBox(height: 20),
 
                           Text(
-                    'Authentication\nSuccessful',
+                            'Authentication\nSuccessful',
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
@@ -12332,7 +12835,7 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'Your Aadhaar identity has been verified. '
+                            'Your Aadhaar identity has been verified. '
                             'You may now proceed to the service.',
                             style: TextStyle(
                               fontSize: 14,
@@ -12356,6 +12859,9 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
                     child: Ux4gButton(
+                      textStyle: Theme.of(
+                        context,
+                      ).extension<Ux4gTypography>()?.lXL_default,
                       text: 'Continue to Service',
                       onPressed: () {},
                       size: Ux4gButtonSize.large,
@@ -12387,7 +12893,9 @@ class _TransactionIdCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Ux4gCard(
       cornerRadius: 12,
-      backgroundColor: _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: _isDark(context)
+          ? Ux4gPalette.primary900
+          : Ux4gPalette.primary50,
       borderColor: Colors.transparent,
       borderWidth: 0,
       child: Padding(
@@ -12435,6 +12943,7 @@ Column(
         children: [
           // Green inline confirmation banner.
           Ux4gStatusBanner(
+height: 44,
             variant: Ux4gBannerVariant.successLight,
             title: 'Aadhaar identity verified successfully',
             margin: EdgeInsets.zero,
@@ -12489,6 +12998,7 @@ Column(
           Ux4gDivider(color: Ux4gPalette.neutral200),
           SizedBox(height: 12),
           Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
             text: 'Continue to Service',
             onPressed: () {},
             size: Ux4gButtonSize.large,
@@ -12508,7 +13018,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -12550,6 +13060,7 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gStatusBanner(
+height: 44,
                       variant: Ux4gBannerVariant.successLight,
                       title: 'Aadhaar identity verified successfully',
                       margin: EdgeInsets.zero,
@@ -12600,6 +13111,7 @@ Column(
             Padding(
               padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
               child: Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
                 text: 'Continue to Service',
                 onPressed: () {},
                 size: Ux4gButtonSize.large,
@@ -12616,7 +13128,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -12653,7 +13165,9 @@ class _AadhaarVerificationFailedMockup extends StatelessWidget {
                     width: 64,
                     height: 64,
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red100,
+                      color: _isDark(context)
+                          ? Ux4gPalette.red900
+                          : Ux4gPalette.red100,
                       shape: BoxShape.circle,
                     ),
                     alignment: Alignment.center,
@@ -12707,28 +13221,36 @@ class _AadhaarVerificationFailedMockup extends StatelessWidget {
                     titleStyle: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                      color: _isDark(context)
+                          ? Ux4gPalette.red300
+                          : Ux4gPalette.red800,
                       height: 1.35,
                     ),
                     leadingIcon: Icon(
                       Icons.error,
-                      color: _isDark(context) ? Ux4gPalette.red500 : Ux4gPalette.red600,
+                      color: _isDark(context)
+                          ? Ux4gPalette.red500
+                          : Ux4gPalette.red600,
                       size: 18,
                     ),
-                    badge: Container(
+                    subtitleWidget: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 10,
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.red800 : Ux4gPalette.red200,
+                        color: _isDark(context)
+                            ? Ux4gPalette.red800
+                            : Ux4gPalette.red200,
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         'Attempt 1 of 2',
                         style: TextStyle(
                           fontSize: 11,
-                          color: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                          color: _isDark(context)
+                              ? Ux4gPalette.red300
+                              : Ux4gPalette.red800,
                           fontWeight: FontWeight.w500,
                           height: 1.2,
                         ),
@@ -12783,7 +13305,9 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -12800,7 +13324,9 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                             width: 64,
                             height: 64,
                             decoration: BoxDecoration(
-                              color: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red100,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.red900
+                                  : Ux4gPalette.red100,
                               shape: BoxShape.circle,
                             ),
                             alignment: Alignment.center,
@@ -12821,7 +13347,7 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                           const SizedBox(height: 16),
 
                           Text(
-                    'Authentication Failed',
+                            'Authentication Failed',
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
@@ -12832,7 +13358,7 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'The OTP entered is incorrect. You have 2 '
+                            'The OTP entered is incorrect. You have 2 '
                             'attempts remaining before your account is '
                             'temporarily locked.',
                             style: TextStyle(
@@ -12861,28 +13387,36 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                             titleStyle: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
-                              color: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.red300
+                                  : Ux4gPalette.red800,
                               height: 1.35,
                             ),
                             leadingIcon: Icon(
                               Icons.error,
-                              color: _isDark(context) ? Ux4gPalette.red500 : Ux4gPalette.red600,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.red500
+                                  : Ux4gPalette.red600,
                               size: 18,
                             ),
-                            badge: Container(
+                            subtitleWidget: Container(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 10,
                                 vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: _isDark(context) ? Ux4gPalette.red800 : Ux4gPalette.red200,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.red800
+                                    : Ux4gPalette.red200,
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: Text(
                                 'Attempt 1 of 2',
                                 style: TextStyle(
                                   fontSize: 11,
-                                  color: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  color: _isDark(context)
+                                      ? Ux4gPalette.red300
+                                      : Ux4gPalette.red800,
                                   fontWeight: FontWeight.w500,
                                   height: 1.2,
                                 ),
@@ -12965,7 +13499,7 @@ Column(
             ),
             leadingIcon: Icon(Icons.error,
               color: Ux4gPalette.red600, size: 18),
-            badge: Container(
+            subtitleWidget: Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
                 color: Ux4gPalette.red200,
@@ -12993,12 +13527,16 @@ Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Try Different Method',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.medium,
               ),
               Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                 text: 'Try Again',
                 onPressed: () {},
                 size: Ux4gButtonSize.medium,
@@ -13018,7 +13556,7 @@ Column(
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
           SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
     ),
@@ -13103,7 +13641,7 @@ Column(
                       ),
                       leadingIcon: Icon(Icons.error,
                         color: Ux4gPalette.red600, size: 18),
-                      badge: Container(
+                      subtitleWidget: Container(
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
                           color: Ux4gPalette.red200,
@@ -13129,12 +13667,16 @@ Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                     text: 'Try Different Method',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.medium,
                   ),
                   Ux4gButton(
+textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+height: 48,
                     text: 'Try Again',
                     onPressed: () {},
                     size: Ux4gButtonSize.medium,
@@ -13151,7 +13693,7 @@ Column(
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -13186,7 +13728,9 @@ class _AadhaarAccountLockedMockup extends StatelessWidget {
                     width: 64,
                     height: 64,
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
+                      color: _isDark(context)
+                          ? Ux4gPalette.red900
+                          : Ux4gPalette.red50,
                       shape: BoxShape.circle,
                     ),
                     alignment: Alignment.center,
@@ -13194,12 +13738,16 @@ class _AadhaarAccountLockedMockup extends StatelessWidget {
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.red800 : Ux4gPalette.red100,
+                        color: _isDark(context)
+                            ? Ux4gPalette.red800
+                            : Ux4gPalette.red100,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         Icons.lock,
-                        color: _isDark(context) ? Ux4gPalette.red400 : Ux4gPalette.red600,
+                        color: _isDark(context)
+                            ? Ux4gPalette.red400
+                            : Ux4gPalette.red600,
                         size: 22,
                       ),
                     ),
@@ -13232,38 +13780,47 @@ class _AadhaarAccountLockedMockup extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.yellow950 : Ux4gPalette.yellow50,
+                      color: _isDark(context)
+                          ? Ux4gPalette.orange900
+                          : Ux4gPalette.orange50,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
                       children: [
                         Text(
-                    'Try again in',
+                          'Try again in',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                            color: _isDark(context)
+                                ? Ux4gPalette.neutral200
+                                : Ux4gPalette.neutral700,
                           ),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                    '23:45:00',
-                          style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.w800,
-                            color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
-                            letterSpacing: 1,
-                          ),
+                          '23:45:00',
+                          style: Theme.of(context)
+                              .extension<Ux4gTypography>()
+                              ?.dM_strong
+                              ?.copyWith(
+                                color: _isDark(context)
+                                    ? Ux4gPalette.orange300
+                                    : Ux4gPalette.orange800,
+                              ),
                         ),
                         const SizedBox(height: 16),
                         Text(
-                    'Your account will be unlocked automatically. If you need immediate assistance, contact UIDAI support.',
+                          'Your account will be unlocked automatically. If you need immediate assistance, contact UIDAI support.',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
-                            height: 1.4,
-                          ),
+                          style: Theme.of(context)
+                              .extension<Ux4gTypography>()
+                              ?.bS_default
+                              ?.copyWith(
+                                color: _isDark(context)
+                                    ? Ux4gPalette.neutral200
+                                    : Ux4gPalette.neutral700,
+                              ),
                         ),
                       ],
                     ),
@@ -13275,14 +13832,23 @@ class _AadhaarAccountLockedMockup extends StatelessWidget {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-            child: Ux4gButton(
-              text: 'Contact UIDAI Support',
-              onPressed: () {},
-              variant: Ux4gButtonVariant.outline,
-              size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-              leadingIcon: Icons.support,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Divider(height: 1, thickness: 1, color: _getBorder(context)),
+                const SizedBox(height: 12),
+                Ux4gButton(
+                  textStyle: Theme.of(
+                    context,
+                  ).extension<Ux4gTypography>()?.lXL_default,
+                  text: 'Contact UIDAI Support',
+                  onPressed: () {},
+                  variant: Ux4gButtonVariant.outline,
+                  size: Ux4gButtonSize.large,
+                  height: 48,
+                  leadingIcon: Icons.support,
+                ),
+              ],
             ),
           ),
           const _BrandFooter(),
@@ -13321,7 +13887,9 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -13339,7 +13907,9 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                             width: 64,
                             height: 64,
                             decoration: BoxDecoration(
-                              color: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.red900
+                                  : Ux4gPalette.red50,
                               shape: BoxShape.circle,
                             ),
                             alignment: Alignment.center,
@@ -13347,12 +13917,16 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                               width: 36,
                               height: 36,
                               decoration: BoxDecoration(
-                                color: _isDark(context) ? Ux4gPalette.red800 : Ux4gPalette.red100,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.red800
+                                    : Ux4gPalette.red100,
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
                                 Icons.lock,
-                                color: _isDark(context) ? Ux4gPalette.red400 : Ux4gPalette.red600,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.red400
+                                    : Ux4gPalette.red600,
                                 size: 22,
                               ),
                             ),
@@ -13360,7 +13934,7 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                           const SizedBox(height: 16),
 
                           Text(
-                    'Account Locked',
+                            'Account Locked',
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
@@ -13371,7 +13945,7 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'Your Aadhaar authentication has been suspended due to too many failed attempts.',
+                            'Your Aadhaar authentication has been suspended due to too many failed attempts.',
                             style: TextStyle(
                               fontSize: 14,
                               color: _getSubtleText(context),
@@ -13385,38 +13959,47 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                             width: double.infinity,
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: _isDark(context) ? Ux4gPalette.yellow950 : Ux4gPalette.yellow50,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.orange900
+                                  : Ux4gPalette.orange50,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Column(
                               children: [
                                 Text(
-                    'Try again in',
+                                  'Try again in',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
-                                    color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.neutral200
+                                        : Ux4gPalette.neutral700,
                                   ),
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                    '23:45:00',
-                                  style: TextStyle(
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.w800,
-                                    color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
-                                    letterSpacing: 1,
-                                  ),
+                                  '23:45:00',
+                                  style: Theme.of(context)
+                                      .extension<Ux4gTypography>()
+                                      ?.dM_strong
+                                      ?.copyWith(
+                                        color: _isDark(context)
+                                            ? Ux4gPalette.orange300
+                                            : Ux4gPalette.orange800,
+                                      ),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
-                    'Your account will be unlocked automatically. If you need immediate assistance, contact UIDAI support.',
+                                  'Your account will be unlocked automatically. If you need immediate assistance, contact UIDAI support.',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
-                                    height: 1.4,
-                                  ),
+                                  style: Theme.of(context)
+                                      .extension<Ux4gTypography>()
+                                      ?.bS_default
+                                      ?.copyWith(
+                                        color: _isDark(context)
+                                            ? Ux4gPalette.neutral200
+                                            : Ux4gPalette.neutral700,
+                                      ),
                                 ),
                               ],
                             ),
@@ -13430,14 +14013,27 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
 
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-                    child: Ux4gButton(
-                      text: 'Contact UIDAI Support',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      height: 48,
-                      width: 326,
-                      leadingIcon: Icons.support,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Divider(
+                          height: 1,
+                          thickness: 1,
+                          color: _getBorder(context),
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                          textStyle: Theme.of(
+                            context,
+                          ).extension<Ux4gTypography>()?.lXL_default,
+                          text: 'Contact UIDAI Support',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.large,
+                          height: 48,
+                          leadingIcon: Icons.support,
+                        ),
+                      ],
                     ),
                   ),
                   const _BrandFooter(),
@@ -13475,9 +14071,9 @@ Container(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/icons/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/icons/Union.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32),
         ],
         actions: [
           Ux4gAppHeaderAction(
@@ -13538,25 +14134,27 @@ Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Color(0xFFFFFBEB),
+                  color: _isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
                   children: [
                     Text('Try again in',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800)),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                     SizedBox(height: 8),
                     Text('23:45:00',
                       style: TextStyle(
                         fontSize: 36, 
                         fontWeight: FontWeight.w800, 
-                        color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                        color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
                         letterSpacing: 1,
                       )),
                     SizedBox(height: 16),
                     Text('Your account will be unlocked automatically. If you need immediate assistance, contact UIDAI support.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 13, color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800, height: 1.4)),
+                      style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
+                        color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      )),
                   ],
                 ),
               ),
@@ -13567,14 +14165,21 @@ Container(
 
       Padding(
         padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-        child: Ux4gButton(
-          text: 'Contact UIDAI Support',
-          onPressed: () {},
-          variant: Ux4gButtonVariant.outline,
-          size: Ux4gButtonSize.large,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Ux4gDivider(color: Ux4gPalette.neutral200),
+            SizedBox(height: 12),
+            Ux4gButton(
+              textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+              text: 'Contact UIDAI Support',
+              onPressed: () {},
+              variant: Ux4gButtonVariant.outline,
+              size: Ux4gButtonSize.large,
               height: 48,
-              width: 326,
-          leadingIcon: Icons.support,
+              leadingIcon: Icons.support,
+            ),
+          ],
         ),
       ),
       
@@ -13585,7 +14190,7 @@ Container(
           children: [
             Text('Powered by -', style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
             SizedBox(height: 6),
-            Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+            Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
           ],
         ),
       ),
@@ -13617,9 +14222,9 @@ Container(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/icons/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/icons/Union.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32),
         ],
         actions: [
           Ux4gAppHeaderAction(
@@ -13701,25 +14306,27 @@ Container(
                         width: double.infinity,
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: Color(0xFFFFFBEB),
+                          color: _isDark(context) ? Ux4gPalette.orange900 : Ux4gPalette.orange50,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(
                           children: [
                             Text('Try again in',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800)),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
                             SizedBox(height: 8),
                             Text('23:45:00',
                               style: TextStyle(
                                 fontSize: 36, 
                                 fontWeight: FontWeight.w800, 
-                                color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                                color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
                                 letterSpacing: 1,
                               )),
                             SizedBox(height: 16),
                             Text('Your account will be unlocked automatically. If you need immediate assistance, contact UIDAI support.',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 13, color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800, height: 1.4)),
+                              style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
+                                color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                              )),
                           ],
                         ),
                       ),
@@ -13750,7 +14357,7 @@ Container(
                   children: [
                     Text('Powered by -', style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -13819,19 +14426,21 @@ class _OperatorAssistedAuthMockupState
                     width: double.infinity,
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+                      color: _isDark(context)
+                          ? Ux4gPalette.primary900
+                          : Ux4gPalette.primary50,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                    'VLE Operator',
+                          'VLE Operator',
                           style: TextStyle(fontSize: 13, color: _subtleText),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                    'Ramesh Kumar',
+                          'Ramesh Kumar',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w800,
@@ -13840,7 +14449,7 @@ class _OperatorAssistedAuthMockupState
                         ),
                         const SizedBox(height: 8),
                         Text(
-                    'ID: VLE-MH-2024-00387 · Certified by MeitY',
+                          'ID: VLE-MH-2024-00387 · Certified by MeitY',
                           style: TextStyle(fontSize: 12, color: _mutedText),
                         ),
                       ],
@@ -13910,7 +14519,9 @@ class _OperatorAssistedAuthCardMockupState
                       width: double.infinity,
                       padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                       decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                        color: _isDark(context)
+                            ? Ux4gPalette.gray900
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -13927,7 +14538,7 @@ class _OperatorAssistedAuthCardMockupState
                           const SizedBox(height: 12),
 
                           Text(
-                    'Operator-Assisted Authentication',
+                            'Operator-Assisted Authentication',
                             style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.w800,
@@ -13938,7 +14549,7 @@ class _OperatorAssistedAuthCardMockupState
                           ),
                           const SizedBox(height: 8),
                           Text(
-                    'A certified VLE operator will conduct this Aadhaar verification on your behalf with your consent.',
+                            'A certified VLE operator will conduct this Aadhaar verification on your behalf with your consent.',
                             style: TextStyle(
                               fontSize: 14,
                               color: _getSubtleText(context),
@@ -13952,14 +14563,16 @@ class _OperatorAssistedAuthCardMockupState
                             width: double.infinity,
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.primary900
+                                  : Ux4gPalette.primary50,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                    'VLE Operator',
+                                  'VLE Operator',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: _getSubtleText(context),
@@ -13967,7 +14580,7 @@ class _OperatorAssistedAuthCardMockupState
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                    'Ramesh Kumar',
+                                  'Ramesh Kumar',
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w800,
@@ -13976,7 +14589,7 @@ class _OperatorAssistedAuthCardMockupState
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                    'ID: VLE-MH-2024-00387 · Certified by MeitY',
+                                  'ID: VLE-MH-2024-00387 · Certified by MeitY',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: _getMutedText(context),
@@ -14043,9 +14656,9 @@ Container(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/icons/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/icons/Union.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32),
         ],
         actions: [
           Ux4gAppHeaderAction(
@@ -14070,6 +14683,7 @@ Container(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Ux4gButton(
+height: 48,
                 text: 'Back',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
@@ -14132,12 +14746,14 @@ Container(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Ux4gButton(
+height: 48,
               text: 'Cancel', 
               onPressed: () {}, 
               variant: Ux4gButtonVariant.ghost,
               textColor: Color(0xFF4F46E5),
             ),
             Ux4gButton(
+height: 48,
               text: 'Proceed with Consent', 
               onPressed: () {},
               variant: Ux4gButtonVariant.primary,
@@ -14153,7 +14769,7 @@ Container(
           children: [
             Text('Powered by -', style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
             SizedBox(height: 6),
-            Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+            Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
           ],
         ),
       ),
@@ -14185,9 +14801,9 @@ Container(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/icons/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/icons/Union.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32),
         ],
         actions: [
           Ux4gAppHeaderAction(
@@ -14233,6 +14849,7 @@ Container(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Ux4gButton(
+height: 48,
                         text: 'Back',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
@@ -14301,12 +14918,14 @@ Container(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Ux4gButton(
+height: 48,
                           text: 'Cancel', 
                           onPressed: () {}, 
                           variant: Ux4gButtonVariant.ghost,
                           textColor: Color(0xFF4F46E5),
                         ),
                         Ux4gButton(
+height: 48,
                           text: 'Proceed with Consent', 
                           onPressed: () {},
                           variant: Ux4gButtonVariant.primary,
@@ -14324,7 +14943,7 @@ Container(
                   children: [
                     Text('Powered by -', style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -14372,7 +14991,8 @@ class _SignInLink extends StatelessWidget {
 }
 
 /// Inline error banner reusing the same [Ux4gStatusBanner] as SignIn.
-Widget _signUpErrorBanner(BuildContext context, {
+Widget _signUpErrorBanner(
+  BuildContext context, {
   String title = 'Your status message goes here',
   String subtitle = 'Take action',
   String badge = 'Attempt 1 of 5',
@@ -14432,7 +15052,8 @@ BoxDecoration _suCardDeco(BuildContext context) => BoxDecoration(
   ],
 );
 
-Color _getSuCardBg(BuildContext context) => _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100;
+Color _getSuCardBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100;
 
 // -----------------------------------------------------------------------
 // STEP 1 � Create your account
@@ -14527,8 +15148,6 @@ class _SignUpStep1MockupState extends State<_SignUpStep1Mockup> {
                     type: Ux4gInputFieldType.number,
                     maxLength: 10,
                   ),
-                  const SizedBox(height: 16),
-                  _signUpErrorBanner(context, ),
                   const SizedBox(height: 20),
                   Ux4gButton(
                     text: 'Send OTP',
@@ -14618,8 +15237,6 @@ class _SignUpStep1CardMockupState extends State<_SignUpStep1CardMockup> {
                               type: Ux4gInputFieldType.number,
                               maxLength: 10,
                             ),
-                            const SizedBox(height: 12),
-                            _signUpErrorBanner(context, ),
                             const SizedBox(height: 16),
                             Ux4gButton(
                               text: 'Send OTP',
@@ -14653,11 +15270,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -14670,7 +15287,7 @@ Container(
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800,
                 color: Color(0xFF111827))),
             SizedBox(height: 6),
-            Text('Register to access government services',
+            Text('Enter your mobile number to get started',
               style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
             SizedBox(height: 24),
             Ux4gInputField(
@@ -14679,26 +15296,7 @@ Container(
               prefixText: '+91',
               type: Ux4gInputFieldType.number, maxLength: 10,
             ),
-            SizedBox(height: 16),
-            Ux4gStatusBanner(
-              variant: Ux4gBannerVariant.errorLight,
-              title: 'Your status message goes here',
-              subtitle: 'Take action',
-              margin: EdgeInsets.zero,
-              padding: EdgeInsets.fromLTRB(12, 12, 10, 12),
-              leadingIcon: Icon(Icons.error_outline,
-                color: Ux4gPalette.red600, size: 20),
-              trailingIcon: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Ux4gPalette.red100,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text('Attempt 1 of 5',
-                  style: TextStyle(fontSize: 12,
-                    color: Ux4gPalette.red800, fontWeight: FontWeight.w500)),
-              ),
-            ),
+
             SizedBox(height: 20),
             Ux4gButton(
               text: 'Send OTP', onPressed: () {},
@@ -14734,11 +15332,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -14765,7 +15363,7 @@ Container(
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800,
                         color: Color(0xFF111827))),
                     SizedBox(height: 6),
-                    Text('Register to access government services',
+                    Text('Enter your mobile number to get started',
                       style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500)),
                     SizedBox(height: 20),
                     Ux4gInputField(
@@ -14774,25 +15372,7 @@ Container(
                       prefixText: '+91',
                       type: Ux4gInputFieldType.number, maxLength: 10,
                     ),
-                    SizedBox(height: 14),
-                    Ux4gStatusBanner(
-                      variant: Ux4gBannerVariant.errorLight,
-                      title: 'Your status message goes here',
-                      subtitle: 'Take action',
-                      margin: EdgeInsets.zero,
-                      leadingIcon: Icon(Icons.error_outline,
-                        color: Ux4gPalette.red600, size: 20),
-                      trailingIcon: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: Ux4gPalette.red100,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text('Attempt 1 of 5',
-                          style: TextStyle(fontSize: 12,
-                            color: Ux4gPalette.red800, fontWeight: FontWeight.w500)),
-                      ),
-                    ),
+
                     SizedBox(height: 16),
                     Ux4gButton(
                       text: 'Send OTP', onPressed: () {},
@@ -14908,7 +15488,7 @@ class _SignUpStep2MockupState extends State<_SignUpStep2Mockup> {
                     onChanged: (v) => setState(() => _otp = v),
                     boxSize: 44,
                     gap: 8,
-                    showSeparator: true,
+                    showSeparator: false,
                     captionVariant: Ux4gOtpCaptionVariant.resendTimer,
                     captionLeadingText: "Didn't receive OTP?",
                     captionTrailingText: 'Resend OTP',
@@ -14994,7 +15574,7 @@ class _SignUpStep2CardMockupState extends State<_SignUpStep2CardMockup> {
                               onChanged: (v) => setState(() => _otp = v),
                               boxSize: 44,
                               gap: 8,
-                              showSeparator: true,
+                              showSeparator: false,
                               captionVariant: Ux4gOtpCaptionVariant.resendTimer,
                               captionLeadingText: "Didn't receive OTP?",
                               captionTrailingText: 'Resend OTP',
@@ -15035,11 +15615,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -15059,7 +15639,7 @@ Container(
               length: 6,
               value: otp, onChanged: (v) => setState(() => otp = v),
               boxSize: 44, gap: 8,
-              showSeparator: true,
+              showSeparator: false,
               captionVariant: Ux4gOtpCaptionVariant.resendTimer,
               captionLeadingText: "Didn't receive OTP?",
               captionTrailingText: 'Resend',
@@ -15096,11 +15676,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -15134,7 +15714,7 @@ Container(
                       length: 6,
                       value: otp, onChanged: (v) => setState(() => otp = v),
                       boxSize: 44, gap: 8,
-                      showSeparator: true,
+                      showSeparator: false,
                       captionVariant: Ux4gOtpCaptionVariant.resendTimer,
                       captionLeadingText: "Didn't receive OTP?",
                       captionTrailingText: 'Resend',
@@ -15279,16 +15859,8 @@ class _SignUpStep3MockupState extends State<_SignUpStep3Mockup> {
                     maxLength: 10,
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    'Category',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: _getTitleColor(context),
-                    ),
-                  ),
-                  const SizedBox(height: 4),
                   Ux4gSelectionDropdown(
+                    label: 'Category',
                     options: _cats,
                     selectedOptionIds: _category,
                     onSelectionChange: (ids) => setState(() => _category = ids),
@@ -15406,16 +15978,8 @@ class _SignUpStep3CardMockupState extends State<_SignUpStep3CardMockup> {
                               maxLength: 10,
                             ),
                             const SizedBox(height: 14),
-                            Text(
-                              'Category',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: _getTitleColor(context),
-                              ),
-                            ),
-                            const SizedBox(height: 4),
                             Ux4gSelectionDropdown(
+                              label: 'Category',
                               options: _cats,
                               selectedOptionIds: _category,
                               onSelectionChange: (ids) =>
@@ -15454,11 +16018,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -15491,11 +16055,8 @@ Container(
               type: Ux4gInputFieldType.number, maxLength: 10,
             ),
             SizedBox(height: 16),
-            Text('Category',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700,
-                color: Color(0xFF111827))),
-            SizedBox(height: 6),
             Ux4gSelectionDropdown(
+              label: 'Category',
               options: ['Citizen', 'Government Official', 'Business'],
               placeholder: 'Please select..',
               mode: Ux4gDropdownMode.single,
@@ -15531,11 +16092,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -15582,11 +16143,8 @@ Container(
                       type: Ux4gInputFieldType.number, maxLength: 10,
                     ),
                     SizedBox(height: 14),
-                    Text('Category',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700,
-                        color: Color(0xFF111827))),
-                    SizedBox(height: 6),
                     Ux4gSelectionDropdown(
+                      label: 'Category',
                       options: ['Citizen', 'Government Official', 'Business'],
                       placeholder: 'Please select..',
                       mode: Ux4gDropdownMode.single,
@@ -15843,11 +16401,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -15904,11 +16462,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -16062,11 +16620,19 @@ class _SignUpStep5Mockup extends StatelessWidget {
                   Text(
                     'Welcome, Ramesh Kumar',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: _getSubtleText(context),
-                      height: 1.3,
-                    ),
+                    style:
+                        (Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.bM_default ??
+                                const TextStyle(fontSize: 16))
+                            .copyWith(
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral200
+                                  : Ux4gPalette.neutral700,
+                              height: 1.3,
+                            ),
                   ),
                   const SizedBox(height: 32),
                   Container(
@@ -16075,16 +16641,19 @@ class _SignUpStep5Mockup extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFEF3C7),
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.orange800
+                          : Ux4gPalette.orange100,
                       borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: const Color(0xFFFDE68A)),
                     ),
                     child: Text(
                       'RECOMMENDED',
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF92400E),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.orange300
+                            : Ux4gPalette.orange800,
                         letterSpacing: 0.8,
                       ),
                     ),
@@ -16187,11 +16756,19 @@ class _SignUpStep5CardMockup extends StatelessWidget {
                             Text(
                               'Welcome, Ramesh Kumar',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: _getSubtleText(context),
-                                height: 1.3,
-                              ),
+                              style:
+                                  (Theme.of(context)
+                                              .extension<Ux4gTypography>()
+                                              ?.bM_default ??
+                                          const TextStyle(fontSize: 16))
+                                      .copyWith(
+                                        color:
+                                            Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Ux4gPalette.neutral200
+                                            : Ux4gPalette.neutral700,
+                                        height: 1.3,
+                                      ),
                             ),
                             const SizedBox(height: 28),
                             Container(
@@ -16200,18 +16777,23 @@ class _SignUpStep5CardMockup extends StatelessWidget {
                                 vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFEF3C7),
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.orange800
+                                    : Ux4gPalette.orange100,
                                 borderRadius: BorderRadius.circular(6),
-                                border: Border.all(
-                                  color: const Color(0xFFFDE68A),
-                                ),
                               ),
                               child: Text(
                                 'RECOMMENDED',
                                 style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF92400E),
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gPalette.orange300
+                                      : Ux4gPalette.orange800,
                                   letterSpacing: 0.8,
                                 ),
                               ),
@@ -16266,11 +16848,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -16297,17 +16879,25 @@ Container(
                 color: Color(0xFF16A34A))),
             SizedBox(height: 8),
             Text('Welcome, Ramesh Kumar',
-              style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
+              style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 16)).copyWith(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+              )),
             SizedBox(height: 32),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: Color(0xFFEFF6FF),
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Ux4gPalette.orange800
+                    : Ux4gPalette.orange100,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text('RECOMMENDED',
                 style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700,
-                  color: Color(0xFF1D4ED8), letterSpacing: 0.5)),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gPalette.orange300
+                      : Ux4gPalette.orange800, letterSpacing: 0.5)),
             ),
             SizedBox(height: 12),
             Ux4gButton(
@@ -16350,11 +16940,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -16395,17 +16985,25 @@ Container(
                         color: Color(0xFF16A34A))),
                     SizedBox(height: 6),
                     Text('Welcome, Ramesh Kumar',
-                      style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500)),
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 16)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
+                      )),
                     SizedBox(height: 24),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Color(0xFFEFF6FF),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.orange800
+                            : Ux4gPalette.orange100,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text('RECOMMENDED',
                         style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700,
-                          color: Color(0xFF1D4ED8), letterSpacing: 0.5)),
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.orange300
+                              : Ux4gPalette.orange800, letterSpacing: 0.5)),
                     ),
                     SizedBox(height: 12),
                     Ux4gButton(
@@ -16460,6 +17058,7 @@ class _NavLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ux4gButton(
+      height: 48,
       text: label,
       onPressed: () {},
       variant: Ux4gButtonVariant.ghost,
@@ -16483,22 +17082,37 @@ Widget _fpWarningBanner() => Ux4gStatusBanner(
     color: Color(0xFF92400E),
     height: 1.4,
   ),
-  leadingIcon: const Icon(
-    Icons.info_outline_rounded,
-    color: Color(0xFFD97706),
-    size: 18,
+  leadingIcon: SvgPicture.asset(
+    Ux4gIcons.fillRevInfo,
+    colorFilter: const ColorFilter.mode(Color(0xFFD97706), BlendMode.srcIn),
+    height: 18,
   ),
 );
 
 /// Password strength row (Ux4gLinearProgress + checklist).
 Widget _passwordStrength(BuildContext context) {
-  const greenCheck = Icon(
+  final isDark = Theme.of(context).brightness == Brightness.dark;
+
+  final greenCheck = Icon(
     Icons.check_circle_rounded,
-    color: Color(0xFF16A34A),
+    color: isDark ? Ux4gPalette.green500 : Ux4gPalette.green600,
     size: 16,
   );
-  final redX = Icon(Icons.error, color: _isDark(context) ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 16);
-  const itemStyle = TextStyle(fontSize: 13, color: Color(0xFF374151));
+  final redX = Icon(
+    Icons.error,
+    color: isDark ? Ux4gPalette.red500 : Ux4gPalette.red600,
+    size: 16,
+  );
+
+  final typography = Theme.of(context).extension<Ux4gTypography>();
+  final baseTextStyle = typography?.bS_default ?? const TextStyle(fontSize: 13);
+
+  final itemStyle = baseTextStyle.copyWith(
+    color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+  );
+  final redItemStyle = baseTextStyle.copyWith(
+    color: isDark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+  );
 
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -16515,41 +17129,52 @@ Widget _passwordStrength(BuildContext context) {
         'Password Strength: Strong',
         style: TextStyle(
           fontSize: 12,
-          color: Color(0xFF16A34A),
+          color: Color(0xFF15803D),
           fontWeight: FontWeight.w700,
         ),
       ),
       const SizedBox(height: 10),
-      Row(
-        children: [
-          greenCheck,
-          const SizedBox(width: 6),
-          Text('8+ characters', style: itemStyle),
-        ],
-      ),
-      const SizedBox(height: 4),
-      Row(
-        children: [
-          greenCheck,
-          const SizedBox(width: 6),
-          Text('Uppercase letter', style: itemStyle),
-        ],
-      ),
-      const SizedBox(height: 4),
-      Row(
-        children: [
-          greenCheck,
-          const SizedBox(width: 6),
-          Text('Number', style: itemStyle),
-        ],
-      ),
-      const SizedBox(height: 4),
-      Row(
-        children: [
-          redX,
-          const SizedBox(width: 6),
-          Text('Special character', style: itemStyle),
-        ],
+      Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                greenCheck,
+                const SizedBox(width: 8),
+                Text('8+ characters', style: itemStyle),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                greenCheck,
+                const SizedBox(width: 8),
+                Text('Uppercase letter', style: itemStyle),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                greenCheck,
+                const SizedBox(width: 8),
+                Text('Number', style: itemStyle),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                redX,
+                const SizedBox(width: 8),
+                Text('Special character', style: redItemStyle),
+              ],
+            ),
+          ],
+        ),
       ),
     ],
   );
@@ -16679,7 +17304,12 @@ class _FpStep1MockupState extends State<_FpStep1Mockup> {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Expanded(child: Divider(color: _getBorder(context), thickness: 1)),
+                      Expanded(
+                        child: Divider(
+                          color: _getBorder(context),
+                          thickness: 1,
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: Text(
@@ -16692,7 +17322,12 @@ class _FpStep1MockupState extends State<_FpStep1Mockup> {
                           ),
                         ),
                       ),
-                      Expanded(child: Divider(color: _getBorder(context), thickness: 1)),
+                      Expanded(
+                        child: Divider(
+                          color: _getBorder(context),
+                          thickness: 1,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -16887,11 +17522,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -16901,6 +17536,7 @@ Container(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Ux4gButton(
+height: 48,
               text: 'Back to Sign In', onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
               size: Ux4gButtonSize.small,
@@ -16982,11 +17618,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.red500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -17010,6 +17646,7 @@ Container(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Back to Sign In', onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
                       size: Ux4gButtonSize.small,
@@ -17135,60 +17772,68 @@ class _FpStep2MockupState extends State<_FpStep2Mockup> {
         children: [
           const _BrandHeader(),
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const _NavLink(label: 'Change mobile number'),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Enter OTP',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      color: _getTitleColor(context),
-                      height: 1.2,
-                      letterSpacing: -0.3,
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const _NavLink(label: 'Change mobile number'),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Enter OTP',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w800,
+                            color: _getTitleColor(context),
+                            height: 1.2,
+                            letterSpacing: -0.3,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Sent to +91 98765 XXXXX',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: _getSubtleText(context),
+                            height: 1.3,
+                          ),
+                        ),
+                        const SizedBox(height: 28),
+                        Ux4gOtpInput(
+                          key: ValueKey('fp2_$_resendNonce'),
+                          length: 6,
+                          value: _otp,
+                          onChanged: (v) => setState(() => _otp = v),
+                          boxSize: 44,
+                          gap: 8,
+                          showSeparator: false,
+                          captionVariant: Ux4gOtpCaptionVariant.resendTimer,
+                          captionLeadingText: "Didn't receive OTP?",
+                          captionTrailingText: 'Resend',
+                          autoCountdownSeconds: 60,
+                          onCaptionTrailingTap: () => setState(() {
+                            _otp = '';
+                            _resendNonce++;
+                          }),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'Sent to +91 98765 XXXXX',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: _getSubtleText(context),
-                      height: 1.3,
-                    ),
-                  ),
-                  const SizedBox(height: 28),
-                  Ux4gOtpInput(
-                    key: ValueKey('fp2_$_resendNonce'),
-                    length: 6,
-                    value: _otp,
-                    onChanged: (v) => setState(() => _otp = v),
-                    boxSize: 44,
-                    gap: 8,
-                    showSeparator: true,
-                    captionVariant: Ux4gOtpCaptionVariant.resendTimer,
-                    captionLeadingText: "Didn't receive OTP?",
-                    captionTrailingText: 'Resend',
-                    autoCountdownSeconds: 60,
-                    onCaptionTrailingTap: () => setState(() {
-                      _otp = '';
-                      _resendNonce++;
-                    }),
-                  ),
-                  const SizedBox(height: 28),
-                  Ux4gButton(
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+                  child: Ux4gButton(
                     text: 'Verify OTP',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
                     height: 48,
                     width: 326,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const _BrandFooter(),
@@ -17260,7 +17905,7 @@ class _FpStep2CardMockupState extends State<_FpStep2CardMockup> {
                                   onChanged: (v) => setState(() => _otp = v),
                                   boxSize: 44,
                                   gap: 8,
-                                  showSeparator: true,
+                                  showSeparator: false,
                                   captionVariant:
                                       Ux4gOtpCaptionVariant.resendTimer,
                                   captionLeadingText: "Didn't receive OTP?",
@@ -17304,53 +17949,62 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Ux4gButton(
-              text: 'Change mobile number', onPressed: () {},
-              variant: Ux4gButtonVariant.ghost,
-              size: Ux4gButtonSize.small,
-              leadingIcon: Icons.arrow_back, iconSize: 18,
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(20, 16, 20, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Ux4gButton(
+height: 48,
+                    text: 'Change mobile number', onPressed: () {},
+                    variant: Ux4gButtonVariant.ghost,
+                    size: Ux4gButtonSize.small,
+                    leadingIcon: Icons.arrow_back, iconSize: 18,
+                  ),
+                  SizedBox(height: 16),
+                  Text('Enter OTP',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800,
+                      color: _getTitleColor(context))),
+                  SizedBox(height: 6),
+                  Text('Sent to +91 98765 XXXXX',
+                    style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
+                  SizedBox(height: 28),
+                  Ux4gOtpInput(
+                    length: 6,
+                    value: otp, onChanged: (v) => setState(() => otp = v),
+                    boxSize: 44, gap: 8,
+                    showSeparator: false,
+                    captionVariant: Ux4gOtpCaptionVariant.resendTimer,
+                    captionLeadingText: "Didn't receive OTP?",
+                    captionTrailingText: 'Resend',
+                    autoCountdownSeconds: 60,
+                    onCaptionTrailingTap: () => setState(() => otp = ''),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 16),
-            Text('Enter OTP',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800,
-                color: _getTitleColor(context))),
-            SizedBox(height: 6),
-            Text('Sent to +91 98765 XXXXX',
-              style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
-            SizedBox(height: 28),
-            Ux4gOtpInput(
-              length: 6,
-              value: otp, onChanged: (v) => setState(() => otp = v),
-              boxSize: 44, gap: 8,
-              showSeparator: true,
-              captionVariant: Ux4gOtpCaptionVariant.resendTimer,
-              captionLeadingText: "Didn't receive OTP?",
-              captionTrailingText: 'Resend',
-              autoCountdownSeconds: 60,
-              onCaptionTrailingTap: () => setState(() => otp = ''),
-            ),
-            SizedBox(height: 28),
-            Ux4gButton(
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
+            child: Ux4gButton(
               text: 'Verify OTP', onPressed: () {},
               size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
     Padding(
@@ -17371,11 +18025,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -17399,6 +18053,7 @@ Container(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gButton(
+height: 48,
                       text: 'Change mobile number', onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
                       size: Ux4gButtonSize.small,
@@ -17416,7 +18071,7 @@ Container(
                       length: 6,
                       value: otp, onChanged: (v) => setState(() => otp = v),
                       boxSize: 44, gap: 8,
-                      showSeparator: true,
+                      showSeparator: false,
                       captionVariant: Ux4gOtpCaptionVariant.resendTimer,
                       captionLeadingText: "Didn't receive OTP?",
                       captionTrailingText: 'Resend',
@@ -17498,81 +18153,86 @@ class _FpStep3MockupState extends State<_FpStep3Mockup> {
         children: [
           const _BrandHeader(),
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Create new password',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                      color: _getTitleColor(context),
-                      height: 1.2,
-                      letterSpacing: -0.3,
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(20, 24, 20, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Create new password',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w800,
+                            color: _getTitleColor(context),
+                            height: 1.2,
+                            letterSpacing: -0.3,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Choose a strong password to secure your account',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: _getSubtleText(context),
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Ux4gInputField(
+                          value: _password,
+                          onValueChange: (v) => setState(() => _password = v),
+                          label: 'Password',
+                          placeholder: '...........',
+                          placeholderStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral500
+                                : Ux4gPalette.neutral400,
+                            height: 1.3,
+                          ),
+                          type: Ux4gInputFieldType.password,
+                        ),
+                        const SizedBox(height: 12),
+                        _passwordStrength(context),
+                        const SizedBox(height: 16),
+                        Ux4gInputField(
+                          value: _confirm,
+                          onValueChange: (v) => setState(() => _confirm = v),
+                          label: 'Confirm password',
+                          placeholder: '...........',
+                          placeholderStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral500
+                                : Ux4gPalette.neutral400,
+                            height: 1.3,
+                          ),
+                          type: Ux4gInputFieldType.password,
+                          status: Ux4gInputFieldStatus.error,
+                          caption: 'Passwords do not match',
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'Choose a strong password to secure your account',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: _getSubtleText(context),
-                      height: 1.4,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  Ux4gInputField(
-                    value: _password,
-                    onValueChange: (v) => setState(() => _password = v),
-                    label: 'Password',
-                    placeholder: '...........',
-                    placeholderStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral500
-                          : Ux4gPalette.neutral400,
-                      height: 1.3,
-                    ),
-                    type: Ux4gInputFieldType.password,
-                  ),
-                  const SizedBox(height: 12),
-                  _passwordStrength(context),
-                  const SizedBox(height: 16),
-                  Ux4gInputField(
-                    value: _confirm,
-                    onValueChange: (v) => setState(() => _confirm = v),
-                    label: 'Confirm password',
-                    placeholder: '...........',
-                    placeholderStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral500
-                          : Ux4gPalette.neutral400,
-                      height: 1.3,
-                    ),
-                    labelStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: _getTitleColor(context),
-                    ),
-                    type: Ux4gInputFieldType.password,
-                    status: Ux4gInputFieldStatus.error,
-                    caption: 'Passwords do not match',
-                  ),
-                  const SizedBox(height: 24),
-                  Ux4gButton(
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+                  child: Ux4gButton(
                     text: 'Reset password',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
                     height: 48,
                     width: 326,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const _BrandFooter(),
@@ -17709,89 +18369,107 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Create new password',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800,
-                color: _getTitleColor(context))),
-            SizedBox(height: 6),
-            Text('Your new password must be different from your previous one.',
-              style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
-            SizedBox(height: 24),
-            Ux4gInputField(
-              value: password, onValueChange: (v) => setState(() => password = v),
-              label: 'Password', placeholder: '...........',
-              type: Ux4gInputFieldType.password,
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Create new password',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800,
+                      color: _getTitleColor(context))),
+                  SizedBox(height: 6),
+                  Text('Your new password must be different from your previous one.',
+                    style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
+                  SizedBox(height: 24),
+                  Ux4gInputField(
+                    value: password, onValueChange: (v) => setState(() => password = v),
+                    label: 'Password', placeholder: '...........',
+                    type: Ux4gInputFieldType.password,
+                  ),
+                  SizedBox(height: 8),
+                  Ux4gLinearProgress(
+                    value: 0.85,
+                    gradientColors: [Color(0xFF86EFAC), Color(0xFF15803D)],
+                    trackColor: Ux4gPalette.neutral200,
+                    shape: Ux4gProgressShape.rounded,
+                    height: 8,
+                  ),
+                  SizedBox(height: 4),
+                  Text('Password Strength: Strong',
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
+                      color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                  SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(children: [
+                          Icon(Icons.check_circle_rounded, color: _isDark(context) ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 16),
+                          SizedBox(width: 8),
+                          Text('8+ characters',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? TextStyle(fontSize: 13)).copyWith(color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green800)),
+                        ]),
+                        SizedBox(height: 6),
+                        Row(children: [
+                          Icon(Icons.check_circle_rounded, color: _isDark(context) ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 16),
+                          SizedBox(width: 8),
+                          Text('Uppercase letter',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? TextStyle(fontSize: 13)).copyWith(color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green800)),
+                        ]),
+                        SizedBox(height: 6),
+                        Row(children: [
+                          Icon(Icons.check_circle_rounded, color: _isDark(context) ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 16),
+                          SizedBox(width: 8),
+                          Text('Number',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? TextStyle(fontSize: 13)).copyWith(color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green800)),
+                        ]),
+                        SizedBox(height: 6),
+                        Row(children: [
+                          Icon(Icons.error, color: _isDark(context) ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 16),
+                          SizedBox(width: 8),
+                          Text('Special character',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? TextStyle(fontSize: 13)).copyWith(color: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800)),
+                        ]),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Ux4gInputField(
+                    value: confirm, onValueChange: (v) => setState(() => confirm = v),
+                    label: 'Confirm password', placeholder: '...........',
+                    type: Ux4gInputFieldType.password,
+                    status: Ux4gInputFieldStatus.error,
+                    caption: 'Passwords do not match',
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 8),
-            Ux4gLinearProgress(
-              value: 0.85,
-              gradientColors: [Color(0xFF86EFAC), Color(0xFF15803D)],
-              trackColor: Ux4gPalette.neutral200,
-              shape: Ux4gProgressShape.rounded,
-              height: 8,
-            ),
-            SizedBox(height: 4),
-            Text('Password Strength: Strong',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700,
-                color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600)),
-            SizedBox(height: 10),
-            Row(children: [
-              Icon(Icons.check_circle_rounded, color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600, size: 16),
-              SizedBox(width: 6),
-              Text('8+ characters',
-                style: TextStyle(fontSize: 13, color: _getSubtleText(context))),
-            ]),
-            SizedBox(height: 6),
-            Row(children: [
-              Icon(Icons.check_circle_rounded, color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600, size: 16),
-              SizedBox(width: 6),
-              Text('Uppercase letter',
-                style: TextStyle(fontSize: 13, color: _getSubtleText(context))),
-            ]),
-            SizedBox(height: 6),
-            Row(children: [
-              Icon(Icons.check_circle_rounded, color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600, size: 16),
-              SizedBox(width: 6),
-              Text('Number',
-                style: TextStyle(fontSize: 13, color: _getSubtleText(context))),
-            ]),
-            SizedBox(height: 6),
-            Row(children: [
-              Icon(Icons.error, color: _isDark(context) ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 16),
-              SizedBox(width: 6),
-              Text('Special character',
-                style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500)),
-            ]),
-            SizedBox(height: 16),
-            Ux4gInputField(
-              value: confirm, onValueChange: (v) => setState(() => confirm = v),
-              label: 'Confirm password', placeholder: '...........',
-              type: Ux4gInputFieldType.password,
-              status: Ux4gInputFieldStatus.error,
-              caption: 'Passwords do not match',
-              labelStyle: TextStyle(color: _getTitleColor(context)),
-            ),
-            SizedBox(height: 24),
-            Ux4gButton(
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
+            child: Ux4gButton(
               text: 'Reset password', onPressed: () {},
               size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
     Padding(
@@ -17813,11 +18491,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -17969,64 +18647,76 @@ class _FpStep4Mockup extends StatelessWidget {
         children: [
           const _BrandHeader(),
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(20, 48, 20, 0),
-              child: Column(
-                children: [
-                  Container(
-                    width: 64,
-                    height: 64,
-                    decoration: const BoxDecoration(
-                      color: Ux4gPalette.green100,
-                      shape: BoxShape.circle,
-                    ),
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 36,
-                      height: 36,
-                      decoration: const BoxDecoration(
-                        color: Ux4gPalette.green,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.check,
-                        color: Colors.white,
-                        size: 22,
-                      ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(20, 48, 20, 0),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 64,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: _isDark(context)
+                                ? Ux4gPalette.green800
+                                : Ux4gPalette.green100,
+                            shape: BoxShape.circle,
+                          ),
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Icons.check_circle,
+                            color: _isDark(context)
+                                ? Ux4gPalette.green500
+                                : Ux4gPalette.green600,
+                            size: 36,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          'Password reset\nsuccessfully',
+                          textAlign: TextAlign.center,
+                          style:
+                              (Theme.of(context)
+                                          .extension<Ux4gTypography>()
+                                          ?.hL_default ??
+                                      const TextStyle(
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.w800,
+                                        height: 1.25,
+                                        letterSpacing: -0.3,
+                                      ))
+                                  .copyWith(
+                                    color: _isDark(context)
+                                        ? Ux4gPalette.green300
+                                        : Ux4gPalette.green800,
+                                  ),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Sign in with your new password to continue access to government services.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: _getSubtleText(context),
+                            height: 1.5,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  Text(
-                    'Password reset\nsuccessfully',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w800,
-                      color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600,
-                      height: 1.25,
-                      letterSpacing: -0.3,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Sign in with your new password to continue access to government services.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: _getSubtleText(context),
-                      height: 1.5,
-                    ),
-                  ),
-                  const SizedBox(height: 36),
-                  Ux4gButton(
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+                  child: Ux4gButton(
                     text: 'Sign in',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
                     height: 48,
                     width: 326,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const _BrandFooter(),
@@ -18061,36 +18751,40 @@ class _FpStep4CardMockup extends StatelessWidget {
                             Container(
                               width: 64,
                               height: 64,
-                              decoration: const BoxDecoration(
-                                color: Ux4gPalette.green100,
+                              decoration: BoxDecoration(
+                                color: _isDark(context)
+                                    ? Ux4gPalette.green800
+                                    : Ux4gPalette.green100,
                                 shape: BoxShape.circle,
                               ),
                               alignment: Alignment.center,
-                              child: Container(
-                                width: 36,
-                                height: 36,
-                                decoration: const BoxDecoration(
-                                  color: Ux4gPalette.green,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
+                              child: Icon(
+                                Icons.check_circle,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.green500
+                                    : Ux4gPalette.green600,
+                                size: 36,
                               ),
                             ),
                             const SizedBox(height: 20),
                             Text(
                               'Password reset\nsuccessfully',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600,
-                                height: 1.25,
-                                letterSpacing: -0.3,
-                              ),
+                              style:
+                                  (Theme.of(context)
+                                              .extension<Ux4gTypography>()
+                                              ?.hL_default ??
+                                          const TextStyle(
+                                            fontSize: 26,
+                                            fontWeight: FontWeight.w800,
+                                            height: 1.25,
+                                            letterSpacing: -0.3,
+                                          ))
+                                      .copyWith(
+                                        color: _isDark(context)
+                                            ? Ux4gPalette.green300
+                                            : Ux4gPalette.green800,
+                                      ),
                             ),
                             const SizedBox(height: 10),
                             Text(
@@ -18133,50 +18827,52 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(20, 48, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 64, height: 64,
-              decoration: BoxDecoration(
-                color: Ux4gPalette.green100, shape: BoxShape.circle),
-              alignment: Alignment.center,
-              child: Container(
-                width: 36, height: 36,
-                decoration: BoxDecoration(
-                  color: Ux4gPalette.green, shape: BoxShape.circle),
-                child: Icon(Icons.check, color: Colors.white, size: 22),
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(20, 48, 20, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 64, height: 64,
+                    decoration: BoxDecoration(
+                      color: _isDark(context) ? Ux4gPalette.green800 : Ux4gPalette.green100, shape: BoxShape.circle),
+                    alignment: Alignment.center,
+                    child: Icon(Icons.check_circle, color: _isDark(context) ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 36),
+                  ),
+                  SizedBox(height: 24),
+                  Text('Password reset\nsuccessfully',
+                    textAlign: TextAlign.center,
+                    style: (Theme.of(context).extension<Ux4gTypography>()?.hL_default ?? TextStyle(fontSize: 26, fontWeight: FontWeight.w800, height: 1.25)).copyWith(color: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green800)),
+                  SizedBox(height: 12),
+                  Text(
+                    'Sign in with your new password to continue\naccess to government services.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
+                ],
               ),
             ),
-            SizedBox(height: 24),
-            Text('Password reset\nsuccessfully',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800,
-                color: _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green600, height: 1.25)),
-            SizedBox(height: 12),
-            Text(
-              'Sign in with your new password to continue\naccess to government services.',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, color: Ux4gPalette.neutral500)),
-            SizedBox(height: 32),
-            Ux4gButton(
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
+            child: Ux4gButton(
               text: 'Sign in', onPressed: () {},
               size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
     Padding(
@@ -18198,11 +18894,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -18314,6 +19010,7 @@ class _FpStep5Mockup extends StatefulWidget {
 
 class _FpStep5MockupState extends State<_FpStep5Mockup> {
   String _aadhaar = '';
+  bool _agree = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18327,6 +19024,8 @@ class _FpStep5MockupState extends State<_FpStep5Mockup> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const _NavLink(label: 'Back to Sign in'),
+                  const SizedBox(height: 20),
                   Text(
                     'Account recovery',
                     style: TextStyle(
@@ -18342,7 +19041,7 @@ class _FpStep5MockupState extends State<_FpStep5Mockup> {
                     value: _aadhaar,
                     onValueChange: (v) => setState(() => _aadhaar = v),
                     label: 'Aadhaar Number',
-                    placeholder: 'XXXX XXXX XXXX',
+                    placeholder: 'XXXX XXXX 1234',
                     placeholderStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -18351,23 +19050,14 @@ class _FpStep5MockupState extends State<_FpStep5Mockup> {
                           : Ux4gPalette.neutral400,
                       height: 1.3,
                     ),
-                    caption: 'Enter your 12-digit Aadhaar number',
+                    caption: null,
                   ),
                   const SizedBox(height: 16),
-                  Container(
-                    padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      'I agree to verify my identity via Aadhaar OTP for the purpose of password recovery.',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: _getSubtleText(context),
-                        height: 1.5,
-                      ),
-                    ),
+                  Ux4gCheckbox(
+                    value: _agree,
+                    onChanged: (v) => setState(() => _agree = v ?? false),
+                    label:
+                        'I agree to verify my identity via Aadhaar OTP for the purpose of password recovery.',
                   ),
                   const SizedBox(height: 24),
                   Ux4gButton(
@@ -18396,6 +19086,7 @@ class _FpStep5CardMockup extends StatefulWidget {
 
 class _FpStep5CardMockupState extends State<_FpStep5CardMockup> {
   String _aadhaar = '';
+  bool _agree = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18436,7 +19127,7 @@ class _FpStep5CardMockupState extends State<_FpStep5CardMockup> {
                                   onValueChange: (v) =>
                                       setState(() => _aadhaar = v),
                                   label: 'Aadhaar Number',
-                                  placeholder: 'XXXX XXXX XXXX',
+                                  placeholder: 'XXXX XXXX 1234',
                                   placeholderStyle: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -18447,23 +19138,15 @@ class _FpStep5CardMockupState extends State<_FpStep5CardMockup> {
                                         : Ux4gPalette.neutral400,
                                     height: 1.3,
                                   ),
-                                  caption: 'Enter your 12-digit Aadhaar number',
+                                  caption: null,
                                 ),
                                 const SizedBox(height: 16),
-                                Container(
-                                  padding: const EdgeInsets.all(12),
-                                  decoration: BoxDecoration(
-                                    color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    'I agree to verify my identity via Aadhaar OTP for the purpose of password recovery.',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: _getSubtleText(context),
-                                      height: 1.5,
-                                    ),
-                                  ),
+                                Ux4gCheckbox(
+                                  value: _agree,
+                                  onChanged: (v) =>
+                                      setState(() => _agree = v ?? false),
+                                  label:
+                                      'I agree to verify my identity via Aadhaar OTP for the purpose of password recovery.',
                                 ),
                                 const SizedBox(height: 20),
                                 Ux4gButton(
@@ -18498,11 +19181,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -18511,6 +19194,14 @@ Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Ux4gButton(
+              height: 48,
+              text: 'Back to Sign in', onPressed: () {},
+              variant: Ux4gButtonVariant.ghost,
+              size: Ux4gButtonSize.small,
+              leadingIcon: Icons.arrow_back, iconSize: 18,
+            ),
+            SizedBox(height: 16),
             Text('Account recovery',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800,
                 color: _getTitleColor(context))),
@@ -18522,20 +19213,15 @@ Container(
               value: aadhaar,
               onValueChange: (v) => setState(() => aadhaar = v),
               label: 'Aadhaar Number',
-              placeholder: 'XXXX XXXX XXXX',
-              caption: 'Enter your 12-digit Aadhaar number',
+              placeholder: 'XXXX XXXX 1234',
+              caption: null,
             ),
             SizedBox(height: 16),
-            Container(
-              padding: EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                'I agree to verify my identity via Aadhaar OTP '
+            Ux4gCheckbox(
+              value: false,
+              onChanged: (v) {},
+              label: 'I agree to verify my identity via Aadhaar OTP '
                 'for the purpose of password recovery.',
-                style: TextStyle(fontSize: 13, color: _getSubtleText(context))),
             ),
             SizedBox(height: 24),
             Ux4gButton(
@@ -18567,11 +19253,11 @@ Container(
     Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.light,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
         SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+        SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
       ],
-      horizontalPadding: 16, leadingSpacing: 12,
+      horizontalPadding: 16, leadingSpacing: 8,
     ),
     Ux4gDivider(color: Ux4gPalette.neutral200),
     Expanded(
@@ -18594,6 +19280,14 @@ Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Ux4gButton(
+                      height: 48,
+                      text: 'Back to Sign in', onPressed: () {},
+                      variant: Ux4gButtonVariant.ghost,
+                      size: Ux4gButtonSize.small,
+                      leadingIcon: Icons.arrow_back, iconSize: 18,
+                    ),
+                    SizedBox(height: 12),
                     Text('Account recovery',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800,
                         color: _getTitleColor(context))),
@@ -18605,20 +19299,15 @@ Container(
                       value: aadhaar,
                       onValueChange: (v) => setState(() => aadhaar = v),
                       label: 'Aadhaar Number',
-                      placeholder: 'XXXX XXXX XXXX',
-                      caption: 'Enter your 12-digit Aadhaar number',
+                      placeholder: 'XXXX XXXX 1234',
+                      caption: null,
                     ),
                     SizedBox(height: 14),
-                    Container(
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        'I agree to verify my identity via Aadhaar OTP '
+                    Ux4gCheckbox(
+                      value: false,
+                      onChanged: (v) {},
+                      label: 'I agree to verify my identity via Aadhaar OTP '
                         'for the purpose of password recovery.',
-                        style: TextStyle(fontSize: 13, color: _getSubtleText(context))),
                     ),
                     SizedBox(height: 20),
                     Ux4gButton(
@@ -18666,16 +19355,16 @@ extension _NotifTypeExt on _NotifType {
     }
   }
 
-  Color get dotColor {
+  Color dotColor(bool isDark) {
     switch (this) {
       case _NotifType.actionRequired:
-        return const Color(0xFFEF4444);
+        return isDark ? Ux4gPalette.red300 : Ux4gPalette.red600;
       case _NotifType.statusUpdate:
-        return const Color(0xFF3B82F6);
+        return isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
       case _NotifType.reminder:
-        return const Color(0xFFF59E0B);
+        return isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600;
       case _NotifType.info:
-        return const Color(0xFF14B8A6);
+        return isDark ? Ux4gPalette.cyan300 : Ux4gPalette.cyan600;
     }
   }
 }
@@ -18686,6 +19375,8 @@ class _NotifData {
   final String body;
   final String time;
   final String? actionLabel;
+  final Color? customDotColor;
+  final String? customLabel;
   bool isRead;
   _NotifData({
     required this.type,
@@ -18693,8 +19384,12 @@ class _NotifData {
     required this.body,
     required this.time,
     this.actionLabel,
+    this.customDotColor,
+    this.customLabel,
     this.isRead = false,
   });
+
+  Color getDotColor(bool isDark) => customDotColor ?? type.dotColor(isDark);
 }
 
 class _NotifSection {
@@ -18709,18 +19404,18 @@ List<_NotifSection> _buildDefaultNotifSections() => [
     items: [
       _NotifData(
         type: _NotifType.actionRequired,
-        title: 'Income Certificate . Action required',
+        title: 'Income Certificate · Action required',
         body: 'Upload your income proof by 15 Apr to avoid rejection.',
         time: '10:24 AM',
         actionLabel: 'Upload now',
         isRead: false,
       ),
       _NotifData(
-        type: _NotifType.actionRequired,
-        title: 'Income Certificate . Action required',
+        type: _NotifType.statusUpdate,
+        title: 'Income Certificate · Action required',
         body: 'Upload your income proof by 15 Apr to avoid rejection.',
         time: '8:03 AM',
-        actionLabel: 'Upload now',
+        customLabel: 'Action required',
         isRead: false,
       ),
     ],
@@ -18730,14 +19425,14 @@ List<_NotifSection> _buildDefaultNotifSections() => [
     items: [
       _NotifData(
         type: _NotifType.reminder,
-        title: 'Draft expiring . Income Certificate',
+        title: 'Draft expiring · Income Certificate',
         body: 'Your draft expires in 5 days.',
         time: '8:03 AM',
         isRead: true,
       ),
       _NotifData(
         type: _NotifType.info,
-        title: 'PAN Correction . Status update',
+        title: 'PAN Correction · Status update',
         body: 'Under review by Income Tax Dept.',
         time: '8:03 AM',
         isRead: true,
@@ -18749,7 +19444,7 @@ List<_NotifSection> _buildDefaultNotifSections() => [
     items: [
       _NotifData(
         type: _NotifType.info,
-        title: 'Birth Certificate . Submitted',
+        title: 'Birth Certificate · Submitted',
         body: 'Reference: BC-2026-MH-001.',
         time: '8:03 AM',
         isRead: true,
@@ -18764,29 +19459,28 @@ List<_NotifSection> _buildNotifTypesSections() => [
     items: [
       _NotifData(
         type: _NotifType.actionRequired,
-        title: 'Income Certificate . Action required',
+        title: 'Income Certificate · Action required',
         body: 'Upload your income proof by 15 Apr to avoid rejection.',
         time: '8:03 AM',
-        actionLabel: 'Upload now',
         isRead: false,
       ),
       _NotifData(
         type: _NotifType.statusUpdate,
-        title: 'Income Certificate . Action required',
+        title: 'Income Certificate · Action required',
         body: 'Upload your income proof by 15 Apr to avoid rejection.',
         time: '8:03 AM',
-        isRead: false,
+        isRead: true,
       ),
       _NotifData(
         type: _NotifType.reminder,
-        title: 'Draft expiring . Income Certificate',
+        title: 'Draft expiring · Income Certificate',
         body: 'Your draft expires in 5 days.',
         time: '8:03 AM',
         isRead: true,
       ),
       _NotifData(
         type: _NotifType.info,
-        title: 'Birth Certificate . Submitted',
+        title: 'Birth Certificate · Submitted',
         body: 'Reference: BC-2026-MH-001.',
         time: '8:03 AM',
         isRead: true,
@@ -18813,54 +19507,81 @@ class _ReminderAlert {
     required this.iconColor,
     this.actionLabel,
   });
+
+  Ux4gToastCategory get toastCategory {
+    switch (variant) {
+      case Ux4gBannerVariant.infoLight:
+        return Ux4gToastCategory.info;
+      case Ux4gBannerVariant.warningLight:
+        return Ux4gToastCategory.warning;
+      case Ux4gBannerVariant.errorLight:
+        return Ux4gToastCategory.error;
+      case Ux4gBannerVariant.successLight:
+        return Ux4gToastCategory.success;
+      default:
+        return Ux4gToastCategory.info;
+    }
+  }
 }
 
 List<_ReminderAlert> _buildReminderAlerts() => [
   _ReminderAlert(
     title: '30 days before expiry',
     body:
-        'Your Income Certificate expires on 15 May 2026 (30 days away). '
-        'Renew early to avoid a service gap: bit.ly/renew-mh.',
+        'Your Income Certificate expires on 15\n'
+        'May 2026 (30 days away). Renew early\n'
+        'to avoid a service gap:\n'
+        'bit.ly/renew-mh.',
     variant: Ux4gBannerVariant.infoLight,
-    icon: Icons.info_outline_rounded,
+    icon: Icons.info_rounded,
     iconColor: const Color(0xFF14B8A6),
+    actionLabel: 'Renew Application',
   ),
   _ReminderAlert(
     title: '5 days before expiry',
     body:
-        'Your Income Certificate draft expires in 5 days (16 Apr). '
-        'Resume now: bit.ly/resume-mh.',
+        'Your Income Certificate draft expires in\n'
+        '5 days (16 Apr). Resume now:\n'
+        'bit.ly/resume-mh.',
     variant: Ux4gBannerVariant.warningLight,
-    icon: Icons.warning_amber_rounded,
+    icon: Icons.warning_rounded,
     iconColor: const Color(0xFFF59E0B),
+    actionLabel: 'Resume Application',
   ),
   _ReminderAlert(
     title: '2 days before expiry',
     body:
-        'Only 2 days left. Submit your Income Certificate before 16 Apr '
-        'or your draft will be deleted. Resume: bit.ly/resume-mh.',
+        'Only 2 days left. Submit your Income\n'
+        'Certificate before 16 Apr or your draft\n'
+        'will be deleted. Resume:\n'
+        'bit.ly/resume-mh.',
     variant: Ux4gBannerVariant.errorLight,
-    icon: Icons.error_outline_rounded,
+    icon: Icons.error_rounded,
     iconColor: const Color(0xFFEF4444),
+    actionLabel: 'Start new Application',
   ),
   _ReminderAlert(
     title: 'On expiry day',
     body:
-        'Your Income Certificate draft expired on 16 Apr. Your saved data '
-        'has been removed. Start a new application: bit.ly/apply-mh.',
+        'Your Income Certificate draft expired\n'
+        'on 16 Apr. Your saved data has been\n'
+        'removed. Start a new application:\n'
+        'bit.ly/apply-mh.',
     variant: Ux4gBannerVariant.errorLight,
-    icon: Icons.error_outline_rounded,
+    icon: Icons.error_rounded,
     iconColor: const Color(0xFFEF4444),
-    actionLabel: 'Action',
+    actionLabel: 'Start new Application',
   ),
   _ReminderAlert(
     title: '1 hour before: Sent 10:13 AM',
     body:
-        'In 1 hour: Your 11:00 AM field inspection. Revenue Inspector, '
-        'Sector 12 office. Directions: bit.ly/dir-mh.',
+        'In 1 hour: Your 11:00 AM field\n'
+        'inspection. Revenue Inspector, Sector\n'
+        '12 office. Directions: bit.ly/dir-mh.',
     variant: Ux4gBannerVariant.successLight,
-    icon: Icons.check_circle_outline_rounded,
+    icon: Icons.check_circle_rounded,
     iconColor: const Color(0xFF22C55E),
+    actionLabel: 'View Application',
   ),
 ];
 
@@ -18882,6 +19603,7 @@ class _NotifRemindersMockupState extends State<_NotifRemindersMockup> {
   @override
   Widget build(BuildContext context) {
     final visible = _alerts.where((a) => !a.dismissed).toList();
+    final isDark = _isDark(context);
     return _PhoneFrame(
       child: Column(
         children: [
@@ -18937,55 +19659,34 @@ class _NotifRemindersMockupState extends State<_NotifRemindersMockup> {
                     children: [
                       const _NotifSectionLabel(label: 'REMINDERS'),
                       ...visible.map(
-                        (alert) => Ux4gStatusBanner(
-                          variant: alert.variant,
-                          title: alert.title,
-                          subtitle: alert.body,
-                          leadingIcon: Icon(
-                            alert.icon,
-                            color: alert.iconColor,
-                            size: 20,
-                          ),
-                          trailingIcon: IconButton(
-                            icon: const Icon(
-                              Icons.close,
-                              size: 18,
-                              color: Ux4gPalette.neutral500,
-                            ),
-                            onPressed: () =>
-                                setState(() => alert.dismissed = true),
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                          ),
-                          actions: alert.actionLabel != null
-                              ? [
-                                  TextButton(
-                                    onPressed: () {},
-                                    style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 4,
-                                      ),
-                                      minimumSize: Size.zero,
-                                      tapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                    ),
-                                    child: Text(
-                                      alert.actionLabel!,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        color: Color(0xFF2563EB),
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                ]
-                              : null,
-                          margin: const EdgeInsets.symmetric(
+                        (alert) => Padding(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 12,
                             vertical: 4,
                           ),
-                          padding: const EdgeInsets.fromLTRB(12, 10, 4, 10),
+                          child: Ux4gToast(
+                            category: alert.toastCategory,
+                            title: alert.title,
+                            subtitle: alert.body,
+                            actionText: alert.actionLabel,
+                            onActionClick: alert.actionLabel != null
+                                ? () {}
+                                : null,
+                            onCloseClick: () =>
+                                setState(() => alert.dismissed = true),
+                            showCloseButton: true,
+                            layout: Ux4gToastLayout.stacked,
+                            backgroundColor: isDark
+                                ? Ux4gPalette.neutral950
+                                : Ux4gPalette.neutral50,
+                            icon: alert.icon,
+                            iconColor: alert.iconColor,
+                            actionColor: alert.actionLabel != null
+                                ? (isDark
+                                      ? Ux4gPalette.primary300
+                                      : Ux4gPalette.primary600)
+                                : null,
+                          ),
                         ),
                       ),
                     ],
@@ -19000,29 +19701,36 @@ class _NotifRemindersMockupState extends State<_NotifRemindersMockup> {
 class _NotifPanelHeader extends StatelessWidget {
   final VoidCallback? onMarkAsRead;
   final VoidCallback? onClose;
-  const _NotifPanelHeader({this.onMarkAsRead, this.onClose});
+  final bool isEmpty;
+  const _NotifPanelHeader({
+    this.onMarkAsRead,
+    this.onClose,
+    this.isEmpty = false,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          color: Colors.white,
-          padding: const EdgeInsets.fromLTRB(16, 14, 4, 14),
+          color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+          padding: const EdgeInsets.fromLTRB(16, 14, 8, 14),
           child: Row(
             children: [
-              const Text(
+              Text(
                 'Notification',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xFF111827),
+                  color: isDark ? Colors.white : const Color(0xFF111827),
+                  letterSpacing: -0.2,
                 ),
               ),
               const Spacer(),
               TextButton(
-                onPressed: onMarkAsRead,
+                onPressed: isEmpty ? null : (onMarkAsRead ?? () {}),
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
@@ -19031,29 +19739,40 @@ class _NotifPanelHeader extends StatelessWidget {
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: const Text(
+                child: Text(
                   'Mark as read',
                   style: TextStyle(
                     fontSize: 13,
-                    color: Ux4gPalette.neutral500,
+                    color: isEmpty
+                        ? (isDark
+                              ? Ux4gPalette.neutral600
+                              : const Color(0xFFD1D5DB))
+                        : (isDark
+                              ? Ux4gPalette.primary300
+                              : const Color(0xFF6A4EFF)),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
+              const SizedBox(width: 4),
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.close,
-                  size: 20,
-                  color: Ux4gPalette.neutral500,
+                  size: 22,
+                  color: isDark ? Colors.white : Colors.black,
                 ),
                 onPressed: onClose ?? () {},
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(6),
                 constraints: const BoxConstraints(),
               ),
             ],
           ),
         ),
-        const Divider(height: 1, thickness: 1, color: _border),
+        Divider(
+          height: 1,
+          thickness: 1,
+          color: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+        ),
       ],
     );
   }
@@ -19065,17 +19784,18 @@ class _NotifSectionLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+    final typography = Theme.of(context).extension<Ux4gTypography>();
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.fromLTRB(16, 14, 16, 6),
+      width: double.infinity,
+      color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Text(
         label,
-        style: const TextStyle(
-          fontSize: 11,
-          fontWeight: FontWeight.w600,
-          color: Ux4gPalette.neutral400,
-          letterSpacing: 0.6,
-        ),
+        style: (typography?.bXS_default ?? const TextStyle(fontSize: 12))
+            .copyWith(
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+            ),
       ),
     );
   }
@@ -19087,7 +19807,13 @@ class _NotifTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = item.isRead ? Colors.white : const Color(0xFFF3F4F6);
+    final isDark = _isDark(context);
+    final bg = !item.isRead
+        ? (isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50)
+        : (isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0);
+    final dotColor = item.getDotColor(isDark);
+    final labelText = item.customLabel ?? item.type.label;
+
     return Container(
       color: bg,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -19098,10 +19824,7 @@ class _NotifTile extends StatelessWidget {
             margin: const EdgeInsets.only(top: 5),
             width: 8,
             height: 8,
-            decoration: BoxDecoration(
-              color: item.type.dotColor,
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: dotColor, shape: BoxShape.circle),
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -19112,18 +19835,20 @@ class _NotifTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      item.type.label,
+                      labelText,
                       style: TextStyle(
-                        fontSize: 11,
-                        color: item.type.dotColor,
+                        fontSize: 12,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
                       item.time,
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: Ux4gPalette.neutral400,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark
+                            ? Ux4gPalette.neutral400
+                            : const Color(0xFF4B5563),
                       ),
                     ),
                   ],
@@ -19131,19 +19856,21 @@ class _NotifTile extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   item.title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF111827),
+                    color: isDark ? Colors.white : const Color(0xFF111827),
                     height: 1.3,
                   ),
                 ),
                 const SizedBox(height: 3),
                 Text(
                   item.body,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: Ux4gPalette.neutral500,
+                    color: isDark
+                        ? Ux4gPalette.neutral300
+                        : const Color(0xFF4B5563),
                     height: 1.45,
                   ),
                 ),
@@ -19151,9 +19878,11 @@ class _NotifTile extends StatelessWidget {
                   const SizedBox(height: 6),
                   Text(
                     item.actionLabel!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF2563EB),
+                      color: isDark
+                          ? Ux4gPalette.primary300
+                          : const Color(0xFF6A4EFF),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -19214,37 +19943,44 @@ class _NotifListMockupState extends State<_NotifListMockup> {
       rows.add(section.label);
       rows.addAll(section.items);
     }
+    final isDark = _isDark(context);
     return _PhoneFrame(
-      child: Column(
-        children: [
-          _NotifPanelHeader(onMarkAsRead: _markAllAsRead),
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: rows.length,
-              itemBuilder: (context, index) {
-                final row = rows[index];
-                if (row is String) return _NotifSectionLabel(label: row);
-                final item = row as _NotifData;
-                final nextIsItem =
-                    index + 1 < rows.length && rows[index + 1] is _NotifData;
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _NotifTile(item: item),
-                    if (nextIsItem)
-                      const Divider(
-                        height: 1,
-                        thickness: 1,
-                        color: Ux4gPalette.neutral200,
-                        indent: 34,
-                      ),
-                  ],
-                );
-              },
+      child: Container(
+        color: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0,
+        child: Column(
+          children: [
+            _NotifPanelHeader(onMarkAsRead: _markAllAsRead),
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: rows.length,
+                itemBuilder: (context, index) {
+                  final row = rows[index];
+                  if (row is String) return _NotifSectionLabel(label: row);
+                  final item = row as _NotifData;
+                  final nextIsItem =
+                      index + 1 < rows.length && rows[index + 1] is _NotifData;
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _NotifTile(item: item),
+                      if (nextIsItem || index == rows.length - 1)
+                        Divider(
+                          height: 1,
+                          thickness: 1,
+                          color: isDark
+                              ? Ux4gPalette.neutral800
+                              : const Color(0xFFE5E7EB),
+                          indent: nextIsItem ? 26 : 0,
+                          endIndent: nextIsItem ? 16 : 0,
+                        ),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -19256,66 +19992,73 @@ class _NotifEmptyMockup extends StatelessWidget {
   // Icon container background varies by empty-state condition:
   //   � allCaughtUp  (default) ? neutral gray  0xFFF3F4F6
   //   � neverHadAny            ? soft blue tint 0xFFEFF6FF
-  static const Color _iconBgAllCaughtUp = Color(0xFFF3F4F6);
-  static const Color _iconColorAllCaughtUp = Ux4gPalette.neutral400;
-
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return _PhoneFrame(
-      child: Column(
-        children: [
-          const _NotifPanelHeader(),
-          Expanded(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // -- Bell icon with conditional circular background ----
-                    Container(
-                      width: 64,
-                      height: 64,
-                      decoration: BoxDecoration(
-                        color:
-                            _iconBgAllCaughtUp, // change to _iconBgNever for "never had" state
-                        shape: BoxShape.circle,
+      child: Container(
+        color: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0,
+        child: Column(
+          children: [
+            const _NotifPanelHeader(isEmpty: true),
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 64,
+                        height: 64,
+                        decoration: BoxDecoration(
+                          color: isDark
+                              ? Ux4gPalette.primary900
+                              : const Color(0xFFF4EFFE),
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.notifications_none_outlined,
+                          size: 32,
+                          color: isDark
+                              ? Ux4gPalette.primary300
+                              : const Color(0xFF6A4EFF),
+                        ),
                       ),
-                      alignment: Alignment.center,
-                      child: const Icon(
-                        Icons.notifications_none_outlined,
-                        size: 32,
-                        color: _iconColorAllCaughtUp,
+                      const SizedBox(height: 16),
+                      Text(
+                        'No new notifications',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: isDark
+                              ? Colors.white
+                              : const Color(0xFF111827),
+                          height: 1.3,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'You are all caught up',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF111827),
-                        height: 1.3,
+                      const SizedBox(height: 8),
+                      Text(
+                        'Currently, there are no notifications to\ndisplay. You can check back later!',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: isDark
+                              ? Ux4gPalette.neutral400
+                              : const Color(0xFF4B5563),
+                          height: 1.5,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'No new notifications. We will let you know when\nsomething needs your attention.',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Ux4gPalette.neutral500,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -19573,6 +20316,7 @@ class _ReminderAlertMockupState extends State<_ReminderAlertMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return _PhoneFrame(
       child: _dismissed
           ? const SizedBox.shrink()
@@ -19586,7 +20330,9 @@ class _ReminderAlertMockupState extends State<_ReminderAlertMockup> {
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: isDark
+                          ? Ux4gPalette.neutral950
+                          : Ux4gPalette.neutral50,
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
@@ -19596,80 +20342,29 @@ class _ReminderAlertMockupState extends State<_ReminderAlertMockup> {
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 12, 8, 12),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(
-                                widget.alert.icon,
-                                color: widget.alert.iconColor,
-                                size: 20,
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      widget.alert.title,
-                                      style: const TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xFF111827),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 3),
-                                    Text(
-                                      widget.alert.body,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        color: Ux4gPalette.neutral500,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              IconButton(
-                                icon: const Icon(
-                                  Icons.close,
-                                  size: 16,
-                                  color: Ux4gPalette.neutral400,
-                                ),
-                                onPressed: () =>
-                                    setState(() => _dismissed = true),
-                                padding: EdgeInsets.zero,
-                                constraints: const BoxConstraints(),
-                              ),
-                            ],
-                          ),
-                          if (widget.alert.actionLabel != null) ...[
-                            const SizedBox(height: 6),
-                            TextButton(
-                              onPressed: () {},
-                              style: TextButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                  vertical: 2,
-                                ),
-                                minimumSize: Size.zero,
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              ),
-                              child: Text(
-                                widget.alert.actionLabel!,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF2563EB),
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ],
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Ux4gToast(
+                        category: widget.alert.toastCategory,
+                        title: widget.alert.title,
+                        subtitle: widget.alert.body,
+                        actionText: widget.alert.actionLabel,
+                        onActionClick: widget.alert.actionLabel != null
+                            ? () {}
+                            : null,
+                        onCloseClick: () => setState(() => _dismissed = true),
+                        showCloseButton: true,
+                        layout: Ux4gToastLayout.stacked,
+                        backgroundColor: isDark
+                            ? Ux4gPalette.neutral950
+                            : Ux4gPalette.neutral50,
+                        icon: widget.alert.icon,
+                        iconColor: widget.alert.iconColor,
+                        actionColor: widget.alert.actionLabel != null
+                            ? (isDark
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600)
+                            : null,
                       ),
                     ),
                   ),
@@ -19683,99 +20378,93 @@ class _ReminderAlertMockupState extends State<_ReminderAlertMockup> {
 // -- Per-type code snippets ----------------------------------------------------
 
 const _reminder30DaysCode =
-    r'''// Reminder Alert . 30 days before expiry (infoLight)
-Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.infoLight,
+    r'''// Reminder Alert . 30 days before expiry (Ux4gToast . info)
+Ux4gToast(
+  category: Ux4gToastCategory.info,
   title: '30 days before expiry',
   subtitle: 'Your Income Certificate expires on 15 May 2026 (30 days away). '
             'Renew early to avoid a service gap: bit.ly/renew-mh.',
-  leadingIcon: Icon(Icons.info_outline_rounded,
-    color: Color(0xFF14B8A6), size: 20),
-  trailingIcon: IconButton(
-    icon: Icon(Icons.close, size: 18, color: Ux4gPalette.neutral500),
-    onPressed: _dismiss, padding: EdgeInsets.zero,
-    constraints: BoxConstraints()),
-  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-  padding: EdgeInsets.fromLTRB(12, 10, 4, 10),
+  actionText: 'Renew Application',
+  onActionClick: () {},
+  onCloseClick: _dismiss,
+  showCloseButton: true,
+  layout: Ux4gToastLayout.stacked,
+  backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+  icon: Icons.info_rounded,
+  iconColor: Color(0xFF14B8A6),
+  actionColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
 )''';
 
 const _reminder5DaysCode =
-    r'''// Reminder Alert . 5 days before expiry (warningLight)
-Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.warningLight,
+    r'''// Reminder Alert . 5 days before expiry (Ux4gToast . warning)
+Ux4gToast(
+  category: Ux4gToastCategory.warning,
   title: '5 days before expiry',
   subtitle: 'Your Income Certificate draft expires in 5 days (16 Apr). '
             'Resume now: bit.ly/resume-mh.',
-  leadingIcon: Icon(Icons.warning_amber_rounded,
-    color: Color(0xFFF59E0B), size: 20),
-  trailingIcon: IconButton(
-    icon: Icon(Icons.close, size: 18, color: Ux4gPalette.neutral500),
-    onPressed: _dismiss, padding: EdgeInsets.zero,
-    constraints: BoxConstraints()),
-  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-  padding: EdgeInsets.fromLTRB(12, 10, 4, 10),
+  actionText: 'Resume Application',
+  onActionClick: () {},
+  onCloseClick: _dismiss,
+  showCloseButton: true,
+  layout: Ux4gToastLayout.stacked,
+  backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+  icon: Icons.warning_rounded,
+  iconColor: Color(0xFFF59E0B),
+  actionColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
 )''';
 
 const _reminder2DaysCode =
-    r'''// Reminder Alert . 2 days before expiry (errorLight)
-Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.errorLight,
+    r'''// Reminder Alert . 2 days before expiry (Ux4gToast . error)
+Ux4gToast(
+  category: Ux4gToastCategory.error,
   title: '2 days before expiry',
   subtitle: 'Only 2 days left. Submit your Income Certificate before 16 Apr '
             'or your draft will be deleted. Resume: bit.ly/resume-mh.',
-  leadingIcon: Icon(Icons.error_outline_rounded,
-    color: Color(0xFFEF4444), size: 20),
-  trailingIcon: IconButton(
-    icon: Icon(Icons.close, size: 18, color: Ux4gPalette.neutral500),
-    onPressed: _dismiss, padding: EdgeInsets.zero,
-    constraints: BoxConstraints()),
-  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-  padding: EdgeInsets.fromLTRB(12, 10, 4, 10),
+  actionText: 'Start new Application',
+  onActionClick: () {},
+  onCloseClick: _dismiss,
+  showCloseButton: true,
+  layout: Ux4gToastLayout.stacked,
+  backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+  icon: Icons.error_rounded,
+  iconColor: Color(0xFFEF4444),
+  actionColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
 )''';
 
 const _reminderExpiryDayCode =
-    r'''// Reminder Alert . On expiry day (errorLight + Action button)
-Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.errorLight,
+    r'''// Reminder Alert . On expiry day (Ux4gToast . error + Action)
+Ux4gToast(
+  category: Ux4gToastCategory.error,
   title: 'On expiry day',
   subtitle: 'Your Income Certificate draft expired on 16 Apr. Your saved data '
             'has been removed. Start a new application: bit.ly/apply-mh.',
-  leadingIcon: Icon(Icons.error_outline_rounded,
-    color: Color(0xFFEF4444), size: 20),
-  trailingIcon: IconButton(
-    icon: Icon(Icons.close, size: 18, color: Ux4gPalette.neutral500),
-    onPressed: _dismiss, padding: EdgeInsets.zero,
-    constraints: BoxConstraints()),
-  actions: [
-    TextButton(
-      onPressed: () {},
-      style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        minimumSize: Size.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-      child: Text('Action',
-        style: TextStyle(fontSize: 12, color: Color(0xFF2563EB),
-          fontWeight: FontWeight.w600)),
-    ),
-  ],
-  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-  padding: EdgeInsets.fromLTRB(12, 10, 4, 10),
+  actionText: 'Start new Application',
+  onActionClick: () {},
+  onCloseClick: _dismiss,
+  showCloseButton: true,
+  layout: Ux4gToastLayout.stacked,
+  backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+  icon: Icons.error_rounded,
+  iconColor: Color(0xFFEF4444),
+  actionColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
 )''';
 
-const _reminder1HourCode = r'''// Reminder Alert . 1 hour before (successLight)
-Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.successLight,
+const _reminder1HourCode =
+    r'''// Reminder Alert . 1 hour before (Ux4gToast . success)
+Ux4gToast(
+  category: Ux4gToastCategory.success,
   title: '1 hour before: Sent 10:13 AM',
   subtitle: 'In 1 hour: Your 11:00 AM field inspection. Revenue Inspector, '
             'Sector 12 office. Directions: bit.ly/dir-mh.',
-  leadingIcon: Icon(Icons.check_circle_outline_rounded,
-    color: Color(0xFF22C55E), size: 20),
-  trailingIcon: IconButton(
-    icon: Icon(Icons.close, size: 18, color: Ux4gPalette.neutral500),
-    onPressed: _dismiss, padding: EdgeInsets.zero,
-    constraints: BoxConstraints()),
-  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-  padding: EdgeInsets.fromLTRB(12, 10, 4, 10),
+  actionText: 'View Application',
+  onActionClick: () {},
+  onCloseClick: _dismiss,
+  showCloseButton: true,
+  layout: Ux4gToastLayout.stacked,
+  backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+  icon: Icons.check_circle_rounded,
+  iconColor: Color(0xFF22C55E),
+  actionColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
 )''';
 
 const Map<String, String> _reminderCodeMap = {
@@ -19803,9 +20492,9 @@ final reminderAlertsComponent = WidgetbookComponent(
           ],
           initialOption: '30 days before expiry',
           description:
-              'Each type maps to a Ux4gStatusBanner variant:\n'
-              'infoLight (30 days) . warningLight (5 days) . '
-              'errorLight (2 days / expiry day) . successLight (1 hour)',
+              'Each type maps to a Ux4gToast category:\n'
+              'info (30 days) . warning (5 days) . '
+              'error (2 days / expiry day) . success (1 hour)',
         );
         final alert = _buildReminderAlerts().firstWhere(
           (a) => scenario == '1 hour before'
@@ -19815,1244 +20504,14 @@ final reminderAlertsComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'Reminder Alert',
           description:
-              'Deadline-aware reminder alerts using Ux4gStatusBanner. '
-              'Variant changes by urgency: infoLight . warningLight . '
-              'errorLight . successLight. Tap X to dismiss.',
+              'Deadline-aware reminder alerts using Ux4gToast. '
+              'Category changes by urgency: info . warning . '
+              'error . success. Tap X to dismiss.',
           code: _reminderCodeMap[scenario] ?? _reminder30DaysCode,
           center: true,
           child: _ReminderAlertMockup(key: ValueKey(scenario), alert: alert),
         );
       },
-    ),
-  ],
-);
-
-// ------------------------------------------------------------------------------
-// Notification Preferences
-// ------------------------------------------------------------------------------
-
-const _prefBg = Ux4gPalette.neutral50;
-const _prefBorder = Ux4gPalette.neutral200;
-const _prefPurple = Color(0xFF6B21A8);
-const _prefTitle = Color(0xFF111827);
-const _prefSub = Ux4gPalette.neutral500;
-const _prefMuted = Ux4gPalette.neutral400;
-
-// ── Chip model ────────────────────────────────────────────────────────────────
-
-class _PrefChipData {
-  final String label;
-  final int count;
-  const _PrefChipData(this.label, this.count);
-}
-
-const _defaultPrefChips = [
-  _PrefChipData('All', 62),
-  _PrefChipData('Pending', 3),
-  _PrefChipData('Under Review', 12),
-  _PrefChipData('Approved', 18),
-  _PrefChipData('Rejected', 5),
-];
-
-// ── Chip bar (stateful, dynamic) ──────────────────────────────────────────────
-
-class _PrefChipBar extends StatefulWidget {
-  final List<_PrefChipData> chips;
-  final int initialIndex;
-  const _PrefChipBar({required this.chips, this.initialIndex = 0});
-  @override
-  State<_PrefChipBar> createState() => _PrefChipBarState();
-}
-
-class _PrefChipBarState extends State<_PrefChipBar> {
-  late int _selected;
-
-  @override
-  void initState() {
-    super.initState();
-    _selected = widget.initialIndex;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-        itemCount: widget.chips.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
-        itemBuilder: (_, i) {
-          final chip = widget.chips[i];
-          final sel = _selected == i;
-          return Ux4gChoiceChip(
-            text: chip.label,
-            selected: sel,
-            onClick: () => setState(() => _selected = i),
-            size: Ux4gChoiceChipSize.s,
-            borderRadius: 4,
-            unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-            unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
-            unselectedTextColor: _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF374151),
-            trailingContent: sel
-                ? Text(
-                    '${chip.count}',
-                    style: const TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  )
-                : Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                      vertical: 1,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF2563EB),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      '${chip.count}',
-                      style: const TextStyle(
-                        fontSize: 9,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-// ── Shared page header: brand logos + title + chip bar ────────────────────────
-
-class _PrefPageHeader extends StatelessWidget {
-  final List<_PrefChipData> chips;
-  const _PrefPageHeader({this.chips = _defaultPrefChips});
-
-  @override
-  Widget build(BuildContext context) => Column(
-    mainAxisSize: MainAxisSize.min,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const _BrandHeader(),
-      Container(
-        color: Colors.white,
-        width: double.infinity,
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-        alignment: Alignment.centerLeft,
-        child: const Text(
-          'Notification Preferences',
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: _prefTitle,
-          ),
-        ),
-      ),
-      _PrefChipBar(chips: chips),
-    ],
-  );
-}
-
-// ── Placeholder content container ─────────────────────────────────────────────
-
-class _PrefPlaceholderContent extends StatelessWidget {
-  const _PrefPlaceholderContent();
-  @override
-  Widget build(BuildContext context) => Expanded(
-    child: Align(
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Container(
-          width: double.infinity,
-          height: 180,
-          decoration: BoxDecoration(
-            color: const Color(0xFFF9FAFB),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Ux4gPalette.neutral300),
-          ),
-          alignment: Alignment.center,
-          child: const Text(
-            'Content area',
-            style: TextStyle(
-              fontSize: 13,
-              color: Ux4gPalette.neutral400,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-// ── Shared small widgets ──────────────────────────────────────────────────────
-
-class _PrefToggleRow extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String label;
-  final String? sub;
-  final bool value;
-  final ValueChanged<bool>? onChanged;
-  const _PrefToggleRow({
-    required this.icon,
-    required this.iconColor,
-    required this.label,
-    this.sub,
-    required this.value,
-    this.onChanged,
-  });
-  @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    child: Row(
-      children: [
-        Container(
-          width: 32,
-          height: 32,
-          decoration: BoxDecoration(
-            color: iconColor.withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          alignment: Alignment.center,
-          child: Icon(icon, color: iconColor, size: 16),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: _prefTitle,
-                ),
-              ),
-              if (sub != null)
-                Text(
-                  sub!,
-                  style: const TextStyle(fontSize: 10, color: _prefSub),
-                ),
-            ],
-          ),
-        ),
-        Switch(
-          value: value,
-          onChanged: onChanged,
-          activeColor: _prefPurple,
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        ),
-      ],
-    ),
-  );
-}
-
-// -- Screen 1 � Channel Preferences -------------------------------------------
-
-class _PrefChannelScreen extends StatefulWidget {
-  const _PrefChannelScreen();
-  @override
-  State<_PrefChannelScreen> createState() => _PrefChannelScreenState();
-}
-
-class _PrefChannelScreenState extends State<_PrefChannelScreen> {
-  bool _push = true, _email = true, _app = true, _whatsapp = false;
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: [
-        const _PrefPageHeader(),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: _prefBorder),
-                  ),
-                  child: Column(
-                    children: [
-                      _PrefToggleRow(
-                        icon: Icons.notifications_outlined,
-                        iconColor: _prefPurple,
-                        label: '+91 9696-XXXXX',
-                        sub: 'Push alerts on this device',
-                        value: _push,
-                        onChanged: (v) => setState(() => _push = v),
-                      ),
-                      Divider(height: 1, color: _prefBorder),
-                      _PrefToggleRow(
-                        icon: Icons.email_outlined,
-                        iconColor: const Color(0xFF2563EB),
-                        label: 'Email',
-                        sub: 'user@digimail.gov',
-                        value: _email,
-                        onChanged: (v) => setState(() => _email = v),
-                      ),
-                      Divider(height: 1, color: _prefBorder),
-                      _PrefToggleRow(
-                        icon: Icons.apps,
-                        iconColor: const Color(0xFF0891B2),
-                        label: 'App notifications',
-                        sub: 'Push alerts on this device',
-                        value: _app,
-                        onChanged: (v) => setState(() => _app = v),
-                      ),
-                      Divider(height: 1, color: _prefBorder),
-                      _PrefToggleRow(
-                        icon: Icons.chat_bubble_outline,
-                        iconColor: const Color(0xFF16A34A),
-                        label: 'WhatsApp',
-                        sub: 'Opted out',
-                        value: _whatsapp,
-                        onChanged: (v) => setState(() => _whatsapp = v),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// -- Screen 2 � Frequency -----------------------------------------------------
-
-class _PrefFrequencyScreen extends StatefulWidget {
-  const _PrefFrequencyScreen();
-  @override
-  State<_PrefFrequencyScreen> createState() => _PrefFrequencyScreenState();
-}
-
-class _PrefFrequencyScreenState extends State<_PrefFrequencyScreen> {
-  String _selected = 'Immediately';
-  static const _options = [
-    _FreqOption(
-      'Immediately',
-      'Get each notification the moment it�',
-      Icons.flash_on_outlined,
-    ),
-    _FreqOption(
-      'Daily Summary',
-      'One digest every day at 6:00 PM.',
-      Icons.today_outlined,
-    ),
-    _FreqOption(
-      'Weekly Digest',
-      'A round-up every Monday morning.',
-      Icons.calendar_month_outlined,
-    ),
-  ];
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: [
-        const _PrefPageHeader(),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: _prefBorder),
-                  ),
-                  child: Column(
-                    children: _options.asMap().entries.map((e) {
-                      final opt = e.value;
-                      final isLast = e.key == _options.length - 1;
-                      final selected = _selected == opt.label;
-                      return Column(
-                        children: [
-                          InkWell(
-                            onTap: () => setState(() => _selected = opt.label),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 12,
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    opt.icon,
-                                    color: selected ? _prefPurple : _prefMuted,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          opt.label,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                            color: selected
-                                                ? _prefPurple
-                                                : _prefTitle,
-                                          ),
-                                        ),
-                                        Text(
-                                          opt.sub,
-                                          style: const TextStyle(
-                                            fontSize: 10,
-                                            color: _prefSub,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  if (selected)
-                                    const Icon(
-                                      Icons.check_circle,
-                                      color: _prefPurple,
-                                      size: 18,
-                                    )
-                                  else
-                                    const Icon(
-                                      Icons.radio_button_unchecked,
-                                      color: _prefMuted,
-                                      size: 18,
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          if (!isLast) Divider(height: 1, color: _prefBorder),
-                        ],
-                      );
-                    }).toList(),
-                  ),
-                ),
-                const SizedBox(height: 16),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-class _FreqOption {
-  final String label, sub;
-  final IconData icon;
-  const _FreqOption(this.label, this.sub, this.icon);
-}
-
-// -- Screen 3 � Categories ----------------------------------------------------
-
-class _PrefCategory {
-  final String name;
-  final String summary;
-  final List<_PrefNotifItem> items;
-  bool expanded;
-  _PrefCategory(this.name, this.summary, this.items, {this.expanded = false});
-}
-
-class _PrefNotifItem {
-  final String label;
-  bool enabled;
-  final bool locked;
-  _PrefNotifItem(this.label, {this.enabled = true, this.locked = false});
-}
-
-List<_PrefCategory> _buildCategories() => [
-  _PrefCategory('Income Certificate', '3 of 3 notifications on', [
-    _PrefNotifItem('Status updates'),
-    _PrefNotifItem('Action reminders'),
-    _PrefNotifItem('Legal & payment\ndeadlines'),
-  ], expanded: true),
-  _PrefCategory('Ration Card Renewal', '1 of 3 notifications on', [
-    _PrefNotifItem('Status updates'),
-    _PrefNotifItem('Action reminders', enabled: false),
-    _PrefNotifItem('Certificate expiry', enabled: false),
-  ]),
-  _PrefCategory('PAN Correction', '3 of 3 notifications on', [
-    _PrefNotifItem('Status updates'),
-    _PrefNotifItem('Action reminders'),
-    _PrefNotifItem('Certificate expiry'),
-  ]),
-  _PrefCategory('Birth Certificate', 'All notifications off', [
-    _PrefNotifItem('Status updates', enabled: false),
-    _PrefNotifItem('Action reminders', enabled: false),
-    _PrefNotifItem('Certificate expiry', enabled: false),
-  ]),
-];
-
-class _PrefCategoryScreen extends StatefulWidget {
-  const _PrefCategoryScreen();
-  @override
-  State<_PrefCategoryScreen> createState() => _PrefCategoryScreenState();
-}
-
-class _PrefCategoryScreenState extends State<_PrefCategoryScreen> {
-  late List<_PrefCategory> _cats;
-  @override
-  void initState() {
-    super.initState();
-    _cats = _buildCategories();
-  }
-
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: [
-        const _PrefPageHeader(),
-        Expanded(
-          child: ListView.builder(
-            padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-            itemCount: _cats.length,
-            itemBuilder: (_, i) {
-              final cat = _cats[i];
-              return Container(
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: _prefBorder),
-                ),
-                child: Column(
-                  children: [
-                    InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      onTap: () => setState(() => cat.expanded = !cat.expanded),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 12,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    cat.name,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      color: _prefTitle,
-                                    ),
-                                  ),
-                                  Text(
-                                    cat.summary,
-                                    style: const TextStyle(
-                                      fontSize: 10,
-                                      color: _prefSub,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Icon(
-                              cat.expanded
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
-                              color: _prefMuted,
-                              size: 18,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    if (cat.expanded) ...[
-                      Divider(height: 1, color: _prefBorder),
-                      ...cat.items
-                          .map(
-                            (item) => Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 14,
-                                vertical: 6,
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      item.label,
-                                      style: const TextStyle(
-                                        fontSize: 11,
-                                        color: _prefTitle,
-                                      ),
-                                    ),
-                                  ),
-                                  if (item.locked)
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 6,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF3F4F6),
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: const Text(
-                                        'Locked',
-                                        style: TextStyle(
-                                          fontSize: 9,
-                                          color: _prefMuted,
-                                        ),
-                                      ),
-                                    )
-                                  else
-                                    Switch(
-                                      value: item.enabled,
-                                      onChanged: (v) =>
-                                          setState(() => item.enabled = v),
-                                      activeColor: _prefPurple,
-                                      materialTapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                    ),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      const SizedBox(height: 4),
-                    ],
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// -- Screen 4 � Locked Notifications ------------------------------------------
-
-List<_PrefCategory> _buildLockedCategories() => [
-  _PrefCategory('Income Certificate', '3 of 3 notifications on', [
-    _PrefNotifItem('Status updates'),
-    _PrefNotifItem('Rejection notices', locked: true),
-    _PrefNotifItem('Legal & payment\ndeadlines', locked: true),
-  ], expanded: true),
-  _PrefCategory('Ration Card Renewal', '1 of 3 notifications on', [
-    _PrefNotifItem('Status updates'),
-    _PrefNotifItem('Action reminders', enabled: false),
-    _PrefNotifItem('Certificate expiry', enabled: false),
-  ]),
-];
-
-class _PrefLockedScreen extends StatefulWidget {
-  const _PrefLockedScreen();
-  @override
-  State<_PrefLockedScreen> createState() => _PrefLockedScreenState();
-}
-
-class _PrefLockedScreenState extends State<_PrefLockedScreen> {
-  late List<_PrefCategory> _cats;
-  @override
-  void initState() {
-    super.initState();
-    _cats = _buildLockedCategories();
-  }
-
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: [
-        const _PrefPageHeader(),
-        Container(
-          margin: const EdgeInsets.fromLTRB(12, 8, 12, 0),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFF7ED),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: const Color(0xFFFED7AA)),
-          ),
-          child: Row(
-            children: const [
-              Icon(Icons.lock_outline, size: 14, color: Color(0xFFF59E0B)),
-              SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  'Some notifications are required and cannot be turned off.',
-                  style: TextStyle(fontSize: 10, color: Color(0xFF92400E)),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            itemCount: _cats.length,
-            itemBuilder: (_, i) {
-              final cat = _cats[i];
-              return Container(
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: _prefBorder),
-                ),
-                child: Column(
-                  children: [
-                    InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      onTap: () => setState(() => cat.expanded = !cat.expanded),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 12,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    cat.name,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      color: _prefTitle,
-                                    ),
-                                  ),
-                                  Text(
-                                    cat.summary,
-                                    style: const TextStyle(
-                                      fontSize: 10,
-                                      color: _prefSub,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Icon(
-                              cat.expanded
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
-                              color: _prefMuted,
-                              size: 18,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    if (cat.expanded) ...[
-                      Divider(height: 1, color: _prefBorder),
-                      ...cat.items
-                          .map(
-                            (item) => Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 14,
-                                vertical: 6,
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      item.label,
-                                      style: const TextStyle(
-                                        fontSize: 11,
-                                        color: _prefTitle,
-                                      ),
-                                    ),
-                                  ),
-                                  if (item.locked)
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 6,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xFFF3F4F6),
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: const Text(
-                                        'Locked',
-                                        style: TextStyle(
-                                          fontSize: 9,
-                                          color: _prefMuted,
-                                        ),
-                                      ),
-                                    )
-                                  else
-                                    Switch(
-                                      value: item.enabled,
-                                      onChanged: (v) =>
-                                          setState(() => item.enabled = v),
-                                      activeColor: _prefPurple,
-                                      materialTapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,
-                                    ),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      const SizedBox(height: 4),
-                    ],
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// -- Screen 5 � WhatsApp Consent -----------------------------------------------
-
-class _PrefWhatsAppScreen extends StatefulWidget {
-  const _PrefWhatsAppScreen();
-  @override
-  State<_PrefWhatsAppScreen> createState() => _PrefWhatsAppScreenState();
-}
-
-class _PrefWhatsAppScreenState extends State<_PrefWhatsAppScreen> {
-  bool _consented = false;
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: [
-        const _PrefPageHeader(),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'What you will receive on WhatsApp',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: _prefTitle,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                ...const [
-                  'Application status changes',
-                  'Appointment reminders (D-1 and H-1)',
-                  'Action-required alerts with quick links',
-                ].map(
-                  (s) => Padding(
-                    padding: EdgeInsets.symmetric(vertical: 3),
-                    child: Row(
-                      children: [
-                        Icon(Icons.check, color: Color(0xFF16A34A), size: 14),
-                        SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            s,
-                            style: TextStyle(fontSize: 11, color: _prefSub),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: _prefBorder),
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Checkbox(
-                        value: _consented,
-                        onChanged: (v) =>
-                            setState(() => _consented = v ?? false),
-                        activeColor: _prefPurple,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        visualDensity: VisualDensity.compact,
-                      ),
-                      const SizedBox(width: 8),
-                      const Expanded(
-                        child: Text(
-                          'I consent to receiving notifications on WhatsApp '
-                          'at +91 98765 43210.\nYou can withdraw this consent '
-                          'at any time. This checkbox is linked to DPDP Act 2023.',
-                          style: TextStyle(fontSize: 10, color: _prefSub),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _consented ? () {} : null,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: _prefPurple,
-                      foregroundColor: Colors.white,
-                      disabledBackgroundColor: _prefBorder,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                    ),
-                    child: const Text(
-                      'Enable WhatsApp Notifications',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// -- Screen 6 � Manage All ----------------------------------------------------
-
-class _PrefManageItem {
-  final String label;
-  final String? sub;
-  final bool alwaysOn;
-  bool enabled;
-  _PrefManageItem(
-    this.label, {
-    this.sub,
-    this.alwaysOn = false,
-    this.enabled = true,
-  });
-}
-
-class _PrefManageAllScreen extends StatefulWidget {
-  const _PrefManageAllScreen();
-  @override
-  State<_PrefManageAllScreen> createState() => _PrefManageAllScreenState();
-}
-
-class _PrefManageAllScreenState extends State<_PrefManageAllScreen> {
-  final _optional = [
-    _PrefManageItem(
-      'Status updates',
-      sub: 'Track progress of your applications',
-    ),
-    _PrefManageItem('Action reminders', sub: 'Upload and payment reminders'),
-    _PrefManageItem(
-      'Certificates expiry',
-      sub: 'Renewal reminders before documents expire',
-    ),
-    _PrefManageItem(
-      'Promotional updates',
-      sub: 'New services and announcements',
-      enabled: false,
-    ),
-  ];
-  final _mandatory = [
-    _PrefManageItem(
-      'SLA breach alerts',
-      sub: 'Mandatory statutory deadline notifications',
-      alwaysOn: true,
-    ),
-    _PrefManageItem(
-      'Rejection notices',
-      sub: 'Application rejections with reasons',
-      alwaysOn: true,
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: [
-        const _PrefPageHeader(),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 4, bottom: 8),
-                  child: Text(
-                    'OPTIONAL � YOU CAN TURN OFF',
-                    style: TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.w700,
-                      color: _prefMuted,
-                      letterSpacing: 0.6,
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: _prefBorder),
-                  ),
-                  child: Column(
-                    children: _optional.asMap().entries.map((e) {
-                      final item = e.value;
-                      final isLast = e.key == _optional.length - 1;
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 14,
-                              vertical: 8,
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        item.label,
-                                        style: const TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w600,
-                                          color: _prefTitle,
-                                        ),
-                                      ),
-                                      if (item.sub != null)
-                                        Text(
-                                          item.sub!,
-                                          style: const TextStyle(
-                                            fontSize: 10,
-                                            color: _prefSub,
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                                Switch(
-                                  value: item.enabled,
-                                  onChanged: (v) =>
-                                      setState(() => item.enabled = v),
-                                  activeColor: _prefPurple,
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                ),
-                              ],
-                            ),
-                          ),
-                          if (!isLast) Divider(height: 1, color: _prefBorder),
-                        ],
-                      );
-                    }).toList(),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Padding(
-                  padding: EdgeInsets.only(left: 4, bottom: 8),
-                  child: Text(
-                    'MANDATORY � REQUIRED IN SCREENSHOT POLICY',
-                    style: TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.w700,
-                      color: _prefMuted,
-                      letterSpacing: 0.6,
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: _prefBorder),
-                  ),
-                  child: Column(
-                    children: _mandatory.asMap().entries.map((e) {
-                      final item = e.value;
-                      final isLast = e.key == _mandatory.length - 1;
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 14,
-                              vertical: 8,
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        item.label,
-                                        style: const TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w600,
-                                          color: _prefTitle,
-                                        ),
-                                      ),
-                                      if (item.sub != null)
-                                        Text(
-                                          item.sub!,
-                                          style: const TextStyle(
-                                            fontSize: 10,
-                                            color: _prefSub,
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8,
-                                    vertical: 3,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFF3F4F6),
-                                    borderRadius: BorderRadius.circular(4),
-                                  ),
-                                  child: const Text(
-                                    'Always on',
-                                    style: TextStyle(
-                                      fontSize: 9,
-                                      color: _prefMuted,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          if (!isLast) Divider(height: 1, color: _prefBorder),
-                        ],
-                      );
-                    }).toList(),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton(
-                    onPressed: () => setState(() {
-                      for (final i in _optional) {
-                        i.enabled = false;
-                      }
-                    }),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color(0xFFDC2626),
-                      side: const BorderSide(color: Color(0xFFDC2626)),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                    ),
-                    child: const Text(
-                      'Turn off all optional notifications',
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// -- WidgetbookComponent registration -----------------------------------------
-
-// ── Story mockup ──────────────────────────────────────────────────────────────
-
-class _NotifPrefMockup extends StatelessWidget {
-  const _NotifPrefMockup();
-  @override
-  Widget build(BuildContext context) => _PhoneFrame(
-    child: Column(
-      children: const [_PrefPageHeader(), _PrefPlaceholderContent()],
-    ),
-  );
-}
-
-const _notifPrefCode = r'''
-// 1. Define your chip data
-final chips = [
-  _PrefChipData('All', 62),
-  _PrefChipData('Pending', 3),
-  _PrefChipData('Under Review', 12),
-  _PrefChipData('Approved', 18),
-  _PrefChipData('Rejected', 5),
-];
-
-// 2. Use _PrefPageHeader with dynamic chip list
-_PrefPageHeader(chips: chips)
-
-// 3. Each Ux4gChoiceChip inside _PrefChipBar uses:
-Ux4gChoiceChip(
-  text: 'Pending',
-  selected: isSelected,
-  onClick: () => setState(() => _selected = i),
-  size: Ux4gChoiceChipSize.s,
-  borderRadius: 4,
-  unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-  unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
-  trailingContent: Container(
-    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-    decoration: BoxDecoration(
-      color: Color(0xFF6B21A8),   // badge only when NOT selected
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Text('3', style: TextStyle(fontSize: 9, color: Colors.white)),
-  ),
-)
-''';
-
-final notificationPreferencesComponent = WidgetbookComponent(
-  name: 'Notification Preferences',
-  useCases: [
-    WidgetbookUseCase(
-      name: 'Default',
-      builder: (context) => ComponentDocs(
-        name: 'Notification Preferences',
-        description:
-            'Filter chip bar with dynamic chip list. Each chip shows a label '
-            'and a count badge (purple bg when unselected, plain white text '
-            'when selected). Tap any chip to select it. '
-            'Replace the content area with your own widget.',
-        code: _notifPrefCode,
-        center: true,
-        child: const _NotifPrefMockup(),
-      ),
     ),
   ],
 );
@@ -21068,8 +20527,12 @@ final notificationPreferencesComponent = WidgetbookComponent(
 /// Horizontal 5-step progress bar — circles with no labels except the last
 /// step which shows "Payment". Lines have small gaps and don't touch circles.
 class _PmtStepBar extends StatelessWidget {
-  const _PmtStepBar({this.currentStep = 5});
+  const _PmtStepBar({
+    this.currentStep = 4,
+    this.padding = const EdgeInsets.fromLTRB(16, 24, 28, 6),
+  });
   final int currentStep;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -21079,33 +20542,46 @@ class _PmtStepBar extends StatelessWidget {
     final onPrimary =
         ux4gColors?.onPrimary ?? materialTheme.colorScheme.onPrimary;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: padding,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          for (int i = 0; i < 5; i++) ...[
-            if (i > 0) ...[
-              const SizedBox(width: 4),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Container(
-                    height: 2,
-                    color: i < currentStep ? primary : Ux4gPalette.neutral300,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (int i = 0; i < 4; i++) ...[
+                if (i > 0) ...[
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 11),
+                      child: Container(
+                        height: 2.5,
+                        decoration: BoxDecoration(
+                          color: i < currentStep
+                              ? primary
+                              : (_isDark(context)
+                                    ? Ux4gPalette.neutral800
+                                    : Ux4gPalette.neutral300),
+                          borderRadius: BorderRadius.circular(1.25),
+                        ),
+                      ),
+                    ),
                   ),
+                  const SizedBox(width: 4),
+                ],
+                _PmtCircle(
+                  stepIndex: i + 1,
+                  isCompleted: currentStep > i + 1,
+                  isActive: currentStep == i + 1,
+                  primary: primary,
+                  onPrimary: onPrimary,
+                  label: i == 3 ? 'Payment' : null,
                 ),
-              ),
-              const SizedBox(width: 4),
+              ],
             ],
-            _PmtCircle(
-              stepIndex: i + 1,
-              isCompleted: currentStep > i + 1,
-              isActive: currentStep == i + 1,
-              primary: primary,
-              onPrimary: onPrimary,
-              label: i == 4 ? 'Payment' : null,
-            ),
-          ],
+          ),
+          const SizedBox(height: 18),
         ],
       ),
     );
@@ -21131,46 +20607,55 @@ class _PmtCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final circle = Container(
-      width: 32,
-      height: 32,
+      width: 24,
+      height: 24,
       decoration: BoxDecoration(
         color: isCompleted ? primary : Colors.transparent,
         shape: BoxShape.circle,
         border: Border.all(
-          color: (isCompleted || isActive) ? primary : Ux4gPalette.neutral300,
+          color: (isCompleted || isActive)
+              ? primary
+              : (_isDark(context)
+                    ? Ux4gPalette.neutral800
+                    : Ux4gPalette.neutral300),
           width: 2,
         ),
       ),
       alignment: Alignment.center,
       child: isCompleted
-          ? Icon(Icons.check, size: 18, color: onPrimary)
+          ? Icon(Icons.check, size: 14, color: onPrimary)
           : isActive
           ? Container(
-              width: 12,
-              height: 12,
+              width: 10,
+              height: 10,
               decoration: BoxDecoration(color: primary, shape: BoxShape.circle),
             )
           : Text(
               '$stepIndex',
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: 11,
                 fontWeight: FontWeight.bold,
-                color: Ux4gPalette.neutral300,
+                color: _isDark(context)
+                    ? Ux4gPalette.neutral600
+                    : Ux4gPalette.neutral400,
               ),
             ),
     );
     if (label == null) return circle;
-    return Column(
-      mainAxisSize: MainAxisSize.min,
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.topCenter,
       children: [
         circle,
-        const SizedBox(height: 3),
-        Text(
-          label!,
-          style: TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            color: primary,
+        Positioned(
+          top: 27,
+          child: Text(
+            label!,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: _getTitleColor(context),
+            ),
           ),
         ),
       ],
@@ -21184,6 +20669,8 @@ class _FeeRow extends StatelessWidget {
     required this.label,
     required this.amount,
     this.bold = false,
+    this.boldAmount = false,
+    this.totalRow = false,
     this.redAmount = false,
     this.bgColor,
   });
@@ -21191,23 +20678,36 @@ class _FeeRow extends StatelessWidget {
   final String label;
   final String amount;
   final bool bold;
+  final bool boldAmount;
+  final bool totalRow;
   final bool redAmount;
   final Color? bgColor;
 
   @override
   Widget build(BuildContext context) {
+    final labelColor = (bold || totalRow)
+        ? _getTitleColor(context)
+        : _getSubtleText(context);
+    final amountColor = redAmount
+        ? Ux4gPalette.red600
+        : _getTitleColor(context);
+    final fontSize = totalRow ? 15.0 : 13.0;
+    final amountFontSize = totalRow ? 17.0 : 13.0;
+
     return Container(
       color: bgColor,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: totalRow ? 4 : 2),
       child: Row(
         children: [
           Expanded(
             child: Text(
               label,
               style: TextStyle(
-                fontSize: 13,
-                fontWeight: bold ? FontWeight.w600 : FontWeight.w400,
-                color: bold ? const Color(0xFF111827) : _subtleText,
+                fontSize: fontSize,
+                fontWeight: (bold || totalRow)
+                    ? FontWeight.w600
+                    : FontWeight.w400,
+                color: labelColor,
                 height: 1.3,
               ),
             ),
@@ -21215,11 +20715,11 @@ class _FeeRow extends StatelessWidget {
           Text(
             amount,
             style: TextStyle(
-              fontSize: 13,
-              fontWeight: bold ? FontWeight.w600 : FontWeight.w400,
-              color: redAmount
-                  ? Ux4gPalette.red600
-                  : (bold ? const Color(0xFF111827) : const Color(0xFF374151)),
+              fontSize: amountFontSize,
+              fontWeight: (bold || boldAmount || totalRow)
+                  ? FontWeight.w700
+                  : FontWeight.w500,
+              color: amountColor,
               height: 1.3,
             ),
           ),
@@ -21247,9 +20747,11 @@ class _PayDetailRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       color: bgColor,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21257,10 +20759,8 @@ class _PayDetailRow extends StatelessWidget {
             flex: 4,
             child: Text(
               label,
-              style: const TextStyle(
-                fontSize: 13,
-                color: _subtleText,
-                height: 1.3,
+              style: typography.bS_default.copyWith(
+                color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
               ),
             ),
           ),
@@ -21269,11 +20769,10 @@ class _PayDetailRow extends StatelessWidget {
             child: Text(
               value,
               textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: valueBold ? FontWeight.w600 : FontWeight.w400,
-                color: valueColor ?? const Color(0xFF111827),
-                height: 1.3,
+              style: typography.bM_strong.copyWith(
+                color:
+                    valueColor ??
+                    (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
               ),
             ),
           ),
@@ -21302,68 +20801,65 @@ class _PmtOptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selected = value == groupValue;
-    final primary = Theme.of(context).colorScheme.primary;
+    final isDark = _isDark(context);
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+
+    final bgColor = selected
+        ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+        : (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100);
+
+    final titleColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900);
+
+    final subtitleColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700);
+
+    final radioColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : null;
+
+    final titleStyle =
+        (typography?.bM_default ??
+                const TextStyle(fontSize: 14, fontWeight: FontWeight.w600))
+            .copyWith(color: titleColor);
+
+    final subtitleStyle =
+        (typography?.bS_default ?? const TextStyle(fontSize: 12)).copyWith(
+          color: subtitleColor,
+        );
+
     return GestureDetector(
       onTap: () => onChanged(value),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        margin: const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: selected ? primary.withValues(alpha: 0.06) : Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: selected ? primary : _border,
-            width: selected ? 2 : 1,
-          ),
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.transparent, width: 0),
         ),
         child: Row(
           children: [
-            Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: selected ? primary : Ux4gPalette.neutral300,
-                  width: 2,
-                ),
+            IgnorePointer(
+              child: Ux4gRadioButton<String>(
+                value: value,
+                groupValue: groupValue,
+                onChanged: (_) {},
+                size: Ux4gRadioButtonSize.medium,
+                color: radioColor,
               ),
-              alignment: Alignment.center,
-              child: selected
-                  ? Container(
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: primary,
-                      ),
-                    )
-                  : null,
             ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    label,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: selected ? primary : const Color(0xFF111827),
-                      height: 1.2,
-                    ),
-                  ),
+                  Text(label, style: titleStyle),
                   const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: _subtleText,
-                      height: 1.3,
-                    ),
-                  ),
+                  Text(subtitle, style: subtitleStyle),
                 ],
               ),
             ),
@@ -21389,10 +20885,12 @@ class _PaymentSummaryMockup extends StatelessWidget {
         children: [
           const _BrandHeader(),
           const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
+          Divider(height: 1, thickness: 1, color: _getBorder(context)),
           Expanded(
             child: Container(
-              color: _bg,
+              color: _isDark(context)
+                  ? Ux4gPalette.neutral950
+                  : Ux4gPalette.neutral50,
               child: Column(
                 children: [
                   Expanded(
@@ -21401,65 +20899,83 @@ class _PaymentSummaryMockup extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'Payment',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w800,
-                              color: _titleColor,
-                              height: 1.2,
-                              letterSpacing: -0.3,
-                            ),
+                            style:
+                                (Theme.of(context)
+                                            .extension<Ux4gTypography>()
+                                            ?.hL_strong ??
+                                        const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w800,
+                                          height: 1.2,
+                                          letterSpacing: -0.3,
+                                        ))
+                                    .copyWith(color: _getTitleColor(context)),
                           ),
                           const SizedBox(height: 4),
-                          const Text(
-                            'Income Certificate — Application #INC-2024-00842',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: _subtleText,
-                              height: 1.4,
-                            ),
+                          Text(
+                            'Pay the application fee to complete your Income Certificate submission.',
+                            style:
+                                (Theme.of(context)
+                                            .extension<Ux4gTypography>()
+                                            ?.bM_default ??
+                                        const TextStyle(
+                                          fontSize: 14,
+                                          height: 1.4,
+                                        ))
+                                    .copyWith(color: _getSubtleText(context)),
                           ),
                           const SizedBox(height: 20),
                           Container(
+                            padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
-                              border: Border.all(color: _border),
+                              color: _isDark(context)
+                                  ? Ux4gPalette.neutral900
+                                  : Colors.white,
+                              border: Border.all(color: _getBorder(context)),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            clipBehavior: Clip.hardEdge,
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  'Income Certificate Application',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: _getTitleColor(context),
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
                                 const _FeeRow(
                                   label: 'Application fee',
                                   amount: 'Rs 30.00',
+                                  boldAmount: true,
                                 ),
-                                Divider(
-                                  height: 1,
-                                  thickness: 1,
-                                  color: _border,
-                                ),
+                                const SizedBox(height: 10),
                                 const _FeeRow(
                                   label: 'Processing charge',
                                   amount: 'Rs 5.00',
+                                  boldAmount: true,
                                 ),
-                                Divider(
-                                  height: 1,
-                                  thickness: 1,
-                                  color: _border,
-                                ),
+                                const SizedBox(height: 10),
                                 const _FeeRow(
-                                  label: 'GST 18%',
+                                  label: 'GST (18%)',
                                   amount: 'Rs 6.30',
+                                  boldAmount: true,
                                 ),
+                                const SizedBox(height: 14),
                                 Divider(
                                   height: 1,
                                   thickness: 1,
-                                  color: _border,
+                                  color: _getBorder(context),
                                 ),
+                                const SizedBox(height: 14),
                                 const _FeeRow(
                                   label: 'Total',
                                   amount: 'Rs 41.30',
-                                  bold: true,
+                                  totalRow: true,
                                 ),
                               ],
                             ),
@@ -21467,11 +20983,37 @@ class _PaymentSummaryMockup extends StatelessWidget {
                           const SizedBox(height: 16),
                           Ux4gStatusBanner(
                             variant: Ux4gBannerVariant.infoLight,
-                            title:
-                                'Secure payment via PayGov. Your payment '
-                                'information is protected by 256-bit encryption.',
+                            backgroundColor: _isDark(context)
+                                ? Ux4gPalette.cyan900
+                                : Ux4gPalette.cyan50,
+                            borderColor: _isDark(context)
+                                ? Ux4gPalette.cyan600
+                                : Ux4gPalette.cyan300,
+                            leadingIcon: Icon(
+                              Icons.info,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.cyan500
+                                  : Ux4gPalette.cyan600,
+                              size: 24,
+                            ),
+                            title: 'Secure payment via PayGov — National',
+                            subtitle: 'Information Centre payment gateway.',
+                            titleStyle: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.cyan300
+                                  : Ux4gPalette.cyan800,
+                            ),
+                            subtitleStyle: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: _isDark(context)
+                                  ? Ux4gPalette.cyan300
+                                  : Ux4gPalette.cyan800,
+                            ),
                             margin: EdgeInsets.zero,
-                            padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                            padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
                           ),
                           const SizedBox(height: 20),
                           Ux4gButton(
@@ -21517,7 +21059,7 @@ class _PaymentSummaryCardMockup extends StatelessWidget {
         children: [
           const _BrandHeader(),
           const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
+          Divider(height: 1, thickness: 1, color: _getBorder(context)),
           Expanded(
             child: Container(
               color: _getSuCardBg(context),
@@ -21532,65 +21074,83 @@ class _PaymentSummaryCardMockup extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Payment',
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: _titleColor,
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
+                              style:
+                                  (Theme.of(context)
+                                              .extension<Ux4gTypography>()
+                                              ?.hL_strong ??
+                                          const TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w800,
+                                            height: 1.2,
+                                            letterSpacing: -0.3,
+                                          ))
+                                      .copyWith(color: _getTitleColor(context)),
                             ),
                             const SizedBox(height: 4),
-                            const Text(
-                              'Income Certificate — Application #INC-2024-00842',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: _subtleText,
-                                height: 1.4,
-                              ),
+                            Text(
+                              'Pay the application fee to complete your Income Certificate submission.',
+                              style:
+                                  (Theme.of(context)
+                                              .extension<Ux4gTypography>()
+                                              ?.bM_default ??
+                                          const TextStyle(
+                                            fontSize: 14,
+                                            height: 1.4,
+                                          ))
+                                      .copyWith(color: _getSubtleText(context)),
                             ),
                             const SizedBox(height: 20),
                             Container(
+                              padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                border: Border.all(color: _border),
+                                color: _isDark(context)
+                                    ? Ux4gPalette.neutral900
+                                    : Colors.white,
+                                border: Border.all(color: _getBorder(context)),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              clipBehavior: Clip.hardEdge,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Text(
+                                    'Income Certificate Application',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: _getTitleColor(context),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
                                   const _FeeRow(
                                     label: 'Application fee',
                                     amount: 'Rs 30.00',
+                                    boldAmount: true,
                                   ),
-                                  Divider(
-                                    height: 1,
-                                    thickness: 1,
-                                    color: _border,
-                                  ),
+                                  const SizedBox(height: 10),
                                   const _FeeRow(
                                     label: 'Processing charge',
                                     amount: 'Rs 5.00',
+                                    boldAmount: true,
                                   ),
-                                  Divider(
-                                    height: 1,
-                                    thickness: 1,
-                                    color: _border,
-                                  ),
+                                  const SizedBox(height: 10),
                                   const _FeeRow(
-                                    label: 'GST 18%',
+                                    label: 'GST (18%)',
                                     amount: 'Rs 6.30',
+                                    boldAmount: true,
                                   ),
+                                  const SizedBox(height: 14),
                                   Divider(
                                     height: 1,
                                     thickness: 1,
-                                    color: _border,
+                                    color: _getBorder(context),
                                   ),
+                                  const SizedBox(height: 14),
                                   const _FeeRow(
                                     label: 'Total',
                                     amount: 'Rs 41.30',
-                                    bold: true,
+                                    totalRow: true,
                                   ),
                                 ],
                               ),
@@ -21598,15 +21158,41 @@ class _PaymentSummaryCardMockup extends StatelessWidget {
                             const SizedBox(height: 16),
                             Ux4gStatusBanner(
                               variant: Ux4gBannerVariant.infoLight,
-                              title:
-                                  'Secure payment via PayGov. Your payment '
-                                  'information is protected by 256-bit encryption.',
+                              backgroundColor: _isDark(context)
+                                  ? Ux4gPalette.cyan900
+                                  : Ux4gPalette.cyan50,
+                              borderColor: _isDark(context)
+                                  ? Ux4gPalette.cyan600
+                                  : Ux4gPalette.cyan300,
+                              leadingIcon: Icon(
+                                Icons.info,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.cyan500
+                                    : Ux4gPalette.cyan600,
+                                size: 24,
+                              ),
+                              title: 'Secure payment via PayGov — National',
+                              subtitle: 'Information Centre payment gateway.',
+                              titleStyle: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.cyan300
+                                    : Ux4gPalette.cyan800,
+                              ),
+                              subtitleStyle: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.cyan300
+                                    : Ux4gPalette.cyan800,
+                              ),
                               margin: EdgeInsets.zero,
                               padding: const EdgeInsets.fromLTRB(
                                 12,
-                                10,
                                 12,
-                                10,
+                                12,
+                                12,
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -21656,12 +21242,12 @@ Scaffold(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
       Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       // Step bar (5 steps, current = 5 "Payment")
@@ -21772,7 +21358,7 @@ Scaffold(
                         style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -21819,12 +21405,12 @@ Scaffold(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
       Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       // Step bar
@@ -21948,7 +21534,7 @@ Scaffold(
                         style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -22008,7 +21594,6 @@ class _PaymentMethodMockupState extends State<_PaymentMethodMockup> {
         children: [
           const _BrandHeader(),
           const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: _bg,
@@ -22046,8 +21631,7 @@ class _PaymentMethodMockupState extends State<_PaymentMethodMockup> {
                             onChanged: (v) =>
                                 setState(() => _method = v ?? _method),
                             label: 'UPI',
-                            subtitle:
-                                'Pay using any UPI app (GPay, PhonePe, Paytm...)',
+                            subtitle: 'Pay with any UPI app',
                           ),
                           _PmtOptionTile(
                             value: 'netbanking',
@@ -22055,7 +21639,7 @@ class _PaymentMethodMockupState extends State<_PaymentMethodMockup> {
                             onChanged: (v) =>
                                 setState(() => _method = v ?? _method),
                             label: 'Net Banking',
-                            subtitle: 'Pay directly from your bank account',
+                            subtitle: '60+ banks supported',
                           ),
                           _PmtOptionTile(
                             value: 'card',
@@ -22063,24 +21647,23 @@ class _PaymentMethodMockupState extends State<_PaymentMethodMockup> {
                             onChanged: (v) =>
                                 setState(() => _method = v ?? _method),
                             label: 'Debit / Credit Card',
-                            subtitle: 'Visa, Mastercard, RuPay accepted',
+                            subtitle: 'Visa, MasterCard, RuPay',
                           ),
                           _PmtOptionTile(
                             value: 'csc',
                             groupValue: _method,
                             onChanged: (v) =>
                                 setState(() => _method = v ?? _method),
-                            label: 'Pay at CSC Centre',
-                            subtitle:
-                                'Visit your nearest Common Service Centre',
+                            label: 'CSC Centre',
+                            subtitle: 'Pay in cash at your nearest CSC',
                           ),
                           if (_method == 'upi') ...[
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 8),
                             Ux4gInputField(
                               value: _upiId,
                               onValueChange: (v) => setState(() => _upiId = v),
                               label: 'Enter UPI ID',
-                              placeholder: 'yourname@upi',
+                              placeholder: 'e.g. name@upi',
                               placeholderStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -22099,7 +21682,7 @@ class _PaymentMethodMockupState extends State<_PaymentMethodMockup> {
                             onPressed: () {},
                             size: Ux4gButtonSize.large,
                             height: 48,
-                            width: 326,
+                            width: double.infinity,
                           ),
                           const SizedBox(height: 12),
                           Center(
@@ -22146,7 +21729,6 @@ class _PaymentMethodCardMockupState extends State<_PaymentMethodCardMockup> {
         children: [
           const _BrandHeader(),
           const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: _getSuCardBg(context),
@@ -22187,8 +21769,7 @@ class _PaymentMethodCardMockupState extends State<_PaymentMethodCardMockup> {
                               onChanged: (v) =>
                                   setState(() => _method = v ?? _method),
                               label: 'UPI',
-                              subtitle:
-                                  'Pay using any UPI app (GPay, PhonePe, Paytm...)',
+                              subtitle: 'Pay with any UPI app',
                             ),
                             _PmtOptionTile(
                               value: 'netbanking',
@@ -22196,7 +21777,7 @@ class _PaymentMethodCardMockupState extends State<_PaymentMethodCardMockup> {
                               onChanged: (v) =>
                                   setState(() => _method = v ?? _method),
                               label: 'Net Banking',
-                              subtitle: 'Pay directly from your bank account',
+                              subtitle: '60+ banks supported',
                             ),
                             _PmtOptionTile(
                               value: 'card',
@@ -22204,25 +21785,24 @@ class _PaymentMethodCardMockupState extends State<_PaymentMethodCardMockup> {
                               onChanged: (v) =>
                                   setState(() => _method = v ?? _method),
                               label: 'Debit / Credit Card',
-                              subtitle: 'Visa, Mastercard, RuPay accepted',
+                              subtitle: 'Visa, MasterCard, RuPay',
                             ),
                             _PmtOptionTile(
                               value: 'csc',
                               groupValue: _method,
                               onChanged: (v) =>
                                   setState(() => _method = v ?? _method),
-                              label: 'Pay at CSC Centre',
-                              subtitle:
-                                  'Visit your nearest Common Service Centre',
+                              label: 'CSC Centre',
+                              subtitle: 'Pay in cash at your nearest CSC',
                             ),
                             if (_method == 'upi') ...[
-                              const SizedBox(height: 4),
+                              const SizedBox(height: 8),
                               Ux4gInputField(
                                 value: _upiId,
                                 onValueChange: (v) =>
                                     setState(() => _upiId = v),
                                 label: 'Enter UPI ID',
-                                placeholder: 'yourname@upi',
+                                placeholder: 'e.g. name@upi',
                                 placeholderStyle: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -22241,7 +21821,7 @@ class _PaymentMethodCardMockupState extends State<_PaymentMethodCardMockup> {
                               onPressed: () {},
                               size: Ux4gButtonSize.large,
                               height: 48,
-                              width: 326,
+                              width: double.infinity,
                             ),
                             const SizedBox(height: 12),
                             Center(
@@ -22272,379 +21852,551 @@ class _PaymentMethodCardMockupState extends State<_PaymentMethodCardMockup> {
   }
 }
 
-const _paymentMethodCode = r'''
-// StatefulWidget — tracks selected payment method
-String _method = 'upi';
-String _upiId = '';
+const _paymentMethodCode = r'''import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux4g/ux4g.dart';
 
-Scaffold(
-  backgroundColor: Ux4gPalette.neutral50,
-  body: Column(
-    children: [
-      Ux4gAppHeader(
-        variant: Ux4gAppHeaderVariant.light,
-        title: '',
-        leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
-          SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
-        ],
-        horizontalPadding: 16,
-        leadingSpacing: 12,
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 5,
-          currentStep: 5,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'),
-            Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'),
-            Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
-      Expanded(
-        child: Container(
-          color: Ux4gPalette.neutral50,
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.fromLTRB(16, 20, 16, 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Choose payment method',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: Color(0xFF111827),
-                          height: 1.2,
-                          letterSpacing: -0.3,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        'Select how you would like to pay Rs 41.30.',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Ux4gPalette.neutral500,
-                          height: 1.4,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      // Radio-style payment method tiles
-                      _pmtOptionTile(
-                        value: 'upi',
-                        groupValue: _method,
-                        onChanged: (v) => setState(() => _method = v ?? _method),
-                        label: 'UPI',
-                        subtitle: 'Pay using any UPI app (GPay, PhonePe, Paytm...)',
-                      ),
-                      _pmtOptionTile(
-                        value: 'netbanking',
-                        groupValue: _method,
-                        onChanged: (v) => setState(() => _method = v ?? _method),
-                        label: 'Net Banking',
-                        subtitle: 'Pay directly from your bank account',
-                      ),
-                      _pmtOptionTile(
-                        value: 'card',
-                        groupValue: _method,
-                        onChanged: (v) => setState(() => _method = v ?? _method),
-                        label: 'Debit / Credit Card',
-                        subtitle: 'Visa, Mastercard, RuPay accepted',
-                      ),
-                      _pmtOptionTile(
-                        value: 'csc',
-                        groupValue: _method,
-                        onChanged: (v) => setState(() => _method = v ?? _method),
-                        label: 'Pay at CSC Centre',
-                        subtitle: 'Visit your nearest Common Service Centre',
-                      ),
-                      if (_method == 'upi') ...[
-                        SizedBox(height: 4),
-                        Ux4gInputField(
-                          value: _upiId,
-                          onValueChange: (v) => setState(() => _upiId = v),
-                          label: 'Enter UPI ID',
-                          placeholder: 'yourname@upi',
-                        ),
-                      ],
-                      SizedBox(height: 20),
-                      Ux4gButton(
-                        text: 'Pay Rs 41.30',
-                        onPressed: () {},
-                        size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-                      ),
-                      SizedBox(height: 12),
-                      Center(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Back to summary',
-                            style: TextStyle(fontSize: 14, color: primary),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+class ChoosePaymentMethodScreen extends StatefulWidget {
+  const ChoosePaymentMethodScreen({super.key});
+
+  @override
+  State<ChoosePaymentMethodScreen> createState() => _ChoosePaymentMethodScreenState();
+}
+
+class _ChoosePaymentMethodScreenState extends State<ChoosePaymentMethodScreen> {
+  String _method = 'upi';
+  String _upiId = '';
+
+  @override
+  Widget build(BuildContext context) {
+    final primary = Theme.of(context).colorScheme.primary;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Scaffold(
+      backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+      body: Column(
+        children: [
+          Ux4gAppHeader(
+            variant: isDark ? Ux4gAppHeaderVariant.dark : Ux4gAppHeaderVariant.light,
+            title: '',
+            leadingWidgets: [
+              SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 32),
+              const SizedBox(
+                height: 28,
+                child: Ux4gDivider(
+                  orientation: Ux4gDividerOrientation.vertical,
+                  color: Ux4gPalette.neutral300,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20, top: 8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('Powered by -',
-                        style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
-                            fontWeight: FontWeight.w500)),
-                    SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                  ],
+              SvgPicture.asset(
+                Ux4gIcons.union,
+                height: 32,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white : Ux4gPalette.primary500,
+                  BlendMode.srcIn,
                 ),
               ),
             ],
+            horizontalPadding: 16,
+            leadingSpacing: 8,
           ),
-        ),
-      ),
-    ],
-  ),
-)
-
-// Helper: radio-style bordered payment tile
-Widget _pmtOptionTile({
-  required String value,
-  required String groupValue,
-  required ValueChanged<String?> onChanged,
-  required String label,
-  required String subtitle,
-}) {
-  final selected = value == groupValue;
-  return GestureDetector(
-    onTap: () => onChanged(value),
-    child: AnimatedContainer(
-      duration: Duration(milliseconds: 150),
-      margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      decoration: BoxDecoration(
-        color: selected ? primary.withOpacity(0.06) : Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: selected ? primary : Ux4gPalette.neutral200,
-          width: selected ? 2 : 1,
-        ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 20, height: 20,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: selected ? primary : Ux4gPalette.neutral300, width: 2),
-            ),
-            alignment: Alignment.center,
-            child: selected
-                ? Container(width: 10, height: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: primary))
-                : null,
-          ),
-          SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(label,
-                    style: TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w600,
-                      color: selected ? primary : Color(0xFF111827))),
-                SizedBox(height: 2),
-                Text(subtitle,
-                    style: TextStyle(
-                      fontSize: 12, color: Ux4gPalette.neutral500, height: 1.3)),
+          const Ux4gDivider(color: Ux4gPalette.neutral200),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
+            child: Ux4gStepper(
+              totalSteps: 5,
+              currentStep: 5,
+              orientation: StepperOrientation.horizontal,
+              steps: [
+                Ux4gStepItem(title: 'Review'),
+                Ux4gStepItem(title: 'Details'),
+                Ux4gStepItem(title: 'Documents'),
+                Ux4gStepItem(title: 'Preview'),
+                Ux4gStepItem(title: 'Payment'),
               ],
             ),
           ),
-        ],
-      ),
-    ),
-  );
-}''';
-
-const _paymentMethodCardCode = r'''
-// StatefulWidget — tracks selected payment method (Card style)
-String _method = 'upi';
-String _upiId = '';
-
-Scaffold(
-  backgroundColor: Ux4gPalette.primary100,
-  body: Column(
-    children: [
-      Ux4gAppHeader(
-        variant: Ux4gAppHeaderVariant.light,
-        title: '',
-        leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
-          SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
-        ],
-        horizontalPadding: 16,
-        leadingSpacing: 12,
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 5,
-          currentStep: 5,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'),
-            Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'),
-            Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
-      Expanded(
-        child: Container(
-          color: Ux4gPalette.primary100,
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.fromLTRB(16, 20, 16, 16),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(16, 24, 16, 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
-                          blurRadius: 16,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Choose payment method',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w800,
-                            color: Color(0xFF111827),
-                            height: 1.2,
-                            letterSpacing: -0.3,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          'Select how you would like to pay Rs 41.30.',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Ux4gPalette.neutral500,
-                            height: 1.4,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        _pmtOptionTile(
-                          value: 'upi',
-                          groupValue: _method,
-                          onChanged: (v) => setState(() => _method = v ?? _method),
-                          label: 'UPI',
-                          subtitle: 'Pay using any UPI app (GPay, PhonePe, Paytm...)',
-                        ),
-                        _pmtOptionTile(
-                          value: 'netbanking',
-                          groupValue: _method,
-                          onChanged: (v) => setState(() => _method = v ?? _method),
-                          label: 'Net Banking',
-                          subtitle: 'Pay directly from your bank account',
-                        ),
-                        _pmtOptionTile(
-                          value: 'card',
-                          groupValue: _method,
-                          onChanged: (v) => setState(() => _method = v ?? _method),
-                          label: 'Debit / Credit Card',
-                          subtitle: 'Visa, Mastercard, RuPay accepted',
-                        ),
-                        _pmtOptionTile(
-                          value: 'csc',
-                          groupValue: _method,
-                          onChanged: (v) => setState(() => _method = v ?? _method),
-                          label: 'Pay at CSC Centre',
-                          subtitle: 'Visit your nearest Common Service Centre',
-                        ),
-                        if (_method == 'upi') ...[
-                          SizedBox(height: 4),
-                          Ux4gInputField(
-                            value: _upiId,
-                            onValueChange: (v) => setState(() => _upiId = v),
-                            label: 'Enter UPI ID',
-                            placeholder: 'yourname@upi',
-                          ),
-                        ],
-                        SizedBox(height: 20),
-                        Ux4gButton(
-                          text: 'Pay Rs 41.30',
-                          onPressed: () {},
-                          size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-                        ),
-                        SizedBox(height: 12),
-                        Center(
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Back to summary',
-                              style: TextStyle(fontSize: 14, color: primary),
+          Expanded(
+            child: Container(
+              color: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Choose payment method',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w800,
+                              color: isDark ? Colors.white : const Color(0xFF111827),
+                              height: 1.2,
+                              letterSpacing: -0.3,
                             ),
                           ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Select how you would like to pay Rs 41.30.',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Ux4gPalette.neutral500,
+                              height: 1.4,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          _buildPaymentOptionTile(
+                            value: 'upi',
+                            label: 'UPI',
+                            subtitle: 'Pay with any UPI app',
+                            primary: primary,
+                            isDark: isDark,
+                          ),
+                          _buildPaymentOptionTile(
+                            value: 'netbanking',
+                            label: 'Net Banking',
+                            subtitle: '60+ banks supported',
+                            primary: primary,
+                            isDark: isDark,
+                          ),
+                          _buildPaymentOptionTile(
+                            value: 'card',
+                            label: 'Debit / Credit Card',
+                            subtitle: 'Visa, MasterCard, RuPay',
+                            primary: primary,
+                            isDark: isDark,
+                          ),
+                          _buildPaymentOptionTile(
+                            value: 'csc',
+                            label: 'CSC Centre',
+                            subtitle: 'Pay in cash at your nearest CSC',
+                            primary: primary,
+                            isDark: isDark,
+                          ),
+                          if (_method == 'upi') ...[
+                            const SizedBox(height: 8),
+                            Ux4gInputField(
+                              value: _upiId,
+                              onValueChange: (v) => setState(() => _upiId = v),
+                              label: 'Enter UPI ID',
+                              placeholder: 'e.g. name@upi',
+                            ),
+                          ],
+                          const SizedBox(height: 20),
+                          Ux4gButton(
+                            text: 'Pay Rs 41.30',
+                            onPressed: () {},
+                            size: Ux4gButtonSize.large,
+                            height: 48,
+                            width: double.infinity,
+                          ),
+                          const SizedBox(height: 12),
+                          Center(
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Back to summary',
+                                style: TextStyle(fontSize: 14, color: primary),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Ux4gPalette.neutral400,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Image.asset(
+                          Ux4gIcons.digitalIndiaLogoPng,
+                          height: 22,
+                          color: isDark ? Colors.white : null,
                         ),
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPaymentOptionTile({
+    required String value,
+    required String label,
+    required String subtitle,
+    required Color primary,
+    required bool isDark,
+  }) {
+    final selected = value == _method;
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+
+    final bgColor = selected
+        ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+        : (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100);
+
+    final titleColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900);
+
+    final subtitleColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700);
+
+    final radioColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : null;
+
+    final titleStyle = (typography?.bM_default ??
+            const TextStyle(fontSize: 14, fontWeight: FontWeight.w600))
+        .copyWith(color: titleColor);
+
+    final subtitleStyle = (typography?.bS_default ??
+            const TextStyle(fontSize: 12))
+        .copyWith(color: subtitleColor);
+
+    return GestureDetector(
+      onTap: () => setState(() => _method = value),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.transparent, width: 0),
+        ),
+        child: Row(
+          children: [
+            IgnorePointer(
+              child: Ux4gRadioButton<String>(
+                value: value,
+                groupValue: _method,
+                onChanged: (_) {},
+                size: Ux4gRadioButtonSize.medium,
+                color: radioColor,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: titleStyle,
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: subtitleStyle,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+''';
+
+const _paymentMethodCardCode = r'''import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux4g/ux4g.dart';
+
+class ChoosePaymentMethodCardScreen extends StatefulWidget {
+  const ChoosePaymentMethodCardScreen({super.key});
+
+  @override
+  State<ChoosePaymentMethodCardScreen> createState() => _ChoosePaymentMethodCardScreenState();
+}
+
+class _ChoosePaymentMethodCardScreenState extends State<ChoosePaymentMethodCardScreen> {
+  String _method = 'upi';
+  String _upiId = '';
+
+  @override
+  Widget build(BuildContext context) {
+    final primary = Theme.of(context).colorScheme.primary;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Scaffold(
+      backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+      body: Column(
+        children: [
+          Ux4gAppHeader(
+            variant: isDark ? Ux4gAppHeaderVariant.dark : Ux4gAppHeaderVariant.light,
+            title: '',
+            leadingWidgets: [
+              SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 32),
+              const SizedBox(
+                height: 28,
+                child: Ux4gDivider(
+                  orientation: Ux4gDividerOrientation.vertical,
+                  color: Ux4gPalette.neutral300,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20, top: 8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('Powered by -',
-                        style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
-                            fontWeight: FontWeight.w500)),
-                    SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                  ],
+              SvgPicture.asset(
+                Ux4gIcons.union,
+                height: 32,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white : Ux4gPalette.primary500,
+                  BlendMode.srcIn,
                 ),
               ),
             ],
+            horizontalPadding: 16,
+            leadingSpacing: 8,
           ),
+          const Ux4gDivider(color: Ux4gPalette.neutral200),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
+            child: Ux4gStepper(
+              totalSteps: 5,
+              currentStep: 5,
+              orientation: StepperOrientation.horizontal,
+              steps: [
+                Ux4gStepItem(title: 'Review'),
+                Ux4gStepItem(title: 'Details'),
+                Ux4gStepItem(title: 'Documents'),
+                Ux4gStepItem(title: 'Preview'),
+                Ux4gStepItem(title: 'Payment'),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(16, 24, 16, 20),
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.04),
+                              blurRadius: 16,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Choose payment method',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w800,
+                                color: isDark ? Colors.white : const Color(0xFF111827),
+                                height: 1.2,
+                                letterSpacing: -0.3,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Select how you would like to pay Rs 41.30.',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Ux4gPalette.neutral500,
+                                height: 1.4,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            _buildPaymentOptionTile(
+                              value: 'upi',
+                              label: 'UPI',
+                              subtitle: 'Pay with any UPI app',
+                              primary: primary,
+                              isDark: isDark,
+                            ),
+                            _buildPaymentOptionTile(
+                              value: 'netbanking',
+                              label: 'Net Banking',
+                              subtitle: '60+ banks supported',
+                              primary: primary,
+                              isDark: isDark,
+                            ),
+                            _buildPaymentOptionTile(
+                              value: 'card',
+                              label: 'Debit / Credit Card',
+                              subtitle: 'Visa, MasterCard, RuPay',
+                              primary: primary,
+                              isDark: isDark,
+                            ),
+                            _buildPaymentOptionTile(
+                              value: 'csc',
+                              label: 'CSC Centre',
+                              subtitle: 'Pay in cash at your nearest CSC',
+                              primary: primary,
+                              isDark: isDark,
+                            ),
+                            if (_method == 'upi') ...[
+                              const SizedBox(height: 8),
+                              Ux4gInputField(
+                                value: _upiId,
+                                onValueChange: (v) => setState(() => _upiId = v),
+                                label: 'Enter UPI ID',
+                                placeholder: 'e.g. name@upi',
+                              ),
+                            ],
+                            const SizedBox(height: 20),
+                            Ux4gButton(
+                              text: 'Pay Rs 41.30',
+                              onPressed: () {},
+                              size: Ux4gButtonSize.large,
+                              height: 48,
+                              width: double.infinity,
+                            ),
+                            const SizedBox(height: 12),
+                            Center(
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Back to summary',
+                                  style: TextStyle(fontSize: 14, color: primary),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Ux4gPalette.neutral400,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Image.asset(
+                          Ux4gIcons.digitalIndiaLogoPng,
+                          height: 22,
+                          color: isDark ? Colors.white : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPaymentOptionTile({
+    required String value,
+    required String label,
+    required String subtitle,
+    required Color primary,
+    required bool isDark,
+  }) {
+    final selected = value == _method;
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+
+    final bgColor = selected
+        ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+        : (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100);
+
+    final titleColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900);
+
+    final subtitleColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700);
+
+    final radioColor = selected
+        ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+        : null;
+
+    final titleStyle = (typography?.bM_default ??
+            const TextStyle(fontSize: 14, fontWeight: FontWeight.w600))
+        .copyWith(color: titleColor);
+
+    final subtitleStyle = (typography?.bS_default ??
+            const TextStyle(fontSize: 12))
+        .copyWith(color: subtitleColor);
+
+    return GestureDetector(
+      onTap: () => setState(() => _method = value),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.transparent, width: 0),
+        ),
+        child: Row(
+          children: [
+            IgnorePointer(
+              child: Ux4gRadioButton<String>(
+                value: value,
+                groupValue: _method,
+                onChanged: (_) {},
+                size: Ux4gRadioButtonSize.medium,
+                color: radioColor,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: titleStyle,
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: subtitleStyle,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-    ],
-  ),
-)
-
-// Helper: _pmtOptionTile — same as Default variant''';
+    );
+  }
+}
+''';
 
 // -----------------------------------------------------------------------
 // PAYMENT PROCESSING — overlay spinner on dimmed background
@@ -22664,7 +22416,6 @@ class _PaymentProcessingMockup extends StatelessWidget {
             children: [
               const _BrandHeader(),
               const _PmtStepBar(),
-              const Divider(height: 1, thickness: 1, color: _border),
               Expanded(
                 child: Container(
                   color: _bg,
@@ -22716,17 +22467,14 @@ class _PaymentProcessingMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                      width: 48,
-                      height: 48,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 4,
-                        valueColor: AlwaysStoppedAnimation<Color>(primary),
-                      ),
+                    Ux4gLoader(
+                      size: 40,
+                      strokeWidth: 4,
+                      gradientColors: [primary.withValues(alpha: 0.2), primary],
                     ),
                     const SizedBox(height: 20),
                     const Text(
-                      'Redirecting to PayGov...',
+                      'Redirecting..',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -22735,10 +22483,11 @@ class _PaymentProcessingMockup extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     const Text(
-                      'Please do not press back or refresh.\n'
-                      'Your payment is being processed securely.',
+                      'Please do not close or refresh this page.\n'
+                      'We are securely processing your\n'
+                      'payment.',
                       style: TextStyle(
                         fontSize: 13,
                         color: _subtleText,
@@ -22770,7 +22519,6 @@ class _PaymentProcessingCardMockup extends StatelessWidget {
             children: [
               const _BrandHeader(),
               const _PmtStepBar(),
-              const Divider(height: 1, thickness: 1, color: _border),
               Expanded(
                 child: Container(
                   color: _getSuCardBg(context),
@@ -22824,17 +22572,14 @@ class _PaymentProcessingCardMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                      width: 48,
-                      height: 48,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 4,
-                        valueColor: AlwaysStoppedAnimation<Color>(primary),
-                      ),
+                    Ux4gLoader(
+                      size: 40,
+                      strokeWidth: 4,
+                      gradientColors: [primary.withValues(alpha: 0.2), primary],
                     ),
                     const SizedBox(height: 20),
                     const Text(
-                      'Redirecting to PayGov...',
+                      'Redirecting..',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -22843,10 +22588,11 @@ class _PaymentProcessingCardMockup extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     const Text(
-                      'Please do not press back or refresh.\n'
-                      'Your payment is being processed securely.',
+                      'Please do not close or refresh this page.\n'
+                      'We are securely processing your\n'
+                      'payment.',
                       style: TextStyle(
                         fontSize: 13,
                         color: _subtleText,
@@ -22877,12 +22623,12 @@ Scaffold(
             variant: Ux4gAppHeaderVariant.light,
             title: '',
             leadingWidgets: [
-              SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+              SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
               SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-              SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+              SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
             ],
             horizontalPadding: 16,
-            leadingSpacing: 12,
+            leadingSpacing: 8,
           ),
           Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
           Padding(
@@ -22900,7 +22646,6 @@ Scaffold(
               ],
             ),
           ),
-          Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
           Expanded(
             child: Container(
               color: Ux4gPalette.neutral50,
@@ -22944,16 +22689,14 @@ Scaffold(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  width: 48, height: 48,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 4,
-                    valueColor: AlwaysStoppedAnimation<Color>(primary),
-                  ),
+                Ux4gLoader(
+                  size: 40,
+                  strokeWidth: 4,
+                  gradientColors: [Ux4gPalette.primary200, primary],
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Redirecting to PayGov...',
+                  'Redirecting..',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -22962,10 +22705,11 @@ Scaffold(
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 12),
                 Text(
-                  'Please do not press back or refresh.\n'
-                  'Your payment is being processed securely.',
+                  'Please do not close or refresh this page.\n'
+                  'We are securely processing your\n'
+                  'payment.',
                   style: TextStyle(
                     fontSize: 13,
                     color: Ux4gPalette.neutral500,
@@ -22994,12 +22738,12 @@ Scaffold(
             variant: Ux4gAppHeaderVariant.light,
             title: '',
             leadingWidgets: [
-              SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+              SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
               SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-              SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+              SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
             ],
             horizontalPadding: 16,
-            leadingSpacing: 12,
+            leadingSpacing: 8,
           ),
           Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
           Padding(
@@ -23017,7 +22761,6 @@ Scaffold(
               ],
             ),
           ),
-          Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
           Expanded(
             child: Container(
               color: Ux4gPalette.primary100,
@@ -23075,16 +22818,14 @@ Scaffold(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  width: 48, height: 48,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 4,
-                    valueColor: AlwaysStoppedAnimation<Color>(primary),
-                  ),
+                Ux4gLoader(
+                  size: 40,
+                  strokeWidth: 4,
+                  gradientColors: [Ux4gPalette.primary200, primary],
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Redirecting to PayGov...',
+                  'Redirecting..',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -23093,10 +22834,11 @@ Scaffold(
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 12),
                 Text(
-                  'Please do not press back or refresh.\n'
-                  'Your payment is being processed securely.',
+                  'Please do not close or refresh this page.\n'
+                  'We are securely processing your\n'
+                  'payment.',
                   style: TextStyle(
                     fontSize: 13,
                     color: Ux4gPalette.neutral500,
@@ -23122,16 +22864,17 @@ class _PaymentSuccessMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
+    final typography = Ux4gTheme.typography(context);
     return _PhoneFrame(
       child: Column(
         children: [
           const _BrandHeader(),
           const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
-              color: _bg,
+              color: isDark ? Ux4gPalette.neutral950 : _bg,
               child: Column(
                 children: [
                   Expanded(
@@ -23142,16 +22885,20 @@ class _PaymentSuccessMockup extends StatelessWidget {
                           Container(
                             width: 64,
                             height: 64,
-                            decoration: const BoxDecoration(
-                              color: Ux4gPalette.green100,
+                            decoration: BoxDecoration(
+                              color: isDark
+                                  ? Ux4gPalette.green800
+                                  : Ux4gPalette.green100,
                               shape: BoxShape.circle,
                             ),
                             alignment: Alignment.center,
                             child: Container(
                               width: 36,
                               height: 36,
-                              decoration: const BoxDecoration(
-                                color: Ux4gPalette.green,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gPalette.green600
+                                    : Ux4gPalette.green,
                                 shape: BoxShape.circle,
                               ),
                               child: const Icon(
@@ -23162,51 +22909,55 @@ class _PaymentSuccessMockup extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'Payment Successful',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w800,
-                              color: Ux4gPalette.green700,
-                              height: 1.2,
-                              letterSpacing: -0.3,
+                            style: typography.hL_strong.copyWith(
+                              color: isDark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 6),
-                          const Text(
-                            'Rs 41.30 paid for Income Certificate '
-                            '(Application #INC-2024-00842).',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: _subtleText,
-                              height: 1.4,
+                          Text(
+                            'Rs 41.30 paid via UPI to Revenue\nDepartment, Maharashtra.',
+                            style: typography.bM_default.copyWith(
+                              color: isDark
+                                  ? Ux4gPalette.neutral200
+                                  : _subtleText,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 20),
                           Container(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF0FDF4),
-                              border: Border.all(color: Ux4gPalette.green100),
+                              color: isDark
+                                  ? Ux4gPalette.green800
+                                  : Ux4gPalette.green100,
+                              border: Border.all(
+                                color: isDark
+                                    ? Ux4gPalette.green600
+                                    : Ux4gPalette.green300,
+                              ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
-                              children: [
-                                const _PayDetailRow(
+                              children: const [
+                                _PayDetailRow(
                                   label: 'Amount paid',
                                   value: 'Rs 41.30',
                                   valueBold: true,
                                 ),
-                                const _PayDetailRow(
+                                _PayDetailRow(
                                   label: 'Transaction ID',
                                   value: 'PG2026MH04127TX',
                                 ),
-                                const _PayDetailRow(
+                                _PayDetailRow(
                                   label: 'Method',
-                                  value: 'UPI - ramesh@upi',
+                                  value: 'UPI · ramesh@upi',
                                 ),
-                                const _PayDetailRow(
+                                _PayDetailRow(
                                   label: 'Date and time',
                                   value: '12 Apr 2026, 2:34 PM IST',
                                 ),
@@ -23217,6 +22968,12 @@ class _PaymentSuccessMockup extends StatelessWidget {
                           Ux4gButton(
                             text: 'Track my application',
                             onPressed: () {},
+                            backgroundColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary950
+                                : Colors.white,
                             size: Ux4gButtonSize.large,
                             height: 48,
                             width: 326,
@@ -23226,6 +22983,12 @@ class _PaymentSuccessMockup extends StatelessWidget {
                             text: 'Download receipt (PDF)',
                             onPressed: () {},
                             variant: Ux4gButtonVariant.outline,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            borderColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
                             size: Ux4gButtonSize.large,
                             height: 48,
                             width: 326,
@@ -23260,13 +23023,13 @@ class _PaymentSuccessCardMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
+    final typography = Ux4gTheme.typography(context);
     return _PhoneFrame(
       child: Column(
         children: [
           const _BrandHeader(),
-          const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: _getSuCardBg(context),
@@ -23275,117 +23038,143 @@ class _PaymentSuccessCardMockup extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(16, 24, 16, 20),
-                        decoration: _suCardDeco(context),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 64,
-                              height: 64,
-                              decoration: const BoxDecoration(
-                                color: Ux4gPalette.green100,
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: Alignment.center,
-                              child: Container(
-                                width: 36,
-                                height: 36,
-                                decoration: const BoxDecoration(
-                                  color: Ux4gPalette.green,
-                                  shape: BoxShape.circle,
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
+                            decoration: _suCardDeco(context),
+                            child: Column(
+                              children: [
+                                const _PmtStepBar(
+                                  padding: EdgeInsets.fromLTRB(0, 8, 12, 20),
                                 ),
-                                child: const Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                  size: 22,
+                                Container(
+                                  width: 64,
+                                  height: 64,
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? Ux4gPalette.green800
+                                        : Ux4gPalette.green100,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    width: 36,
+                                    height: 36,
+                                    decoration: BoxDecoration(
+                                      color: isDark
+                                          ? Ux4gPalette.green600
+                                          : Ux4gPalette.green,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                      size: 22,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            const Text(
-                              'Payment Successful',
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: Ux4gPalette.green700,
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 6),
-                            const Text(
-                              'Rs 41.30 paid for Income Certificate '
-                              '(Application #INC-2024-00842).',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: _subtleText,
-                                height: 1.4,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 20),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF0FDF4),
-                                border: Border.all(color: Ux4gPalette.green100),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                children: [
-                                  const _PayDetailRow(
-                                    label: 'Amount paid',
-                                    value: 'Rs 41.30',
-                                    valueBold: true,
+                                const SizedBox(height: 16),
+                                Text(
+                                  'Payment Successful',
+                                  style: typography.hL_strong.copyWith(
+                                    color: isDark
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.neutral900,
                                   ),
-                                  const _PayDetailRow(
-                                    label: 'Transaction ID',
-                                    value: 'PG2026MH04127TX',
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  'Rs 41.30 paid via UPI to Revenue\nDepartment, Maharashtra.',
+                                  style: typography.bM_default.copyWith(
+                                    color: isDark
+                                        ? Ux4gPalette.neutral200
+                                        : _subtleText,
                                   ),
-                                  const _PayDetailRow(
-                                    label: 'Method',
-                                    value: 'UPI - ramesh@upi',
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 20),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 6,
                                   ),
-                                  const _PayDetailRow(
-                                    label: 'Date and time',
-                                    value: '12 Apr 2026, 2:34 PM IST',
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? Ux4gPalette.green800
+                                        : Ux4gPalette.green100,
+                                    border: Border.all(
+                                      color: isDark
+                                          ? Ux4gPalette.green600
+                                          : Ux4gPalette.green300,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                ],
-                              ),
+                                  child: Column(
+                                    children: const [
+                                      _PayDetailRow(
+                                        label: 'Amount paid',
+                                        value: 'Rs 41.30',
+                                        valueBold: true,
+                                      ),
+                                      _PayDetailRow(
+                                        label: 'Transaction ID',
+                                        value: 'PG2026MH04127TX',
+                                      ),
+                                      _PayDetailRow(
+                                        label: 'Method',
+                                        value: 'UPI · ramesh@upi',
+                                      ),
+                                      _PayDetailRow(
+                                        label: 'Date and time',
+                                        value: '12 Apr 2026, 2:34 PM IST',
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 20),
-                            Ux4gButton(
-                              text: 'Track my application',
+                          ),
+                          const SizedBox(height: 20),
+                          Ux4gButton(
+                            text: 'Track my application',
+                            onPressed: () {},
+                            backgroundColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary950
+                                : Colors.white,
+                            size: Ux4gButtonSize.large,
+                            height: 48,
+                            width: 326,
+                          ),
+                          const SizedBox(height: 10),
+                          Ux4gButton(
+                            text: 'Download receipt (PDF)',
+                            onPressed: () {},
+                            variant: Ux4gButtonVariant.outline,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            borderColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            size: Ux4gButtonSize.large,
+                            height: 48,
+                            width: 326,
+                          ),
+                          const SizedBox(height: 12),
+                          Center(
+                            child: TextButton(
                               onPressed: () {},
-                              size: Ux4gButtonSize.large,
-                              height: 48,
-                              width: 326,
-                            ),
-                            const SizedBox(height: 10),
-                            Ux4gButton(
-                              text: 'Download receipt (PDF)',
-                              onPressed: () {},
-                              variant: Ux4gButtonVariant.outline,
-                              size: Ux4gButtonSize.large,
-                              height: 48,
-                              width: 326,
-                            ),
-                            const SizedBox(height: 12),
-                            Center(
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Return to services',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: primary,
-                                  ),
-                                ),
+                              child: Text(
+                                'Return to services',
+                                style: TextStyle(fontSize: 14, color: primary),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -23409,30 +23198,27 @@ Scaffold(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Padding(
         padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
         child: Ux4gStepper(
-          totalSteps: 5, currentStep: 5,
+          totalSteps: 4, currentStep: 4,
           orientation: StepperOrientation.horizontal,
           steps: [
             Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
+            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
           ],
         ),
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Expanded(
         child: Container(
-          color: Ux4gPalette.neutral50,
+          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
           child: Column(
             children: [
               Expanded(
@@ -23444,12 +23230,12 @@ Scaffold(
                       Container(
                         width: 64, height: 64,
                         decoration: BoxDecoration(
-                          color: Ux4gPalette.green100, shape: BoxShape.circle),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100, shape: BoxShape.circle),
                         alignment: Alignment.center,
                         child: Container(
                           width: 36, height: 36,
                           decoration: BoxDecoration(
-                            color: Ux4gPalette.green, shape: BoxShape.circle),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green, shape: BoxShape.circle),
                           child: Icon(Icons.check, color: Colors.white, size: 22),
                         ),
                       ),
@@ -23458,32 +23244,32 @@ Scaffold(
                         'Payment Successful',
                         style: TextStyle(
                           fontSize: 22, fontWeight: FontWeight.w800,
-                          color: Ux4gPalette.green700,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                           height: 1.2, letterSpacing: -0.3,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 6),
                       Text(
-                        'Rs 41.30 paid for Income Certificate '
-                        '(Application #INC-2024-00842).',
+                        'Rs 41.30 paid via UPI to Revenue\nDepartment, Maharashtra.',
                         style: TextStyle(
-                          fontSize: 13, color: Ux4gPalette.neutral500, height: 1.4),
+                          fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral500, height: 1.4),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 20),
                       // Transaction details table
                       Container(
+                        padding: EdgeInsets.symmetric(vertical: 6),
                         decoration: BoxDecoration(
-                          color: Color(0xFFF0FDF4),
-                          border: Border.all(color: Ux4gPalette.green100),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Color(0xFFF0FDF4),
+                          border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green100),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
                           children: [
                             _payDetailRow('Amount paid', 'Rs 41.30', valueBold: true),
                             _payDetailRow('Transaction ID', 'PG2026MH04127TX'),
-                            _payDetailRow('Method', 'UPI - ramesh@upi'),
+                            _payDetailRow('Method', 'UPI · ramesh@upi'),
                             _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST'),
                           ],
                         ),
@@ -23526,7 +23312,7 @@ Scaffold(
                         style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -23541,17 +23327,17 @@ Scaffold(
 // Helper: detail row
 Widget _payDetailRow(String label, String value, {bool valueBold = false, Color? valueColor}) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(flex: 4,
-          child: Text(label, style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500))),
+          child: Text(label, style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral500))),
         Expanded(flex: 5,
           child: Text(value, textAlign: TextAlign.right,
               style: TextStyle(fontSize: 13,
                 fontWeight: valueBold ? FontWeight.w600 : FontWeight.w400,
-                color: valueColor ?? Color(0xFF111827)))),
+                color: valueColor ?? (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Color(0xFF111827))))),
       ],
     ),
   );
@@ -23566,27 +23352,13 @@ Scaffold(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 5, currentStep: 5,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Expanded(
         child: Container(
           color: Ux4gPalette.primary100,
@@ -23595,76 +23367,91 @@ Scaffold(
               Expanded(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.fromLTRB(16, 20, 16, 16),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(16, 24, 16, 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(color: Colors.black.withOpacity(0.04),
-                            blurRadius: 16, offset: Offset(0, 4)),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 64, height: 64,
-                          decoration: BoxDecoration(
-                            color: Ux4gPalette.green100, shape: BoxShape.circle),
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: 36, height: 36,
-                            decoration: BoxDecoration(
-                              color: Ux4gPalette.green, shape: BoxShape.circle),
-                            child: Icon(Icons.check, color: Colors.white, size: 22),
-                          ),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(16, 16, 16, 20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withOpacity(0.04),
+                                blurRadius: 16, offset: Offset(0, 4)),
+                          ],
                         ),
-                        SizedBox(height: 16),
-                        Text('Payment Successful',
-                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800,
-                              color: Ux4gPalette.green700, height: 1.2,
-                              letterSpacing: -0.3),
-                          textAlign: TextAlign.center),
-                        SizedBox(height: 6),
-                        Text('Rs 41.30 paid for Income Certificate '
-                            '(Application #INC-2024-00842).',
-                          style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500,
-                              height: 1.4),
-                          textAlign: TextAlign.center),
-                        SizedBox(height: 20),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFFF0FDF4),
-                            border: Border.all(color: Ux4gPalette.green100),
-                            borderRadius: BorderRadius.circular(10)),
-                          child: Column(children: [
-                            _payDetailRow('Amount paid', 'Rs 41.30', valueBold: true),
-                            _payDetailRow('Transaction ID', 'PG2026MH04127TX'),
-                            _payDetailRow('Method', 'UPI - ramesh@upi'),
-                            _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST'),
-                          ]),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 8, 0, 20),
+                              child: Ux4gStepper(
+                                totalSteps: 4, currentStep: 4,
+                                orientation: StepperOrientation.horizontal,
+                                steps: [
+                                  Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
+                                  Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 64, height: 64,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100, shape: BoxShape.circle),
+                              alignment: Alignment.center,
+                              child: Container(
+                                width: 36, height: 36,
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green, shape: BoxShape.circle),
+                                child: Icon(Icons.check, color: Colors.white, size: 22),
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            Text('Payment Successful',
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2,
+                                  letterSpacing: -0.3),
+                              textAlign: TextAlign.center),
+                            SizedBox(height: 6),
+                            Text('Rs 41.30 paid via UPI to Revenue\nDepartment, Maharashtra.',
+                              style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500,
+                                  height: 1.4),
+                              textAlign: TextAlign.center),
+                            SizedBox(height: 20),
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 6),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Color(0xFFF0FDF4),
+                                border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green100),
+                                borderRadius: BorderRadius.circular(10)),
+                              child: Column(children: [
+                                _payDetailRow('Amount paid', 'Rs 41.30', valueBold: true),
+                                _payDetailRow('Transaction ID', 'PG2026MH04127TX'),
+                                _payDetailRow('Method', 'UPI · ramesh@upi'),
+                                _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST'),
+                              ]),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 20),
-                        Ux4gButton(text: 'Track my application', onPressed: () {},
-                            size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-                        SizedBox(height: 10),
-                        Ux4gButton(text: 'Download receipt (PDF)', onPressed: () {},
-                            variant: Ux4gButtonVariant.outline,
-                            size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-                        SizedBox(height: 12),
-                        Center(
-                          child: TextButton(onPressed: () {},
-                            child: Text('Return to services',
-                                style: TextStyle(fontSize: 14, color: primary))),
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 20),
+                      Ux4gButton(text: 'Track my application', onPressed: () {},
+                          size: Ux4gButtonSize.large,
+                          height: 48,
+                          width: 326,
+                      ),
+                      SizedBox(height: 10),
+                      Ux4gButton(text: 'Download receipt (PDF)', onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.large,
+                          height: 48,
+                          width: 326,
+                      ),
+                      SizedBox(height: 12),
+                      Center(
+                        child: TextButton(onPressed: () {},
+                          child: Text('Return to services',
+                              style: TextStyle(fontSize: 14, color: primary))),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -23674,7 +23461,7 @@ Scaffold(
                   Text('Powered by -', style: TextStyle(fontSize: 11,
                       color: Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ]),
               ),
             ],
@@ -23696,7 +23483,9 @@ class _PaymentFailedMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
+    final typography = Ux4gTheme.typography(context);
     return _PhoneFrame(
       child: Column(
         children: [
@@ -23705,7 +23494,7 @@ class _PaymentFailedMockup extends StatelessWidget {
           const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
-              color: _bg,
+              color: isDark ? Ux4gPalette.neutral950 : _bg,
               child: Column(
                 children: [
                   Expanded(
@@ -23716,62 +23505,70 @@ class _PaymentFailedMockup extends StatelessWidget {
                           Container(
                             width: 64,
                             height: 64,
-                            decoration: const BoxDecoration(
-                              color: Ux4gPalette.red100,
+                            decoration: BoxDecoration(
+                              color: isDark
+                                  ? Ux4gPalette.red800
+                                  : Ux4gPalette.red100,
                               shape: BoxShape.circle,
                             ),
                             alignment: Alignment.center,
-                            child: const Icon(
-                              Icons.error_outline,
-                              color: Ux4gPalette.red600,
+                            child: Icon(
+                              Icons.error,
+                              color: isDark
+                                  ? Ux4gPalette.red500
+                                  : Ux4gPalette.red600,
                               size: 32,
                             ),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'Payment Failed',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w800,
-                              color: Ux4gPalette.red800,
-                              height: 1.2,
-                              letterSpacing: -0.3,
+                            style: typography.hL_strong.copyWith(
+                              color: isDark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 6),
-                          const Text(
-                            'Your payment of Rs 41.30 could not be processed.',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: _subtleText,
-                              height: 1.4,
+                          Text(
+                            'Bank declined the transaction. No amount was deducted from your account.',
+                            style: typography.bM_default.copyWith(
+                              color: isDark
+                                  ? Ux4gPalette.neutral200
+                                  : Ux4gPalette.neutral700,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 20),
                           Container(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFFF1F1),
-                              border: Border.all(color: Ux4gPalette.red100),
+                              color: isDark
+                                  ? Ux4gPalette.red800
+                                  : Ux4gPalette.red100,
+                              border: Border.all(
+                                color: isDark
+                                    ? Ux4gPalette.red600
+                                    : Ux4gPalette.red300,
+                              ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
-                              children: [
-                                const _PayDetailRow(
+                              children: const [
+                                _PayDetailRow(
                                   label: 'Reason',
                                   value: 'Bank declined',
-                                  valueColor: Ux4gPalette.red600,
                                 ),
-                                const _PayDetailRow(
+                                _PayDetailRow(
                                   label: 'Attempted amount',
                                   value: 'Rs 41.30',
                                 ),
-                                const _PayDetailRow(
+                                _PayDetailRow(
                                   label: 'Method',
-                                  value: 'UPI - ramesh@upi',
+                                  value: 'UPI · ramesh@upi',
                                 ),
-                                const _PayDetailRow(
+                                _PayDetailRow(
                                   label: 'Date and time',
                                   value: '12 Apr 2026, 2:34 PM IST',
                                 ),
@@ -23782,6 +23579,12 @@ class _PaymentFailedMockup extends StatelessWidget {
                           Ux4gButton(
                             text: 'Try again with UPI',
                             onPressed: () {},
+                            backgroundColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary950
+                                : Colors.white,
                             size: Ux4gButtonSize.large,
                             height: 48,
                             width: 326,
@@ -23791,6 +23594,12 @@ class _PaymentFailedMockup extends StatelessWidget {
                             text: 'Try a different method',
                             onPressed: () {},
                             variant: Ux4gButtonVariant.outline,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            borderColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
                             size: Ux4gButtonSize.large,
                             height: 48,
                             width: 326,
@@ -23825,13 +23634,13 @@ class _PaymentFailedCardMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
+    final typography = Ux4gTheme.typography(context);
     return _PhoneFrame(
       child: Column(
         children: [
           const _BrandHeader(),
-          const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: _getSuCardBg(context),
@@ -23840,108 +23649,135 @@ class _PaymentFailedCardMockup extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(16, 24, 16, 20),
-                        decoration: _suCardDeco(context),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 64,
-                              height: 64,
-                              decoration: const BoxDecoration(
-                                color: Ux4gPalette.red100,
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: Alignment.center,
-                              child: const Icon(
-                                Icons.error_outline,
-                                color: Ux4gPalette.red600,
-                                size: 32,
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            const Text(
-                              'Payment Failed',
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: Ux4gPalette.red800,
-                                height: 1.2,
-                                letterSpacing: -0.3,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 6),
-                            const Text(
-                              'Your payment of Rs 41.30 could not be processed.',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: _subtleText,
-                                height: 1.4,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 20),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFFF1F1),
-                                border: Border.all(color: Ux4gPalette.red100),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                children: [
-                                  const _PayDetailRow(
-                                    label: 'Reason',
-                                    value: 'Bank declined',
-                                    valueColor: Ux4gPalette.red600,
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
+                            decoration: _suCardDeco(context),
+                            child: Column(
+                              children: [
+                                const _PmtStepBar(
+                                  padding: EdgeInsets.fromLTRB(0, 8, 12, 20),
+                                ),
+                                Container(
+                                  width: 64,
+                                  height: 64,
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? Ux4gPalette.red800
+                                        : Ux4gPalette.red100,
+                                    shape: BoxShape.circle,
                                   ),
-                                  const _PayDetailRow(
-                                    label: 'Attempted amount',
-                                    value: 'Rs 41.30',
+                                  alignment: Alignment.center,
+                                  child: Icon(
+                                    Icons.error,
+                                    color: isDark
+                                        ? Ux4gPalette.red500
+                                        : Ux4gPalette.red600,
+                                    size: 32,
                                   ),
-                                  const _PayDetailRow(
-                                    label: 'Method',
-                                    value: 'UPI - ramesh@upi',
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  'Payment Failed',
+                                  style: typography.hL_strong.copyWith(
+                                    color: isDark
+                                        ? Ux4gPalette.neutral50
+                                        : Ux4gPalette.neutral900,
                                   ),
-                                  const _PayDetailRow(
-                                    label: 'Date and time',
-                                    value: '12 Apr 2026, 2:34 PM IST',
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  'Bank declined the transaction. No amount was deducted from your account.',
+                                  style: typography.bM_default.copyWith(
+                                    color: isDark
+                                        ? Ux4gPalette.neutral200
+                                        : Ux4gPalette.neutral700,
                                   ),
-                                ],
-                              ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 20),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? Ux4gPalette.red800
+                                        : Ux4gPalette.red100,
+                                    border: Border.all(
+                                      color: isDark
+                                          ? Ux4gPalette.red600
+                                          : Ux4gPalette.red300,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    children: const [
+                                      _PayDetailRow(
+                                        label: 'Reason',
+                                        value: 'Bank declined',
+                                      ),
+                                      _PayDetailRow(
+                                        label: 'Attempted amount',
+                                        value: 'Rs 41.30',
+                                      ),
+                                      _PayDetailRow(
+                                        label: 'Method',
+                                        value: 'UPI · ramesh@upi',
+                                      ),
+                                      _PayDetailRow(
+                                        label: 'Date and time',
+                                        value: '12 Apr 2026, 2:34 PM IST',
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 20),
-                            Ux4gButton(
-                              text: 'Try again with UPI',
+                          ),
+                          const SizedBox(height: 20),
+                          Ux4gButton(
+                            text: 'Try again with UPI',
+                            onPressed: () {},
+                            backgroundColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary950
+                                : Colors.white,
+                            size: Ux4gButtonSize.large,
+                            height: 48,
+                            width: 326,
+                          ),
+                          const SizedBox(height: 10),
+                          Ux4gButton(
+                            text: 'Try a different method',
+                            onPressed: () {},
+                            variant: Ux4gButtonVariant.outline,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            borderColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            size: Ux4gButtonSize.large,
+                            height: 48,
+                            width: 326,
+                          ),
+                          const SizedBox(height: 12),
+                          Center(
+                            child: TextButton(
                               onPressed: () {},
-                              size: Ux4gButtonSize.large,
-                              height: 48,
-                              width: 326,
-                            ),
-                            const SizedBox(height: 10),
-                            Ux4gButton(
-                              text: 'Try a different method',
-                              onPressed: () {},
-                              variant: Ux4gButtonVariant.outline,
-                              size: Ux4gButtonSize.large,
-                              height: 48,
-                              width: 326,
-                            ),
-                            const SizedBox(height: 12),
-                            Center(
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Pay at CSC centre',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: primary,
-                                  ),
+                              child: Text(
+                                'Pay at CSC centre',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: primary,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -23965,27 +23801,24 @@ Scaffold(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Padding(
         padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
         child: Ux4gStepper(
-          totalSteps: 5, currentStep: 5,
+          totalSteps: 4, currentStep: 4,
           orientation: StepperOrientation.horizontal,
           steps: [
             Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
+            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
           ],
         ),
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Expanded(
         child: Container(
           color: Ux4gPalette.neutral50,
@@ -24000,43 +23833,41 @@ Scaffold(
                       Container(
                         width: 64, height: 64,
                         decoration: BoxDecoration(
-                          color: Ux4gPalette.red100, shape: BoxShape.circle),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red100, shape: BoxShape.circle),
                         alignment: Alignment.center,
-                        child: Icon(Icons.error_outline,
-                            color: Ux4gPalette.red600, size: 32),
+                        child: Icon(Icons.error,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 32),
                       ),
                       SizedBox(height: 16),
                       Text(
                         'Payment Failed',
-                        style: TextStyle(
-                          fontSize: 22, fontWeight: FontWeight.w800,
-                          color: Ux4gPalette.red800,
-                          height: 1.2, letterSpacing: -0.3,
+                        style: Ux4gTheme.typography(context).hL_strong.copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 6),
                       Text(
-                        'Your payment of Rs 41.30 could not be processed.',
-                        style: TextStyle(
-                          fontSize: 13, color: Ux4gPalette.neutral500, height: 1.4),
+                        'Bank declined the transaction. No amount was deducted from your account.',
+                        style: Ux4gTheme.typography(context).bM_default.copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 20),
                       // Error details table
                       Container(
+                        padding: EdgeInsets.symmetric(vertical: 6),
                         decoration: BoxDecoration(
-                          color: Color(0xFFFFF1F1),
-                          border: Border.all(color: Ux4gPalette.red100),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red100,
+                          border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red600 : Ux4gPalette.red300),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
                           children: [
-                            _payDetailRow('Reason', 'Bank declined',
-                                valueColor: Ux4gPalette.red600),
-                            _payDetailRow('Attempted amount', 'Rs 41.30'),
-                            _payDetailRow('Method', 'UPI - ramesh@upi'),
-                            _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST'),
+                            _payDetailRow('Reason', 'Bank declined', valueBold: true),
+                            _payDetailRow('Attempted amount', 'Rs 41.30', valueBold: true),
+                            _payDetailRow('Method', 'UPI · ramesh@upi', valueBold: true),
+                            _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST', valueBold: true),
                           ],
                         ),
                       ),
@@ -24044,18 +23875,22 @@ Scaffold(
                       Ux4gButton(
                         text: 'Try again with UPI',
                         onPressed: () {},
+                        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary950 : Colors.white,
                         size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
+                        height: 48,
+                        width: 326,
                       ),
                       SizedBox(height: 10),
                       Ux4gButton(
                         text: 'Try a different method',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.outline,
+                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                        borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
                         size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
+                        height: 48,
+                        width: 326,
                       ),
                       SizedBox(height: 12),
                       Center(
@@ -24078,7 +23913,7 @@ Scaffold(
                         style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -24101,101 +23936,101 @@ Scaffold(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 5, currentStep: 5,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Expanded(
         child: Container(
-          color: Ux4gPalette.primary100,
+          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
           child: Column(
             children: [
               Expanded(
                 child: SingleChildScrollView(
                   padding: EdgeInsets.fromLTRB(16, 20, 16, 16),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(16, 24, 16, 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(color: Colors.black.withOpacity(0.04),
-                            blurRadius: 16, offset: Offset(0, 4)),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 64, height: 64,
-                          decoration: BoxDecoration(
-                            color: Ux4gPalette.red100, shape: BoxShape.circle),
-                          alignment: Alignment.center,
-                          child: Icon(Icons.error_outline,
-                              color: Ux4gPalette.red600, size: 32),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(16, 16, 16, 20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withOpacity(0.04),
+                                blurRadius: 16, offset: Offset(0, 4)),
+                          ],
                         ),
-                        SizedBox(height: 16),
-                        Text('Payment Failed',
-                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800,
-                              color: Ux4gPalette.red800, height: 1.2,
-                              letterSpacing: -0.3),
-                          textAlign: TextAlign.center),
-                        SizedBox(height: 6),
-                        Text('Your payment of Rs 41.30 could not be processed.',
-                          style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500,
-                              height: 1.4),
-                          textAlign: TextAlign.center),
-                        SizedBox(height: 20),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFFF1F1),
-                            border: Border.all(color: Ux4gPalette.red100),
-                            borderRadius: BorderRadius.circular(10)),
-                          child: Column(children: [
-                            _payDetailRow('Reason', 'Bank declined',
-                                valueColor: Ux4gPalette.red600),
-                            _payDetailRow('Attempted amount', 'Rs 41.30'),
-                            _payDetailRow('Method', 'UPI - ramesh@upi'),
-                            _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST'),
-                          ]),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 8, 12, 20),
+                              child: Ux4gStepper(
+                                totalSteps: 4, currentStep: 4,
+                                orientation: StepperOrientation.horizontal,
+                                steps: [
+                                  Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
+                                  Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 64, height: 64,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red100, shape: BoxShape.circle),
+                              alignment: Alignment.center,
+                              child: Icon(Icons.error,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 32),
+                            ),
+                            SizedBox(height: 16),
+                            Text('Payment Failed',
+                              style: Ux4gTheme.typography(context).hL_strong.copyWith(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
+                              textAlign: TextAlign.center),
+                            SizedBox(height: 6),
+                            Text('Bank declined the transaction. No amount was deducted from your account.',
+                              style: Ux4gTheme.typography(context).bM_default.copyWith(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                              textAlign: TextAlign.center),
+                            SizedBox(height: 20),
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 6),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red100,
+                                border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red600 : Ux4gPalette.red300),
+                                borderRadius: BorderRadius.circular(10)),
+                              child: Column(children: [
+                                _payDetailRow('Reason', 'Bank declined', valueBold: true),
+                                _payDetailRow('Attempted amount', 'Rs 41.30', valueBold: true),
+                                _payDetailRow('Method', 'UPI · ramesh@upi', valueBold: true),
+                                _payDetailRow('Date and time', '12 Apr 2026, 2:34 PM IST', valueBold: true),
+                              ]),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 20),
-                        Ux4gButton(text: 'Try again with UPI', onPressed: () {},
-                            size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-                        SizedBox(height: 10),
-                        Ux4gButton(text: 'Try a different method', onPressed: () {},
-                            variant: Ux4gButtonVariant.outline,
-                            size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-                        SizedBox(height: 12),
-                        Center(
-                          child: TextButton(onPressed: () {},
-                            child: Text('Pay at CSC centre',
-                                style: TextStyle(fontSize: 14, color: primary))),
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 20),
+                      Ux4gButton(text: 'Try again with UPI', onPressed: () {},
+                          backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary950 : Colors.white,
+                          size: Ux4gButtonSize.large,
+                          height: 48, width: 326),
+                      SizedBox(height: 10),
+                      Ux4gButton(text: 'Try a different method', onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                          borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                          size: Ux4gButtonSize.large,
+                          height: 48, width: 326),
+                      SizedBox(height: 12),
+                      Center(
+                        child: TextButton(onPressed: () {},
+                          child: Text('Pay at CSC centre',
+                              style: TextStyle(fontSize: 14, color: primary))),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -24205,7 +24040,7 @@ Scaffold(
                   Text('Powered by -', style: TextStyle(fontSize: 11,
                       color: Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ]),
               ),
             ],
@@ -24227,6 +24062,7 @@ class _FeeWaivedMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
     return _PhoneFrame(
       child: Column(
@@ -24236,7 +24072,7 @@ class _FeeWaivedMockup extends StatelessWidget {
           const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
-              color: _bg,
+              color: isDark ? Ux4gPalette.neutral950 : _bg,
               child: Column(
                 children: [
                   Expanded(
@@ -24247,16 +24083,20 @@ class _FeeWaivedMockup extends StatelessWidget {
                           Container(
                             width: 64,
                             height: 64,
-                            decoration: const BoxDecoration(
-                              color: Ux4gPalette.green100,
+                            decoration: BoxDecoration(
+                              color: isDark
+                                  ? Ux4gPalette.green800
+                                  : Ux4gPalette.green100,
                               shape: BoxShape.circle,
                             ),
                             alignment: Alignment.center,
                             child: Container(
                               width: 36,
                               height: 36,
-                              decoration: const BoxDecoration(
-                                color: Ux4gPalette.green,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gPalette.green600
+                                    : Ux4gPalette.green,
                                 shape: BoxShape.circle,
                               ),
                               child: const Icon(
@@ -24267,58 +24107,67 @@ class _FeeWaivedMockup extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'Fee Waived',
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w800,
-                              color: Ux4gPalette.green700,
+                              color: isDark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
                               height: 1.2,
                               letterSpacing: -0.3,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 6),
-                          const Text(
+                          Text(
                             'As an SC/ST applicant, you are eligible for '
                             'a full fee waiver for this certificate.',
                             style: TextStyle(
                               fontSize: 13,
-                              color: _subtleText,
+                              color: isDark
+                                  ? Ux4gPalette.neutral200
+                                  : _subtleText,
                               height: 1.4,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 20),
                           Container(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF0FDF4),
-                              border: Border.all(color: Ux4gPalette.green100),
+                              color: isDark
+                                  ? Ux4gPalette.green800
+                                  : Ux4gPalette.green100,
+                              border: Border.all(
+                                color: isDark
+                                    ? Ux4gPalette.green600
+                                    : Ux4gPalette.green300,
+                              ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
                               children: [
-                                const _FeeRow(
+                                const _PayDetailRow(
                                   label: 'Application fee',
-                                  amount: 'Rs 30.00',
+                                  value: 'Rs 30.00',
                                 ),
-                                const _FeeRow(
+                                const _PayDetailRow(
                                   label: 'Processing charge',
-                                  amount: 'Rs 5.00',
+                                  value: 'Rs 5.00',
                                 ),
-                                const _FeeRow(
+                                const _PayDetailRow(
                                   label: 'GST 18%',
-                                  amount: 'Rs 6.30',
+                                  value: 'Rs 6.30',
                                 ),
-                                const _FeeRow(
+                                const _PayDetailRow(
                                   label: 'Waiver applied',
-                                  amount: '− Rs 41.30',
-                                  redAmount: true,
+                                  value: '− Rs 41.30',
                                 ),
-                                const _FeeRow(
+                                const _PayDetailRow(
                                   label: 'Total payable',
-                                  amount: 'Rs 0.00',
-                                  bold: true,
+                                  value: 'Rs 0.00',
                                 ),
                               ],
                             ),
@@ -24327,6 +24176,12 @@ class _FeeWaivedMockup extends StatelessWidget {
                           Ux4gButton(
                             text: 'Proceed without payment',
                             onPressed: () {},
+                            backgroundColor: isDark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            contentColor: isDark
+                                ? Ux4gPalette.primary950
+                                : Colors.white,
                             size: Ux4gButtonSize.large,
                             height: 48,
                             width: 326,
@@ -24361,6 +24216,7 @@ class _FeeWaivedCardMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = Theme.of(context).colorScheme.primary;
     return _PhoneFrame(
       child: Column(
@@ -24384,16 +24240,20 @@ class _FeeWaivedCardMockup extends StatelessWidget {
                             Container(
                               width: 64,
                               height: 64,
-                              decoration: const BoxDecoration(
-                                color: Ux4gPalette.green100,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gPalette.green800
+                                    : Ux4gPalette.green100,
                                 shape: BoxShape.circle,
                               ),
                               alignment: Alignment.center,
                               child: Container(
                                 width: 36,
                                 height: 36,
-                                decoration: const BoxDecoration(
-                                  color: Ux4gPalette.green,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gPalette.green600
+                                      : Ux4gPalette.green,
                                   shape: BoxShape.circle,
                                 ),
                                 child: const Icon(
@@ -24404,58 +24264,67 @@ class _FeeWaivedCardMockup extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 16),
-                            const Text(
+                            Text(
                               'Fee Waived',
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w800,
-                                color: Ux4gPalette.green700,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                                 height: 1.2,
                                 letterSpacing: -0.3,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 6),
-                            const Text(
+                            Text(
                               'As an SC/ST applicant, you are eligible for '
                               'a full fee waiver for this certificate.',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: _subtleText,
+                                color: isDark
+                                    ? Ux4gPalette.neutral200
+                                    : _subtleText,
                                 height: 1.4,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 20),
                             Container(
+                              padding: const EdgeInsets.symmetric(vertical: 6),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF0FDF4),
-                                border: Border.all(color: Ux4gPalette.green100),
+                                color: isDark
+                                    ? Ux4gPalette.green800
+                                    : Ux4gPalette.green100,
+                                border: Border.all(
+                                  color: isDark
+                                      ? Ux4gPalette.green600
+                                      : Ux4gPalette.green300,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Column(
                                 children: [
-                                  const _FeeRow(
+                                  const _PayDetailRow(
                                     label: 'Application fee',
-                                    amount: 'Rs 30.00',
+                                    value: 'Rs 30.00',
                                   ),
-                                  const _FeeRow(
+                                  const _PayDetailRow(
                                     label: 'Processing charge',
-                                    amount: 'Rs 5.00',
+                                    value: 'Rs 5.00',
                                   ),
-                                  const _FeeRow(
+                                  const _PayDetailRow(
                                     label: 'GST 18%',
-                                    amount: 'Rs 6.30',
+                                    value: 'Rs 6.30',
                                   ),
-                                  const _FeeRow(
+                                  const _PayDetailRow(
                                     label: 'Waiver applied',
-                                    amount: '− Rs 41.30',
-                                    redAmount: true,
+                                    value: '− Rs 41.30',
                                   ),
-                                  const _FeeRow(
+                                  const _PayDetailRow(
                                     label: 'Total payable',
-                                    amount: 'Rs 0.00',
-                                    bold: true,
+                                    value: 'Rs 0.00',
                                   ),
                                 ],
                               ),
@@ -24464,6 +24333,12 @@ class _FeeWaivedCardMockup extends StatelessWidget {
                             Ux4gButton(
                               text: 'Proceed without payment',
                               onPressed: () {},
+                              backgroundColor: isDark
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600,
+                              contentColor: isDark
+                                  ? Ux4gPalette.primary950
+                                  : Colors.white,
                               size: Ux4gButtonSize.large,
                               height: 48,
                               width: 326,
@@ -24499,19 +24374,19 @@ class _FeeWaivedCardMockup extends StatelessWidget {
 
 const _feeWaivedCode = r'''
 Scaffold(
-  backgroundColor: Ux4gPalette.neutral50,
+  backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
   body: Column(
     children: [
       Ux4gAppHeader(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
       Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Padding(
@@ -24529,7 +24404,7 @@ Scaffold(
       Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Expanded(
         child: Container(
-          color: Ux4gPalette.neutral50,
+          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
           child: Column(
             children: [
               Expanded(
@@ -24541,12 +24416,12 @@ Scaffold(
                       Container(
                         width: 64, height: 64,
                         decoration: BoxDecoration(
-                          color: Ux4gPalette.green100, shape: BoxShape.circle),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100, shape: BoxShape.circle),
                         alignment: Alignment.center,
                         child: Container(
                           width: 36, height: 36,
                           decoration: BoxDecoration(
-                            color: Ux4gPalette.green, shape: BoxShape.circle),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green, shape: BoxShape.circle),
                           child: Icon(Icons.check, color: Colors.white, size: 22),
                         ),
                       ),
@@ -24555,7 +24430,7 @@ Scaffold(
                         'Fee Waived',
                         style: TextStyle(
                           fontSize: 22, fontWeight: FontWeight.w800,
-                          color: Ux4gPalette.green700,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                           height: 1.2, letterSpacing: -0.3,
                         ),
                         textAlign: TextAlign.center,
@@ -24565,24 +24440,25 @@ Scaffold(
                         'As an SC/ST applicant, you are eligible for '
                         'a full fee waiver for this certificate.',
                         style: TextStyle(
-                          fontSize: 13, color: Ux4gPalette.neutral500, height: 1.4),
+                          fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral500, height: 1.4),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 20),
                       // Waiver breakdown table
                       Container(
+                        padding: EdgeInsets.symmetric(vertical: 6),
                         decoration: BoxDecoration(
-                          color: Color(0xFFF0FDF4),
-                          border: Border.all(color: Ux4gPalette.green100),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+                          border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green300),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
                           children: [
-                            _feeRow('Application fee', 'Rs 30.00'),
-                            _feeRow('Processing charge', 'Rs 5.00'),
-                            _feeRow('GST 18%', 'Rs 6.30'),
-                            _feeRow('Waiver applied', '\u2212 Rs 41.30', redAmount: true),
-                            _feeRow('Total payable', 'Rs 0.00', bold: true),
+                            _payDetailRow('Application fee', 'Rs 30.00'),
+                            _payDetailRow('Processing charge', 'Rs 5.00'),
+                            _payDetailRow('GST 18%', 'Rs 6.30'),
+                            _payDetailRow('Waiver applied', '\u2212 Rs 41.30'),
+                            _payDetailRow('Total payable', 'Rs 0.00'),
                           ],
                         ),
                       ),
@@ -24590,6 +24466,8 @@ Scaffold(
                       Ux4gButton(
                         text: 'Proceed without payment',
                         onPressed: () {},
+                        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary950 : Colors.white,
                         size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
@@ -24615,7 +24493,7 @@ Scaffold(
                         style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 6),
-                    Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -24627,42 +24505,23 @@ Scaffold(
   ),
 )
 
-// Helper: fee row
-Widget _feeRow(String label, String amount, {bool bold = false, bool redAmount = false}) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-    child: Row(
-      children: [
-        Expanded(
-          child: Text(label,
-              style: TextStyle(fontSize: 13,
-                fontWeight: bold ? FontWeight.w600 : FontWeight.w400,
-                color: bold ? Color(0xFF111827) : Ux4gPalette.neutral500))),
-        Text(amount,
-            style: TextStyle(fontSize: 13,
-              fontWeight: bold ? FontWeight.w600 : FontWeight.w400,
-              color: redAmount ? Ux4gPalette.red600
-                  : (bold ? Color(0xFF111827) : Color(0xFF374151)))),
-      ],
-    ),
-  );
-}''';
+// Helper: _payDetailRow — same as Payment Successful variant''';
 
 const _feeWaivedCardCode = r'''
 Scaffold(
-  backgroundColor: Ux4gPalette.primary100,
+  backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
   body: Column(
     children: [
       Ux4gAppHeader(
         variant: Ux4gAppHeaderVariant.light,
         title: '',
         leadingWidgets: [
-          SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
           SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-          SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
+          SvgPicture.asset(Ux4gIcons.union,  height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
         ],
         horizontalPadding: 16,
-        leadingSpacing: 12,
+        leadingSpacing: 8,
       ),
       Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Padding(
@@ -24680,7 +24539,7 @@ Scaffold(
       Divider(height: 1, thickness: 1, color: Ux4gPalette.neutral200),
       Expanded(
         child: Container(
-          color: Ux4gPalette.primary100,
+          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
           child: Column(
             children: [
               Expanded(
@@ -24689,7 +24548,7 @@ Scaffold(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(16, 24, 16, 20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.gray900 : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(color: Colors.black.withOpacity(0.04),
@@ -24701,43 +24560,46 @@ Scaffold(
                         Container(
                           width: 64, height: 64,
                           decoration: BoxDecoration(
-                            color: Ux4gPalette.green100, shape: BoxShape.circle),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100, shape: BoxShape.circle),
                           alignment: Alignment.center,
                           child: Container(
                             width: 36, height: 36,
                             decoration: BoxDecoration(
-                              color: Ux4gPalette.green, shape: BoxShape.circle),
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green, shape: BoxShape.circle),
                             child: Icon(Icons.check, color: Colors.white, size: 22),
                           ),
                         ),
                         SizedBox(height: 16),
                         Text('Fee Waived',
                           style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800,
-                              color: Ux4gPalette.green700, height: 1.2,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2,
                               letterSpacing: -0.3),
                           textAlign: TextAlign.center),
                         SizedBox(height: 6),
                         Text('As an SC/ST applicant, you are eligible for '
                             'a full fee waiver for this certificate.',
-                          style: TextStyle(fontSize: 13, color: Ux4gPalette.neutral500,
+                          style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral500,
                               height: 1.4),
                           textAlign: TextAlign.center),
                         SizedBox(height: 20),
                         Container(
+                          padding: EdgeInsets.symmetric(vertical: 6),
                           decoration: BoxDecoration(
-                            color: Color(0xFFF0FDF4),
-                            border: Border.all(color: Ux4gPalette.green100),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+                            border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green600 : Ux4gPalette.green300),
                             borderRadius: BorderRadius.circular(10)),
                           child: Column(children: [
-                            _feeRow('Application fee', 'Rs 30.00'),
-                            _feeRow('Processing charge', 'Rs 5.00'),
-                            _feeRow('GST 18%', 'Rs 6.30'),
-                            _feeRow('Waiver applied', '\u2212 Rs 41.30', redAmount: true),
-                            _feeRow('Total payable', 'Rs 0.00', bold: true),
+                            _payDetailRow('Application fee', 'Rs 30.00'),
+                            _payDetailRow('Processing charge', 'Rs 5.00'),
+                            _payDetailRow('GST 18%', 'Rs 6.30'),
+                            _payDetailRow('Waiver applied', '\u2212 Rs 41.30'),
+                            _payDetailRow('Total payable', 'Rs 0.00'),
                           ]),
                         ),
                         SizedBox(height: 20),
                         Ux4gButton(text: 'Proceed without payment', onPressed: () {},
+                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                            contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary950 : Colors.white,
                             size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
@@ -24759,7 +24621,7 @@ Scaffold(
                   Text('Powered by -', style: TextStyle(fontSize: 11,
                       color: Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ]),
               ),
             ],
@@ -24770,7 +24632,7 @@ Scaffold(
   ),
 )
 
-// Helper: _feeRow — same as Default variant''';
+// Helper: _payDetailRow — same as Payment Successful variant''';
 
 // ═══════════════════════════════════════════════════════════════════════
 // WidgetbookComponent registrations — Payment and Confirmation
@@ -24993,21 +24855,26 @@ class _AstBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final rejectedText = isDark ? Ux4gPalette.red300 : Ux4gPalette.red800;
+    final delayedText = isDark ? Ux4gPalette.cyan300 : Ux4gPalette.cyan800;
     return switch (status) {
       'Action Required' => Container(
         margin: EdgeInsets.fromLTRB(hPad, 12, hPad, 0),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Ux4gPalette.orange50,
-          border: Border.all(color: Ux4gPalette.orange500),
+          color: isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50,
+          border: Border.all(
+            color: isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(
-              Icons.warning_amber_rounded,
-              color: Ux4gPalette.orange500,
+            Icon(
+              Icons.error,
+              color: isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
               size: 18,
             ),
             const SizedBox(width: 8),
@@ -25015,11 +24882,13 @@ class _AstBanner extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Action required upload your income proof document',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Ux4gPalette.orange700,
+                      color: isDark
+                          ? Ux4gPalette.orange500
+                          : Ux4gPalette.orange600,
                       fontWeight: FontWeight.w500,
                       height: 1.4,
                     ),
@@ -25027,13 +24896,27 @@ class _AstBanner extends StatelessWidget {
                   const SizedBox(height: 6),
                   GestureDetector(
                     onTap: () {},
-                    child: const Text(
-                      'Upload Document',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Ux4gPalette.orange500,
-                        fontWeight: FontWeight.w600,
-                        decoration: TextDecoration.underline,
+                    child: Container(
+                      padding: const EdgeInsets.only(bottom: 1),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: isDark
+                                ? Ux4gPalette.orange300
+                                : Ux4gPalette.orange800,
+                            width: 1.2,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Upload Document',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isDark
+                              ? Ux4gPalette.orange300
+                              : Ux4gPalette.orange800,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
@@ -25047,55 +24930,60 @@ class _AstBanner extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(hPad, 12, hPad, 0),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: const Color(0xFFFEF2F2),
-          border: Border.all(color: Ux4gPalette.red100),
+          color: isDark ? Ux4gPalette.red900 : Ux4gPalette.red50,
+          border: Border.all(
+            color: isDark ? Ux4gPalette.red600 : Ux4gPalette.red300,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: const [
-                Icon(
-                  Icons.cancel_outlined,
-                  color: Ux4gPalette.red600,
-                  size: 18,
-                ),
-                SizedBox(width: 6),
-                Expanded(
-                  child: Text(
+            Icon(
+              Icons.error,
+              color: isDark ? Ux4gPalette.red500 : Ux4gPalette.red600,
+              size: 18,
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
                     'Why was this rejected?',
                     style: TextStyle(
                       fontSize: 13,
-                      color: Ux4gPalette.red600,
-                      fontWeight: FontWeight.w600,
+                      color: rejectedText,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              'The income proof document submitted was not legible; '
-              'the scan was too blurry to read.',
-              style: TextStyle(
-                fontSize: 11,
-                color: Ux4gPalette.red600,
-                height: 1.4,
+                  const SizedBox(height: 4),
+                  Text(
+                    'The income proof document submitted was not legible the scan was too blurry to read.',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: rejectedText,
+                      height: 1.4,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  _AstNumberedItem(
+                    number: '1.',
+                    text: 'Re-scan the document in good lighting',
+                    color: rejectedText,
+                  ),
+                  _AstNumberedItem(
+                    number: '2.',
+                    text: 'Upload a clear JPG or PDF under 2 MB',
+                    color: rejectedText,
+                  ),
+                  _AstNumberedItem(
+                    number: '3.',
+                    text: 'Reapply with the corrected document',
+                    color: rejectedText,
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 6),
-            const _AstBullet(
-              text: 'Re-scan the document in good lighting',
-              color: Ux4gPalette.red600,
-            ),
-            const _AstBullet(
-              text: 'Upload a clear JPG or PDF under 2 MB',
-              color: Ux4gPalette.red600,
-            ),
-            const _AstBullet(
-              text: 'Reapply with the corrected document',
-              color: Ux4gPalette.red600,
             ),
           ],
         ),
@@ -25104,59 +24992,61 @@ class _AstBanner extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(hPad, 12, hPad, 0),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Ux4gPalette.cyan50,
-          border: Border.all(color: Ux4gPalette.cyan500),
+          color: isDark ? Ux4gPalette.cyan900 : Ux4gPalette.cyan50,
+          border: Border.all(
+            color: isDark ? Ux4gPalette.cyan600 : Ux4gPalette.cyan300,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: const [
-                Icon(
-                  Icons.access_time_outlined,
-                  color: Ux4gPalette.cyan600,
-                  size: 18,
-                ),
-                SizedBox(width: 6),
-                Expanded(
-                  child: Text(
+            Icon(
+              Icons.info,
+              color: isDark ? Ux4gPalette.cyan500 : Ux4gPalette.cyan600,
+              size: 18,
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
                     'Why is this delayed?',
                     style: TextStyle(
                       fontSize: 13,
-                      color: Ux4gPalette.cyan600,
+                      color: delayedText,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Additional field verification is required due to an address discrepancy in your application.',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: delayedText,
+                      height: 1.4,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Revised expected date',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: delayedText,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              'Additional field verification is required due to an '
-              'address discrepancy in your application.',
-              style: TextStyle(
-                fontSize: 11,
-                color: Color(0xFF0E7490),
-                height: 1.4,
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Revised expected date',
-              style: TextStyle(
-                fontSize: 11,
-                color: Color(0xFF0E7490),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 2),
-            const Text(
-              '25 Apr 2026',
-              style: TextStyle(
-                fontSize: 13,
-                color: Ux4gPalette.cyan600,
-                fontWeight: FontWeight.w700,
+                  const SizedBox(height: 2),
+                  Text(
+                    '25 Apr 2026',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: delayedText,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -25167,8 +25057,13 @@ class _AstBanner extends StatelessWidget {
   }
 }
 
-class _AstBullet extends StatelessWidget {
-  const _AstBullet({required this.text, required this.color});
+class _AstNumberedItem extends StatelessWidget {
+  const _AstNumberedItem({
+    required this.number,
+    required this.text,
+    required this.color,
+  });
+  final String number;
   final String text;
   final Color color;
 
@@ -25179,7 +25074,13 @@ class _AstBullet extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('• ', style: TextStyle(fontSize: 11, color: color)),
+          SizedBox(
+            width: 16,
+            child: Text(
+              number,
+              style: TextStyle(fontSize: 11, color: color, height: 1.4),
+            ),
+          ),
           Expanded(
             child: Text(
               text,
@@ -25343,20 +25244,31 @@ class _AstTimelineStep extends StatelessWidget {
 // -- Journey widget -------------------------------------------------------
 
 class _AstJourney extends StatelessWidget {
-  const _AstJourney({required this.status, required this.primary});
+  const _AstJourney({
+    required this.status,
+    required this.primary,
+    this.isCardStyle = false,
+  });
   final String status;
   final Color primary;
+  final bool isCardStyle;
 
   @override
   Widget build(BuildContext context) {
     final isApproved = status == 'Approved';
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: _border),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: const EdgeInsets.all(14),
+      decoration: isCardStyle
+          ? const BoxDecoration()
+          : BoxDecoration(
+              color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+              border: Border.all(
+                color: isDark ? Ux4gPalette.neutral700 : _border,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+      padding: EdgeInsets.all(isCardStyle ? 16 : 14),
       child: Ux4gJourneyTimeline(
         activeColor: primary,
         header: const Ux4gJourneyHeader(
@@ -25380,6 +25292,12 @@ class _AstJourney extends StatelessWidget {
                 : Ux4gJourneyStepState.current,
             date: '11 Apr 2026, 09:03 AM',
             title: 'Officer Review',
+            cardColor: !isApproved
+                ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+                : null,
+            cardBorderColor: !isApproved
+                ? (isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300)
+                : null,
           ),
           Ux4gJourneyStep(
             state: isApproved
@@ -25389,13 +25307,31 @@ class _AstJourney extends StatelessWidget {
             title: isApproved
                 ? 'Certificate Issued'
                 : 'Certificate Will Be Issued',
+            cardColor: isApproved
+                ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+                : null,
+            cardBorderColor: isApproved
+                ? (isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300)
+                : null,
+            dateColor: !isApproved
+                ? (isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600)
+                : null,
+            titleColor: !isApproved
+                ? (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)
+                : null,
             status: isApproved
                 ? null
-                : const Ux4gJourneyStepStatus(
-                    text: '11 days remaining',
-                    dotColor: Ux4gPalette.orange500,
+                : Ux4gJourneyStepStatus(
+                    text: status == 'Under Review'
+                        ? '2 days remaining'
+                        : '11 days remaining',
+                    dotColor: isDark
+                        ? Ux4gPalette.secondary300
+                        : Ux4gPalette.secondary600,
                     badgeText: 'Pending',
-                    badgeTextColor: Ux4gPalette.orange500,
+                    badgeTextColor: isDark
+                        ? Ux4gPalette.secondary300
+                        : Ux4gPalette.secondary600,
                   ),
           ),
         ],
@@ -25412,34 +25348,56 @@ class _AstInfoCard extends StatelessWidget {
     required this.tagColor,
     required this.progressColor,
     this.bgColor = Colors.white,
+    this.isCardStyle = false,
   });
   final String status;
   final Ux4gTagColor tagColor;
   final Color progressColor;
   final Color bgColor;
+  final bool isCardStyle;
 
   @override
   Widget build(BuildContext context) {
     final isApproved = status == 'Approved';
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color? customBg = switch (status) {
+      'Action Required' =>
+        isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
+      'Rejected' => isDark ? Ux4gPalette.red800 : Ux4gPalette.red100,
+      'Delayed' => isDark ? Ux4gPalette.cyan800 : Ux4gPalette.cyan100,
+      _ => null,
+    };
+    final Color? customText = switch (status) {
+      'Action Required' =>
+        isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+      'Rejected' => isDark ? Ux4gPalette.red300 : Ux4gPalette.red800,
+      'Delayed' => isDark ? Ux4gPalette.cyan300 : Ux4gPalette.cyan800,
+      _ => null,
+    };
+
     return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: bgColor,
-        border: Border.all(color: _border),
-        borderRadius: BorderRadius.circular(10),
-      ),
+      padding: EdgeInsets.all(isCardStyle ? 16 : 14),
+      decoration: isCardStyle
+          ? const BoxDecoration()
+          : BoxDecoration(
+              color: isDark ? Ux4gPalette.neutral900 : bgColor,
+              border: Border.all(
+                color: isDark ? Ux4gPalette.neutral700 : _border,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
                   'Income Certificate',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
-                    color: _titleColor,
+                    color: isDark ? Colors.white : _titleColor,
                   ),
                 ),
               ),
@@ -25448,20 +25406,30 @@ class _AstInfoCard extends StatelessWidget {
                 colorScheme: tagColor,
                 style: Ux4gTagStyle.tonal,
                 size: Ux4gTagSize.m,
+                customBorderRadius: BorderRadius.circular(4),
+                customBackgroundColor: customBg,
+                customContentColor: customText,
               ),
             ],
           ),
           const SizedBox(height: 4),
-          const Text(
-            'Application ID · INC-2026-MH-04127',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+          Text(
+            status == 'Under Review'
+                ? 'Application ID - INC-2026-MH-04127'
+                : 'Application ID · INC-2026-MH-04127',
+            style: TextStyle(
+              fontSize: 12,
+              color: isDark ? Ux4gPalette.neutral400 : _subtleText,
+            ),
           ),
           if (!isApproved) ...[
             const SizedBox(height: 10),
             Ux4gLinearProgress(
               value: 0.6,
               label: '8 days left',
-              gradientColors: [Colors.white, progressColor],
+              gradientColors: isDark
+                  ? const [Ux4gPalette.primary700, Ux4gPalette.primary300]
+                  : const [Ux4gPalette.primary200, Ux4gPalette.primary600],
               shape: Ux4gProgressShape.rounded,
               height: 6,
             ),
@@ -25543,6 +25511,7 @@ class _AppStatusTrackerMockup extends StatelessWidget {
     final mt = Theme.of(context);
     final primary =
         mt.extension<Ux4gColors>()?.primary ?? mt.colorScheme.primary;
+    final isDark = mt.brightness == Brightness.dark;
     final tagColor = _astTagColor(status);
     final progressColor = primary;
     final hasActions =
@@ -25551,11 +25520,10 @@ class _AppStatusTrackerMockup extends StatelessWidget {
     return _PhoneFrame(
       child: Column(
         children: [
-          const _BrandHeader(),
-          const Divider(height: 1, thickness: 1, color: _border),
+          _BrandHeaderWithMenu(onMenuPressed: () {}),
           Expanded(
             child: Container(
-              color: _bg,
+              color: isDark ? Ux4gPalette.neutral900 : _bg,
               child: Column(
                 children: [
                   Expanded(
@@ -25614,6 +25582,7 @@ class _AppStatusTrackerCardMockup extends StatelessWidget {
     final mt = Theme.of(context);
     final primary =
         mt.extension<Ux4gColors>()?.primary ?? mt.colorScheme.primary;
+    final isDark = mt.brightness == Brightness.dark;
     final tagColor = _astTagColor(status);
     final progressColor = primary;
     final hasActions =
@@ -25622,59 +25591,57 @@ class _AppStatusTrackerCardMockup extends StatelessWidget {
     return _PhoneFrame(
       child: Column(
         children: [
-          const _BrandHeader(),
-          const Divider(height: 1, thickness: 1, color: _border),
+          _BrandHeaderWithMenu(onMenuPressed: () {}),
           Expanded(
             child: Container(
-              color: _bg,
+              color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
               child: Column(
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-                      child: Container(
-                        decoration: _suCardDeco(context),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(14, 10, 14, 0),
-                              child: const _BackButton(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 4, bottom: 12),
+                            child: _BackButton(),
+                          ),
+                          _AstBanner(status: status, hPad: 0),
+                          if (status == 'Action Required' ||
+                              status == 'Rejected' ||
+                              status == 'Delayed')
+                            const SizedBox(height: 24),
+                          Container(
+                            decoration: _suCardDeco(context),
+                            child: _AstInfoCard(
+                              status: status,
+                              tagColor: tagColor,
+                              progressColor: progressColor,
+                              bgColor: Colors.transparent,
+                              isCardStyle: true,
                             ),
-                            _AstBanner(status: status, hPad: 14),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
-                              child: _AstInfoCard(
-                                status: status,
-                                tagColor: tagColor,
-                                progressColor: progressColor,
-                                bgColor: _bg,
-                              ),
+                          ),
+                          const SizedBox(height: 16),
+                          Container(
+                            decoration: _suCardDeco(context),
+                            child: _AstJourney(
+                              status: status,
+                              primary: primary,
+                              isCardStyle: true,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                14,
-                                16,
-                                14,
-                                16,
-                              ),
-                              child: _AstJourney(
-                                status: status,
-                                primary: primary,
-                              ),
-                            ),
-                            if (hasActions)
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  14,
-                                  0,
-                                  14,
-                                  14,
-                                ),
-                                child: _astActions(status, primary),
-                              ),
+                          ),
+                          if (hasActions) ...[
+                            const SizedBox(height: 16),
+                            status == 'Delayed'
+                                ? _astActions(status, primary)
+                                : Container(
+                                    decoration: _suCardDeco(context),
+                                    padding: const EdgeInsets.all(16),
+                                    child: _astActions(status, primary),
+                                  ),
                           ],
-                        ),
+                        ],
                       ),
                     ),
                   ),
@@ -25692,426 +25659,472 @@ class _AppStatusTrackerCardMockup extends StatelessWidget {
 // -- Widgetbook component -------------------------------------------------
 
 const _astDefaultCode = r'''
-// Application Status Tracker — flat layout (360 × 760)
-// status: 'Under Review' | 'Action Required' | 'Rejected' | 'Delayed' | 'Approved'
-// primaryColor: Theme.of(context).extension<Ux4gColors>()?.primary
-// tagColor: neutral=UnderReview, warning=ActionRequired/Delayed, error=Rejected, success=Approved
-Container(
-  width: 360,
-  decoration: BoxDecoration(color: Colors.white),
-  child: Column(children: [
-    Ux4gAppHeader(
-      variant: Ux4gAppHeaderVariant.light,
-      title: '',
-      leadingWidgets: [
-        SvgPicture.asset('assets/national_emblem_logo.svg', height: 32),
-        SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
-      ],
-      horizontalPadding: 16,
-      leadingSpacing: 12,
-    ),
-    Ux4gDivider(color: Ux4gPalette.neutral200),
-    Expanded(child: Container(
-      color: Ux4gPalette.neutral50,
-      child: Column(children: [
-        Expanded(child: SingleChildScrollView(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
-            // ← Back
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
-              child: Ux4gButton(
-                text: 'Back',
-                variant: Ux4gButtonVariant.ghost,
-                size: Ux4gButtonSize.small,
-                leadingIcon: Icons.arrow_back,
-                iconSize: 18,
-                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                onPressed: () {},
-              ),
-            ),
+class ApplicationStatusTrackerDefault extends StatelessWidget {
+  const ApplicationStatusTrackerDefault({super.key, this.status = 'Under Review'});
 
-            // ── Alert banner (state-dependent) ───────────────────────────
-            // ▸ Action Required
-            Container(
-              margin: EdgeInsets.fromLTRB(16, 12, 16, 0),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Ux4gPalette.orange50,
-                border: Border.all(color: Ux4gPalette.orange500),
-                borderRadius: BorderRadius.circular(8),
+  final String status;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final primaryColor = theme.extension<Ux4gColors>()?.primary ?? theme.colorScheme.primary;
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Container(
+      width: 360,
+      decoration: BoxDecoration(color: isDark ? Ux4gPalette.neutral900 : Colors.white),
+      child: Column(
+        children: [
+          Ux4gAppHeader(
+            variant: Ux4gAppHeaderVariant.light,
+            title: '',
+            leadingWidgets: [
+              SvgPicture.asset('assets/national_emblem_logo.svg', height: 32),
+              SizedBox(
+                height: 28,
+                child: Ux4gDivider(
+                  orientation: Ux4gDividerOrientation.vertical,
+                  color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                ),
               ),
-              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Icon(Icons.warning_amber_rounded,
-                    color: Ux4gPalette.orange500, size: 18),
-                SizedBox(width: 8),
-                Expanded(child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
-                    'Action required upload your income proof document',
-                    style: TextStyle(fontSize: 12, color: Ux4gPalette.orange700,
-                        fontWeight: FontWeight.w500, height: 1.4),
-                  ),
-                  SizedBox(height: 6),
-                  GestureDetector(
+              SvgPicture.asset(
+                Ux4gIcons.union,
+                height: 32,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white : Ux4gPalette.primary500,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ],
+            actions: [
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: Material(
+                  color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
                     onTap: () {},
-                    child: Text('Upload Document',
-                        style: TextStyle(fontSize: 12,
-                            color: Ux4gPalette.orange500,
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline)),
-                  ),
-                ])),
-              ]),
-            ),
-            // ▸ Rejected: bg Color(0xFFFEF2F2), border Ux4gPalette.red100,
-            //             icon Icons.cancel_outlined, textColor Ux4gPalette.red600
-            // ▸ Delayed:  bg Ux4gPalette.cyan50, border Ux4gPalette.cyan500,
-            //             icon Icons.access_time_outlined, textColor Ux4gPalette.cyan600
-            // ▸ Under Review / Approved: SizedBox.shrink()
-
-            // ── Application info card ─────────────────────────────────────
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 12, 16, 0),
-              child: Container(
-                padding: EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Ux4gPalette.neutral200),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                  Row(children: [
-                    Expanded(child: Text('Income Certificate',
-                        style: TextStyle(fontSize: 16,
-                            fontWeight: FontWeight.w700))),
-                    Ux4gTag(text: status, colorScheme: tagColor,
-                        style: Ux4gTagStyle.tonal, size: Ux4gTagSize.m),
-                  ]),
-                  SizedBox(height: 4),
-                  Text('Application ID · INC-2026-MH-04127',
-                      style: TextStyle(fontSize: 12, color: Ux4gPalette.neutral500)),
-                  // ▸ Progress bar hidden for Approved state
-                  if (!isApproved) ...[
-                    SizedBox(height: 10),
-                    Ux4gLinearProgress(
-                      value: 0.6,
-                      label: '8 days left',
-                      gradientColors: [Colors.white, primaryColor],
-                      shape: Ux4gProgressShape.rounded,
-                      height: 6,
-                    ),
-                  ],
-                ]),
-              ),
-            ),
-
-            // ── Application journey ───────────────────────────────────────
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Ux4gPalette.neutral200),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(14),
-                child: Ux4gJourneyTimeline(
-                  activeColor: primaryColor,
-                  header: Ux4gJourneyHeader(
-                    title: 'Application journey',
-                    description: 'Every step from submission to issuance',
-                  ),
-                  steps: [
-                    Ux4gJourneyStep(
-                      state: Ux4gJourneyStepState.completed,
-                      date: '07 Apr 2026, 10:24 AM',
-                      title: 'Application Submitted',
-                    ),
-                    Ux4gJourneyStep(
-                      state: Ux4gJourneyStepState.completed,
-                      date: '10 Apr 2026, 02:15 PM',
-                      title: 'Documents Verified',
-                    ),
-                    // state: current=UnderReview/ActionRequired/Rejected/Delayed
-                    //        completed=Approved
-                    Ux4gJourneyStep(
-                      state: Ux4gJourneyStepState.current,
-                      date: '11 Apr 2026, 09:03 AM',
-                      title: 'Officer Review',
-                    ),
-                    // title: 'Certificate Issued' & state: current when Approved
-                    Ux4gJourneyStep(
-                      state: Ux4gJourneyStepState.upcoming,
-                      date: 'Est. 22 Apr 2026',
-                      title: 'Certificate Will Be Issued',
-                      status: Ux4gJourneyStepStatus(
-                        text: '11 days remaining',
-                        dotColor: Ux4gPalette.orange500,
-                        badgeText: 'Pending',
-                        badgeTextColor: Ux4gPalette.orange500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            // ── Bottom actions (state-dependent) ─────────────────────────
-            // ▸ Rejected:
-            Padding(padding: EdgeInsets.fromLTRB(16, 0, 16, 8), child: Column(children: [
-              Ux4gButton(text: 'Reapply', onPressed: () {},
-                  size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-              SizedBox(height: 10),
-              Center(child: TextButton(onPressed: () {},
-                  child: Text('Contact district office',
-                      style: TextStyle(fontSize: 14, color: primaryColor)))),
-            ])),
-            // ▸ Delayed:
-            // Center(child: TextButton(onPressed: () {},
-            //   child: Text('Escalate this application',
-            //     style: TextStyle(fontSize: 14, color: Ux4gPalette.red600,
-            //                      fontWeight: FontWeight.w600))))
-            // ▸ Approved:
-            // Padding(padding: EdgeInsets.fromLTRB(16, 0, 16, 8), child: Column(children: [
-            //   Ux4gButton(text: 'Download Certificate (PDF)', onPressed: () {},
-            //       size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-            //   SizedBox(height: 10),
-            //   Ux4gButton(text: 'Save to DigiLocker', onPressed: () {},
-            //       variant: Ux4gButtonVariant.outline,
-            //       size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-            // ]))
-          ]),
-        )),
-
-        // Powered by - Digital India
-        Padding(padding: EdgeInsets.only(bottom: 20, top: 8), child: Column(
-          mainAxisSize: MainAxisSize.min, children: [
-          Text('Powered by -',
-              style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
-                  fontWeight: FontWeight.w500)),
-          SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-        ])),
-      ]),
-    )),
-  ]),
-)''';
-
-const _astCardCode = r'''
-// Application Status Tracker — card style (360 × 760)
-// Same inner content as flat layout but hPad=14; content sits inside a
-// white elevated card over a purple-tinted (Ux4gPalette.primary100) background.
-// primaryColor: Theme.of(context).extension<Ux4gColors>()?.primary
-// tagColor: neutral=UnderReview, warning=ActionRequired/Delayed, error=Rejected, success=Approved
-Container(
-  width: 360,
-  decoration: BoxDecoration(color: Colors.white),
-  child: Column(children: [
-    Ux4gAppHeader(
-      variant: Ux4gAppHeaderVariant.light,
-      title: '',
-      leadingWidgets: [
-        SvgPicture.asset('assets/national_emblem_logo.svg', height: 32),
-        SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gPalette.neutral300)),
-        SvgPicture.asset('assets/Union.svg', height: 32, colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn)),
-      ],
-      horizontalPadding: 16,
-      leadingSpacing: 12,
-    ),
-    Ux4gDivider(color: Ux4gPalette.neutral200),
-    Expanded(child: Container(
-      color: Ux4gPalette.primary100,
-      child: Column(children: [
-        Expanded(child: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04),
-                  blurRadius: 16, offset: Offset(0, 4))],
-            ),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-              // ← Back
-              Padding(
-                padding: EdgeInsets.fromLTRB(14, 10, 14, 0),
-                child: Ux4gButton(
-                  text: 'Back',
-                  variant: Ux4gButtonVariant.ghost,
-                  size: Ux4gButtonSize.small,
-                  leadingIcon: Icons.arrow_back,
-                  iconSize: 18,
-                  padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                  onPressed: () {},
-                ),
-              ),
-
-              // ── Alert banner (same colors/icons as flat layout) ──────────
-              // ▸ Action Required: bg Ux4gPalette.orange50, border Ux4gPalette.orange500
-              //   icon Icons.warning_amber_rounded, textColor Ux4gPalette.orange700
-              // ▸ Rejected: bg Color(0xFFFEF2F2), border Ux4gPalette.red100,
-              //   icon Icons.cancel_outlined, textColor Ux4gPalette.red600
-              // ▸ Delayed: bg Ux4gPalette.cyan50, border Ux4gPalette.cyan500,
-              //   icon Icons.access_time_outlined, textColor Ux4gPalette.cyan600
-              // ▸ Under Review / Approved: SizedBox.shrink()
-
-              // ── Application info card ──────────────────────────────────
-              Padding(
-                padding: EdgeInsets.fromLTRB(14, 12, 14, 0),
-                child: Container(
-                  padding: EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: Ux4gPalette.neutral50,
-                    border: Border.all(color: Ux4gPalette.neutral200),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                    Row(children: [
-                      Expanded(child: Text('Income Certificate',
-                          style: TextStyle(fontSize: 16,
-                              fontWeight: FontWeight.w700))),
-                      Ux4gTag(text: status, colorScheme: tagColor,
-                          style: Ux4gTagStyle.tonal, size: Ux4gTagSize.m),
-                    ]),
-                    SizedBox(height: 4),
-                    Text('Application ID · INC-2026-MH-04127',
-                        style: TextStyle(fontSize: 12,
-                            color: Ux4gPalette.neutral500)),
-                    // ▸ Progress bar hidden for Approved state
-                    if (!isApproved) ...[
-                      SizedBox(height: 10),
-                      Ux4gLinearProgress(
-                        value: 0.6,
-                        label: '8 days left',
-                        gradientColors: [Colors.white, primaryColor],
-                        shape: Ux4gProgressShape.rounded,
-                        height: 6,
-                      ),
-                    ],
-                  ]),
-                ),
-              ),
-
-              // ── Application journey ───────────────────────────────────
-              Padding(
-                padding: EdgeInsets.fromLTRB(14, 16, 14, 16),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Ux4gPalette.neutral200),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: EdgeInsets.all(14),
-                  child: Ux4gJourneyTimeline(
-                    activeColor: primaryColor,
-                    header: Ux4gJourneyHeader(
-                      title: 'Application journey',
-                      description: 'Every step from submission to issuance',
-                    ),
-                    steps: [
-                      Ux4gJourneyStep(
-                        state: Ux4gJourneyStepState.completed,
-                        date: '07 Apr 2026, 10:24 AM',
-                        title: 'Application Submitted',
-                      ),
-                      Ux4gJourneyStep(
-                        state: Ux4gJourneyStepState.completed,
-                        date: '10 Apr 2026, 02:15 PM',
-                        title: 'Documents Verified',
-                      ),
-                      // state: current=UnderReview/ActionRequired/Rejected/Delayed
-                      //        completed=Approved
-                      Ux4gJourneyStep(
-                        state: Ux4gJourneyStepState.current,
-                        date: '11 Apr 2026, 09:03 AM',
-                        title: 'Officer Review',
-                      ),
-                      // title: 'Certificate Issued' & state: current when Approved
-                      Ux4gJourneyStep(
-                        state: Ux4gJourneyStepState.upcoming,
-                        date: 'Est. 22 Apr 2026',
-                        title: 'Certificate Will Be Issued',
-                        status: Ux4gJourneyStepStatus(
-                          text: '11 days remaining',
-                          dotColor: Ux4gPalette.orange500,
-                          badgeText: 'Pending',
-                          badgeTextColor: Ux4gPalette.orange500,
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+                          width: 1.5,
                         ),
                       ),
-                    ],
+                      child: Center(
+                        child: Icon(Icons.menu, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                      ),
+                    ),
                   ),
                 ),
               ),
-
-              // ── Bottom actions (state-dependent) ──────────────────────
-              // ▸ Rejected:
-              Padding(padding: EdgeInsets.fromLTRB(14, 0, 14, 14),
-                  child: Column(children: [
-                Ux4gButton(text: 'Reapply', onPressed: () {},
-                    size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-                SizedBox(height: 10),
-                Center(child: TextButton(onPressed: () {},
-                    child: Text('Contact district office',
-                        style: TextStyle(
-                            fontSize: 14, color: primaryColor)))),
-              ])),
-              // ▸ Delayed:
-              // Center(child: TextButton(onPressed: () {},
-              //   child: Text('Escalate this application',
-              //     style: TextStyle(fontSize: 14, color: Ux4gPalette.red600,
-              //                      fontWeight: FontWeight.w600))))
-              // ▸ Approved:
-              // Padding(padding: EdgeInsets.fromLTRB(14, 0, 14, 14),
-              //   child: Column(children: [
-              //     Ux4gButton(text: 'Download Certificate (PDF)',
-              //         onPressed: () {},
-              //         size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-              //     SizedBox(height: 10),
-              //     Ux4gButton(text: 'Save to DigiLocker', onPressed: () {},
-              //         variant: Ux4gButtonVariant.outline,
-              //         size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-            ),
-              //   ]))
-            ]),
+            ],
+            horizontalPadding: 16,
+            leadingSpacing: 8,
           ),
-        )),
+          Ux4gDivider(color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
+          Expanded(
+            child: Container(
+              color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+                            child: Ux4gButton(
+                              text: 'Back',
+                              variant: Ux4gButtonVariant.ghost,
+                              size: Ux4gButtonSize.small,
+                              leadingIcon: Icons.arrow_back,
+                              iconSize: 18,
+                              onPressed: () {},
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+                            child: Container(
+                              padding: const EdgeInsets.all(14),
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                                border: Border.all(
+                                  color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Expanded(
+                                        child: Text(
+                                          'Income Certificate',
+                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                        ),
+                                      ),
+                                      Ux4gTag(
+                                        text: status,
+                                        colorScheme: Ux4gTagColor.neutral,
+                                        style: Ux4gTagStyle.tonal,
+                                        size: Ux4gTagSize.m,
+                                        customBorderRadius: BorderRadius.circular(4),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'Application ID · INC-2026-MH-04127',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Ux4gLinearProgress(
+                                    value: 0.6,
+                                    label: '8 days left',
+                                    gradientColors: isDark
+                                        ? const [Ux4gPalette.primary700, Ux4gPalette.primary300]
+                                        : const [Ux4gPalette.primary200, Ux4gPalette.primary600],
+                                    shape: Ux4gProgressShape.rounded,
+                                    height: 6,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                                border: Border.all(
+                                  color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(14),
+                              child: Ux4gJourneyTimeline(
+                                activeColor: primaryColor,
+                                header: const Ux4gJourneyHeader(
+                                  title: 'Application journey',
+                                  description: 'Every step from submission to issuance',
+                                ),
+                                steps: [
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.completed,
+                                    date: '07 Apr 2026, 10:24 AM',
+                                    title: 'Application Submitted',
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.completed,
+                                    date: '10 Apr 2026, 02:15 PM',
+                                    title: 'Documents Verified',
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.current,
+                                    date: '11 Apr 2026, 09:03 AM',
+                                    title: 'Officer Review',
+                                  ),
+                                  Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.upcoming,
+                                    date: 'Est. 22 Apr 2026',
+                                    title: 'Certificate Will Be Issued',
+                                    status: Ux4gJourneyStepStatus(
+                                      text: '11 days remaining',
+                                      dotColor: isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600,
+                                      badgeText: 'Pending',
+                                      badgeTextColor: isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Image.asset(
+                          Ux4gIcons.digitalIndiaLogoPng,
+                          height: 22,
+                          color: isDark ? Colors.white : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+''';
 
-        // Powered by - Digital India
-        Padding(padding: EdgeInsets.only(bottom: 20, top: 8), child: Column(
-          mainAxisSize: MainAxisSize.min, children: [
-          Text('Powered by -',
-              style: TextStyle(fontSize: 11, color: Ux4gPalette.neutral400,
-                  fontWeight: FontWeight.w500)),
-          SizedBox(height: 6),
-          Image.asset('assets/digital_india_logo.png', height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-        ])),
-      ]),
-    )),
-  ]),
-)''';
+const _astCardCode = r'''
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+
+class ApplicationStatusTrackerCardStyle extends StatelessWidget {
+  const ApplicationStatusTrackerCardStyle({super.key, this.status = 'Under Review'});
+
+  final String status;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final primaryColor = theme.extension<Ux4gColors>()?.primary ?? theme.colorScheme.primary;
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Container(
+      width: 360,
+      decoration: BoxDecoration(color: isDark ? Ux4gPalette.neutral900 : Colors.white),
+      child: Column(
+        children: [
+          Ux4gAppHeader(
+            variant: Ux4gAppHeaderVariant.light,
+            title: '',
+            leadingWidgets: [
+              SvgPicture.asset('assets/national_emblem_logo.svg', height: 32),
+              SizedBox(
+                height: 28,
+                child: Ux4gDivider(
+                  orientation: Ux4gDividerOrientation.vertical,
+                  color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                ),
+              ),
+              SvgPicture.asset(
+                Ux4gIcons.union,
+                height: 32,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white : Ux4gPalette.primary500,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ],
+            actions: [
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: Material(
+                  color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () {},
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark ? Ux4gPalette.primary700 : Ux4gPalette.primary100,
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Icon(Icons.menu, size: 20, color: primaryColor),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+            horizontalPadding: 16,
+            leadingSpacing: 8,
+          ),
+          Ux4gDivider(color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
+          Expanded(
+            child: Container(
+              color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: Ux4gButton(
+                              text: 'Back',
+                              variant: Ux4gButtonVariant.ghost,
+                              size: Ux4gButtonSize.small,
+                              leadingIcon: Icons.arrow_back,
+                              iconSize: 18,
+                              onPressed: () {},
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.04),
+                                  blurRadius: 16,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text(
+                                        'Income Certificate',
+                                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
+                                    Ux4gTag(
+                                      text: status,
+                                      colorScheme: Ux4gTagColor.neutral,
+                                      style: Ux4gTagStyle.tonal,
+                                      size: Ux4gTagSize.m,
+                                      customBorderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Application ID - INC-2026-MH-04127',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Ux4gLinearProgress(
+                                  value: 0.6,
+                                  label: '8 days left',
+                                  gradientColors: isDark
+                                      ? const [Ux4gPalette.primary700, Ux4gPalette.primary300]
+                                      : const [Ux4gPalette.primary200, Ux4gPalette.primary600],
+                                  shape: Ux4gProgressShape.rounded,
+                                  height: 6,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.04),
+                                  blurRadius: 16,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: Ux4gJourneyTimeline(
+                              activeColor: primaryColor,
+                              header: const Ux4gJourneyHeader(
+                                title: 'Application journey',
+                                description: 'Every step from submission to issuance',
+                              ),
+                              steps: [
+                                const Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.completed,
+                                  date: '07 Apr 2026, 10:24 AM',
+                                  title: 'Application Submitted',
+                                ),
+                                const Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.completed,
+                                  date: '10 Apr 2026, 02:15 PM',
+                                  title: 'Documents Verified',
+                                ),
+                                const Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.current,
+                                  date: '11 Apr 2026, 09:03 AM',
+                                  title: 'Officer Review',
+                                ),
+                                Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.upcoming,
+                                  date: 'Est. 22 Apr 2026',
+                                  title: 'Certificate Will Be Issued',
+                                  status: Ux4gJourneyStepStatus(
+                                    text: '11 days remaining',
+                                    dotColor: isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600,
+                                    badgeText: 'Pending',
+                                    badgeTextColor: isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Image.asset(
+                          Ux4gIcons.digitalIndiaLogoPng,
+                          height: 22,
+                          color: isDark ? Colors.white : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+''';
 
 final appStatusTrackerComponent = WidgetbookComponent(
   name: 'Application Status Tracker',
@@ -26160,6 +26173,31 @@ final appStatusTrackerComponent = WidgetbookComponent(
 // Grievance Status Tracker Pattern
 // ============================================================
 
+BoxDecoration _gstCardDeco(BuildContext context) {
+  final isDark = _isDark(context);
+  return BoxDecoration(
+    color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+    border: Border.all(
+      color: isDark ? Ux4gPalette.neutral700 : const Color(0xFFEEEEF0),
+    ),
+    borderRadius: BorderRadius.circular(10),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withValues(alpha: 0.06),
+        blurRadius: 14,
+        offset: const Offset(0, 4),
+      ),
+    ],
+  );
+}
+
+Color _gstTitle(BuildContext context) =>
+    _isDark(context) ? Colors.white : _titleColor;
+Color _gstSubtle(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral400 : _subtleText;
+Color _gstMuted(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral500 : _mutedText;
+
 // Status → Ux4gTag colour mapping
 Ux4gTagColor _gstTagColor(String status) => switch (status) {
   'Resolved' => Ux4gTagColor.success,
@@ -26169,15 +26207,36 @@ Ux4gTagColor _gstTagColor(String status) => switch (status) {
   _ => Ux4gTagColor.warning, // In Progress
 };
 
-Widget _gstTagIcon(String status) {
-  final (icon, color) = switch (status) {
-    'Resolved' => (Icons.check_circle_outline, Ux4gPalette.green600),
-    'Assigned' => (Icons.assignment_ind_outlined, Ux4gPalette.primary600),
-    'Escalated' => (Icons.warning_amber_rounded, Ux4gPalette.orange700),
-    'Reopened' => (Icons.replay_rounded, Ux4gPalette.orange700),
-    _ => (Icons.assignment_outlined, Ux4gPalette.orange700), // In Progress
+(Color, Color, Color) _gstTagColors(String status, bool isDark) {
+  return switch (status) {
+    'Resolved' => (
+      isDark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+      isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+      isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+    ),
+    'Assigned' => (
+      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary800,
+      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary800,
+      isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+    ),
+    _ => (
+      isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
+      isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+      isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
+    ),
   };
-  return Icon(icon, size: 13, color: color);
+}
+
+Widget _gstTagIcon(String status, bool isDark) {
+  final icon = switch (status) {
+    'Resolved' => Icons.check_circle_outline,
+    'Assigned' => Icons.assignment_ind_outlined,
+    'Escalated' => Icons.warning_amber_rounded,
+    'Reopened' => Icons.replay_rounded,
+    _ => Icons.assignment_outlined,
+  };
+  final iconColor = _gstTagColors(status, isDark).$1;
+  return Icon(icon, size: 13, color: iconColor);
 }
 
 // ── Purple filled app-header with back button ───────────────────────────
@@ -26186,8 +26245,10 @@ class _GstHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return Ux4gAppHeader(
       variant: Ux4gAppHeaderVariant.filled,
+      backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
       title: 'Application Status',
       showBackButton: true,
       onBackPressed: () {},
@@ -26210,83 +26271,77 @@ class _GstInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isResolved = status == 'Resolved';
+    final isDark = _isDark(context);
+    final displayStatus = status.startsWith('In Progress')
+        ? 'In Progress'
+        : status;
+    final (_, textColor, bgColor) = _gstTagColors(status, isDark);
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFFEEEEF0)),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 14,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      decoration: _gstCardDeco(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
                   'Delay in certificate issuance',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
-                    color: _titleColor,
+                    color: _gstTitle(context),
                   ),
                 ),
               ),
               const SizedBox(width: 8),
               Ux4gTag(
-                text: status,
+                text: displayStatus,
                 colorScheme: tagColor,
                 style: Ux4gTagStyle.tonal,
                 size: Ux4gTagSize.m,
                 shape: Ux4gTagShape.rectangular,
-                leadingContent: _gstTagIcon(status),
+                leadingContent: _gstTagIcon(status, isDark),
+                customBackgroundColor: bgColor,
+                customContentColor: textColor,
               ),
             ],
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Grievance ID · GRV-2026-MH-04127',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(fontSize: 12, color: _gstSubtle(context)),
           ),
-          if (!isResolved) ...[
-            const SizedBox(height: 10),
-            const Text(
-              '8 days left',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: _titleColor,
-              ),
+          const SizedBox(height: 10),
+          Text(
+            '8 days left',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: _gstTitle(context),
             ),
-            const SizedBox(height: 6),
-            Ux4gLinearProgress(
-              value: 0.55,
-              gradientColors: const [
-                Color(0xFFFFCC80), // light amber
-                Color(0xFFFF8F00), // deep orange
-              ],
-              trackColor: const Color(0xFFEEEEEE),
-              shape: Ux4gProgressShape.rounded,
-              height: 8,
-            ),
-          ],
+          ),
+          const SizedBox(height: 6),
+          Ux4gLinearProgress(
+            value: 0.55,
+            gradientColors: isDark
+                ? const [Ux4gPalette.secondary700, Ux4gPalette.secondary300]
+                : const [Ux4gPalette.secondary200, Ux4gPalette.secondary600],
+            trackColor: isDark
+                ? Ux4gPalette.neutral700
+                : const Color(0xFFEEEEEE),
+            shape: Ux4gProgressShape.rounded,
+            height: 8,
+          ),
         ],
       ),
     );
   }
 }
 
-// ── Grievance details table (In Progress state) ─────────────────────────
+// ── Grievance details card (In Progress state) ───────────────────────────
 class _GstDetailTable extends StatelessWidget {
   const _GstDetailTable();
 
@@ -26295,27 +26350,16 @@ class _GstDetailTable extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFFEEEEF0)),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 14,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      decoration: _gstCardDeco(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Grievance details',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 10),
@@ -26355,17 +26399,17 @@ class _GstDetailRow extends StatelessWidget {
             width: 110,
             child: Text(
               label,
-              style: const TextStyle(fontSize: 12, color: _subtleText),
+              style: TextStyle(fontSize: 12, color: _gstSubtle(context)),
             ),
           ),
           Expanded(
             child: Text(
               value,
               textAlign: TextAlign.right,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: _titleColor,
+                color: _gstTitle(context),
               ),
             ),
           ),
@@ -26375,7 +26419,7 @@ class _GstDetailRow extends StatelessWidget {
   }
 }
 
-// ── Assigned officer card ────────────────────────────────────────────────
+// ── Assigned officer card (Assigned state) ────────────────────────────────
 class _GstAssignedOfficer extends StatelessWidget {
   const _GstAssignedOfficer();
 
@@ -26384,42 +26428,31 @@ class _GstAssignedOfficer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFFEEEEF0)),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 14,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      decoration: _gstCardDeco(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Assigned officer',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'District Grievance Officer',
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 2),
-          const Text(
+          Text(
             'Revenue Department, Pune',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(fontSize: 12, color: _gstSubtle(context)),
           ),
           const SizedBox(height: 10),
           Row(
@@ -26427,18 +26460,21 @@ class _GstAssignedOfficer extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Office contact',
-                      style: TextStyle(fontSize: 11, color: _subtleText),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: _gstSubtle(context),
+                      ),
                     ),
-                    SizedBox(height: 2),
+                    const SizedBox(height: 2),
                     Text(
                       '020-2612-XXXX',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: _titleColor,
+                        color: _gstTitle(context),
                       ),
                     ),
                   ],
@@ -26447,18 +26483,21 @@ class _GstAssignedOfficer extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Handling since',
-                      style: TextStyle(fontSize: 11, color: _subtleText),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: _gstSubtle(context),
+                      ),
                     ),
-                    SizedBox(height: 2),
+                    const SizedBox(height: 2),
                     Text(
                       '08 Apr 2026',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
-                        color: _titleColor,
+                        color: _gstTitle(context),
                       ),
                     ),
                   ],
@@ -26467,11 +26506,11 @@ class _GstAssignedOfficer extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          const Text(
+          Text(
             'Officers are identified by designation only — never by personal name.',
             style: TextStyle(
               fontSize: 11,
-              color: _mutedText,
+              color: _gstMuted(context),
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -26490,33 +26529,26 @@ class _GstEscalationPath extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFFEEEEF0)),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 14,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      decoration: _gstCardDeco(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Escalation path',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Your grievance moves up a level if it is not resolved within the SLA.',
-            style: TextStyle(fontSize: 11, color: _subtleText, height: 1.4),
+            style: TextStyle(
+              fontSize: 11,
+              color: _gstSubtle(context),
+              height: 1.4,
+            ),
           ),
           const SizedBox(height: 12),
           const _GstEscalationLevel(
@@ -26555,12 +26587,17 @@ class _GstEscalationLevel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: isActive ? Ux4gPalette.orange50 : const Color(0xFFF9FAFB),
+        color: isActive
+            ? (isDark ? Ux4gPalette.orange950 : Ux4gPalette.orange50)
+            : (isDark ? Ux4gPalette.neutral900 : const Color(0xFFF9FAFB)),
         border: Border.all(
-          color: isActive ? Ux4gPalette.orange500 : Ux4gPalette.neutral200,
+          color: isActive
+              ? (isDark ? Ux4gPalette.orange400 : Ux4gPalette.orange500)
+              : (isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
         ),
         borderRadius: BorderRadius.circular(8),
       ),
@@ -26576,7 +26613,11 @@ class _GstEscalationLevel extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: isActive ? Ux4gPalette.orange700 : _subtleText,
+                    color: isActive
+                        ? (isDark
+                              ? Ux4gPalette.orange300
+                              : Ux4gPalette.orange700)
+                        : _gstSubtle(context),
                   ),
                 ),
                 const SizedBox(height: 3),
@@ -26584,7 +26625,11 @@ class _GstEscalationLevel extends StatelessWidget {
                   subtitle,
                   style: TextStyle(
                     fontSize: 11,
-                    color: isActive ? Ux4gPalette.orange500 : _mutedText,
+                    color: isActive
+                        ? (isDark
+                              ? Ux4gPalette.orange400
+                              : Ux4gPalette.orange500)
+                        : _gstMuted(context),
                     height: 1.4,
                   ),
                 ),
@@ -26592,7 +26637,11 @@ class _GstEscalationLevel extends StatelessWidget {
             ),
           ),
           if (isActive)
-            const Icon(Icons.circle, size: 10, color: Ux4gPalette.orange500),
+            Icon(
+              Icons.circle,
+              size: 10,
+              color: isDark ? Ux4gPalette.orange400 : Ux4gPalette.orange500,
+            ),
         ],
       ),
     );
@@ -26605,15 +26654,21 @@ class _GstResolutionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+    final baseStyle =
+        typography?.bS_default ??
+        const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
     return Column(
       children: [
-        // Green resolution banner
         Container(
           margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           decoration: BoxDecoration(
-            color: Ux4gPalette.green50,
-            border: Border.all(color: Ux4gPalette.green500),
+            color: isDark ? Ux4gPalette.green900 : Ux4gPalette.green50,
+            border: Border.all(
+              color: isDark ? Ux4gPalette.green600 : Ux4gPalette.green300,
+            ),
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
@@ -26625,49 +26680,42 @@ class _GstResolutionSection extends StatelessWidget {
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Icon(
-                Icons.check_circle_outline,
-                color: Ux4gPalette.green600,
+                Icons.check_circle,
+                color: isDark ? Ux4gPalette.green500 : Ux4gPalette.green600,
                 size: 20,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Expanded(
                 child: Text(
                   'Grievance resolved on 14 Apr 2026 – certificate issued',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: Ux4gPalette.green700,
-                    height: 1.4,
+                  style: baseStyle.copyWith(
+                    color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
                   ),
                 ),
               ),
             ],
           ),
         ),
-        // Satisfaction survey card
         Container(
           margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: _border),
-            borderRadius: BorderRadius.circular(10),
-          ),
+          decoration: _gstCardDeco(context),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Are you satisfied with the resolution?',
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: _titleColor,
+                  color: _gstTitle(context),
                 ),
               ),
               const SizedBox(height: 12),
               Ux4gButton(
+                height: 48,
                 text: 'Yes, satisfied',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.outline,
@@ -26676,6 +26724,7 @@ class _GstResolutionSection extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Ux4gButton(
+                height: 48,
                 text: 'No, reopen',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.outline,
@@ -26683,9 +26732,13 @@ class _GstResolutionSection extends StatelessWidget {
                 width: double.infinity,
               ),
               const SizedBox(height: 10),
-              const Text(
+              Text(
                 'You have 30 days from the resolution date to reopen this complaint.',
-                style: TextStyle(fontSize: 11, color: _mutedText, height: 1.4),
+                style: TextStyle(
+                  fontSize: 11,
+                  color: _gstMuted(context),
+                  height: 1.4,
+                ),
               ),
             ],
           ),
@@ -26703,69 +26756,64 @@ class _GstReopenForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color(0xFFEEEEF0)),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 14,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      decoration: _gstCardDeco(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Reopen your complaint',
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 14),
-          const Text(
+          Text(
             'Why are you not satisfied?',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 6),
-          // Dropdown mock
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
-              border: Border.all(color: _border),
+              border: Border.all(
+                color: isDark ? Ux4gPalette.neutral700 : _border,
+              ),
               borderRadius: BorderRadius.circular(8),
-              color: Colors.white,
+              color: isDark ? Ux4gPalette.neutral900 : Colors.white,
             ),
             child: Row(
-              children: const [
+              children: [
                 Expanded(
                   child: Text(
                     'Certificate still not issued',
-                    style: TextStyle(fontSize: 13, color: _titleColor),
+                    style: TextStyle(fontSize: 13, color: _gstTitle(context)),
                   ),
                 ),
-                Icon(Icons.keyboard_arrow_down, size: 20, color: _subtleText),
+                Icon(
+                  Icons.keyboard_arrow_down,
+                  size: 20,
+                  color: _gstSubtle(context),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 14),
-          const Text(
+          Text(
             'Additional details',
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: _titleColor,
+              color: _gstTitle(context),
             ),
           ),
           const SizedBox(height: 6),
@@ -26773,15 +26821,21 @@ class _GstReopenForm extends StatelessWidget {
             height: 80,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              border: Border.all(color: _border),
+              border: Border.all(
+                color: isDark ? Ux4gPalette.neutral700 : _border,
+              ),
               borderRadius: BorderRadius.circular(8),
-              color: Colors.white,
+              color: isDark ? Ux4gPalette.neutral900 : Colors.white,
             ),
-            child: const Align(
+            child: Align(
               alignment: Alignment.topLeft,
               child: Text(
                 'Add any details that will help us re-examine your grievance.',
-                style: TextStyle(fontSize: 12, color: _mutedText, height: 1.4),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: _gstMuted(context),
+                  height: 1.4,
+                ),
               ),
             ),
           ),
@@ -26809,84 +26863,108 @@ class _GstReopenForm extends StatelessWidget {
   }
 }
 
-// ── Grievance journey timeline ───────────────────────────────────────────
-class _GstJourney extends StatelessWidget {
-  const _GstJourney({required this.status, required this.primary});
+// ── Grievance journey timeline card ──────────────────────────────────────
+class _GstTimelineCard extends StatelessWidget {
+  const _GstTimelineCard({required this.status, required this.primary});
 
   final String status;
   final Color primary;
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final assignedOrLater =
         status == 'Assigned' ||
+        status == 'In Progress' ||
+        status == 'In Progress (2nd Variant)' ||
+        status == 'Under Review' ||
         status == 'Escalated' ||
         status == 'Resolved' ||
         status == 'Reopened';
     final underReviewOrLater =
-        status == 'Escalated' || status == 'Resolved' || status == 'Reopened';
+        status == 'In Progress' ||
+        status == 'In Progress (2nd Variant)' ||
+        status == 'Under Review' ||
+        status == 'Escalated' ||
+        status == 'Resolved' ||
+        status == 'Reopened';
     final escalatedOrLater =
-        status == 'Resolved' || status == 'Reopened' || status == 'Escalated';
+        status == 'Escalated' || status == 'Resolved' || status == 'Reopened';
     final isResolved = status == 'Resolved' || status == 'Reopened';
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Grievance journey',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: _titleColor,
+    final step1State = Ux4gJourneyStepState.completed;
+    final step2State = assignedOrLater
+        ? Ux4gJourneyStepState.completed
+        : Ux4gJourneyStepState.current;
+    final step3State = underReviewOrLater
+        ? Ux4gJourneyStepState.completed
+        : (assignedOrLater
+              ? Ux4gJourneyStepState.current
+              : Ux4gJourneyStepState.upcoming);
+    final step4State = isResolved
+        ? Ux4gJourneyStepState.completed
+        : (escalatedOrLater
+              ? Ux4gJourneyStepState.current
+              : Ux4gJourneyStepState.upcoming);
+    final step5State = isResolved
+        ? Ux4gJourneyStepState.completed
+        : Ux4gJourneyStepState.upcoming;
+
+    Color? activeCardColor(Ux4gJourneyStepState s) =>
+        s == Ux4gJourneyStepState.current
+        ? (isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50)
+        : null;
+    Color? activeBorderColor(Ux4gJourneyStepState s) =>
+        s == Ux4gJourneyStepState.current ? primary : null;
+
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      padding: const EdgeInsets.all(14),
+      decoration: _gstCardDeco(context),
+      child: Ux4gJourneyTimeline(
+        activeColor: primary,
+        header: const Ux4gJourneyHeader(
+          title: 'Grievance Journey',
+          description: 'Tracking stages of resolution',
+        ),
+        steps: [
+          Ux4gJourneyStep(
+            state: step1State,
+            date: '02 Apr 2026',
+            title: 'Grievance lodged',
+            cardColor: activeCardColor(step1State),
+            cardBorderColor: activeBorderColor(step1State),
           ),
-        ),
-        const SizedBox(height: 4),
-        const Text(
-          'Every update from lodging to resolution',
-          style: TextStyle(fontSize: 12, color: _subtleText, height: 1.4),
-        ),
-        const SizedBox(height: 16),
-        _AstTimelineStep(
-          date: '02 Apr 2026',
-          title: 'Grievance lodged',
-          isCompleted: true,
-          isActive: false,
-          isLast: false,
-          primary: primary,
-        ),
-        _AstTimelineStep(
-          date: '05 Apr 2026',
-          title: 'Assigned to grievance officer',
-          isCompleted: assignedOrLater,
-          isActive: !assignedOrLater,
-          isLast: false,
-          primary: primary,
-        ),
-        _AstTimelineStep(
-          date: assignedOrLater ? '08 Apr 2026' : 'Est. 08 Apr 2026',
-          title: 'Under review by officer',
-          isCompleted: underReviewOrLater,
-          isActive: assignedOrLater && !underReviewOrLater,
-          isLast: false,
-          primary: primary,
-        ),
-        _AstTimelineStep(
-          date: escalatedOrLater ? '10 Apr 2026' : 'Est. 10 Apr 2026',
-          title: 'Escalated to District Officer',
-          isCompleted: isResolved,
-          isActive: escalatedOrLater && !isResolved,
-          isLast: false,
-          primary: primary,
-        ),
-        _AstTimelineStep(
-          date: isResolved ? '14 Apr 2026' : 'Est. 14 Apr 2026',
-          title: 'Resolution issued',
-          isCompleted: isResolved,
-          isActive: false,
-          isLast: true,
-          primary: primary,
-        ),
-      ],
+          Ux4gJourneyStep(
+            state: step2State,
+            date: '05 Apr 2026',
+            title: 'Assigned to grievance officer',
+            cardColor: activeCardColor(step2State),
+            cardBorderColor: activeBorderColor(step2State),
+          ),
+          Ux4gJourneyStep(
+            state: step3State,
+            date: assignedOrLater ? '08 Apr 2026' : 'Est. 08 Apr 2026',
+            title: 'Under review by officer',
+            cardColor: activeCardColor(step3State),
+            cardBorderColor: activeBorderColor(step3State),
+          ),
+          Ux4gJourneyStep(
+            state: step4State,
+            date: escalatedOrLater ? '10 Apr 2026' : 'Est. 10 Apr 2026',
+            title: 'Escalated to District Officer',
+            cardColor: activeCardColor(step4State),
+            cardBorderColor: activeBorderColor(step4State),
+          ),
+          Ux4gJourneyStep(
+            state: step5State,
+            date: isResolved ? '14 Apr 2026' : 'Est. 14 Apr 2026',
+            title: 'Resolution issued',
+            cardColor: activeCardColor(step5State),
+            cardBorderColor: activeBorderColor(step5State),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -26902,6 +26980,7 @@ class _GstMockup extends StatelessWidget {
     final mt = Theme.of(context);
     final primary =
         mt.extension<Ux4gColors>()?.primary ?? mt.colorScheme.primary;
+    final isDark = mt.brightness == Brightness.dark;
     final tagColor = _gstTagColor(status);
     final isReopened = status == 'Reopened';
 
@@ -26911,7 +26990,7 @@ class _GstMockup extends StatelessWidget {
           const _GstHeader(),
           Expanded(
             child: Container(
-              color: _bg,
+              color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -26930,20 +27009,8 @@ class _GstMockup extends StatelessWidget {
                           if (status == 'Resolved')
                             const _GstResolutionSection(),
                           if (isReopened) _GstReopenForm(primary: primary),
-                          // Journey only shows from Assigned onwards
                           if (!isReopened && status != 'In Progress')
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                16,
-                                16,
-                                16,
-                                16,
-                              ),
-                              child: _GstJourney(
-                                status: status,
-                                primary: primary,
-                              ),
-                            ),
+                            _GstTimelineCard(status: status, primary: primary),
                           const SizedBox(height: 16),
                         ],
                       ),
@@ -26966,14 +27033,15 @@ const _gstCode = r'''
 // status: 'In Progress' | 'Assigned' | 'Escalated' | 'Resolved' | 'Reopened'
 Column(children: [
   Ux4gAppHeader(
-    variant: Ux4gAppHeaderVariant.filled,   // purple header, white text
+    variant: Ux4gAppHeaderVariant.filled,
+    backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
     title: 'Application Status',
     showBackButton: true,
     onBackPressed: () {},
     horizontalPadding: 16,
   ),
   Expanded(child: Container(
-    color: Ux4gPalette.neutral50,
+    color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
     child: SingleChildScrollView(child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26990,8 +27058,7 @@ Column(children: [
             Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Expanded(child: Text('Delay in certificate issuance',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700))),
-              SizedBox(width: 8),
-              Ux4gTag(text: status, colorScheme: tagColor,
+              Ux4gTag(text: status, colorScheme: Ux4gTagColor.warning,
                 style: Ux4gTagStyle.tonal, size: Ux4gTagSize.m),
             ]),
             SizedBox(height: 4),
@@ -26999,17 +27066,19 @@ Column(children: [
               style: TextStyle(fontSize: 12, color: Ux4gPalette.neutral500)),
             SizedBox(height: 10),
             Ux4gLinearProgress(value: 0.55, label: '8 days left',
-              gradientColors: [Colors.white, primaryColor],
+              gradientColors: isDark
+                  ? [Ux4gPalette.secondary700, Ux4gPalette.secondary300]
+                  : [Ux4gPalette.secondary200, Ux4gPalette.secondary600],
               shape: Ux4gProgressShape.rounded, height: 6),
           ]),
         ),
 
         // ── State-specific content ────────────────────────────────────
-        // In Progress  → Grievance details table
-        // Assigned     → Assigned officer card
-        // Escalated    → Escalation path (3 levels)
-        // Resolved     → Green banner + satisfaction survey
-        // Reopened     → Reopen complaint form
+        if (status == 'In Progress') /* Grievance details card */,
+        if (status == 'Assigned')    /* Assigned officer card */,
+        if (status == 'Escalated')   /* Escalation path card */,
+        if (status == 'Resolved')    /* Resolution banner + survey */,
+        if (status == 'Reopened')    /* Reopen form */,
 
         // ── Grievance journey timeline ────────────────────────────────
         Padding(
@@ -27051,6 +27120,7 @@ final grievanceStatusTrackerComponent = WidgetbookComponent(
           label: 'Status',
           options: const [
             'In Progress',
+            'In Progress (2nd Variant)',
             'Assigned',
             'Escalated',
             'Resolved',

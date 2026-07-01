@@ -108,7 +108,12 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Primary Solid Scale',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('primary', Ux4gPalette.primary, 'primary ★', main: true),
+                _Swatch(
+                  'primary',
+                  Ux4gPalette.primary,
+                  'primary ★',
+                  main: true,
+                ),
                 _Swatch('primary-50', Ux4gPalette.primary50, '50'),
                 _Swatch('primary-100', Ux4gPalette.primary100, '100'),
                 _Swatch('primary-200', Ux4gPalette.primary200, '200'),
@@ -155,7 +160,12 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Secondary Solid Scale',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('secondary', Ux4gPalette.secondary, 'secondary ★', main: true),
+                _Swatch(
+                  'secondary',
+                  Ux4gPalette.secondary,
+                  'secondary ★',
+                  main: true,
+                ),
                 _Swatch('secondary-50', Ux4gPalette.secondary50, '50'),
                 _Swatch('secondary-100', Ux4gPalette.secondary100, '100'),
                 _Swatch('secondary-200', Ux4gPalette.secondary200, '200'),
@@ -202,7 +212,12 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Tertiary Solid Scale',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('tertiary', Ux4gPalette.tertiary, 'tertiary ★', main: true),
+                _Swatch(
+                  'tertiary',
+                  Ux4gPalette.tertiary,
+                  'tertiary ★',
+                  main: true,
+                ),
                 _Swatch('tertiary-50', Ux4gPalette.tertiary50, '50'),
                 _Swatch('tertiary-100', Ux4gPalette.tertiary100, '100'),
                 _Swatch('tertiary-200', Ux4gPalette.tertiary200, '200'),
@@ -481,7 +496,11 @@ final themeColorComponent = WidgetbookComponent(
                 _Swatch('neutral-800', Ux4gPalette.neutral800, '800'),
                 _Swatch('neutral-900', Ux4gPalette.neutral900, '900'),
                 _Swatch('neutral-950', Ux4gPalette.neutral950, '950'),
-                _Swatch('neutral-1000black', Ux4gPalette.neutral1000black, '1000 (black)'),
+                _Swatch(
+                  'neutral-1000black',
+                  Ux4gPalette.neutral1000black,
+                  '1000 (black)',
+                ),
               ],
             ),
             const SizedBox(height: 24),
@@ -661,7 +680,7 @@ Container(color: Ux4gPalette.primary950)       // #1A0E3D  — darkest shade
 
 Container(color: Ux4gPalette.red500)           // #F55E57  — error
 Container(color: Ux4gPalette.green500)         // #1AA64A  — success
-Container(color: Ux4gPalette.secondary500)     // #FFA827  — amber
+Container(color: Ux4gPalette.secondary500)     // #C47D00  — amber
 Container(color: Ux4gPalette.gray900)          // #121212  — near-black
 Container(color: Ux4gPalette.white)            // #FFFFFF
 Container(color: Ux4gPalette.neutral1000black) // #000000''',
@@ -736,14 +755,14 @@ Widget build(BuildContext context) {
             label: 'Light vs Dark values',
             code: '''// Light theme
 primary    = #6A4EFF   onPrimary    = #FFFFFF
-secondary  = #FFA827   onSecondary  = #121212
+secondary  = #A46800   onSecondary  = #FFFFFF
 background = #F5F5F5   onBackground = #121212
 surface    = #FFFFFF   onSurface    = #121212
 error      = #F55E57   onError      = #FFFFFF
 
 // Dark theme
 primary    = #6A4EFF   onPrimary    = #121212
-secondary  = #1157CE   onSecondary  = #FFFFFF
+secondary  = #FFBE6F   onSecondary  = #121212
 background = #121212   onBackground = #FFFFFF
 surface    = #333333   onSurface    = #FFFFFF
 error      = #FF8983   onError      = #121212''',

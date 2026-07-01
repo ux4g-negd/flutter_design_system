@@ -4,12 +4,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _warningOrange = Color(0xFFAD4E00);
-const Color _warningBg = Color(0xFFFFF7E6);
-
 final inlineFeedbackGuidanceComponent = WidgetbookComponent(
   name: 'Inline Feedback Guidance',
   useCases: [
@@ -18,7 +12,7 @@ final inlineFeedbackGuidanceComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.object.dropdown<String>(
           label: 'Variant',
-          options: ['Default', 'Card Style'],
+          options: const ['Default', 'Card Style'],
           initialOption: 'Default',
         );
         final isCard = variant == 'Card Style';
@@ -47,6 +41,7 @@ final inlineFeedbackGuidanceComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 
 const _inlineFeedbackGuidanceCode = r"""import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
 class InlineFeedbackGuidanceScreen extends StatelessWidget {
@@ -54,21 +49,51 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+
+    // Status Banner Colors
+    final warningBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
+    final warningBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
+    final warningTextColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final warningIconColor = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange300;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Expanded(
@@ -77,23 +102,25 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Back button
                     Ux4gButton(
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
                       leadingIcon: Icons.arrow_back,
-                      contentColor: const Color(0xFF432CBB),
+                      contentColor: primaryColor,
                       size: Ux4gButtonSize.small,
                     ),
                     const SizedBox(height: 20),
-                    Text('Conditional Guidance',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                    Text(
+                      'Conditional Guidance',
+                      style: typography.hXS_strong.copyWith(color: titleColor),
+                    ),
                     const SizedBox(height: 10),
-                    Text('Context-sensitive info appears based on the selected field value.',
-                      style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.4)),
+                    Text(
+                      'Context-sensitive info appears based on the selected field value.',
+                      style: typography.bS_default.copyWith(color: subtleColor),
+                    ),
                     const SizedBox(height: 24),
-                    // Reservation Category input
                     Ux4gInputField(
                       value: 'SC/ST',
                       onValueChange: (_) {},
@@ -102,7 +129,6 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
                       style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
                     ),
                     const SizedBox(height: 20),
-                    // File upload area
                     Ux4gFileUpload(
                       maxFiles: 1,
                       maxFileSize: 5 * 1024 * 1024,
@@ -117,24 +143,28 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Color(0xFFFFF7E6),
+                        color: warningBg,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Color(0xFFFFC973)),
+                        border: Border.all(color: warningBorder),
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.error, size: 18, color: Color(0xFFAD4E00)),
+                          Icon(Icons.error, size: 18, color: warningIconColor),
                           const SizedBox(width: 8),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Additional Document Required',
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFFAD4E00))),
+                                Text(
+                                  'Additional Document Required',
+                                  style: typography.bS_strong.copyWith(color: warningTextColor),
+                                ),
                                 const SizedBox(height: 4),
-                                Text('Since you selected SC category, please upload your caste certificate in the Documents step.',
-                                  style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
+                                Text(
+                                  'Since you selected SC category, please upload your caste certificate in the Documents step.',
+                                  style: typography.bS_default.copyWith(color: warningTextColor),
+                                ),
                               ],
                             ),
                           ),
@@ -145,7 +175,6 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Continue button
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: SizedBox(
@@ -155,7 +184,9 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
-                  backgroundColor: const Color(0xFF4A2BC2),
+                  height: 48,
+                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  contentColor: isDark ? Colors.black : Colors.white,
                 ),
               ),
             ),
@@ -173,29 +204,60 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
 
 const _inlineFeedbackGuidanceCardCode =
     r"""import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
-/// Card Style variant — the form content sits inside a light purple card.
 class InlineFeedbackGuidanceCardScreen extends StatelessWidget {
   const InlineFeedbackGuidanceCardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
+    // Status Banner Colors
+    final warningBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
+    final warningBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
+    final warningTextColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final warningIconColor = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange300;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Expanded(
@@ -205,30 +267,32 @@ class InlineFeedbackGuidanceCardScreen extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: cardBg,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Back button
                       Ux4gButton(
                         text: 'Back',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
                         leadingIcon: Icons.arrow_back,
-                        contentColor: const Color(0xFF432CBB),
+                        contentColor: primaryColor,
                         size: Ux4gButtonSize.small,
                       ),
                       const SizedBox(height: 20),
-                      Text('Conditional Guidance',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                      Text(
+                        'Conditional Guidance',
+                        style: typography.hXS_strong.copyWith(color: titleColor),
+                      ),
                       const SizedBox(height: 8),
-                      Text('Context-sensitive info appears based on the selected field value.',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                      Text(
+                        'Context-sensitive info appears based on the selected field value.',
+                        style: typography.bS_default.copyWith(color: subtleColor),
+                      ),
                       const SizedBox(height: 20),
-                      // Reservation Category input
                       Ux4gInputField(
                         value: 'SC/ST',
                         onValueChange: (_) {},
@@ -236,32 +300,42 @@ class InlineFeedbackGuidanceCardScreen extends StatelessWidget {
                         caption: 'Select your reservation category',
                       ),
                       const SizedBox(height: 20),
-                      // File upload area
-                      // ... (custom file upload widget)
+                      Ux4gFileUpload(
+                        maxFiles: 1,
+                        maxFileSize: 5 * 1024 * 1024,
+                        allowedExtensions: const ['pdf', 'jpg', 'png'],
+                        borderStyle: Ux4gFileUploadBorderStyle.dashed,
+                        variant: Ux4gFileUploadVariant.dropzone,
+                        onFilesChanged: (_) {},
+                      ),
                       const SizedBox(height: 20),
                       // Warning banner
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Color(0xFFFFF7E6),
+                          color: warningBg,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Color(0xFFFFC973)),
+                          border: Border.all(color: warningBorder),
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Icons.error, size: 18, color: Color(0xFFAD4E00)),
+                            Icon(Icons.error, size: 18, color: warningIconColor),
                             const SizedBox(width: 8),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Additional Document Required',
-                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFFAD4E00))),
+                                  Text(
+                                    'Additional Document Required',
+                                    style: typography.bS_strong.copyWith(color: warningTextColor),
+                                  ),
                                   const SizedBox(height: 4),
-                                  Text('Since you selected SC category, please upload your caste certificate in the Documents step.',
-                                    style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
+                                  Text(
+                                    'Since you selected SC category, please upload your caste certificate in the Documents step.',
+                                    style: typography.bS_default.copyWith(color: warningTextColor),
+                                  ),
                                 ],
                               ),
                             ),
@@ -273,7 +347,6 @@ class InlineFeedbackGuidanceCardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Continue button at bottom
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: SizedBox(
@@ -283,7 +356,10 @@ class InlineFeedbackGuidanceCardScreen extends StatelessWidget {
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
-                  backgroundColor: const Color(0xFF4A2BC2),
+                  height: 48,
+                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  contentColor: isDark ? Colors.black : Colors.white,
+                  borderRadius: 8,
                 ),
               ),
             ),
@@ -306,46 +382,60 @@ class _InlineFeedbackGuidanceMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard
+            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF))
+            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
-              // App Header with logos
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/national_amblam_logo.svg',
-                      height: 40,
+              // App Header with elevation
+              Ux4gAppHeader(
+                elevation: 2,
+                variant: Ux4gAppHeaderVariant.light,
+                title: '',
+                leadingSpacing: 8,
+                leadingWidgets: [
+                  SvgPicture.asset(
+                    Ux4gIcons.nationalEmblem,
+                    height: 40,
+                    colorFilter: isDark
+                        ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                        : null,
+                  ),
+                  SizedBox(
+                    height: 32,
+                    child: Ux4gDivider(
+                      orientation: Ux4gDividerOrientation.vertical,
+                      color: const Color(0xFFD1D5DB),
                     ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      height: 32,
-                      child: Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        color: const Color(0xFFD1D5DB),
-                      ),
+                  ),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
                     ),
-                    const SizedBox(width: 8),
-                    SvgPicture.asset('assets/Union.svg', height: 32),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               // Content
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
-                  child: isCard ? _buildCardContent() : _buildDefaultContent(),
+                  child: isCard
+                      ? _buildCardContent(context, cardBg, primaryColor, titleColor, subtleColor, isDark)
+                      : _buildDefaultContent(context, primaryColor, titleColor, subtleColor, isDark),
                 ),
               ),
 
@@ -359,7 +449,10 @@ class _InlineFeedbackGuidanceMockup extends StatelessWidget {
                     onPressed: () {},
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.large,
-                    backgroundColor: const Color(0xFF4A2BC2),
+                    height: 48,
+                    backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                    contentColor: isDark ? Colors.black : Colors.white,
+                    borderRadius: 8,
                   ),
                 ),
               ),
@@ -370,7 +463,9 @@ class _InlineFeedbackGuidanceMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildFormFields() {
+  Widget _buildFormFields(BuildContext context, Color primaryColor, Color titleColor, Color subtleColor, bool isDark) {
+    final typography = Ux4gTheme.typography(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -382,27 +477,23 @@ class _InlineFeedbackGuidanceMockup extends StatelessWidget {
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
             leadingIcon: Icons.arrow_back,
-            contentColor: _primaryColor,
+            contentColor: primaryColor,
             size: Ux4gButtonSize.small,
           ),
         ),
         const SizedBox(height: 20),
 
         // Title
-        const Text(
+        Text(
           'Conditional Guidance',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w900,
-            color: _titleColor,
-          ),
+          style: typography.hXS_strong.copyWith(color: titleColor),
         ),
         const SizedBox(height: 10),
 
         // Description
-        const Text(
+        Text(
           'Context-sensitive info appears based on the selected field value.',
-          style: TextStyle(fontSize: 14, color: _subtleText, height: 1.4),
+          style: typography.bS_default.copyWith(color: subtleColor),
         ),
         const SizedBox(height: 24),
 
@@ -417,56 +508,54 @@ class _InlineFeedbackGuidanceMockup extends StatelessWidget {
         const SizedBox(height: 20),
 
         // File upload area
-        _buildFileUploadArea(),
+        Ux4gFileUpload(
+          maxFiles: 1,
+          maxFileSize: 5 * 1024 * 1024,
+          allowedExtensions: const ['pdf', 'jpg', 'png'],
+          borderStyle: Ux4gFileUploadBorderStyle.dashed,
+          variant: Ux4gFileUploadVariant.dropzone,
+          onFilesChanged: (_) {},
+        ),
         const SizedBox(height: 20),
 
         // Warning banner
-        _buildWarningBanner(),
+        _buildWarningBanner(context, isDark),
       ],
     );
   }
 
-  Widget _buildFileUploadArea() {
-    return Ux4gFileUpload(
-      maxFiles: 1,
-      maxFileSize: 5 * 1024 * 1024,
-      allowedExtensions: const ['pdf', 'jpg', 'png'],
-      borderStyle: Ux4gFileUploadBorderStyle.dashed,
-      variant: Ux4gFileUploadVariant.dropzone,
-      onFilesChanged: (_) {},
-    );
-  }
+  Widget _buildWarningBanner(BuildContext context, bool isDark) {
+    final typography = Ux4gTheme.typography(context);
+    final warningBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
+    final warningBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
+    final warningTextColor = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final warningIconColor = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange300;
 
-  Widget _buildWarningBanner() {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: _warningBg,
+        color: warningBg,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xFFFFC973)),
+        border: Border.all(color: warningBorder),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.error, size: 18, color: _warningOrange),
+          Icon(Icons.error, size: 18, color: warningIconColor),
           const SizedBox(width: 8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   'Additional Document Required',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: _warningOrange,
-                  ),
+                  style: typography.bS_strong.copyWith(color: warningTextColor),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   'Since you selected SC category, please upload your caste certificate in the Documents step.',
-                  style: TextStyle(fontSize: 12, color: _subtleText),
+                  style: typography.bS_default.copyWith(color: warningTextColor),
                 ),
               ],
             ),
@@ -476,19 +565,19 @@ class _InlineFeedbackGuidanceMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultContent() {
-    return _buildFormFields();
+  Widget _buildDefaultContent(BuildContext context, Color primaryColor, Color titleColor, Color subtleColor, bool isDark) {
+    return _buildFormFields(context, primaryColor, titleColor, subtleColor, isDark);
   }
 
-  Widget _buildCardContent() {
+  Widget _buildCardContent(BuildContext context, Color cardBg, Color primaryColor, Color titleColor, Color subtleColor, bool isDark) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: _buildFormFields(),
+      child: _buildFormFields(context, primaryColor, titleColor, subtleColor, isDark),
     );
   }
 }

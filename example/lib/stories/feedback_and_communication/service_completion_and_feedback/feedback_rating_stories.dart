@@ -56,17 +56,24 @@ class FeedbackRatingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
+              leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -74,26 +81,15 @@ class FeedbackRatingScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // Feedback form using Ux4gFeedbackForm
             Expanded(
@@ -120,7 +116,7 @@ class FeedbackRatingScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -147,17 +143,24 @@ class FeedbackRatingCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
+              leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -165,26 +168,15 @@ class FeedbackRatingCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // White card with Ux4gFeedbackForm
             Padding(
@@ -217,7 +209,7 @@ class FeedbackRatingCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -241,22 +233,26 @@ class _FeedbackRatingMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: Theme.of(context).brightness == Brightness.dark),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard ? (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
               // App Header using Ux4gAppHeader
               Ux4gAppHeader(
+                elevation: 2,
+                leadingSpacing: 8,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(
-                    'assets/national_amblam_logo.svg',
-                    height: 40,
-                  ),
-                  const SizedBox(width: 8),
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
@@ -264,52 +260,17 @@ class _FeedbackRatingMockup extends StatelessWidget {
                       color: const Color(0xFFD1D5DB),
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ],
               ),
 
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) =>
-                          const Text('🇮🇳', style: TextStyle(fontSize: 14)),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
 
               // Content - using Ux4gFeedbackForm directly
               if (!isCard)
@@ -368,7 +329,7 @@ class _FeedbackRatingMockup extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
                       errorBuilder: (_, __, ___) => const Text(
                         'Digital India',

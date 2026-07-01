@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 import 'buttons.dart';
+import 'input_field.dart';
 
 /// Defines the mode for the date picker.
 enum Ux4gDatePickerMode { single, range }
@@ -17,6 +18,10 @@ class Ux4gDatePicker extends StatefulWidget {
   final ValueChanged<DateTimeRange>? onDateRangeSelected;
   final String placeholder;
   final bool enabled;
+  final String? label;
+  final String? description;
+  final bool isRequired;
+  final Ux4gInputFieldStatus status;
 
   const Ux4gDatePicker({
     super.key,
@@ -29,6 +34,10 @@ class Ux4gDatePicker extends StatefulWidget {
     this.onDateRangeSelected,
     this.placeholder = 'Select date',
     this.enabled = true,
+    this.label,
+    this.description,
+    this.isRequired = false,
+    this.status = Ux4gInputFieldStatus.defaultStatus,
   });
 
   @override
@@ -110,57 +119,172 @@ class _Ux4gDatePickerState extends State<Ux4gDatePicker> {
         (widget.mode == Ux4gDatePickerMode.single && _selectedDate != null) ||
         (widget.mode == Ux4gDatePickerMode.range && _selectedRange != null);
 
-    return MouseRegion(
-      cursor: widget.enabled
-          ? SystemMouseCursors.click
-          : SystemMouseCursors.forbidden,
-      child: GestureDetector(
-        onTap: _openPicker,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: ux4gColors?.surface ?? materialTheme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: isSelected
-                  ? (ux4gColors?.primary ?? materialTheme.colorScheme.primary)
-                  : (ux4gColors?.onSurface ??
-                            materialTheme.colorScheme.onSurface)
-                        .withValues(alpha: 0.38),
-            ),
-          ),
+    final onSurface =
+        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
+    final onBackground =
+        ux4gColors?.onBackground ?? materialTheme.colorScheme.onSurface;
+    final errorColor = ux4gColors?.error ?? materialTheme.colorScheme.error;
+    final warningColor = ux4gColors?.warning ?? Colors.orange;
+    final successColor = ux4gColors?.success ?? Colors.green;
+
+    Color borderColor;
+    if (!widget.enabled) {
+      borderColor = onSurface.withValues(alpha: 0.38);
+    } else {
+      borderColor = switch (widget.status) {
+        Ux4gInputFieldStatus.error => errorColor,
+        Ux4gInputFieldStatus.warning => warningColor,
+        Ux4gInputFieldStatus.success => successColor,
+        Ux4gInputFieldStatus.defaultStatus => isSelected
+            ? (ux4gColors?.primary ?? materialTheme.colorScheme.primary)
+            : onSurface.withValues(alpha: 0.38),
+      };
+    }
+
+    final textStyle = (ux4gTypography?.bM_default ?? materialTheme.textTheme.bodyMedium ?? const TextStyle())
+        .copyWith(
+          color: isSelected
+              ? (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface)
+              : onSurface.withValues(alpha: 0.38),
+        );
+    final iconColor = isSelected
+        ? (ux4gColors?.primary ?? materialTheme.colorScheme.primary)
+        : onSurface.withValues(alpha: 0.38);
+
+    Widget buildBox(String text) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: ux4gColors?.surface ?? materialTheme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: borderColor),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(child: Text(text, style: textStyle, overflow: TextOverflow.ellipsis)),
+            const SizedBox(width: 8),
+            Icon(Icons.calendar_today_outlined, size: 20, color: iconColor),
+          ],
+        ),
+      );
+    }
+
+    Widget pickerWidget;
+    if (widget.mode == Ux4gDatePickerMode.single) {
+      pickerWidget = MouseRegion(
+        cursor: widget.enabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
+        child: GestureDetector(
+          onTap: _openPicker,
+          child: buildBox(_getFormattedValue()),
+        ),
+      );
+    } else {
+      String startText = widget.placeholder;
+      String endText = widget.placeholder;
+      if (_selectedRange != null) {
+        startText = _formatDate(_selectedRange!.start);
+        endText = _formatDate(_selectedRange!.end);
+      }
+      pickerWidget = MouseRegion(
+        cursor: widget.enabled ? SystemMouseCursors.click : SystemMouseCursors.forbidden,
+        child: GestureDetector(
+          onTap: _openPicker,
           child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                _getFormattedValue(),
-                style:
-                    (ux4gTypography?.bM_default ??
-                            materialTheme.textTheme.bodyMedium ??
-                            const TextStyle())
-                        .copyWith(
-                          color: isSelected
-                              ? (ux4gColors?.onSurface ??
-                                    materialTheme.colorScheme.onSurface)
-                              : (ux4gColors?.onSurface ??
-                                        materialTheme.colorScheme.onSurface)
-                                    .withValues(alpha: 0.38),
-                        ),
+              Expanded(child: buildBox(startText)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text("-", style: textStyle),
               ),
-              Icon(
-                Icons.calendar_today_outlined,
-                size: 20,
-                color: isSelected
-                    ? (ux4gColors?.primary ?? materialTheme.colorScheme.primary)
-                    : (ux4gColors?.onSurface ??
-                              materialTheme.colorScheme.onSurface)
-                          .withValues(alpha: 0.38),
-              ),
+              Expanded(child: buildBox(endText)),
             ],
           ),
         ),
-      ),
+      );
+    }
+
+    if (widget.label == null && widget.description == null) {
+      return pickerWidget;
+    }
+
+    final bsStrong =
+        ux4gTypography?.bS_strong ??
+        materialTheme.textTheme.bodySmall?.copyWith(
+          fontWeight: FontWeight.w700,
+        ) ??
+        const TextStyle(fontWeight: FontWeight.w700, fontSize: 14);
+    final bxsDefault =
+        ux4gTypography?.bXS_default ??
+        materialTheme.textTheme.bodySmall ??
+        const TextStyle(fontSize: 12);
+
+    Color labelColor;
+    if (!widget.enabled) {
+      labelColor = onSurface.withValues(alpha: 0.4);
+    } else {
+      labelColor = onBackground;
+    }
+
+    Color descriptionColor;
+    if (!widget.enabled) {
+      descriptionColor = onSurface.withValues(alpha: 0.4);
+    } else {
+      descriptionColor = switch (widget.status) {
+        Ux4gInputFieldStatus.error => errorColor,
+        Ux4gInputFieldStatus.warning => warningColor,
+        Ux4gInputFieldStatus.success => successColor,
+        Ux4gInputFieldStatus.defaultStatus => onSurface.withValues(alpha: 0.6),
+      };
+    }
+    
+    IconData? statusIcon = switch (widget.status) {
+      Ux4gInputFieldStatus.error => Icons.error,
+      Ux4gInputFieldStatus.warning => Icons.warning,
+      Ux4gInputFieldStatus.success => Icons.check_circle,
+      Ux4gInputFieldStatus.defaultStatus => Icons.info_outline,
+    };
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (widget.label != null) ...[
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(widget.label!, style: bsStrong.copyWith(color: labelColor)),
+              if (widget.isRequired) ...[
+                const SizedBox(width: 4),
+                Text("*", style: bsStrong.copyWith(color: errorColor)),
+              ],
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
+        pickerWidget,
+        if (widget.description != null) ...[
+          const SizedBox(height: 4),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                statusIcon,
+                size: 14,
+                color: descriptionColor,
+              ),
+              const SizedBox(width: 6),
+              Flexible(
+                child: Text(
+                  widget.description!,
+                  style: bxsDefault.copyWith(color: descriptionColor),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ],
     );
   }
 }
@@ -280,10 +404,16 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
       } else {
         if (_tempRangeStart == null ||
             (_tempRangeStart != null && _tempRangeEnd != null)) {
+          final now = DateTime.now();
+          final today = DateTime(now.year, now.month, now.day);
+          if (date.isAfter(today)) return; // Start date cannot be after today
           _tempRangeStart = date;
           _tempRangeEnd = null;
         } else {
           if (date.isBefore(_tempRangeStart!)) {
+            final now = DateTime.now();
+            final today = DateTime(now.year, now.month, now.day);
+            if (date.isAfter(today)) return; // New start date cannot be after today
             _tempRangeEnd = _tempRangeStart;
             _tempRangeStart = date;
           } else {

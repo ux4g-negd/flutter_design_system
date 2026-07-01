@@ -63,6 +63,66 @@ Ux4gModal.show(
       builder: (context) => ComponentDocs(
         name: 'Ux4gModal — Variants',
         description: 'Common modal patterns used in the design system.',
+        code: '''// 1. Default (Left Aligned)
+Ux4gModal(
+  headerTitle: 'Default Modal',
+  bodyText: 'This is the standard left-aligned modal with two footer buttons.',
+  footerButtons: Ux4gModalFooterButtons.twoButtons,
+  footerAlign: Ux4gModalFooterAlign.right,
+  onDismiss: () {},
+);
+
+// 2. Destructive (Centered)
+Ux4gModal(
+  headerTitle: 'Warning',
+  subtitleText: 'Delete Item?',
+  bodyText: 'Are you sure you want to permanently delete this item?',
+  alignment: Ux4gModalAlignment.centered,
+  footerAlign: Ux4gModalFooterAlign.center,
+  isDestructive: true,
+  primaryButtonText: 'Delete',
+  onDismiss: () {},
+);
+
+// 3. Minimal (No Image, No Header)
+Ux4gModal(
+  headerImageStyle: Ux4gModalHeaderImage.none,
+  showHeader: false,
+  subtitleText: 'Confirm Action',
+  bodyText: 'This will permanently remove the selected items. Continue?',
+  footerAlign: Ux4gModalFooterAlign.split,
+  showCloseButton: false,
+  onDismiss: () {},
+);
+
+// 4. Avatar (Padded Image)
+Ux4gModal(
+  headerImageContent: Container(
+    color: const Color(0xFF6A4EFF).withValues(alpha: 0.1),
+  ),
+  headerImageStyle: Ux4gModalHeaderImage.padded,
+  leadingItem: Ux4gModalLeadingItem.avatar,
+  avatarInitials: 'JD',
+  alignment: Ux4gModalAlignment.centered,
+  headerTitle: 'John Doe',
+  descriptionText: 'Administrator',
+  showDescription: true,
+  onDismiss: () {},
+);
+
+// 5. Full-Bleed Image Header
+Ux4gModal(
+  headerImageUrl: 'https://picsum.photos/seed/modal/600/300',
+  headerImageStyle: Ux4gModalHeaderImage.fullBleed,
+  headerTitle: 'Image Header',
+  descriptionText: 'Optional description below header',
+  showDescription: true,
+  bodyText: 'Modals with full-bleed images are great for onboarding or marketing content.',
+  footerButtons: Ux4gModalFooterButtons.twoButtons,
+  primaryButtonText: 'Continue',
+  secondaryButtonText: 'Back',
+  onDismiss: () {},
+);''',
         props: const [
           PropRow(
             name: 'onDismiss',
@@ -209,6 +269,94 @@ Ux4gModal.show(
           ),
         ),
       ),
+    ),
+    WidgetbookUseCase(
+      name: 'Hero Image Variants',
+      builder: (context) {
+        const bodyContent = 'A modal is a design element that appears over the main content of a webpage, capturing the user\'s attention by disabling interaction with the rest of the page until the modal is addressed.';
+        
+        Widget buildPromoModal(Ux4gModalAlignment align, bool destructive, {String? imageUrl}) {
+          return SizedBox(
+            width: 400,
+            child: Ux4gModal(
+              headerImageUrl: imageUrl,
+              headerImageContent: imageUrl == null
+                  ? Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)], // Purple gradient
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                    )
+                  : null,
+              headerImageStyle: Ux4gModalHeaderImage.fullBleed,
+              leadingItem: Ux4gModalLeadingItem.icon,
+              leadingIcon: Icons.category_outlined,
+              leadingIconTint: destructive ? const Color(0xFFD32F2F) : null,
+              alignment: align,
+              headerTitle: 'Header',
+              showDescription: true,
+              descriptionText: 'Write description here',
+              showSubtitle: true,
+              subtitleText: 'Subtitle',
+              bodyText: bodyContent,
+              footerButtons: Ux4gModalFooterButtons.twoButtons,
+              footerAlign: align == Ux4gModalAlignment.centered ? Ux4gModalFooterAlign.center : Ux4gModalFooterAlign.right,
+              isDestructive: destructive,
+              primaryButtonText: 'Button',
+              secondaryButtonText: 'Button',
+              onDismiss: () {},
+            ),
+          );
+        }
+
+        return ComponentDocs(
+          name: 'Ux4gModal — Hero Image Variants',
+          description: 'Showcases permutations of hero images with different alignments and button intents.',
+          code: '''Ux4gModal(
+  headerImageContent: Container(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+    ),
+  ),
+  headerImageStyle: Ux4gModalHeaderImage.fullBleed,
+  leadingItem: Ux4gModalLeadingItem.icon,
+  leadingIcon: Icons.category_outlined,
+  // Use red destructive colors if needed:
+  // leadingIconTint: const Color(0xFFD32F2F),
+  // isDestructive: true,
+  alignment: Ux4gModalAlignment.leftAligned, // or centered
+  headerTitle: 'Header',
+  showDescription: true,
+  descriptionText: 'Write description here',
+  showSubtitle: true,
+  subtitleText: 'Subtitle',
+  bodyText: 'A modal is a design element that appears over the main content...',
+  footerButtons: Ux4gModalFooterButtons.twoButtons,
+  footerAlign: Ux4gModalFooterAlign.right, // or center
+  primaryButtonText: 'Button',
+  secondaryButtonText: 'Button',
+  onDismiss: () {},
+);''',
+          child: Wrap(
+            spacing: 32,
+            runSpacing: 32,
+            alignment: WrapAlignment.center,
+            children: [
+              buildPromoModal(Ux4gModalAlignment.leftAligned, false),
+              buildPromoModal(Ux4gModalAlignment.leftAligned, true, imageUrl: 'https://picsum.photos/seed/promo1/600/300'),
+              buildPromoModal(Ux4gModalAlignment.centered, false, imageUrl: 'https://picsum.photos/seed/promo2/600/300'),
+              buildPromoModal(Ux4gModalAlignment.centered, true),
+            ],
+          ),
+        );
+      },
     ),
     // ── Static Full Preview ───────────────────────────────────────
     WidgetbookUseCase(
@@ -600,9 +748,20 @@ final tooltipComponent = WidgetbookComponent(
         name: 'Ux4gTooltip — Interactive',
         description: 'Use knobs to test different placements and text.',
         code: '''Ux4gTooltip(
-  tooltipText: 'Dynamic tooltip',
+  tooltipText: 'Interactive Tooltip',
+  title: 'Information', // Optional
+  icon: Icons.view_in_ar_outlined, // Optional
   placement: Ux4gTooltipPlacement.top,
-  child: Icon(Icons.info_outline),
+  backgroundColor: Ux4gPalette.neutral700, // Light: neutral700, Dark: neutral300
+  contentColor: Ux4gPalette.neutral50, // Light: neutral50, Dark: neutral900
+  cornerRadius: Ux4gRadius.radius4, // Default: 4.0
+  arrowWidth: 10.0, // Default: 10.0
+  arrowHeight: 6.0, // Default: 6.0
+  isPersistent: false,
+  child: const Ux4gButton(
+    text: 'Long Press / Tap Me',
+    onPressed: () {},
+  ),
 );''',
         props: const [
           PropRow(
@@ -620,23 +779,54 @@ final tooltipComponent = WidgetbookComponent(
           PropRow(
             name: 'placement',
             type: 'Ux4gTooltipPlacement',
-            description: 'top / bottom / left / right.',
+            description: 'top / bottom / left / right alignments.',
             defaultValue: 'top',
+          ),
+          PropRow(
+            name: 'title',
+            type: 'String?',
+            description: 'Optional title (makes tooltip rich/persistent).',
           ),
           PropRow(
             name: 'icon',
             type: 'IconData?',
-            description: 'Optional icon inside tooltip.',
+            description: 'Optional leading icon.',
           ),
           PropRow(
             name: 'backgroundColor',
             type: 'Color?',
-            description: 'Custom background color.',
+            description:
+                'Custom background. Defaults to neutral700 (light) / neutral300 (dark).',
           ),
           PropRow(
             name: 'contentColor',
             type: 'Color?',
-            description: 'Custom text/icon color.',
+            description:
+                'Custom text/icon color. Defaults to neutral50 (light) / neutral900 (dark).',
+          ),
+          PropRow(
+            name: 'cornerRadius',
+            type: 'double',
+            description: 'Radius of the tooltip bubble.',
+            defaultValue: '4.0',
+          ),
+          PropRow(
+            name: 'arrowWidth',
+            type: 'double',
+            description: 'Width of the caret/arrow.',
+            defaultValue: '10.0',
+          ),
+          PropRow(
+            name: 'arrowHeight',
+            type: 'double',
+            description: 'Height of the caret/arrow.',
+            defaultValue: '6.0',
+          ),
+          PropRow(
+            name: 'isPersistent',
+            type: 'bool',
+            description: 'If true, tooltip does not auto-dismiss.',
+            defaultValue: 'false',
           ),
         ],
         child: Padding(
@@ -646,86 +836,105 @@ final tooltipComponent = WidgetbookComponent(
               label: 'Text',
               initialValue: 'Interactive Tooltip',
             ),
+            icon: Icons.view_in_ar_outlined,
             placement: context.knobs.list(
               label: 'Placement',
               options: Ux4gTooltipPlacement.values,
               initialOption: Ux4gTooltipPlacement.top,
               labelBuilder: (v) => v.name,
             ),
-            child: const Ux4gButton(
-              text: 'Long Press / Tap Me',
-              onPressed: null,
-            ), // Use null to show disabled or empty callback
+            child: Ux4gButton(text: 'Long Press / Tap Me', onPressed: () {}),
           ),
         ),
       ),
     ),
     WidgetbookUseCase(
-      name: 'Placements Gallery',
-      builder: (context) => ComponentDocs(
-        name: 'Ux4gTooltip — Placements',
-        description: 'Visual reference for all directional tooltips.',
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 60),
-          child: Column(
+      name: 'All Variants',
+      builder: (context) {
+        final typography = Ux4gTheme.typography(context);
+
+        Widget buildRow(String title, List<Ux4gTooltipPlacement> placements) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Ux4gTooltip(
-                    tooltipText: 'Top placement',
-                    placement: Ux4gTooltipPlacement.top,
-                    child: Ux4gButton(
-                      text: 'Top',
-                      size: Ux4gButtonSize.small,
-                      variant: Ux4gButtonVariant.outline,
-                      onPressed: () {},
+              Text(title, style: typography.lS_strong),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 32,
+                runSpacing: 32,
+                children: placements.map((p) {
+                  return Ux4gTooltip(
+                    tooltipText: 'Tooltip',
+                    icon: Icons.view_in_ar_outlined,
+                    placement: p,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Text('Hover Me'),
                     ),
-                  ),
-                  const SizedBox(width: 40),
-                  Ux4gTooltip(
-                    tooltipText: 'Bottom placement',
-                    placement: Ux4gTooltipPlacement.bottom,
-                    child: Ux4gButton(
-                      text: 'Bottom',
-                      size: Ux4gButtonSize.small,
-                      variant: Ux4gButtonVariant.outline,
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 60),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Ux4gTooltip(
-                    tooltipText: 'Left placement',
-                    placement: Ux4gTooltipPlacement.left,
-                    child: Ux4gButton(
-                      text: 'Left',
-                      size: Ux4gButtonSize.small,
-                      variant: Ux4gButtonVariant.outline,
-                      onPressed: () {},
-                    ),
-                  ),
-                  const SizedBox(width: 80),
-                  Ux4gTooltip(
-                    tooltipText: 'Right placement',
-                    placement: Ux4gTooltipPlacement.right,
-                    child: Ux4gButton(
-                      text: 'Right',
-                      size: Ux4gButtonSize.small,
-                      variant: Ux4gButtonVariant.outline,
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
             ],
+          );
+        }
+
+        return ComponentDocs(
+          name: 'Ux4gTooltip — All Variants',
+          description:
+              'Visual reference for all directional placements and alignments.',
+          code: '''// Standard usage with all parameters
+Ux4gTooltip(
+  tooltipText: 'This is a standard tooltip.',
+  title: 'Information', // Optional (makes it a rich tooltip)
+  icon: Icons.info_outline, // Optional
+  placement: Ux4gTooltipPlacement.top, // 12 placement options
+  backgroundColor: Ux4gPalette.neutral700, // Default in light mode
+  contentColor: Ux4gPalette.neutral50, // Default in light mode
+  cornerRadius: Ux4gRadius.radius4, // Default: 4px
+  arrowWidth: 10.0,
+  arrowHeight: 6.0,
+  enableUserInput: true,
+  isPersistent: false,
+  child: Icon(Icons.help_outline),
+);''',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildRow('Top Placements', [
+                  Ux4gTooltipPlacement.topStart,
+                  Ux4gTooltipPlacement.top,
+                  Ux4gTooltipPlacement.topEnd,
+                ]),
+                buildRow('Bottom Placements', [
+                  Ux4gTooltipPlacement.bottomStart,
+                  Ux4gTooltipPlacement.bottom,
+                  Ux4gTooltipPlacement.bottomEnd,
+                ]),
+                buildRow('Left Placements', [
+                  Ux4gTooltipPlacement.leftStart,
+                  Ux4gTooltipPlacement.left,
+                  Ux4gTooltipPlacement.leftEnd,
+                ]),
+                buildRow('Right Placements', [
+                  Ux4gTooltipPlacement.rightStart,
+                  Ux4gTooltipPlacement.right,
+                  Ux4gTooltipPlacement.rightEnd,
+                ]),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     ),
   ],
 );

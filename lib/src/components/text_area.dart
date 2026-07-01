@@ -148,6 +148,10 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
         ux4gTypography?.bS_default ??
         materialTheme.textTheme.bodySmall ??
         const TextStyle(fontSize: 14);
+    final llDefault =
+        ux4gTypography?.lL_default ??
+        materialTheme.textTheme.labelLarge ??
+        const TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
 
     final borderColor = _getBorderColor(materialTheme, ux4gColors);
     final bgColor = widget.enabled
@@ -167,7 +171,7 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
         if (widget.label != null) ...[
           Row(
             children: [
-              Text(widget.label!, style: bsStrong.copyWith(color: labelColor)),
+              Text(widget.label!, style: llDefault.copyWith(color: labelColor)),
               if (widget.required) ...[
                 const SizedBox(width: 4),
                 Text("*", style: bsStrong.copyWith(color: errorColor)),
@@ -207,7 +211,8 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
                   enabled: widget.enabled,
                   readOnly: widget.readOnly,
                   maxLines: null,
-                  cursorColor: ux4gColors?.primary ?? materialTheme.colorScheme.primary,
+                  cursorColor:
+                      ux4gColors?.primary ?? materialTheme.colorScheme.primary,
                   maxLength: widget.maxLength,
                   style: bmDefault.copyWith(color: textColor),
                   decoration: InputDecoration(
@@ -227,18 +232,23 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (widget.characterCountText != null || widget.maxLength != null)
+                      if (widget.characterCountText != null ||
+                          widget.maxLength != null)
                         Text(
-                          widget.characterCountText ?? "${_controller.text.length}/${widget.maxLength}",
+                          widget.characterCountText ??
+                              "${_controller.text.length}/${widget.maxLength}",
                           style: bxsDefault.copyWith(
                             color: onSurface.withValues(alpha: 0.5),
                           ),
                         ),
                       const SizedBox(width: 4),
-                      Text(
-                        "◢",
-                        style: bsDefault.copyWith(
-                          color: onSurface.withValues(alpha: 0.4),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 2.0, right: 2.0, left: 2.0),
+                        child: CustomPaint(
+                          size: const Size(6, 6),
+                          painter: _TextAreaResizeGripPainter(
+                            color: onSurface.withValues(alpha: 0.4),
+                          ),
                         ),
                       ),
                     ],
@@ -331,5 +341,37 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
       Ux4gInputFieldStatus.success => Icons.check_circle,
       Ux4gInputFieldStatus.defaultStatus => null,
     };
+  }
+}
+
+class _TextAreaResizeGripPainter extends CustomPainter {
+  final Color color;
+
+  _TextAreaResizeGripPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.2
+      ..strokeCap = StrokeCap.round;
+
+    // Bottom-right line
+    canvas.drawLine(
+      Offset(size.width * 0.3, size.height),
+      Offset(size.width, size.height * 0.3),
+      paint,
+    );
+    // Top-left line
+    canvas.drawLine(
+      Offset(0, size.height * 0.7),
+      Offset(size.width * 0.7, 0),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _TextAreaResizeGripPainter oldDelegate) {
+    return oldDelegate.color != color;
   }
 }

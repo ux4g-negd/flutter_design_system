@@ -4,11 +4,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _successGreen = Color(0xFF16A34A);
-
 final inlineFeedbackComponent = WidgetbookComponent(
   name: 'Inline Feedback',
   useCases: [
@@ -17,7 +12,7 @@ final inlineFeedbackComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.object.dropdown<String>(
           label: 'Variant',
-          options: ['Default', 'Card Style'],
+          options: const ['Default', 'Card Style'],
           initialOption: 'Default',
         );
         final isCard = variant == 'Card Style';
@@ -50,6 +45,7 @@ enum _CardVariant { defaultStyle, cardStyle }
 // ───────────────────────────────────────────────────────────────────────
 
 const _inlineFeedbackDefaultCode = r"""import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
 class InlineFeedbackScreen extends StatelessWidget {
@@ -57,21 +53,46 @@ class InlineFeedbackScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final successColor = isDark ? Ux4gPalette.green300 : const Color(0xFF16A34A);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos
+            // App Header with logos and elevation
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Expanded(
@@ -79,58 +100,75 @@ class InlineFeedbackScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Back
-              Row(
-                children: [
-                  Icon(Icons.arrow_back, size: 16, color: Color(0xFF432CBB)),
-                  const SizedBox(width: 4),
-                  Text('Back', style: TextStyle(fontSize: 14, color: Color(0xFF432CBB))),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Text('Enter your Annual Income', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
-              const SizedBox(height: 8),
-              Text('Enter your total annual household income for FY 2025–2026 to verify eligibility.',
-                style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
-              const SizedBox(height: 20),
-              Text('Income Amount', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-              const SizedBox(height: 8),
-              // Input field
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFF16A34A)),
-                  borderRadius: BorderRadius.circular(8),
+                  children: [
+                    // Back link
+                    Row(
+                      children: [
+                        Icon(Icons.arrow_back, size: 16, color: primaryColor),
+                        const SizedBox(width: 4),
+                        Text('Back', style: TextStyle(fontSize: 14, color: primaryColor)),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Enter your Annual Income',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: titleColor),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Enter your total annual household income for FY 2025–2026 to verify eligibility.',
+                      style: TextStyle(fontSize: 13, color: subtleColor),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Income Amount',
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: titleColor),
+                    ),
+                    const SizedBox(height: 8),
+                    // Input field
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: successColor),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        '₹  2,50,000',
+                        style: TextStyle(fontSize: 15, color: titleColor),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    // Success feedback
+                    Row(
+                      children: [
+                        Icon(Icons.check_circle, size: 16, color: successColor),
+                        const SizedBox(width: 6),
+                        Text(
+                          'Amount format looks correct',
+                          style: TextStyle(fontSize: 13, color: successColor),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    // Continue button
+                    SizedBox(
+                      width: double.infinity,
+                      child: Ux4gButton(
+                        text: 'Continue',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.primary,
+                        size: Ux4gButtonSize.large,
+                        height: 48,
+                        backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                        contentColor: isDark ? Colors.black : Colors.white,
+                        borderRadius: 8,
+                      ),
+                    ),
+                  ],
                 ),
-                child: Text('₹  2,50,000', style: TextStyle(fontSize: 15, color: Color(0xFF111827))),
               ),
-              const SizedBox(height: 8),
-              // Success feedback
-              Row(
-                children: [
-                  Icon(Icons.check_circle, size: 16, color: Color(0xFF16A34A)),
-                  const SizedBox(width: 6),
-                  Text('Amount format looks correct', style: TextStyle(fontSize: 13, color: Color(0xFF16A34A))),
-                ],
-              ),
-              const Spacer(),
-              // Continue button
-              SizedBox(
-                width: double.infinity,
-                child: Ux4gButton(
-                  text: 'Continue',
-                  onPressed: () {},
-                  variant: Ux4gButtonVariant.primary,
-                  size: Ux4gButtonSize.large,
-                  backgroundColor: const Color(0xFF4A2BC2),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
           ],
         ),
       ),
@@ -144,21 +182,56 @@ class InlineFeedbackScreen extends StatelessWidget {
 // ───────────────────────────────────────────────────────────────────────
 
 const _inlineFeedbackCardCode = r"""import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
-/// Card Style variant — the form content sits inside a light purple card.
 class InlineFeedbackCardScreen extends StatelessWidget {
   const InlineFeedbackCardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final successColor = isDark ? Ux4gPalette.green300 : const Color(0xFF16A34A);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
+            // App Header with logos and elevation
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
+              title: '',
+              leadingSpacing: 8,
+              leadingWidgets: [
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
             ),
             Expanded(
               child: Padding(
@@ -167,45 +240,59 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: cardBg,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Back
+                      // Back link
                       Row(
                         children: [
-                          Icon(Icons.arrow_back, size: 16, color: Color(0xFF432CBB)),
+                          Icon(Icons.arrow_back, size: 16, color: primaryColor),
                           const SizedBox(width: 4),
-                          Text('Back', style: TextStyle(fontSize: 14, color: Color(0xFF432CBB))),
+                          Text('Back', style: TextStyle(fontSize: 14, color: primaryColor)),
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Text('Enter your Annual Income', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+                      Text(
+                        'Enter your Annual Income',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: titleColor),
+                      ),
                       const SizedBox(height: 8),
-                      Text('Enter your total annual household income for FY 2025–2026 to verify eligibility.',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                      Text(
+                        'Enter your total annual household income for FY 2025–2026 to verify eligibility.',
+                        style: TextStyle(fontSize: 13, color: subtleColor),
+                      ),
                       const SizedBox(height: 20),
-                      Text('Income Amount', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                      Text(
+                        'Income Amount',
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: titleColor),
+                      ),
                       const SizedBox(height: 8),
                       // Input field
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFF16A34A)),
+                          border: Border.all(color: successColor),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Text('₹  2,50,000', style: TextStyle(fontSize: 15, color: Color(0xFF111827))),
+                        child: Text(
+                          '₹  2,50,000',
+                          style: TextStyle(fontSize: 15, color: titleColor),
+                        ),
                       ),
                       const SizedBox(height: 8),
                       // Success feedback
                       Row(
                         children: [
-                          Icon(Icons.check_circle, size: 16, color: Color(0xFF16A34A)),
+                          Icon(Icons.check_circle, size: 16, color: successColor),
                           const SizedBox(width: 6),
-                          Text('Amount format looks correct', style: TextStyle(fontSize: 13, color: Color(0xFF16A34A))),
+                          Text(
+                            'Amount format looks correct',
+                            style: TextStyle(fontSize: 13, color: successColor),
+                          ),
                         ],
                       ),
                     ],
@@ -223,7 +310,10 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
-                  backgroundColor: const Color(0xFF4A2BC2),
+                  height: 48,
+                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  contentColor: isDark ? Colors.black : Colors.white,
+                  borderRadius: 8,
                 ),
               ),
             ),
@@ -246,48 +336,62 @@ class _InlineFeedbackMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final isCard = variant == _CardVariant.cardStyle;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final successColor = isDark ? Ux4gPalette.green300 : const Color(0xFF16A34A);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
 
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard 
+            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF)) 
+            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
-              // App Header with logos
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+              // App Header with logos and elevation
+              Ux4gAppHeader(
+                elevation: 2,
+                variant: Ux4gAppHeaderVariant.light,
+                title: '',
+                leadingSpacing: 8,
+                leadingWidgets: [
+                  SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
                 ),
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/national_amblam_logo.svg',
-                      height: 40,
+                  SizedBox(
+                    height: 32,
+                    child: Ux4gDivider(
+                      orientation: Ux4gDividerOrientation.vertical,
+                      color: const Color(0xFFD1D5DB),
                     ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      height: 32,
-                      child: Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        color: const Color(0xFFD1D5DB),
-                      ),
+                  ),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
                     ),
-                    const SizedBox(width: 8),
-                    SvgPicture.asset('assets/Union.svg', height: 32),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               // Content
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
-                  child: isCard ? _buildCardContent() : _buildDefaultContent(),
+                  child: isCard 
+                      ? _buildCardContent(cardBg, primaryColor, titleColor, subtleColor, successColor) 
+                      : _buildDefaultContent(primaryColor, titleColor, subtleColor, successColor),
                 ),
               ),
 
@@ -302,7 +406,10 @@ class _InlineFeedbackMockup extends StatelessWidget {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
-                      backgroundColor: const Color(0xFF4A2BC2),
+                      height: 48,
+                      backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                      contentColor: isDark ? Colors.black : Colors.white,
+                      borderRadius: 8,
                     ),
                   ),
                 ),
@@ -313,45 +420,45 @@ class _InlineFeedbackMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildFormFields() {
+  Widget _buildFormFields(Color primaryColor, Color titleColor, Color subtleColor, Color successColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Back link
         Row(
           children: [
-            const Icon(Icons.arrow_back, size: 16, color: _primaryColor),
+            Icon(Icons.arrow_back, size: 16, color: primaryColor),
             const SizedBox(width: 4),
-            Text('Back', style: TextStyle(fontSize: 14, color: _primaryColor)),
+            Text('Back', style: TextStyle(fontSize: 14, color: primaryColor)),
           ],
         ),
         const SizedBox(height: 20),
 
         // Title
-        const Text(
+        Text(
           'Enter your Annual Income',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: titleColor,
           ),
         ),
         const SizedBox(height: 8),
 
         // Description
-        const Text(
+        Text(
           'Enter your total annual household income for FY 2025–2026 to verify eligibility.',
-          style: TextStyle(fontSize: 13, color: _subtleText),
+          style: TextStyle(fontSize: 13, color: subtleColor),
         ),
         const SizedBox(height: 20),
 
         // Label
-        const Text(
+        Text(
           'Income Amount',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: _titleColor,
+            color: titleColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -361,24 +468,24 @@ class _InlineFeedbackMockup extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(
-            border: Border.all(color: _successGreen),
+            border: Border.all(color: successColor),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: const Text(
+          child: Text(
             '₹  2,50,000',
-            style: TextStyle(fontSize: 15, color: _titleColor),
+            style: TextStyle(fontSize: 15, color: titleColor),
           ),
         ),
         const SizedBox(height: 8),
 
         // Success inline feedback
-        const Row(
+        Row(
           children: [
-            Icon(Icons.check_circle, size: 16, color: _successGreen),
-            SizedBox(width: 6),
+            Icon(Icons.check_circle, size: 16, color: successColor),
+            const SizedBox(width: 6),
             Text(
               'Amount format looks correct',
-              style: TextStyle(fontSize: 13, color: _successGreen),
+              style: TextStyle(fontSize: 13, color: successColor),
             ),
           ],
         ),
@@ -386,36 +493,44 @@ class _InlineFeedbackMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildFormFields(),
-        const Spacer(),
-        // Continue button
-        SizedBox(
-          width: double.infinity,
-          child: Ux4gButton(
-            text: 'Continue',
-            onPressed: () {},
-            variant: Ux4gButtonVariant.primary,
-            size: Ux4gButtonSize.large,
-            backgroundColor: const Color(0xFF4A2BC2),
-          ),
-        ),
-      ],
+  Widget _buildDefaultContent(Color primaryColor, Color titleColor, Color subtleColor, Color successColor) {
+    return Builder(
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildFormFields(primaryColor, titleColor, subtleColor, successColor),
+            const Spacer(),
+            // Continue button
+            SizedBox(
+              width: double.infinity,
+              child: Ux4gButton(
+                text: 'Continue',
+                onPressed: () {},
+                variant: Ux4gButtonVariant.primary,
+                size: Ux4gButtonSize.large,
+                height: 48,
+                backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                contentColor: isDark ? Colors.black : Colors.white,
+                borderRadius: 8,
+              ),
+            ),
+          ],
+        );
+      }
     );
   }
 
-  Widget _buildCardContent() {
+  Widget _buildCardContent(Color cardBg, Color primaryColor, Color titleColor, Color subtleColor, Color successColor) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: _buildFormFields(),
+      child: _buildFormFields(primaryColor, titleColor, subtleColor, successColor),
     );
   }
 }

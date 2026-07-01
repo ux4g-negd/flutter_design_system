@@ -442,58 +442,72 @@ class Ux4gStatusPipeline extends StatelessWidget {
         // ── Labels row ──
         if (showLabels && steps.any((s) => s.label != null)) ...[
           SizedBox(height: labelSpacing ?? Ux4gSpace.space8),
-          Row(
-            children: [
-              for (int i = 0; i < steps.length; i++) ...[
-                SizedBox(
-                  width: _circleSize,
-                  child: steps[i].label != null
-                      ? Text(
-                          steps[i].label!,
-                          style: _labelStyle(
-                            _resolveState(i),
-                            ux4gTypography,
-                            ux4gColors,
-                            materialTheme,
-                          ),
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.visible,
-                          softWrap: true,
-                        )
-                      : const SizedBox.shrink(),
-                ),
-                if (i < steps.length - 1) const Expanded(child: SizedBox()),
+          SizedBox(
+            height: 32,
+            child: Row(
+              children: [
+                for (int i = 0; i < steps.length; i++) ...[
+                  SizedBox(
+                    width: _circleSize,
+                    child: steps[i].label != null
+                        ? OverflowBox(
+                            maxWidth: 120,
+                            maxHeight: 32,
+                            child: Text(
+                              steps[i].label!,
+                              style: _labelStyle(
+                                _resolveState(i),
+                                ux4gTypography,
+                                ux4gColors,
+                                materialTheme,
+                              ),
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.visible,
+                              softWrap: true,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                  if (i < steps.length - 1) const Expanded(child: SizedBox()),
+                ],
               ],
-            ],
+            ),
           ),
         ],
 
         // ── Descriptions row ──
         if (showDescriptions && steps.any((s) => s.description != null)) ...[
           const SizedBox(height: Ux4gSpace.space2),
-          Row(
-            children: [
-              for (int i = 0; i < steps.length; i++) ...[
-                SizedBox(
-                  width: _circleSize,
-                  child: steps[i].description != null
-                      ? Text(
-                          steps[i].description!,
-                          style: _descStyle(
-                            _resolveState(i),
-                            ux4gTypography,
-                            ux4gColors,
-                            materialTheme,
-                          ),
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.visible,
-                          softWrap: true,
-                        )
-                      : const SizedBox.shrink(),
-                ),
-                if (i < steps.length - 1) const Expanded(child: SizedBox()),
+          SizedBox(
+            height: 32,
+            child: Row(
+              children: [
+                for (int i = 0; i < steps.length; i++) ...[
+                  SizedBox(
+                    width: _circleSize,
+                    child: steps[i].description != null
+                        ? OverflowBox(
+                            maxWidth: 120,
+                            maxHeight: 32,
+                            child: Text(
+                              steps[i].description!,
+                              style: _descStyle(
+                                _resolveState(i),
+                                ux4gTypography,
+                                ux4gColors,
+                                materialTheme,
+                              ),
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.visible,
+                              softWrap: true,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                  if (i < steps.length - 1) const Expanded(child: SizedBox()),
+                ],
               ],
-            ],
+            ),
           ),
         ],
       ],

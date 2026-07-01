@@ -4,15 +4,25 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _errorColor = Color(0xFFDC2626);
-const Color _greenColor = Color(0xFF16A34A);
-const Color _orangeColor = Color(0xFFF59E0B);
-const Color _borderColor = Color(0xFFE5E7EB);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+Color _getBorderColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+Color _getScaffoldBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50;
+Color _getCardBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+Color _getHeaderBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+const Color _primaryColor = Ux4gPalette.primary600;
+const Color _errorColor = Ux4gPalette.red600;
+const Color _greenColor = Ux4gPalette.green600;
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
 
 final myApplicationsComponent = WidgetbookComponent(
   name: 'My Applications',
@@ -56,7 +66,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _getScaffoldBg(context),
       body: SafeArea(
         child: Column(
           children: [
@@ -64,11 +74,11 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
-                const SizedBox(width: 8),
-                const Text('Government of India', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                SizedBox(width: 8),
+                SvgPicture.asset(Ux4gIcons.union,  height: 32),
+                SizedBox(width: 8),
+                Text('Government of India', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
               ],
               actions: [
                 Ux4gAppHeaderAction(icon: Icons.notifications_outlined, onPressed: () {}),
@@ -76,7 +86,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
               showAvatar: true,
               avatarInitials: 'R',
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Color(0xFFE5E7EB)),
 
             // Content
             Expanded(
@@ -90,12 +100,12 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                       'Good morning, Ramesh',
                       style: Ux4gTypography.headingMd.copyWith(color: Ux4gPalette.neutral900),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Text(
                       'An overview of your applications',
                       style: Ux4gTypography.bodySmall.copyWith(color: Ux4gPalette.neutral600),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
 
                     // Stats grid
                     Row(
@@ -103,32 +113,32 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         Expanded(
                           child: _StatCard(value: '2', label: 'Active'),
                         ),
-                        const SizedBox(width: 12),
+                        SizedBox(width: 12),
                         Expanded(
                           child: _StatCard(value: '1', label: 'Needs attention', showDot: true, dotColor: Ux4gPalette.error500),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     Row(
                       children: [
                         Expanded(
                           child: _StatCard(value: '5', label: 'Completed'),
                         ),
-                        const SizedBox(width: 12),
+                        SizedBox(width: 12),
                         Expanded(
                           child: _StatCard(value: '8', label: 'Total'),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     // Your applications title
                     Text(
                       'Your applications',
                       style: Ux4gTypography.headingSm.copyWith(color: Ux4gPalette.neutral900),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Tab filters using Ux4gChoiceChip with trailingContent
                     Wrap(
@@ -142,7 +152,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         Ux4gChoiceChip(text: 'Rejected', selected: _selectedTab == 4, onClick: () => setState(() => _selectedTab = 4), borderRadius: 4, trailingContent: _countBadge('6', _selectedTab == 4)),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
 
                     // Application Card 1 - Escalation available
                     Ux4gResultRow(
@@ -170,7 +180,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Application Card 2 - Action needed
                     Ux4gResultRow(
@@ -199,7 +209,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Application Card 3 - Under review (compact)
                     Ux4gResultRow(
@@ -222,7 +232,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Application Card 4 - Birth Certificate (completed)
                     Ux4gResultRow(
@@ -270,12 +280,12 @@ class _StatCard extends StatelessWidget {
             children: [
               Text(value, style: Ux4gTypography.headingMd.copyWith(color: Ux4gPalette.neutral900)),
               if (showDot) ...[
-                const SizedBox(width: 6),
+                SizedBox(width: 6),
                 Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: dotColor)),
               ],
             ],
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(label, style: Ux4gTypography.bodyXs.copyWith(color: Ux4gPalette.neutral500)),
         ],
       ),
@@ -305,11 +315,11 @@ class _FilterChip extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: isSelected ? Colors.white : Ux4gPalette.neutral900)),
-            const SizedBox(width: 6),
+            SizedBox(width: 6),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.white.withOpacity(0.2) : Ux4gPalette.neutral100,
+                color: isSelected ? Colors.white.withValues(alpha: 0.2) : Ux4gPalette.neutral100,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(count, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: isSelected ? Colors.white : Ux4gPalette.neutral600)),
@@ -338,46 +348,59 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final typography = Ux4gTheme.typography(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _getScaffoldBg(context),
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Container(
-              color: Colors.white,
+              color: _getHeaderBg(context),
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     title: '',
+                    horizontalPadding: 8,
+                    leadingSpacing: 6,
+                    actionSpacing: 0,
+                    elevation: 2,
                     leadingWidgets: [
                       SvgPicture.asset(
                         _nationalEmblemLogoPath,
-                        height: 36,
-                        errorBuilder: (c, e, s) => const Icon(
+                        height: 28,
+                        colorFilter: _isDark(context)
+                            ? const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              )
+                            : null,
+                        errorBuilder: (c, e, s) => Icon(
                           Icons.account_balance,
                           size: 28,
                           color: Colors.grey,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      SvgPicture.asset(
-                        _unionLogoPath,
-                        height: 28,
-                        errorBuilder: (c, e, s) => const Icon(
-                          Icons.blur_on,
-                          size: 28,
-                          color: Colors.blue,
+                      SizedBox(
+                        height: 24,
+                        child: Ux4gDivider(
+                          orientation: Ux4gDividerOrientation.vertical,
+                          color: _getBorderColor(context),
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      const Text(
+                      SvgPicture.asset(
+                        _unionLogoPath,
+                        height: 24,
+                        errorBuilder: (c, e, s) =>
+                            Icon(Icons.blur_on, size: 28, color: Colors.blue),
+                      ),
+                      Text(
                         'Government of India',
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: _titleColor,
+                          color: _getTitleColor(context),
                         ),
                       ),
                     ],
@@ -388,9 +411,13 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       ),
                     ],
                     showAvatar: true,
-                    avatarInitials: 'R',
+                    avatar: const Ux4gStatusAvatar(
+                      size: Ux4gAvatarSize.s,
+                      initials: 'R',
+                      variant: Ux4gStatusVariant.online,
+                    ),
                   ),
-                  const Divider(height: 1, color: _borderColor),
+                  Divider(height: 1, color: _getBorderColor(context)),
                 ],
               ),
             ),
@@ -403,47 +430,49 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Greeting
-                    const Text(
+                    Text(
                       'Good morning, Ramesh',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                      style: typography.hM_strong.copyWith(
+                        color: _getTitleColor(context),
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
+                    SizedBox(height: 4),
+                    Text(
                       'An overview of your applications',
-                      style: TextStyle(fontSize: 13, color: _subtleText),
+                      style: typography.bS_default.copyWith(
+                        color: _getSubtleText(context),
+                      ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
 
                     // Stats grid
                     _buildStatsGrid(),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     // Your applications
-                    const Text(
+                    Text(
                       'Your applications',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: _titleColor,
+                      style: typography.hXS_strong.copyWith(
+                        color: _getTitleColor(context),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Tab filters
                     _buildTabFilters(),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
 
                     // Application cards
                     _buildApplicationCard(
                       title: 'Income Certificate',
                       statusText: '2 days overdue',
-                      statusColor: _errorColor,
+                      statusColor: _isDark(context)
+                          ? Ux4gPalette.red300
+                          : Ux4gPalette.red600,
                       badgeText: 'Escalation available',
-                      badgeColor: _orangeColor,
+                      badgeColor: _isDark(context)
+                          ? Ux4gPalette.red300
+                          : Ux4gPalette.red800,
                       referenceNumber: 'PMS-2026-MH-02231',
                       lastUpdated: '10 Apr 2026',
                       submittedDate: '1 Apr 2026',
@@ -452,14 +481,18 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       documents: 'ID Proof, Address\nProof',
                       escalation: 'Register grievance',
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     _buildApplicationCard(
                       title: 'Income Certificate',
                       statusText: '4 days left',
-                      statusColor: _orangeColor,
+                      statusColor: _isDark(context)
+                          ? Ux4gPalette.red300
+                          : Ux4gPalette.red600,
                       badgeText: 'Action needed',
-                      badgeColor: _orangeColor,
+                      badgeColor: _isDark(context)
+                          ? Ux4gPalette.red300
+                          : Ux4gPalette.red800,
                       referenceNumber: 'INC-2026-MH-04127',
                       lastUpdated: '10 Apr 2026',
                       submittedDate: '1 Apr 2026',
@@ -469,16 +502,20 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       actionText: 'Upload document',
                       actionIcon: Icons.file_upload_outlined,
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     _buildApplicationCardCompact(
                       title: 'Income Certificate',
                       statusText: '8 days left',
-                      statusColor: Color(0xFFF59E0B),
+                      statusColor: _isDark(context)
+                          ? Ux4gPalette.secondary300
+                          : Ux4gPalette.secondary600,
                       badgeText: 'Under review',
-                      badgeColor: Color(0xFF1F2937),
+                      badgeColor: _isDark(context)
+                          ? Ux4gPalette.orange300
+                          : Ux4gPalette.orange800,
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     _buildApplicationCardMinimal(
                       title: 'Birth Certificate',
@@ -494,16 +531,19 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
     );
   }
 
+  // ignore: unused_element
   Widget _countBadge(String count, bool isSelected) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
       decoration: BoxDecoration(
-        color: isSelected ? Colors.white.withOpacity(0.25) : _primaryColor,
+        color: isSelected
+            ? Colors.white.withValues(alpha: 0.25)
+            : _primaryColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
         count,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w600,
           color: Colors.white,
@@ -520,7 +560,7 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
             Expanded(
               child: _StatCard(value: '2', label: 'Active'),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12),
             Expanded(
               child: _StatCard(
                 value: '1',
@@ -531,13 +571,13 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12),
         Row(
           children: [
             Expanded(
               child: _StatCard(value: '5', label: 'Completed'),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12),
             Expanded(
               child: _StatCard(value: '8', label: 'Total'),
             ),
@@ -548,6 +588,7 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
   }
 
   Widget _buildTabFilters() {
+    final typography = Ux4gTheme.typography(context);
     final tabs = [
       {'label': 'All', 'count': '62'},
       {'label': 'Pending', 'count': '3'},
@@ -561,26 +602,59 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
       runSpacing: 8,
       children: List.generate(tabs.length, (index) {
         final isSelected = index == _selectedTab;
-        return Ux4gChoiceChip(
-          text: tabs[index]['label']!,
-          selected: isSelected,
-          onClick: () => setState(() => _selectedTab = index),
-          borderRadius: 4,
-          trailingContent: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+        return InkWell(
+          onTap: () => setState(() => _selectedTab = index),
+          borderRadius: BorderRadius.circular(4),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? Colors.white.withOpacity(0.25)
-                  : _primaryColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              tabs[index]['count']!,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
+              color: isSelected ? Ux4gPalette.primary600 : _getCardBg(context),
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: isSelected
+                    ? Ux4gPalette.primary600
+                    : _getBorderColor(context),
               ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  tabs[index]['label']!,
+                  style: typography.lM_default.copyWith(
+                    color: isSelected
+                        ? Ux4gPalette.neutral0
+                        : _getTitleColor(context),
+                  ),
+                ),
+                SizedBox(width: 6),
+                if (isSelected)
+                  Text(
+                    tabs[index]['count']!,
+                    style: typography.lS_default.copyWith(
+                      color: Ux4gPalette.neutral0,
+                      height: 1,
+                    ),
+                  )
+                else
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 1,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Ux4gPalette.primary600,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      tabs[index]['count']!,
+                      style: typography.lS_default.copyWith(
+                        color: Ux4gPalette.neutral0,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         );
@@ -606,7 +680,9 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
   }) {
     return Ux4gCard(
       cornerRadius: 12,
-      borderColor: _borderColor,
+      borderColor: _getBorderColor(context),
+      borderWidth: 1,
+      backgroundColor: _getCardBg(context),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -614,16 +690,18 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
           children: [
             // Title row with Track button
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: _titleColor,
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: _getTitleColor(context),
+                    ),
                   ),
                 ),
+                SizedBox(width: 8),
                 Row(
                   children: [
                     Ux4gButton(
@@ -631,25 +709,31 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
+                      borderColor: _isDark(context)
+                          ? Ux4gPalette.neutral600
+                          : Ux4gPalette.neutral300,
+                      contentColor: _isDark(context)
+                          ? Ux4gPalette.neutral50
+                          : Ux4gPalette.neutral900,
                     ),
-                    const SizedBox(width: 8),
-                    const Icon(
+                    SizedBox(width: 8),
+                    Icon(
                       Icons.keyboard_arrow_down,
                       size: 20,
-                      color: _subtleText,
+                      color: _getSubtleText(context),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
 
             // Status row
             Ux4gUnifiedPillTag(
               segments: [
                 Ux4gPillSegment(
                   text: statusText,
-                  textColor: const Color(0xFF1F2937),
+                  textColor: _getTitleColor(context),
                   leading: Container(
                     width: 8,
                     height: 8,
@@ -659,14 +743,11 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                     ),
                   ),
                 ),
-                Ux4gPillSegment(
-                  text: badgeText,
-                  textColor: const Color(0xFFDC2626),
-                ),
+                Ux4gPillSegment(text: badgeText, textColor: badgeColor),
               ],
-              borderColor: const Color(0xFFD1D5DB),
+              borderColor: _getBorderColor(context),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
 
             // Details grid
             _detailRow(
@@ -675,27 +756,28 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
               'Last Updated Date',
               lastUpdated,
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             _detailRow(
               'Submitted Date',
               submittedDate,
               'Assigned Officer',
               assignedOfficer,
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             _detailRow('Department', department, 'Documents', documents),
 
             // Escalation or Action
             if (escalation != null) ...[
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Text(
                 'Escalation',
-                style: TextStyle(fontSize: 11, color: _orangeColor),
+                style: TextStyle(fontSize: 11, color: _errorColor),
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4),
               Ux4gButton(
                 text: 'Register grievance',
                 onPressed: () {},
+                padding: EdgeInsets.zero,
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.small,
                 contentColor: _primaryColor,
@@ -704,17 +786,18 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
             ],
 
             if (actionText != null) ...[
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Text(
                 'Action needed',
-                style: TextStyle(fontSize: 11, color: _orangeColor),
+                style: TextStyle(fontSize: 11, color: _errorColor),
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4),
               Ux4gButton(
                 text: actionText,
                 onPressed: () {},
                 variant: Ux4gButtonVariant.ghost,
                 size: Ux4gButtonSize.small,
+                padding: EdgeInsets.zero,
                 contentColor: _primaryColor,
                 trailingIcon: actionIcon ?? Icons.arrow_forward,
               ),
@@ -740,35 +823,36 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
             children: [
               Text(
                 label1,
-                style: const TextStyle(fontSize: 11, color: _subtleText),
+                style: TextStyle(fontSize: 11, color: _getSubtleText(context)),
               ),
-              const SizedBox(height: 2),
+              SizedBox(height: 2),
               Text(
                 value1,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
-                  color: _titleColor,
+                  color: _getTitleColor(context),
                 ),
               ),
             ],
           ),
         ),
+        SizedBox(width: 12),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 label2,
-                style: const TextStyle(fontSize: 11, color: _subtleText),
+                style: TextStyle(fontSize: 11, color: _getSubtleText(context)),
               ),
-              const SizedBox(height: 2),
+              SizedBox(height: 2),
               Text(
                 value2,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
-                  color: _titleColor,
+                  color: _getTitleColor(context),
                 ),
               ),
             ],
@@ -787,23 +871,27 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
   }) {
     return Ux4gCard(
       cornerRadius: 12,
-      borderColor: _borderColor,
+      borderColor: _getBorderColor(context),
+      borderWidth: 1,
+      backgroundColor: _getCardBg(context),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: _titleColor,
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: _getTitleColor(context),
+                    ),
                   ),
                 ),
+                SizedBox(width: 8),
                 Row(
                   children: [
                     Ux4gButton(
@@ -811,23 +899,29 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
+                      borderColor: _isDark(context)
+                          ? Ux4gPalette.neutral600
+                          : Ux4gPalette.neutral300,
+                      contentColor: _isDark(context)
+                          ? Ux4gPalette.neutral50
+                          : Ux4gPalette.neutral900,
                     ),
-                    const SizedBox(width: 8),
-                    const Icon(
+                    SizedBox(width: 8),
+                    Icon(
                       Icons.keyboard_arrow_down,
                       size: 20,
-                      color: _subtleText,
+                      color: _getSubtleText(context),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             Ux4gUnifiedPillTag(
               segments: [
                 Ux4gPillSegment(
                   text: statusText,
-                  textColor: const Color(0xFF1F2937),
+                  textColor: _getTitleColor(context),
                   leading: Container(
                     width: 8,
                     height: 8,
@@ -837,9 +931,9 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                     ),
                   ),
                 ),
-                Ux4gPillSegment(text: badgeText, textColor: Color(0xFF1F2937)),
+                Ux4gPillSegment(text: badgeText, textColor: badgeColor),
               ],
-              borderColor: const Color(0xFFD1D5DB),
+              borderColor: _getBorderColor(context),
             ),
           ],
         ),
@@ -853,45 +947,54 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
   }) {
     return Ux4gCard(
       cornerRadius: 12,
-      borderColor: _borderColor,
+      borderColor: _getBorderColor(context),
+      borderWidth: 1,
+      backgroundColor: _getCardBg(context),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: _titleColor,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: Alignment.centerLeft,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: _getTitleColor(context),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                const Icon(Icons.check_circle, size: 18, color: _greenColor),
-              ],
-            ),
-            Row(
-              children: [
-                Ux4gButton(
-                  text: 'Download',
-                  onPressed: () {},
-                  variant: Ux4gButtonVariant.ghost,
-                  size: Ux4gButtonSize.small,
-                  contentColor: _primaryColor,
-                  leadingIcon: Icons.file_download_outlined,
-                ),
-                const SizedBox(width: 8),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  size: 20,
-                  color: _subtleText,
-                ),
-              ],
-            ),
-          ],
+                  SizedBox(width: 6),
+                  Icon(Icons.check_circle, size: 12, color: _greenColor),
+                ],
+              ),
+              SizedBox(width: 12),
+              Ux4gButton(
+                text: 'Download',
+                onPressed: () {},
+                variant: Ux4gButtonVariant.outline,
+                size: Ux4gButtonSize.small,
+                borderColor: _isDark(context)
+                    ? Ux4gPalette.neutral600
+                    : Ux4gPalette.neutral300,
+                contentColor: _isDark(context)
+                    ? Ux4gPalette.neutral50
+                    : Ux4gPalette.neutral900,
+                leadingIcon: Icons.file_download_outlined,
+              ),
+              SizedBox(width: 8),
+              Icon(
+                Icons.keyboard_arrow_down,
+                size: 16,
+                color: _getSubtleText(context),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -917,10 +1020,12 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final typography = Ux4gTheme.typography(context);
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        border: Border.all(color: _borderColor),
+        color: _getCardBg(context),
+        border: Border.all(color: _getBorderColor(context)),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -930,14 +1035,12 @@ class _StatCard extends StatelessWidget {
             children: [
               Text(
                 value,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: _titleColor,
+                style: typography.hS_strong.copyWith(
+                  color: _getTitleColor(context),
                 ),
               ),
               if (dot) ...[
-                const SizedBox(width: 6),
+                SizedBox(width: 6),
                 Container(
                   width: 8,
                   height: 8,
@@ -949,8 +1052,13 @@ class _StatCard extends StatelessWidget {
               ],
             ],
           ),
-          const SizedBox(height: 4),
-          Text(label, style: const TextStyle(fontSize: 12, color: _subtleText)),
+          SizedBox(height: 4),
+          Text(
+            label,
+            style: typography.bS_default.copyWith(
+              color: _getSubtleText(context),
+            ),
+          ),
         ],
       ),
     );

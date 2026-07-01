@@ -34,30 +34,30 @@ class Ux4gPalette {
   static const Color primary950A = Color(0x401A0E3D);
 
   // Secondary
-  static const Color secondary = Color(0xFFFF8F1F);
-  static const Color secondary50 = Color(0xFFFFF7E6);
-  static const Color secondary100 = Color(0xFFFFE7BF);
-  static const Color secondary200 = Color(0xFFFFD899);
-  static const Color secondary300 = Color(0xFFFFC973);
-  static const Color secondary400 = Color(0xFFFFBA4D);
-  static const Color secondary500 = Color(0xFFFFA827);
-  static const Color secondary600 = Color(0xFFFF8F1F);
-  static const Color secondary700 = Color(0xFFD46F13);
-  static const Color secondary800 = Color(0xFFAD530A);
-  static const Color secondary900 = Color(0xFF873C05);
-  static const Color secondary950 = Color(0xFF612800);
+  static const Color secondary = Color(0xFFA46800);
+  static const Color secondary50 = Color(0xFFFFF5EA);
+  static const Color secondary100 = Color(0xFFFFEBD6);
+  static const Color secondary200 = Color(0xFFFFD9AF);
+  static const Color secondary300 = Color(0xFFFFBE6F);
+  static const Color secondary400 = Color(0xFFE89C30);
+  static const Color secondary500 = Color(0xFFC47D00);
+  static const Color secondary600 = Color(0xFFA46800);
+  static const Color secondary700 = Color(0xFF764A00);
+  static const Color secondary800 = Color(0xFF4B2D00);
+  static const Color secondary900 = Color(0xFF281600);
+  static const Color secondary950 = Color(0xFF110700);
   // Secondary Alpha (25% opacity)
-  static const Color secondary50A = Color(0x40FFF7E6);
-  static const Color secondary100A = Color(0x40FFE7BF);
-  static const Color secondary200A = Color(0x40FFD899);
-  static const Color secondary300A = Color(0x40FFC973);
-  static const Color secondary400A = Color(0x40FFBA4D);
-  static const Color secondary500A = Color(0x40FFA827);
-  static const Color secondary600A = Color(0x40FF8F1F);
-  static const Color secondary700A = Color(0x40D46F13);
-  static const Color secondary800A = Color(0x40AD530A);
-  static const Color secondary900A = Color(0x40873C05);
-  static const Color secondary950A = Color(0x40612800);
+  static const Color secondary50A = Color(0x40FFF5EA);
+  static const Color secondary100A = Color(0x40FFEBD6);
+  static const Color secondary200A = Color(0x40FFD9AF);
+  static const Color secondary300A = Color(0x40FFBE6F);
+  static const Color secondary400A = Color(0x40E89C30);
+  static const Color secondary500A = Color(0x40C47D00);
+  static const Color secondary600A = Color(0x40A46800);
+  static const Color secondary700A = Color(0x40764A00);
+  static const Color secondary800A = Color(0x404B2D00);
+  static const Color secondary900A = Color(0x40281600);
+  static const Color secondary950A = Color(0x40110700);
 
   // Tertiary
   static const Color tertiary = Color(0xFF8E55B3);
@@ -380,8 +380,8 @@ class Ux4gColors extends ThemeExtension<Ux4gColors> {
 final lightUx4gColors = Ux4gColors(
   primary: Ux4gPalette.primary600,
   onPrimary: Ux4gPalette.neutral50,
-  secondary: Ux4gPalette.secondary500,
-  onSecondary: Ux4gPalette.neutral900,
+  secondary: Ux4gPalette.secondary600,
+  onSecondary: Ux4gPalette.white,
   background: Ux4gPalette.neutral50,
   onBackground: Ux4gPalette.neutral900,
   surface: Ux4gPalette.white,
@@ -399,7 +399,7 @@ final lightUx4gColors = Ux4gColors(
 final darkUx4gColors = Ux4gColors(
   primary: Ux4gPalette.primary300,
   onPrimary: Ux4gPalette.neutral900,
-  secondary: Ux4gPalette.orange300,
+  secondary: Ux4gPalette.secondary300,
   onSecondary: Ux4gPalette.neutral900,
   background: Ux4gPalette.neutral900,
   onBackground: Ux4gPalette.neutral50,

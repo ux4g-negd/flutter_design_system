@@ -4,15 +4,25 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _errorColor = Color(0xFFDC2626);
-const Color _orangeColor = Color(0xFFF59E0B);
-const Color _greenColor = Color(0xFF16A34A);
-const Color _borderColor = Color(0xFFE5E7EB);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+Color _getBorderColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+Color _getScaffoldBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50;
+Color _getCardBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+Color _getHeaderBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+const Color _primaryColor = Ux4gPalette.primary600;
+const Color _errorColor = Ux4gPalette.red600;
+const Color _greenColor = Ux4gPalette.green600;
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
 
 final pendingTasksComponent = WidgetbookComponent(
   name: 'Pending Tasks',
@@ -56,18 +66,18 @@ class _PendingTasksScreenState extends State<PendingTasksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _getScaffoldBg(context),
       body: SafeArea(
         child: Column(
           children: [
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
-                const SizedBox(width: 8),
-                const Text('Government of India', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                SizedBox(width: 8),
+                SvgPicture.asset(Ux4gIcons.union,  height: 32),
+                SizedBox(width: 8),
+                Text('Government of India', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF111827))),
               ],
               actions: [
                 Ux4gAppHeaderAction(icon: Icons.notifications_outlined, onPressed: () {}),
@@ -75,7 +85,7 @@ class _PendingTasksScreenState extends State<PendingTasksScreen> {
               showAvatar: true,
               avatarInitials: 'R',
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Color(0xFFE5E7EB)),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(20),
@@ -83,9 +93,9 @@ class _PendingTasksScreenState extends State<PendingTasksScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Pending Tasks', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     Text('3 tasks need your attention', style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
                     // Tab filters
                     Wrap(
                       spacing: 8,
@@ -98,7 +108,7 @@ class _PendingTasksScreenState extends State<PendingTasksScreen> {
                         Ux4gChoiceChip(text: 'Rejected', selected: _selectedTab == 4, onClick: () => setState(() => _selectedTab = 4), borderRadius: 4),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                     // Task cards...
                   ],
                 ),
@@ -128,46 +138,59 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final typography = Ux4gTheme.typography(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _getScaffoldBg(context),
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Container(
-              color: Colors.white,
+              color: _getHeaderBg(context),
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     title: '',
+                    horizontalPadding: 8,
+                    leadingSpacing: 6,
+                    actionSpacing: 0,
+                    elevation: 2,
                     leadingWidgets: [
                       SvgPicture.asset(
                         _nationalEmblemLogoPath,
-                        height: 36,
-                        errorBuilder: (c, e, s) => const Icon(
+                        height: 28,
+                        colorFilter: _isDark(context)
+                            ? const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              )
+                            : null,
+                        errorBuilder: (c, e, s) => Icon(
                           Icons.account_balance,
                           size: 28,
                           color: Colors.grey,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      SvgPicture.asset(
-                        _unionLogoPath,
-                        height: 28,
-                        errorBuilder: (c, e, s) => const Icon(
-                          Icons.blur_on,
-                          size: 28,
-                          color: Colors.blue,
+                      SizedBox(
+                        height: 24,
+                        child: Ux4gDivider(
+                          orientation: Ux4gDividerOrientation.vertical,
+                          color: _getBorderColor(context),
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      const Text(
+                      SvgPicture.asset(
+                        _unionLogoPath,
+                        height: 24,
+                        errorBuilder: (c, e, s) =>
+                            Icon(Icons.blur_on, size: 28, color: Colors.blue),
+                      ),
+                      Text(
                         'Government of India',
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: _titleColor,
+                          color: _getTitleColor(context),
                         ),
                       ),
                     ],
@@ -178,9 +201,13 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                       ),
                     ],
                     showAvatar: true,
-                    avatarInitials: 'R',
+                    avatar: const Ux4gStatusAvatar(
+                      size: Ux4gAvatarSize.s,
+                      initials: 'R',
+                      variant: Ux4gStatusVariant.online,
+                    ),
                   ),
-                  const Divider(height: 1, color: _borderColor),
+                  Divider(height: 1, color: _getBorderColor(context)),
                 ],
               ),
             ),
@@ -193,24 +220,24 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Title
-                    const Text(
+                    Text(
                       'Pending Tasks',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                      style: typography.hM_strong.copyWith(
+                        color: _getTitleColor(context),
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
+                    SizedBox(height: 4),
+                    Text(
                       '3 tasks need your attention',
-                      style: TextStyle(fontSize: 13, color: _subtleText),
+                      style: typography.bS_default.copyWith(
+                        color: _getSubtleText(context),
+                      ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Tab filters
                     _buildTabFilters(),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
 
                     // Task Card 1 - Expanded
                     _buildExpandedTaskCard(
@@ -225,7 +252,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                       supportText: 'Contact support',
                       actionText: 'Upload now',
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Task Card 2 - Collapsed
                     _buildCollapsedTaskCard(
@@ -234,11 +261,11 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                       subtitle: 'Birth Certificate · ₹50 application fee',
                       urgencyText: 'Due in 5 days',
                       urgencyColor: const Color(0xFFAD4E00),
-                      urgencyBgColor: Ux4gPalette.secondary100,
+                      urgencyBgColor: Ux4gPalette.orange100,
                       actionText: 'Pay now',
                       actionFilled: true,
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Task Card 3 - Collapsed
                     _buildCollapsedTaskCard(
@@ -251,20 +278,16 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                       actionText: 'Schedule slot',
                       actionFilled: false,
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 16),
 
                     // Completed section
-                    const Divider(color: _borderColor),
-                    const SizedBox(height: 16),
-                    const Text(
+                    Text(
                       'Completed today',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: _titleColor,
+                      style: typography.bM_strong.copyWith(
+                        color: _getTitleColor(context),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
 
                     // Completed card
                     _buildCompletedTaskCard(
@@ -284,6 +307,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
   }
 
   Widget _buildTabFilters() {
+    final typography = Ux4gTheme.typography(context);
     final tabs = [
       {'label': 'All', 'count': '62'},
       {'label': 'Pending', 'count': '3'},
@@ -297,26 +321,59 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
       runSpacing: 8,
       children: List.generate(tabs.length, (index) {
         final isSelected = index == _selectedTab;
-        return Ux4gChoiceChip(
-          text: tabs[index]['label']!,
-          selected: isSelected,
-          onClick: () => setState(() => _selectedTab = index),
-          borderRadius: 4,
-          trailingContent: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+        return InkWell(
+          onTap: () => setState(() => _selectedTab = index),
+          borderRadius: BorderRadius.circular(4),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? Colors.white.withValues(alpha: 0.25)
-                  : _primaryColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              tabs[index]['count']!,
-              style: const TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
+              color: isSelected ? Ux4gPalette.primary600 : _getCardBg(context),
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: isSelected
+                    ? Ux4gPalette.primary600
+                    : _getBorderColor(context),
               ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  tabs[index]['label']!,
+                  style: typography.lM_default.copyWith(
+                    color: isSelected
+                        ? Ux4gPalette.neutral0
+                        : _getTitleColor(context),
+                  ),
+                ),
+                SizedBox(width: 6),
+                if (isSelected)
+                  Text(
+                    tabs[index]['count']!,
+                    style: typography.lS_default.copyWith(
+                      color: Ux4gPalette.neutral0,
+                      height: 1,
+                    ),
+                  )
+                else
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 1,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Ux4gPalette.primary600,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      tabs[index]['count']!,
+                      style: typography.lS_default.copyWith(
+                        color: Ux4gPalette.neutral0,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         );
@@ -338,7 +395,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: _borderColor),
+        color: _getCardBg(context),
+        border: Border.all(color: _getBorderColor(context)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -352,52 +410,56 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
               children: [
                 // Icon
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 32,
+                  height: 32,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(20),
+                    color: _isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral100,
+                    borderRadius: BorderRadius.circular(4),
                   ),
-                  child: Icon(icon, size: 20, color: _subtleText),
+                  child: Icon(icon, size: 16, color: _getSubtleText(context)),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: _titleColor,
+                          fontWeight: FontWeight.w700,
+                          color: _getTitleColor(context),
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2),
                       Text(
                         subtitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: _subtleText,
+                          color: _getSubtleText(context),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.keyboard_arrow_up,
-                  size: 20,
-                  color: _subtleText,
+                  size: 16,
+                  color: _getSubtleText(context),
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
 
             // Urgency tag
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
-                color: urgencyColor.withValues(alpha: 0.08),
+                color: _isDark(context)
+                    ? Ux4gPalette.red950
+                    : Ux4gPalette.red100,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(
@@ -409,9 +471,9 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                 ),
               ),
             ),
-            const SizedBox(height: 12),
-            const Divider(color: _borderColor, height: 1),
-            const SizedBox(height: 16),
+            SizedBox(height: 8),
+            Divider(color: _getBorderColor(context), height: 1),
+            SizedBox(height: 12),
 
             // Details
             Row(
@@ -421,17 +483,20 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Deadline',
-                        style: TextStyle(fontSize: 11, color: _subtleText),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: _getSubtleText(context),
+                        ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2),
                       Text(
                         deadline,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: _titleColor,
+                          color: _getTitleColor(context),
                         ),
                       ),
                     ],
@@ -441,17 +506,20 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Reference',
-                        style: TextStyle(fontSize: 11, color: _subtleText),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: _getSubtleText(context),
+                        ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2),
                       Text(
                         reference,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: _titleColor,
+                          color: _getTitleColor(context),
                         ),
                       ),
                     ],
@@ -459,7 +527,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -467,17 +535,20 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Department',
-                        style: TextStyle(fontSize: 11, color: _subtleText),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: _getSubtleText(context),
+                        ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2),
                       Text(
                         department,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: _titleColor,
+                          color: _getTitleColor(context),
                         ),
                       ),
                     ],
@@ -487,35 +558,43 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Have issues?',
-                        style: TextStyle(fontSize: 11, color: _subtleText),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: _getSubtleText(context),
+                        ),
                       ),
-                      const SizedBox(height: 2),
-                      Row(
-                        children: [
-                          Text(
-                            supportText,
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
+                      SizedBox(height: 2),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              supportText,
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: _primaryColor,
+                              ),
+                            ),
+                            SizedBox(width: 4),
+                            Icon(
+                              Icons.arrow_forward,
+                              size: 14,
                               color: _primaryColor,
                             ),
-                          ),
-                          const SizedBox(width: 4),
-                          const Icon(
-                            Icons.arrow_forward,
-                            size: 14,
-                            color: _primaryColor,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
 
             // Action button
             SizedBox(
@@ -544,7 +623,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: _borderColor),
+        color: _getCardBg(context),
+        border: Border.all(color: _getBorderColor(context)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -557,46 +637,48 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 32,
+                  height: 32,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(20),
+                    color: _isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral100,
+                    borderRadius: BorderRadius.circular(4),
                   ),
-                  child: Icon(icon, size: 20, color: _subtleText),
+                  child: Icon(icon, size: 16, color: _getSubtleText(context)),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: _titleColor,
+                          fontWeight: FontWeight.w700,
+                          color: _getTitleColor(context),
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2),
                       Text(
                         subtitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: _subtleText,
+                          color: _getSubtleText(context),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.keyboard_arrow_down,
-                  size: 20,
-                  color: _subtleText,
+                  size: 16,
+                  color: _getSubtleText(context),
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
@@ -612,7 +694,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                 ),
               ),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
 
             // Action button
             SizedBox(
@@ -624,6 +706,11 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                     ? Ux4gButtonVariant.primary
                     : Ux4gButtonVariant.outline,
                 contentColor: actionFilled ? null : _primaryColor,
+                borderColor: actionFilled
+                    ? null
+                    : (_isDark(context)
+                          ? Ux4gPalette.primary400
+                          : Ux4gPalette.primary300),
               ),
             ),
           ],
@@ -640,7 +727,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: _borderColor),
+        color: _getCardBg(context),
+        border: Border.all(color: _getBorderColor(context)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -653,55 +741,59 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 32,
+                  height: 32,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(20),
+                    color: _isDark(context)
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral100,
+                    borderRadius: BorderRadius.circular(4),
                   ),
-                  child: Icon(icon, size: 20, color: _subtleText),
+                  child: Icon(icon, size: 16, color: _getSubtleText(context)),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: _titleColor,
+                          fontWeight: FontWeight.w700,
+                          color: _getTitleColor(context),
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      SizedBox(height: 2),
                       Text(
                         subtitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: _subtleText,
+                          color: _getSubtleText(context),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.keyboard_arrow_down,
-                  size: 20,
-                  color: _subtleText,
+                  size: 16,
+                  color: _getSubtleText(context),
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
 
             // Completed tag
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
-                color: _greenColor.withValues(alpha: 0.1),
+                color: _isDark(context)
+                    ? Ux4gPalette.green950
+                    : Ux4gPalette.green100,
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: const Text(
+              child: Text(
                 'Completed',
                 style: TextStyle(
                   fontSize: 11,
@@ -710,13 +802,13 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                 ),
               ),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12),
 
             // View receipt link
             Center(
               child: Text(
                 actionText,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                   color: _primaryColor,

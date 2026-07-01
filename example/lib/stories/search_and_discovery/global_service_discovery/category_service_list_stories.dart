@@ -3,11 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const Color _greenColor = Color(0xFF16A34A);
+const Color _primaryColor = Ux4gPalette.primary600;
 
 final categoryServiceListComponent = WidgetbookComponent(
   name: 'Category Service List',
@@ -215,30 +211,30 @@ class _CategoryServiceListMockupState
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
+        backgroundColor: isDark
+            ? Ux4gPalette.neutral950
+            : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             children: [
               // App Header - filled purple
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 color: _primaryColor,
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                    SizedBox(width: 12),
+                    const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                    const SizedBox(width: 12),
                     Text(
                       'National Services Portal',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: typography.tS_default.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -253,33 +249,55 @@ class _CategoryServiceListMockupState
                   horizontal: 16,
                   vertical: 10,
                 ),
-                color: Colors.white,
-                child: const Row(
+                color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                child: Row(
                   children: [
-                    Icon(Icons.home_outlined, size: 14, color: _subtleText),
-                    SizedBox(width: 4),
+                    Icon(
+                      Icons.home_outlined,
+                      size: 14,
+                      color: isDark
+                          ? Ux4gPalette.neutral200
+                          : Ux4gPalette.neutral700,
+                    ),
+                    const SizedBox(width: 4),
                     Text(
                       'Home',
-                      style: TextStyle(fontSize: 12, color: _subtleText),
+                      style: typography.lM_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral200
+                            : Ux4gPalette.neutral700,
+                      ),
                     ),
                     Text(
                       '  ›  ',
-                      style: TextStyle(fontSize: 12, color: _subtleText),
+                      style: typography.lM_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral400
+                            : Ux4gPalette.neutral600,
+                      ),
                     ),
                     Text(
                       'Services',
-                      style: TextStyle(fontSize: 12, color: _subtleText),
+                      style: typography.lM_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral200
+                            : Ux4gPalette.neutral700,
+                      ),
                     ),
                     Text(
                       '  ›  ',
-                      style: TextStyle(fontSize: 12, color: _subtleText),
+                      style: typography.lM_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral400
+                            : Ux4gPalette.neutral600,
+                      ),
                     ),
                     Text(
                       'Health',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: _primaryColor,
-                        fontWeight: FontWeight.w600,
+                      style: typography.lM_strong.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600,
                       ),
                     ),
                   ],
@@ -292,19 +310,23 @@ class _CategoryServiceListMockupState
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Health services',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                      style: typography.hXS_strong.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral50
+                            : Ux4gPalette.neutral900,
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       'Hospitals, certificates, insurance and disability',
-                      style: TextStyle(fontSize: 13, color: _subtleText),
+                      style: typography.bS_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral200
+                            : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -318,12 +340,12 @@ class _CategoryServiceListMockupState
                 ),
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       '48 services',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: _titleColor,
+                      style: typography.tS_strong.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral50
+                            : Ux4gPalette.neutral900,
                       ),
                     ),
                     const Spacer(),
@@ -333,6 +355,12 @@ class _CategoryServiceListMockupState
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
                       leadingIcon: Icons.tune,
+                      borderColor: isDark
+                          ? Ux4gPalette.neutral600
+                          : Ux4gPalette.neutral300,
+                      contentColor: isDark
+                          ? Ux4gPalette.neutral50
+                          : Ux4gPalette.neutral900,
                     ),
                   ],
                 ),
@@ -424,33 +452,70 @@ class _CategoryServiceListMockupState
 
               // Pagination dots
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.fromLTRB(0, 12, 0, 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
-                      Icons.chevron_left,
-                      size: 20,
-                      color: _subtleText,
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? Ux4gPalette.primary800
+                            : Ux4gPalette.primary100,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.chevron_left,
+                        size: 19,
+                        color: isDark
+                            ? Ux4gPalette.primary200
+                            : Ux4gPalette.primary600,
+                      ),
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 11),
+                    Container(
+                      width: 31,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? Ux4gPalette.primary300
+                            : Ux4gPalette.primary600,
+                        borderRadius: BorderRadius.circular(99),
+                      ),
+                    ),
+                    const SizedBox(width: 7),
                     ...List.generate(
-                      8,
+                      7,
                       (i) => Container(
-                        width: i == 0 ? 10 : 8,
-                        height: i == 0 ? 10 : 8,
+                        width: 9,
+                        height: 9,
                         margin: const EdgeInsets.symmetric(horizontal: 3),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: i == 0 ? _primaryColor : _borderColor,
+                          color: isDark
+                              ? Ux4gPalette.primary800
+                              : Ux4gPalette.primary100,
                         ),
                       ),
                     ),
                     const SizedBox(width: 8),
-                    const Icon(
-                      Icons.chevron_right,
-                      size: 20,
-                      color: _subtleText,
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? Ux4gPalette.primary800
+                            : Ux4gPalette.primary100,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.chevron_right,
+                        size: 19,
+                        color: isDark
+                            ? Ux4gPalette.primary200
+                            : Ux4gPalette.primary600,
+                      ),
                     ),
                   ],
                 ),
@@ -463,10 +528,17 @@ class _CategoryServiceListMockupState
   }
 
   Widget _buildServiceRow(String title, String fee, String time, bool isPaid) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 14),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: _borderColor)),
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        border: Border(
+          bottom: BorderSide(
+            color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          ),
+        ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -477,10 +549,10 @@ class _CategoryServiceListMockupState
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: _titleColor,
+                  style: typography.tS_strong.copyWith(
+                    color: isDark
+                        ? Ux4gPalette.neutral50
+                        : Ux4gPalette.neutral900,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -489,30 +561,52 @@ class _CategoryServiceListMockupState
                     // "Free" / "Paid" small bordered badge
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 3,
+                        horizontal: 6,
+                        vertical: 1,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFE5E5E5),
+                        color: isDark
+                            ? Ux4gPalette.neutral800
+                            : Ux4gPalette.neutral200,
                         borderRadius: BorderRadius.circular(4),
-                        border: Border.all(color: _borderColor),
                       ),
                       child: Text(
                         isPaid ? 'Paid' : 'Free',
-                        style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w500,
-                          color: _titleColor,
+                        style: typography.lM_default.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    if (isPaid) ...[
+                      const SizedBox(width: 6),
+                      Text(
+                        fee,
+                        style: typography.lS_default.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
+                        ),
+                      ),
+                    ],
+                    const SizedBox(width: 8),
                     // Clock icon + time as plain text
-                    const Icon(Icons.access_time, size: 13, color: _subtleText),
+                    Icon(
+                      Icons.access_time,
+                      size: 13,
+                      color: isDark
+                          ? Ux4gPalette.neutral200
+                          : Ux4gPalette.neutral700,
+                    ),
                     const SizedBox(width: 4),
                     Text(
                       time,
-                      style: const TextStyle(fontSize: 12, color: _subtleText),
+                      style: typography.lS_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral200
+                            : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -525,9 +619,20 @@ class _CategoryServiceListMockupState
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
+            borderColor: isDark
+                ? Ux4gPalette.neutral600
+                : Ux4gPalette.neutral300,
+            contentColor: isDark
+                ? Ux4gPalette.neutral50
+                : Ux4gPalette.neutral900,
+            textStyle: typography.lL_default,
           ),
           const SizedBox(width: 6),
-          const Icon(Icons.keyboard_arrow_down, size: 20, color: _subtleText),
+          Icon(
+            Icons.keyboard_arrow_down,
+            size: 20,
+            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+          ),
         ],
       ),
     );

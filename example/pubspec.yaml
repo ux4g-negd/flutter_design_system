@@ -43,6 +43,10 @@ dependencies:
   shimmer: ^3.0.0
   image_picker: ^1.0.0
 
+dependency_overrides:
+  widgetbook:
+    path: packages/widgetbook
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,13 +71,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - ../assets/icons/
-    - ../assets/images/
+    - assets/
+    - assets/icons/
+    - assets/images/
     - assets/ux4g_logo.svg
     - assets/ux4g_logo.png
-    - assets/national_amblam_logo.svg
+    - assets/Digital_India_logo.svg
     - assets/Union.svg
     - assets/digital_india_logo.png
+    - assets/national_amblam_logo.svg
+    - assets/national_emblem_logo.svg
+    - assets/star.svg
+    - assets/verification.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

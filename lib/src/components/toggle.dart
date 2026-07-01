@@ -30,6 +30,15 @@ class Ux4gToggle extends StatelessWidget {
   final Ux4gToggleLabelPosition labelPosition;
   final bool enabled;
 
+  // Added properties for advanced native label styling
+  final bool isRequired;
+  final Widget? icon;
+  final TextStyle? labelStyle;
+  final TextStyle? descriptionStyle;
+  final String? secondaryLabel;
+  final bool isSecondaryRequired;
+  final Widget? secondaryIcon;
+
   const Ux4gToggle({
     super.key,
     required this.checked,
@@ -39,6 +48,13 @@ class Ux4gToggle extends StatelessWidget {
     this.size = Ux4gToggleSize.m,
     this.labelPosition = Ux4gToggleLabelPosition.right,
     this.enabled = true,
+    this.isRequired = false,
+    this.icon,
+    this.labelStyle,
+    this.descriptionStyle,
+    this.secondaryLabel,
+    this.isSecondaryRequired = false,
+    this.secondaryIcon,
   });
 
   @override
@@ -47,27 +63,18 @@ class Ux4gToggle extends StatelessWidget {
     final ux4gColors = materialTheme.extension<Ux4gColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
-    final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
 
     // Color definitions
-    final checkedTrackColor = primary;
-    final uncheckedTrackColor = onSurface.withValues(alpha: 0.3);
-    final disabledCheckedTrackColor = primary.withValues(alpha: 0.4);
-    final disabledUncheckedTrackColor = onSurface.withValues(alpha: 0.2);
+    final isDark = materialTheme.brightness == Brightness.dark;
+    final checkedTrackColor = ux4gColors?.primary ?? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600);
+    final uncheckedTrackColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+    final disabledTrackColor = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200;
 
-    final trackColor = !enabled && checked
-        ? disabledCheckedTrackColor
-        : !enabled && !checked
-        ? disabledUncheckedTrackColor
-        : checked
-        ? checkedTrackColor
-        : uncheckedTrackColor;
+    final trackColor = !enabled ? disabledTrackColor : (checked ? checkedTrackColor : uncheckedTrackColor);
 
-    final thumbColor =
-        surface; // Thumb is always surface color in default setup
+    final thumbColor = isDark && checked && enabled ? Ux4gPalette.gray900 : Colors.white;
 
     final endOffset = size.width - size.thumbSize - size.thumbPadding;
     final startOffset = size.thumbPadding;
@@ -117,8 +124,8 @@ class Ux4gToggle extends StatelessWidget {
       ),
     );
 
-    TextStyle labelStyle;
-    TextStyle descStyle;
+    TextStyle labelStyleFallback;
+    TextStyle descStyleFallback;
 
     final lMDefault =
         ux4gTypography?.lM_default ??
@@ -139,37 +146,69 @@ class Ux4gToggle extends StatelessWidget {
 
     switch (size) {
       case Ux4gToggleSize.s:
-        labelStyle = lMDefault;
-        descStyle = lSDefault;
+        labelStyleFallback = lMDefault;
+        descStyleFallback = lSDefault;
         break;
       case Ux4gToggleSize.m:
-        labelStyle = lLDefault;
-        descStyle = lMDefault;
+        labelStyleFallback = lLDefault;
+        descStyleFallback = lMDefault;
         break;
       case Ux4gToggleSize.l:
-        labelStyle = lXLDefault;
-        descStyle = lLDefault;
+        labelStyleFallback = lXLDefault;
+        descStyleFallback = lLDefault;
         break;
     }
 
-    Widget textsWidget = const SizedBox.shrink();
-    if (label != null || description != null) {
-      textsWidget = Column(
+    final resolvedLabelStyle = labelStyle ?? labelStyleFallback;
+    final resolvedDescStyle = descriptionStyle ?? descStyleFallback;
+
+    Widget buildLabelWidget(String text, bool required, Widget? trailingIcon) {
+      final color = enabled ? onSurface : onSurface.withValues(alpha: 0.38);
+      Widget labelText = Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(
+              text: text,
+              style: resolvedLabelStyle.copyWith(color: color),
+            ),
+            if (required)
+              TextSpan(
+                text: ' *',
+                style: resolvedLabelStyle.copyWith(
+                  color: materialTheme.colorScheme.error,
+                ),
+              ),
+          ],
+        ),
+      );
+
+      if (trailingIcon != null) {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            labelText,
+            const SizedBox(width: 6),
+            trailingIcon,
+          ],
+        );
+      }
+      return labelText;
+    }
+
+    Widget buildTextsWidget(
+        String? mainLabel, bool required, Widget? trailingIcon, String? desc) {
+      if (mainLabel == null && desc == null) return const SizedBox.shrink();
+      return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (label != null)
-            Text(
-              label!,
-              style: labelStyle.copyWith(
-                color: enabled ? onSurface : onSurface.withValues(alpha: 0.38),
-              ),
-            ),
-          if (description != null) ...[
+          if (mainLabel != null) buildLabelWidget(mainLabel, required, trailingIcon),
+          if (desc != null) ...[
             const SizedBox(height: 4),
             Text(
-              description!,
-              style: descStyle.copyWith(
+              desc,
+              style: resolvedDescStyle.copyWith(
                 color: enabled
                     ? onSurface.withValues(alpha: 0.7)
                     : onSurface.withValues(alpha: 0.38),
@@ -186,12 +225,16 @@ class Ux4gToggle extends StatelessWidget {
 
     if (labelPosition == Ux4gToggleLabelPosition.bothSides) {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: textsWidget),
+          buildTextsWidget(label, isRequired, icon, description),
           const SizedBox(width: 12),
           toggleControl,
+          if (secondaryLabel != null) ...[
+            const SizedBox(width: 12),
+            buildTextsWidget(secondaryLabel, isSecondaryRequired, secondaryIcon, null),
+          ]
         ],
       );
     }
@@ -201,13 +244,13 @@ class Ux4gToggle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         if (labelPosition == Ux4gToggleLabelPosition.left) ...[
-          textsWidget,
+          buildTextsWidget(label, isRequired, icon, description),
           const SizedBox(width: 12),
           toggleControl,
         ] else ...[
           toggleControl,
           const SizedBox(width: 12),
-          textsWidget,
+          buildTextsWidget(label, isRequired, icon, description),
         ],
       ],
     );

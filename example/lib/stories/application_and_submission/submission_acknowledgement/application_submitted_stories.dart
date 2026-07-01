@@ -4,14 +4,9 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _cardBg = Color(0xFFF4F3FF);
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _greenColor = Color(0xFF16A34A);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final applicationSubmittedComponent = WidgetbookComponent(
   name: 'Application Submitted',
@@ -21,7 +16,7 @@ final applicationSubmittedComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.list(
           label: 'Variant',
-          options: const ['Default', 'Card style'],
+          options: ['Default', 'Card style'],
           initialOption: 'Default',
           description:
               'Switch between the standard flat layout and the card-style layout.',
@@ -58,14 +53,19 @@ class _SuccessIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: 56,
       height: 56,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: const Color(0xFFDCFCE7),
+        color: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
       ),
-      child: const Icon(Icons.check_circle, color: _greenColor, size: 36),
+      child: Icon(
+        Icons.check_circle,
+        color: isDark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+        size: 36,
+      ),
     );
   }
 }
@@ -75,155 +75,46 @@ class _ReferenceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Ux4gPalette.primary50,
-        border: Border.all(color: Ux4gPalette.primary300),
+        color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+        border: Border.all(
+          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+        ),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Application Reference',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(
+              fontSize: 12,
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'INC-2026-MH-04127',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: _titleColor,
+                  color: isDark
+                      ? Ux4gPalette.neutral50
+                      : Ux4gPalette.neutral900,
                 ),
               ),
               Icon(
                 Icons.copy_outlined,
-                color: Ux4gPalette.primary300,
+                color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
                 size: 22,
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _NextStepsTimeline extends StatelessWidget {
-  const _NextStepsTimeline();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'What happens next',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: _titleColor,
-          ),
-        ),
-        const SizedBox(height: 20),
-        _TimelineItem(
-          number: '1',
-          title: 'Document verification',
-          subtitle: '3-5 working days',
-        ),
-        _TimelineItem(
-          number: '2',
-          title: 'Field inspection (if required)',
-          subtitle: 'Inspector will contact you',
-        ),
-        _TimelineItem(
-          number: '3',
-          title: 'Certificate issued',
-          subtitle: 'Within 30 days · Legal SLA',
-          isLast: true,
-        ),
-      ],
-    );
-  }
-}
-
-class _TimelineItem extends StatelessWidget {
-  final String number;
-  final String title;
-  final String subtitle;
-  final bool isLast;
-
-  const _TimelineItem({
-    required this.number,
-    required this.title,
-    required this.subtitle,
-    this.isLast = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            children: [
-              Container(
-                width: 28,
-                height: 28,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _primaryColor,
-                ),
-                child: Center(
-                  child: Text(
-                    number,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              if (!isLast)
-                Expanded(
-                  child: Container(
-                    width: 2,
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    color: const Color(0xFFE5E7EB),
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: isLast ? 0 : 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: _titleColor,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(fontSize: 13, color: _subtleText),
-                  ),
-                ],
-              ),
-            ),
           ),
         ],
       ),
@@ -236,23 +127,28 @@ class _NotificationRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final iconColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final textColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(Icons.phone_android, size: 16, color: _subtleText),
-        const SizedBox(width: 6),
-        const Expanded(
+        Icon(Icons.phone_iphone, size: 20, color: iconColor),
+        SizedBox(width: 8),
+        Expanded(
           child: Text(
             'SMS sent to +91\n98765 •••••',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(fontSize: 12, color: textColor, height: 1.4),
           ),
         ),
-        const SizedBox(width: 16),
-        const Icon(Icons.email_outlined, size: 16, color: _subtleText),
-        const SizedBox(width: 6),
-        const Expanded(
+        SizedBox(width: 16),
+        Icon(Icons.email_outlined, size: 20, color: iconColor),
+        SizedBox(width: 8),
+        Expanded(
           child: Text(
             'Email sent to\nr••••@gmail.com',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(fontSize: 12, color: textColor, height: 1.4),
           ),
         ),
       ],
@@ -265,6 +161,8 @@ class _ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       children: [
         Ux4gButton(
@@ -272,26 +170,38 @@ class _ActionButtons extends StatelessWidget {
           onPressed: () {},
           size: Ux4gButtonSize.large,
           width: double.infinity,
+          height: 48,
+          backgroundColor: isDark
+              ? Ux4gPalette.primary300
+              : Ux4gPalette.primary600,
+          contentColor: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12),
         Ux4gButton(
           text: 'Download acknowledgement (PDF)',
           onPressed: () {},
           variant: Ux4gButtonVariant.outline,
           size: Ux4gButtonSize.large,
           width: double.infinity,
-          contentColor: _primaryColor,
-          borderColor: _primaryColor,
+          height: 48,
+          contentColor: isDark
+              ? Ux4gPalette.primary300
+              : Ux4gPalette.primary600,
+          borderColor: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12),
         Ux4gButton(
           text: 'Add to calendar',
           onPressed: () {},
-          variant: Ux4gButtonVariant.outline,
           size: Ux4gButtonSize.large,
           width: double.infinity,
-          contentColor: _primaryColor,
-          borderColor: _primaryColor,
+          height: 48,
+          backgroundColor: isDark
+              ? Ux4gPalette.primary800
+              : Ux4gPalette.primary100,
+          contentColor: isDark
+              ? Ux4gPalette.primary300
+              : Ux4gPalette.primary600,
         ),
       ],
     );
@@ -312,29 +222,34 @@ class ApplicationSubmittedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
-    const greenColor = Color(0xFF16A34A);
-    const titleColor = Color(0xFF111827);
-    const subtleText = Color(0xFF4B5563);
-
+                
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gPalette.neutral900
+          : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header
             Ux4gAppHeader(
-              variant: Ux4gAppHeaderVariant.light,
+              variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
+                Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Color(0xFFE5E7EB)),
 
             // Content
             Expanded(
@@ -346,103 +261,112 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                     // Back link
                     GestureDetector(
                       onTap: () {},
-                      child: const Row(
+                      child: Row(
                         children: [
-                          Icon(Icons.arrow_back, size: 18, color: primaryColor),
+                          Icon(Icons.arrow_back, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                           SizedBox(width: 6),
-                          Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor)),
+                          Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Success icon
                     Center(
                       child: Container(
                         width: 56,
                         height: 56,
-                        decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xFFDCFCE7)),
-                        child: const Icon(Icons.check_circle, color: greenColor, size: 36),
+                        decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100),
+                        child: Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 36),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
 
                     // Title
-                    const Center(
+                    Center(
                       child: Text(
                         'Application Submitted\nSuccessfully',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: titleColor, height: 1.2),
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    const Center(
+                    SizedBox(height: 12),
+                    Center(
                       child: Text(
                         'Your Income Certificate application is now\nunder review by the Revenue Department.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 14, color: subtleText, height: 1.4),
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
                       ),
                     ),
-                    const SizedBox(height: 28),
+                    SizedBox(height: 20),
 
                     // Reference card
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF2EFFF),
-                        border: Border.all(color: const Color(0xFFA391FF)),
+                        color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+                        border: Border.all(color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Application Reference', style: TextStyle(fontSize: 12, color: subtleText)),
-                          const SizedBox(height: 8),
+                          Text('Application Reference', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                          SizedBox(height: 8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: titleColor)),
-                              Icon(Icons.copy_outlined, color: const Color(0xFFA391FF), size: 22),
+                              Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                              Icon(Icons.copy_outlined, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 22),
                             ],
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 28),
+                    SizedBox(height: 20),
 
                     // What happens next - Journey Timeline
                     Ux4gJourneyTimeline(
                       header: const Ux4gJourneyHeader(title: 'What happens next'),
-                      steps: const [
+                      indicatorCardSpacing: 16,
+                      indicatorSize: 24,
+                      steps: [
                         Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.current,
-                          title: 'Document verification',
-                          helpingText: '3-5 working days',
+                          state: Ux4gJourneyStepState.completed,
+                          stepNumber: '1',
+                          date: 'Date',
+                          title: 'Title',
+                          helpingText: 'Helping Text',
                         ),
                         Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.upcoming,
-                          title: 'Field inspection (if required)',
-                          helpingText: 'Inspector will contact you',
+                          state: Ux4gJourneyStepState.completed,
+                          stepNumber: '2',
+                          date: 'Date',
+                          title: 'Title',
+                          helpingText: 'Helping Text',
                         ),
                         Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.upcoming,
-                          title: 'Certificate issued',
-                          helpingText: 'Within 30 days · Legal SLA',
+                          state: Ux4gJourneyStepState.completed,
+                          stepNumber: '3',
+                          date: 'Date',
+                          title: 'Title',
+                          helpingText: 'Helping Text',
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     // Notification row
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(Icons.phone_android, size: 16, color: subtleText),
-                        const SizedBox(width: 6),
-                        const Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: subtleText))),
-                        const SizedBox(width: 16),
-                        const Icon(Icons.email_outlined, size: 16, color: subtleText),
-                        const SizedBox(width: 6),
-                        const Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: subtleText))),
+                        Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                        SizedBox(width: 8),
+                        Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                        SizedBox(width: 16),
+                        Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                        SizedBox(width: 8),
+                        Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
                       ],
                     ),
                   ],
@@ -455,11 +379,11 @@ class ApplicationSubmittedScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
-                  const SizedBox(height: 12),
-                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
-                  const SizedBox(height: 12),
-                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
+                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, contentColor: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50),
+                  SizedBox(height: 12),
+                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                  SizedBox(height: 12),
+                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                 ],
               ),
             ),
@@ -470,9 +394,9 @@ class ApplicationSubmittedScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400))),
+                  SizedBox(height: 6),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -494,32 +418,35 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
-    const greenColor = Color(0xFF16A34A);
-    const titleColor = Color(0xFF111827);
-    const subtleText = Color(0xFF4B5563);
-
+                
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
       body: SafeArea(
         child: Column(
           children: [
             // Header with white background
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
-                    variant: Ux4gAppHeaderVariant.light,
+                    variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
-                      SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                      const SizedBox(width: 1),
-                      Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
-                      SvgPicture.asset('assets/Union.svg', height: 32),
+                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
+                      Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                      SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
                     ],
                   ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                  Divider(height: 1, color: Color(0xFFE5E7EB)),
                 ],
               ),
             ),
@@ -531,7 +458,7 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 20, spreadRadius: 2, offset: const Offset(0, 4)),
@@ -543,101 +470,110 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                       // Back link
                       GestureDetector(
                         onTap: () {},
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Icon(Icons.arrow_back, size: 18, color: primaryColor),
+                            Icon(Icons.arrow_back, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                             SizedBox(width: 6),
-                            Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor)),
+                            Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 32),
+                      SizedBox(height: 32),
 
                       // Success icon
                       Center(
                         child: Container(
                           width: 56, height: 56,
-                          decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xFFDCFCE7)),
-                          child: const Icon(Icons.check_circle, color: greenColor, size: 36),
+                          decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100),
+                          child: Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 36),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20),
 
                       // Title
-                      const Center(
+                      Center(
                         child: Text(
                           'Application Submitted\nSuccessfully',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: titleColor, height: 1.2),
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      const Center(
+                      SizedBox(height: 12),
+                      Center(
                         child: Text(
                           'Your Income Certificate application is now\nunder review by the Revenue Department.',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 14, color: subtleText, height: 1.4),
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
                         ),
                       ),
-                      const SizedBox(height: 28),
+                      SizedBox(height: 20),
 
                       // Reference card
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xFFE5E7EB)),
+                          border: Border.all(color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Application Reference', style: TextStyle(fontSize: 12, color: subtleText)),
-                            const SizedBox(height: 8),
+                            Text('Application Reference', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                            SizedBox(height: 8),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: titleColor)),
-                                Icon(Icons.copy_outlined, color: const Color(0xFFA391FF), size: 22),
+                                Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                Icon(Icons.copy_outlined, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 22),
                               ],
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 28),
+                      SizedBox(height: 20),
 
                       // What happens next - Journey Timeline
                       Ux4gJourneyTimeline(
                         header: const Ux4gJourneyHeader(title: 'What happens next'),
-                        steps: const [
+                        indicatorCardSpacing: 16,
+                        indicatorSize: 24,
+                        steps: [
                           Ux4gJourneyStep(
-                            state: Ux4gJourneyStepState.current,
-                            title: 'Document verification',
-                            helpingText: '3-5 working days',
+                            state: Ux4gJourneyStepState.completed,
+                            stepNumber: '1',
+                            date: 'Date',
+                            title: 'Title',
+                            helpingText: 'Helping Text',
                           ),
                           Ux4gJourneyStep(
-                            state: Ux4gJourneyStepState.upcoming,
-                            title: 'Field inspection (if required)',
-                            helpingText: 'Inspector will contact you',
+                            state: Ux4gJourneyStepState.completed,
+                            stepNumber: '2',
+                            date: 'Date',
+                            title: 'Title',
+                            helpingText: 'Helping Text',
                           ),
                           Ux4gJourneyStep(
-                            state: Ux4gJourneyStepState.upcoming,
-                            title: 'Certificate issued',
-                            helpingText: 'Within 30 days · Legal SLA',
+                            state: Ux4gJourneyStepState.completed,
+                            stepNumber: '3',
+                            date: 'Date',
+                            title: 'Title',
+                            helpingText: 'Helping Text',
                           ),
                         ],
                       ),
-                      const SizedBox(height: 24),
+                      SizedBox(height: 24),
 
                       // Notification row
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.phone_android, size: 16, color: subtleText),
-                          const SizedBox(width: 6),
-                          const Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: subtleText))),
-                          const SizedBox(width: 16),
-                          const Icon(Icons.email_outlined, size: 16, color: subtleText),
-                          const SizedBox(width: 6),
-                          const Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: subtleText))),
+                          Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          SizedBox(width: 8),
+                          Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          SizedBox(width: 16),
+                          Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          SizedBox(width: 8),
+                          Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
                         ],
                       ),
                     ],
@@ -651,11 +587,11 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
-                  const SizedBox(height: 12),
-                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
-                  const SizedBox(height: 12),
-                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
+                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50),
+                  SizedBox(height: 12),
+                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                  SizedBox(height: 12),
+                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
                 ],
               ),
             ),
@@ -666,9 +602,9 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400))),
+                  SizedBox(height: 6),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -689,37 +625,51 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gPalette.neutral900
+          : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header
             Ux4gAppHeader(
-              variant: Ux4gAppHeaderVariant.light,
+              variant: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gAppHeaderVariant.light
+                  : Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(
                   _nationalEmblemLogoPath,
                   height: 40,
-                  errorBuilder: (c, e, s) => const Icon(
-                    Icons.account_balance,
-                    size: 32,
-                    color: Colors.grey,
-                  ),
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                      : null,
+                  errorBuilder: (c, e, s) =>
+                      Icon(Icons.account_balance, size: 32, color: Colors.grey),
                 ),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
+                Container(
+                  height: 32,
+                  width: 1,
+                  color: (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gPalette.neutral700
+                      : Ux4gPalette.neutral200),
+                ),
                 SvgPicture.asset(
                   _unionLogoPath,
                   height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
                   errorBuilder: (c, e, s) =>
-                      const Icon(Icons.blur_on, size: 32, color: Colors.blue),
+                      Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Color(0xFFE5E7EB)),
 
             // Content
             Expanded(
@@ -734,62 +684,95 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                     // Back link
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.arrow_back,
                           size: 18,
-                          color: _primaryColor,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
                         ),
-                        const SizedBox(width: 6),
-                        const Text(
+                        SizedBox(width: 6),
+                        Text(
                           'Return to services',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: _primaryColor,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Success icon
-                    const Center(child: _SuccessIcon()),
-                    const SizedBox(height: 20),
+                    Center(child: _SuccessIcon()),
+                    SizedBox(height: 20),
 
                     // Title
-                    const Center(
+                    Center(
                       child: Text(
                         'Application Submitted\nSuccessfully',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w800,
-                          color: _titleColor,
-                          height: 1.2,
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    const Center(
+                    SizedBox(height: 12),
+                    Center(
                       child: Text(
                         'Your Income Certificate application is now\nunder review by the Revenue Department.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: _subtleText,
-                          height: 1.4,
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 28),
+                    SizedBox(height: 20),
 
                     // Reference card
                     const _ReferenceCard(),
-                    const SizedBox(height: 28),
+                    SizedBox(height: 20),
 
                     // Next steps timeline
-                    const _NextStepsTimeline(),
-                    const SizedBox(height: 24),
+                    Ux4gJourneyTimeline(
+                      header: const Ux4gJourneyHeader(
+                        title: 'What happens next',
+                      ),
+                      indicatorCardSpacing: 16,
+                      indicatorSize: 24,
+                      steps: [
+                        Ux4gJourneyStep(
+                          state: Ux4gJourneyStepState.completed,
+                          stepNumber: '1',
+                          date: 'Date',
+                          title: 'Title',
+                          helpingText: 'Helping Text',
+                        ),
+                        Ux4gJourneyStep(
+                          state: Ux4gJourneyStepState.completed,
+                          stepNumber: '2',
+                          date: 'Date',
+                          title: 'Title',
+                          helpingText: 'Helping Text',
+                        ),
+                        Ux4gJourneyStep(
+                          state: Ux4gJourneyStepState.completed,
+                          stepNumber: '3',
+                          date: 'Date',
+                          title: 'Title',
+                          helpingText: 'Helping Text',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 24),
 
                     // Notification row
                     const _NotificationRow(),
@@ -810,15 +793,23 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: (Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.neutral500
+                          : Ux4gPalette.neutral400),
+                    ),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,
-                    errorBuilder: (c, e, s) => const Text(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : null,
+                    errorBuilder: (c, e, s) => Text(
                       'Digital India',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -843,11 +834,13 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _cardBg,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.primary900
+            : Ux4gPalette.primary50,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 24,
             offset: const Offset(0, 6),
           ),
@@ -855,48 +848,65 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
       ),
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
-        backgroundColor: _cardBg,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gPalette.primary900
+            : Ux4gPalette.primary50,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Header with white background
               Container(
-                color: Colors.white,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Ux4gPalette.neutral900
+                    : Ux4gPalette.neutral0,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
-                      variant: Ux4gAppHeaderVariant.light,
+                      variant: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gAppHeaderVariant.light
+                          : Ux4gAppHeaderVariant.light,
                       title: '',
                       leadingWidgets: [
                         SvgPicture.asset(
                           _nationalEmblemLogoPath,
                           height: 40,
-                          errorBuilder: (c, e, s) => const Icon(
+                          colorFilter:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                )
+                              : null,
+                          errorBuilder: (c, e, s) => Icon(
                             Icons.account_balance,
                             size: 32,
                             color: Colors.grey,
                           ),
                         ),
-                        const SizedBox(width: 1),
                         Container(
                           height: 32,
                           width: 1,
-                          color: const Color(0xFFD1D5DB),
+                          color:
+                              (Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral700
+                              : Ux4gPalette.neutral200),
                         ),
-                        const SizedBox(width: 1),
                         SvgPicture.asset(
                           _unionLogoPath,
                           height: 32,
-                          errorBuilder: (c, e, s) => const Icon(
-                            Icons.blur_on,
-                            size: 32,
-                            color: Colors.blue,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            BlendMode.srcIn,
                           ),
+                          errorBuilder: (c, e, s) =>
+                              Icon(Icons.blur_on, size: 32, color: Colors.blue),
                         ),
                       ],
                     ),
-                    const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                    Divider(height: 1, color: Color(0xFFE5E7EB)),
                   ],
                 ),
               ),
@@ -911,7 +921,9 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.neutral900
+                          : Ux4gPalette.neutral50,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -928,62 +940,98 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                         // Back link
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.arrow_back,
                               size: 18,
-                              color: _primaryColor,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.primary300
+                                  : Ux4gPalette.primary600,
                             ),
-                            const SizedBox(width: 6),
-                            const Text(
+                            SizedBox(width: 6),
+                            Text(
                               'Return to services',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: _primaryColor,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 32),
+                        SizedBox(height: 32),
 
                         // Success icon
-                        const Center(child: _SuccessIcon()),
-                        const SizedBox(height: 20),
+                        Center(child: _SuccessIcon()),
+                        SizedBox(height: 20),
 
                         // Title
-                        const Center(
+                        Center(
                           child: Text(
                             'Application Submitted\nSuccessfully',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w800,
-                              color: _titleColor,
-                              height: 1.2,
-                            ),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
+                        ),
                           ),
                         ),
-                        const SizedBox(height: 12),
-                        const Center(
+                        SizedBox(height: 12),
+                        Center(
                           child: Text(
                             'Your Income Certificate application is now\nunder review by the Revenue Department.',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: _subtleText,
-                              height: 1.4,
-                            ),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
+                        ),
                           ),
                         ),
-                        const SizedBox(height: 28),
+                        SizedBox(height: 20),
 
                         // Reference card
                         const _ReferenceCard(),
-                        const SizedBox(height: 28),
+                        SizedBox(height: 20),
 
                         // Next steps timeline
-                        const _NextStepsTimeline(),
-                        const SizedBox(height: 24),
+                        Ux4gJourneyTimeline(
+                          header: const Ux4gJourneyHeader(
+                            title: 'What happens next',
+                          ),
+                          indicatorCardSpacing: 16,
+                          indicatorSize: 24,
+                          steps: [
+                            Ux4gJourneyStep(
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '1',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
+                            ),
+                            Ux4gJourneyStep(
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '2',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
+                            ),
+                            Ux4gJourneyStep(
+                              state: Ux4gJourneyStepState.completed,
+                              stepNumber: '3',
+                              date: 'Date',
+                              title: 'Title',
+                              helpingText: 'Helping Text',
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 24),
 
                         // Notification row
                         const _NotificationRow(),
@@ -1008,15 +1056,23 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: (Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral500
+                            : Ux4gPalette.neutral400),
+                      ),
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6),
                     Image.asset(
                       _digitalIndiaLogoPath,
                       height: 24,
-                      errorBuilder: (c, e, s) => const Text(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : null,
+                      errorBuilder: (c, e, s) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,

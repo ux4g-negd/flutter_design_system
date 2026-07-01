@@ -26,6 +26,7 @@ class Ux4gStepper extends StatelessWidget {
   final Ux4gStepperOrientation orientation;
   final Ux4gStepperLineStyle lineStyle;
   final List<Ux4gStepItem> steps;
+  final bool showLabels;
 
   const Ux4gStepper({
     super.key,
@@ -34,6 +35,7 @@ class Ux4gStepper extends StatelessWidget {
     this.orientation = Ux4gStepperOrientation.horizontal,
     this.lineStyle = Ux4gStepperLineStyle.solid,
     this.steps = const [],
+    this.showLabels = true,
   });
 
   @override
@@ -82,19 +84,21 @@ class Ux4gStepper extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: _buildLabels(
-                      context,
-                      stepData,
-                      stepIndex,
-                      isPending,
-                      isCompleted,
-                      isActive,
-                      true,
+                  if (showLabels) ...[
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: _buildLabels(
+                        context,
+                        stepData,
+                        stepIndex,
+                        isPending,
+                        isCompleted,
+                        isActive,
+                        true,
+                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             );
@@ -133,23 +137,25 @@ class Ux4gStepper extends StatelessWidget {
                     ),
                 ],
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    bottom: index < totalSteps - 1 ? 24 : 0,
-                  ),
-                  child: _buildLabels(
-                    context,
-                    stepData,
-                    stepIndex,
-                    isPending,
-                    isCompleted,
-                    isActive,
-                    false,
+              if (showLabels) ...[
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      bottom: index < totalSteps - 1 ? 24 : 0,
+                    ),
+                    child: _buildLabels(
+                      context,
+                      stepData,
+                      stepIndex,
+                      isPending,
+                      isCompleted,
+                      isActive,
+                      false,
+                    ),
                   ),
                 ),
-              ),
+              ],
             ],
           ),
         );

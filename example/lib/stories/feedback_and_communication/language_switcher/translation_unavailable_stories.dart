@@ -5,9 +5,11 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
-const _primaryColor = Color(0xFF432CBB);
+bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral500 : const Color(0xFF6B7280);
+Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -68,10 +70,11 @@ class TranslationUnavailableScreen extends StatelessWidget {
             // App Header
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
               title: '',
-              leadingSpacing: 2,
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -79,25 +82,8 @@ class TranslationUnavailableScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // Content
             Expanded(
@@ -157,6 +143,7 @@ class TranslationUnavailableScreen extends StatelessWidget {
                       text: 'Switch to English',
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
+                        height: 48,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -167,6 +154,7 @@ class TranslationUnavailableScreen extends StatelessWidget {
                       text: 'Translate with Browser',
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
+                        height: 48,
                       borderColor: const Color(0xFF432CBB),
                       contentColor: const Color(0xFF432CBB),
                     ),
@@ -183,7 +171,7 @@ class TranslationUnavailableScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -218,11 +206,11 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
             // App Header
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
               title: '',
-              leadingSpacing: 2,
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                SizedBox(width:3),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -230,26 +218,8 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SizedBox(width:3),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // White card content
             Expanded(
@@ -316,6 +286,7 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
                       text: 'Switch to English',
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
+                        height: 48,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -326,6 +297,7 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
                       text: 'Translate with Browser',
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
+                        height: 48,
                       borderColor: const Color(0xFF432CBB),
                       contentColor: const Color(0xFF432CBB),
                     ),
@@ -342,7 +314,7 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -365,78 +337,33 @@ class _TranslationUnavailableMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
-      child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+    final isDark = _isDark(context);
+    return Scaffold(
+        backgroundColor: isCard
+            ? (isDark ? Ux4gPalette.primary800 : Color(0xFFF2EFFF))
+            : (isDark ? Ux4gPalette.neutral950 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
+                elevation: 4,
                 title: '',
-                leadingSpacing: 2,
+                leadingSpacing: 8,
                 leadingWidgets: [
                   SvgPicture.asset(
-                    'assets/national_amblam_logo.svg',
-                    height: 40,
-                  ),
-                  SizedBox(width: 3),
+                    Ux4gIcons.nationalEmblem, 
+                    height: 40, colorFilter: _isDark(context) ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
                       orientation: Ux4gDividerOrientation.vertical,
-                      color: const Color(0xFFD1D5DB),
+                      color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
                     ),
                   ),
-                  SizedBox(width: 3),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
                 ],
-              ),
-
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) => const Text(
-                        '\u{1f1ee}\u{1f1f3}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
               ),
 
               // Content
@@ -445,14 +372,14 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: isCard
                       ? Ux4gCard(
-                          backgroundColor: Colors.white,
+                          backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(),
+                            child: _buildContent(context),
                           ),
                         )
-                      : _buildContent(),
+                      : _buildContent(context),
                 ),
               ),
 
@@ -468,6 +395,7 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                         text: 'Switch to English',
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -478,8 +406,9 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                         text: 'Translate with Browser',
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.large,
-                        borderColor: _primaryColor,
-                        contentColor: _primaryColor,
+                        height: 48,
+                        borderColor: _getPrimaryColor(context),
+                        contentColor: _getPrimaryColor(context),
                       ),
                     ),
                   ],
@@ -493,19 +422,19 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
+                      style: TextStyle(fontSize: 11, color: _getMutedText(context)),
                     ),
                     const SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => const Text(
+                      errorBuilder: (_, __, ___) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
-                          color: Color(0xFF432CBB),
+                          color: _getPrimaryColor(context),
                         ),
                       ),
                     ),
@@ -515,41 +444,40 @@ class _TranslationUnavailableMockup extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'This page is not yet available in Tamil',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: _getTitleColor(context),
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
+        Text(
           'We are translating Income Certificate pages — the Tamil version is coming in May 2026.',
-          style: TextStyle(fontSize: 14, color: _subtleText),
+          style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
         ),
         const SizedBox(height: 24),
 
         // Warning card
         Ux4gCard(
-          backgroundColor: const Color(0xFFFFF7E6),
+          backgroundColor: Color(0xFFFFF7E6),
           cornerRadius: 12,
-          borderColor: const Color(0xFFFFC973),
+          borderColor: Color(0xFFFFC973),
           borderWidth: 1,
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.info, color: Color(0xFFFA8C16), size: 20),
+                Icon(Icons.info, color: Color(0xFFFA8C16), size: 20),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(

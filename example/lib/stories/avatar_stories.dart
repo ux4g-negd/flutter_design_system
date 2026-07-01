@@ -79,27 +79,36 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
     ),
     WidgetbookUseCase(
       name: 'All sizes',
-      builder: (context) => ComponentDocs(
-        name: 'Ux4gAvatar — All Sizes',
-        description: 'All seven available sizes rendered side-by-side.',
-        code: '''Row(
-  children: Ux4gAvatarSize.values
+      builder: (context) {
+        final displaySizes = [
+          Ux4gAvatarSize.l,
+          Ux4gAvatarSize.xl,
+          Ux4gAvatarSize.xxl,
+          Ux4gAvatarSize.xxxl,
+        ];
+        return ComponentDocs(
+          name: 'Ux4gAvatar — All Sizes',
+          description: 'Large to XXXL sizes rendered side-by-side.',
+          code: '''Row(
+  children: [Ux4gAvatarSize.l, Ux4gAvatarSize.xl, Ux4gAvatarSize.xxl, Ux4gAvatarSize.xxxl]
       .map((s) => Ux4gAvatar(size: s, initials: 'AB'))
       .toList(),
 );''',
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: Ux4gAvatarSize.values
-              .map(
-                (s) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Ux4gAvatar(size: s, initials: 'AB'),
-                ),
-              )
-              .toList(),
-        ),
-      ),
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.end,
+            children: displaySizes
+                .map(
+                  (s) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Ux4gAvatar(size: s, initials: 'AB'),
+                  ),
+                )
+                .toList(),
+          ),
+        );
+      },
     ),
     WidgetbookUseCase(
       name: 'With initials',
@@ -126,9 +135,9 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
         description:
             'Provide an imageUrl to display a network photo in the avatar.',
         code:
-            'Ux4gAvatar(imageUrl: \'https://i.pravatar.cc/150?img=3\', size: Ux4gAvatarSize.l)',
+            'Ux4gAvatar(imageUrl: \'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg\', size: Ux4gAvatarSize.l)',
         child: Ux4gAvatar(
-          imageUrl: 'https://i.pravatar.cc/150?img=3',
+          imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
           size: context.knobs.list(
             label: 'Size',
             options: Ux4gAvatarSize.values,
@@ -153,7 +162,7 @@ final profileAvatarComponent = WidgetbookComponent(
             'plus edit / camera / remove action overlays.',
         code: '''// Verified badge
 Ux4gProfileAvatar(
-  imageUrl: 'https://i.pravatar.cc/150?img=5',
+  imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
   variant: Ux4gProfileBadge.verified,
   size: Ux4gAvatarSize.xl,
 );
@@ -204,13 +213,15 @@ Ux4gProfileAvatar(
             description: 'Called when action overlay is tapped.',
           ),
         ],
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
+        child: Wrap(
+          spacing: 8,
+          runSpacing: 8,
           children: Ux4gProfileBadge.values
               .map(
                 (b) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: Ux4gProfileAvatar(
+                    imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
                     initials: 'AB',
                     variant: b,
                     size: Ux4gAvatarSize.l,
@@ -233,8 +244,9 @@ Ux4gProfileAvatar(
   size: Ux4gAvatarSize.l,
   onVariantClick: () {},
 );''',
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
+        child: Wrap(
+          spacing: 8,
+          runSpacing: 8,
           children: Ux4gProfileAction.values
               .map(
                 (a) => Padding(
@@ -243,6 +255,8 @@ Ux4gProfileAvatar(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Ux4gProfileAvatar(
+                        imageUrl:
+                            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
                         initials: 'AB',
                         variant: a,
                         size: Ux4gAvatarSize.l,
@@ -309,8 +323,9 @@ final statusAvatarComponent = WidgetbookComponent(
             description: 'Custom size for the status dot.',
           ),
         ],
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
+        child: Wrap(
+          spacing: 8,
+          runSpacing: 8,
           children: Ux4gStatusVariant.values
               .map(
                 (s) => Padding(
@@ -341,7 +356,7 @@ final avatarGroupComponent = WidgetbookComponent(
         code: '''Ux4gAvatarGroup(
   items: List.generate(
     5,
-    (i) => Ux4gAvatarGroupItem(imageUrl: 'https://i.pravatar.cc/150?img=\'),
+    (i) => Ux4gAvatarGroupItem(imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
   ),
   maxLimit: 3,   // shows "+2" overflow
 );''',
@@ -389,8 +404,9 @@ final avatarGroupComponent = WidgetbookComponent(
         child: Ux4gAvatarGroup(
           items: List.generate(
             5,
-            (i) =>
-                Ux4gAvatarGroupItem(imageUrl: 'https://i.pravatar.cc/150?img='),
+            (i) => Ux4gAvatarGroupItem(
+              imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+            ),
           ),
           maxLimit: context.knobs.int.input(
             label: 'Max visible',

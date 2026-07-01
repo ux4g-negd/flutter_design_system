@@ -1,0 +1,8 @@
+[build]
+  command = "flutter build web -t lib/widgetbook.dart --no-tree-shake-icons --release"
+  publish = "build/web"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"

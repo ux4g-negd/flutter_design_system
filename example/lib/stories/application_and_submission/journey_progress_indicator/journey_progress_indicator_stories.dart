@@ -4,12 +4,9 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final journeyProgressIndicatorComponent = WidgetbookComponent(
   name: 'Journey Progress Indicator',
@@ -19,7 +16,7 @@ final journeyProgressIndicatorComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.list(
           label: 'Variant',
-          options: const ['Default', 'Card style'],
+          options: ['Default', 'Card style'],
           initialOption: 'Default',
           description:
               'Switch between the standard flat layout and the card-style layout.',
@@ -70,7 +67,7 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,26 +78,25 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(
-                  'assets/national_amblam_logo.svg', 
-                  height: 40, 
-                  errorBuilder: (c, e, s) => const Icon(Icons.account_balance, size: 32, color: Colors.grey)
+                  Ux4gIcons.nationalEmblem,  
+                  height: 40,
+                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
+                  errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                 ),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
                 SvgPicture.asset(
-                  'assets/union.svg', 
-                  height: 32, 
-                  errorBuilder: (c, e, s) => const Icon(Icons.blur_on, size: 32, color: Colors.blue)
-                ),
-              ],
+                  Ux4gIcons.union, 
+                  height: 32,
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                  errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
+                ),],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
 
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -108,29 +104,27 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: ''),
+                      steps: [Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents', 
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF4B5563)),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
                         ),
-                        Ux4gStepItem(title: ''),
-                      ],
+                        Ux4gStepItem(title: ''),],
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Title & Subtitle
-                    const Text(
+                    Text(
                       'Verify your details',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
+                    SizedBox(height: 8),
+                    Text(
                       'Confirm the information below to proceed.',
-                      style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4),
+                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Form Fields
                     Ux4gInputField(
@@ -140,7 +134,7 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     Ux4gInputField(
                       label: 'PAN number',
@@ -149,7 +143,7 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Checkbox
                     Ux4gCheckbox(
@@ -165,24 +159,24 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
-                    text: 'Continue',
+height: 48, text: 'Continue',
                     onPressed: _acceptTerms ? () {} : null,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
-                    text: 'Back',
+height: 48, text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
-                    borderColor: const Color(0xFFD1D5DB),
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
                   ),
                 ],
               ),
@@ -190,16 +184,17 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  SizedBox(height: 6),
                   Image.asset(
-                    'assets/digital_india_logo.png', 
-                    height: 24, 
-                    errorBuilder: (c, e, s) => const Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
+                    Ux4gIcons.digitalIndiaLogoPng,  
+                    height: 24,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
+                    errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                   ),
                 ],
               ),
@@ -231,14 +226,14 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -246,21 +241,21 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
                     title: '',
                     leadingWidgets: [
                       SvgPicture.asset(
-                        'assets/national_amblam_logo.svg', 
-                        height: 40, 
-                        errorBuilder: (c, e, s) => const Icon(Icons.account_balance, size: 32, color: Colors.grey)
+                        Ux4gIcons.nationalEmblem,  
+                        height: 40,
+                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
+                        errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                       ),
-                      const SizedBox(width: 1),
-                      Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
+                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
                       SvgPicture.asset(
-                        'assets/union.svg', 
-                        height: 32, 
-                        errorBuilder: (c, e, s) => const Icon(Icons.blur_on, size: 32, color: Colors.blue)
+                        Ux4gIcons.union, 
+                        height: 32,
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                        errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                       ),
                     ],
                   ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
                 ],
               ),
             ),
@@ -268,7 +263,7 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -276,39 +271,37 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
-                        Ux4gStepItem(title: ''),
+                      steps: [Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents', 
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF4B5563)),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
                         ),
-                        Ux4gStepItem(title: ''),
-                      ],
+                        Ux4gStepItem(title: ''),],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // White Card
                     Container(
-                      padding: const EdgeInsets.all(24),
+                      padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Title & Subtitle
-                          const Text(
+                          Text(
                             'Verify your details',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
                           ),
-                          const SizedBox(height: 8),
-                          const Text(
+                          SizedBox(height: 8),
+                          Text(
                             'Confirm the information below to proceed.',
-                            style: TextStyle(fontSize: 15, color: Color(0xFF4B5563), height: 1.4),
+                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Form Fields
                           Ux4gInputField(
@@ -318,7 +311,7 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
                             placeholder: '',
                             size: Ux4gInputFieldSize.medium,
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24),
 
                           Ux4gInputField(
                             label: 'PAN number',
@@ -327,7 +320,7 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
                             placeholder: '',
                             size: Ux4gInputFieldSize.medium,
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Checkbox
                           Ux4gCheckbox(
@@ -346,24 +339,24 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
-                    text: 'Continue',
+height: 48, text: 'Continue',
                     onPressed: _acceptTerms ? () {} : null,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
-                    text: 'Back',
+height: 48, text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
-                    borderColor: const Color(0xFFD1D5DB),
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
                   ),
                 ],
               ),
@@ -371,16 +364,17 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  SizedBox(height: 6),
                   Image.asset(
-                    'assets/digital_india_logo.png', 
-                    height: 24, 
-                    errorBuilder: (c, e, s) => const Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
+                    Ux4gIcons.digitalIndiaLogoPng,  
+                    height: 24,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
+                    errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                   ),
                 ],
               ),
@@ -413,7 +407,9 @@ class _JourneyProgressIndicatorMockupState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gPalette.neutral900
+          : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -426,32 +422,45 @@ class _JourneyProgressIndicatorMockupState
                 SvgPicture.asset(
                   _nationalEmblemLogoPath,
                   height: 40,
-                  errorBuilder: (c, e, s) => const Icon(
-                    Icons.account_balance,
-                    size: 32,
-                    color: Colors.grey,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                      : null,
+                  errorBuilder: (c, e, s) =>
+                      Icon(Icons.account_balance, size: 32, color: Colors.grey),
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral700
+                        : Ux4gPalette.neutral300,
                   ),
                 ),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
                 SvgPicture.asset(
                   _unionLogoPath,
                   height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
                   errorBuilder: (c, e, s) =>
-                      const Icon(Icons.blur_on, size: 32, color: Colors.blue),
+                      Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Ux4gDivider(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.neutral800
+                  : Ux4gPalette.neutral200,
+            ),
 
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 32,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -459,7 +468,7 @@ class _JourneyProgressIndicatorMockupState
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
+                      steps: [
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
@@ -467,34 +476,41 @@ class _JourneyProgressIndicatorMockupState
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF4B5563),
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral300
+                                : Ux4gPalette.neutral600,
                           ),
                         ),
                         Ux4gStepItem(title: ''),
                       ],
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40),
 
                     // Title & Subtitle
-                    const Text(
+                    Text(
                       'Verify your details',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral50
+                            : Ux4gPalette.neutral900,
                         height: 1.2,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
+                    SizedBox(height: 8),
+                    Text(
                       'Confirm the information below to proceed.',
                       style: TextStyle(
                         fontSize: 15,
-                        color: _subtleText,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral400
+                            : Ux4gPalette.neutral500,
                         height: 1.4,
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Form Fields
                     Ux4gInputField(
@@ -504,7 +520,7 @@ class _JourneyProgressIndicatorMockupState
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
 
                     Ux4gInputField(
                       label: 'PAN number',
@@ -513,7 +529,7 @@ class _JourneyProgressIndicatorMockupState
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // Checkbox
                     Ux4gCheckbox(
@@ -530,24 +546,31 @@ class _JourneyProgressIndicatorMockupState
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
+                    height: 48,
                     text: 'Continue',
                     onPressed: _acceptTerms ? () {} : null,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
+                    height: 48,
                     text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
-                    borderColor: const Color(0xFFD1D5DB),
+                    contentColor:
+                        Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral400
+                        : Ux4gPalette.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral700
+                        : Ux4gPalette.neutral300,
                   ),
                 ],
               ),
@@ -555,19 +578,27 @@ class _JourneyProgressIndicatorMockupState
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.neutral500
+                          : Ux4gPalette.neutral400,
+                    ),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,
-                    errorBuilder: (c, e, s) => const Text(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : null,
+                    errorBuilder: (c, e, s) => Text(
                       'Digital India',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -602,14 +633,18 @@ class _JourneyProgressIndicatorCardMockupState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gPalette.primary900
+          : Ux4gPalette.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.neutral900
+                  : Ux4gPalette.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -619,31 +654,42 @@ class _JourneyProgressIndicatorCardMockupState
                       SvgPicture.asset(
                         _nationalEmblemLogoPath,
                         height: 40,
-                        errorBuilder: (c, e, s) => const Icon(
+                        colorFilter:
+                            Theme.of(context).brightness == Brightness.dark
+                            ? ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                            : null,
+                        errorBuilder: (c, e, s) => Icon(
                           Icons.account_balance,
                           size: 32,
                           color: Colors.grey,
                         ),
                       ),
-                      const SizedBox(width: 1),
                       Container(
                         height: 32,
                         width: 1,
-                        color: const Color(0xFFD1D5DB),
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral700
+                            : Ux4gPalette.neutral300,
                       ),
-                      const SizedBox(width: 1),
                       SvgPicture.asset(
                         _unionLogoPath,
                         height: 32,
-                        errorBuilder: (c, e, s) => const Icon(
-                          Icons.blur_on,
-                          size: 32,
-                          color: Colors.blue,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.primary300
+                              : Ux4gPalette.primary600,
+                          BlendMode.srcIn,
                         ),
+                        errorBuilder: (c, e, s) =>
+                            Icon(Icons.blur_on, size: 32, color: Colors.blue),
                       ),
                     ],
                   ),
-                  const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                  Ux4gDivider(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral800
+                        : Ux4gPalette.neutral200,
+                  ),
                 ],
               ),
             ),
@@ -651,10 +697,7 @@ class _JourneyProgressIndicatorCardMockupState
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 32,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -663,7 +706,7 @@ class _JourneyProgressIndicatorCardMockupState
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: const [
+                      steps: [
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
@@ -671,44 +714,57 @@ class _JourneyProgressIndicatorCardMockupState
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF4B5563),
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.neutral300
+                                : Ux4gPalette.neutral600,
                           ),
                         ),
                         Ux4gStepItem(title: ''),
                       ],
                     ),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32),
 
                     // White Card
                     Container(
-                      padding: const EdgeInsets.all(24),
+                      padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gPalette.neutral900
+                            : Ux4gPalette.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Title & Subtitle
-                          const Text(
+                          Text(
                             'Verify your details',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
-                              color: _titleColor,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral50
+                                  : Ux4gPalette.neutral900,
                               height: 1.2,
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          const Text(
+                          SizedBox(height: 8),
+                          Text(
                             'Confirm the information below to proceed.',
                             style: TextStyle(
                               fontSize: 15,
-                              color: _subtleText,
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gPalette.neutral400
+                                  : Ux4gPalette.neutral500,
                               height: 1.4,
                             ),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Form Fields
                           Ux4gInputField(
@@ -719,7 +775,7 @@ class _JourneyProgressIndicatorCardMockupState
                             placeholder: '',
                             size: Ux4gInputFieldSize.medium,
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24),
 
                           Ux4gInputField(
                             label: 'PAN number',
@@ -729,7 +785,7 @@ class _JourneyProgressIndicatorCardMockupState
                             placeholder: '',
                             size: Ux4gInputFieldSize.medium,
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32),
 
                           // Checkbox
                           Ux4gCheckbox(
@@ -749,23 +805,28 @@ class _JourneyProgressIndicatorCardMockupState
 
             // Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
                   Ux4gButton(
+                    height: 48,
                     text: 'Continue',
                     onPressed: _acceptTerms ? () {} : null,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Ux4gButton(
+                    height: 48,
                     text: 'Back',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: const Color(0xFF6B7280),
+                    contentColor:
+                        Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.neutral400
+                        : Ux4gPalette.neutral500,
                   ),
                 ],
               ),
@@ -773,19 +834,27 @@ class _JourneyProgressIndicatorCardMockupState
 
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
+              padding: EdgeInsets.only(bottom: 24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.neutral500
+                          : Ux4gPalette.neutral400,
+                    ),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,
-                    errorBuilder: (c, e, s) => const Text(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : null,
+                    errorBuilder: (c, e, s) => Text(
                       'Digital India',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

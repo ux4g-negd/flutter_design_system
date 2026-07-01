@@ -15,28 +15,63 @@ final inputFieldComponent = WidgetbookComponent(
         String value = '';
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final labelText = context.knobs.string(
+              label: 'Label',
+              initialValue: 'Email',
+            );
+            final placeholderText = context.knobs.string(
+              label: 'Placeholder',
+              initialValue: 'Enter your email',
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gInputFieldStatus.values,
+              initialOption: Ux4gInputFieldStatus.defaultStatus,
+              labelBuilder: (v) => v.name,
+            );
+            final size = context.knobs.list(
+              label: 'Size',
+              options: Ux4gInputFieldSize.values,
+              initialOption: Ux4gInputFieldSize.medium,
+              labelBuilder: (v) => v.name,
+            );
+            final enabled = context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            );
+            final isRequired = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
+            final showCaption = context.knobs.boolean(
+              label: 'Show Caption',
+              initialValue: false,
+            );
+            final captionText = showCaption
+                ? context.knobs.string(
+                    label: 'Caption Text',
+                    initialValue: 'Helper text description',
+                  )
+                : null;
+
+            final dynamicCode =
+                '''Ux4gInputField(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: '$labelText',
+  placeholder: '$placeholderText',
+  status: Ux4gInputFieldStatus.${status.name},
+  size: Ux4gInputFieldSize.${size.name},
+  enabled: $enabled,
+  required: $isRequired,${showCaption ? "\n  caption: '$captionText'," : ""}
+);''';
+
             return ComponentDocs(
               name: 'Ux4gInputField',
               description:
                   'A styled text input with label, placeholder, caption, '
                   'status colours, and icon slots.',
-              code: '''Ux4gInputField(
-  value: value,
-  onValueChange: (v) => setState(() => value = v),
-  label: 'Email',
-  placeholder: 'Enter your email',
-  status: Ux4gInputFieldStatus.defaultStatus,
-  size: Ux4gInputFieldSize.medium,
-);
-
-// Password field
-Ux4gInputField(
-  value: value,
-  onValueChange: (v) => setState(() => value = v),
-  label: 'Password',
-  type: Ux4gInputFieldType.password,
-  showPasswordToggle: true,
-);''',
+              code: dynamicCode,
               props: const [
                 PropRow(
                   name: 'value',
@@ -154,6 +189,23 @@ Ux4gInputField(
                   description: 'Max character count.',
                 ),
                 PropRow(
+                  name: 'borderWidth',
+                  type: 'double',
+                  description: 'Border width of the input field.',
+                  defaultValue: '1.0',
+                ),
+                PropRow(
+                  name: 'disabledBorderWidth',
+                  type: 'double',
+                  description: 'Border width when disabled.',
+                  defaultValue: '0.0',
+                ),
+                PropRow(
+                  name: 'disabledBorderColor',
+                  type: 'Color?',
+                  description: 'Border color when disabled.',
+                ),
+                PropRow(
                   name: 'inputFormatters',
                   type: 'List<TextInputFormatter>?',
                   description: 'Custom input filters.',
@@ -183,6 +235,16 @@ Ux4gInputField(
                   name: 'captionStyle',
                   type: 'TextStyle?',
                   description: 'Custom text style for the caption.',
+                ),
+                PropRow(
+                  name: 'backgroundColor',
+                  type: 'Color?',
+                  description: 'Custom background color override.',
+                ),
+                PropRow(
+                  name: 'borderColor',
+                  type: 'Color?',
+                  description: 'Custom border color override.',
                 ),
               ],
               child: SizedBox(
@@ -214,6 +276,20 @@ Ux4gInputField(
                     label: 'Enabled',
                     initialValue: true,
                   ),
+                  required: context.knobs.boolean(
+                    label: 'Required',
+                    initialValue: false,
+                  ),
+                  caption:
+                      context.knobs.boolean(
+                        label: 'Show Caption',
+                        initialValue: false,
+                      )
+                      ? context.knobs.string(
+                          label: 'Caption Text',
+                          initialValue: 'Helper text description',
+                        )
+                      : null,
                 ),
               ),
             );
@@ -226,33 +302,71 @@ Ux4gInputField(
       builder: (context) => ComponentDocs(
         name: 'Ux4gInputField — Statuses',
         description:
-            'Visual status variations: default, error, warning, success.',
+            'Visual status variations: default, error, warning, success, and disabled.',
         code: '''Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Error', status: Ux4gInputFieldStatus.error, caption: 'Invalid input');
+  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.error, caption: 'Error message');
 
 Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Warning', status: Ux4gInputFieldStatus.warning, caption: 'Review this');
+  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.defaultStatus, caption: 'Description');
 
 Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Success', status: Ux4gInputFieldStatus.success, caption: 'Looks good!');''',
+  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.success, caption: 'Success message');
+
+Ux4gInputField(value: '', onValueChange: (_) {},
+  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.warning, caption: 'Warning message');
+
+Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
+  label: 'Label', status: Ux4gInputFieldStatus.defaultStatus, caption: 'Description', enabled: false);''',
         child: SizedBox(
           width: 320,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: Ux4gInputFieldStatus.values
-                .map(
-                  (s) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
-                    child: Ux4gInputField(
-                      value: '',
-                      onValueChange: (_) {},
-                      label: s.name,
-                      status: s,
-                      caption: ' caption',
-                    ),
-                  ),
-                )
-                .toList(),
+            children: [
+              Ux4gInputField(
+                value: '',
+                onValueChange: (_) {},
+                label: 'Label',
+                placeholder: 'Placeholder',
+                status: Ux4gInputFieldStatus.error,
+                caption: 'Error message',
+              ),
+              const SizedBox(height: 16),
+              Ux4gInputField(
+                value: '',
+                onValueChange: (_) {},
+                label: 'Label',
+                placeholder: 'Placeholder',
+                status: Ux4gInputFieldStatus.defaultStatus,
+                caption: 'Description',
+              ),
+              const SizedBox(height: 16),
+              Ux4gInputField(
+                value: '',
+                onValueChange: (_) {},
+                label: 'Label',
+                placeholder: 'Placeholder',
+                status: Ux4gInputFieldStatus.success,
+                caption: 'Success message',
+              ),
+              const SizedBox(height: 16),
+              Ux4gInputField(
+                value: '',
+                onValueChange: (_) {},
+                label: 'Label',
+                placeholder: 'Placeholder',
+                status: Ux4gInputFieldStatus.warning,
+                caption: 'Warning message',
+              ),
+              const SizedBox(height: 16),
+              Ux4gInputField(
+                value: 'Placeholder',
+                onValueChange: (_) {},
+                label: 'Label',
+                status: Ux4gInputFieldStatus.defaultStatus,
+                caption: 'Description',
+                enabled: false,
+              ),
+            ],
           ),
         ),
       ),
@@ -383,10 +497,10 @@ Ux4gInputField(value: '', onValueChange: (_) {},
       builder: (context) => ComponentDocs(
         name: 'Ux4gInputField — Read-only & Required',
         description:
-            'readOnly disables editing; required shows an asterisk on the label.',
+            'readOnly and enabled=false disable editing so user can only read the value; required shows an asterisk on the label.',
         code:
-            'Ux4gInputField(value: \'GOV/2025/001\', readOnly: true, ...);\n'
-            'Ux4gInputField(value: \'\', required: true, label: \'Name\', ...);',
+            'Ux4gInputField(value: \'GOV/2025/001\', readOnly: true, enabled: false, label: \'Application ID\', ...);\n'
+            'Ux4gInputField(value: \'\', required: true, label: \'Full Name\', ...);',
         child: SizedBox(
           width: 320,
           child: Column(
@@ -395,8 +509,9 @@ Ux4gInputField(value: '', onValueChange: (_) {},
               Ux4gInputField(
                 value: 'GOV/2025/001',
                 onValueChange: (_) {},
-                label: 'Application ID (read-only)',
+                label: 'Application ID',
                 readOnly: true,
+                enabled: false,
               ),
               const SizedBox(height: 16),
               Ux4gInputField(
@@ -519,6 +634,23 @@ final textAreaComponent = WidgetbookComponent(
                   name: 'maxLength',
                   type: 'int?',
                   description: 'Max character count.',
+                ),
+                PropRow(
+                  name: 'borderWidth',
+                  type: 'double',
+                  description: 'Border width of the input field.',
+                  defaultValue: '1.0',
+                ),
+                PropRow(
+                  name: 'disabledBorderWidth',
+                  type: 'double',
+                  description: 'Border width when disabled.',
+                  defaultValue: '0.0',
+                ),
+                PropRow(
+                  name: 'disabledBorderColor',
+                  type: 'Color?',
+                  description: 'Border color when disabled.',
                 ),
               ],
               child: SizedBox(
@@ -853,6 +985,8 @@ final checkboxComponent = WidgetbookComponent(
   label: 'Accept terms',
   description: 'Optional helper text',
   size: Ux4gCheckboxSize.medium,
+  isRequired: false,
+  hasError: false,
 );
 
 // Indeterminate state
@@ -894,6 +1028,12 @@ Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
                   defaultValue: 'false',
                 ),
                 PropRow(
+                  name: 'hasError',
+                  type: 'bool',
+                  description: 'Highlights border in error color.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
                   name: 'descriptionVariant',
                   type: 'Ux4gCheckboxDescriptionVariant',
                   description: 'helper / error / warning / success.',
@@ -923,6 +1063,14 @@ Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
                   initialOption: Ux4gCheckboxSize.medium,
                   labelBuilder: (v) => v.name,
                 ),
+                isRequired: context.knobs.boolean(
+                  label: 'Required',
+                  initialValue: false,
+                ),
+                hasError: context.knobs.boolean(
+                  label: 'Has Error',
+                  initialValue: false,
+                ),
               ),
             );
           },
@@ -933,11 +1081,12 @@ Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
       name: 'All states',
       builder: (context) => ComponentDocs(
         name: 'Ux4gCheckbox — All States',
-        description: 'Checked, unchecked, indeterminate, and disabled states.',
+        description: 'Checked, unchecked, indeterminate, error, and disabled states.',
         code:
             'Ux4gCheckbox(value: true,  onChanged: (_) {}, label: \'Checked\');\n'
             'Ux4gCheckbox(value: false, onChanged: (_) {}, label: \'Unchecked\');\n'
             'Ux4gCheckbox(value: null,  onChanged: (_) {}, label: \'Indeterminate\');\n'
+            'Ux4gCheckbox(value: false, onChanged: (_) {}, label: \'Error state\', isRequired: true, hasError: true);\n'
             'Ux4gCheckbox(value: true,  onChanged: null,   label: \'Disabled\', enabled: false);',
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -951,6 +1100,14 @@ Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
               value: null,
               onChanged: (_) {},
               label: 'Indeterminate',
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: false,
+              onChanged: (_) {},
+              label: 'Error state',
+              isRequired: true,
+              hasError: true,
             ),
             const SizedBox(height: 8),
             Ux4gCheckbox(
@@ -1069,6 +1226,23 @@ final toggleComponent = WidgetbookComponent(
                   description: 'Interactive state.',
                   defaultValue: 'true',
                 ),
+                PropRow(
+                  name: 'isRequired',
+                  type: 'bool',
+                  description: 'Shows a required asterisk.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
+                  name: 'secondaryLabel',
+                  type: 'String?',
+                  description: 'Secondary label for bothSides.',
+                ),
+                PropRow(
+                  name: 'isSecondaryRequired',
+                  type: 'bool',
+                  description: 'Asterisk for secondary label.',
+                  defaultValue: 'false',
+                ),
               ],
               child: Ux4gToggle(
                 checked: checked,
@@ -1077,11 +1251,34 @@ final toggleComponent = WidgetbookComponent(
                   label: 'Label',
                   initialValue: 'Enable notifications',
                 ),
+                isRequired: context.knobs.boolean(
+                  label: 'Required',
+                  initialValue: false,
+                ),
                 size: context.knobs.list(
                   label: 'Size',
                   options: Ux4gToggleSize.values,
                   initialOption: Ux4gToggleSize.m,
                   labelBuilder: (v) => v.name,
+                ),
+                labelPosition: context.knobs.list(
+                  label: 'Label Position',
+                  options: Ux4gToggleLabelPosition.values,
+                  initialOption: Ux4gToggleLabelPosition.right,
+                  labelBuilder: (v) => v.name,
+                ),
+                secondaryLabel:
+                    context.knobs
+                        .string(label: 'Secondary Label', initialValue: '')
+                        .isEmpty
+                    ? null
+                    : context.knobs.string(
+                        label: 'Secondary Label',
+                        initialValue: '',
+                      ),
+                isSecondaryRequired: context.knobs.boolean(
+                  label: 'Secondary Required',
+                  initialValue: false,
                 ),
               ),
             );
@@ -1149,6 +1346,86 @@ final toggleComponent = WidgetbookComponent(
           ],
         ),
       ),
+    ),
+    WidgetbookUseCase(
+      name: 'Layout Variants',
+      builder: (context) {
+        final textColor = Theme.of(context).brightness == Brightness.dark
+            ? Colors.white
+            : Colors.black87;
+        final iconColor = Theme.of(context).brightness == Brightness.dark
+            ? Colors.white70
+            : Colors.black54;
+
+        return ComponentDocs(
+          name: 'Ux4gToggle — Layout Variants',
+          description:
+              'Demonstrates native label compositions using the new built-in properties.',
+          code: '''// Native dual-sided labels
+Ux4gToggle(
+  checked: false,
+  labelPosition: Ux4gToggleLabelPosition.bothSides,
+  label: 'Label text',
+  isRequired: true,
+  icon: Icon(Icons.category_outlined, size: 16),
+  secondaryLabel: 'Label text',
+  isSecondaryRequired: true,
+  secondaryIcon: Icon(Icons.category_outlined, size: 16),
+)''',
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 1. No label
+              Ux4gToggle(
+                checked: false,
+                onCheckedChange: (_) {},
+                labelPosition: Ux4gToggleLabelPosition.noLabel,
+              ),
+              const SizedBox(height: 24),
+              // 2. Right label
+              Ux4gToggle(
+                checked: false,
+                onCheckedChange: (_) {},
+                labelPosition: Ux4gToggleLabelPosition.right,
+                label: 'Label text',
+                isRequired: true,
+                icon: Icon(Icons.category_outlined, size: 16, color: iconColor),
+                labelStyle: TextStyle(color: textColor, fontSize: 14),
+              ),
+              const SizedBox(height: 24),
+              // 3. Left label
+              Ux4gToggle(
+                checked: false,
+                onCheckedChange: (_) {},
+                labelPosition: Ux4gToggleLabelPosition.left,
+                label: 'Label text',
+                isRequired: true,
+                icon: Icon(Icons.category_outlined, size: 16, color: iconColor),
+                labelStyle: TextStyle(color: textColor, fontSize: 14),
+              ),
+              const SizedBox(height: 24),
+              // 4. Both sides label
+              Ux4gToggle(
+                checked: false,
+                onCheckedChange: (_) {},
+                labelPosition: Ux4gToggleLabelPosition.bothSides,
+                label: 'Label text',
+                isRequired: true,
+                icon: Icon(Icons.category_outlined, size: 16, color: iconColor),
+                labelStyle: TextStyle(color: textColor, fontSize: 14),
+                secondaryLabel: 'Label text',
+                isSecondaryRequired: true,
+                secondaryIcon: Icon(
+                  Icons.category_outlined,
+                  size: 16,
+                  color: iconColor,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     ),
   ],
 );
@@ -1830,69 +2107,177 @@ final otpInputComponent = WidgetbookComponent(
 
 // ── Action Dropdown ───────────────────────────────────────────────────────────
 
+String? _actionDropdownDefaultSelectedId;
+String? _actionDropdownMoreSelectedId;
+List<String> _selectionDropdownSingleSelected = [];
+List<String> _selectionDropdownMultiSelected = [];
+
 final actionDropdownComponent = WidgetbookComponent(
   name: 'Ux4gActionDropdown',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
-      builder: (context) => ComponentDocs(
-        name: 'Ux4gActionDropdown',
-        description:
-            'A contextual action menu triggered by a custom trigger widget. '
-            'Each option can optionally show a trailing arrow.',
-        code: '''Ux4gActionDropdown(
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            final options = const [
+              Ux4gActionDropdownOption(id: '1', label: 'Edit'),
+              Ux4gActionDropdownOption(id: '2', label: 'Duplicate'),
+              Ux4gActionDropdownOption(
+                id: '3',
+                label: 'Delete',
+                showTrailingArrow: false,
+              ),
+            ];
+            final selectedOpt = _actionDropdownDefaultSelectedId == null
+                ? null
+                : options.firstWhere(
+                    (o) => o.id == _actionDropdownDefaultSelectedId,
+                    orElse: () => options.first,
+                  );
+
+            return ComponentDocs(
+              name: 'Ux4gActionDropdown',
+              description:
+                  'A contextual action menu triggered by a custom trigger widget. '
+                  'Each option can optionally show a trailing arrow.',
+              code: '''Ux4gActionDropdown(
   options: [
     Ux4gActionDropdownOption(id: '1', label: 'Edit'),
     Ux4gActionDropdownOption(id: '2', label: 'Duplicate'),
     Ux4gActionDropdownOption(id: '3', label: 'Delete', showTrailingArrow: false),
   ],
+  selectedOptionId: selectedId,
   onOptionClick: (option) {
-    print('Selected: \${option.label}');
+    setState(() => selectedId = option.id);
   },
   triggerBuilder: (context, toggle) => ElevatedButton(
     onPressed: toggle,
-    child: const Text('Actions'),
+    child: Text(selectedOption?.label ?? 'Actions'),
   ),
 );''',
-        props: const [
-          PropRow(
-            name: 'options',
-            type: 'List<Ux4gActionDropdownOption>',
-            description: 'Menu items.',
-            required: true,
-          ),
-          PropRow(
-            name: 'onOptionClick',
-            type: 'ValueChanged<Ux4gActionDropdownOption>',
-            description: 'Called when an option is tapped.',
-            required: true,
-          ),
-          PropRow(
-            name: 'triggerBuilder',
-            type: 'Ux4gDropdownTriggerBuilder',
-            description:
-                'Builds the trigger widget; receives a toggle callback.',
-            required: true,
-          ),
-        ],
-        child: Ux4gActionDropdown(
-          options: const [
-            Ux4gActionDropdownOption(id: '1', label: 'Edit'),
-            Ux4gActionDropdownOption(id: '2', label: 'Duplicate'),
-            Ux4gActionDropdownOption(
-              id: '3',
-              label: 'Delete',
-              showTrailingArrow: false,
-            ),
-          ],
-          onOptionClick: (_) {},
-          triggerBuilder: (context, toggle) => Ux4gButton(
-            text: 'Open Actions',
-            variant: Ux4gButtonVariant.outline,
-            onPressed: toggle,
-          ),
-        ),
+              props: const [
+                PropRow(
+                  name: 'options',
+                  type: 'List<Ux4gActionDropdownOption>',
+                  description: 'Menu items.',
+                  required: true,
+                ),
+                PropRow(
+                  name: 'onOptionClick',
+                  type: 'ValueChanged<Ux4gActionDropdownOption>',
+                  description: 'Called when an option is tapped.',
+                  required: true,
+                ),
+                PropRow(
+                  name: 'triggerBuilder',
+                  type: 'Ux4gDropdownTriggerBuilder',
+                  description:
+                      'Builds the trigger widget; receives a toggle callback.',
+                  required: true,
+                ),
+                PropRow(
+                  name: 'selectedOptionId',
+                  type: 'String?',
+                  description: 'ID of currently selected action option.',
+                ),
+              ],
+              child: Ux4gActionDropdown(
+                options: options,
+                selectedOptionId: _actionDropdownDefaultSelectedId,
+                onOptionClick: (opt) {
+                  setState(() => _actionDropdownDefaultSelectedId = opt.id);
+                },
+                triggerBuilder: (context, toggle) => Ux4gButton(
+                  text: selectedOpt?.label ?? 'Open Actions',
+                  variant: Ux4gButtonVariant.outline,
+                  onPressed: toggle,
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'More Options Trigger',
+      builder: (context) {
+        final primaryColor =
+            Theme.of(context).extension<Ux4gColors>()?.primary ??
+            Theme.of(context).colorScheme.primary;
+
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            final options = const [
+              Ux4gActionDropdownOption(
+                id: '1',
+                label: 'Label for the list item',
+              ),
+              Ux4gActionDropdownOption(
+                id: '2',
+                label: 'Label for the list item',
+              ),
+              Ux4gActionDropdownOption(
+                id: '3',
+                label: 'Label for the list item',
+              ),
+              Ux4gActionDropdownOption(
+                id: '4',
+                label: 'Label for the list item',
+              ),
+            ];
+
+            return ComponentDocs(
+              name: 'Ux4gActionDropdown — More Options',
+              description:
+                  'A custom trigger button with an icon and custom styling.',
+              code: '''Ux4gActionDropdown(
+  options: const [
+    Ux4gActionDropdownOption(id: '1', label: 'Label for the list item'),
+    Ux4gActionDropdownOption(id: '2', label: 'Label for the list item'),
+    Ux4gActionDropdownOption(id: '3', label: 'Label for the list item'),
+    Ux4gActionDropdownOption(id: '4', label: 'Label for the list item'),
+  ],
+  selectedOptionId: selectedId,
+  onOptionClick: (option) => setState(() => selectedId = option.id),
+  triggerBuilder: (context, toggle) => InkWell(
+    onTap: toggle,
+    borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+    child: Container(
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+        border: Border.all(color: Theme.of(context).colorScheme.primary, width: 1.5),
+        borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
       ),
+      child: Icon(Icons.more_vert, color: Theme.of(context).colorScheme.primary),
+    ),
+  ),
+);''',
+              child: Ux4gActionDropdown(
+                options: options,
+                selectedOptionId: _actionDropdownMoreSelectedId,
+                onOptionClick: (opt) {
+                  setState(() => _actionDropdownMoreSelectedId = opt.id);
+                },
+                triggerBuilder: (context, toggle) => InkWell(
+                  onTap: toggle,
+                  borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: primaryColor.withValues(alpha: 0.15),
+                      border: Border.all(color: primaryColor, width: 1.5),
+                      borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+                    ),
+                    child: Icon(Icons.more_vert, color: primaryColor),
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
     ),
   ],
 );
@@ -1905,7 +2290,6 @@ final selectionDropdownComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Single select',
       builder: (context) {
-        List<String> selected = [];
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
@@ -2019,8 +2403,8 @@ final selectionDropdownComponent = WidgetbookComponent(
                     Ux4gDropdownOption(id: 'au', label: 'Australia'),
                     Ux4gDropdownOption(id: 'ca', label: 'Canada'),
                   ],
-                  selectedOptionIds: selected,
-                  onSelectionChange: (ids) => setState(() => selected = ids),
+                  selectedOptionIds: _selectionDropdownSingleSelected,
+                  onSelectionChange: (ids) => setState(() => _selectionDropdownSingleSelected = ids),
                   mode: Ux4gDropdownMode.single,
                   searchEnabled: context.knobs.boolean(
                     label: 'Search enabled',
@@ -2042,7 +2426,6 @@ final selectionDropdownComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Multi select',
       builder: (context) {
-        List<String> selected = [];
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
@@ -2068,8 +2451,8 @@ final selectionDropdownComponent = WidgetbookComponent(
                     Ux4gDropdownOption(id: 'mobile', label: 'Mobile'),
                     Ux4gDropdownOption(id: 'web', label: 'Web'),
                   ],
-                  selectedOptionIds: selected,
-                  onSelectionChange: (ids) => setState(() => selected = ids),
+                  selectedOptionIds: _selectionDropdownMultiSelected,
+                  onSelectionChange: (ids) => setState(() => _selectionDropdownMultiSelected = ids),
                   mode: Ux4gDropdownMode.multi,
                   searchEnabled: true,
                 ),
@@ -2094,14 +2477,47 @@ final datePickerComponent = WidgetbookComponent(
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final label = context.knobs.string(
+              label: 'Label',
+              initialValue: 'Date of Birth',
+            );
+            final description = context.knobs.string(
+              label: 'Description',
+              initialValue: 'Please enter your date of birth.',
+            );
+            final isRequired = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gInputFieldStatus.values,
+              initialOption: Ux4gInputFieldStatus.defaultStatus,
+              labelBuilder: (s) => s.name,
+            );
+            final placeholder = context.knobs.string(
+              label: 'Placeholder',
+              initialValue: 'Select DOB',
+            );
+            final enabled = context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            );
+
             return ComponentDocs(
               name: 'Ux4gDatePicker — Single',
               description:
                   'Single date selection. Tapping the field opens a calendar overlay. '
                   'The calendar icon sits at the right end of the field.',
-              code: '''Ux4gDatePicker(
+              code:
+                  '''Ux4gDatePicker(
   mode: Ux4gDatePickerMode.single,
-  placeholder: 'Select DOB',
+  label: ${label.isEmpty ? 'null' : "'$label'"},
+  description: ${description.isEmpty ? 'null' : "'$description'"},
+  isRequired: $isRequired,
+  status: $status,
+  placeholder: '$placeholder',
+  enabled: $enabled,
   maxDate: DateTime.now(),
   onDateSelected: (date) {
     print('Selected: \$date');
@@ -2138,11 +2554,35 @@ final datePickerComponent = WidgetbookComponent(
                   name: 'onDateSelected',
                   type: 'ValueChanged<DateTime>?',
                   description: 'Callback with the chosen date (single mode).',
+                  required: true,
                 ),
                 PropRow(
                   name: 'onDateRangeSelected',
                   type: 'ValueChanged<DateTimeRange>?',
                   description: 'Callback with the chosen range (range mode).',
+                  required: true,
+                ),
+                PropRow(
+                  name: 'label',
+                  type: 'String?',
+                  description: 'Label above the picker.',
+                ),
+                PropRow(
+                  name: 'description',
+                  type: 'String?',
+                  description: 'Supporting text below the picker.',
+                ),
+                PropRow(
+                  name: 'isRequired',
+                  type: 'bool',
+                  description: 'Shows a required asterisk.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
+                  name: 'status',
+                  type: 'Ux4gInputFieldStatus',
+                  description: 'defaultStatus / error / warning / success.',
+                  defaultValue: 'defaultStatus',
                 ),
                 PropRow(
                   name: 'placeholder',
@@ -2161,12 +2601,13 @@ final datePickerComponent = WidgetbookComponent(
                 width: 300,
                 child: Ux4gDatePicker(
                   mode: Ux4gDatePickerMode.single,
-                  placeholder: 'Select DOB',
+                  label: label.isEmpty ? null : label,
+                  description: description.isEmpty ? null : description,
+                  isRequired: isRequired,
+                  status: status,
+                  placeholder: placeholder,
                   maxDate: DateTime.now(),
-                  enabled: context.knobs.boolean(
-                    label: 'Enabled',
-                    initialValue: true,
-                  ),
+                  enabled: enabled,
                   onDateSelected: (d) => setState(() => selected = d),
                 ),
               ),
@@ -2183,14 +2624,47 @@ final datePickerComponent = WidgetbookComponent(
         DateTimeRange? selectedRange;
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final label = context.knobs.string(
+              label: 'Label',
+              initialValue: 'Travel Dates',
+            );
+            final description = context.knobs.string(
+              label: 'Description',
+              initialValue: 'Select your travel dates.',
+            );
+            final isRequired = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gInputFieldStatus.values,
+              initialOption: Ux4gInputFieldStatus.defaultStatus,
+              labelBuilder: (s) => s.name,
+            );
+            final placeholder = context.knobs.string(
+              label: 'Placeholder',
+              initialValue: 'Select range',
+            );
+            final enabled = context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            );
+
             return ComponentDocs(
               name: 'Ux4gDatePicker — Range',
               description:
                   'Date range selection. First tap sets the start date, second tap sets '
                   'the end date. The selected range is displayed as "DD/MM/YYYY – DD/MM/YYYY".',
-              code: '''Ux4gDatePicker(
+              code:
+                  '''Ux4gDatePicker(
   mode: Ux4gDatePickerMode.range,
-  placeholder: 'Select range',
+  label: ${label.isEmpty ? 'null' : "'$label'"},
+  description: ${description.isEmpty ? 'null' : "'$description'"},
+  isRequired: $isRequired,
+  status: $status,
+  placeholder: '$placeholder',
+  enabled: $enabled,
   onDateRangeSelected: (range) {
     print('From \${range.start} to \${range.end}');
   },
@@ -2217,6 +2691,39 @@ final datePickerComponent = WidgetbookComponent(
                   name: 'onDateRangeSelected',
                   type: 'ValueChanged<DateTimeRange>?',
                   description: 'Callback with the chosen range.',
+                  required: true,
+                ),
+                PropRow(
+                  name: 'label',
+                  type: 'String?',
+                  description: 'Label above the picker.',
+                ),
+                PropRow(
+                  name: 'description',
+                  type: 'String?',
+                  description: 'Supporting text below the picker.',
+                ),
+                PropRow(
+                  name: 'isRequired',
+                  type: 'bool',
+                  description: 'Shows a required asterisk.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
+                  name: 'status',
+                  type: 'Ux4gInputFieldStatus',
+                  description: 'defaultStatus / error / warning / success.',
+                  defaultValue: 'defaultStatus',
+                ),
+                PropRow(
+                  name: 'minDate',
+                  type: 'DateTime?',
+                  description: 'Earliest selectable date.',
+                ),
+                PropRow(
+                  name: 'maxDate',
+                  type: 'DateTime?',
+                  description: 'Latest selectable date.',
                 ),
                 PropRow(
                   name: 'enabled',
@@ -2229,11 +2736,12 @@ final datePickerComponent = WidgetbookComponent(
                 width: 300,
                 child: Ux4gDatePicker(
                   mode: Ux4gDatePickerMode.range,
-                  placeholder: 'Select range',
-                  enabled: context.knobs.boolean(
-                    label: 'Enabled',
-                    initialValue: true,
-                  ),
+                  label: label.isEmpty ? null : label,
+                  description: description.isEmpty ? null : description,
+                  isRequired: isRequired,
+                  status: status,
+                  placeholder: placeholder,
+                  enabled: enabled,
                   onDateRangeSelected: (r) => setState(() => selectedRange = r),
                 ),
               ),
@@ -2380,15 +2888,29 @@ final fileUploadComponent = WidgetbookComponent(
           initialOption: Ux4gFileUploadVariant.standard,
         );
 
+        final errorTitle = context.knobs.string(
+          label: 'Error Title',
+          initialValue: 'Could not scan',
+        );
+
+        final errorText = context.knobs.string(
+          label: 'Error Text',
+          initialValue:
+              '[File Name] exceeds the 5MB upload limit. Please compress it or select a smaller file.',
+        );
+
         return ComponentDocs(
           name: 'Ux4gFileUpload',
           description:
               'A file drop zone that allows users to select or drag-and-drop files. '
               'Shows upload progress per file with idle / uploading / success / error states.',
-          code: '''Ux4gFileUpload(
+          code:
+              '''Ux4gFileUpload(
   maxFiles: 5,
   maxFileSize: 5 * 1024 * 1024,  // 5 MB
   borderStyle: Ux4gFileUploadBorderStyle.dashed,
+  errorTitle: '$errorTitle',
+  errorText: '$errorText',
   onFilesChanged: (files) {
     // files is List<UploadedFile>
   },
@@ -2406,7 +2928,13 @@ final fileUploadComponent = WidgetbookComponent(
             PropRow(
               name: 'maxFileSize',
               type: 'int?',
-              description: 'Max file size in bytes.',
+              description: 'Max file size in bytes (defaults to 5MB).',
+            ),
+            PropRow(
+              name: 'allowedExtensions',
+              type: 'List<String>?',
+              description:
+                  "List of allowed file extensions (defaults to ['jpg', 'png', 'pdf']).",
             ),
             PropRow(
               name: 'borderStyle',
@@ -2453,6 +2981,26 @@ final fileUploadComponent = WidgetbookComponent(
               description:
                   'Handles uploading a single file; return true on success.',
             ),
+            PropRow(
+              name: 'errorTitle',
+              type: 'String?',
+              description: 'Custom title for the error state.',
+            ),
+            PropRow(
+              name: 'errorText',
+              type: 'String?',
+              description: 'Custom description for the error state.',
+            ),
+            PropRow(
+              name: 'errorTitleStyle',
+              type: 'TextStyle?',
+              description: 'Custom text style for the error title.',
+            ),
+            PropRow(
+              name: 'errorTextStyle',
+              type: 'TextStyle?',
+              description: 'Custom text style for the error text.',
+            ),
           ],
           child: SizedBox(
             width: 360,
@@ -2461,6 +3009,8 @@ final fileUploadComponent = WidgetbookComponent(
               maxFileSize: 5 * 1024 * 1024,
               borderStyle: borderStyle,
               variant: variant,
+              errorTitle: errorTitle,
+              errorText: errorText,
               onFilesChanged: (_) {},
               onUpload: (file) async => true,
             ),
@@ -2479,22 +3029,58 @@ final radioButtonComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
-        String selected = 'Option B';
+        String selected = 'Option A';
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final isRequired = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
+            final enabled = context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            );
+            final description = context.knobs.string(
+              label: 'Description',
+              initialValue: '',
+            );
+            final size = context.knobs.list(
+              label: 'Size',
+              options: Ux4gRadioButtonSize.values,
+              initialOption: Ux4gRadioButtonSize.medium,
+              labelBuilder: (s) => s.name,
+            );
+            final descriptionVariant = context.knobs.list(
+              label: 'Description Variant',
+              options: Ux4gRadioButtonDescriptionVariant.values,
+              initialOption: Ux4gRadioButtonDescriptionVariant.helper,
+              labelBuilder: (s) => s.name,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gRadioButtonStatus.values,
+              initialOption: Ux4gRadioButtonStatus.defaultStatus,
+              labelBuilder: (s) => s.name,
+            );
+
             return ComponentDocs(
               name: 'Ux4gRadioButton',
               description:
                   'A single-selection radio button. Use a shared groupValue '
                   'and onChanged to create a mutually-exclusive group.',
               code:
-                  'Ux4gRadioButton(\n'
-                  '  value: \'option1\',\n'
-                  '  groupValue: selectedValue,\n'
-                  '  onChanged: (v) => setState(() => selectedValue = v),\n'
-                  '  label: \'Option A\',\n'
-                  '  size: Ux4gRadioButtonSize.medium,\n'
-                  ');',
+                  '''Ux4gRadioButton(
+  value: 'Option A',
+  groupValue: selectedValue,
+  onChanged: (v) => setState(() => selectedValue = v),
+  label: 'Option A',
+  description: ${description.isEmpty ? 'null' : "'$description'"},
+  size: $size,
+  isRequired: $isRequired,
+  enabled: $enabled,
+  descriptionVariant: $descriptionVariant,
+  status: $status,
+);''',
               props: const [
                 PropRow(
                   name: 'value',
@@ -2536,10 +3122,22 @@ final radioButtonComponent = WidgetbookComponent(
                   defaultValue: 'true',
                 ),
                 PropRow(
+                  name: 'isRequired',
+                  type: 'bool',
+                  description: 'Shows a required asterisk.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
                   name: 'descriptionVariant',
                   type: 'Ux4gRadioButtonDescriptionVariant',
                   description: 'helper / error / warning / success.',
                   defaultValue: 'helper',
+                ),
+                PropRow(
+                  name: 'status',
+                  type: 'Ux4gRadioButtonStatus',
+                  description: 'Status of the radio outline (error/warning).',
+                  defaultValue: 'defaultStatus',
                 ),
               ],
               child: Column(
@@ -2554,12 +3152,12 @@ final radioButtonComponent = WidgetbookComponent(
                           groupValue: selected,
                           onChanged: (val) => setState(() => selected = val!),
                           label: v,
-                          size: context.knobs.list(
-                            label: 'Size',
-                            options: Ux4gRadioButtonSize.values,
-                            initialOption: Ux4gRadioButtonSize.medium,
-                            labelBuilder: (s) => s.name,
-                          ),
+                          description: description.isEmpty ? null : description,
+                          isRequired: isRequired,
+                          enabled: enabled,
+                          size: size,
+                          descriptionVariant: descriptionVariant,
+                          status: status,
                         ),
                       ),
                     )
@@ -2625,7 +3223,9 @@ final radioButtonComponent = WidgetbookComponent(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: Ux4gRadioButtonDescriptionVariant.values.map((v) {
+          children: Ux4gRadioButtonDescriptionVariant.values.map((
+            Ux4gRadioButtonDescriptionVariant v,
+          ) {
             // Map description variant → matching radio status so the
             // circle uses the same semantic colour from our palette.
             final status = switch (v) {
@@ -2679,6 +3279,24 @@ final radioButtonComponent = WidgetbookComponent(
               onChanged: (_) {},
               label: 'Disabled (unselected)',
               enabled: false,
+            ),
+            const SizedBox(height: 8),
+            Ux4gRadioButton(
+              value: 'c',
+              groupValue: 'c',
+              onChanged: (_) {},
+              label: 'Disabled (selected) required',
+              enabled: false,
+              isRequired: true,
+            ),
+            const SizedBox(height: 8),
+            Ux4gRadioButton(
+              value: 'd',
+              groupValue: 'a',
+              onChanged: (_) {},
+              label: 'Disabled (unselected) required',
+              enabled: false,
+              isRequired: true,
             ),
           ],
         ),

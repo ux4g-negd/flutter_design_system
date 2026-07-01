@@ -33,6 +33,8 @@ class Ux4gSlider extends StatelessWidget {
   final bool showIndicator;
   final bool showInputFields;
   final bool showValueLabels;
+  final String Function(double)? valueFormatter;
+  final Widget? rightLabelWidget;
 
   const Ux4gSlider({
     super.key,
@@ -54,6 +56,8 @@ class Ux4gSlider extends StatelessWidget {
     this.showIndicator = false,
     this.showInputFields = false,
     this.showValueLabels = false,
+    this.valueFormatter,
+    this.rightLabelWidget,
   });
 
   @override
@@ -120,18 +124,21 @@ class Ux4gSlider extends StatelessWidget {
                           materialTheme.colorScheme.surface,
                     ),
           ),
-          child: Slider(
-            value: value,
-            min: min,
-            max: max,
-            divisions: steps != null && steps! > 0 ? steps! + 1 : null,
-            onChanged: enabled ? onValueChange : null,
-            label: _formatValue(value),
+          child: SizedBox(
+            height: 24,
+            child: Slider(
+              value: value,
+              min: min,
+              max: max,
+              divisions: steps != null && steps! > 0 ? steps! + 1 : null,
+              onChanged: enabled ? onValueChange : null,
+              label: _formatValue(value),
+            ),
           ),
         ),
         if (showMarksAndValues && steps != null && steps! > 0)
           Transform.translate(
-            offset: const Offset(0, -12),
+            offset: Offset.zero,
             child: _buildMarksAndValues(
               context,
               ux4gTypography,
@@ -169,7 +176,7 @@ class Ux4gSlider extends StatelessWidget {
       children: [
         if (label != null)
           Padding(
-            padding: const EdgeInsets.only(bottom: 8),
+            padding: EdgeInsets.zero,
             child: Row(
               children: [
                 Text(
@@ -214,6 +221,10 @@ class Ux4gSlider extends StatelessWidget {
                                   materialTheme.colorScheme.onSurface)
                               .withValues(alpha: 0.38),
                   ),
+                ],
+                if (rightLabelWidget != null) ...[
+                  const Spacer(),
+                  rightLabelWidget!,
                 ],
               ],
             ),
@@ -312,59 +323,50 @@ class Ux4gSlider extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: size.thumbSize / 2),
-      child: Column(
-        children: [
-          // Ticks
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: values.map((val) {
-              final isActive = val >= activeMin && val <= activeMax;
-              final tickColor = !enabled
-                  ? (ux4gColors?.onSurface ??
-                            materialTheme.colorScheme.onSurface)
-                        .withValues(alpha: 0.12)
-                  : (isActive
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          return SizedBox(
+            height: 28,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: List.generate(totalTicks, (i) {
+                final val = values[i];
+                final isActive = val >= activeMin && val <= activeMax;
+                final tickColor = !enabled
+                    ? (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.12)
+                    : (isActive
                         ? activeColor
-                        : (ux4gColors?.onSurface ??
-                                  materialTheme.colorScheme.onSurface)
-                              .withValues(alpha: 0.38));
-              return Container(width: 1, height: 4, color: tickColor);
-            }).toList(),
-          ),
-          const SizedBox(height: 4),
-          // Values
-          Row(
-            children: List.generate(totalTicks, (i) {
-              final val = values[i];
-              final isActive = val >= activeMin && val <= activeMax;
-              final textColor = !enabled
-                  ? (ux4gColors?.onSurface ??
-                            materialTheme.colorScheme.onSurface)
-                        .withValues(alpha: 0.38)
-                  : (isActive
+                        : (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.38));
+                final textColor = !enabled
+                    ? (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.38)
+                    : (isActive
                         ? activeColor
-                        : (ux4gColors?.onSurface ??
-                                  materialTheme.colorScheme.onSurface)
-                              .withValues(alpha: 0.6));
+                        : (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.6));
 
-              TextAlign align = TextAlign.center;
-              if (i == 0) align = TextAlign.left;
-              if (i == totalTicks - 1) align = TextAlign.right;
-
-              return Expanded(
-                child: Text(
-                  _formatValue(val),
-                  textAlign: align,
-                  style:
-                      (ux4gTypography?.lM_default ??
-                              materialTheme.textTheme.labelMedium ??
-                              const TextStyle())
-                          .copyWith(color: textColor),
-                ),
-              );
-            }),
-          ),
-        ],
+                final leftPosition = width == 0 ? 0.0 : (width * i) / (totalTicks - 1);
+                
+                return [
+                  Positioned(
+                    left: leftPosition - 0.5,
+                    top: 0,
+                    child: Container(width: 1, height: 4, color: tickColor),
+                  ),
+                  Positioned(
+                    left: leftPosition - 50,
+                    width: 100,
+                    top: 8,
+                    child: Text(
+                      valueFormatter?.call(val) ?? _formatValue(val),
+                      textAlign: TextAlign.center,
+                      style: (ux4gTypography?.lM_default ?? materialTheme.textTheme.labelMedium ?? const TextStyle()).copyWith(color: textColor),
+                    ),
+                  ),
+                ];
+              }).expand((e) => e).toList(),
+            ),
+          );
+        },
       ),
     );
   }
@@ -512,21 +514,24 @@ class Ux4gRangeSlider extends StatelessWidget {
                           materialTheme.colorScheme.surface,
                     ),
           ),
-          child: RangeSlider(
-            values: values,
-            min: min,
-            max: max,
-            divisions: steps != null && steps! > 0 ? steps! + 1 : null,
-            onChanged: enabled ? onValueChange : null,
-            labels: RangeLabels(
-              _formatValue(values.start),
-              _formatValue(values.end),
+          child: SizedBox(
+            height: 24,
+            child: RangeSlider(
+              values: values,
+              min: min,
+              max: max,
+              divisions: steps != null && steps! > 0 ? steps! + 1 : null,
+              onChanged: enabled ? onValueChange : null,
+              labels: RangeLabels(
+                _formatValue(values.start),
+                _formatValue(values.end),
+              ),
             ),
           ),
         ),
         if (showMarksAndValues && steps != null && steps! > 0)
           Transform.translate(
-            offset: const Offset(0, -12),
+            offset: Offset.zero,
             child: _buildMarksAndValues(
               context,
               ux4gTypography,
@@ -552,7 +557,7 @@ class Ux4gRangeSlider extends StatelessWidget {
       children: [
         if (label != null)
           Padding(
-            padding: const EdgeInsets.only(bottom: 8),
+            padding: EdgeInsets.zero,
             child: Row(
               children: [
                 Text(
@@ -691,57 +696,50 @@ class Ux4gRangeSlider extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: size.thumbSize / 2),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: vals.map((val) {
-              final isActive = val >= activeMin && val <= activeMax;
-              final tickColor = !enabled
-                  ? (ux4gColors?.onSurface ??
-                            materialTheme.colorScheme.onSurface)
-                        .withValues(alpha: 0.12)
-                  : (isActive
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          return SizedBox(
+            height: 28,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: List.generate(totalTicks, (i) {
+                final val = vals[i];
+                final isActive = val >= activeMin && val <= activeMax;
+                final tickColor = !enabled
+                    ? (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.12)
+                    : (isActive
                         ? activeColor
-                        : (ux4gColors?.onSurface ??
-                                  materialTheme.colorScheme.onSurface)
-                              .withValues(alpha: 0.38));
-              return Container(width: 1, height: 4, color: tickColor);
-            }).toList(),
-          ),
-          const SizedBox(height: 4),
-          Row(
-            children: List.generate(totalTicks, (i) {
-              final val = vals[i];
-              final isActive = val >= activeMin && val <= activeMax;
-              final textColor = !enabled
-                  ? (ux4gColors?.onSurface ??
-                            materialTheme.colorScheme.onSurface)
-                        .withValues(alpha: 0.38)
-                  : (isActive
+                        : (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.38));
+                final textColor = !enabled
+                    ? (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.38)
+                    : (isActive
                         ? activeColor
-                        : (ux4gColors?.onSurface ??
-                                  materialTheme.colorScheme.onSurface)
-                              .withValues(alpha: 0.6));
+                        : (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.6));
 
-              TextAlign align = TextAlign.center;
-              if (i == 0) align = TextAlign.left;
-              if (i == totalTicks - 1) align = TextAlign.right;
-
-              return Expanded(
-                child: Text(
-                  _formatValue(val),
-                  textAlign: align,
-                  style:
-                      (ux4gTypography?.lM_default ??
-                              materialTheme.textTheme.labelMedium ??
-                              const TextStyle())
-                          .copyWith(color: textColor),
-                ),
-              );
-            }),
-          ),
-        ],
+                final leftPosition = width == 0 ? 0.0 : (width * i) / (totalTicks - 1);
+                
+                return [
+                  Positioned(
+                    left: leftPosition - 0.5,
+                    top: 0,
+                    child: Container(width: 1, height: 4, color: tickColor),
+                  ),
+                  Positioned(
+                    left: leftPosition - 50,
+                    width: 100,
+                    top: 8,
+                    child: Text(
+                      _formatValue(val),
+                      textAlign: TextAlign.center,
+                      style: (ux4gTypography?.lM_default ?? materialTheme.textTheme.labelMedium ?? const TextStyle()).copyWith(color: textColor),
+                    ),
+                  ),
+                ];
+              }).expand((e) => e).toList(),
+            ),
+          );
+        },
       ),
     );
   }

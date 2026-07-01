@@ -3,11 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const Color _greenColor = Color(0xFF16A34A);
+const Color _primaryColor = Ux4gPalette.primary600;
 
 final selectAdvocateComponent = WidgetbookComponent(
   name: 'Select Advocate',
@@ -150,30 +146,30 @@ class _SelectAdvocateMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
+        backgroundColor: isDark
+            ? Ux4gPalette.neutral950
+            : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 color: _primaryColor,
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                    SizedBox(width: 12),
+                    const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                    const SizedBox(width: 12),
                     Text(
                       'National Services Portal',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: typography.tS_default.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -188,43 +184,49 @@ class _SelectAdvocateMockup extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 8),
-                      const Text(
+                      Text(
                         'Select an advocate',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: _titleColor,
+                        style: typography.hS_strong.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
+                      Text(
                         'District Legal Services Authority, Pune · 12 available',
-                        style: TextStyle(fontSize: 13, color: _subtleText),
+                        style: typography.bS_default.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral200
+                              : Ux4gPalette.neutral700,
+                        ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 12),
                       _buildAdvocateCard(
                         'Adv. M. Sharma',
                         'Family Law',
                         '12 yrs',
                         'Hindi, Marathi, English',
                         8,
+                        context,
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
                       _buildAdvocateCard(
                         'Adv. M. Sharma',
                         'Family Law',
                         '12 yrs',
                         'Hindi, Marathi, English',
                         5,
+                        context,
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
                       _buildAdvocateCard(
                         'Adv. M. Sharma',
                         'Family Law',
                         '12 yrs',
                         'Hindi, Marathi, English',
                         3,
+                        context,
                       ),
                     ],
                   ),
@@ -243,14 +245,19 @@ class _SelectAdvocateMockup extends StatelessWidget {
     String experience,
     String languages,
     int slots,
+    BuildContext context,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFE5E5E5)),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,13 +269,17 @@ class _SelectAdvocateMockup extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF2EFFF),
+                  color: isDark
+                      ? Ux4gPalette.primary950
+                      : Ux4gPalette.primary50,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.balance,
                   size: 20,
-                  color: _primaryColor,
+                  color: isDark
+                      ? Ux4gPalette.primary300
+                      : Ux4gPalette.primary600,
                 ),
               ),
               const SizedBox(width: 12),
@@ -278,15 +289,19 @@ class _SelectAdvocateMockup extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: _titleColor,
+                      style: typography.tS_strong.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral50
+                            : Ux4gPalette.neutral900,
                       ),
                     ),
                     Text(
                       '$specialization · $experience',
-                      style: const TextStyle(fontSize: 12, color: _subtleText),
+                      style: typography.lM_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral200
+                            : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -294,15 +309,13 @@ class _SelectAdvocateMockup extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFDDF8D8),
+                  color: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
                   '$slots slots',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: _greenColor,
+                  style: typography.lM_strong.copyWith(
+                    color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green700,
                   ),
                 ),
               ),
@@ -311,7 +324,9 @@ class _SelectAdvocateMockup extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Languages: $languages',
-            style: const TextStyle(fontSize: 12, color: _subtleText),
+            style: typography.lM_default.copyWith(
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
           ),
           const SizedBox(height: 12),
           SizedBox(
@@ -321,7 +336,11 @@ class _SelectAdvocateMockup extends StatelessWidget {
               onPressed: () {},
               variant: Ux4gButtonVariant.primary,
               size: Ux4gButtonSize.medium,
-              backgroundColor: const Color(0xFF4A2BC2),
+              backgroundColor: isDark
+                  ? Ux4gPalette.primary300
+                  : Ux4gPalette.primary600,
+              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
+              textStyle: typography.lL_default,
             ),
           ),
         ],

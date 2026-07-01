@@ -46,6 +46,11 @@ class Ux4gInputField extends StatefulWidget {
   final TextStyle? placeholderStyle;
   final TextStyle? labelStyle;
   final TextStyle? captionStyle;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final Color? disabledBorderColor;
+  final double borderWidth;
+  final double disabledBorderWidth;
 
   const Ux4gInputField({
     super.key,
@@ -76,6 +81,11 @@ class Ux4gInputField extends StatefulWidget {
     this.placeholderStyle,
     this.labelStyle,
     this.captionStyle,
+    this.backgroundColor,
+    this.borderColor,
+    this.disabledBorderColor,
+    this.borderWidth = 1.0,
+    this.disabledBorderWidth = 0.0,
   });
 
   @override
@@ -120,7 +130,6 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
-    final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
@@ -135,15 +144,29 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
         ux4gTypography?.bM_default ??
         materialTheme.textTheme.bodyMedium ??
         const TextStyle(fontSize: 16);
+    final bsDefault =
+        ux4gTypography?.bS_default ??
+        materialTheme.textTheme.bodySmall ??
+        const TextStyle(fontSize: 14);
     final bxsDefault =
         ux4gTypography?.bXS_default ??
         materialTheme.textTheme.bodySmall ??
         const TextStyle(fontSize: 12);
+    final llDefault =
+        ux4gTypography?.lL_default ??
+        materialTheme.textTheme.labelLarge ??
+        const TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
 
     final borderColor = _getBorderColor(materialTheme, ux4gColors);
-    final bgColor = widget.enabled
-        ? surface
-        : onSurface.withValues(alpha: 0.05);
+
+    final isDark = materialTheme.brightness == Brightness.dark;
+    final defaultBgColor = isDark
+        ? Ux4gPalette.neutral950
+        : Ux4gPalette.neutral0;
+
+    final bgColor =
+        widget.backgroundColor ??
+        (widget.enabled ? defaultBgColor : onSurface.withValues(alpha: 0.05));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,7 +177,7 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
             children: [
               Text(
                 widget.label!,
-                style: (widget.labelStyle ?? bsStrong).copyWith(
+                style: (widget.labelStyle ?? llDefault).copyWith(
                   color:
                       widget.labelStyle?.color ??
                       (widget.enabled
@@ -188,7 +211,17 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
           decoration: BoxDecoration(
             color: bgColor,
             borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
-            border: Border.all(color: borderColor, width: _isFocused ? 2 : 1),
+            border: widget.enabled
+                ? Border.all(
+                    color: borderColor,
+                    width: _isFocused ? 2.0 : widget.borderWidth,
+                  )
+                : (widget.disabledBorderWidth == 0.0
+                      ? Border.all(color: Colors.transparent, width: 0.0)
+                      : Border.all(
+                          color: borderColor,
+                          width: widget.disabledBorderWidth,
+                        )),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(
@@ -207,8 +240,10 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
               if (widget.prefixText != null) ...[
                 Text(
                   widget.prefixText!,
-                  style: bmDefault.copyWith(
-                    color: onSurface.withValues(alpha: 0.5),
+                  style: bsDefault.copyWith(
+                    color: isDark
+                        ? Ux4gPalette.neutral200
+                        : Ux4gPalette.neutral700,
                   ),
                 ),
                 const SizedBox(width: 4),
@@ -243,7 +278,9 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
                     hintStyle: (widget.placeholderStyle ?? bmDefault).copyWith(
                       color:
                           widget.placeholderStyle?.color ??
-                          onSurface.withValues(alpha: 0.4),
+                          (Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gPalette.neutral300
+                              : Ux4gPalette.neutral500),
                     ),
                     isDense: true,
                     contentPadding: EdgeInsets.zero,
@@ -263,16 +300,6 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
                   style: bmDefault.copyWith(
                     color: onSurface.withValues(alpha: 0.5),
                   ),
-                ),
-              ],
-
-              // Status Icon (Error/Warning/Success)
-              if (widget.status != Ux4gInputFieldStatus.defaultStatus) ...[
-                const SizedBox(width: 8),
-                Icon(
-                  _getStatusIcon(),
-                  size: 20,
-                  color: _getStatusColor(materialTheme, ux4gColors),
                 ),
               ],
 
@@ -308,13 +335,15 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
             widget.status == Ux4gInputFieldStatus.error) ...[
           const SizedBox(height: 8),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (widget.status == Ux4gInputFieldStatus.error ||
-                  widget.status == Ux4gInputFieldStatus.warning) ...[
+                  widget.status == Ux4gInputFieldStatus.warning ||
+                  widget.status == Ux4gInputFieldStatus.success) ...[
                 Icon(
                   _getStatusIcon(),
                   size: 14,
-                  color: _getStatusColor(materialTheme, ux4gColors),
+                  color: _getStatusIconColor(materialTheme, ux4gColors),
                 ),
                 const SizedBox(width: 6),
               ] else if (widget.status ==
@@ -322,7 +351,7 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
                 Icon(
                   Icons.info_outline,
                   size: 14,
-                  color: _getStatusColor(materialTheme, ux4gColors),
+                  color: _getStatusIconColor(materialTheme, ux4gColors),
                 ),
                 const SizedBox(width: 6),
               ],
@@ -332,7 +361,7 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
                   style: (widget.captionStyle ?? bxsDefault).copyWith(
                     color:
                         widget.captionStyle?.color ??
-                        _getStatusColor(materialTheme, ux4gColors),
+                        _getStatusTextColor(materialTheme, ux4gColors),
                   ),
                 ),
               ),
@@ -346,40 +375,58 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
   Color _getBorderColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
+    final error = materialTheme.brightness == Brightness.dark
+        ? Ux4gPalette.red300
+        : Ux4gPalette.red600;
     final warning = ux4gColors?.warning ?? Colors.orange;
     final success = ux4gColors?.success ?? Colors.green;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
 
-    if (!widget.enabled) return onSurface.withValues(alpha: 0.3);
+    final isDark = materialTheme.brightness == Brightness.dark;
+    final defaultBorderColor = isDark
+        ? Ux4gPalette.neutral700
+        : Ux4gPalette.neutral200;
+
+    if (!widget.enabled)
+      return widget.disabledBorderColor ?? onSurface.withValues(alpha: 0.3);
     return switch (widget.status) {
       Ux4gInputFieldStatus.error => error,
       Ux4gInputFieldStatus.warning => warning,
       Ux4gInputFieldStatus.success => success,
       Ux4gInputFieldStatus.defaultStatus =>
-        _isFocused ? primary : onSurface.withValues(alpha: 0.3),
+        _isFocused ? primary : (widget.borderColor ?? defaultBorderColor),
     };
   }
 
   Color _getLabelColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+    final isDark = materialTheme.brightness == Brightness.dark;
+    return isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+  }
+
+  Color _getStatusIconColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
+    final error = materialTheme.brightness == Brightness.dark
+        ? Ux4gPalette.red500
+        : Ux4gPalette.red600;
     final warning = ux4gColors?.warning ?? Colors.orange;
     final success = ux4gColors?.success ?? Colors.green;
 
+    if (!widget.enabled) return onSurface.withValues(alpha: 0.4);
     return switch (widget.status) {
       Ux4gInputFieldStatus.error => error,
       Ux4gInputFieldStatus.warning => warning,
       Ux4gInputFieldStatus.success => success,
-      Ux4gInputFieldStatus.defaultStatus => onSurface,
+      Ux4gInputFieldStatus.defaultStatus => onSurface.withValues(alpha: 0.6),
     };
   }
 
-  Color _getStatusColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getStatusTextColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
+    final error = materialTheme.brightness == Brightness.dark
+        ? Ux4gPalette.red300
+        : Ux4gPalette.red800;
     final warning = ux4gColors?.warning ?? Colors.orange;
     final success = ux4gColors?.success ?? Colors.green;
 

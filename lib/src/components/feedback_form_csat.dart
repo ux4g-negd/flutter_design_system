@@ -70,11 +70,11 @@ class Ux4gFeedbackFormCsat extends StatefulWidget {
     this.successMessage =
         'Thank you for your feedback. This helps improve government services.',
     this.ratingFaceAssets = const [
-      'assets/icons/ic_face_0.svg',
-      'assets/icons/ic_face_1.svg',
-      'assets/icons/ic_face_2.svg',
-      'assets/icons/ic_face_3.svg',
-      'assets/icons/ic_face_4.svg',
+      'packages/ux4g_flutter_design_system/assets/icons/ic_face_0.svg',
+      'packages/ux4g_flutter_design_system/assets/icons/ic_face_1.svg',
+      'packages/ux4g_flutter_design_system/assets/icons/ic_face_2.svg',
+      'packages/ux4g_flutter_design_system/assets/icons/ic_face_3.svg',
+      'packages/ux4g_flutter_design_system/assets/icons/ic_face_4.svg',
     ],
     this.ratingIcons = const [
       Icons.sentiment_very_dissatisfied,
@@ -182,10 +182,11 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
         uxColors?.onBackground ?? materialTheme.colorScheme.onSurface;
     final isDark = materialTheme.brightness == Brightness.dark;
 
-    final selectedBgColors = isDark &&
+    final selectedBgColors =
+        isDark &&
             (widget.selectedBackgroundColors.length == 5 &&
-             widget.selectedBackgroundColors[0] == Ux4gPalette.red100 &&
-             widget.selectedBackgroundColors[1] == Ux4gPalette.red50)
+                widget.selectedBackgroundColors[0] == Ux4gPalette.red100 &&
+                widget.selectedBackgroundColors[1] == Ux4gPalette.red50)
         ? const [
             Ux4gPalette.red900,
             Ux4gPalette.red950,
@@ -195,10 +196,11 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
           ]
         : widget.selectedBackgroundColors;
 
-    final selectedIconColors = isDark &&
+    final selectedIconColors =
+        isDark &&
             (widget.selectedIconColors.length == 5 &&
-             widget.selectedIconColors[0] == Ux4gPalette.red600 &&
-             widget.selectedIconColors[2] == Ux4gPalette.orange600)
+                widget.selectedIconColors[0] == Ux4gPalette.red600 &&
+                widget.selectedIconColors[2] == Ux4gPalette.orange600)
         ? const [
             Ux4gPalette.red300,
             Ux4gPalette.red300,
@@ -208,11 +210,13 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
           ]
         : widget.selectedIconColors;
 
-    final unselectedBgColor = isDark && widget.unselectedBackgroundColor == Ux4gPalette.neutral100
+    final unselectedBgColor =
+        isDark && widget.unselectedBackgroundColor == Ux4gPalette.neutral100
         ? Ux4gPalette.neutral800
         : widget.unselectedBackgroundColor;
 
-    final unselectedIconColor = isDark && widget.unselectedIconColor == Ux4gPalette.neutral500
+    final unselectedIconColor =
+        isDark && widget.unselectedIconColor == Ux4gPalette.neutral500
         ? Ux4gPalette.neutral400
         : widget.unselectedIconColor;
 
@@ -246,39 +250,52 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
                       : unselectedIconColor)
                 : unselectedIconColor;
 
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedScore = index;
-                });
-              },
-              child: Container(
-                width: 48,
-                height: 48,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: bgColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child:
-                    widget.useSvgFaces && index < widget.ratingFaceAssets.length
-                    ? SvgPicture.asset(
-                        widget.ratingFaceAssets[index],
-                        package: 'ux4g_flutter_design_system',
-                        width: 32,
-                        height: 32,
-                        colorFilter: ColorFilter.mode(
-                          iconColor,
-                          BlendMode.srcIn,
+            return Flexible(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 48,
+                    maxHeight: 48,
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedScore = index;
+                        });
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: bgColor,
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      )
-                    : Icon(
-                        index < widget.ratingIcons.length
-                            ? widget.ratingIcons[index]
-                            : Icons.sentiment_neutral,
-                        size: 32,
-                        color: iconColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FittedBox(
+                            child: widget.useSvgFaces && index < widget.ratingFaceAssets.length
+                                ? SvgPicture.asset(
+                                    widget.ratingFaceAssets[index],
+                                    package: 'ux4g_flutter_design_system',
+                                    colorFilter: ColorFilter.mode(
+                                      iconColor,
+                                      BlendMode.srcIn,
+                                    ),
+                                  )
+                                : Icon(
+                                    index < widget.ratingIcons.length
+                                        ? widget.ratingIcons[index]
+                                        : Icons.sentiment_neutral,
+                                    color: iconColor,
+                                  ),
+                          ),
+                        ),
                       ),
+                    ),
+                  ),
+                ),
               ),
             );
           }),

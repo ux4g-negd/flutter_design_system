@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 
@@ -20,12 +21,16 @@ class Ux4gBadge extends StatelessWidget {
   final Color? containerColor;
   final Color? contentColor;
   final AlignmentGeometry alignment;
+  final bool showBorder;
+  final Color? borderColor;
 
   const Ux4gBadge.dot({
     super.key,
     this.child,
     this.containerColor,
     this.alignment = Alignment.topRight,
+    this.showBorder = false,
+    this.borderColor,
   }) : _type = _Ux4gBadgeInternalType.dot,
        label = null,
        count = null,
@@ -42,6 +47,8 @@ class Ux4gBadge extends StatelessWidget {
     this.containerColor,
     this.contentColor,
     this.alignment = Alignment.topRight,
+    this.showBorder = false,
+    this.borderColor,
   }) : _type = _Ux4gBadgeInternalType.text,
        label = null,
        icon = null,
@@ -54,6 +61,8 @@ class Ux4gBadge extends StatelessWidget {
     this.containerColor,
     this.contentColor,
     this.alignment = Alignment.topRight,
+    this.showBorder = false,
+    this.borderColor,
   }) : _type = _Ux4gBadgeInternalType.label,
        count = null,
        limit = Ux4gBadgeLimit.singleDigit,
@@ -67,6 +76,8 @@ class Ux4gBadge extends StatelessWidget {
     this.containerColor,
     this.contentColor,
     this.alignment = Alignment.topRight,
+    this.showBorder = false,
+    this.borderColor,
   }) : _type = _Ux4gBadgeInternalType.icon,
        label = null,
        count = null,
@@ -79,6 +90,8 @@ class Ux4gBadge extends StatelessWidget {
     this.child,
     this.contentColor,
     this.alignment = Alignment.topRight,
+    this.showBorder = false,
+    this.borderColor,
   }) : _type = _Ux4gBadgeInternalType.readyToUse,
        label = null,
        count = null,
@@ -113,26 +126,19 @@ class Ux4gBadge extends StatelessWidget {
     final ux4gColors = materialTheme.extension<Ux4gColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
-    if (_type == _Ux4gBadgeInternalType.readyToUse) {
-      return Image.asset(
-        assetPath!,
-        width: 24,
-        height: 24,
-        color: contentColor,
-      );
-    }
-
     final resolvedBg =
         containerColor ??
         (ux4gColors?.primary ?? materialTheme.colorScheme.primary);
     final resolvedContent = contentColor ?? Colors.white;
+    final resolvedBorderColor = borderColor ?? materialTheme.colorScheme.surface;
+    final border = showBorder ? Border.all(color: resolvedBorderColor, width: 1.5) : null;
 
     switch (_type) {
       case _Ux4gBadgeInternalType.dot:
         return Container(
           width: 8,
           height: 8,
-          decoration: BoxDecoration(color: resolvedBg, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: resolvedBg, shape: BoxShape.circle, border: border),
         );
       case _Ux4gBadgeInternalType.text:
         if (count == null) return const SizedBox.shrink();
@@ -140,23 +146,39 @@ class Ux4gBadge extends StatelessWidget {
             ? (count! > 9 ? "9+" : count.toString())
             : (count! > 99 ? "99+" : count.toString());
 
+        final isSingleChar = displayCount.length == 1;
+
         return Container(
           constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+          padding: EdgeInsets.symmetric(horizontal: isSingleChar ? 0 : 6),
           decoration: BoxDecoration(
             color: resolvedBg,
-            borderRadius: BorderRadius.circular(100),
+            shape: isSingleChar ? BoxShape.circle : BoxShape.rectangle,
+            borderRadius: isSingleChar ? null : BorderRadius.circular(100),
+            border: border,
           ),
-          alignment: Alignment.center,
-          child: Text(
-            displayCount,
-            style:
-                (ux4gTypography?.lS_strong ??
-                        materialTheme.textTheme.labelSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ) ??
-                        const TextStyle())
-                    .copyWith(color: resolvedContent, fontSize: 10, height: 1),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    displayCount,
+                    textAlign: TextAlign.center,
+                    style:
+                        (ux4gTypography?.lS_strong ??
+                                materialTheme.textTheme.labelSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ) ??
+                                const TextStyle())
+                            .copyWith(color: resolvedContent, fontSize: 10, height: 1),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       case _Ux4gBadgeInternalType.label:
@@ -166,6 +188,7 @@ class Ux4gBadge extends StatelessWidget {
           decoration: BoxDecoration(
             color: resolvedBg,
             borderRadius: BorderRadius.circular(4),
+            border: border,
           ),
           child: Text(
             label!,
@@ -183,10 +206,31 @@ class Ux4gBadge extends StatelessWidget {
         return Container(
           width: 18,
           height: 18,
-          decoration: BoxDecoration(color: resolvedBg, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: resolvedBg, shape: BoxShape.circle, border: border),
           alignment: Alignment.center,
           child: Icon(icon, size: 12, color: resolvedContent),
         );
+      case _Ux4gBadgeInternalType.readyToUse:
+        if (assetPath == null) return const SizedBox.shrink();
+        Widget imageWidget;
+        if (assetPath!.toLowerCase().contains('.svg')) {
+          imageWidget = SvgPicture.asset(assetPath!.trim(), width: 18, height: 18);
+        } else {
+          imageWidget = Image.asset(assetPath!.trim(), width: 18, height: 18);
+        }
+        if (showBorder) {
+          return Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: border,
+            ),
+            alignment: Alignment.center,
+            child: imageWidget,
+          );
+        }
+        return imageWidget;
       default:
         return const SizedBox.shrink();
     }

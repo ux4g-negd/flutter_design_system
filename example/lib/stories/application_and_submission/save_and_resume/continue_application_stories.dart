@@ -4,13 +4,24 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _bg = Color(0xFFFAFAFA);
-const Color _cardBg = Color(0xFFF4F3FF);
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+
+Color _getBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFFAFAFA);
+Color _getCardBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getBorderColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB);
+Color _getStartFreshColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final continueApplicationComponent = WidgetbookComponent(
   name: 'Continue Application',
@@ -113,26 +124,38 @@ class _ProgressStepList extends StatelessWidget {
             children: [
               // Status indicator
               Container(
-                width: 28,
-                height: 28,
+                width: 20,
+                height: 20,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: step.status == _StepStatus.completed
-                      ? const Color(0xFF16A34A)
+                      ? (_isDark(context)
+                            ? Ux4gPalette.green500
+                            : Ux4gPalette.green600)
                       : step.status == _StepStatus.inProgress
-                      ? Colors.white
-                      : Colors.white,
+                      ? (_isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : Colors.white)
+                      : (_isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : Colors.white),
                   border: Border.all(
                     color: step.status == _StepStatus.completed
-                        ? const Color(0xFF16A34A)
+                        ? (_isDark(context)
+                              ? Ux4gPalette.green500
+                              : Ux4gPalette.green600)
                         : step.status == _StepStatus.inProgress
-                        ? const Color(0xFFD1D5DB)
-                        : const Color(0xFFE5E7EB),
+                        ? (_isDark(context)
+                              ? Ux4gPalette.neutral500
+                              : const Color(0xFFD1D5DB))
+                        : (_isDark(context)
+                              ? Ux4gPalette.neutral700
+                              : const Color(0xFFE5E7EB)),
                     width: step.status == _StepStatus.inProgress ? 2 : 1.5,
                   ),
                 ),
                 child: step.status == _StepStatus.completed
-                    ? const Icon(Icons.check, color: Colors.white, size: 16)
+                    ? const Icon(Icons.check, color: Colors.white, size: 12)
                     : null,
               ),
               const SizedBox(width: 14),
@@ -143,18 +166,16 @@ class _ProgressStepList extends StatelessWidget {
                   children: [
                     Text(
                       step.title,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: step.status == _StepStatus.notStarted
-                            ? const Color(0xFF9CA3AF)
-                            : _titleColor,
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bM_strong ?? const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
+                        color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                       ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       step.subtitle,
-                      style: const TextStyle(fontSize: 13, color: _subtleText),
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
+                        color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -191,11 +212,18 @@ class ContinueApplicationScreen extends StatelessWidget {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 1),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             const Divider(height: 1, color: Color(0xFFE5E7EB)),
@@ -216,7 +244,7 @@ class ContinueApplicationScreen extends StatelessWidget {
                       'Income Certificate · Started 10 Apr 2026',
                       style: TextStyle(fontSize: 14, color: Color(0xFF4B5563)),
                     ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 20),
                     const Text(
                       'Your progress',
                       style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF111827)),
@@ -226,10 +254,12 @@ class ContinueApplicationScreen extends StatelessWidget {
                     // Progress steps list with status indicators
                     // ... (step items with completed/in-progress/not-started states)
 
-                    const SizedBox(height: 28),
-                    const Text(
+                    const SizedBox(height: 20),
+                    Text(
                       'Last saved 10 Apr 2026 at 3:12 PM',
-                      style: TextStyle(fontSize: 13, color: Color(0xFF9CA3AF)),
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -241,9 +271,9 @@ class ContinueApplicationScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Continue from Step 3', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Continue from Step 3', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
                 ],
               ),
             ),
@@ -256,7 +286,7 @@ class ContinueApplicationScreen extends StatelessWidget {
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24),
                 ],
               ),
             ),
@@ -278,7 +308,7 @@ class ContinueApplicationCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: const Color(0xFFDCD4FF),
       body: SafeArea(
         child: Column(
           children: [
@@ -290,11 +320,18 @@ class ContinueApplicationCardScreen extends StatelessWidget {
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
-                      SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                      const SizedBox(width: 1),
+                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                       Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
-                      SvgPicture.asset('assets/Union.svg', height: 32),
+                      SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
                     ],
                   ),
                   const Divider(height: 1, color: Color(0xFFE5E7EB)),
@@ -327,7 +364,7 @@ class ContinueApplicationCardScreen extends StatelessWidget {
                         'Income Certificate · Started 10 Apr 2026',
                         style: TextStyle(fontSize: 14, color: Color(0xFF4B5563)),
                       ),
-                      const SizedBox(height: 28),
+                      const SizedBox(height: 20),
                       const Text(
                         'Your progress',
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF111827)),
@@ -337,7 +374,7 @@ class ContinueApplicationCardScreen extends StatelessWidget {
                       // Progress steps list with status indicators
                       // ... (step items with completed/in-progress/not-started states)
 
-                      const SizedBox(height: 28),
+                      const SizedBox(height: 20),
                       const Text(
                         'Last saved 10 Apr 2026 at 3:12 PM',
                         style: TextStyle(fontSize: 13, color: Color(0xFF9CA3AF)),
@@ -353,9 +390,9 @@ class ContinueApplicationCardScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Continue from Step 3', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Continue from Step 3', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
                 ],
               ),
             ),
@@ -368,7 +405,7 @@ class ContinueApplicationCardScreen extends StatelessWidget {
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24),
                 ],
               ),
             ),
@@ -391,37 +428,52 @@ class _ContinueApplicationMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     const primaryColor = Color(0xFF432CBB);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header
             Ux4gAppHeader(
-              variant: Ux4gAppHeaderVariant.light,
+              variant: _isDark(context)
+                  ? Ux4gAppHeaderVariant.light
+                  : Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(
                   _nationalEmblemLogoPath,
                   height: 40,
+                  colorFilter: _isDark(context)
+                      ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                      : null,
                   errorBuilder: (c, e, s) => const Icon(
                     Icons.account_balance,
                     size: 32,
                     color: Colors.grey,
                   ),
                 ),
-                const SizedBox(width: 1),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
+                Container(
+                  height: 32,
+                  width: 1,
+                  color: _isDark(context)
+                      ? Ux4gPalette.neutral700
+                      : const Color(0xFFD1D5DB),
+                ),
                 SvgPicture.asset(
                   _unionLogoPath,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
                   height: 32,
                   errorBuilder: (c, e, s) =>
                       const Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
             ),
-            const Divider(height: 1, color: Color(0xFFE5E7EB)),
+            Divider(height: 1, color: _getBorderColor(context)),
 
             // Content
             Expanded(
@@ -433,35 +485,40 @@ class _ContinueApplicationMockup extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Continue your\napplication?',
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w800,
-                        color: _titleColor,
+                        color: _getTitleColor(context),
                         height: 1.2,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
+                    Text(
                       'Income Certificate · Started 10 Apr 2026',
-                      style: TextStyle(fontSize: 14, color: _subtleText),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: _getSubtleText(context),
+                      ),
                     ),
-                    const SizedBox(height: 28),
-                    const Text(
+                    const SizedBox(height: 20),
+                    Text(
                       'Your progress',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
-                        color: _titleColor,
+                        color: _getTitleColor(context),
                       ),
                     ),
                     const SizedBox(height: 20),
                     const _ProgressStepList(),
-                    const SizedBox(height: 28),
-                    const Text(
+                    const SizedBox(height: 20),
+                    Text(
                       'Last saved 10 Apr 2026 at 3:12 PM',
-                      style: TextStyle(fontSize: 13, color: Color(0xFF9CA3AF)),
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
+                        color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      ),
                     ),
                   ],
                 ),
@@ -474,6 +531,7 @@ class _ContinueApplicationMockup extends StatelessWidget {
               child: Column(
                 children: [
                   Ux4gButton(
+                    height: 48,
                     text: 'Continue from Step 3',
                     onPressed: () {},
                     size: Ux4gButtonSize.large,
@@ -481,13 +539,14 @@ class _ContinueApplicationMockup extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Ux4gButton(
+                    height: 48,
                     text: 'Start fresh',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: primaryColor,
-                    borderColor: primaryColor,
+                    contentColor: _getStartFreshColor(context),
+                    borderColor: _getStartFreshColor(context),
                   ),
                 ],
               ),
@@ -499,14 +558,20 @@ class _ContinueApplicationMockup extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: _isDark(context)
+                          ? Ux4gPalette.neutral500
+                          : const Color(0xFF9CA3AF),
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,
+                    color: _isDark(context) ? Colors.white : null,
                     errorBuilder: (c, e, s) => const Text(
                       'Digital India',
                       style: TextStyle(
@@ -533,7 +598,7 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
     return Container(
       decoration: BoxDecoration(
-        color: _cardBg,
+        color: _getCardBg(context),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -545,38 +610,52 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
       ),
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
-        backgroundColor: _cardBg,
+        backgroundColor: _getCardBg(context),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Header with white background
               Container(
-                color: Colors.white,
+                color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
-                      variant: Ux4gAppHeaderVariant.light,
+                      variant: _isDark(context)
+                          ? Ux4gAppHeaderVariant.light
+                          : Ux4gAppHeaderVariant.light,
                       title: '',
                       leadingWidgets: [
                         SvgPicture.asset(
                           _nationalEmblemLogoPath,
                           height: 40,
+                          colorFilter: _isDark(context)
+                              ? const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                )
+                              : null,
                           errorBuilder: (c, e, s) => const Icon(
                             Icons.account_balance,
                             size: 32,
                             color: Colors.grey,
                           ),
                         ),
-                        const SizedBox(width: 1),
                         Container(
                           height: 32,
                           width: 1,
-                          color: const Color(0xFFD1D5DB),
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral700
+                              : const Color(0xFFD1D5DB),
                         ),
-                        const SizedBox(width: 1),
                         SvgPicture.asset(
                           _unionLogoPath,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            BlendMode.srcIn,
+                          ),
                           height: 32,
                           errorBuilder: (c, e, s) => const Icon(
                             Icons.blur_on,
@@ -586,7 +665,7 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                    Divider(height: 1, color: _getBorderColor(context)),
                   ],
                 ),
               ),
@@ -601,8 +680,13 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: _isDark(context)
+                          ? Ux4gPalette.neutral900
+                          : Colors.white,
                       borderRadius: BorderRadius.circular(16),
+                      border: _isDark(context)
+                          ? Border.all(color: Ux4gPalette.neutral800)
+                          : null,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.05),
@@ -614,37 +698,42 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Continue your\napplication?',
                           style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w800,
-                            color: _titleColor,
+                            color: _getTitleColor(context),
                             height: 1.2,
                           ),
                         ),
                         const SizedBox(height: 8),
-                        const Text(
+                        Text(
                           'Income Certificate · Started 10 Apr 2026',
-                          style: TextStyle(fontSize: 14, color: _subtleText),
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: _getSubtleText(context),
+                          ),
                         ),
-                        const SizedBox(height: 28),
-                        const Text(
+                        const SizedBox(height: 20),
+                        Text(
                           'Your progress',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w700,
-                            color: _titleColor,
+                            color: _getTitleColor(context),
                           ),
                         ),
                         const SizedBox(height: 20),
                         const _ProgressStepList(),
-                        const SizedBox(height: 28),
-                        const Text(
+                        const SizedBox(height: 20),
+                        Text(
                           'Last saved 10 Apr 2026 at 3:12 PM',
                           style: TextStyle(
                             fontSize: 13,
-                            color: Color(0xFF9CA3AF),
+                            color: _isDark(context)
+                                ? Ux4gPalette.neutral500
+                                : const Color(0xFF9CA3AF),
                           ),
                         ),
                       ],
@@ -662,6 +751,7 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                 child: Column(
                   children: [
                     Ux4gButton(
+                      height: 48,
                       text: 'Continue from Step 3',
                       onPressed: () {},
                       size: Ux4gButtonSize.large,
@@ -669,13 +759,14 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
+                      height: 48,
                       text: 'Start fresh',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
+                      contentColor: _getStartFreshColor(context),
+                      borderColor: _getStartFreshColor(context),
                     ),
                   ],
                 ),
@@ -687,14 +778,20 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: _isDark(context)
+                            ? Ux4gPalette.neutral500
+                            : const Color(0xFF9CA3AF),
+                      ),
                     ),
                     const SizedBox(height: 6),
                     Image.asset(
                       _digitalIndiaLogoPath,
                       height: 24,
+                      color: _isDark(context) ? Colors.white : null,
                       errorBuilder: (c, e, s) => const Text(
                         'Digital India',
                         style: TextStyle(

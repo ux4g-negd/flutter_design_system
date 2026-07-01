@@ -202,12 +202,17 @@ class Ux4gHalfCircleProgress extends StatelessWidget {
                   strokeWidth: sw,
                   progressColor: resolvedProgressColor,
                   trackColor: resolvedTrackColor,
-                  progressGradient: progressGradient ??
+                  progressGradient:
+                      progressGradient ??
                       (progressColor == null
                           ? LinearGradient(
                               colors: [
-                                isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                                isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary200,
+                                isDark
+                                    ? Ux4gPalette.primary300
+                                    : Ux4gPalette.primary600,
+                                isDark
+                                    ? Ux4gPalette.primary950
+                                    : Ux4gPalette.primary200,
                               ],
                             )
                           : null),

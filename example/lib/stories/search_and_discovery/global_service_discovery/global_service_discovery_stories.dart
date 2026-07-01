@@ -3,11 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const Color _greenColor = Color(0xFF16A34A);
+const Color _primaryColor = Ux4gPalette.primary600;
 
 final globalServiceDiscoveryComponent = WidgetbookComponent(
   name: 'Global Service Discovery',
@@ -125,30 +121,30 @@ class _GlobalServiceDiscoveryMockupState
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
+        backgroundColor: isDark
+            ? Ux4gPalette.neutral950
+            : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             children: [
               // App Header - filled purple
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 color: _primaryColor,
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                    SizedBox(width: 12),
+                    const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                    const SizedBox(width: 12),
                     Text(
                       'National Services Portal',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: typography.tS_default.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -166,24 +162,30 @@ class _GlobalServiceDiscoveryMockupState
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
-                        color: const Color(0xFFF2EFFF),
+                        color: isDark
+                            ? Ux4gPalette.neutral950
+                            : Ux4gPalette.neutral0,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Find any government service',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 4),
-                            const Text(
+                            Text(
                               'Search 3,000+ services & schemes',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: _subtleText,
+                                color: isDark
+                                    ? Ux4gPalette.neutral200
+                                    : Ux4gPalette.neutral700,
                               ),
                             ),
                             const SizedBox(height: 16),
@@ -192,9 +194,11 @@ class _GlobalServiceDiscoveryMockupState
                               onValueChange: (v) =>
                                   setState(() => _searchValue = v),
                               variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                              size: Ux4gSearchFieldSize.medium,
                               placeholder: 'Search services...',
                               showVoiceIcon: true,
                               showClearIcon: true,
+                              onSubmitClick: (_) {},
                               buttonStyle: Ux4gSearchFieldButtonStyle.filled,
                             ),
                           ],
@@ -207,12 +211,14 @@ class _GlobalServiceDiscoveryMockupState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Browse by category',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -233,12 +239,14 @@ class _GlobalServiceDiscoveryMockupState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Popular services',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -272,12 +280,14 @@ class _GlobalServiceDiscoveryMockupState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Recommended for Ramesh Kumar',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -344,44 +354,66 @@ class _GlobalServiceDiscoveryMockupState
         crossAxisCount: 2,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        childAspectRatio: 1.35,
+        mainAxisExtent: 112,
       ),
       itemCount: categories.length,
       itemBuilder: (context, index) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         final (icon, label, count) = categories[index];
         return Container(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: _borderColor),
+            color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  color: _primaryColor.withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(10),
+                  color: isDark
+                      ? Ux4gPalette.primary950
+                      : Ux4gPalette.primary50,
+                  shape: BoxShape.circle,
                 ),
-                child: Icon(icon, size: 20, color: _primaryColor),
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: isDark
+                      ? Ux4gPalette.primary300
+                      : Ux4gPalette.primary600,
+                ),
               ),
               const SizedBox(height: 10),
               Text(
                 label,
-                style: const TextStyle(
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: _titleColor,
+                  color: isDark
+                      ? Ux4gPalette.neutral50
+                      : Ux4gPalette.neutral900,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 count,
-                style: const TextStyle(fontSize: 11, color: _subtleText),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11,
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -391,13 +423,16 @@ class _GlobalServiceDiscoveryMockupState
   }
 
   Widget _buildFeaturedScheme() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF2EFFF),
+        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _borderColor),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -407,23 +442,26 @@ class _GlobalServiceDiscoveryMockupState
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w700,
-              color: _primaryColor,
+              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
               letterSpacing: 1,
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'PM Awas Yojana (Urban)',
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w700,
-              color: _titleColor,
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Subsidised housing loans — Interest subsidy up to ₹2.67 lakh.',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: TextStyle(
+              fontSize: 12,
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
           ),
           const SizedBox(height: 12),
           SizedBox(
@@ -433,6 +471,10 @@ class _GlobalServiceDiscoveryMockupState
               onPressed: () {},
               variant: Ux4gButtonVariant.primary,
               size: Ux4gButtonSize.medium,
+              backgroundColor: isDark
+                  ? Ux4gPalette.primary300
+                  : Ux4gPalette.primary600,
+              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
             ),
           ),
         ],
@@ -441,41 +483,50 @@ class _GlobalServiceDiscoveryMockupState
   }
 
   Widget _buildServiceCard(String title, String dept, String fee, String time) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _borderColor),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: _titleColor,
+            style: typography.tS_strong.copyWith(
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 2),
-          Text(dept, style: const TextStyle(fontSize: 12, color: _subtleText)),
+          Text(
+            dept,
+            style: typography.lM_default.copyWith(
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
+          ),
           const SizedBox(height: 8),
           Row(
             children: [
               Text(
                 fee,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: _greenColor,
+                style: typography.lM_default.copyWith(
+                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
                 ),
               ),
               Text(
                 '  ·  $time',
-                style: const TextStyle(fontSize: 12, color: _subtleText),
+                style: typography.lM_default.copyWith(
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -485,6 +536,12 @@ class _GlobalServiceDiscoveryMockupState
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
+            borderColor: isDark
+                ? Ux4gPalette.neutral600
+                : Ux4gPalette.primary300,
+            contentColor: isDark
+                ? Ux4gPalette.neutral50
+                : Ux4gPalette.primary600,
           ),
         ],
       ),
@@ -497,41 +554,50 @@ class _GlobalServiceDiscoveryMockupState
     String fee,
     String benefit,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _borderColor),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: _titleColor,
+            style: typography.tS_strong.copyWith(
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 2),
-          Text(dept, style: const TextStyle(fontSize: 12, color: _subtleText)),
+          Text(
+            dept,
+            style: typography.lM_default.copyWith(
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
+          ),
           const SizedBox(height: 8),
           Row(
             children: [
               Text(
                 fee,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: _greenColor,
+                style: typography.lM_default.copyWith(
+                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
                 ),
               ),
               Text(
                 '  ·  $benefit',
-                style: const TextStyle(fontSize: 12, color: _subtleText),
+                style: typography.lM_default.copyWith(
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -541,6 +607,12 @@ class _GlobalServiceDiscoveryMockupState
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
+            borderColor: isDark
+                ? Ux4gPalette.neutral600
+                : Ux4gPalette.primary300,
+            contentColor: isDark
+                ? Ux4gPalette.neutral50
+                : Ux4gPalette.primary600,
           ),
         ],
       ),
@@ -548,37 +620,46 @@ class _GlobalServiceDiscoveryMockupState
   }
 
   Widget _buildEligibilityQuiz() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF2EFFF),
+        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _titleColor.withValues(alpha: 0.15)),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+        ),
       ),
       child: Column(
         children: [
-          const Text(
+          Text(
             "Not sure what you're eligible for?",
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: _titleColor,
+            style: typography.tS_strong.copyWith(
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Take a 2-minute quiz to find schemes you qualify for.',
-            style: TextStyle(fontSize: 12, color: _subtleText),
+            style: typography.lM_default.copyWith(
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
           Ux4gButton(
             text: 'Find my schemes',
             onPressed: () {},
-            variant: Ux4gButtonVariant.outline,
+            variant: Ux4gButtonVariant.secondary,
             size: Ux4gButtonSize.medium,
-            backgroundColor: const Color(0xFFDCD4FF),
+            backgroundColor: isDark
+                ? Ux4gPalette.primary800
+                : Ux4gPalette.primary100,
+            contentColor: isDark
+                ? Ux4gPalette.primary200
+                : Ux4gPalette.primary700,
             borderWidth: 0,
           ),
         ],

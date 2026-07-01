@@ -112,10 +112,6 @@ class Ux4gChoiceChip extends StatelessWidget {
                 const SizedBox(width: 8),
                 trailingContent!,
               ],
-              if (trailingContent != null) ...[
-                const SizedBox(width: 6),
-                trailingContent!,
-              ],
             ],
           ),
         ),
@@ -160,7 +156,7 @@ class Ux4gFilterChip extends StatelessWidget {
     this.unselectedBorderColor,
     this.selectedTextColor,
     this.unselectedTextColor,
-    this.selectedBorderWidth = 2,
+    this.selectedBorderWidth = 1,
     this.unselectedBorderWidth = 1,
   });
 

@@ -5,11 +5,40 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
+
+// ignore: unused_element
+
+bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+
+// ignore: unused_element
+
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
+
+// ignore: unused_element
+
+Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
+
+// ignore: unused_element
+
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+
+// ignore: unused_element
+
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+
+// ignore: unused_element
+
+Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+
+// ignore: unused_element
+
+Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+
+// ignore: unused_element
+
 const _primaryColor = Color(0xFF432CBB);
-const _dividerColor = Color(0xFFE5E7EB);
-const _breadcrumbColor = Color(0xFF6B7280);
+
+
 
 const _faqAnswers = [
   'If your application was rejected, you can review the rejection reason in your application details. '
@@ -78,10 +107,12 @@ class FaqDetailScreen extends StatelessWidget {
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
+              leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -91,25 +122,15 @@ class FaqDetailScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // Content
             Expanded(
@@ -207,7 +228,7 @@ class FaqDetailScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -240,10 +261,12 @@ class FaqDetailCardScreen extends StatelessWidget {
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
+              leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -253,25 +276,15 @@ class FaqDetailCardScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // White card content
             Expanded(
@@ -310,14 +323,75 @@ class FaqDetailCardScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
                         // Related questions accordion
+                        // Related questions accordion
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
                         Ux4gAccordion(
-                          items: [
-                            Ux4gAccordionItem(title: 'My application was rejected — what next?', content: ''),
-                            Ux4gAccordionItem(title: 'How do I upload missing documents?', content: ''),
-                            Ux4gAccordionItem(title: 'When will I receive my certificate?', content: ''),
-                            Ux4gAccordionItem(title: 'How do I contact a Revenue officer?', content: ''),
-                          ],
+                          title: 'My application was rejected — what next?',
+                          collapsedBorderColor: Colors.transparent,
+                          expandedBorderColor: Colors.transparent,
+                          backgroundColor: Colors.transparent,
+                          contentBackgroundColor: Colors.transparent,
+                          child: Text(
+                            'If your application was rejected, you can review the rejection reason in your application details. '
+                            'You may reapply after addressing the issues mentioned, or file a grievance.',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              height: 1.5,
+                            ),
+                          ),
                         ),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gAccordion(
+                          title: 'How do I upload missing documents?',
+                          collapsedBorderColor: Colors.transparent,
+                          expandedBorderColor: Colors.transparent,
+                          backgroundColor: Colors.transparent,
+                          contentBackgroundColor: Colors.transparent,
+                          child: Text(
+                            'Go to My Applications, select the application, and tap "Upload Documents". '
+                            'Supported formats: PDF, JPG, PNG (max 5MB each).',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              height: 1.5,
+                            ),
+                          ),
+                        ),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gAccordion(
+                          title: 'When will I receive my certificate?',
+                          collapsedBorderColor: Colors.transparent,
+                          expandedBorderColor: Colors.transparent,
+                          backgroundColor: Colors.transparent,
+                          contentBackgroundColor: Colors.transparent,
+                          child: Text(
+                            'Certificate issuance typically takes 7-15 working days after approval. '
+                            'You will receive an SMS and email notification once ready.',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              height: 1.5,
+                            ),
+                          ),
+                        ),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gAccordion(
+                          title: 'How do I contact a Revenue officer?',
+                          collapsedBorderColor: Colors.transparent,
+                          expandedBorderColor: Colors.transparent,
+                          backgroundColor: Colors.transparent,
+                          contentBackgroundColor: Colors.transparent,
+                          child: Text(
+                            'You can find contact details of your local Revenue officer under the help center directory, or search by PIN code.',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              height: 1.5,
+                            ),
+                          ),
+                        ),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
                       ],
                     ),
                   ),
@@ -332,7 +406,7 @@ class FaqDetailCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -356,22 +430,24 @@ class _FaqDetailMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
+                elevation: 2,
+                leadingSpacing: 8,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(
-                    'assets/national_amblam_logo.svg',
+                    Ux4gIcons.nationalEmblem,
                     height: 40,
+                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
-                  const SizedBox(width: 8),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
@@ -379,51 +455,15 @@ class _FaqDetailMockup extends StatelessWidget {
                       color: const Color(0xFFD1D5DB),
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ],
-              ),
-
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) =>
-                          const Text('🇮🇳', style: TextStyle(fontSize: 14)),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
               ),
 
               // Content
@@ -432,14 +472,14 @@ class _FaqDetailMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: isCard
                       ? Ux4gCard(
-                          backgroundColor: Colors.white,
+                          backgroundColor: _getCardBg(context),
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(),
+                            child: _buildContent(context),
                           ),
                         )
-                      : _buildContent(),
+                      : _buildContent(context),
                 ),
               ),
 
@@ -449,15 +489,15 @@ class _FaqDetailMockup extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
                       style: TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => const Text(
+                      errorBuilder: (_, __, ___) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -475,30 +515,30 @@ class _FaqDetailMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Breadcrumb
         Row(
-          children: const [
-            Icon(Icons.home, size: 14, color: _breadcrumbColor),
+          children: [
+            Icon(Icons.home, size: 14, color: _getBreadcrumbColor(context)),
             SizedBox(width: 4),
             Text(
               'Home',
-              style: TextStyle(fontSize: 13, color: _breadcrumbColor),
+              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
             ),
             Text(
               '  >  ',
-              style: TextStyle(fontSize: 13, color: _breadcrumbColor),
+              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
             ),
             Text(
               'Help',
-              style: TextStyle(fontSize: 13, color: _breadcrumbColor),
+              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
             ),
             Text(
               '  >  ',
-              style: TextStyle(fontSize: 13, color: _breadcrumbColor),
+              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
             ),
             Text(
               'Application Issues',
@@ -510,27 +550,27 @@ class _FaqDetailMockup extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20),
 
         // Title
-        const Text(
+        Text(
           'How do I track my application?',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w800,
-            color: _titleColor,
+            color: _getTitleColor(context),
           ),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12),
 
         // Answer
-        const Text(
+        Text(
           'Sign in to the portal, open My Applications, and tap your active application. '
           'The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. '
           'SLA timer shows expected completion date.',
-          style: TextStyle(fontSize: 14, color: _subtleText, height: 1.5),
+          style: TextStyle(fontSize: 14, color: _getSubtleText(context), height: 1.5),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24),
 
         // Related questions - Accordion
         _FaqAccordionList(),
@@ -562,7 +602,7 @@ class _FaqAccordionListState extends State<_FaqAccordionList> {
       children: List.generate(_faqTitles.length, (index) {
         return Column(
           children: [
-            const Ux4gDivider(color: _dividerColor),
+            Ux4gDivider(color: _getBorderColor(context)),
             Ux4gAccordion(
               title: _faqTitles[index],
               expanded: _expandedIndex == index,
@@ -579,9 +619,9 @@ class _FaqAccordionListState extends State<_FaqAccordionList> {
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Text(
                   _faqAnswers[index],
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 13,
-                    color: _subtleText,
+                    color: _getSubtleText(context),
                     height: 1.5,
                   ),
                 ),

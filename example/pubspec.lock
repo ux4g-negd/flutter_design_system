@@ -161,6 +161,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  file_picker:
+    dependency: transitive
+    description:
+      name: file_picker
+      sha256: f13a03000d942e476bc1ff0a736d2e9de711d2f89a95cd4c1d88f861c3348387
+      url: "https://pub.dev"
+    source: hosted
+    version: "11.0.2"
   file_selector_linux:
     dependency: transitive
     description:
@@ -651,7 +659,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.4.2"
+    version: "0.4.3"
   vector_graphics:
     dependency: transitive
     description:
@@ -703,10 +711,9 @@ packages:
   widgetbook:
     dependency: "direct main"
     description:
-      name: widgetbook
-      sha256: "4ff857b441b7fc43432a69ec6fe56494184c895e36cec502e400648024710b9c"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/widgetbook"
+      relative: true
+    source: path
     version: "3.23.0"
   widgetbook_annotation:
     dependency: transitive
@@ -716,6 +723,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.11.0"
+  win32:
+    dependency: transitive
+    description:
+      name: win32
+      sha256: d7cb55e04cd34096cd3a79b3330245f54cb96a370a1c27adb3c84b917de8b08e
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.15.0"
   xml:
     dependency: transitive
     description:

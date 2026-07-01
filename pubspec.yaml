@@ -1,6 +1,6 @@
 name: ux4g_flutter_design_system
 description: "Flutter implementation of the UX4G design system components and foundations."
-version: 0.4.2
+version: 0.4.3
 homepage: https://github.com/ux4g-negd/ux4g-flutter-design-system
 repository: https://github.com/ux4g-negd/ux4g-flutter-design-system
 issue_tracker: https://github.com/ux4g-negd/ux4g-flutter-design-system/issues
@@ -21,6 +21,7 @@ dependencies:
   flutter_svg: ^2.0.0
   image_picker: ^1.0.0
   shimmer: ^3.0.0
+  file_picker: ^11.0.2
 
 dev_dependencies:
   flutter_test:

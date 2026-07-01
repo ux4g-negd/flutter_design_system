@@ -193,11 +193,13 @@ class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
             if (widget.activeRatingColor != null) {
               activeColor = widget.activeRatingColor!;
             } else if (_rating <= widget.lowRatingThreshold) {
-              activeColor = (widget.lowRatingColor == Ux4gPalette.red600 && isDark)
+              activeColor =
+                  (widget.lowRatingColor == Ux4gPalette.red600 && isDark)
                   ? (ux4gColors?.error ?? Ux4gPalette.red300)
                   : (widget.lowRatingColor ?? info);
             } else {
-              activeColor = (widget.highRatingColor == Ux4gPalette.yellow600 && isDark)
+              activeColor =
+                  (widget.highRatingColor == Ux4gPalette.yellow600 && isDark)
                   ? Ux4gPalette.yellow500
                   : (widget.highRatingColor ?? info);
             }

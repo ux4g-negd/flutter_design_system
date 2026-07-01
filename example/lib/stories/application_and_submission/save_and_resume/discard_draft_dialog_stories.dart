@@ -3,8 +3,17 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFF9FAFB);
+Color _getDialogBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Colors.white;
 
 final discardDraftDialogComponent = WidgetbookComponent(
   name: 'Discard Draft Dialog',
@@ -56,22 +65,34 @@ void showDiscardDraftDialog(BuildContext context) {
               style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.4),
             ),
             const SizedBox(height: 24),
-            Ux4gButton(
+            Ux4gButton(height: 48, 
               text: 'Discard and start again',
               onPressed: () => Navigator.pop(context),
               size: Ux4gButtonSize.large,
               width: double.infinity,
-              backgroundColor: const Color(0xFFDC2626),
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.red300
+                  : Ux4gPalette.red600,
+              borderColor: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.red300
+                  : Ux4gPalette.red600,
+              contentColor: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.neutral900
+                  : Ux4gPalette.neutral50,
             ),
             const SizedBox(height: 12),
-            Ux4gButton(
+            Ux4gButton(height: 48, 
               text: 'Keep my draft',
               onPressed: () => Navigator.pop(context),
               variant: Ux4gButtonVariant.outline,
               size: Ux4gButtonSize.large,
               width: double.infinity,
-              contentColor: const Color(0xFF6B7280),
-              borderColor: const Color(0xFFD1D5DB),
+              contentColor: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.primary300
+                  : Ux4gPalette.primary600,
+              borderColor: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gPalette.primary600
+                  : Ux4gPalette.primary300,
             ),
           ],
         ),
@@ -91,14 +112,17 @@ class _DiscardDraftDialogMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: _getBg(context),
       body: Center(
         child: Container(
           width: 300,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: _getDialogBg(context),
             borderRadius: BorderRadius.circular(16),
+            border: _isDark(context)
+                ? Border.all(color: Ux4gPalette.neutral800)
+                : null,
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
@@ -110,37 +134,55 @@ class _DiscardDraftDialogMockup extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
+              Text(
                 'Discard draft?',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
-                  color: _titleColor,
+                  color: _getTitleColor(context),
                 ),
               ),
               const SizedBox(height: 12),
-              const Text(
+              Text(
                 'Your saved progress will be deleted.\nThis cannot be undone.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14, color: _subtleText, height: 1.4),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: _getSubtleText(context),
+                  height: 1.4,
+                ),
               ),
               const SizedBox(height: 24),
               Ux4gButton(
+                height: 48,
                 text: 'Discard and start again',
                 onPressed: () {},
                 size: Ux4gButtonSize.large,
                 width: double.infinity,
-                backgroundColor: const Color(0xFFDC2626),
+                backgroundColor: _isDark(context)
+                    ? Ux4gPalette.red300
+                    : Ux4gPalette.red600,
+                borderColor: _isDark(context)
+                    ? Ux4gPalette.red300
+                    : Ux4gPalette.red600,
+                contentColor: _isDark(context)
+                    ? Ux4gPalette.neutral900
+                    : Ux4gPalette.neutral50,
               ),
               const SizedBox(height: 12),
               Ux4gButton(
+                height: 48,
                 text: 'Keep my draft',
                 onPressed: () {},
                 variant: Ux4gButtonVariant.outline,
                 size: Ux4gButtonSize.large,
                 width: double.infinity,
-                contentColor: const Color(0xFF6B7280),
-                borderColor: const Color(0xFFD1D5DB),
+                contentColor: _isDark(context)
+                    ? Ux4gPalette.primary300
+                    : Ux4gPalette.primary600,
+                borderColor: _isDark(context)
+                    ? Ux4gPalette.primary600
+                    : Ux4gPalette.primary300,
               ),
             ],
           ),

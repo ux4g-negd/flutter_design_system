@@ -4,6 +4,8 @@ import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 import '../foundation/dimensions.dart';
 
+enum Ux4gAccordionChevronPosition { leading, trailing }
+
 class Ux4gAccordion extends StatelessWidget {
   final String title;
   final bool expanded;
@@ -17,6 +19,8 @@ class Ux4gAccordion extends StatelessWidget {
   final Color? disabledTitleColor;
   final Color? iconColor;
   final Color? disabledIconColor;
+  final Widget? leadingIcon;
+  final Ux4gAccordionChevronPosition chevronPosition;
   final Widget child;
 
   const Ux4gAccordion({
@@ -34,6 +38,8 @@ class Ux4gAccordion extends StatelessWidget {
     this.disabledTitleColor,
     this.iconColor,
     this.disabledIconColor,
+    this.leadingIcon,
+    this.chevronPosition = Ux4gAccordionChevronPosition.trailing,
   });
 
   @override
@@ -47,8 +53,7 @@ class Ux4gAccordion extends StatelessWidget {
         (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface)
             .withValues(alpha: 0.12);
     final resolvedExpandedBorderColor =
-        expandedBorderColor ??
-        (ux4gColors?.primary ?? materialTheme.colorScheme.primary);
+        expandedBorderColor ?? resolvedCollapsedBorderColor;
     final resolvedTitleColor =
         titleColor ??
         (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface);
@@ -69,6 +74,16 @@ class Ux4gAccordion extends StatelessWidget {
         : expanded
         ? resolvedExpandedBorderColor
         : resolvedCollapsedBorderColor;
+
+    final chevron = AnimatedRotation(
+      turns: expanded ? 0.5 : 0,
+      duration: const Duration(milliseconds: 220),
+      child: Icon(
+        Icons.keyboard_arrow_down_outlined,
+        size: Ux4gSpace.space16,
+        color: enabled ? resolvedIconColor : resolvedDisabledIconColor,
+      ),
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,32 +108,44 @@ class Ux4gAccordion extends StatelessWidget {
               ),
               child: Row(
                 children: [
+                  if (chevronPosition == Ux4gAccordionChevronPosition.leading) ...[
+                    chevron,
+                    const SizedBox(width: Ux4gSpace.space8),
+                  ],
                   Expanded(
-                    child: Text(
-                      title,
-                      style:
-                          (ux4gTypography?.lL_default ??
-                                  materialTheme.textTheme.labelLarge ??
-                                  const TextStyle())
-                              .copyWith(
-                                color: enabled
-                                    ? resolvedTitleColor
-                                    : resolvedDisabledTitleColor,
-                              ),
+                    child: Row(
+                      children: [
+                        if (leadingIcon != null) ...[
+                          IconTheme(
+                            data: IconThemeData(
+                              size: Ux4gSpace.space16,
+                              color: enabled ? resolvedIconColor : resolvedDisabledIconColor,
+                            ),
+                            child: leadingIcon!,
+                          ),
+                          const SizedBox(width: Ux4gSpace.space8),
+                        ],
+                        Expanded(
+                          child: Text(
+                            title,
+                            style:
+                                (ux4gTypography?.lL_default ??
+                                        materialTheme.textTheme.labelLarge ??
+                                        const TextStyle())
+                                    .copyWith(
+                                      color: enabled
+                                          ? resolvedTitleColor
+                                          : resolvedDisabledTitleColor,
+                                    ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: Ux4gSpace.space8),
-                  AnimatedRotation(
-                    turns: expanded ? 0.5 : 0,
-                    duration: const Duration(milliseconds: 220),
-                    child: Icon(
-                      Icons.keyboard_arrow_down_outlined,
-                      size: Ux4gSpace.space16,
-                      color: enabled
-                          ? resolvedIconColor
-                          : resolvedDisabledIconColor,
-                    ),
-                  ),
+                  if (chevronPosition == Ux4gAccordionChevronPosition.trailing) ...[
+                    const SizedBox(width: Ux4gSpace.space8),
+                    chevron,
+                  ],
                 ],
               ),
             ),
@@ -138,7 +165,7 @@ class Ux4gAccordion extends StatelessWidget {
                       right: Ux4gSpace.space12,
                     ),
                     color:
-                        contentBackgroundColor ??
+                        contentBackgroundColor ?? backgroundColor ??
                         (ux4gColors?.surface ??
                             materialTheme.colorScheme.surface),
                     child: child,
@@ -154,8 +181,15 @@ class Ux4gAccordion extends StatelessWidget {
 class Ux4gAccordionItem {
   final String title;
   final bool enabled;
+  final Widget? leadingIcon;
+  final Ux4gAccordionChevronPosition chevronPosition;
 
-  const Ux4gAccordionItem({required this.title, this.enabled = true});
+  const Ux4gAccordionItem({
+    required this.title,
+    this.enabled = true,
+    this.leadingIcon,
+    this.chevronPosition = Ux4gAccordionChevronPosition.trailing,
+  });
 }
 
 class Ux4gAccordionGroup extends StatelessWidget {
@@ -186,6 +220,8 @@ class Ux4gAccordionGroup extends StatelessWidget {
           ),
           child: Ux4gAccordion(
             title: item.title,
+            leadingIcon: item.leadingIcon,
+            chevronPosition: item.chevronPosition,
             expanded: expandedIndex == index,
             enabled: item.enabled,
             onExpandedChange: (isExpanded) {

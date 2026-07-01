@@ -287,7 +287,7 @@ class Ux4gUnifiedPillTag extends StatelessWidget {
     final bgColor = backgroundColor ?? surface;
     final border = borderColor ?? onSurface.withValues(alpha: 0.12);
     final divider = dividerColor ?? onSurface.withValues(alpha: 0.15);
-    final defaultTextColor = onSurface.withValues(alpha: 0.7);
+    final defaultTextColor = onSurface;
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -315,13 +315,17 @@ class Ux4gUnifiedPillTag extends StatelessWidget {
               segments[i].leading!,
               const SizedBox(width: 6),
             ],
-            Text(
-              segments[i].text,
-              style: (segments[i].bold ? textStyleBold : textStyleDefault)
-                  .copyWith(
-                    color: segments[i].textColor ?? defaultTextColor,
-                    height: 1,
-                  ),
+            Flexible(
+              child: Text(
+                segments[i].text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: (segments[i].bold ? textStyleBold : textStyleDefault)
+                    .copyWith(
+                      color: segments[i].textColor ?? defaultTextColor,
+                      height: 1,
+                    ),
+              ),
             ),
           ],
         ],

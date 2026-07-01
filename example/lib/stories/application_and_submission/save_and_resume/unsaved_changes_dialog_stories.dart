@@ -3,9 +3,17 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFF9FAFB);
+Color _getDialogBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral900 : Colors.white;
 
 final unsavedChangesDialogComponent = WidgetbookComponent(
   name: 'Unsaved Changes Dialog',
@@ -57,7 +65,7 @@ void showUnsavedChangesDialog(BuildContext context) {
               style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.4),
             ),
             const SizedBox(height: 24),
-            Ux4gButton(
+            Ux4gButton(height: 48, 
               text: 'Save draft and leave',
               onPressed: () => Navigator.pop(context),
               size: Ux4gButtonSize.large,
@@ -66,9 +74,15 @@ void showUnsavedChangesDialog(BuildContext context) {
             const SizedBox(height: 12),
             GestureDetector(
               onTap: () => Navigator.pop(context),
-              child: const Text(
+              child: Text(
                 'Leave without saving',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xFFDC2626)),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gPalette.red300
+                      : Ux4gPalette.red800,
+                ),
               ),
             ),
           ],
@@ -89,14 +103,17 @@ class _UnsavedChangesDialogMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: _getBg(context),
       body: Center(
         child: Container(
           width: 300,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: _getDialogBg(context),
             borderRadius: BorderRadius.circular(16),
+            border: _isDark(context)
+                ? Border.all(color: Ux4gPalette.neutral800)
+                : null,
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
@@ -108,34 +125,41 @@ class _UnsavedChangesDialogMockup extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
+              Text(
                 'Unsaved changes',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
-                  color: _titleColor,
+                  color: _getTitleColor(context),
                 ),
               ),
               const SizedBox(height: 12),
-              const Text(
+              Text(
                 'If you leave now, changes since your last save will be lost.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14, color: _subtleText, height: 1.4),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: _getSubtleText(context),
+                  height: 1.4,
+                ),
               ),
               const SizedBox(height: 24),
               Ux4gButton(
+                height: 48,
                 text: 'Save draft and leave',
                 onPressed: () {},
                 size: Ux4gButtonSize.large,
                 width: double.infinity,
               ),
               const SizedBox(height: 12),
-              const Text(
+              Text(
                 'Leave without saving',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFFDC2626),
+                  color: _isDark(context)
+                      ? Ux4gPalette.red300
+                      : Ux4gPalette.red800,
                 ),
               ),
             ],

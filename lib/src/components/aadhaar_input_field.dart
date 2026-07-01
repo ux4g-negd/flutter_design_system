@@ -56,16 +56,32 @@ class Ux4gAadhaarInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Ux4gInputFieldStatus currentStatus = status;
+    String? currentCaption = caption;
+
+    final cleanValue = value.replaceAll(' ', '');
+    if (cleanValue.length == 12) {
+      if (status == Ux4gInputFieldStatus.defaultStatus) {
+        if (validateAadhaar(value)) {
+          currentStatus = Ux4gInputFieldStatus.success;
+          currentCaption = 'Valid Aadhaar number';
+        } else {
+          currentStatus = Ux4gInputFieldStatus.error;
+          currentCaption = 'Please enter a valid Aadhaar number';
+        }
+      }
+    }
+
     return Ux4gInputField(
       value: value,
       onValueChange: onValueChange,
       size: size,
       type: Ux4gInputFieldType.number,
-      status: status,
+      status: currentStatus,
       label: label,
       required: required,
       placeholder: placeholder,
-      caption: caption,
+      caption: currentCaption,
       leadingIcon: leadingIcon,
       trailingIcon: trailingIcon,
       onTrailingIconPressed: onTrailingIconPressed,

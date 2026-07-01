@@ -15,6 +15,10 @@ class Ux4gToastData {
   final String? actionText;
   final VoidCallback? onActionClick;
   final bool showCloseButton;
+  final Color? backgroundColor;
+  final IconData? icon;
+  final Color? iconColor;
+  final Color? actionColor;
 
   const Ux4gToastData({
     required this.category,
@@ -23,6 +27,10 @@ class Ux4gToastData {
     this.actionText,
     this.onActionClick,
     this.showCloseButton = true,
+    this.backgroundColor,
+    this.icon,
+    this.iconColor,
+    this.actionColor,
   });
 }
 
@@ -41,6 +49,10 @@ class Ux4gToastHostState extends ChangeNotifier {
     bool showCloseButton = true,
     bool autoClose = true,
     Duration duration = const Duration(seconds: 3),
+    Color? backgroundColor,
+    IconData? icon,
+    Color? iconColor,
+    Color? actionColor,
   }) {
     _timer?.cancel();
     _currentToast = Ux4gToastData(
@@ -50,6 +62,10 @@ class Ux4gToastHostState extends ChangeNotifier {
       actionText: actionText,
       onActionClick: onActionClick,
       showCloseButton: showCloseButton,
+      backgroundColor: backgroundColor,
+      icon: icon,
+      iconColor: iconColor,
+      actionColor: actionColor,
     );
     notifyListeners();
 
@@ -82,6 +98,10 @@ class Ux4gToast extends StatelessWidget {
   final VoidCallback? onCloseClick;
   final bool showCloseButton;
   final Ux4gToastLayout? layout;
+  final Color? backgroundColor;
+  final IconData? icon;
+  final Color? iconColor;
+  final Color? actionColor;
 
   const Ux4gToast({
     super.key,
@@ -93,6 +113,10 @@ class Ux4gToast extends StatelessWidget {
     this.onCloseClick,
     this.showCloseButton = true,
     this.layout,
+    this.backgroundColor,
+    this.icon,
+    this.iconColor,
+    this.actionColor,
   });
 
   @override
@@ -104,7 +128,13 @@ class Ux4gToast extends StatelessWidget {
     final resolvedLayout =
         layout ??
         (screenWidth < 600 ? Ux4gToastLayout.stacked : Ux4gToastLayout.full);
-    final style = _getToastStyle(category, ux4gColors, materialTheme);
+    final baseStyle = _getToastStyle(category, ux4gColors, materialTheme);
+    final style = _ToastStyle(
+      backgroundColor: backgroundColor ?? baseStyle.backgroundColor,
+      iconColor: iconColor ?? baseStyle.iconColor,
+      actionColor: actionColor ?? baseStyle.actionColor,
+      icon: icon ?? baseStyle.icon,
+    );
 
     return Material(
       color: Colors.transparent,
@@ -429,6 +459,10 @@ class Ux4gToastHost extends StatelessWidget {
                     onActionClick: data.onActionClick,
                     onCloseClick: () => hostState.dismiss(),
                     showCloseButton: data.showCloseButton,
+                    backgroundColor: data.backgroundColor,
+                    icon: data.icon,
+                    iconColor: data.iconColor,
+                    actionColor: data.actionColor,
                   ),
                 ),
         );

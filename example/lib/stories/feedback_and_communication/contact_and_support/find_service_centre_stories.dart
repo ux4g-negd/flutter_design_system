@@ -5,9 +5,40 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
-const _titleColor = Color(0xFF111827);
-const _subtleText = Color(0xFF4B5563);
+
+// ignore: unused_element
+
+bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
+
+// ignore: unused_element
+
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
+
+// ignore: unused_element
+
+Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
+
+// ignore: unused_element
+
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+
+// ignore: unused_element
+
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
+
+// ignore: unused_element
+
+Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+
+// ignore: unused_element
+
+Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+
+// ignore: unused_element
+
 const _primaryColor = Color(0xFF432CBB);
+
+
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -61,18 +92,18 @@ class FindServiceCentreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
-              leadingSpacing: 2,
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                SizedBox(width: 3),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -80,26 +111,15 @@ class FindServiceCentreScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SizedBox(width: 3),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // Content
             Expanded(
@@ -108,41 +128,63 @@ class FindServiceCentreScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Find your nearest Service Centre',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                    Text(
+                      'Find your nearest Service Centre',
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.hM_default ?? const TextStyle()).copyWith(
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     const SizedBox(height: 8),
-                    Text('Locate a Common Service Centre (CSC) near you for in-person help.',
-                        style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                    Text(
+                      'Locate a Common Service Centre (CSC) near you for in-person help.',
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
+                        color: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      ),
+                    ),
                     const SizedBox(height: 24),
                     // Search bar
                     Ux4gSearchField(
                       value: '',
                       onValueChange: (_) {},
                       variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                      size: Ux4gSearchFieldSize.medium,
                       placeholder: 'Enter PIN code or city',
+                      placeholderStyle: Theme.of(context).extension<Ux4gTypography>()?.bS_default,
                       showVoiceIcon: true,
                       onSubmitClick: (_) {},
                     ),
                     const SizedBox(height: 20),
                     // Result card
                     Ux4gCard(
-                      backgroundColor: const Color(0xFFF5F5F5),
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
                       cornerRadius: 12,
-                      borderColor: const Color(0xFFE5E5E5),
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
                       borderWidth: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(14),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('CSC Sector 12 — Pune City',
-                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                            Text(
+                              'CSC Sector 12 — Pune City',
+                              style: (Theme.of(context).extension<Ux4gTypography>()?.hS_default ?? const TextStyle()).copyWith(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                              ),
+                            ),
                             const SizedBox(height: 4),
-                            Text('45 Patel Nagar, Sector 12, Pune 411001',
-                                style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                            Text(
+                              '45 Patel Nagar, Sector 12, Pune 411001',
+                              style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                              ),
+                            ),
                             const SizedBox(height: 4),
-                            Text('1.2 km away · Open Mon-Sat 9 AM – 6 PM',
-                                style: TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
+                            Text(
+                              '1.2 km away · Open Mon-Sat 9 AM – 6 PM',
+                              style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle()).copyWith(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -163,6 +205,7 @@ class FindServiceCentreScreen extends StatelessWidget {
                       text: 'Get directions',
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
+                      height: 48,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -173,6 +216,7 @@ class FindServiceCentreScreen extends StatelessWidget {
                       text: 'View all centres',
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
+                      height: 48,
                       borderColor: const Color(0xFF432CBB),
                       contentColor: const Color(0xFF432CBB),
                     ),
@@ -189,7 +233,7 @@ class FindServiceCentreScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -216,17 +260,18 @@ class FindServiceCentreCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
-              leadingSpacing: 2,
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -234,73 +279,85 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
               ],
-            ),
-            // Gov bar
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              color: const Color(0xFF1E3A8A),
-              child: Row(
-                children: [
-                  Text('🇮🇳', style: TextStyle(fontSize: 16)),
-                  const SizedBox(width: 8),
-                  Text('Government of India', style: TextStyle(color: Colors.white, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Icon(Icons.open_in_new, size: 12, color: Colors.white),
-                  const Spacer(),
-                  Icon(Icons.accessibility_new, size: 18, color: Colors.white),
-                ],
-              ),
             ),
             // White card content
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Ux4gCard(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF1A1A1A) : Colors.white,
                   cornerRadius: 16,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Find your nearest Service Centre',
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                        Text(
+                          'Find your nearest Service Centre',
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.hM_default ?? const TextStyle()).copyWith(
+                            color: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF111827),
+                          ),
+                        ),
                         const SizedBox(height: 8),
-                        Text('Locate a Common Service Centre (CSC) near you for in-person help.',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                        Text(
+                          'Locate a Common Service Centre (CSC) near you for in-person help.',
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
+                            color: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
                         const SizedBox(height: 24),
                         // Search bar
                         Ux4gSearchField(
                           value: '',
                           onValueChange: (_) {},
                           variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                          size: Ux4gSearchFieldSize.medium,
                           placeholder: 'Enter PIN code or city',
+                          placeholderStyle: Theme.of(context).extension<Ux4gTypography>()?.bS_default,
                           showVoiceIcon: true,
                           onSubmitClick: (_) {},
                         ),
                         const SizedBox(height: 20),
                         // Result card
                         Ux4gCard(
-                          backgroundColor: const Color(0xFFF5F5F5),
+                          backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
                           cornerRadius: 12,
-                          borderColor: const Color(0xFFE5E5E5),
+                          borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
                           borderWidth: 1,
                           child: Padding(
                             padding: const EdgeInsets.all(14),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('CSC Sector 12 — Pune City',
-                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                                Text(
+                                  'CSC Sector 12 — Pune City',
+                                  style: (Theme.of(context).extension<Ux4gTypography>()?.hS_default ?? const TextStyle()).copyWith(
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                  ),
+                                ),
                                 const SizedBox(height: 4),
-                                Text('45 Patel Nagar, Sector 12, Pune 411001',
-                                    style: TextStyle(fontSize: 13, color: Color(0xFF4B5563))),
+                                Text(
+                                  '45 Patel Nagar, Sector 12, Pune 411001',
+                                  style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                                  ),
+                                ),
                                 const SizedBox(height: 4),
-                                Text('1.2 km away · Open Mon-Sat 9 AM – 6 PM',
-                                    style: TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
+                                Text(
+                                  '1.2 km away · Open Mon-Sat 9 AM – 6 PM',
+                                  style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle()).copyWith(
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -323,6 +380,7 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                       text: 'Get directions',
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
+                      height: 48,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -333,6 +391,7 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                       text: 'View all centres',
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
+                      height: 48,
                       borderColor: const Color(0xFF432CBB),
                       contentColor: const Color(0xFF432CBB),
                     ),
@@ -349,7 +408,7 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset('assets/digital_india_logo.png', height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
                 ],
               ),
             ),
@@ -373,23 +432,24 @@ class _FindServiceCentreMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
+                elevation: 2,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
-                leadingSpacing: 2,
+                leadingSpacing: 8,
                 leadingWidgets: [
                   SvgPicture.asset(
-                    'assets/national_amblam_logo.svg',
+                    Ux4gIcons.nationalEmblem,
                     height: 40,
+                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
-                  SizedBox(width: 3),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
@@ -397,53 +457,15 @@ class _FindServiceCentreMockup extends StatelessWidget {
                       color: const Color(0xFFD1D5DB),
                     ),
                   ),
-                  SizedBox(width: 3),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ],
-              ),
-
-              // Gov bar
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                color: const Color(0xFF1E3A8A),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/india_flag.png',
-                      height: 14,
-                      width: 22,
-                      errorBuilder: (_, __, ___) => const Text(
-                        '\u{1f1ee}\u{1f1f3}',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Government of India',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    const Icon(
-                      Icons.open_in_new,
-                      size: 11,
-                      color: Colors.white,
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      Icons.accessibility_new,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
               ),
 
               // Content
@@ -452,14 +474,14 @@ class _FindServiceCentreMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: isCard
                       ? Ux4gCard(
-                          backgroundColor: Colors.white,
+                          backgroundColor: _getCardBg(context),
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(),
+                            child: _buildContent(context),
                           ),
                         )
-                      : _buildContent(),
+                      : _buildContent(context),
                 ),
               ),
 
@@ -475,9 +497,10 @@ class _FindServiceCentreMockup extends StatelessWidget {
                         text: 'Get directions',
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12),
                     SizedBox(
                       width: double.infinity,
                       child: Ux4gButton(
@@ -485,6 +508,7 @@ class _FindServiceCentreMockup extends StatelessWidget {
                         text: 'View all centres',
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.large,
+                        height: 48,
                         borderColor: _primaryColor,
                         contentColor: _primaryColor,
                       ),
@@ -492,7 +516,7 @@ class _FindServiceCentreMockup extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12),
 
               // Powered by
               Padding(
@@ -500,15 +524,15 @@ class _FindServiceCentreMockup extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
                       style: TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: 4),
                     Image.asset(
-                      'assets/digital_india_logo.png',
+                      Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => const Text(
+                      errorBuilder: (_, __, ___) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -526,65 +550,68 @@ class _FindServiceCentreMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Find your nearest Service Centre',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-            color: _titleColor,
+          style: (Theme.of(context).extension<Ux4gTypography>()?.hM_default ?? const TextStyle()).copyWith(
+            color: _getTitleColor(context),
           ),
         ),
-        const SizedBox(height: 8),
-        const Text(
+        SizedBox(height: 8),
+        Text(
           'Locate a Common Service Centre (CSC) near you for in-person help.',
-          style: TextStyle(fontSize: 14, color: _subtleText),
+          style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
+            color: _getSubtleText(context),
+          ),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24),
 
         // Search bar
         Ux4gSearchField(
           value: '',
           onValueChange: (_) {},
           variant: Ux4gSearchFieldVariant.searchWithSubmit,
-          size: Ux4gSearchFieldSize.large,
+          size: Ux4gSearchFieldSize.medium,
           placeholder: 'Enter PIN code or city',
+          placeholderStyle: Theme.of(context).extension<Ux4gTypography>()?.bS_default,
           showVoiceIcon: true,
           onSubmitClick: (_) {},
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20),
 
         // Result card
         Ux4gCard(
-          backgroundColor: const Color(0xFFF5F5F5),
+          backgroundColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
           cornerRadius: 12,
-          borderColor: const Color(0xFFE5E5E5),
+          borderColor: _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
           borderWidth: 1,
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   'CSC Sector 12 — Pune City',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: _titleColor,
+                  style: (Theme.of(context).extension<Ux4gTypography>()?.hS_default ?? const TextStyle()).copyWith(
+                    color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
                   ),
                 ),
                 SizedBox(height: 4),
                 Text(
                   '45 Patel Nagar, Sector 12, Pune 411001',
-                  style: TextStyle(fontSize: 13, color: _subtleText),
+                  style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
+                    color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                  ),
                 ),
                 SizedBox(height: 4),
                 Text(
                   '1.2 km away · Open Mon-Sat 9 AM – 6 PM',
-                  style: TextStyle(fontSize: 12, color: Color(0xFF6B7280)),
+                  style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle()).copyWith(
+                    color: _isDark(context) ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                  ),
                 ),
               ],
             ),

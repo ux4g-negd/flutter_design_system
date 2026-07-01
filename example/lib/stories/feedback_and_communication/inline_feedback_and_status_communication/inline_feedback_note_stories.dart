@@ -4,13 +4,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _noteBg = Color(0xFFFFF7E6);
-const Color _noteBorder = Color(0xFFFFC973);
-const Color _noteTitle = Color(0xFFAD4E00);
-
 final inlineFeedbackNoteComponent = WidgetbookComponent(
   name: 'Inline Feedback Note',
   useCases: [
@@ -19,7 +12,7 @@ final inlineFeedbackNoteComponent = WidgetbookComponent(
       builder: (context) {
         final variant = context.knobs.object.dropdown<String>(
           label: 'Variant',
-          options: ['Default', 'Card Style'],
+          options: const ['Default', 'Card Style'],
           initialOption: 'Default',
         );
         final isCard = variant == 'Card Style';
@@ -28,10 +21,8 @@ final inlineFeedbackNoteComponent = WidgetbookComponent(
           mobileMockup: true,
           name: 'Inline Feedback Note ($variant)',
           description: isCard
-              ? 'A note from a reviewing officer inside a card container. '
-                    'Shows an important message with action required.'
-              : 'A note from a reviewing officer displayed inline. '
-                    'Shows an important message with action required.',
+              ? 'A note from a reviewing officer inside a card container. Shows an important message with action required.'
+              : 'A note from a reviewing officer displayed inline. Shows an important message with action required.',
           code: isCard ? _noteCardCode : _noteDefaultCode,
           center: true,
           child: _NoteMockup(isCard: isCard),
@@ -54,21 +45,50 @@ class NoteToCitizenScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+
+    final bannerBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
+    final bannerBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
+    final bannerText = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final bannerIcon = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Expanded(
@@ -77,48 +97,52 @@ class NoteToCitizenScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Back button
                     Ux4gButton(
                       text: 'Back',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.ghost,
                       leadingIcon: Icons.arrow_back,
-                      contentColor: const Color(0xFF432CBB),
+                      contentColor: primaryColor,
                       size: Ux4gButtonSize.small,
                     ),
                     const SizedBox(height: 20),
-                    Text('Note to Citizen',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                    Text(
+                      'Note to Citizen',
+                      style: typography.hXS_strong.copyWith(color: titleColor),
+                    ),
                     const SizedBox(height: 10),
-                    Text('A note written by a reviewing officer.',
-                      style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.4)),
+                    Text(
+                      'A note written by a reviewing officer.',
+                      style: typography.bS_default.copyWith(color: subtleText, height: 1.4),
+                    ),
                     const SizedBox(height: 24),
-                    // Note card
+
+                    // Note card status banner
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Color(0xFFFFF7E6),
+                        color: bannerBg,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Color(0xFFFFC973)),
+                        border: Border.all(color: bannerBorder),
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.error, size: 18, color: Color(0xFFAD4E00)),
-                          const SizedBox(width: 10),
+                          Icon(Icons.error, size: 20, color: bannerIcon),
+                          const SizedBox(width: 12),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   'Note from Revenue Inspector - 12 April 2026, 11:34 AM',
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFFAD4E00)),
+                                  style: typography.bS_strong.copyWith(color: bannerText),
                                 ),
                                 const SizedBox(height: 6),
                                 Text(
                                   'Please resubmit the income proof with a clearer scan. The current file shows glare on the income figure row. Resubmit within 5 working days to avoid delay.',
-                                  style: TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.4),
+                                  style: typography.bS_default.copyWith(color: bannerText, height: 1.4),
                                 ),
                               ],
                             ),
@@ -127,7 +151,6 @@ class NoteToCitizenScreen extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    // Resubmit Documents button
                     SizedBox(
                       width: double.infinity,
                       child: Ux4gButton(
@@ -135,7 +158,10 @@ class NoteToCitizenScreen extends StatelessWidget {
                         onPressed: () {},
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
-                        backgroundColor: const Color(0xFF4A2BC2),
+                        height: 48,
+                        backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                        contentColor: isDark ? Colors.black : Colors.white,
+                        borderRadius: 8,
                       ),
                     ),
                   ],
@@ -158,26 +184,56 @@ const _noteCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
-/// Card Style variant
 class NoteToCitizenCardScreen extends StatelessWidget {
   const NoteToCitizenCardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
+    final bannerBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
+    final bannerBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
+    final bannerText = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final bannerIcon = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
             Ux4gAppHeader(
+              elevation: 2,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
+              leadingSpacing: 8,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 8),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: const Color(0xFFD1D5DB))),
-                const SizedBox(width: 8),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
+                  ),
+                ),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             Expanded(
@@ -187,54 +243,58 @@ class NoteToCitizenCardScreen extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: cardBg,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Back button
                       Ux4gButton(
                         text: 'Back',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
                         leadingIcon: Icons.arrow_back,
-                        contentColor: const Color(0xFF432CBB),
+                        contentColor: primaryColor,
                         size: Ux4gButtonSize.small,
                       ),
                       const SizedBox(height: 20),
-                      Text('Note to Citizen',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                      Text(
+                        'Note to Citizen',
+                        style: typography.hXS_strong.copyWith(color: titleColor),
+                      ),
                       const SizedBox(height: 10),
-                      Text('A note written by a reviewing officer.',
-                        style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.4)),
+                      Text(
+                        'A note written by a reviewing officer.',
+                        style: typography.bS_default.copyWith(color: subtleText, height: 1.4),
+                      ),
                       const SizedBox(height: 24),
-                      // Note card
+
+                      // Note card status banner
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Color(0xFFFFF7E6),
+                          color: bannerBg,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Color(0xFFFFC973)),
+                          border: Border.all(color: bannerBorder),
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Icons.error, size: 18, color: Color(0xFFAD4E00)),
-                            const SizedBox(width: 10),
+                            Icon(Icons.error, size: 20, color: bannerIcon),
+                            const SizedBox(width: 12),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Note from Revenue Inspector - 12 April 2026, 11:34 AM',
-                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Color(0xFFAD4E00)),
+                                    style: typography.bS_strong.copyWith(color: bannerText),
                                   ),
                                   const SizedBox(height: 6),
                                   Text(
                                     'Please resubmit the income proof with a clearer scan. The current file shows glare on the income figure row. Resubmit within 5 working days to avoid delay.',
-                                    style: TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.4),
+                                    style: typography.bS_default.copyWith(color: bannerText, height: 1.4),
                                   ),
                                 ],
                               ),
@@ -247,7 +307,6 @@ class NoteToCitizenCardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Resubmit Documents button
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: SizedBox(
@@ -257,7 +316,10 @@ class NoteToCitizenCardScreen extends StatelessWidget {
                   onPressed: () {},
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
-                  backgroundColor: const Color(0xFF4A2BC2),
+                  height: 48,
+                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  contentColor: isDark ? Colors.black : Colors.white,
+                  borderRadius: 8,
                 ),
               ),
             ),
@@ -280,65 +342,67 @@ class _NoteMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+
+    final bannerBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
+    final bannerBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
+    final bannerText = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
+    final bannerIcon = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? const Color(0xFFF2EFFF) : Colors.white,
+        backgroundColor: isCard
+            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF))
+            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
-              // App Header with logos
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.08),
-                      blurRadius: 4,
-                      offset: const Offset(0, 2),
+              // App Header with elevation
+              Ux4gAppHeader(
+                elevation: 2,
+                variant: Ux4gAppHeaderVariant.light,
+                title: '',
+                leadingSpacing: 8,
+                leadingWidgets: [
+                  SvgPicture.asset(
+                    Ux4gIcons.nationalEmblem,
+                    height: 40,
+                    colorFilter: isDark
+                        ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                        : null,
+                  ),
+                  SizedBox(
+                    height: 32,
+                    child: Ux4gDivider(
+                      orientation: Ux4gDividerOrientation.vertical,
+                      color: const Color(0xFFD1D5DB),
                     ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/national_amblam_logo.svg',
-                      height: 40,
+                  ),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
                     ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      height: 32,
-                      child: Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        color: const Color(0xFFD1D5DB),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    SvgPicture.asset('assets/Union.svg', height: 32),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               // Content
-              if (!isCard)
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: _buildDefaultContent(),
-                  ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: isCard
+                      ? _buildCardContent(context, cardBg, primaryColor, titleColor, subtleText, bannerBg, bannerBorder, bannerText, bannerIcon)
+                      : _buildFormFields(context, primaryColor, titleColor, subtleText, bannerBg, bannerBorder, bannerText, bannerIcon),
                 ),
-              if (isCard)
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: _buildCardContent(),
-                  ),
-                ),
+              ),
 
               // Resubmit Documents button
               Padding(
@@ -350,7 +414,10 @@ class _NoteMockup extends StatelessWidget {
                     onPressed: () {},
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.large,
-                    backgroundColor: const Color(0xFF4A2BC2),
+                    height: 48,
+                    backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                    contentColor: isDark ? Colors.black : Colors.white,
+                    borderRadius: 8,
                   ),
                 ),
               ),
@@ -361,7 +428,18 @@ class _NoteMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildFormFields() {
+  Widget _buildFormFields(
+    BuildContext context,
+    Color primaryColor,
+    Color titleColor,
+    Color subtleText,
+    Color bannerBg,
+    Color bannerBorder,
+    Color bannerText,
+    Color bannerIcon,
+  ) {
+    final typography = Ux4gTheme.typography(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -373,64 +451,52 @@ class _NoteMockup extends StatelessWidget {
             onPressed: () {},
             variant: Ux4gButtonVariant.ghost,
             leadingIcon: Icons.arrow_back,
-            contentColor: _primaryColor,
+            contentColor: primaryColor,
             size: Ux4gButtonSize.small,
           ),
         ),
         const SizedBox(height: 20),
 
         // Title
-        const Text(
+        Text(
           'Note to Citizen',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w900,
-            color: _titleColor,
-          ),
+          style: typography.hXS_strong.copyWith(color: titleColor),
         ),
         const SizedBox(height: 10),
 
         // Description
-        const Text(
+        Text(
           'A note written by a reviewing officer.',
-          style: TextStyle(fontSize: 14, color: _subtleText, height: 1.4),
+          style: typography.bS_default.copyWith(color: subtleText, height: 1.4),
         ),
         const SizedBox(height: 24),
 
-        // Note card
+        // Note card status banner
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: _noteBg,
+            color: bannerBg,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: _noteBorder),
+            border: Border.all(color: bannerBorder),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.error, size: 18, color: _noteTitle),
-              const SizedBox(width: 10),
+              Icon(Icons.error, size: 20, color: bannerIcon),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Note from Revenue Inspector - 12 April 2026, 11:34 AM',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: _noteTitle,
-                      ),
+                      style: typography.bS_strong.copyWith(color: bannerText),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Text(
                       'Please resubmit the income proof with a clearer scan. The current file shows glare on the income figure row. Resubmit within 5 working days to avoid delay.',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: _subtleText,
-                        height: 1.4,
-                      ),
+                      style: typography.bS_default.copyWith(color: bannerText, height: 1.4),
                     ),
                   ],
                 ),
@@ -442,22 +508,25 @@ class _NoteMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [_buildFormFields()],
-    );
-  }
-
-  Widget _buildCardContent() {
+  Widget _buildCardContent(
+    BuildContext context,
+    Color cardBg,
+    Color primaryColor,
+    Color titleColor,
+    Color subtleText,
+    Color bannerBg,
+    Color bannerBorder,
+    Color bannerText,
+    Color bannerIcon,
+  ) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: _buildFormFields(),
+      child: _buildFormFields(context, primaryColor, titleColor, subtleText, bannerBg, bannerBorder, bannerText, bannerIcon),
     );
   }
 }

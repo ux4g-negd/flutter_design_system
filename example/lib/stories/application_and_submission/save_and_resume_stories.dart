@@ -5,13 +5,45 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/component_docs.dart';
 
-const Color _bg = Color(0xFFFAFAFA);
-const Color _cardBg = Color(0xFFF4F3FF);
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const String _nationalEmblemLogoPath = 'assets/national_amblam_logo.svg';
-const String _unionLogoPath = 'assets/Union.svg';
-const String _digitalIndiaLogoPath = 'assets/digital_india_logo.png';
+bool _isDark(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+
+Color _getBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFFAFAFA);
+Color _getCardBg(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+Color _getTitleColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+Color _getBorderColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB);
+Color _getPrimaryColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.primary600 : const Color(0xFF432CBB);
+Color _getStartFreshColor(BuildContext context) =>
+    _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
+
+bool _isDarkMode(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.dark;
+
+Color _getUploadedBg(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.green900 : Ux4gPalette.green50;
+Color _getUploadedBorder(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.green800 : const Color(0xFFDCFCE7);
+Color _getUploadedIcon(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.green500 : Ux4gPalette.green600;
+Color _getUploadedTitle(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+Color _getUploadedDesc(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+Color _getUploadedBtnText(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+Color _getUploadedBtnBorder(BuildContext context) =>
+    _isDarkMode(context) ? Ux4gPalette.primary600 : Ux4gPalette.primary300;
+
+const String _unionLogoPath = Ux4gIcons.union;
+const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final saveAndResumeComponent = WidgetbookComponent(
   name: 'Save and Resume',
@@ -61,9 +93,9 @@ class _PhoneFrame extends StatelessWidget {
       height: 760,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: _bg,
+        color: _getBg(context),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(color: _getBorderColor(context)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.08),
@@ -103,11 +135,18 @@ class SaveAndResumeScreen extends StatelessWidget {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                const SizedBox(width: 1),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                 Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                const SizedBox(width: 1),
-                SvgPicture.asset('assets/Union.svg', height: 32),
+                SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ],
             ),
             const Divider(height: 1, color: Color(0xFFE5E7EB)),
@@ -125,7 +164,6 @@ class SaveAndResumeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: const Color(0xFFFFF7E6),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.transparent),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,9 +172,9 @@ class SaveAndResumeScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Expanded(
-                                child: Text('Income Certificate Application', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF111827))),
+                                child: Text('Income Certificate Application', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF171717))),
                               ),
-                              const Icon(Icons.keyboard_arrow_down, color: Color(0xFF111827)),
+                              const Icon(Icons.keyboard_arrow_down, color: Color(0xFF171717)),
                             ],
                           ),
                           const SizedBox(height: 8),
@@ -146,7 +184,7 @@ class SaveAndResumeScreen extends StatelessWidget {
                             child: const Text('Step 3 of 5 Document Upload', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFFAD4E00))),
                           ),
                           const SizedBox(height: 12),
-                          const Text('Last saved: 10 Apr 2026', style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                          const Text('Last saved: 10 Apr 2026', style: TextStyle(fontSize: 14, color: Color(0xFF404040))),
                         ],
                       ),
                     ),
@@ -174,9 +212,9 @@ class SaveAndResumeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Resume application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Resume application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
                 ],
               ),
             ),
@@ -189,7 +227,7 @@ class SaveAndResumeScreen extends StatelessWidget {
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -214,7 +252,7 @@ class SaveAndResumeCardScreen extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3FF),
+      backgroundColor: const Color(0xFFDCD4FF),
       body: SafeArea(
         child: Column(
           children: [
@@ -226,11 +264,18 @@ class SaveAndResumeCardScreen extends StatelessWidget {
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
-                      SvgPicture.asset('assets/national_amblam_logo.svg', height: 40),
-                      const SizedBox(width: 1),
+                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
                       Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
-                      const SizedBox(width: 1),
-                      SvgPicture.asset('assets/Union.svg', height: 32),
+                      SvgPicture.asset(
+                  Ux4gIcons.union, 
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gPalette.primary300
+                        : Ux4gPalette.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
                     ],
                   ),
                   const Divider(height: 1, color: Color(0xFFE5E7EB)),
@@ -270,9 +315,9 @@ class SaveAndResumeCardScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Expanded(
-                                      child: Text('Income Certificate Application', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF111827))),
+                                      child: Text('Income Certificate Application', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF171717))),
                                     ),
-                                    const Icon(Icons.keyboard_arrow_down, color: Color(0xFF111827)),
+                                    const Icon(Icons.keyboard_arrow_down, color: Color(0xFF171717)),
                                   ],
                                 ),
                                 const SizedBox(height: 8),
@@ -282,7 +327,7 @@ class SaveAndResumeCardScreen extends StatelessWidget {
                                   child: const Text('Step 3 of 5 Document Upload', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFFAD4E00))),
                                 ),
                                 const SizedBox(height: 8),
-                                const Text('Last saved: 10 Apr 2026', style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                                const Text('Last saved: 10 Apr 2026', style: TextStyle(fontSize: 14, color: Color(0xFF404040))),
                               ],
                             ),
                           ),
@@ -312,9 +357,9 @@ class SaveAndResumeCardScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Resume application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                  Ux4gButton(text: 'Resume application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: primaryColor, borderColor: primaryColor),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
                 ],
               ),
             ),
@@ -325,7 +370,7 @@ class SaveAndResumeCardScreen extends StatelessWidget {
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
-                  Image.asset('assets/digital_india_logo.png', height: 24),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -349,27 +394,44 @@ class _SaveAndResumeMockup extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: _getBg(context),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Ux4gAppHeader(
-                variant: Ux4gAppHeaderVariant.light,
+                variant: _isDark(context)
+                    ? Ux4gAppHeaderVariant.light
+                    : Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingWidgets: [
-                  SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  const SizedBox(width: 1),
+                  SvgPicture.asset(
+                    _nationalEmblemLogoPath,
+                    height: 40,
+                    colorFilter: _isDark(context)
+                        ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                        : null,
+                  ),
                   Container(
                     height: 32,
                     width: 1,
-                    color: const Color(0xFFD1D5DB),
+                    color: _isDark(context)
+                        ? Ux4gPalette.neutral700
+                        : const Color(0xFFD1D5DB),
                   ),
-                  const SizedBox(width: 1),
-                  SvgPicture.asset(_unionLogoPath, height: 32),
+                  SvgPicture.asset(
+                    _unionLogoPath,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gPalette.primary300
+                          : Ux4gPalette.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ],
               ),
-              const Divider(height: 1, color: Color(0xFFE5E7EB)),
+              Divider(height: 1, color: _getBorderColor(context)),
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
@@ -382,9 +444,10 @@ class _SaveAndResumeMockup extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFFF7E6),
+                          color: _isDark(context)
+                              ? Ux4gPalette.orange900
+                              : Ux4gPalette.orange50,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.transparent),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -392,19 +455,23 @@ class _SaveAndResumeMockup extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Expanded(
+                                Expanded(
                                   child: Text(
                                     'Income Certificate Application',
                                     style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w700,
-                                      color: _titleColor,
+                                      color: _isDark(context)
+                                          ? Ux4gPalette.neutral50
+                                          : Ux4gPalette.neutral900,
                                     ),
                                   ),
                                 ),
-                                const Icon(
+                                Icon(
                                   Icons.keyboard_arrow_down,
-                                  color: _titleColor,
+                                  color: _isDark(context)
+                                      ? Ux4gPalette.neutral50
+                                      : Ux4gPalette.neutral900,
                                 ),
                               ],
                             ),
@@ -415,24 +482,30 @@ class _SaveAndResumeMockup extends StatelessWidget {
                                 vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFE7BF),
+                                color: _isDark(context)
+                                    ? Ux4gPalette.orange800
+                                    : Ux4gPalette.orange100,
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                              child: const Text(
+                              child: Text(
                                 'Step 3 of 5 Document Upload',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFAD4E00),
+                                  color: _isDark(context)
+                                      ? Ux4gPalette.orange300
+                                      : Ux4gPalette.orange800,
                                 ),
                               ),
                             ),
                             const SizedBox(height: 12),
-                            const Text(
+                            Text(
                               'Last saved: 10 Apr 2026',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: _subtleText,
+                                color: _isDark(context)
+                                    ? Ux4gPalette.neutral200
+                                    : Ux4gPalette.neutral700,
                               ),
                             ),
                           ],
@@ -440,24 +513,36 @@ class _SaveAndResumeMockup extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
                       Shimmer.fromColors(
-                        baseColor: const Color(0xFFE5E7EB),
-                        highlightColor: const Color(0xFFF9FAFB),
+                        baseColor: _isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : const Color(0xFFE5E7EB),
+                        highlightColor: _isDark(context)
+                            ? Ux4gPalette.neutral700
+                            : const Color(0xFFF9FAFB),
                         child: Container(
                           height: 140,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: _isDark(context)
+                                ? Ux4gPalette.neutral900
+                                : Colors.white,
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                       ),
                       const SizedBox(height: 16),
                       Shimmer.fromColors(
-                        baseColor: const Color(0xFFE5E7EB),
-                        highlightColor: const Color(0xFFF9FAFB),
+                        baseColor: _isDark(context)
+                            ? Ux4gPalette.neutral800
+                            : const Color(0xFFE5E7EB),
+                        highlightColor: _isDark(context)
+                            ? Ux4gPalette.neutral700
+                            : const Color(0xFFF9FAFB),
                         child: Container(
                           height: 140,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: _isDark(context)
+                                ? Ux4gPalette.neutral900
+                                : Colors.white,
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
@@ -474,6 +559,7 @@ class _SaveAndResumeMockup extends StatelessWidget {
                 child: Column(
                   children: [
                     Ux4gButton(
+                      height: 48,
                       text: 'Resume application',
                       onPressed: () {},
                       size: Ux4gButtonSize.large,
@@ -481,13 +567,14 @@ class _SaveAndResumeMockup extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
+                      height: 48,
                       text: 'Start fresh',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
+                      contentColor: _getStartFreshColor(context),
+                      borderColor: _getStartFreshColor(context),
                     ),
                   ],
                 ),
@@ -497,12 +584,21 @@ class _SaveAndResumeMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: _isDark(context)
+                            ? Ux4gPalette.neutral500
+                            : const Color(0xFF9CA3AF),
+                      ),
                     ),
                     const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    Image.asset(
+                      _digitalIndiaLogoPath,
+                      height: 24,
+                      color: _isDark(context) ? Colors.white : null,
+                    ),
                   ],
                 ),
               ),
@@ -522,31 +618,51 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: _cardBg,
+        backgroundColor: _getCardBg(context),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                color: Colors.white,
+                color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
-                      variant: Ux4gAppHeaderVariant.light,
+                      variant: _isDark(context)
+                          ? Ux4gAppHeaderVariant.light
+                          : Ux4gAppHeaderVariant.light,
                       title: '',
                       leadingWidgets: [
-                        SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                        const SizedBox(width: 1),
+                        SvgPicture.asset(
+                          _nationalEmblemLogoPath,
+                          height: 40,
+                          colorFilter: _isDark(context)
+                              ? const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                )
+                              : null,
+                        ),
                         Container(
                           height: 32,
                           width: 1,
-                          color: const Color(0xFFD1D5DB),
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral700
+                              : const Color(0xFFD1D5DB),
                         ),
-                        const SizedBox(width: 1),
-                        SvgPicture.asset(_unionLogoPath, height: 32),
+                        SvgPicture.asset(
+                          _unionLogoPath,
+                          height: 32,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gPalette.primary300
+                                : Ux4gPalette.primary600,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       ],
                     ),
-                    const Divider(height: 1, color: Color(0xFFE5E7EB)),
+                    Divider(height: 1, color: _getBorderColor(context)),
                   ],
                 ),
               ),
@@ -561,8 +677,13 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: _isDark(context)
+                              ? Ux4gPalette.neutral900
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(16),
+                          border: _isDark(context)
+                              ? Border.all(color: Ux4gPalette.neutral800)
+                              : null,
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.05),
@@ -577,7 +698,9 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFFF7E6),
+                                color: _isDark(context)
+                                    ? Ux4gPalette.orange900
+                                    : Ux4gPalette.orange50,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Column(
@@ -587,19 +710,23 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Expanded(
+                                      Expanded(
                                         child: Text(
                                           'Income Certificate Application',
                                           style: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w700,
-                                            color: _titleColor,
+                                            color: _isDark(context)
+                                                ? Ux4gPalette.neutral50
+                                                : Ux4gPalette.neutral900,
                                           ),
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.keyboard_arrow_down,
-                                        color: _titleColor,
+                                        color: _isDark(context)
+                                            ? Ux4gPalette.neutral50
+                                            : Ux4gPalette.neutral900,
                                       ),
                                     ],
                                   ),
@@ -610,24 +737,30 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                                       vertical: 2,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFFFE7BF),
+                                      color: _isDark(context)
+                                          ? Ux4gPalette.orange800
+                                          : Ux4gPalette.orange100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
-                                    child: const Text(
+                                    child: Text(
                                       'Step 3 of 5 Document Upload',
                                       style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
-                                        color: Color(0xFFAD4E00),
+                                        color: _isDark(context)
+                                            ? Ux4gPalette.orange300
+                                            : Ux4gPalette.orange800,
                                       ),
                                     ),
                                   ),
                                   const SizedBox(height: 8),
-                                  const Text(
+                                  Text(
                                     'Last saved: 10 Apr 2026',
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: _subtleText,
+                                      color: _isDark(context)
+                                          ? Ux4gPalette.neutral200
+                                          : Ux4gPalette.neutral700,
                                     ),
                                   ),
                                 ],
@@ -635,24 +768,36 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                             ),
                             const SizedBox(height: 32),
                             Shimmer.fromColors(
-                              baseColor: const Color(0xFFE5E7EB),
-                              highlightColor: const Color(0xFFF9FAFB),
+                              baseColor: _isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : const Color(0xFFE5E7EB),
+                              highlightColor: _isDark(context)
+                                  ? Ux4gPalette.neutral700
+                                  : const Color(0xFFF9FAFB),
                               child: Container(
                                 height: 140,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: _isDark(context)
+                                      ? Ux4gPalette.neutral900
+                                      : Colors.white,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
                             ),
                             const SizedBox(height: 16),
                             Shimmer.fromColors(
-                              baseColor: const Color(0xFFE5E7EB),
-                              highlightColor: const Color(0xFFF9FAFB),
+                              baseColor: _isDark(context)
+                                  ? Ux4gPalette.neutral800
+                                  : const Color(0xFFE5E7EB),
+                              highlightColor: _isDark(context)
+                                  ? Ux4gPalette.neutral700
+                                  : const Color(0xFFF9FAFB),
                               child: Container(
                                 height: 140,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: _isDark(context)
+                                      ? Ux4gPalette.neutral900
+                                      : Colors.white,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
@@ -672,6 +817,7 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                 child: Column(
                   children: [
                     Ux4gButton(
+                      height: 48,
                       text: 'Resume application',
                       onPressed: () {},
                       size: Ux4gButtonSize.large,
@@ -679,13 +825,14 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
+                      height: 48,
                       text: 'Start fresh',
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
+                      contentColor: _getStartFreshColor(context),
+                      borderColor: _getStartFreshColor(context),
                     ),
                   ],
                 ),
@@ -695,12 +842,21 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: _isDark(context)
+                            ? Ux4gPalette.neutral500
+                            : const Color(0xFF9CA3AF),
+                      ),
                     ),
                     const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    Image.asset(
+                      _digitalIndiaLogoPath,
+                      height: 24,
+                      color: _isDark(context) ? Colors.white : null,
+                    ),
                   ],
                 ),
               ),

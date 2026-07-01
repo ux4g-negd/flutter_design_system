@@ -38,16 +38,31 @@ class Ux4gPanInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Ux4gInputFieldStatus currentStatus = status;
+    String? currentCaption = caption;
+
+    if (value.length == 10) {
+      if (status == Ux4gInputFieldStatus.defaultStatus) {
+        if (validatePan(value)) {
+          currentStatus = Ux4gInputFieldStatus.success;
+          currentCaption = 'Valid PAN number';
+        } else {
+          currentStatus = Ux4gInputFieldStatus.error;
+          currentCaption = 'Please enter a valid PAN number';
+        }
+      }
+    }
+
     return Ux4gInputField(
       value: value,
       onValueChange: onValueChange,
       size: size,
       type: Ux4gInputFieldType.text,
-      status: status,
+      status: currentStatus,
       label: label,
       required: required,
       placeholder: placeholder,
-      caption: caption,
+      caption: currentCaption,
       leadingIcon: leadingIcon,
       trailingIcon: trailingIcon,
       onTrailingIconPressed: onTrailingIconPressed,

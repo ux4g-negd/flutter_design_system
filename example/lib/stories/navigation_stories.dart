@@ -209,6 +209,221 @@ Ux4gAccordion(
         );
       },
     ),
+    WidgetbookUseCase(
+      name: 'States Showcase',
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final hoverBg = isDark ? const Color(0xFF374151) : const Color(0xFFE5E7EB);
+        final primaryColor = isDark ? const Color(0xFFA5B4FC) : const Color(0xFF4F46E5);
+        final placeholderText = 'Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development. Its purpose is to permit a page layout to be designed, independently of the copy that will subsequently populate it, or to demonstrate various fonts of a typeface without meaningful text that could be distracting.';
+
+        final hasBackground = context.knobs.boolean(label: 'With Background', initialValue: true);
+        final baseBgColor = hasBackground ? null : Colors.transparent;
+
+        return ComponentDocs(
+          name: 'Ux4gAccordion — States Showcase',
+          description: 'A visual showcase of the various interaction states of the accordion item.',
+          code: '''Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    // 1. Default
+    Ux4gAccordion(
+      title: 'Accordion Item',
+${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: false,
+      onExpandedChange: (_) {},
+      child: const Text(''),
+    ),
+    const SizedBox(height: 16),
+    
+    // 2. Hovered (simulated)
+    Ux4gAccordion(
+      title: 'Accordion Item',
+      expanded: false,
+      backgroundColor: const Color(0xFF374151), // hoverBg
+      iconColor: const Color(0xFFA5B4FC), // primaryColor
+      onExpandedChange: (_) {},
+      child: const Text(''),
+    ),
+    const SizedBox(height: 16),
+
+    // 3. Expanded
+    Ux4gAccordion(
+      title: 'Accordion Item',
+${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: true,
+      onExpandedChange: (_) {},
+      child: Text('...'),
+    ),
+    const SizedBox(height: 16),
+
+    // 4. Active/Focused (simulated)
+    Ux4gAccordion(
+      title: 'Accordion Item',
+${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: false,
+      collapsedBorderColor: const Color(0xFFA5B4FC), // primaryColor
+      onExpandedChange: (_) {},
+      child: const Text(''),
+    ),
+    const SizedBox(height: 16),
+
+    // 5. Disabled
+    Ux4gAccordion(
+      title: 'Accordion Item',
+${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: false,
+      enabled: false,
+      child: const Text(''),
+    ),
+  ],
+)''',
+          child: SizedBox(
+            width: 340,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // 1. Default
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  backgroundColor: baseBgColor,
+                  expanded: false,
+                  onExpandedChange: (_) {},
+                  child: const Text(''),
+                ),
+                const SizedBox(height: 16),
+                
+                // 2. Hovered (simulated)
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  expanded: false,
+                  backgroundColor: hoverBg,
+                  iconColor: primaryColor,
+                  onExpandedChange: (_) {},
+                  child: const Text(''),
+                ),
+                const SizedBox(height: 16),
+
+                // 3. Expanded
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  backgroundColor: baseBgColor,
+                  expanded: true,
+                  onExpandedChange: (_) {},
+                  child: Text(
+                    placeholderText,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      height: 1.5,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                // 4. Active/Focused (simulated)
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  backgroundColor: baseBgColor,
+                  expanded: false,
+                  collapsedBorderColor: primaryColor,
+                  onExpandedChange: (_) {},
+                  child: const Text(''),
+                ),
+                const SizedBox(height: 16),
+
+                // 5. Disabled
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  backgroundColor: baseBgColor,
+                  expanded: false,
+                  enabled: false,
+                  child: const Text(''),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+
+    WidgetbookUseCase(
+      name: 'Leading Chevron',
+      builder: (context) {
+        bool expanded1 = true;
+        bool expanded2 = false;
+        
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            final isDark = Theme.of(context).brightness == Brightness.dark;
+            final placeholderText = 'Donec porta turpis ut ipsum tincidunt, sit amet aliquam leo laoreet. Nunc suscipit ligula non arcu.';
+
+            final hasBackground = context.knobs.boolean(label: 'With Background', initialValue: true);
+            final baseBgColor = hasBackground ? null : Colors.transparent;
+
+            return ComponentDocs(
+              name: 'Ux4gAccordion — Leading Chevron',
+              description: 'The chevron arrow can be positioned on the left side (leading) instead of the right side.',
+              code: '''Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Ux4gAccordion(
+      title: 'Accordion Item',
+      chevronPosition: Ux4gAccordionChevronPosition.leading,
+${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: expanded1,
+      onExpandedChange: (val) => setState(() => expanded1 = val),
+      child: Text('...'),
+    ),
+    const SizedBox(height: 16),
+    Ux4gAccordion(
+      title: 'Accordion Item',
+      chevronPosition: Ux4gAccordionChevronPosition.leading,
+${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: expanded2,
+      onExpandedChange: (val) => setState(() => expanded2 = val),
+      child: Text('...'),
+    ),
+  ],
+)''',
+              child: SizedBox(
+                width: 340,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Ux4gAccordion(
+                      title: 'Accordion Item',
+                      chevronPosition: Ux4gAccordionChevronPosition.leading,
+                      backgroundColor: baseBgColor,
+                      expanded: expanded1,
+                      onExpandedChange: (val) => setState(() => expanded1 = val),
+                      child: Text(
+                        placeholderText,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          height: 1.5,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Ux4gAccordion(
+                      title: 'Accordion Item',
+                      chevronPosition: Ux4gAccordionChevronPosition.leading,
+                      backgroundColor: baseBgColor,
+                      expanded: expanded2,
+                      onExpandedChange: (val) => setState(() => expanded2 = val),
+                      child: Text(
+                        placeholderText,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          height: 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ),
   ],
 );
 
@@ -303,90 +518,365 @@ final statusBannerComponent = WidgetbookComponent(
   useCases: [
     WidgetbookUseCase(
       name: 'All variants',
-      builder: (context) => ComponentDocs(
-        name: 'Ux4gStatusBanner',
-        description:
-            'Notification banners with semantic colour variants including light and solid options.',
-        code: '''Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.successLight,
-  title: 'Operation successful',
-  subtitle: 'Your data was saved.',
-  onDismiss: () {},
-);''',
-        props: const [
-          PropRow(
-            name: 'variant',
-            type: 'Ux4gBannerVariant',
-            description:
-                'warningLight / warningSolid / errorLight / successLight / savingLight / infoLight / neutralLight / primaryLight.',
-            required: true,
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final ux4gTypography = Theme.of(context).extension<Ux4gTypography>();
+        final bannerBgColor = isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED); // orange900 : orange50
+        final titleColor = isDark ? const Color(0xFFF9FAFB) : const Color(0xFF111827);    // neutral50 : neutral900
+        final actualTitleStyle = ux4gTypography?.tS_default?.copyWith(color: titleColor) ?? TextStyle(color: titleColor, fontWeight: FontWeight.bold);
+        
+        final warningBg = isDark ? const Color(0xFFAD4E00) : const Color(0xFFFFE7BF);     // orange800 : orange100
+        final warningText = isDark ? const Color(0xFFFFC973) : const Color(0xFFAD4E00);   // orange300 : orange800
+        final warningPillStyle = ux4gTypography?.lM_default?.copyWith(color: warningText) ?? TextStyle(color: warningText, fontSize: 12, fontWeight: FontWeight.w500);
+        
+        final warningPill = Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(
+            color: warningBg,
+            borderRadius: BorderRadius.circular(4),
           ),
-          PropRow(
-            name: 'title',
-            type: 'String',
-            description: 'Banner heading.',
-            required: true,
+          child: Text('Step 3 of 5 Document Upload', style: warningPillStyle),
+        );
+
+        final datePill = Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(
+            color: warningBg,
+            borderRadius: BorderRadius.circular(4),
           ),
-          PropRow(
-            name: 'subtitle',
-            type: 'String?',
-            description: 'Supporting text.',
-          ),
-          PropRow(
-            name: 'titleStyle',
-            type: 'TextStyle?',
-            description: 'Custom style for title.',
-          ),
-          PropRow(
-            name: 'subtitleStyle',
-            type: 'TextStyle?',
-            description: 'Custom style for subtitle.',
-          ),
-          PropRow(
-            name: 'badge',
-            type: 'Widget?',
-            description: 'Small badge shown next to title.',
-          ),
-          PropRow(
-            name: 'leadingIcon',
-            type: 'Widget?',
-            description: 'Custom icon on the left.',
-          ),
-          PropRow(
-            name: 'trailingIcon',
-            type: 'Widget?',
-            description: 'Custom icon on the right.',
-          ),
-          PropRow(
-            name: 'actions',
-            type: 'List<Widget>?',
-            description: 'Action buttons at the bottom.',
-          ),
-          PropRow(
-            name: 'onDismiss',
-            type: 'VoidCallback?',
-            description: 'Shows × button when provided.',
-          ),
+          child: Text('16 Apr', style: warningPillStyle),
+        );
+
+        final subtitleColor = isDark ? const Color(0xFFE5E7EB) : const Color(0xFF374151); // neutral200 : neutral700
+        final subtitleTextStyle = ux4gTypography?.bS_default?.copyWith(color: subtitleColor) ?? TextStyle(color: subtitleColor, fontSize: 14);
+
+        final solidBannerBg = isDark ? const Color(0xFFFDBA74) : const Color(0xFFEA580C); // orange300 : orange600
+        final solidBannerTextColor = isDark ? const Color(0xFF111827) : const Color(0xFFF9FAFB); // neutral900 : neutral50
+        final solidBannerTitleStyle = ux4gTypography?.bS_strong?.copyWith(color: solidBannerTextColor) ?? TextStyle(color: solidBannerTextColor, fontWeight: FontWeight.bold);
+
+        final savingBgColor = isDark ? const Color(0xFF873C05) : const Color(0xFFFFF7E6); // secondary900 : secondary50
+        final savingTextColor = isDark ? const Color(0xFFD9D9D9) : const Color(0xFF737373); // neutral300 : neutral500
+        final savingTextStyle = ux4gTypography?.bS_default?.copyWith(color: savingTextColor) ?? TextStyle(color: savingTextColor, fontSize: 14);
+
+        final successBgColor = isDark ? const Color(0xFF00381F) : const Color(0xFFF2FCEF); // green900 : green50
+        final successIconColor = isDark ? const Color(0xFF1AA64A) : const Color(0xFF128937); // green500 : green600
+        final successTextColor = isDark ? const Color(0xFFF9FAFB) : const Color(0xFF111827); // neutral50 : neutral900
+        final successTextStyle = ux4gTypography?.bS_default?.copyWith(color: successTextColor) ?? TextStyle(color: successTextColor, fontSize: 14);
+
+        final expiryTitleStyle = ux4gTypography?.bS_strong?.copyWith(color: titleColor) ?? TextStyle(color: titleColor, fontWeight: FontWeight.bold);
+
+        final errorBgColor = isDark ? const Color(0xFF60150F) : const Color(0xFFFFF8F8); // red900 : red50
+        final errorTextColor = isDark ? const Color(0xFFF9FAFB) : const Color(0xFF111827); // neutral50 : neutral900
+        final errorIconColor = isDark ? const Color(0xFFF55E57) : const Color(0xFFDB372D); // red500 : red600
+        final errorTextStyle = ux4gTypography?.bS_default?.copyWith(color: errorTextColor) ?? TextStyle(color: errorTextColor, fontSize: 14);
+        final actionTextColor = isDark ? const Color(0xFFFDBA74) : const Color(0xFF9A3412); // orange300 : orange800
+        final actionTextStyle = ux4gTypography?.lXL_default?.copyWith(color: actionTextColor) ?? TextStyle(color: actionTextColor, fontWeight: FontWeight.bold);
+
+        final successRightTextColor = isDark ? const Color(0xFF80DA88) : const Color(0xFF00522C); // green300 : green800
+        final successRightTextStyle = ux4gTypography?.bM_default?.copyWith(color: successRightTextColor) ?? TextStyle(color: successRightTextColor, fontSize: 14);
+
+        final discardButtonColor = isDark ? const Color(0xFFF55E57) : const Color(0xFFDB372D); // red500 : red600
+        final buttonTextStyle = ux4gTypography?.lXL_default ?? const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+
+        return ComponentDocs(
+          name: 'Ux4gStatusBanner',
+          description: 'Various layout patterns built using Ux4gStatusBanner.',
+          code: '''Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    // 1. Accordion style (collapsed)
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+      backgroundColor: isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED),
+      title: 'Income Certificate Application',
+      titleStyle: typography.tS_default.copyWith(color: titleColor),
+      subtitleWidget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 8),
+          warningPill, // Uses lM_default
+          const SizedBox(height: 8),
+          Text('Last saved: 10 Apr 2026', style: typography.bS_default.copyWith(color: subtitleColor)),
         ],
-        child: SizedBox(
-          width: 380,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: Ux4gBannerVariant.values
-                .map(
-                  (v) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Ux4gStatusBanner(
-                      variant: v,
-                      title: v.name,
-                      subtitle: 'Supporting subtitle text',
-                    ),
+      ),
+      trailingIcon: const Icon(Icons.keyboard_arrow_down),
+    ),
+    const SizedBox(height: 24),
+
+    // 2. Solid Warning Banner
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningSolid,
+      backgroundColor: isDark ? const Color(0xFFFDBA74) : const Color(0xFFEA580C),
+      title: 'Your draft expires tomorrow. Submit today',
+      titleStyle: typography.bS_strong.copyWith(color: solidBannerTextColor),
+    ),
+    const SizedBox(height: 24),
+
+    // 3. Saving State
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+      backgroundColor: isDark ? const Color(0xFF873C05) : const Color(0xFFFFF7E6),
+      title: '',
+      trailingIcon: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),
+          const SizedBox(width: 8),
+          Text('Saving', style: typography.bS_default.copyWith(color: savingTextColor)),
+        ],
+      ),
+    ),
+    const SizedBox(height: 24),
+
+    // 4. Success Banner (Left Icon)
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.successLight,
+      backgroundColor: isDark ? const Color(0xFF00381F) : const Color(0xFFF2FCEF),
+      title: 'Draft saved successfully at 3:14 PM',
+      titleStyle: typography.bS_default.copyWith(color: successTextColor),
+      leadingIcon: Icon(Icons.check_circle_outline, color: isDark ? const Color(0xFF1AA64A) : const Color(0xFF128937)),
+    ),
+    const SizedBox(height: 24),
+
+    // 5. Expiry Warning with Badge
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+      backgroundColor: isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED),
+      title: 'Your draft expires in 5 days',
+      titleStyle: typography.bS_strong.copyWith(color: titleColor),
+      badge: datePill,
+    ),
+    const SizedBox(height: 24),
+
+    // 6. Error Banner with Action
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.errorLight,
+      backgroundColor: isDark ? const Color(0xFF60150F) : const Color(0xFFFFF8F8),
+      title: 'Draft expired on 9 April\\n2026',
+      titleStyle: typography.bS_default.copyWith(color: errorTextColor),
+      leadingIcon: Icon(Icons.error_outline, color: isDark ? const Color(0xFFF55E57) : const Color(0xFFDB372D)),
+      trailingIcon: Text('Action', style: typography.lXL_default.copyWith(color: actionTextColor)),
+    ),
+    const SizedBox(height: 24),
+
+    // 7. Success Banner (Right Icon)
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.successLight,
+      backgroundColor: successBgColor,
+      title: '',
+      trailingIcon: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.check_circle_outline, color: successIconColor, size: 18),
+          const SizedBox(width: 4),
+          Text('Saved 3:14 PM', style: successRightTextStyle),
+        ],
+      ),
+    ),
+    const SizedBox(height: 24),
+
+    // 8. Accordion style (expanded)
+    Ux4gStatusBanner(
+      borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+      backgroundColor: isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED),
+      title: 'Income Certificate Application',
+      titleStyle: typography.tS_default.copyWith(color: titleColor),
+      subtitleWidget: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 8),
+          warningPill, // Uses lM_default
+          const SizedBox(height: 8),
+          Text('Last saved: 10 Apr 2026', style: typography.bS_default.copyWith(color: subtitleColor)),
+        ],
+      ),
+      trailingIcon: const Icon(Icons.keyboard_arrow_up),
+      actionsAlignment: WrapAlignment.spaceBetween,
+      actions: [
+        TextButton(
+          onPressed: () {},
+          child: Text('Discard', style: typography.lXL_default.copyWith(color: discardButtonColor)),
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF4F46E5), 
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+          child: Text('Resume', style: typography.lXL_default.copyWith(color: Colors.white)),
+        ),
+      ],
+    ),
+  ],
+)''',
+          child: SizedBox(
+            width: 480,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // 1. Accordion style (collapsed)
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+                  backgroundColor: bannerBgColor,
+                  title: 'Income Certificate Application',
+                  titleStyle: actualTitleStyle,
+                  subtitleWidget: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      warningPill,
+                      const SizedBox(height: 8),
+                      Text('Last saved: 10 Apr 2026', style: subtitleTextStyle),
+                    ],
                   ),
-                )
-                .toList(),
+                  trailingIcon: const Icon(Icons.keyboard_arrow_down),
+                ),
+                const SizedBox(height: 24),
+
+                // 2. Solid Warning Banner
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningSolid,
+                  backgroundColor: solidBannerBg,
+                  title: 'Your draft expires tomorrow. Submit today',
+                  titleStyle: solidBannerTitleStyle,
+                ),
+                const SizedBox(height: 24),
+
+                // 3. Saving State
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+                  backgroundColor: savingBgColor,
+                  title: '',
+                  trailingIcon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),
+                      const SizedBox(width: 8),
+                      Text('Saving', style: savingTextStyle),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // 4. Success Banner (Left Icon)
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+                  variant: Ux4gBannerVariant.successLight,
+                  backgroundColor: successBgColor,
+                  title: 'Draft saved successfully at 3:14 PM',
+                  titleStyle: successTextStyle,
+                  leadingIcon: Icon(Icons.check_circle_outline, color: successIconColor),
+                ),
+                const SizedBox(height: 24),
+
+                // 5. Expiry Warning with Badge
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+                  variant: Ux4gBannerVariant.warningLight,
+                  backgroundColor: bannerBgColor,
+                  title: 'Your draft expires in 5 days',
+                  titleStyle: expiryTitleStyle,
+                  badge: datePill,
+                ),
+                const SizedBox(height: 24),
+
+                // 6. Error Banner with Action
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+                  variant: Ux4gBannerVariant.errorLight,
+                  backgroundColor: errorBgColor,
+                  title: 'Draft expired on 9 April\n2026',
+                  titleStyle: errorTextStyle,
+                  leadingIcon: Icon(Icons.error_outline, color: errorIconColor),
+                  trailingIcon: Text('Action', style: actionTextStyle),
+                ),
+                const SizedBox(height: 24),
+
+                // 7. Success Banner (Right Icon)
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+                  variant: Ux4gBannerVariant.successLight,
+                  backgroundColor: successBgColor,
+                  title: '',
+                  trailingIcon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.check_circle_outline, color: successIconColor, size: 18),
+                      const SizedBox(width: 4),
+                      Text('Saved 3:14 PM', style: successRightTextStyle),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // 8. Accordion style (expanded)
+                Ux4gStatusBanner(
+                  borderColor: Colors.transparent,
+      variant: Ux4gBannerVariant.warningLight,
+                  backgroundColor: bannerBgColor,
+                  title: 'Income Certificate Application',
+                  titleStyle: actualTitleStyle,
+                  subtitleWidget: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      warningPill,
+                      const SizedBox(height: 8),
+                      Text('Last saved: 10 Apr 2026', style: subtitleTextStyle),
+                    ],
+                  ),
+                  trailingIcon: const Icon(Icons.keyboard_arrow_up),
+                  actionsAlignment: WrapAlignment.spaceBetween,
+                  actions: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Discard', style: buttonTextStyle.copyWith(color: discardButtonColor)),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4F46E5), 
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                      child: Text('Resume', style: buttonTextStyle.copyWith(color: Colors.white)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+          props: const [
+            PropRow(name: 'variant', type: 'Ux4gBannerVariant', description: 'Sets the visual variant of the banner.', required: true),
+            PropRow(name: 'title', type: 'String', description: 'Primary message of the banner.', required: true),
+            PropRow(name: 'subtitle', type: 'String?', description: 'Secondary descriptive text.'),
+            PropRow(name: 'subtitleWidget', type: 'Widget?', description: 'Custom widget to replace the default subtitle text.'),
+            PropRow(name: 'titleStyle', type: 'TextStyle?', description: 'Overrides the default title text style.'),
+            PropRow(name: 'subtitleStyle', type: 'TextStyle?', description: 'Overrides the default subtitle text style.'),
+            PropRow(name: 'badge', type: 'Widget?', description: 'Optional badge widget displayed near the title.'),
+            PropRow(name: 'leadingIcon', type: 'Widget?', description: 'Widget displayed at the start of the banner.'),
+            PropRow(name: 'trailingIcon', type: 'Widget?', description: 'Widget displayed at the end of the banner.'),
+            PropRow(name: 'actions', type: 'List<Widget>?', description: 'List of action buttons displayed below the title.'),
+            PropRow(name: 'onDismiss', type: 'VoidCallback?', description: 'Callback when the dismiss button is tapped.'),
+            PropRow(name: 'backgroundColor', type: 'Color?', description: 'Overrides the background color.'),
+            PropRow(name: 'borderColor', type: 'Color?', description: 'Overrides the border color.'),
+          ],
+        );
+      },
     ),
     WidgetbookUseCase(
       name: 'Custom styling',
@@ -433,41 +923,6 @@ final statusBannerComponent = WidgetbookComponent(
           ),
         ),
       ),
-    ),
-    WidgetbookUseCase(
-      name: 'With dismiss',
-      builder: (context) {
-        bool dismissed = false;
-        return StatefulBuilder(
-          builder: (ctx, setState) {
-            return ComponentDocs(
-              name: 'Ux4gStatusBanner — With Dismiss',
-              description:
-                  'Providing onDismiss shows a × close button on the banner.',
-              code:
-                  'Ux4gStatusBanner(\n'
-                  '  variant: Ux4gBannerVariant.successLight,\n'
-                  '  title: \'Changes saved\',\n'
-                  '  onDismiss: () => setState(() => dismissed = true),\n'
-                  ');',
-              child: SizedBox(
-                width: 380,
-                child: dismissed
-                    ? const Text(
-                        'Banner dismissed',
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    : Ux4gStatusBanner(
-                        variant: Ux4gBannerVariant.successLight,
-                        title: 'Changes saved',
-                        subtitle: 'Your profile has been updated.',
-                        onDismiss: () => setState(() => dismissed = true),
-                      ),
-              ),
-            );
-          },
-        );
-      },
     ),
   ],
 );
@@ -620,6 +1075,93 @@ Ux4gEmptyState(
         ),
       ),
     ),
+    WidgetbookUseCase(
+      name: 'All variants',
+      builder: (context) => ComponentDocs(
+        name: 'Ux4gEmptyState — Variants',
+        description:
+            'Predefined variants that automatically apply the correct icon and color.',
+        code: '''Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Ux4gEmptyState(
+      variant: Ux4gEmptyStateVariant.noResults,
+      title: 'No results found',
+      subtitle: 'Did you mean:',
+      description: 'Driving License, Ration Card',
+      buttonText: 'Clear all filters',
+      onButtonPressed: () {},
+    ),
+    const SizedBox(height: 16),
+    Ux4gEmptyState(
+      variant: Ux4gEmptyStateVariant.noData,
+      title: 'No active applications',
+      subtitle: 'Start your application easily',
+      description: 'by clicking on the button below.',
+      buttonText: 'Start application',
+      onButtonPressed: () {},
+    ),
+    const SizedBox(height: 16),
+    Ux4gEmptyState(
+      variant: Ux4gEmptyStateVariant.comingSoon,
+      title: 'Coming soon',
+      subtitle: 'This feature is under development.',
+      buttonText: 'Go Back',
+      onButtonPressed: () {},
+    ),
+    const SizedBox(height: 16),
+    Ux4gEmptyState(
+      variant: Ux4gEmptyStateVariant.error,
+      title: 'Could not load data',
+      subtitle: 'Last updated: 4 minutes ago',
+      buttonText: 'Refresh',
+      onButtonPressed: () {},
+    ),
+  ],
+)''',
+        child: SizedBox(
+          width: 320,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Ux4gEmptyState(
+                variant: Ux4gEmptyStateVariant.noResults,
+                title: 'No results found',
+                subtitle: 'Did you mean:',
+                description: 'Driving License, Ration Card',
+                buttonText: 'Clear all filters',
+                onButtonPressed: () {},
+              ),
+              const SizedBox(height: 16),
+              Ux4gEmptyState(
+                variant: Ux4gEmptyStateVariant.noData,
+                title: 'No active applications',
+                subtitle: 'Start your application easily',
+                description: 'by clicking on the button below.',
+                buttonText: 'Start application',
+                onButtonPressed: () {},
+              ),
+              const SizedBox(height: 16),
+              Ux4gEmptyState(
+                variant: Ux4gEmptyStateVariant.comingSoon,
+                title: 'Coming soon',
+                subtitle: 'This feature is under development.',
+                buttonText: 'Go Back',
+                onButtonPressed: () {},
+              ),
+              const SizedBox(height: 16),
+              Ux4gEmptyState(
+                variant: Ux4gEmptyStateVariant.error,
+                title: 'Could not load data',
+                subtitle: 'Last updated: 4 minutes ago',
+                buttonText: 'Refresh',
+                onButtonPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
   ],
 );
 
@@ -746,6 +1288,86 @@ final choiceChipComponent = WidgetbookComponent(
           },
         );
       },
+    ),
+    WidgetbookUseCase(
+      name: 'With Icon',
+      builder: (context) {
+        int selected = 0;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Ux4gChoiceChip — With Icon',
+              description: 'Choice chips displaying leading icons or avatars.',
+              code: '''Ux4gChoiceChip(
+  text: 'Favorites',
+  leadingContent: Icon(Icons.favorite, size: 16),
+  selected: selected == 0,
+  onClick: () => setState(() => selected = 0),
+);''',
+              child: Wrap(
+                spacing: 8,
+                children: [
+                  Ux4gChoiceChip(
+                    text: 'Favorites',
+                    leadingContent: const Icon(Icons.favorite, size: 16),
+                    selected: selected == 0,
+                    onClick: () => setState(() => selected = 0),
+                  ),
+                  Ux4gChoiceChip(
+                    text: 'Trending',
+                    leadingContent: const Icon(Icons.trending_up, size: 16),
+                    selected: selected == 1,
+                    onClick: () => setState(() => selected = 1),
+                  ),
+                  Ux4gChoiceChip(
+                    text: 'Recent',
+                    leadingContent: const Icon(Icons.history, size: 16),
+                    selected: selected == 2,
+                    onClick: () => setState(() => selected = 2),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Disabled',
+      builder: (context) => ComponentDocs(
+        name: 'Ux4gChoiceChip — Disabled',
+        description: 'Choice chips in disabled state (selected and unselected).',
+        code: '''Ux4gChoiceChip(
+  text: 'Selected Disabled',
+  selected: true,
+  enabled: false,
+  onClick: () {},
+);''',
+        child: Wrap(
+          spacing: 8,
+          children: [
+            Ux4gChoiceChip(
+              text: 'Selected Disabled',
+              selected: true,
+              enabled: false,
+              onClick: () {},
+            ),
+            Ux4gChoiceChip(
+              text: 'Unselected Disabled',
+              selected: false,
+              enabled: false,
+              onClick: () {},
+            ),
+            Ux4gChoiceChip(
+              text: 'Icon Disabled',
+              leadingContent: const Icon(Icons.block, size: 16),
+              selected: false,
+              enabled: false,
+              onClick: () {},
+            ),
+          ],
+        ),
+      ),
     ),
   ],
 );
@@ -876,6 +1498,86 @@ final filterChipComponent = WidgetbookComponent(
         );
       },
     ),
+    WidgetbookUseCase(
+      name: 'With Icon',
+      builder: (context) {
+        final Set<int> selectedSet = {0};
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Ux4gFilterChip — With Icon',
+              description: 'Filter chips with leading icons.',
+              code: '''Ux4gFilterChip(
+  text: 'Downloads',
+  leadingContent: Icon(Icons.download, size: 16),
+  selected: selectedSet.contains(0),
+  onClick: () => setState(() => selectedSet.contains(0) ? selectedSet.remove(0) : selectedSet.add(0)),
+);''',
+              child: Wrap(
+                spacing: 8,
+                children: [
+                  Ux4gFilterChip(
+                    text: 'Downloads',
+                    leadingContent: const Icon(Icons.download, size: 16),
+                    selected: selectedSet.contains(0),
+                    onClick: () => setState(() => selectedSet.contains(0) ? selectedSet.remove(0) : selectedSet.add(0)),
+                  ),
+                  Ux4gFilterChip(
+                    text: 'Cloud Storage',
+                    leadingContent: const Icon(Icons.cloud, size: 16),
+                    selected: selectedSet.contains(1),
+                    onClick: () => setState(() => selectedSet.contains(1) ? selectedSet.remove(1) : selectedSet.add(1)),
+                  ),
+                  Ux4gFilterChip(
+                    text: 'Shared',
+                    leadingContent: const Icon(Icons.share, size: 16),
+                    selected: selectedSet.contains(2),
+                    onClick: () => setState(() => selectedSet.contains(2) ? selectedSet.remove(2) : selectedSet.add(2)),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Disabled',
+      builder: (context) => ComponentDocs(
+        name: 'Ux4gFilterChip — Disabled',
+        description: 'Filter chips in disabled state.',
+        code: '''Ux4gFilterChip(
+  text: 'Selected Disabled',
+  selected: true,
+  enabled: false,
+  onClick: () {},
+);''',
+        child: Wrap(
+          spacing: 8,
+          children: [
+            Ux4gFilterChip(
+              text: 'Selected Disabled',
+              selected: true,
+              enabled: false,
+              onClick: () {},
+            ),
+            Ux4gFilterChip(
+              text: 'Unselected Disabled',
+              selected: false,
+              enabled: false,
+              onClick: () {},
+            ),
+            Ux4gFilterChip(
+              text: 'Icon Disabled',
+              leadingContent: const Icon(Icons.lock, size: 16),
+              selected: false,
+              enabled: false,
+              onClick: () {},
+            ),
+          ],
+        ),
+      ),
+    ),
   ],
 );
 
@@ -968,6 +1670,69 @@ final inputChipComponent = WidgetbookComponent(
           },
         );
       },
+    ),
+    WidgetbookUseCase(
+      name: 'With Icon',
+      builder: (context) {
+        List<Map<String, dynamic>> chips = [
+          {'label': 'Alice', 'icon': Icons.person},
+          {'label': 'Bob', 'icon': Icons.person_outline},
+          {'label': 'Charlie', 'icon': Icons.supervised_user_circle},
+        ];
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Ux4gInputChip — With Icon',
+              description: 'Input chips displaying leading icons or avatars.',
+              code: '''Ux4gInputChip(
+  text: 'Alice',
+  leadingContent: Icon(Icons.person, size: 16),
+  onDismiss: () {},
+);''',
+              child: Wrap(
+                spacing: 8,
+                children: chips
+                    .map(
+                      (c) => Ux4gInputChip(
+                        text: c['label'] as String,
+                        leadingContent: Icon(c['icon'] as IconData, size: 16),
+                        onDismiss: () => setState(() => chips.remove(c)),
+                      ),
+                    )
+                    .toList(),
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Disabled',
+      builder: (context) => ComponentDocs(
+        name: 'Ux4gInputChip — Disabled',
+        description: 'Input chips in disabled state where dismiss action is disabled.',
+        code: '''Ux4gInputChip(
+  text: 'Read-only Tag',
+  enabled: false,
+  onDismiss: () {},
+);''',
+        child: Wrap(
+          spacing: 8,
+          children: [
+            Ux4gInputChip(
+              text: 'Locked Tag',
+              enabled: false,
+              onDismiss: () {},
+            ),
+            Ux4gInputChip(
+              text: 'Admin Role',
+              leadingContent: const Icon(Icons.security, size: 16),
+              enabled: false,
+              onDismiss: () {},
+            ),
+          ],
+        ),
+      ),
     ),
   ],
 );
@@ -1077,96 +1842,6 @@ final chipGroupComponent = WidgetbookComponent(
   name: 'Ux4gChipGroup',
   useCases: [
     WidgetbookUseCase(
-      name: 'Horizontal',
-      builder: (context) {
-        int selected = 0;
-        return StatefulBuilder(
-          builder: (ctx, setState) {
-            return ComponentDocs(
-              name: 'Ux4gChipGroup',
-              description:
-                  'A group container for choice chips with horizontal scroll or wrap layout. '
-                  'Pass any list of chip widgets and control arrangement.',
-              code: '''Ux4gChipGroup(
-  arrangement: Ux4gChipGroupArrangement.horizontal,
-  chips: [
-    Ux4gChoiceChip(
-      text: 'All · 48',
-      selected: selected == 0,
-      onClick: () => setState(() => selected = 0),
-    ),
-    Ux4gChoiceChip(
-      text: 'Hospitals · 12',
-      selected: selected == 1,
-      onClick: () => setState(() => selected = 1),
-    ),
-    Ux4gChoiceChip(
-      text: 'Certificates · 18',
-      selected: selected == 2,
-      onClick: () => setState(() => selected = 2),
-    ),
-  ],
-);''',
-              props: const [
-                PropRow(
-                  name: 'chips',
-                  type: 'List<Widget>',
-                  description: 'List of chip widgets to display.',
-                  required: true,
-                ),
-                PropRow(
-                  name: 'arrangement',
-                  type: 'Ux4gChipGroupArrangement',
-                  description: 'horizontal (scrollable) or wrap (multi-line).',
-                  defaultValue: 'horizontal',
-                ),
-                PropRow(
-                  name: 'spacing',
-                  type: 'double',
-                  description: 'Horizontal gap between chips.',
-                  defaultValue: '8.0',
-                ),
-                PropRow(
-                  name: 'runSpacing',
-                  type: 'double',
-                  description: 'Vertical gap between rows (wrap mode only).',
-                  defaultValue: '8.0',
-                ),
-              ],
-              child: SizedBox(
-                width: 320,
-                child: Ux4gChipGroup(
-                  arrangement: Ux4gChipGroupArrangement.horizontal,
-                  chips: [
-                    Ux4gChoiceChip(
-                      text: 'All · 48',
-                      selected: selected == 0,
-                      onClick: () => setState(() => selected = 0),
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'Hospitals · 12',
-                      selected: selected == 1,
-                      onClick: () => setState(() => selected = 1),
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'Certificates · 18',
-                      selected: selected == 2,
-                      onClick: () => setState(() => selected = 2),
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'Insurance',
-                      selected: selected == 3,
-                      onClick: () => setState(() => selected = 3),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      },
-    ),
-    WidgetbookUseCase(
       name: 'Wrap',
       builder: (context) {
         int selected = 0;
@@ -1187,7 +1862,32 @@ final chipGroupComponent = WidgetbookComponent(
     Ux4gChoiceChip(text: 'తెలుగు', selected: false, onClick: () {}),
   ],
 );''',
-              props: const [],
+              props: const [
+                PropRow(
+                  name: 'chips',
+                  type: 'List<Widget>',
+                  description: 'List of chip widgets to display.',
+                  required: true,
+                ),
+                PropRow(
+                  name: 'arrangement',
+                  type: 'Ux4gChipGroupArrangement',
+                  description: 'horizontal (scrollable) or wrap (multi-line).',
+                  defaultValue: 'wrap',
+                ),
+                PropRow(
+                  name: 'spacing',
+                  type: 'double',
+                  description: 'Horizontal gap between chips.',
+                  defaultValue: '8.0',
+                ),
+                PropRow(
+                  name: 'runSpacing',
+                  type: 'double',
+                  description: 'Vertical gap between rows (wrap mode only).',
+                  defaultValue: '8.0',
+                ),
+              ],
               child: SizedBox(
                 width: 260,
                 child: Ux4gChipGroup(
@@ -1214,6 +1914,247 @@ final chipGroupComponent = WidgetbookComponent(
                       text: 'తెలుగు',
                       selected: selected == 3,
                       onClick: () => setState(() => selected = 3),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Variants',
+      builder: (context) {
+        int selectedRow1 = 2; // Under Review
+        Set<int> selectedRow2 = {1, 3}; // Full-Time, Remote
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            final isDark = Theme.of(context).brightness == Brightness.dark;
+            final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+            final surface = Theme.of(context).colorScheme.surface;
+            
+            Widget buildBadge(String text, bool isSelected) {
+              final typography = Theme.of(context).extension<Ux4gTypography>();
+              final countStyle = typography?.lS_default ?? const TextStyle(fontSize: 11, fontWeight: FontWeight.w500);
+
+              return Container(
+                constraints: const BoxConstraints(
+                  minWidth: 18,
+                  minHeight: 18,
+                ),
+                padding: EdgeInsets.symmetric(horizontal: text.length <= 2 ? 0 : 4),
+                decoration: BoxDecoration(
+                  color: isSelected ? Colors.transparent : primary,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: countStyle.copyWith(
+                    color: surface,
+                    height: 1.0,
+                  ),
+                ),
+              );
+            }
+
+            return ComponentDocs(
+              name: 'Ux4gChipGroup — Variants',
+              description: 'Showcasing various chip group variants with and without badges. In this example, the first row uses badges inside the trailingContent property of Ux4gChoiceChip. The second row uses Ux4gFilterChip for multi-select functionality.',
+              code: '''// Custom buildBadge method to match the design
+Widget buildBadge(BuildContext context, String text, bool isSelected) {
+  final typography = Theme.of(context).extension<Ux4gTypography>();
+  final isDark = Theme.of(context).brightness == Brightness.dark;
+  final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+  final surface = Theme.of(context).colorScheme.surface;
+  final countStyle = typography?.lS_default ?? const TextStyle(fontSize: 11, fontWeight: FontWeight.w500);
+
+  return Container(
+    constraints: const BoxConstraints(
+      minWidth: 18,
+      minHeight: 18,
+    ),
+    padding: EdgeInsets.symmetric(horizontal: text.length <= 2 ? 0 : 4),
+    decoration: BoxDecoration(
+      color: isSelected ? Colors.transparent : primary,
+      borderRadius: BorderRadius.circular(100),
+    ),
+    alignment: Alignment.center,
+    child: Text(
+      text,
+      textAlign: TextAlign.center,
+      style: countStyle.copyWith(
+        color: surface,
+        height: 1.0,
+      ),
+    ),
+  );
+}
+
+// Example: ChipGroup with badges (Single select)
+Ux4gChipGroup(
+  arrangement: Ux4gChipGroupArrangement.wrap,
+  spacing: 12,
+  chips: [
+    Ux4gChoiceChip(
+      text: 'All',
+      selected: selectedRow1 == 0,
+      onClick: () => setState(() => selectedRow1 = 0),
+      trailingContent: buildBadge(context, '62', selectedRow1 == 0),
+    ),
+    Ux4gChoiceChip(
+      text: 'Pending',
+      selected: selectedRow1 == 1,
+      onClick: () => setState(() => selectedRow1 = 1),
+      trailingContent: buildBadge(context, '3', selectedRow1 == 1),
+    ),
+    Ux4gChoiceChip(
+      text: 'Under Review',
+      selected: selectedRow1 == 2,
+      onClick: () => setState(() => selectedRow1 = 2),
+      trailingContent: buildBadge(context, '12', selectedRow1 == 2),
+    ),
+    Ux4gChoiceChip(
+      text: 'Approved',
+      selected: selectedRow1 == 3,
+      onClick: () => setState(() => selectedRow1 = 3),
+      trailingContent: buildBadge(context, '41', selectedRow1 == 3),
+    ),
+    Ux4gChoiceChip(
+      text: 'Rejected',
+      selected: selectedRow1 == 4,
+      onClick: () => setState(() => selectedRow1 = 4),
+      trailingContent: buildBadge(context, '6', selectedRow1 == 4),
+    ),
+  ],
+)
+
+// Example: ChipGroup without badges (Multi-select)
+Ux4gChipGroup(
+  arrangement: Ux4gChipGroupArrangement.wrap,
+  spacing: 12,
+  chips: [
+    Ux4gFilterChip(
+      text: 'All',
+      selected: selectedRow2.contains(0),
+      onClick: () => setState(() {
+        selectedRow2.contains(0) ? selectedRow2.remove(0) : selectedRow2.add(0);
+      }),
+    ),
+    Ux4gFilterChip(
+      text: 'Full-Time',
+      selected: selectedRow2.contains(1),
+      onClick: () => setState(() {
+        selectedRow2.contains(1) ? selectedRow2.remove(1) : selectedRow2.add(1);
+      }),
+    ),
+    Ux4gFilterChip(
+      text: 'Part-Time',
+      selected: selectedRow2.contains(2),
+      onClick: () => setState(() {
+        selectedRow2.contains(2) ? selectedRow2.remove(2) : selectedRow2.add(2);
+      }),
+    ),
+    Ux4gFilterChip(
+      text: 'Remote',
+      selected: selectedRow2.contains(3),
+      onClick: () => setState(() {
+        selectedRow2.contains(3) ? selectedRow2.remove(3) : selectedRow2.add(3);
+      }),
+    ),
+    Ux4gFilterChip(
+      text: 'Hybrid',
+      selected: selectedRow2.contains(4),
+      onClick: () => setState(() {
+        selectedRow2.contains(4) ? selectedRow2.remove(4) : selectedRow2.add(4);
+      }),
+    ),
+  ],
+)''',
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Ux4gChipGroup(
+                      arrangement: Ux4gChipGroupArrangement.wrap,
+                      spacing: 12,
+                      chips: [
+                        Ux4gChoiceChip(
+                          text: 'All',
+                          selected: selectedRow1 == 0,
+                          onClick: () => setState(() => selectedRow1 = 0),
+                          trailingContent: buildBadge('62', selectedRow1 == 0),
+                        ),
+                        Ux4gChoiceChip(
+                          text: 'Pending',
+                          selected: selectedRow1 == 1,
+                          onClick: () => setState(() => selectedRow1 = 1),
+                          trailingContent: buildBadge('3', selectedRow1 == 1),
+                        ),
+                        Ux4gChoiceChip(
+                          text: 'Under Review',
+                          selected: selectedRow1 == 2,
+                          onClick: () => setState(() => selectedRow1 = 2),
+                          trailingContent: buildBadge('12', selectedRow1 == 2),
+                        ),
+                        Ux4gChoiceChip(
+                          text: 'Approved',
+                          selected: selectedRow1 == 3,
+                          onClick: () => setState(() => selectedRow1 = 3),
+                          trailingContent: buildBadge('41', selectedRow1 == 3),
+                        ),
+                        Ux4gChoiceChip(
+                          text: 'Rejected',
+                          selected: selectedRow1 == 4,
+                          onClick: () => setState(() => selectedRow1 = 4),
+                          trailingContent: buildBadge('6', selectedRow1 == 4),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    Ux4gChipGroup(
+                      arrangement: Ux4gChipGroupArrangement.wrap,
+                      spacing: 12,
+                      chips: [
+                        Ux4gFilterChip(
+                          text: 'All',
+                          selected: selectedRow2.contains(0),
+                          onClick: () => setState(() {
+                            selectedRow2.contains(0) ? selectedRow2.remove(0) : selectedRow2.add(0);
+                          }),
+                        ),
+                        Ux4gFilterChip(
+                          text: 'Full-Time',
+                          selected: selectedRow2.contains(1),
+                          onClick: () => setState(() {
+                            selectedRow2.contains(1) ? selectedRow2.remove(1) : selectedRow2.add(1);
+                          }),
+                        ),
+                        Ux4gFilterChip(
+                          text: 'Part-Time',
+                          selected: selectedRow2.contains(2),
+                          onClick: () => setState(() {
+                            selectedRow2.contains(2) ? selectedRow2.remove(2) : selectedRow2.add(2);
+                          }),
+                        ),
+                        Ux4gFilterChip(
+                          text: 'Remote',
+                          selected: selectedRow2.contains(3),
+                          onClick: () => setState(() {
+                            selectedRow2.contains(3) ? selectedRow2.remove(3) : selectedRow2.add(3);
+                          }),
+                        ),
+                        Ux4gFilterChip(
+                          text: 'Hybrid',
+                          selected: selectedRow2.contains(4),
+                          onClick: () => setState(() {
+                            selectedRow2.contains(4) ? selectedRow2.remove(4) : selectedRow2.add(4);
+                          }),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -1271,6 +2212,12 @@ final paginationComponent = WidgetbookComponent(
                   defaultValue: 'true',
                 ),
                 PropRow(
+                  name: 'arrowsOnRight',
+                  type: 'bool',
+                  description: 'Group chevrons together on the right side.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
                   name: 'variant',
                   type: 'Ux4gPaginationVariant',
                   description: 'defaultVariant or capsule.',
@@ -1303,13 +2250,227 @@ final paginationComponent = WidgetbookComponent(
                   type: 'Color?',
                   description: 'Border of inactive dots.',
                 ),
+                PropRow(
+                  name: 'width',
+                  type: 'double?',
+                  description: 'Fixed width to auto-scale the component within.',
+                ),
+                PropRow(
+                  name: 'height',
+                  type: 'double?',
+                  description: 'Fixed height to auto-scale the component within.',
+                ),
               ],
               child: Ux4gPaginationIndicator(
                 totalPageCount: context.knobs.int.input(
                   label: 'Count',
                   initialValue: 5,
                 ),
+                arrowsOnRight: context.knobs.boolean(
+                  label: 'arrowsOnRight',
+                  initialValue: false,
+                ),
                 currentPageIndex: current,
+                onPageChange: (i) => setState(() => current = i),
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Right Aligned Arrows',
+      builder: (context) {
+        int currentRow1 = 0;
+        int currentRow2 = 0;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            final isDark = Theme.of(context).brightness == Brightness.dark;
+            final inactiveBg = isDark ? Ux4gPalette.primary800.withValues(alpha: 0.4) : Ux4gPalette.primary100;
+
+            return ComponentDocs(
+              name: 'Ux4gPaginationIndicator - Right Aligned Arrows',
+              description: 'Showcasing right-aligned navigation chevrons with default and outer capsule variants.',
+              code: '''// Row 1: Default dots with right-aligned arrows
+Ux4gPaginationIndicator(
+  totalPageCount: 7,
+  currentPageIndex: currentRow1,
+  arrowsOnRight: true,
+  size: Ux4gPaginationSize.medium,
+  inactiveColor: inactiveBg,
+  inactiveBorderColor: Colors.transparent,
+  onPageChange: (i) => setState(() => currentRow1 = i),
+);
+
+// Row 2: Capsule dots with right-aligned arrows
+Ux4gPaginationIndicator(
+  totalPageCount: 7,
+  currentPageIndex: currentRow2,
+  variant: Ux4gPaginationVariant.capsule,
+  arrowsOnRight: true,
+  size: Ux4gPaginationSize.medium,
+  inactiveColor: inactiveBg,
+  inactiveBorderColor: Colors.transparent,
+  onPageChange: (i) => setState(() => currentRow2 = i),
+);''',
+              child: SizedBox(
+                width: 500,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Ux4gPaginationIndicator(
+                      totalPageCount: 7,
+                      currentPageIndex: currentRow1,
+                      arrowsOnRight: true,
+                      size: Ux4gPaginationSize.medium,
+                      inactiveColor: inactiveBg,
+                      inactiveBorderColor: Colors.transparent,
+                      onPageChange: (i) => setState(() => currentRow1 = i),
+                    ),
+                    const SizedBox(height: 32),
+                    Ux4gPaginationIndicator(
+                      totalPageCount: 7,
+                      currentPageIndex: currentRow2,
+                      variant: Ux4gPaginationVariant.capsule,
+                      arrowsOnRight: true,
+                      size: Ux4gPaginationSize.medium,
+                      inactiveColor: inactiveBg,
+                      inactiveBorderColor: Colors.transparent,
+                      onPageChange: (i) => setState(() => currentRow2 = i),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Capsule Variant',
+      builder: (context) {
+        int currentWithArrows = 0;
+        int currentWithoutArrows = 0;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Ux4gPaginationIndicator - Capsule',
+              description: 'The capsule variant wraps the pagination dots and arrows inside a pill-shaped container with a subtle background and border. It can be used with or without arrows.',
+              code: '''// Capsule with arrows
+Ux4gPaginationIndicator(
+  totalPageCount: 5,
+  currentPageIndex: currentPage,
+  variant: Ux4gPaginationVariant.capsule,
+  onPageChange: (i) => setState(() => currentPage = i),
+);
+
+// Capsule without arrows
+Ux4gPaginationIndicator(
+  totalPageCount: 7,
+  currentPageIndex: currentPage,
+  showArrows: false,
+  variant: Ux4gPaginationVariant.capsule,
+  onPageChange: (i) => setState(() => currentPage = i),
+);''',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('With Arrows'),
+                  const SizedBox(height: 12),
+                  Ux4gPaginationIndicator(
+                    totalPageCount: 5,
+                    currentPageIndex: currentWithArrows,
+                    variant: Ux4gPaginationVariant.capsule,
+                    onPageChange: (i) => setState(() => currentWithArrows = i),
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Without Arrows (as in image)'),
+                  const SizedBox(height: 12),
+                  Ux4gPaginationIndicator(
+                    totalPageCount: 7,
+                    currentPageIndex: currentWithoutArrows,
+                    showArrows: false,
+                    variant: Ux4gPaginationVariant.capsule,
+                    onPageChange: (i) => setState(() => currentWithoutArrows = i),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Sizes',
+      builder: (context) {
+        int currentSmall = 0;
+        int currentMedium = 0;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Ux4gPaginationIndicator - Sizes',
+              description: 'Available in small (default) and medium sizes.',
+              code: '''// Small
+Ux4gPaginationIndicator(
+  totalPageCount: 5,
+  currentPageIndex: currentPage,
+  size: Ux4gPaginationSize.small,
+  onPageChange: (i) => setState(() => currentPage = i),
+);
+
+// Medium
+Ux4gPaginationIndicator(
+  totalPageCount: 5,
+  currentPageIndex: currentPage,
+  size: Ux4gPaginationSize.medium,
+  onPageChange: (i) => setState(() => currentPage = i),
+);''',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Small (Default)'),
+                  const SizedBox(height: 12),
+                  Ux4gPaginationIndicator(
+                    totalPageCount: 5,
+                    currentPageIndex: currentSmall,
+                    size: Ux4gPaginationSize.small,
+                    onPageChange: (i) => setState(() => currentSmall = i),
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Medium'),
+                  const SizedBox(height: 12),
+                  Ux4gPaginationIndicator(
+                    totalPageCount: 5,
+                    currentPageIndex: currentMedium,
+                    size: Ux4gPaginationSize.medium,
+                    onPageChange: (i) => setState(() => currentMedium = i),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'No Arrows',
+      builder: (context) {
+        int current = 0;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Ux4gPaginationIndicator - No Arrows',
+              description: 'You can hide the prev/next arrow buttons by setting showArrows to false.',
+              code: '''Ux4gPaginationIndicator(
+  totalPageCount: 5,
+  currentPageIndex: currentPage,
+  showArrows: false,
+  onPageChange: (i) => setState(() => currentPage = i),
+);''',
+              child: Ux4gPaginationIndicator(
+                totalPageCount: 5,
+                currentPageIndex: current,
+                showArrows: false,
                 onPageChange: (i) => setState(() => current = i),
               ),
             );

@@ -3,11 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _titleColor = Color(0xFF111827);
-const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
-const Color _borderColor = Color(0xFFE5E7EB);
-const Color _greenColor = Color(0xFF16A34A);
+const Color _primaryColor = Ux4gPalette.primary600;
 
 final searchWithResultsComponent = WidgetbookComponent(
   name: 'Search with Results',
@@ -141,30 +137,30 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final typography = Ux4gTheme.typography(context);
     return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
+        backgroundColor: isDark
+            ? Ux4gPalette.neutral950
+            : Ux4gPalette.neutral50,
         body: SafeArea(
           child: Column(
             children: [
               // App Header - filled purple
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
+                height: 60,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 color: _primaryColor,
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                    SizedBox(width: 12),
+                    const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                    const SizedBox(width: 12),
                     Text(
                       'National Services Portal',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: typography.tS_default.copyWith(
                         color: Colors.white,
                       ),
                     ),
@@ -182,24 +178,30 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
-                        color: const Color(0xFFF2EFFF),
+                        color: isDark
+                            ? Ux4gPalette.primary950
+                            : Ux4gPalette.primary50,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Find any government service',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 4),
-                            const Text(
+                            Text(
                               'Search 3,000+ services & schemes',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: _subtleText,
+                                color: isDark
+                                    ? Ux4gPalette.neutral200
+                                    : Ux4gPalette.neutral700,
                               ),
                             ),
                             const SizedBox(height: 16),
@@ -207,29 +209,24 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                             // Search field with autocomplete
                             Builder(
                               builder: (context) {
-                                final filtered = _options
-                                    .where(
-                                      (e) => e.toLowerCase().contains(
-                                        _searchValue.toLowerCase(),
-                                      ),
-                                    )
-                                    .toList();
                                 return Ux4gSearchField(
                                   value: _searchValue,
                                   onValueChange: (v) =>
                                       setState(() => _searchValue = v),
-                                  variant: Ux4gSearchFieldVariant.autocomplete,
+                                  variant:
+                                      Ux4gSearchFieldVariant.searchWithSubmit,
+                                  size: Ux4gSearchFieldSize.medium,
                                   placeholder: 'Search services...',
                                   showVoiceIcon: true,
                                   showClearIcon: true,
-                                  options: filtered,
-                                  onOptionSelected: (s) =>
-                                      setState(() => _searchValue = s),
+                                  onSubmitClick: (_) {},
                                   buttonStyle:
                                       Ux4gSearchFieldButtonStyle.filled,
                                 );
                               },
                             ),
+                            const SizedBox(height: 4),
+                            _buildSuggestionPanel(isDark),
                           ],
                         ),
                       ),
@@ -241,12 +238,14 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Browse by category
-                            const Text(
+                            Text(
                               'Browse by category',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -254,12 +253,14 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                             const SizedBox(height: 24),
 
                             // Popular services
-                            const Text(
+                            Text(
                               'Popular services',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _titleColor,
+                                color: isDark
+                                    ? Ux4gPalette.neutral50
+                                    : Ux4gPalette.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -268,6 +269,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                               'Revenue Department',
                               'Free',
                               '20 mins',
+                              context,
                             ),
                             const SizedBox(height: 12),
                             _buildServiceCard(
@@ -275,6 +277,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                               'Social Welfare Dept',
                               'Free',
                               '15 mins',
+                              context,
                             ),
                             const SizedBox(height: 12),
                             _buildServiceCard(
@@ -282,6 +285,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                               'Transport Department',
                               '₹200',
                               '30 days',
+                              context,
                             ),
                           ],
                         ),
@@ -293,6 +297,102 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildSuggestionPanel(bool isDark) {
+    const departments = {
+      'Income Certificate': 'Revenue Dept',
+      'Income Tax Return Filing': 'Income Tax Dept',
+      'Low Income Group Certificate': 'Social Welfare',
+      'Income & Asset Certificate': 'Revenue Dept',
+    };
+    final matches = _options
+        .where(
+          (service) =>
+              service.toLowerCase().contains(_searchValue.trim().toLowerCase()),
+        )
+        .toList();
+    final typography = Ux4gTheme.typography(context);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(12, 10, 12, 8),
+      decoration: BoxDecoration(
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: isDark ? 0.24 : 0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text.rich(
+            TextSpan(
+              text: 'Searching for ',
+              children: [
+                TextSpan(
+                  text: '\'$_searchValue\'',
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            style: typography.lS_default.copyWith(
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
+          ),
+          const SizedBox(height: 6),
+          for (final service in matches)
+            InkWell(
+              onTap: () => setState(() => _searchValue = service),
+              borderRadius: BorderRadius.circular(4),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.manage_search,
+                      size: 16,
+                      color: isDark
+                          ? Ux4gPalette.neutral200
+                          : Ux4gPalette.neutral700,
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        service,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: typography.lM_default.copyWith(
+                          color: isDark
+                              ? Ux4gPalette.neutral50
+                              : Ux4gPalette.neutral900,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      departments[service] ?? '',
+                      style: typography.lS_default.copyWith(
+                        color: isDark
+                            ? Ux4gPalette.neutral400
+                            : Ux4gPalette.neutral600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -316,43 +416,66 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
         crossAxisCount: 2,
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
-        childAspectRatio: 1.35,
+        mainAxisExtent: 112,
       ),
       itemCount: categories.length,
       itemBuilder: (context, index) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         final (icon, label, count) = categories[index];
         return Container(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  color: _primaryColor.withValues(alpha: 0.06),
-                  borderRadius: BorderRadius.circular(10),
+                  color: isDark
+                      ? Ux4gPalette.primary950
+                      : Ux4gPalette.primary50,
+                  shape: BoxShape.circle,
                 ),
-                child: Icon(icon, size: 20, color: _primaryColor),
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: isDark
+                      ? Ux4gPalette.primary300
+                      : Ux4gPalette.primary600,
+                ),
               ),
               const SizedBox(height: 10),
               Text(
                 label,
-                style: const TextStyle(
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: _titleColor,
+                  color: isDark
+                      ? Ux4gPalette.neutral50
+                      : Ux4gPalette.neutral900,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 count,
-                style: const TextStyle(fontSize: 11, color: _subtleText),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11,
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -366,42 +489,57 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
     String dept,
     String fee,
     String time,
+    BuildContext context,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
+        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _borderColor),
+        border: Border.all(
+          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: _titleColor,
+              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
             ),
           ),
           const SizedBox(height: 2),
-          Text(dept, style: const TextStyle(fontSize: 12, color: _subtleText)),
+          Text(
+            dept,
+            style: TextStyle(
+              fontSize: 12,
+              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            ),
+          ),
           const SizedBox(height: 8),
           Row(
             children: [
               Text(
                 fee,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: _greenColor,
+                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
                 ),
               ),
               Text(
                 '  ·  $time',
-                style: const TextStyle(fontSize: 12, color: _subtleText),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: isDark
+                      ? Ux4gPalette.neutral200
+                      : Ux4gPalette.neutral700,
+                ),
               ),
             ],
           ),
@@ -411,6 +549,12 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
             onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
+            borderColor: isDark
+                ? Ux4gPalette.neutral600
+                : Ux4gPalette.primary300,
+            contentColor: isDark
+                ? Ux4gPalette.neutral50
+                : Ux4gPalette.primary600,
           ),
         ],
       ),

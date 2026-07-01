@@ -206,7 +206,7 @@ Ux4gTag(text: 'info',    colorScheme: Ux4gTagColor.info);''',
             label: 'Size',
             options: Ux4gTagSize.values,
             initialOption: Ux4gTagSize.m,
-            labelBuilder: (v) => v.name,
+            labelBuilder: (v) => v == Ux4gTagSize.m ? 'S' : (v == Ux4gTagSize.l ? 'M' : v.name),
           ),
         ),
       ),
@@ -241,20 +241,20 @@ Ux4gTag(text: 'Circular',    shape: Ux4gTagShape.circular);''',
       name: 'Sizes',
       builder: (context) => ComponentDocs(
         name: 'Ux4gTag — Sizes',
-        description: 'Medium (m) and Large (l) size variants side-by-side.',
-        code: '''Ux4gTag(text: 'Medium', size: Ux4gTagSize.m);
-Ux4gTag(text: 'Large',  size: Ux4gTagSize.l);''',
+        description: 'Small (m) and Medium (l) size variants side-by-side.',
+        code: '''Ux4gTag(text: 'Small', size: Ux4gTagSize.m);
+Ux4gTag(text: 'Medium',  size: Ux4gTagSize.l);''',
         child: Wrap(
           spacing: 8,
           runSpacing: 8,
           children: [
             Ux4gTag(
-              text: 'Medium',
+              text: 'Small',
               size: Ux4gTagSize.m,
               colorScheme: Ux4gTagColor.brand,
             ),
             Ux4gTag(
-              text: 'Large',
+              text: 'Medium',
               size: Ux4gTagSize.l,
               colorScheme: Ux4gTagColor.brand,
             ),
@@ -723,7 +723,9 @@ Ux4gCard(
                                 Text(
                                   'Subtitle',
                                   style: TextStyle(
-                                    color: Theme.of(context).brightness == Brightness.dark
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
                                         ? Colors.white70
                                         : Colors.black54,
                                     fontSize: 13,
@@ -817,6 +819,272 @@ Ux4gCard(
         ),
       ),
     ),
+    WidgetbookUseCase(
+      name: 'Complex Rich Card (Horizontal)',
+      builder: (context) => ComponentDocs(
+        name: 'Ux4gCard — Custom Composition (Horizontal)',
+        description:
+            'A rich card layout in a horizontal orientation, featuring a side image and detailed content on the right.',
+        code: '''Ux4gCard(
+  elevation: 2,
+  child: IntrinsicHeight(
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // 1. Hero Image with Overlays
+        SizedBox(
+          width: 240,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.network(
+                'https://picsum.photos/seed/richcard_horiz/400/400',
+                fit: BoxFit.cover,
+              ),
+              Positioned(
+                top: 12, left: 12,
+                child: Ux4gTag(
+                  text: 'Label', 
+                  leadingContent: Icon(Icons.category, size: 12, color: Colors.white),
+                  customBackgroundColor: Colors.black,
+                  customContentColor: Colors.white,
+                ),
+              ),
+              Positioned(
+                top: 12, right: 12,
+                child: CircleAvatar(
+                  radius: 14,
+                  backgroundColor: Colors.white24,
+                  child: Icon(Icons.category, size: 16, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+        // 2. Content
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Ux4gAvatar(initials: 'JD', size: Ux4gAvatarSize.l),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Title', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18)),
+                          Text('Subtitle', style: TextStyle(color: Colors.black54, fontSize: 14)),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.category_outlined, color: Colors.indigo, size: 24),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    _IconLabel(text: 'Label'),
+                    SizedBox(width: 12),
+                    _IconLabel(text: 'Label'),
+                    SizedBox(width: 12),
+                    _IconLabel(text: 'Label'),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Text(
+                  'Lorem ipsum is a dummy or placeholder text commonly used in graphic design...',
+                  style: TextStyle(fontSize: 14, color: Colors.black87, height: 1.5),
+                ),
+                SizedBox(height: 16),
+                Wrap(
+                  spacing: 8,
+                  children: [
+                    _SmallTag(text: 'Label'),
+                    _SmallTag(text: 'Label'),
+                    _SmallTag(text: 'Label'),
+                    _SmallTag(text: 'Label'),
+                  ],
+                ),
+                SizedBox(height: 24),
+                // 3. Footer
+                Row(
+                  children: [
+                    Ux4gOutlineButton(onPressed: () {}, text: 'Button'),
+                    SizedBox(width: 12),
+                    Ux4gButton(onPressed: () {}, text: 'Button'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+);''',
+        child: SizedBox(
+          width: 700,
+          child: Ux4gCard(
+            elevation: 2,
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // 1. Hero Image with Overlays
+                  SizedBox(
+                    width: 240,
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Image.network(
+                          'https://picsum.photos/seed/richcard_horiz/400/400',
+                          fit: BoxFit.cover,
+                        ),
+                        Positioned(
+                          top: 12,
+                          left: 12,
+                          child: Ux4gTag(
+                            text: 'Label',
+                            leadingContent: const Icon(
+                              Icons.category,
+                              size: 12,
+                              color: Colors.white,
+                            ),
+                            customBackgroundColor: Colors.black,
+                            customContentColor: Colors.white,
+                          ),
+                        ),
+                        const Positioned(
+                          top: 12,
+                          right: 12,
+                          child: CircleAvatar(
+                            radius: 14,
+                            backgroundColor: Colors.white24,
+                            child: Icon(
+                              Icons.category,
+                              size: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // 2. Content
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            children: [
+                              const Ux4gAvatar(
+                                initials: 'JD',
+                                size: Ux4gAvatarSize.l,
+                                imageUrl: 'https://picsum.photos/seed/avatar1/100/100',
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Title',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 18,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black87,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      'Subtitle',
+                                      style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white54
+                                            : Colors.black54,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Icon(
+                                Icons.category_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 24,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          const Row(
+                            children: [
+                              _IconLabel(text: 'Label'),
+                              SizedBox(width: 12),
+                              _IconLabel(text: 'Label'),
+                              SizedBox(width: 12),
+                              _IconLabel(text: 'Label'),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Lorem ipsum is a dummy or placeholder text commonly used in graphic design, '
+                            'publishing, and web development.',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white.withValues(alpha: 0.87)
+                                  : Colors.black87,
+                              height: 1.5,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          const Wrap(
+                            spacing: 8,
+                            children: [
+                              _SmallTag(text: 'Label'),
+                              _SmallTag(text: 'Label'),
+                              _SmallTag(text: 'Label'),
+                              _SmallTag(text: 'Label'),
+                            ],
+                          ),
+                          const SizedBox(height: 24),
+                          // 3. Footer
+                          Row(
+                            children: [
+                              Ux4gOutlineButton(
+                                onPressed: () {},
+                                text: 'Button',
+                              ),
+                              const SizedBox(width: 12),
+                              Ux4gButton(
+                                onPressed: () {},
+                                text: 'Button',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
   ],
 );
 
@@ -849,7 +1117,9 @@ class _SmallTag extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final bgColor = isDark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.05);
+    final bgColor = isDark
+        ? Colors.white.withValues(alpha: 0.1)
+        : Colors.black.withValues(alpha: 0.05);
     final color = isDark ? Colors.white70 : Colors.black54;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -969,6 +1239,33 @@ Ux4gDivider(label: Text('OR'))''',
               const Ux4gDivider(orientation: Ux4gDividerOrientation.vertical),
               const SizedBox(width: 12),
               const Text('Right'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Dashed & Dotted',
+      builder: (context) => ComponentDocs(
+        name: 'Ux4gDivider — Styled',
+        description: 'Dividers can be rendered as dashed or dotted lines.',
+        code: '''// Dashed
+Ux4gDivider(style: Ux4gDividerStyle.dashed)
+
+// Dotted
+Ux4gDivider(style: Ux4gDividerStyle.dotted)''',
+        child: const SizedBox(
+          width: 300,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Dashed'),
+              SizedBox(height: 8),
+              Ux4gDivider(style: Ux4gDividerStyle.dashed),
+              SizedBox(height: 24),
+              Text('Dotted'),
+              SizedBox(height: 8),
+              Ux4gDivider(style: Ux4gDividerStyle.dotted),
             ],
           ),
         ),
