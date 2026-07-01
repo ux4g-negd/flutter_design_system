@@ -1,0 +1,11 @@
+.git
+.dart_tool
+build
+example/.dart_tool
+example/build
+*.log
+.gemini
+.vscode
+.idea
+*.apk
+*.aab
