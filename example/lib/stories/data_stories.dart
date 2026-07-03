@@ -3,7 +3,7 @@ import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
-import '../showcase_app.dart';// ── Stepper ───────────────────────────────────────────────────────────────────
+import '../showcase_app.dart'; // ── Stepper ───────────────────────────────────────────────────────────────────
 
 const _stepperProps = [
   PropRow(
@@ -74,13 +74,14 @@ const _stepperProps = [
   PropRow(
     name: 'alignIconWithDescription',
     type: 'bool',
-    description: 'Aligns the step icon vertically with the description instead of the title.',
+    description:
+        'Aligns the step icon vertically with the description instead of the title.',
     defaultValue: 'false',
   ),
 ];
 
 final stepperComponent = WidgetbookComponent(
-  name: 'Ux4gStepper',
+  name: 'Stepper',
   useCases: [
     WidgetbookUseCase(
       name: 'Horizontal',
@@ -229,7 +230,8 @@ Ux4gCapsuleStepper(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gStepper — With Descriptions',
-              description: 'Horizontal stepper with labels, descriptions, and custom statuses. All labels are center-aligned.',
+              description:
+                  'Horizontal stepper with labels, descriptions, and custom statuses. All labels are center-aligned.',
               code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 2,
@@ -271,22 +273,30 @@ Ux4gCapsuleStepper(
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 1 ? 'Completed' : (current == 1 ? 'In progress' : 'Label'),
+                          statusLabel: current > 1
+                              ? 'Completed'
+                              : (current == 1 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 2 ? 'Completed' : (current == 2 ? 'In progress' : 'Label'),
+                          statusLabel: current > 2
+                              ? 'Completed'
+                              : (current == 2 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 3 ? 'Completed' : (current == 3 ? 'In progress' : 'Label'),
+                          statusLabel: current > 3
+                              ? 'Completed'
+                              : (current == 3 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 4 ? 'Completed' : (current == 4 ? 'In progress' : 'Label'),
+                          statusLabel: current > 4
+                              ? 'Completed'
+                              : (current == 4 ? 'In progress' : 'Label'),
                         ),
                       ],
                     ),
@@ -327,7 +337,8 @@ Ux4gCapsuleStepper(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gStepper — Bottom Lines',
-              description: 'Horizontal stepper with connecting lines rendered below the text.',
+              description:
+                  'Horizontal stepper with connecting lines rendered below the text.',
               code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 2,
@@ -371,22 +382,30 @@ Ux4gCapsuleStepper(
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 1 ? 'Completed' : (current == 1 ? 'In progress' : 'Label'),
+                          statusLabel: current > 1
+                              ? 'Completed'
+                              : (current == 1 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 2 ? 'Completed' : (current == 2 ? 'In progress' : 'Label'),
+                          statusLabel: current > 2
+                              ? 'Completed'
+                              : (current == 2 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 3 ? 'Completed' : (current == 3 ? 'In progress' : 'Label'),
+                          statusLabel: current > 3
+                              ? 'Completed'
+                              : (current == 3 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 4 ? 'Completed' : (current == 4 ? 'In progress' : 'Label'),
+                          statusLabel: current > 4
+                              ? 'Completed'
+                              : (current == 4 ? 'In progress' : 'Label'),
                         ),
                       ],
                     ),
@@ -427,7 +446,8 @@ Ux4gCapsuleStepper(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gStepper — Bottom Lines + Active Background',
-              description: 'Horizontal stepper with bottom connecting lines and a background color for the active step.',
+              description:
+                  'Horizontal stepper with bottom connecting lines and a background color for the active step.',
               code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 2,
@@ -473,22 +493,30 @@ Ux4gCapsuleStepper(
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 1 ? 'Completed' : (current == 1 ? 'In progress' : 'Label'),
+                          statusLabel: current > 1
+                              ? 'Completed'
+                              : (current == 1 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 2 ? 'Completed' : (current == 2 ? 'In progress' : 'Label'),
+                          statusLabel: current > 2
+                              ? 'Completed'
+                              : (current == 2 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 3 ? 'Completed' : (current == 3 ? 'In progress' : 'Label'),
+                          statusLabel: current > 3
+                              ? 'Completed'
+                              : (current == 3 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 4 ? 'Completed' : (current == 4 ? 'In progress' : 'Label'),
+                          statusLabel: current > 4
+                              ? 'Completed'
+                              : (current == 4 ? 'In progress' : 'Label'),
                         ),
                       ],
                     ),
@@ -529,7 +557,8 @@ Ux4gCapsuleStepper(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gStepper — Edge Aligned Labels',
-              description: 'Horizontal stepper where the first step label is left-aligned and the last step label is right-aligned.',
+              description:
+                  'Horizontal stepper where the first step label is left-aligned and the last step label is right-aligned.',
               code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 2,
@@ -573,22 +602,30 @@ Ux4gCapsuleStepper(
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 1 ? 'Completed' : (current == 1 ? 'In progress' : 'Label'),
+                          statusLabel: current > 1
+                              ? 'Completed'
+                              : (current == 1 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 2 ? 'Completed' : (current == 2 ? 'In progress' : 'Label'),
+                          statusLabel: current > 2
+                              ? 'Completed'
+                              : (current == 2 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 3 ? 'Completed' : (current == 3 ? 'In progress' : 'Label'),
+                          statusLabel: current > 3
+                              ? 'Completed'
+                              : (current == 3 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: current > 4 ? 'Completed' : (current == 4 ? 'In progress' : 'Label'),
+                          statusLabel: current > 4
+                              ? 'Completed'
+                              : (current == 4 ? 'In progress' : 'Label'),
                         ),
                       ],
                     ),
@@ -821,7 +858,8 @@ Ux4gCapsuleStepper(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gStepper — Vertical (Icon Aligned with Description)',
-              description: 'Vertical orientation where the step icon aligns with the description text instead of the title.',
+              description:
+                  'Vertical orientation where the step icon aligns with the description text instead of the title.',
               code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 2,
@@ -865,22 +903,30 @@ Ux4gCapsuleStepper(
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: cur > 1 ? 'Completed' : (cur == 1 ? 'In progress' : 'Label'),
+                          statusLabel: cur > 1
+                              ? 'Completed'
+                              : (cur == 1 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: cur > 2 ? 'Completed' : (cur == 2 ? 'In progress' : 'Label'),
+                          statusLabel: cur > 2
+                              ? 'Completed'
+                              : (cur == 2 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: cur > 3 ? 'Completed' : (cur == 3 ? 'In progress' : 'Label'),
+                          statusLabel: cur > 3
+                              ? 'Completed'
+                              : (cur == 3 ? 'In progress' : 'Label'),
                         ),
                         Ux4gStepItem(
                           title: 'Label',
                           description: 'Write description here',
-                          statusLabel: cur > 4 ? 'Completed' : (cur == 4 ? 'In progress' : 'Label'),
+                          statusLabel: cur > 4
+                              ? 'Completed'
+                              : (cur == 4 ? 'In progress' : 'Label'),
                         ),
                       ],
                     ),
@@ -987,7 +1033,7 @@ Ux4gCapsuleStepper(
 );
 
 final capsuleStepperComponent = WidgetbookComponent(
-  name: 'Ux4gCapsuleStepper (Compact Stepper)',
+  name: 'CapsuleStepper (Compact Stepper)',
   useCases: [
     WidgetbookUseCase(
       name: 'Linear',
@@ -997,7 +1043,8 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gCapsuleStepper (Compact Stepper) — Linear',
-              description: 'Capsules sandwiched between navigation arrows, labels aligned to start.',
+              description:
+                  'Capsules sandwiched between navigation arrows, labels aligned to start.',
               code: '''Ux4gCapsuleStepper(
   totalSteps: 12,
   currentStep: 1,
@@ -1031,7 +1078,8 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gCapsuleStepper (Compact Stepper) — Right Aligned',
-              description: 'Capsules between arrows, step info on left, label/desc on right.',
+              description:
+                  'Capsules between arrows, step info on left, label/desc on right.',
               code: '''Ux4gCapsuleStepper(
   totalSteps: 12,
   currentStep: 1,
@@ -1064,8 +1112,10 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
-              description: 'Capsules at top, arrows surrounding step info in the center.',
+              name:
+                  'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
+              description:
+                  'Capsules at top, arrows surrounding step info in the center.',
               code: '''Ux4gCapsuleStepper(
   totalSteps: 12,
   currentStep: 1,
@@ -1098,8 +1148,10 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
-              description: 'Capsules at top, arrows pushed to the far edges of the container.',
+              name:
+                  'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
+              description:
+                  'Capsules at top, arrows pushed to the far edges of the container.',
               code: '''Ux4gCapsuleStepper(
   totalSteps: 12,
   currentStep: 1,
@@ -1133,7 +1185,8 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Ux4gCapsuleStepper (Compact Stepper) — Split',
-              description: 'Capsules at top, labels spread across, arrows on the bottom right.',
+              description:
+                  'Capsules at top, labels spread across, arrows on the bottom right.',
               code: '''Ux4gCapsuleStepper(
   totalSteps: 12,
   currentStep: 1,
@@ -1165,7 +1218,7 @@ final capsuleStepperComponent = WidgetbookComponent(
 // ── Result Row ────────────────────────────────────────────────────────────────
 
 final resultRowComponent = WidgetbookComponent(
-  name: 'Ux4gResultRow',
+  name: 'Result Row',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1288,7 +1341,8 @@ final resultRowComponent = WidgetbookComponent(
       name: 'With Background',
       builder: (context) => ComponentDocs(
         name: 'With Background (Card Style)',
-        description: 'Result rows wrapped inside a card container. Shows both collapsed and expanded states.',
+        description:
+            'Result rows wrapped inside a card container. Shows both collapsed and expanded states.',
         code: '''// Collapsed
 Ux4gCard(
   cornerRadius: 12,
@@ -1422,7 +1476,7 @@ Ux4gCard(
                     metadataSegments: [
                       Ux4gPillSegment(
                         text: '8 days left',
-              
+
                         leading: Container(
                           width: 8,
                           height: 8,
@@ -1438,12 +1492,30 @@ Ux4gCard(
                       ),
                     ],
                     details: const [
-                      Ux4gResultDetail(label: 'Reference Number', value: 'INC-2026-MH-04127'),
-                      Ux4gResultDetail(label: 'Last Updated Date', value: '10 Apr 2026'),
-                      Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-                      Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-                      Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-                      Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+                      Ux4gResultDetail(
+                        label: 'Reference Number',
+                        value: 'INC-2026-MH-04127',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Last Updated Date',
+                        value: '10 Apr 2026',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Submitted Date',
+                        value: '1 Apr 2026',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Assigned Officer',
+                        value: 'Rahul Sharma',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Department',
+                        value: 'Revenue Department',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Documents',
+                        value: 'ID Proof, Address Proof',
+                      ),
                     ],
                   ),
                 ),
@@ -1463,7 +1535,7 @@ Ux4gCard(
                     metadataSegments: [
                       Ux4gPillSegment(
                         text: '8 days left',
-              
+
                         leading: Container(
                           width: 8,
                           height: 8,
@@ -1479,12 +1551,30 @@ Ux4gCard(
                       ),
                     ],
                     details: const [
-                      Ux4gResultDetail(label: 'Reference Number', value: 'INC-2026-MH-04127'),
-                      Ux4gResultDetail(label: 'Last Updated Date', value: '10 Apr 2026'),
-                      Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-                      Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-                      Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-                      Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+                      Ux4gResultDetail(
+                        label: 'Reference Number',
+                        value: 'INC-2026-MH-04127',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Last Updated Date',
+                        value: '10 Apr 2026',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Submitted Date',
+                        value: '1 Apr 2026',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Assigned Officer',
+                        value: 'Rahul Sharma',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Department',
+                        value: 'Revenue Department',
+                      ),
+                      Ux4gResultDetail(
+                        label: 'Documents',
+                        value: 'ID Proof, Address Proof',
+                      ),
                     ],
                     expandedChild: Padding(
                       padding: const EdgeInsets.only(top: 16.0),
@@ -1537,7 +1627,8 @@ Ux4gCard(
       name: 'Without Background',
       builder: (context) => ComponentDocs(
         name: 'Without Background (List Style)',
-        description: 'Result rows without a card wrapper, separated by dividers. Shows both collapsed and expanded states.',
+        description:
+            'Result rows without a card wrapper, separated by dividers. Shows both collapsed and expanded states.',
         code: '''// Collapsed
 Ux4gResultRow(
   title: 'Income Certificate',
@@ -1655,7 +1746,7 @@ Ux4gResultRow(
                 metadataSegments: [
                   Ux4gPillSegment(
                     text: '8 days left',
-          
+
                     leading: Container(
                       width: 8,
                       height: 8,
@@ -1671,12 +1762,30 @@ Ux4gResultRow(
                   ),
                 ],
                 details: const [
-                  Ux4gResultDetail(label: 'Reference Number', value: 'INC-2026-MH-04127'),
-                  Ux4gResultDetail(label: 'Last Updated Date', value: '10 Apr 2026'),
-                  Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-                  Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-                  Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-                  Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+                  Ux4gResultDetail(
+                    label: 'Reference Number',
+                    value: 'INC-2026-MH-04127',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Last Updated Date',
+                    value: '10 Apr 2026',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Submitted Date',
+                    value: '1 Apr 2026',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Assigned Officer',
+                    value: 'Rahul Sharma',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Department',
+                    value: 'Revenue Department',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Documents',
+                    value: 'ID Proof, Address Proof',
+                  ),
                 ],
               ),
               // Expanded
@@ -1705,12 +1814,30 @@ Ux4gResultRow(
                   ),
                 ],
                 details: const [
-                  Ux4gResultDetail(label: 'Reference Number', value: 'INC-2026-MH-04127'),
-                  Ux4gResultDetail(label: 'Last Updated Date', value: '10 Apr 2026'),
-                  Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-                  Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-                  Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-                  Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+                  Ux4gResultDetail(
+                    label: 'Reference Number',
+                    value: 'INC-2026-MH-04127',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Last Updated Date',
+                    value: '10 Apr 2026',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Submitted Date',
+                    value: '1 Apr 2026',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Assigned Officer',
+                    value: 'Rahul Sharma',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Department',
+                    value: 'Revenue Department',
+                  ),
+                  Ux4gResultDetail(
+                    label: 'Documents',
+                    value: 'ID Proof, Address Proof',
+                  ),
                 ],
                 expandedChild: Padding(
                   padding: const EdgeInsets.only(top: 16.0),
@@ -1868,7 +1995,11 @@ Ux4gResultRow(
         Widget buildRow({required bool expanded}) {
           return Ux4gResultRow(
             title: 'Income Certificate',
-            titleTrailing: const Icon(Icons.check_circle, size: 20, color: Color(0xFF16A34A)),
+            titleTrailing: const Icon(
+              Icons.check_circle,
+              size: 20,
+              color: Color(0xFF16A34A),
+            ),
             actionButtonText: 'Download',
             actionButtonIcon: Icons.download,
             onActionPressed: () {},
@@ -1878,19 +2009,35 @@ Ux4gResultRow(
             details: const [
               Ux4gResultDetail(label: 'Issued', value: '05 Apr 2026'),
               Ux4gResultDetail(label: 'Valid till', value: '05 Apr 2027'),
-              Ux4gResultDetail(label: 'Reference Number', value: 'INC-2026-MH-04127'),
-              Ux4gResultDetail(label: 'Last Updated Date', value: '10 Apr 2026'),
+              Ux4gResultDetail(
+                label: 'Reference Number',
+                value: 'INC-2026-MH-04127',
+              ),
+              Ux4gResultDetail(
+                label: 'Last Updated Date',
+                value: '10 Apr 2026',
+              ),
               Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-              Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-              Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-              Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+              Ux4gResultDetail(
+                label: 'Assigned Officer',
+                value: 'Rahul Sharma',
+              ),
+              Ux4gResultDetail(
+                label: 'Department',
+                value: 'Revenue Department',
+              ),
+              Ux4gResultDetail(
+                label: 'Documents',
+                value: 'ID Proof, Address Proof',
+              ),
             ],
           );
         }
 
         return ComponentDocs(
           name: 'Certificate Download',
-          description: 'Result row with a green checkmark status icon, download button, and certificate details in a 2-column grid. Shows both collapsed and expanded states.',
+          description:
+              'Result row with a green checkmark status icon, download button, and certificate details in a 2-column grid. Shows both collapsed and expanded states.',
           code: codeString,
           child: SizedBox(
             width: 380,
@@ -2076,27 +2223,49 @@ Ux4gResultRow(
             customMetadata: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('₹ 120/-', style: TextStyle(color: Color(0xFF374151), fontSize: 14)),
+                Text(
+                  '₹ 120/-',
+                  style: TextStyle(color: Color(0xFF374151), fontSize: 14),
+                ),
                 SizedBox(width: 12),
                 Icon(Icons.schedule, size: 14, color: Color(0xFF6B7280)),
                 SizedBox(width: 4),
-                Text('20 mins', style: TextStyle(color: Color(0xFF374151), fontSize: 14)),
+                Text(
+                  '20 mins',
+                  style: TextStyle(color: Color(0xFF374151), fontSize: 14),
+                ),
               ],
             ),
             details: const [
-              Ux4gResultDetail(label: 'Reference Number', value: 'INC-2026-MH-04127'),
-              Ux4gResultDetail(label: 'Last Updated Date', value: '10 Apr 2026'),
+              Ux4gResultDetail(
+                label: 'Reference Number',
+                value: 'INC-2026-MH-04127',
+              ),
+              Ux4gResultDetail(
+                label: 'Last Updated Date',
+                value: '10 Apr 2026',
+              ),
               Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-              Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-              Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-              Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+              Ux4gResultDetail(
+                label: 'Assigned Officer',
+                value: 'Rahul Sharma',
+              ),
+              Ux4gResultDetail(
+                label: 'Department',
+                value: 'Revenue Department',
+              ),
+              Ux4gResultDetail(
+                label: 'Documents',
+                value: 'ID Proof, Address Proof',
+              ),
             ],
           );
         }
 
         return ComponentDocs(
           name: 'Service Apply',
-          description: 'Result row showing service details with a status tag and metadata inline, and an apply button.',
+          description:
+              'Result row showing service details with a status tag and metadata inline, and an apply button.',
           code: codeString,
           child: SizedBox(
             width: 380,
@@ -2295,13 +2464,20 @@ Ux4gResultRow(
             statusTag: 'Escalated',
             tagColorScheme: Ux4gTagColor.brand,
             actionButtonText: 'Track',
-            actionLeading: const Icon(Icons.priority_high, size: 16, color: Color(0xFFDC2626)),
+            actionLeading: const Icon(
+              Icons.priority_high,
+              size: 16,
+              color: Color(0xFFDC2626),
+            ),
             onActionPressed: () {},
             initialExpanded: expanded,
             showBottomDivider: !withBackground,
             detailsColumns: 2,
             details: const [
-              Ux4gResultDetail(label: 'Reference Number', value: 'GRV-2026-04127'),
+              Ux4gResultDetail(
+                label: 'Reference Number',
+                value: 'GRV-2026-04127',
+              ),
               Ux4gResultDetail(
                 label: 'SLA Status',
                 value: '',
@@ -2311,23 +2487,37 @@ Ux4gResultRow(
                       text: '3 days overdue',
                       bold: true,
                       textColor: Color(0xFF374151),
-                      leading: Icon(Icons.circle, size: 8, color: Color(0xFFDC2626)),
+                      leading: Icon(
+                        Icons.circle,
+                        size: 8,
+                        color: Color(0xFFDC2626),
+                      ),
                     ),
                   ],
                   size: Ux4gTagSize.m,
                 ),
               ),
               Ux4gResultDetail(label: 'Submitted Date', value: '1 Apr 2026'),
-              Ux4gResultDetail(label: 'Assigned Officer', value: 'Rahul Sharma'),
-              Ux4gResultDetail(label: 'Department', value: 'Revenue Department'),
-              Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
+              Ux4gResultDetail(
+                label: 'Assigned Officer',
+                value: 'Rahul Sharma',
+              ),
+              Ux4gResultDetail(
+                label: 'Department',
+                value: 'Revenue Department',
+              ),
+              Ux4gResultDetail(
+                label: 'Documents',
+                value: 'ID Proof, Address Proof',
+              ),
             ],
           );
         }
 
         return ComponentDocs(
           name: 'SLA Escalated',
-          description: 'Result row showing an escalated ticket with SLA status and action leading icon.',
+          description:
+              'Result row showing an escalated ticket with SLA status and action leading icon.',
           code: codeString,
           child: SizedBox(
             width: 380,
@@ -2397,7 +2587,8 @@ final socialLinkComponent = WidgetbookComponent(
           description:
               'SVG social-media icon buttons. Choose from the SocialMediaIcon enum. '
               'Enable background for a contained pill appearance.',
-          code: '''Ux4gSocialLink(
+          code:
+              '''Ux4gSocialLink(
   icon: SocialMediaIcon.${icon.name},
   size: SocialLinkSize.${size.name},
   useColoredIcon: $useColoredIcon,
@@ -2471,7 +2662,7 @@ final socialLinkComponent = WidgetbookComponent(
 // ── Journey Timeline ──────────────────────────────────────────────────────────
 
 final journeyTimelineComponent = WidgetbookComponent(
-  name: 'Ux4gJourneyTimeline',
+  name: 'Journey Timeline',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2611,7 +2802,8 @@ final journeyTimelineComponent = WidgetbookComponent(
       name: 'With Header',
       builder: (context) => ComponentDocs(
         name: 'Vertical Timeline with Header',
-        description: 'A vertical timeline that includes an optional header section.',
+        description:
+            'A vertical timeline that includes an optional header section.',
         code: '''Ux4gJourneyTimeline(
   header: const Ux4gJourneyHeader(
     title: 'Title',
@@ -2651,7 +2843,8 @@ final journeyTimelineComponent = WidgetbookComponent(
       name: 'Card Variants',
       builder: (context) => ComponentDocs(
         name: 'Timeline Card Variants',
-        description: 'Demonstrates different step card features including helping text, icons, and status badges.',
+        description:
+            'Demonstrates different step card features including helping text, icons, and status badges.',
         code: '''Ux4gJourneyTimeline(
   currentStep: 4,
   steps: [
@@ -2689,17 +2882,23 @@ final journeyTimelineComponent = WidgetbookComponent(
           child: Ux4gJourneyTimeline(
             currentStep: 4,
             steps: [
+              const Ux4gJourneyStep(title: 'Title', date: 'Date', tag: 'Tag'),
               const Ux4gJourneyStep(
-                title: 'Title', date: 'Date', tag: 'Tag'
+                title: 'Title',
+                date: 'Date',
+                tag: 'Tag',
+                helpingText: 'Helping Text',
               ),
               const Ux4gJourneyStep(
-                title: 'Title', date: 'Date', tag: 'Tag', helpingText: 'Helping Text'
-              ),
-              const Ux4gJourneyStep(
-                title: 'Title', date: 'Date', tag: 'Tag', icon: Icons.link
+                title: 'Title',
+                date: 'Date',
+                tag: 'Tag',
+                icon: Icons.link,
               ),
               Ux4gJourneyStep(
-                title: 'Title', date: 'Date', tag: 'Tag',
+                title: 'Title',
+                date: 'Date',
+                tag: 'Tag',
                 status: Ux4gJourneyStepStatus(
                   text: '2 days remaining',
                   dotColor: Ux4gPalette.secondary,
@@ -2708,9 +2907,7 @@ final journeyTimelineComponent = WidgetbookComponent(
                   badgeTextColor: Ux4gPalette.secondary,
                 ),
               ),
-              const Ux4gJourneyStep(
-                title: 'Title', date: 'Date', tag: 'Tag'
-              ),
+              const Ux4gJourneyStep(title: 'Title', date: 'Date', tag: 'Tag'),
             ],
           ),
         ),
@@ -2720,7 +2917,8 @@ final journeyTimelineComponent = WidgetbookComponent(
       name: 'Horizontal',
       builder: (context) => ComponentDocs(
         name: 'Horizontal Timeline',
-        description: 'A timeline arranged horizontally, useful for wide spaces or scrolling views.',
+        description:
+            'A timeline arranged horizontally, useful for wide spaces or scrolling views.',
         code: '''Ux4gJourneyTimeline(
   orientation: Ux4gJourneyOrientation.horizontal,
   header: const Ux4gJourneyHeader(
@@ -2766,7 +2964,7 @@ final journeyTimelineComponent = WidgetbookComponent(
 // ── Status Pipeline ───────────────────────────────────────────────────────────
 
 final statusPipelineComponent = WidgetbookComponent(
-  name: 'Ux4gStatusPipeline',
+  name: 'Status Pipeline',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2820,7 +3018,7 @@ final statusPipelineComponent = WidgetbookComponent(
 // ── Carousel ──────────────────────────────────────────────────────────────────
 
 final carouselComponent = WidgetbookComponent(
-  name: 'Ux4gCarousel',
+  name: 'Carousel',
   useCases: [
     WidgetbookUseCase(
       name: 'Image carousel',
@@ -2843,6 +3041,37 @@ final carouselComponent = WidgetbookComponent(
             type: 'List<Widget>',
             description: 'Carousel slide widgets.',
             required: true,
+          ),
+          PropRow(
+            name: 'autoPlay',
+            type: 'bool',
+            description: 'Automatically advances through carousel items.',
+            defaultValue: 'true',
+          ),
+          PropRow(
+            name: 'autoPlayInterval',
+            type: 'Duration',
+            description: 'Time between automatic page changes.',
+            defaultValue: 'Duration(seconds: 3)',
+          ),
+          PropRow(
+            name: 'showPagination',
+            type: 'bool',
+            description: 'Shows the pagination indicator over the carousel.',
+            defaultValue: 'true',
+          ),
+          PropRow(
+            name: 'height',
+            type: 'double',
+            description: 'Height of the carousel.',
+            defaultValue: '200.0',
+          ),
+          PropRow(
+            name: 'viewportFraction',
+            type: 'double',
+            description:
+                'Fraction of the viewport occupied by each carousel item.',
+            defaultValue: '1.0',
           ),
         ],
         child: SizedBox(
@@ -3016,7 +3245,7 @@ final socialLinkListComponent = WidgetbookComponent(
 // ── SlotGrid ──────────────────────────────────────────────────────────────────
 
 final slotGridComponent = WidgetbookComponent(
-  name: 'SlotGrid',
+  name: 'Slot Grid',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -3254,8 +3483,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           PropRow(
             name: 'data',
             type: 'SlotGridData',
-            description:
-                'Calendar data model (year, month, dates, view mode).',
+            description: 'Calendar data model (year, month, dates, view mode).',
             required: true,
           ),
           PropRow(
@@ -3267,8 +3495,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           PropRow(
             name: 'onMonthChanged',
             type: 'void Function(int year, int month)?',
-            description:
-                'Called when the prev/next month arrow is tapped.',
+            description: 'Called when the prev/next month arrow is tapped.',
           ),
           PropRow(
             name: 'timeSlotProvider',
@@ -3282,9 +3509,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             description: 'Called when the user confirms a time slot.',
           ),
         ],
-        child: SingleChildScrollView(
-          child: SlotGridShowcase(),
-        ),
+        child: SingleChildScrollView(child: SlotGridShowcase()),
       ),
     ),
     WidgetbookUseCase(

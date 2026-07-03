@@ -244,10 +244,10 @@ class _ComponentDocsState extends State<ComponentDocs>
                       children: [
                         // ── Preview ─────────────────────────────────────
                         _PreviewPane(
-                          child: widget.child,
                           center: widget.center,
                           isDark: isDark,
                           mobileMockup: widget.mobileMockup,
+                          child: widget.child,
                         ),
 
                         // ── Code ────────────────────────────────────────
@@ -301,24 +301,21 @@ class _PreviewPane extends StatelessWidget {
           bottomRight: Radius.circular(12),
         ),
       ),
-      child: CustomScrollView(
-        slivers: [
-          SliverPadding(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final content = mobileMockup
+              ? SizedBox(width: 360, height: 760, child: child)
+              : child;
+          return SingleChildScrollView(
             padding: const EdgeInsets.all(24),
-            sliver: SliverFillRemaining(
-              hasScrollBody: false,
-              child: center
-                  ? Center(
-                      child: mobileMockup
-                          ? SizedBox(width: 360, height: 760, child: child)
-                          : child,
-                    )
-                  : (mobileMockup
-                        ? SizedBox(width: 360, height: 760, child: child)
-                        : child),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: (constraints.maxHeight - 48).clamp(0.0, double.infinity),
+              ),
+              child: center ? Center(child: content) : content,
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
@@ -399,123 +396,129 @@ class _PropsPane extends StatelessWidget {
           bottomRight: Radius.circular(12),
         ),
       ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 600),
-            child: Table(
-              border: TableBorder(
-                horizontalInside: BorderSide(color: border, width: 0.5),
-                bottom: BorderSide(color: border, width: 0.5),
-              ),
-              columnWidths: const {
-                0: FlexColumnWidth(2.5),
-                1: FlexColumnWidth(2.0),
-                2: FlexColumnWidth(4.5),
-                3: FlexColumnWidth(1.5),
-              },
-              children: [
-                TableRow(
-                  decoration: BoxDecoration(color: headerBg),
-                  children: ['Prop', 'Type', 'Description', 'Default']
-                      .map(
-                        (h) => Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 14,
-                            vertical: 10,
-                          ),
-                          child: Text(
-                            h,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12,
-                              color: textColor,
-                            ),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-                ...props.map(
-                  (p) => TableRow(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 10,
-                        ),
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: p.name,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final tableWidth =
+              constraints.maxWidth > 600 ? constraints.maxWidth : 600.0;
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minWidth: tableWidth),
+                child: Table(
+                  border: TableBorder(
+                    horizontalInside: BorderSide(color: border, width: 0.5),
+                    bottom: BorderSide(color: border, width: 0.5),
+                  ),
+                  columnWidths: const {
+                    0: FlexColumnWidth(2.5),
+                    1: FlexColumnWidth(2.0),
+                    2: FlexColumnWidth(4.5),
+                    3: FlexColumnWidth(1.5),
+                  },
+                  children: [
+                    TableRow(
+                      decoration: BoxDecoration(color: headerBg),
+                      children: ['Prop', 'Type', 'Description', 'Default']
+                          .map(
+                            (h) => Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                                vertical: 10,
+                              ),
+                              child: Text(
+                                h,
                                 style: TextStyle(
-                                  fontFamily: 'monospace',
+                                  fontWeight: FontWeight.w700,
                                   fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: monoColor,
+                                  color: textColor,
                                 ),
                               ),
-                              if (p.required)
-                                TextSpan(
-                                  text: ' *',
-                                  style: TextStyle(
-                                    color: requiredColor,
-                                    fontWeight: FontWeight.bold,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    ...props.map(
+                      (p) => TableRow(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 10,
+                            ),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: p.name,
+                                    style: TextStyle(
+                                      fontFamily: 'monospace',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: monoColor,
+                                    ),
                                   ),
-                                ),
-                            ],
+                                  if (p.required)
+                                    TextSpan(
+                                      text: ' *',
+                                      style: TextStyle(
+                                        color: requiredColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 10,
-                        ),
-                        child: Text(
-                          p.type,
-                          style: TextStyle(
-                            fontFamily: 'monospace',
-                            fontSize: 11,
-                            color: isDark
-                                ? const Color(0xFF86EFAC)
-                                : const Color(0xFF15803D),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 10,
+                            ),
+                            child: Text(
+                              p.type,
+                              style: TextStyle(
+                                fontFamily: 'monospace',
+                                fontSize: 11,
+                                color: isDark
+                                    ? const Color(0xFF86EFAC)
+                                    : const Color(0xFF15803D),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 10,
-                        ),
-                        child: Text(
-                          p.description,
-                          style: TextStyle(fontSize: 12, color: textColor),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 10,
-                        ),
-                        child: Text(
-                          p.defaultValue,
-                          style: TextStyle(
-                            fontFamily: 'monospace',
-                            fontSize: 11,
-                            color: isDark ? Colors.white38 : Colors.black38,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 10,
+                            ),
+                            child: Text(
+                              p.description,
+                              style: TextStyle(fontSize: 12, color: textColor),
+                            ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 10,
+                            ),
+                            child: Text(
+                              p.defaultValue,
+                              style: TextStyle(
+                                fontFamily: 'monospace',
+                                fontSize: 11,
+                                color: isDark ? Colors.white38 : Colors.black38,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

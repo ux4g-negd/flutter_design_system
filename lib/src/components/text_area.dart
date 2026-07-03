@@ -258,8 +258,7 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
             ),
           ),
         ),
-        if (widget.caption != null ||
-            widget.status == Ux4gInputFieldStatus.error) ...[
+        if (widget.caption != null && widget.caption!.trim().isNotEmpty) ...[
           const SizedBox(height: 4),
           Row(
             children: [

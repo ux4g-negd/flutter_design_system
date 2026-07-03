@@ -2,47 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
+import '../theme_notifier.dart';
+
+/// Returns true when the outer-frame toggle is set to dark.
+/// Falls back to platform brightness when set to [ThemeMode.system].
+bool _isOuterDark(BuildContext context) {
+  final mode = widgetbookThemeNotifier.value;
+  if (mode == ThemeMode.dark) return true;
+  if (mode == ThemeMode.light) return false;
+  return MediaQuery.platformBrightnessOf(context) == Brightness.dark;
+}
 
 // ── Quick Guide ───────────────────────────────────────────────────────────────
 
 final quickGuideComponent = WidgetbookComponent(
   name: 'Quick Guide',
   useCases: [
-    WidgetbookUseCase(
-      name: 'Overview',
-      builder: (context) => const _DocPage(
-        title: 'UX4G Flutter Design System',
-        sections: [
-          _DocSection(
-            heading: 'What is UX4G?',
-            body:
-                'UX4G is a government-grade Flutter design system built to deliver '
-                'consistent, accessible, and trusted digital experiences across '
-                'public service applications. It provides 50+ components, design '
-                'tokens, and a theming system that follows WCAG AA accessibility '
-                'guidelines.',
-          ),
-          _DocSection(
-            heading: 'How to use this Widgetbook',
-            body:
-                'Browse components using the left sidebar. Click any component to '
-                'see its use cases.\n\n'
-                '• Preview tab — Live interactive component\n'
-                '• Code tab — Copy-ready Dart snippet\n'
-                '• Props tab — Parameter reference\n\n'
-                'Use the addons panel (right side) to change viewport, theme '
-                '(Light/Dark), text scale, and alignment.',
-          ),
-          _DocSection(
-            heading: 'Categories',
-            body:
-                'Buttons · Display · Avatar · Form · Progress & Loader · '
-                'Navigation & Feedback · Data · Layout · Overlay · Feedback Forms · '
-                'Utils',
-          ),
-        ],
-      ),
-    ),
+    // WidgetbookUseCase(
+    //   name: 'Overview',
+    //   builder: (context) => const _DocPage(
+    //     title: 'UX4G Flutter Design System',
+    //     sections: [
+    //       _DocSection(
+    //         heading: '',
+    //         body:
+    //             'Flutter design system is built to deliver '
+    //             'consistent, accessible, and trusted digital experiences across '
+    //             'public service applications. It provides 50+ components, design '
+    //             'tokens, and a theming system that follows UX4G accessibility '
+    //             'guidelines.',
+    //       ),
+    //       _DocSection(
+    //         heading: 'How to use this Widgetbook',
+    //         body:
+    //             'Browse components using the left sidebar. Click any component to '
+    //             'see its use cases.\n\n'
+    //             '• Preview tab — Live interactive component\n'
+    //             '• Code tab — Copy-ready Dart snippet\n'
+    //             '• Props tab — Parameter reference\n\n'
+    //             'Use the addons panel (right side) to change viewport, theme '
+    //             '(Light/Dark), text scale, and alignment.',
+    //       ),
+    //       _DocSection(
+    //         heading: 'Categories',
+    //         body:
+    //             'Buttons · Display · Avatar · Form · Progress & Loader · '
+    //             'Navigation & Feedback · Data · Layout · Overlay · Feedback Forms · '
+    //             'Utils',
+    //       ),
+    //     ],
+    //   ),
+    // ),
     WidgetbookUseCase(
       name: 'Installation',
       builder: (context) => _DocPage(
@@ -1030,47 +1040,53 @@ class _DocPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const primary = Color(0xFF6A4EFF);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = _isOuterDark(context);
     final titleColor = isDark ? Colors.white : const Color(0xFF111827);
+    final bg = isDark ? const Color(0xFF121212) : Colors.white;
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(32),
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 680),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.w800,
-                color: titleColor,
-                letterSpacing: -0.5,
-              ),
+    return SizedBox.expand(
+      child: ColoredBox(
+        color: bg,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(32),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 680),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w800,
+                    color: titleColor,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  height: 3,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: primary,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 28),
+                ...sections.map((s) => _buildSection(context, s)),
+                ...codeBlocks.map((c) => _buildCodeBlock(context, c)),
+                ...trailingSections.map((s) => _buildSection(context, s)),
+                ...trailingCodeBlocks.map((c) => _buildCodeBlock(context, c)),
+              ],
             ),
-            const SizedBox(height: 8),
-            Container(
-              height: 3,
-              width: 40,
-              decoration: BoxDecoration(
-                color: primary,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-            const SizedBox(height: 28),
-            ...sections.map((s) => _buildSection(context, s)),
-            ...codeBlocks.map((c) => _buildCodeBlock(context, c)),
-            ...trailingSections.map((s) => _buildSection(context, s)),
-            ...trailingCodeBlocks.map((c) => _buildCodeBlock(context, c)),
-          ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildSection(BuildContext context, _DocSection s) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = _isOuterDark(context);
     final headColor = isDark ? Colors.white : const Color(0xFF111827);
     final bodyColor = isDark
         ? const Color(0xFF9CA3AF)
@@ -1100,7 +1116,7 @@ class _DocPage extends StatelessWidget {
   }
 
   Widget _buildCodeBlock(BuildContext context, _CodeBlock c) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = _isOuterDark(context);
     final labelColor = isDark
         ? const Color(0xFF9CA3AF)
         : const Color(0xFF6B7280);
@@ -1179,7 +1195,7 @@ class _CopyButtonState extends State<_CopyButton> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = _isOuterDark(context);
 
     // Theme-aware button colors for high visibility
     final bg = isDark

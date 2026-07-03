@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Input Field ──────────────────────────────────────────────────────────────
 
 final inputFieldComponent = WidgetbookComponent(
-  name: 'Ux4gInputField',
+  name: 'InputField',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -43,28 +43,39 @@ final inputFieldComponent = WidgetbookComponent(
               label: 'Required',
               initialValue: false,
             );
-            final showCaption = context.knobs.boolean(
-              label: 'Show Caption',
-              initialValue: false,
+            final captionText = context.knobs.stringOrNull(
+              label: 'Caption Text',
+              initialValue: 'Helper text description',
             );
-            final captionText = showCaption
-                ? context.knobs.string(
-                    label: 'Caption Text',
-                    initialValue: 'Helper text description',
-                  )
-                : null;
 
             final dynamicCode =
-                '''Ux4gInputField(
-  value: value,
-  onValueChange: (v) => setState(() => value = v),
-  label: '$labelText',
-  placeholder: '$placeholderText',
-  status: Ux4gInputFieldStatus.${status.name},
-  size: Ux4gInputFieldSize.${size.name},
-  enabled: $enabled,
-  required: $isRequired,${showCaption ? "\n  caption: '$captionText'," : ""}
-);''';
+                '''import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+
+class Ux4gInputFieldDefaultExample extends StatefulWidget {
+  const Ux4gInputFieldDefaultExample({super.key});
+
+  @override
+  State<Ux4gInputFieldDefaultExample> createState() => _Ux4gInputFieldDefaultExampleState();
+}
+
+class _Ux4gInputFieldDefaultExampleState extends State<Ux4gInputFieldDefaultExample> {
+  String value = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Ux4gInputField(
+      value: value,
+      onValueChange: (v) => setState(() => value = v),
+      label: '$labelText',
+      placeholder: '$placeholderText',
+      status: Ux4gInputFieldStatus.${status.name},
+      size: Ux4gInputFieldSize.${size.name},
+      enabled: $enabled,
+      required: $isRequired,${captionText != null ? "\n      caption: '$captionText'," : ""}
+    );
+  }
+}''';
 
             return ComponentDocs(
               name: 'Ux4gInputField',
@@ -153,12 +164,6 @@ final inputFieldComponent = WidgetbookComponent(
                   name: 'trailingIconLabel',
                   type: 'IconData?',
                   description: 'Icon beside label.',
-                ),
-                PropRow(
-                  name: 'showPasswordToggle',
-                  type: 'bool',
-                  description: 'Show eye icon for password.',
-                  defaultValue: 'true',
                 ),
                 PropRow(
                   name: 'enabled',
@@ -280,16 +285,10 @@ final inputFieldComponent = WidgetbookComponent(
                     label: 'Required',
                     initialValue: false,
                   ),
-                  caption:
-                      context.knobs.boolean(
-                        label: 'Show Caption',
-                        initialValue: false,
-                      )
-                      ? context.knobs.string(
-                          label: 'Caption Text',
-                          initialValue: 'Helper text description',
-                        )
-                      : null,
+                  caption: context.knobs.stringOrNull(
+                    label: 'Caption Text',
+                    initialValue: 'Helper text description',
+                  ),
                 ),
               ),
             );
@@ -303,20 +302,75 @@ final inputFieldComponent = WidgetbookComponent(
         name: 'Ux4gInputField — Statuses',
         description:
             'Visual status variations: default, error, warning, success, and disabled.',
-        code: '''Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.error, caption: 'Error message');
+        code: '''import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 
-Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.defaultStatus, caption: 'Description');
+class Ux4gInputFieldStatusesExample extends StatefulWidget {
+  const Ux4gInputFieldStatusesExample({super.key});
 
-Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.success, caption: 'Success message');
+  @override
+  State<Ux4gInputFieldStatusesExample> createState() => _Ux4gInputFieldStatusesExampleState();
+}
 
-Ux4gInputField(value: '', onValueChange: (_) {},
-  label: 'Label', placeholder: 'Placeholder', status: Ux4gInputFieldStatus.warning, caption: 'Warning message');
+class _Ux4gInputFieldStatusesExampleState extends State<Ux4gInputFieldStatusesExample> {
+  String errorValue = '';
+  String defaultValue = '';
+  String successValue = '';
+  String warningValue = '';
 
-Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
-  label: 'Label', status: Ux4gInputFieldStatus.defaultStatus, caption: 'Description', enabled: false);''',
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Ux4gInputField(
+          value: errorValue,
+          onValueChange: (v) => setState(() => errorValue = v),
+          label: 'Label',
+          placeholder: 'Placeholder',
+          status: Ux4gInputFieldStatus.error,
+          caption: 'Error message',
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: defaultValue,
+          onValueChange: (v) => setState(() => defaultValue = v),
+          label: 'Label',
+          placeholder: 'Placeholder',
+          status: Ux4gInputFieldStatus.defaultStatus,
+          caption: 'Description',
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: successValue,
+          onValueChange: (v) => setState(() => successValue = v),
+          label: 'Label',
+          placeholder: 'Placeholder',
+          status: Ux4gInputFieldStatus.success,
+          caption: 'Success message',
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: warningValue,
+          onValueChange: (v) => setState(() => warningValue = v),
+          label: 'Label',
+          placeholder: 'Placeholder',
+          status: Ux4gInputFieldStatus.warning,
+          caption: 'Warning message',
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: 'Placeholder',
+          onValueChange: (_) {},
+          label: 'Label',
+          status: Ux4gInputFieldStatus.defaultStatus,
+          caption: 'Description',
+          enabled: false,
+        ),
+      ],
+    );
+  }
+}''',
         child: SizedBox(
           width: 320,
           child: Column(
@@ -381,11 +435,30 @@ Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
               name: 'Ux4gInputField — Password',
               description:
                   'Password type hides input and shows a visibility-toggle icon.',
-              code:
-                  'Ux4gInputField(\n'
-                  '  label: \'Password\', type: Ux4gInputFieldType.password,\n'
-                  '  showPasswordToggle: true,\n'
-                  ');',
+              code: '''import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+
+class Ux4gInputFieldPasswordExample extends StatefulWidget {
+  const Ux4gInputFieldPasswordExample({super.key});
+
+  @override
+  State<Ux4gInputFieldPasswordExample> createState() => _Ux4gInputFieldPasswordExampleState();
+}
+
+class _Ux4gInputFieldPasswordExampleState extends State<Ux4gInputFieldPasswordExample> {
+  String password = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Ux4gInputField(
+      value: password,
+      onValueChange: (v) => setState(() => password = v),
+      label: 'Password',
+      placeholder: 'Enter your password',
+      type: Ux4gInputFieldType.password,
+    );
+  }
+}''',
               child: SizedBox(
                 width: 320,
                 child: Ux4gInputField(
@@ -394,7 +467,6 @@ Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
                   label: 'Password',
                   placeholder: 'Enter your password',
                   type: Ux4gInputFieldType.password,
-                  showPasswordToggle: true,
                 ),
               ),
             );
@@ -412,8 +484,54 @@ Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
               name: 'Ux4gInputField — Icons',
               description:
                   'Leading and trailing icon slots inside the input border.',
-              code:
-                  'Ux4gInputField(leadingIcon: Icons.search, trailingIcon: Icons.currency_rupee, ...);',
+              code: '''import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+
+class Ux4gInputFieldIconsExample extends StatefulWidget {
+  const Ux4gInputFieldIconsExample({super.key});
+
+  @override
+  State<Ux4gInputFieldIconsExample> createState() => _Ux4gInputFieldIconsExampleState();
+}
+
+class _Ux4gInputFieldIconsExampleState extends State<Ux4gInputFieldIconsExample> {
+  String leadingValue = '';
+  String trailingValue = '';
+  String bothValue = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Ux4gInputField(
+          value: leadingValue,
+          onValueChange: (v) => setState(() => leadingValue = v),
+          label: 'Leading icon',
+          placeholder: 'Search…',
+          leadingIcon: Icons.search,
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: trailingValue,
+          onValueChange: (v) => setState(() => trailingValue = v),
+          label: 'Trailing icon',
+          placeholder: 'Enter amount',
+          trailingIcon: Icons.currency_rupee,
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: bothValue,
+          onValueChange: (v) => setState(() => bothValue = v),
+          label: 'Both icons',
+          placeholder: 'Location',
+          leadingIcon: Icons.location_on_outlined,
+          trailingIcon: Icons.my_location,
+        ),
+      ],
+    );
+  }
+}''',
               child: SizedBox(
                 width: 320,
                 child: Column(
@@ -461,8 +579,45 @@ Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
               name: 'Ux4gInputField — Prefix / Postfix',
               description:
                   'Text decorations prepended or appended inside the field border.',
-              code:
-                  'Ux4gInputField(prefixText: \'₹\', postfixText: \'.00\', label: \'Amount\', ...);',
+              code: '''import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+
+class Ux4gInputFieldPrefixPostfixExample extends StatefulWidget {
+  const Ux4gInputFieldPrefixPostfixExample({super.key});
+
+  @override
+  State<Ux4gInputFieldPrefixPostfixExample> createState() => _Ux4gInputFieldPrefixPostfixExampleState();
+}
+
+class _Ux4gInputFieldPrefixPostfixExampleState extends State<Ux4gInputFieldPrefixPostfixExample> {
+  String amountValue = '';
+  String websiteValue = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Ux4gInputField(
+          value: amountValue,
+          onValueChange: (v) => setState(() => amountValue = v),
+          label: 'Amount',
+          placeholder: '0',
+          prefixText: '₹',
+          postfixText: '.00',
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: websiteValue,
+          onValueChange: (v) => setState(() => websiteValue = v),
+          label: 'Website',
+          placeholder: 'example.com',
+          prefixText: 'https://',
+        ),
+      ],
+    );
+  }
+}''',
               child: SizedBox(
                 width: 320,
                 child: Column(
@@ -498,9 +653,43 @@ Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
         name: 'Ux4gInputField — Read-only & Required',
         description:
             'readOnly and enabled=false disable editing so user can only read the value; required shows an asterisk on the label.',
-        code:
-            'Ux4gInputField(value: \'GOV/2025/001\', readOnly: true, enabled: false, label: \'Application ID\', ...);\n'
-            'Ux4gInputField(value: \'\', required: true, label: \'Full Name\', ...);',
+        code: '''import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+
+class Ux4gInputFieldReadOnlyRequiredExample extends StatefulWidget {
+  const Ux4gInputFieldReadOnlyRequiredExample({super.key});
+
+  @override
+  State<Ux4gInputFieldReadOnlyRequiredExample> createState() => _Ux4gInputFieldReadOnlyRequiredExampleState();
+}
+
+class _Ux4gInputFieldReadOnlyRequiredExampleState extends State<Ux4gInputFieldReadOnlyRequiredExample> {
+  String fullNameValue = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Ux4gInputField(
+          value: 'GOV/2025/001',
+          onValueChange: (_) {},
+          label: 'Application ID',
+          readOnly: true,
+          enabled: false,
+        ),
+        const SizedBox(height: 16),
+        Ux4gInputField(
+          value: fullNameValue,
+          onValueChange: (v) => setState(() => fullNameValue = v),
+          label: 'Full Name',
+          required: true,
+          placeholder: 'Enter full name',
+        ),
+      ],
+    );
+  }
+}''',
         child: SizedBox(
           width: 320,
           child: Column(
@@ -531,8 +720,59 @@ Ux4gInputField(value: 'Placeholder', onValueChange: (_) {},
 
 // ── Text Area ─────────────────────────────────────────────────────────────────
 
+String _buildTextAreaCode({
+  required String label,
+  required String placeholder,
+  required Ux4gTextAreaSize size,
+  required Ux4gTextAreaMinHeight minHeight,
+  required Ux4gInputFieldStatus status,
+  required bool required,
+  required bool enabled,
+  required bool readOnly,
+  required int maxLength,
+  String? caption,
+}) {
+  final buf = StringBuffer();
+  buf.writeln("// String value = '';  ← declare this in your widget state");
+  buf.writeln("Ux4gTextArea(");
+  buf.writeln("  value: value,");
+  buf.writeln("  onValueChange: (v) => setState(() => value = v),");
+  if (label.isNotEmpty) {
+    buf.writeln("  label: '$label',");
+  }
+  if (placeholder.isNotEmpty) {
+    buf.writeln("  placeholder: '$placeholder',");
+  }
+  if (size != Ux4gTextAreaSize.large) {
+    buf.writeln("  size: Ux4gTextAreaSize.${size.name},");
+  }
+  if (minHeight != Ux4gTextAreaMinHeight.medium) {
+    buf.writeln("  minHeight: Ux4gTextAreaMinHeight.${minHeight.name},");
+  }
+  if (status != Ux4gInputFieldStatus.defaultStatus) {
+    buf.writeln("  status: Ux4gInputFieldStatus.${status.name},");
+  }
+  if (required) {
+    buf.writeln("  required: true,");
+  }
+  if (!enabled) {
+    buf.writeln("  enabled: false,");
+  }
+  if (readOnly) {
+    buf.writeln("  readOnly: true,");
+  }
+  if (maxLength != 200) {
+    buf.writeln("  maxLength: $maxLength,");
+  }
+  if (caption != null && caption.isNotEmpty) {
+    buf.writeln("  caption: '$caption',");
+  }
+  buf.write(");");
+  return buf.toString();
+}
+
 final textAreaComponent = WidgetbookComponent(
-  name: 'Ux4gTextArea',
+  name: 'TextArea',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -540,16 +780,68 @@ final textAreaComponent = WidgetbookComponent(
         String value = '';
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final label = context.knobs.string(
+              label: 'Label',
+              initialValue: 'Description',
+            );
+            final placeholder = context.knobs.string(
+              label: 'Placeholder',
+              initialValue: 'Write something...',
+            );
+            final size = context.knobs.list(
+              label: 'Size',
+              options: Ux4gTextAreaSize.values,
+              initialOption: Ux4gTextAreaSize.large,
+            );
+            final minHeight = context.knobs.list(
+              label: 'Min Height',
+              options: Ux4gTextAreaMinHeight.values,
+              initialOption: Ux4gTextAreaMinHeight.medium,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gInputFieldStatus.values,
+              initialOption: Ux4gInputFieldStatus.defaultStatus,
+            );
+            final required = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
+            final enabled = context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            );
+            final readOnly = context.knobs.boolean(
+              label: 'Read Only',
+              initialValue: false,
+            );
+            final maxLength = context.knobs.int.input(
+              label: 'Max Length',
+              initialValue: 200,
+            );
+            final caption = context.knobs.stringOrNull(
+              label: 'Caption',
+              initialValue: 'Helper text description',
+            );
+
+            final code = _buildTextAreaCode(
+              label: label,
+              placeholder: placeholder,
+              size: size,
+              minHeight: minHeight,
+              status: status,
+              required: required,
+              enabled: enabled,
+              readOnly: readOnly,
+              maxLength: maxLength,
+              caption: caption,
+            );
+
             return ComponentDocs(
               name: 'Ux4gTextArea',
               description:
                   'A multi-line text input with label and placeholder.',
-              code: '''Ux4gTextArea(
-  value: value,
-  onValueChange: (v) => setState(() => value = v),
-  label: 'Description',
-  placeholder: 'Write something...',
-);''',
+              code: code,
               props: const [
                 PropRow(
                   name: 'value',
@@ -658,49 +950,16 @@ final textAreaComponent = WidgetbookComponent(
                 child: Ux4gTextArea(
                   value: value,
                   onValueChange: (v) => setState(() => value = v),
-                  label: context.knobs.string(
-                    label: 'Label',
-                    initialValue: 'Description',
-                  ),
-                  placeholder: context.knobs.string(
-                    label: 'Placeholder',
-                    initialValue: 'Write something...',
-                  ),
-                  size: context.knobs.list(
-                    label: 'Size',
-                    options: Ux4gTextAreaSize.values,
-                    initialOption: Ux4gTextAreaSize.large,
-                  ),
-                  minHeight: context.knobs.list(
-                    label: 'Min Height',
-                    options: Ux4gTextAreaMinHeight.values,
-                    initialOption: Ux4gTextAreaMinHeight.medium,
-                  ),
-                  status: context.knobs.list(
-                    label: 'Status',
-                    options: Ux4gInputFieldStatus.values,
-                    initialOption: Ux4gInputFieldStatus.defaultStatus,
-                  ),
-                  required: context.knobs.boolean(
-                    label: 'Required',
-                    initialValue: false,
-                  ),
-                  enabled: context.knobs.boolean(
-                    label: 'Enabled',
-                    initialValue: true,
-                  ),
-                  readOnly: context.knobs.boolean(
-                    label: 'Read Only',
-                    initialValue: false,
-                  ),
-                  maxLength: context.knobs.int.input(
-                    label: 'Max Length',
-                    initialValue: 200,
-                  ),
-                  caption: context.knobs.string(
-                    label: 'Caption',
-                    initialValue: '',
-                  ),
+                  label: label,
+                  placeholder: placeholder,
+                  size: size,
+                  minHeight: minHeight,
+                  status: status,
+                  required: required,
+                  enabled: enabled,
+                  readOnly: readOnly,
+                  maxLength: maxLength,
+                  caption: caption,
                 ),
               ),
             );
@@ -713,9 +972,25 @@ final textAreaComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gTextArea — Sizes',
         description: 'Small and Large sizes with different minimum heights.',
-        code:
-            'Ux4gTextArea(size: Ux4gTextAreaSize.small, minHeight: Ux4gTextAreaMinHeight.small, ...);\n'
-            'Ux4gTextArea(size: Ux4gTextAreaSize.large, minHeight: Ux4gTextAreaMinHeight.large, ...);',
+        code: '''// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'Small size (80px min-height)',
+  placeholder: 'Small area...',
+  size: Ux4gTextAreaSize.small,
+  minHeight: Ux4gTextAreaMinHeight.small,
+);
+
+// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'Large size (160px min-height)',
+  placeholder: 'Large area...',
+  size: Ux4gTextAreaSize.large,
+  minHeight: Ux4gTextAreaMinHeight.large,
+);''',
         child: SizedBox(
           width: 320,
           child: Column(
@@ -747,8 +1022,33 @@ final textAreaComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gTextArea — Statuses',
         description: 'Visual feedback for different validation states.',
-        code:
-            'Ux4gTextArea(status: Ux4gInputFieldStatus.error, caption: "Required field", ...);',
+        code: '''// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'Success Status',
+  status: Ux4gInputFieldStatus.success,
+  caption: 'Information saved successfully',
+);
+
+// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'Warning Status',
+  status: Ux4gInputFieldStatus.warning,
+  caption: 'Please double check this entry',
+);
+
+// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'Error Status',
+  status: Ux4gInputFieldStatus.error,
+  caption: 'This field is required',
+  required: true,
+);''',
         child: SizedBox(
           width: 320,
           child: Column(
@@ -787,8 +1087,23 @@ final textAreaComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gTextArea — Metadata',
         description: 'Showing character counts and helper icons.',
-        code:
-            'Ux4gTextArea(characterCountText: "0 / 100", trailingIconLabel: Icons.help_outline, ...);',
+        code: '''// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'With Character Count',
+  characterCountText: '12 / 500',
+  maxLength: 500,
+);
+
+// String value = '';  ← declare this in your widget state
+Ux4gTextArea(
+  value: value,
+  onValueChange: (v) => setState(() => value = v),
+  label: 'With Info Icon',
+  trailingIconLabel: Icons.help_outline,
+  placeholder: 'Tap the icon for help',
+);''',
         child: SizedBox(
           width: 320,
           child: Column(
@@ -818,8 +1133,59 @@ final textAreaComponent = WidgetbookComponent(
 
 // ── Search Field ──────────────────────────────────────────────────────────────
 
+String _buildSearchFieldCode({
+  required String placeholder,
+  required Ux4gSearchFieldVariant variant,
+  required Ux4gSearchFieldSize size,
+  required Ux4gSearchFieldStatus status,
+  required bool showVoiceIcon,
+  required bool showClearIcon,
+  required bool enabled,
+  required bool readOnly,
+  String? label,
+  String? caption,
+}) {
+  final buf = StringBuffer();
+  buf.writeln("// String value = '';  ← declare this in your widget state");
+  buf.writeln("Ux4gSearchField(");
+  buf.writeln("  value: value,");
+  buf.writeln("  onValueChange: (v) => setState(() => value = v),");
+  if (placeholder.isNotEmpty) {
+    buf.writeln("  placeholder: '$placeholder',");
+  }
+  if (variant != Ux4gSearchFieldVariant.basicSearch) {
+    buf.writeln("  variant: Ux4gSearchFieldVariant.${variant.name},");
+  }
+  if (size != Ux4gSearchFieldSize.medium) {
+    buf.writeln("  size: Ux4gSearchFieldSize.${size.name},");
+  }
+  if (status != Ux4gSearchFieldStatus.defaultStatus) {
+    buf.writeln("  status: Ux4gSearchFieldStatus.${status.name},");
+  }
+  if (label != null && label.isNotEmpty) {
+    buf.writeln("  label: '$label',");
+  }
+  if (caption != null && caption.isNotEmpty) {
+    buf.writeln("  caption: '$caption',");
+  }
+  if (!showVoiceIcon) {
+    buf.writeln("  showVoiceIcon: false,");
+  }
+  if (!showClearIcon) {
+    buf.writeln("  showClearIcon: false,");
+  }
+  if (!enabled) {
+    buf.writeln("  enabled: false,");
+  }
+  if (readOnly) {
+    buf.writeln("  readOnly: true,");
+  }
+  buf.write(");");
+  return buf.toString();
+}
+
 final searchFieldComponent = WidgetbookComponent(
-  name: 'Ux4gSearchField',
+  name: 'SearchField',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -827,15 +1193,70 @@ final searchFieldComponent = WidgetbookComponent(
         String value = '';
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final placeholder = context.knobs.string(
+              label: 'Placeholder',
+              initialValue: 'Search...',
+            );
+            final variant = context.knobs.list(
+              label: 'Variant',
+              options: Ux4gSearchFieldVariant.values,
+              initialOption: Ux4gSearchFieldVariant.basicSearch,
+            );
+            final size = context.knobs.list(
+              label: 'Size',
+              options: Ux4gSearchFieldSize.values,
+              initialOption: Ux4gSearchFieldSize.medium,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gSearchFieldStatus.values,
+              initialOption: Ux4gSearchFieldStatus.defaultStatus,
+            );
+            final label = context.knobs.stringOrNull(
+              label: 'Label',
+              initialValue: null,
+              defaultToNull: true,
+            );
+            final caption = context.knobs.stringOrNull(
+              label: 'Caption',
+              initialValue: null,
+              defaultToNull: true,
+            );
+            final showVoiceIcon = context.knobs.boolean(
+              label: 'Show Voice Icon',
+              initialValue: true,
+            );
+            final showClearIcon = context.knobs.boolean(
+              label: 'Show Clear Icon',
+              initialValue: true,
+            );
+            final enabled = context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            );
+            final readOnly = context.knobs.boolean(
+              label: 'Read Only',
+              initialValue: false,
+            );
+
+            final code = _buildSearchFieldCode(
+              placeholder: placeholder,
+              variant: variant,
+              size: size,
+              status: status,
+              label: label,
+              caption: caption,
+              showVoiceIcon: showVoiceIcon,
+              showClearIcon: showClearIcon,
+              enabled: enabled,
+              readOnly: readOnly,
+            );
+
             return ComponentDocs(
               name: 'Ux4gSearchField',
               description:
                   'A search-optimised input field with a built-in search icon.',
-              code: '''Ux4gSearchField(
-  value: value,
-  onValueChange: (v) => setState(() => value = v),
-  placeholder: 'Search...',
-);''',
+              code: code,
               props: const [
                 PropRow(
                   name: 'value',
@@ -950,10 +1371,16 @@ final searchFieldComponent = WidgetbookComponent(
                 child: Ux4gSearchField(
                   value: value,
                   onValueChange: (v) => setState(() => value = v),
-                  placeholder: context.knobs.string(
-                    label: 'Placeholder',
-                    initialValue: 'Search...',
-                  ),
+                  placeholder: placeholder,
+                  variant: variant,
+                  size: size,
+                  status: status,
+                  label: label,
+                  caption: caption,
+                  showVoiceIcon: showVoiceIcon,
+                  showClearIcon: showClearIcon,
+                  enabled: enabled,
+                  readOnly: readOnly,
                 ),
               ),
             );
@@ -967,7 +1394,7 @@ final searchFieldComponent = WidgetbookComponent(
 // ── Checkbox ──────────────────────────────────────────────────────────────────
 
 final checkboxComponent = WidgetbookComponent(
-  name: 'Ux4gCheckbox',
+  name: 'Checkbox',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -979,18 +1406,33 @@ final checkboxComponent = WidgetbookComponent(
               name: 'Ux4gCheckbox',
               description:
                   'A tri-state checkbox (checked / unchecked / indeterminate) with label and description.',
-              code: '''Ux4gCheckbox(
-  value: true,
-  onChanged: (v) => setState(() => value = v),
-  label: 'Accept terms',
-  description: 'Optional helper text',
-  size: Ux4gCheckboxSize.medium,
-  isRequired: false,
-  hasError: false,
-);
+              code: '''class CheckboxExample extends StatefulWidget {
+  const CheckboxExample({super.key});
 
-// Indeterminate state
-Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
+  @override
+  State<CheckboxExample> createState() => _CheckboxExampleState();
+}
+
+class _CheckboxExampleState extends State<CheckboxExample> {
+  bool? value = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Ux4gCheckbox(
+      value: value,
+      onChanged: (newValue) {
+        setState(() => value = newValue);
+      },
+      label: 'Accept terms',
+      description: '',
+      size: Ux4gCheckboxSize.medium,
+      isRequired: false,
+      hasError: false,
+      descriptionVariant: Ux4gCheckboxDescriptionVariant.helper,
+      enabled: true,
+    );
+  }
+}''',
               props: const [
                 PropRow(
                   name: 'value',
@@ -1081,13 +1523,14 @@ Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
       name: 'All states',
       builder: (context) => ComponentDocs(
         name: 'Ux4gCheckbox — All States',
-        description: 'Checked, unchecked, indeterminate, error, and disabled states.',
+        description:
+            'Checked, unchecked, indeterminate, error, and disabled states.',
         code:
             'Ux4gCheckbox(value: true,  onChanged: (_) {}, label: \'Checked\');\n'
             'Ux4gCheckbox(value: false, onChanged: (_) {}, label: \'Unchecked\');\n'
             'Ux4gCheckbox(value: null,  onChanged: (_) {}, label: \'Indeterminate\');\n'
             'Ux4gCheckbox(value: false, onChanged: (_) {}, label: \'Error state\', isRequired: true, hasError: true);\n'
-            'Ux4gCheckbox(value: true,  onChanged: null,   label: \'Disabled\', enabled: false);',
+            'Ux4gCheckbox(value: true,  onChanged: (_) {}, label: \'Disabled\', enabled: false);',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1168,7 +1611,7 @@ Ux4gCheckbox(value: null, onChanged: (v) {}, label: 'Partial');''',
 // ── Toggle ────────────────────────────────────────────────────────────────────
 
 final toggleComponent = WidgetbookComponent(
-  name: 'Ux4gToggle',
+  name: 'Toggle',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -1433,7 +1876,7 @@ Ux4gToggle(
 // ── Slider ────────────────────────────────────────────────────────────────────
 
 final sliderComponent = WidgetbookComponent(
-  name: 'Ux4gSlider',
+  name: 'Slider',
   useCases: [
     // ── 1. Basic Single Slider (Small) ─────────────────────────────────
     WidgetbookUseCase(
@@ -1945,7 +2388,7 @@ final sliderComponent = WidgetbookComponent(
 // ── OTP Input ─────────────────────────────────────────────────────────────────
 
 final otpInputComponent = WidgetbookComponent(
-  name: 'Ux4gOtpInput',
+  name: 'OtpInput',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2264,7 +2707,10 @@ final actionDropdownComponent = WidgetbookComponent(
                   onTap: toggle,
                   borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: primaryColor.withValues(alpha: 0.15),
                       border: Border.all(color: primaryColor, width: 1.5),
@@ -2404,7 +2850,8 @@ final selectionDropdownComponent = WidgetbookComponent(
                     Ux4gDropdownOption(id: 'ca', label: 'Canada'),
                   ],
                   selectedOptionIds: _selectionDropdownSingleSelected,
-                  onSelectionChange: (ids) => setState(() => _selectionDropdownSingleSelected = ids),
+                  onSelectionChange: (ids) =>
+                      setState(() => _selectionDropdownSingleSelected = ids),
                   mode: Ux4gDropdownMode.single,
                   searchEnabled: context.knobs.boolean(
                     label: 'Search enabled',
@@ -2452,7 +2899,8 @@ final selectionDropdownComponent = WidgetbookComponent(
                     Ux4gDropdownOption(id: 'web', label: 'Web'),
                   ],
                   selectedOptionIds: _selectionDropdownMultiSelected,
-                  onSelectionChange: (ids) => setState(() => _selectionDropdownMultiSelected = ids),
+                  onSelectionChange: (ids) =>
+                      setState(() => _selectionDropdownMultiSelected = ids),
                   mode: Ux4gDropdownMode.multi,
                   searchEnabled: true,
                 ),
@@ -2468,7 +2916,7 @@ final selectionDropdownComponent = WidgetbookComponent(
 // ── Date Picker ───────────────────────────────────────────────────────────────
 
 final datePickerComponent = WidgetbookComponent(
-  name: 'Ux4gDatePicker',
+  name: 'DatePicker',
   useCases: [
     // ── 1. Single Date ───────────────────────────────────────────────────
     WidgetbookUseCase(
@@ -2756,7 +3204,7 @@ final datePickerComponent = WidgetbookComponent(
 // ── Time Picker ───────────────────────────────────────────────────────────────
 
 final timePickerComponent = WidgetbookComponent(
-  name: 'Ux4gTimePicker',
+  name: 'TimePicker',
   useCases: [
     // ── 1. Standard ──────────────────────────────────────────────────────
     WidgetbookUseCase(
@@ -2870,7 +3318,7 @@ final timePickerComponent = WidgetbookComponent(
 // ── File Upload ───────────────────────────────────────────────────────────────
 
 final fileUploadComponent = WidgetbookComponent(
-  name: 'Ux4gFileUpload',
+  name: 'FileUpload',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -3024,7 +3472,7 @@ final fileUploadComponent = WidgetbookComponent(
 // ── Radio Button ─────────────────────────────────────────────────────────────────
 
 final radioButtonComponent = WidgetbookComponent(
-  name: 'Ux4gRadioButton',
+  name: 'RadioButton',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',

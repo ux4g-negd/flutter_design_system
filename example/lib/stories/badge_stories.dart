@@ -5,7 +5,7 @@ import 'package:widgetbook/widgetbook.dart';
 import '../widgets/component_docs.dart';
 
 final badgeComponent = WidgetbookComponent(
-  name: 'Ux4gBadge',
+  name: 'Badge',
   useCases: [
     WidgetbookUseCase(
       name: 'Dot',
@@ -58,7 +58,8 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
           PropRow(
             name: 'borderColor',
             type: 'Color?',
-            description: 'Color of the outer border. Defaults to surface color.',
+            description:
+                'Color of the outer border. Defaults to surface color.',
           ),
           PropRow(
             name: 'count (factory)',
@@ -169,7 +170,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
       name: 'Semantic Colors & Border',
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
-        final semanticColors = isDark 
+        final semanticColors = isDark
             ? [
                 Ux4gPalette.primary300,
                 Ux4gPalette.green500,
@@ -186,11 +187,13 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
                 Ux4gPalette.neutral300,
                 Ux4gPalette.cyan600,
               ];
-        
+
         return ComponentDocs(
           name: 'Ux4gBadge — Semantic Colors & Border',
-          description: 'Showcasing the border stroke property across semantic colors.',
-          code: '''// Enable showBorder: true to add a surface-colored outer stroke
+          description:
+              'Showcasing the border stroke property across semantic colors.',
+          code:
+              '''// Enable showBorder: true to add a surface-colored outer stroke
 final isDark = Theme.of(context).brightness == Brightness.dark;
 final successColor = isDark ? Ux4gPalette.green500 : Ux4gPalette.green600;
 final primaryColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
@@ -202,33 +205,68 @@ Ux4gBadge.readyToUse(Ux4gIcons.verification, showBorder: true);
 Ux4gBadge.readyToUse(Ux4gIcons.star, showBorder: true);
 Ux4gBadge.icon(Icons.shield, showBorder: true, containerColor: primaryColor);''',
           child: Container(
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05), // slightly grey background to make white borders pop
+            color: Theme.of(context).colorScheme.onSurface.withValues(
+              alpha: 0.05,
+            ), // slightly grey background to make white borders pop
             padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: semanticColors.map((c) => Ux4gBadge.dot(containerColor: c, showBorder: true)).toList(),
+                  children: semanticColors
+                      .map(
+                        (c) =>
+                            Ux4gBadge.dot(containerColor: c, showBorder: true),
+                      )
+                      .toList(),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: semanticColors.map((c) => Ux4gBadge.icon(Icons.check, containerColor: c, showBorder: true)).toList(),
+                  children: semanticColors
+                      .map(
+                        (c) => Ux4gBadge.icon(
+                          Icons.check,
+                          containerColor: c,
+                          showBorder: true,
+                        ),
+                      )
+                      .toList(),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: semanticColors.map((c) => Ux4gBadge.count(3, containerColor: c, showBorder: true)).toList(),
+                  children: semanticColors
+                      .map(
+                        (c) => Ux4gBadge.count(
+                          3,
+                          containerColor: c,
+                          showBorder: true,
+                        ),
+                      )
+                      .toList(),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Ux4gBadge.readyToUse(Ux4gIcons.verification, showBorder: true),
+                    Ux4gBadge.readyToUse(
+                      Ux4gIcons.verification,
+                      showBorder: true,
+                    ),
                     Ux4gBadge.readyToUse(Ux4gIcons.star, showBorder: true),
-                    Ux4gBadge.icon(Icons.shield, containerColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, showBorder: true),
-                    Ux4gBadge.readyToUse(Ux4gIcons.verification, showBorder: true),
+                    Ux4gBadge.icon(
+                      Icons.shield,
+                      containerColor: isDark
+                          ? Ux4gPalette.primary300
+                          : Ux4gPalette.primary600,
+                      showBorder: true,
+                    ),
+                    Ux4gBadge.readyToUse(
+                      Ux4gIcons.verification,
+                      showBorder: true,
+                    ),
                     Ux4gBadge.readyToUse(Ux4gIcons.star, showBorder: true),
                   ],
                 ),

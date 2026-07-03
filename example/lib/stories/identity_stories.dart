@@ -10,7 +10,7 @@ String _panStoryValue = '';
 // ── Aadhaar Input Field ──────────────────────────────────────────────────────
 
 final aadhaarInputFieldComponent = WidgetbookComponent(
-  name: 'Ux4gAadhaarInputField',
+  name: 'AadhaarInputField',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -151,7 +151,7 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
 // ── PAN Input Field ──────────────────────────────────────────────────────────
 
 final panInputFieldComponent = WidgetbookComponent(
-  name: 'Ux4gPanInputField',
+  name: 'PanInputField',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',

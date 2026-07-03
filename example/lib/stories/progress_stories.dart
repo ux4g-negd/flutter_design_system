@@ -442,11 +442,13 @@ final circularProgressComponent = WidgetbookComponent(
                   value: 0.5,
                   size: size,
                   strokeCap: strokeCap,
-                  trackColor: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
+                  trackColor: isDark
+                      ? Ux4gPalette.neutral600
+                      : Ux4gPalette.neutral300,
                   backgroundColor: showBackground
                       ? (isDark
-                          ? Ux4gPalette.neutral800
-                          : Ux4gPalette.neutral100)
+                            ? Ux4gPalette.neutral800
+                            : Ux4gPalette.neutral100)
                       : null,
                   progressGradient: showGradient
                       ? SweepGradient(
@@ -457,9 +459,10 @@ final circularProgressComponent = WidgetbookComponent(
                   centerValueText: '50%',
                   centerDescription: innerDescription ? 'Description' : null,
                   description: innerDescription ? null : 'Description',
-                  gap: (size == Ux4gCircularProgressSize.xl ||
-                        size == Ux4gCircularProgressSize.xxl ||
-                        size == Ux4gCircularProgressSize.xxxl)
+                  gap:
+                      (size == Ux4gCircularProgressSize.xl ||
+                          size == Ux4gCircularProgressSize.xxl ||
+                          size == Ux4gCircularProgressSize.xxxl)
                       ? 4
                       : 8,
                 ),
@@ -526,32 +529,61 @@ Ux4gCircularProgress(
             children: [
               Text('Default', style: typography.lS_strong),
               const SizedBox(height: 16),
-              buildRow(showGradient: false, showBackground: false, innerDescription: false),
+              buildRow(
+                showGradient: false,
+                showBackground: false,
+                innerDescription: false,
+              ),
               const SizedBox(height: 48),
 
               Text('Gradient', style: typography.lS_strong),
               const SizedBox(height: 16),
-              buildRow(showGradient: true, showBackground: false, innerDescription: false),
+              buildRow(
+                showGradient: true,
+                showBackground: false,
+                innerDescription: false,
+              ),
               const SizedBox(height: 48),
 
               Text('With Background Track', style: typography.lS_strong),
               const SizedBox(height: 16),
-              buildRow(showGradient: false, showBackground: true, innerDescription: false),
+              buildRow(
+                showGradient: false,
+                showBackground: true,
+                innerDescription: false,
+              ),
               const SizedBox(height: 48),
 
-              Text('Gradient + Background + Inner Description', style: typography.lS_strong),
+              Text(
+                'Gradient + Background + Inner Description',
+                style: typography.lS_strong,
+              ),
               const SizedBox(height: 16),
-              buildRow(showGradient: true, showBackground: true, innerDescription: true),
+              buildRow(
+                showGradient: true,
+                showBackground: true,
+                innerDescription: true,
+              ),
               const SizedBox(height: 48),
 
               Text('Rounded Cap', style: typography.lS_strong),
               const SizedBox(height: 16),
-              buildRow(showGradient: true, showBackground: false, innerDescription: false, strokeCap: StrokeCap.round),
+              buildRow(
+                showGradient: true,
+                showBackground: false,
+                innerDescription: false,
+                strokeCap: StrokeCap.round,
+              ),
               const SizedBox(height: 48),
 
               Text('Rounded Cap + Background', style: typography.lS_strong),
               const SizedBox(height: 16),
-              buildRow(showGradient: true, showBackground: true, innerDescription: false, strokeCap: StrokeCap.round),
+              buildRow(
+                showGradient: true,
+                showBackground: true,
+                innerDescription: false,
+                strokeCap: StrokeCap.round,
+              ),
             ],
           ),
         );
@@ -683,7 +715,7 @@ enum Ux4gLoaderGradientTheme {
 }
 
 final loaderComponent = WidgetbookComponent(
-  name: 'Ux4gLoader',
+  name: 'Spinner (Loader)',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -697,15 +729,18 @@ final loaderComponent = WidgetbookComponent(
         );
 
         final gradientColors = switch (selectedTheme) {
-          Ux4gLoaderGradientTheme.brand => isDark
-              ? [Ux4gPalette.primary300, Ux4gPalette.primary800]
-              : [Ux4gPalette.primary600, Ux4gPalette.primary100],
-          Ux4gLoaderGradientTheme.neutral => isDark
-              ? [Ux4gPalette.neutral950A, Ux4gPalette.neutral900]
-              : [Ux4gPalette.neutral0, Ux4gPalette.neutral50],
-          Ux4gLoaderGradientTheme.destructive => isDark
-              ? [Ux4gPalette.red800, Ux4gPalette.red300]
-              : [Ux4gPalette.red200, Ux4gPalette.red600],
+          Ux4gLoaderGradientTheme.brand =>
+            isDark
+                ? [Ux4gPalette.primary300, Ux4gPalette.primary800]
+                : [Ux4gPalette.primary600, Ux4gPalette.primary100],
+          Ux4gLoaderGradientTheme.neutral =>
+            isDark
+                ? [Ux4gPalette.neutral950A, Ux4gPalette.neutral900]
+                : [Ux4gPalette.neutral0, Ux4gPalette.neutral50],
+          Ux4gLoaderGradientTheme.destructive =>
+            isDark
+                ? [Ux4gPalette.red800, Ux4gPalette.red300]
+                : [Ux4gPalette.red200, Ux4gPalette.red600],
         };
 
         return ComponentDocs(

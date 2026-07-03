@@ -509,8 +509,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
               ),
           ],
         ),
-        if (widget.caption != null ||
-            widget.status == Ux4gSearchFieldStatus.error) ...[
+        if (widget.caption != null && widget.caption!.trim().isNotEmpty) ...[
           const SizedBox(height: 4),
           Row(
             children: [

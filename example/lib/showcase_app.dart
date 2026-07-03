@@ -684,7 +684,6 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               label: 'Password',
                               placeholder: 'Enter your password',
                               type: Ux4gInputFieldType.password,
-                              showPasswordToggle: true,
                             ),
                             const SizedBox(height: 16),
                             Ux4gInputField(

@@ -8,7 +8,7 @@ import '../widgets/component_docs.dart';
 // ── App Header ────────────────────────────────────────────────────────────────
 
 final appHeaderComponent = WidgetbookComponent(
-  name: 'Ux4gAppHeader',
+  name: 'App Header',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -214,7 +214,8 @@ final appHeaderComponent = WidgetbookComponent(
       name: 'Left Aligned Title',
       builder: (context) => ComponentDocs(
         name: 'Ux4gAppHeader — Left Aligned',
-        description: 'Header with a back button, left-aligned title, and actions.',
+        description:
+            'Header with a back button, left-aligned title, and actions.',
         code: '''Ux4gAppHeader(
   title: 'Page Title',
   showBackButton: true,
@@ -231,12 +232,7 @@ final appHeaderComponent = WidgetbookComponent(
           showBackButton: true,
           variant: Ux4gAppHeaderVariant.filled,
           useSafeArea: false,
-          actions: [
-            Ux4gAppHeaderAction(
-              icon: Icons.search,
-              onPressed: () {},
-            ),
-          ],
+          actions: [Ux4gAppHeaderAction(icon: Icons.search, onPressed: () {})],
         ),
       ),
     ),
@@ -275,12 +271,7 @@ final appHeaderComponent = WidgetbookComponent(
               ),
             ),
           ),
-          actions: [
-            Ux4gAppHeaderAction(
-              icon: Icons.search,
-              onPressed: () {},
-            ),
-          ],
+          actions: [Ux4gAppHeaderAction(icon: Icons.search, onPressed: () {})],
         ),
       ),
     ),
@@ -308,7 +299,8 @@ final appHeaderComponent = WidgetbookComponent(
       name: 'Full Header',
       builder: (context) => ComponentDocs(
         name: 'Ux4gAppHeader — Full',
-        description: 'A comprehensive header with menu, title, actions, and avatar.',
+        description:
+            'A comprehensive header with menu, title, actions, and avatar.',
         code: '''Ux4gAppHeader(
   title: 'Dashboard',
   variant: Ux4gAppHeaderVariant.light,
@@ -327,13 +319,17 @@ final appHeaderComponent = WidgetbookComponent(
           title: 'Dashboard',
           variant: Ux4gAppHeaderVariant.light,
           useSafeArea: false,
-          leadingWidgets: const [
-            Icon(Icons.menu),
-          ],
+          leadingWidgets: const [Icon(Icons.menu)],
           actions: [
             Ux4gAppHeaderAction(icon: Icons.search, onPressed: () {}),
-            Ux4gAppHeaderAction(icon: Icons.notifications_outlined, onPressed: () {}),
-            Ux4gAppHeaderAction(icon: Icons.settings_outlined, onPressed: () {}),
+            Ux4gAppHeaderAction(
+              icon: Icons.notifications_outlined,
+              onPressed: () {},
+            ),
+            Ux4gAppHeaderAction(
+              icon: Icons.settings_outlined,
+              onPressed: () {},
+            ),
           ],
           showAvatar: true,
           avatarInitials: 'JD',
@@ -344,7 +340,8 @@ final appHeaderComponent = WidgetbookComponent(
       name: 'Custom Leading Widgets',
       builder: (context) => ComponentDocs(
         name: 'Ux4gAppHeader — Custom Leading Widgets',
-        description: 'Headers with custom leading widgets (emblem, logos) and trailing combinations. Fully dark mode compatible.',
+        description:
+            'Headers with custom leading widgets (emblem, logos) and trailing combinations. Fully dark mode compatible.',
         code: '''// With Avatar
 Ux4gAppHeader(
   leadingWidgets: [
@@ -408,10 +405,12 @@ Ux4gAppHeader(
               useSafeArea: false,
               leadingWidgets: [
                 SvgPicture.asset(
-                  Ux4gIcons.nationalEmblem, 
+                  Ux4gIcons.nationalEmblem,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.neutral900,
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Ux4gPalette.neutral900,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -422,10 +421,12 @@ Ux4gAppHeader(
                   margin: const EdgeInsets.symmetric(horizontal: 8),
                 ),
                 SvgPicture.asset(
-                  Ux4gIcons.union, 
+                  Ux4gIcons.union,
                   height: 24,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500,
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Ux4gPalette.primary500,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -446,10 +447,12 @@ Ux4gAppHeader(
               useSafeArea: false,
               leadingWidgets: [
                 SvgPicture.asset(
-                  Ux4gIcons.nationalEmblem, 
+                  Ux4gIcons.nationalEmblem,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.neutral900,
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Ux4gPalette.neutral900,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -460,10 +463,12 @@ Ux4gAppHeader(
                   margin: const EdgeInsets.symmetric(horizontal: 8),
                 ),
                 SvgPicture.asset(
-                  Ux4gIcons.union, 
+                  Ux4gIcons.union,
                   height: 24,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500,
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Ux4gPalette.primary500,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -477,7 +482,9 @@ Ux4gAppHeader(
                   customWidget: Container(
                     margin: const EdgeInsets.only(left: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.withValues(alpha: 0.3)),
+                      border: Border.all(
+                        color: Colors.grey.withValues(alpha: 0.3),
+                      ),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     width: 40,
@@ -485,7 +492,9 @@ Ux4gAppHeader(
                     child: IconButton(
                       icon: const Icon(Icons.menu),
                       onPressed: () {},
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black87,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black87,
                       iconSize: 20,
                     ),
                   ),

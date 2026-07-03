@@ -5,7 +5,7 @@ import 'package:widgetbook/widgetbook.dart';
 import '../widgets/component_docs.dart';
 
 final buttonComponent = WidgetbookComponent(
-  name: 'Ux4gButton',
+  name: 'Buttons',
   useCases: [
     WidgetbookUseCase(
       name: 'Primary',
@@ -35,11 +35,11 @@ final buttonComponent = WidgetbookComponent(
         }
 
         return ComponentDocs(
-        name: 'Ux4gButton',
-        description:
-            'The primary action button. Supports loading state, disabled state, '
-            'and optional leading / trailing icons.',
-        code: '''Ux4gButton(
+          name: 'Ux4gButton',
+          description:
+              'The primary action button. Supports loading state, disabled state, '
+              'and optional leading / trailing icons.',
+          code: '''Ux4gButton(
   text: 'Primary Button',
   variant: Ux4gButtonVariant.primary,
   size: Ux4gButtonSize.medium,
@@ -61,137 +61,144 @@ Ux4gButton(
   enabled: false,
   onPressed: () {},
 );''',
-        props: const [
-          PropRow(
-            name: 'onPressed',
-            type: 'VoidCallback?',
-            description: 'Called when button is tapped.',
-            required: true,
+          props: const [
+            PropRow(
+              name: 'onPressed',
+              type: 'VoidCallback?',
+              description: 'Called when button is tapped.',
+              required: true,
+            ),
+            PropRow(
+              name: 'text',
+              type: 'String?',
+              description: 'Label inside the button.',
+            ),
+            PropRow(
+              name: 'child',
+              type: 'Widget?',
+              description: 'Custom widget instead of text.',
+            ),
+            PropRow(
+              name: 'variant',
+              type: 'Ux4gButtonVariant',
+              description: 'Visual variant of the button.',
+              defaultValue: 'primary',
+            ),
+            PropRow(
+              name: 'size',
+              type: 'Ux4gButtonSize',
+              description: 'Size of the button.',
+              defaultValue: 'medium',
+            ),
+            PropRow(
+              name: 'enabled',
+              type: 'bool',
+              description: 'Whether the button is interactive.',
+              defaultValue: 'true',
+            ),
+            PropRow(
+              name: 'isLoading',
+              type: 'bool',
+              description: 'Shows a spinner and disables interaction.',
+              defaultValue: 'false',
+            ),
+            PropRow(
+              name: 'backgroundColor',
+              type: 'Color?',
+              description: 'Custom background color.',
+            ),
+            PropRow(
+              name: 'contentColor',
+              type: 'Color?',
+              description: 'Custom text/icon color.',
+            ),
+            PropRow(
+              name: 'disabledBackgroundColor',
+              type: 'Color?',
+              description: 'Background color when disabled.',
+            ),
+            PropRow(
+              name: 'disabledContentColor',
+              type: 'Color?',
+              description: 'Text/icon color when disabled.',
+            ),
+            PropRow(
+              name: 'borderColor',
+              type: 'Color?',
+              description: 'Custom border color.',
+            ),
+            PropRow(
+              name: 'borderWidth',
+              type: 'double?',
+              description: 'Custom border width.',
+            ),
+            PropRow(
+              name: 'borderRadius',
+              type: 'double?',
+              description: 'Custom border radius.',
+            ),
+            PropRow(
+              name: 'padding',
+              type: 'EdgeInsetsGeometry?',
+              description: 'Custom padding.',
+            ),
+            PropRow(
+              name: 'leadingIcon',
+              type: 'IconData?',
+              description: 'Icon placed before the label.',
+            ),
+            PropRow(
+              name: 'trailingIcon',
+              type: 'IconData?',
+              description: 'Icon placed after the label.',
+            ),
+            PropRow(
+              name: 'iconSize',
+              type: 'double?',
+              description: 'Size of the icons.',
+            ),
+            PropRow(
+              name: 'width',
+              type: 'double?',
+              description: 'Custom width.',
+            ),
+            PropRow(
+              name: 'height',
+              type: 'double?',
+              description: 'Custom height.',
+            ),
+            PropRow(
+              name: 'elevation',
+              type: 'double?',
+              description: 'Button elevation.',
+            ),
+            PropRow(
+              name: 'textStyle',
+              type: 'TextStyle?',
+              description: 'Custom text style.',
+            ),
+          ],
+          child: Ux4gButton(
+            onPressed: () {},
+            text: context.knobs.string(
+              label: 'Text',
+              initialValue: 'Primary Button',
+            ),
+            variant: Ux4gButtonVariant.primary,
+            size: size,
+            width: width,
+            height: height,
+            textStyle: textStyle,
+            enabled: context.knobs.boolean(
+              label: 'Enabled',
+              initialValue: true,
+            ),
+            isLoading: context.knobs.boolean(
+              label: 'Loading',
+              initialValue: false,
+            ),
           ),
-          PropRow(
-            name: 'text',
-            type: 'String?',
-            description: 'Label inside the button.',
-          ),
-          PropRow(
-            name: 'child',
-            type: 'Widget?',
-            description: 'Custom widget instead of text.',
-          ),
-          PropRow(
-            name: 'variant',
-            type: 'Ux4gButtonVariant',
-            description: 'Visual variant of the button.',
-            defaultValue: 'primary',
-          ),
-          PropRow(
-            name: 'size',
-            type: 'Ux4gButtonSize',
-            description: 'Size of the button.',
-            defaultValue: 'medium',
-          ),
-          PropRow(
-            name: 'enabled',
-            type: 'bool',
-            description: 'Whether the button is interactive.',
-            defaultValue: 'true',
-          ),
-          PropRow(
-            name: 'isLoading',
-            type: 'bool',
-            description: 'Shows a spinner and disables interaction.',
-            defaultValue: 'false',
-          ),
-          PropRow(
-            name: 'backgroundColor',
-            type: 'Color?',
-            description: 'Custom background color.',
-          ),
-          PropRow(
-            name: 'contentColor',
-            type: 'Color?',
-            description: 'Custom text/icon color.',
-          ),
-          PropRow(
-            name: 'disabledBackgroundColor',
-            type: 'Color?',
-            description: 'Background color when disabled.',
-          ),
-          PropRow(
-            name: 'disabledContentColor',
-            type: 'Color?',
-            description: 'Text/icon color when disabled.',
-          ),
-          PropRow(
-            name: 'borderColor',
-            type: 'Color?',
-            description: 'Custom border color.',
-          ),
-          PropRow(
-            name: 'borderWidth',
-            type: 'double?',
-            description: 'Custom border width.',
-          ),
-          PropRow(
-            name: 'borderRadius',
-            type: 'double?',
-            description: 'Custom border radius.',
-          ),
-          PropRow(
-            name: 'padding',
-            type: 'EdgeInsetsGeometry?',
-            description: 'Custom padding.',
-          ),
-          PropRow(
-            name: 'leadingIcon',
-            type: 'IconData?',
-            description: 'Icon placed before the label.',
-          ),
-          PropRow(
-            name: 'trailingIcon',
-            type: 'IconData?',
-            description: 'Icon placed after the label.',
-          ),
-          PropRow(
-            name: 'iconSize',
-            type: 'double?',
-            description: 'Size of the icons.',
-          ),
-          PropRow(name: 'width', type: 'double?', description: 'Custom width.'),
-          PropRow(
-            name: 'height',
-            type: 'double?',
-            description: 'Custom height.',
-          ),
-          PropRow(
-            name: 'elevation',
-            type: 'double?',
-            description: 'Button elevation.',
-          ),
-          PropRow(
-            name: 'textStyle',
-            type: 'TextStyle?',
-            description: 'Custom text style.',
-          ),
-        ],
-        child: Ux4gButton(
-          onPressed: () {},
-          text: context.knobs.string(
-            label: 'Text',
-            initialValue: 'Primary Button',
-          ),
-          variant: Ux4gButtonVariant.primary,
-          size: size,
-          width: width,
-          height: height,
-          textStyle: textStyle,
-          enabled: context.knobs.boolean(label: 'Enabled', initialValue: true),
-          isLoading: context.knobs.boolean(
-            label: 'Loading',
-            initialValue: false,
-          ),
-        ),
-      );
+        );
       },
     ),
     WidgetbookUseCase(
@@ -211,67 +218,68 @@ Ux4gButton(
         final bgColor = isRed
             ? colors.error
             : (isNeutral
-                ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
-                : null);
+                  ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
+                  : null);
         final fgColor = isRed
             ? colors.onError
             : (isNeutral
-                ? (isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900)
-                : null);
+                  ? (isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900)
+                  : null);
         final outlineFgColor = isRed
             ? colors.error
             : (isNeutral
-                ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
-                : null);
+                  ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
+                  : null);
 
         final tonalBgColor = isRed
             ? (isDark ? Ux4gPalette.red800 : Ux4gPalette.red100)
             : (isNeutral
-                ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
-                : (isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100));
+                  ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
+                  : (isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100));
         final tonalFgColor = isRed
             ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red600)
             : (isNeutral
-                ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
-                : (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600));
+                  ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
+                  : (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600));
 
         final bgStr = isRed
             ? 'backgroundColor: ux4gColors.error, '
             : (isNeutral
-                ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
-                : '');
+                  ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
+                  : '');
         final fgStr = isRed
             ? 'contentColor: ux4gColors.onError, '
             : (isNeutral
-                ? 'contentColor: isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900, '
-                : '');
+                  ? 'contentColor: isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900, '
+                  : '');
         final outlineFgStr = isRed
             ? 'contentColor: ux4gColors.error, borderColor: ux4gColors.error, '
             : (isNeutral
-                ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, borderColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
-                : '');
+                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, borderColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  : '');
         final ghostFgStr = isRed
             ? 'contentColor: ux4gColors.error, '
             : (isNeutral
-                ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
-                : '');
+                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  : '');
 
         final tonalBgStr = isRed
             ? 'backgroundColor: isDark ? Ux4gPalette.red800 : Ux4gPalette.red100, '
             : (isNeutral
-                ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
-                : 'backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, ');
+                  ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
+                  : 'backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, ');
         final tonalFgStr = isRed
             ? 'contentColor: isDark ? Ux4gPalette.red300 : Ux4gPalette.red600, '
             : (isNeutral
-                ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
-                : 'contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, ');
+                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  : 'contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, ');
 
         return ComponentDocs(
           name: 'Ux4gButton — Variants',
           description:
               'Different visual variants, loading states, and icon configurations including Tonal options.',
-          code: '''// Basic
+          code:
+              '''// Basic
 Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}onPressed: () {});
 Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}onPressed: () {});
 Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, ${outlineFgStr}onPressed: () {});
@@ -298,10 +306,33 @@ Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${ton
                 spacing: 12,
                 runSpacing: 12,
                 children: [
-                  Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, onPressed: () {}),
-                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, onPressed: () {}),
-                  Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, contentColor: outlineFgColor, borderColor: outlineFgColor, onPressed: () {}),
-                  Ux4gButton(text: 'Ghost', variant: Ux4gButtonVariant.ghost, contentColor: outlineFgColor, onPressed: () {}),
+                  Ux4gButton(
+                    text: 'Primary',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: bgColor,
+                    contentColor: fgColor,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Tonal',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: tonalBgColor,
+                    contentColor: tonalFgColor,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Outline',
+                    variant: Ux4gButtonVariant.outline,
+                    contentColor: outlineFgColor,
+                    borderColor: outlineFgColor,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Ghost',
+                    variant: Ux4gButtonVariant.ghost,
+                    contentColor: outlineFgColor,
+                    onPressed: () {},
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
@@ -309,10 +340,37 @@ Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${ton
                 spacing: 12,
                 runSpacing: 12,
                 children: [
-                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, isLoading: true, onPressed: () {}),
-                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, isLoading: true, onPressed: () {}),
-                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.outline, contentColor: outlineFgColor, borderColor: outlineFgColor, isLoading: true, onPressed: () {}),
-                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.ghost, contentColor: outlineFgColor, isLoading: true, onPressed: () {}),
+                  Ux4gButton(
+                    text: 'Button',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: bgColor,
+                    contentColor: fgColor,
+                    isLoading: true,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Tonal',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: tonalBgColor,
+                    contentColor: tonalFgColor,
+                    isLoading: true,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Button',
+                    variant: Ux4gButtonVariant.outline,
+                    contentColor: outlineFgColor,
+                    borderColor: outlineFgColor,
+                    isLoading: true,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Button',
+                    variant: Ux4gButtonVariant.ghost,
+                    contentColor: outlineFgColor,
+                    isLoading: true,
+                    onPressed: () {},
+                  ),
                 ],
               ),
               const SizedBox(height: 24),
@@ -320,12 +378,56 @@ Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${ton
                 spacing: 12,
                 runSpacing: 12,
                 children: [
-                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, leadingIcon: Icons.add, onPressed: () {}),
-                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, leadingIcon: Icons.add, onPressed: () {}),
-                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
-                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
-                  Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, backgroundColor: bgColor, contentColor: fgColor, leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
-                  Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: tonalBgColor, contentColor: tonalFgColor, leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {}),
+                  Ux4gButton(
+                    text: 'Button',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: bgColor,
+                    contentColor: fgColor,
+                    leadingIcon: Icons.add,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Tonal',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: tonalBgColor,
+                    contentColor: tonalFgColor,
+                    leadingIcon: Icons.add,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Button',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: bgColor,
+                    contentColor: fgColor,
+                    trailingIcon: Icons.arrow_drop_down,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Tonal',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: tonalBgColor,
+                    contentColor: tonalFgColor,
+                    trailingIcon: Icons.arrow_drop_down,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Button',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: bgColor,
+                    contentColor: fgColor,
+                    leadingIcon: Icons.add,
+                    trailingIcon: Icons.arrow_drop_down,
+                    onPressed: () {},
+                  ),
+                  Ux4gButton(
+                    text: 'Tonal',
+                    variant: Ux4gButtonVariant.primary,
+                    backgroundColor: tonalBgColor,
+                    contentColor: tonalFgColor,
+                    leadingIcon: Icons.add,
+                    trailingIcon: Icons.arrow_drop_down,
+                    onPressed: () {},
+                  ),
                 ],
               ),
             ],
@@ -481,7 +583,7 @@ Ux4gButton(
 );
 
 final iconButtonComponent = WidgetbookComponent(
-  name: 'Ux4gIconButton',
+  name: 'IconButton',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',

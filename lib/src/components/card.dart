@@ -124,7 +124,12 @@ class Ux4gCard extends StatelessWidget {
       children: [
         if (mediaImageUrl != null) _buildMedia(context, isHorizontal: false),
         Padding(
-          padding: const EdgeInsets.all(Ux4gSpace.space16),
+          padding: const EdgeInsets.fromLTRB(
+            Ux4gSpace.space20,
+            Ux4gSpace.space20,
+            Ux4gSpace.space20,
+            Ux4gSpace.space24,
+          ),
           child: _CardContentBlock(
             avatar: avatar,
             title: title,
@@ -157,7 +162,12 @@ class Ux4gCard extends StatelessWidget {
             ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(Ux4gSpace.space16),
+              padding: const EdgeInsets.fromLTRB(
+                Ux4gSpace.space20,
+                Ux4gSpace.space20,
+                Ux4gSpace.space20,
+                Ux4gSpace.space24,
+              ),
               child: _CardContentBlock(
                 avatar: avatar,
                 title: title,

@@ -41,16 +41,16 @@ class StatsBanner extends StatelessWidget {
               _SummaryItem(
                 icon: Icons.info_outline,
                 text:
-                    '${_pluralize(componentsCount, 'Component')} • '
+                    '${_pluralize(componentsCount, 'Components & Variant')} \n• '
                     '${_pluralize(useCasesCount, 'Use-case')}',
               ),
-              const SizedBox(height: 2),
-              const _SummaryItem(
-                icon: Icons.open_in_new,
-                text: 'Golden test with Widgetbook Cloud',
-                url:
-                    'https://docs.widgetbook.io/cloud?utm_source=oss&utm_medium=banner',
-              ),
+              // const SizedBox(height: 2),
+              // const _SummaryItem(
+              //   icon: Icons.open_in_new,
+              //   text: 'Golden test with Widgetbook Cloud',
+              //   url:
+              //       'https://docs.widgetbook.io/cloud?utm_source=oss&utm_medium=banner',
+              // ),
             ],
           ),
         ),

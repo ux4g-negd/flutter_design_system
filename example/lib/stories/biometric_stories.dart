@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Biometric Verification ────────────────────────────────────────────────────
 
 final biometricComponent = WidgetbookComponent(
-  name: 'BiometricVerificationFlow',
+  name: 'Biometric Verification',
   useCases: [
     // ── 1. Success Flow ──────────────────────────────────────────────────
     WidgetbookUseCase(

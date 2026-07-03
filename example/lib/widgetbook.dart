@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'theme_notifier.dart';
 
 import 'stories/avatar_stories.dart';
 import 'stories/badge_stories.dart';
@@ -85,6 +86,7 @@ import 'stories/feedback_and_communication/language_switcher/inline_language_tog
 import 'stories/feedback_and_communication/language_switcher/translation_unavailable_stories.dart';
 import 'stories/feedback_and_communication/language_switcher/all_scheduled_languages_stories.dart';
 
+
 void main() {
   runApp(const UX4GWidgetbook());
 }
@@ -94,561 +96,569 @@ class UX4GWidgetbook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Widgetbook.material(
-      // ── No wrapper needed here as MaterialThemeAddon handles the theme ─────
-      appBuilder: (context, child) => child,
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: widgetbookThemeNotifier,
+      builder: (context, themeMode, _) {
+        return Widgetbook.material(
+          themeMode: themeMode,
+          // ── No wrapper needed here as MaterialThemeAddon handles the theme ─────
+          appBuilder: (context, child) => child,
 
-      home: const _Ux4gWelcomePage(),
-      header: const _SidebarLogo(),
+          home: const _Ux4gWelcomePage(),
+          header: const _SidebarLogo(),
 
-      directories: [
-        WidgetbookCategory(
-          name: 'Quick Guide',
-          isInitiallyExpanded: false,
-          children: [quickGuideComponent],
-        ),
+          directories: [
+            quickGuideComponent,
 
-        // ── Components ────────────────────────────────────────────────────────
-        WidgetbookCategory(
-          name: 'Components',
-          isInitiallyExpanded: false,
-          children: [
-            // Buttons
-            buttonComponent,
-            iconButtonComponent,
-
-            // Display
-            badgeComponent,
-            tagComponent,
-            cardComponent,
-            dividerComponent,
-
-            // Avatar
-            WidgetbookFolder(
-              name: 'Avatar',
+            // ── Components ────────────────────────────────────────────────────────
+            WidgetbookCategory(
+              name: 'Components',
               isInitiallyExpanded: false,
               children: [
-                avatarComponent,
-                profileAvatarComponent,
-                statusAvatarComponent,
-                avatarGroupComponent,
-              ],
-            ),
+                // Buttons
+                buttonComponent,
+                iconButtonComponent,
 
-            // Form
-            inputFieldComponent,
-            textAreaComponent,
-            searchFieldComponent,
-            checkboxComponent,
-            toggleComponent,
-            sliderComponent,
-            otpInputComponent,
-            radioButtonComponent,
-            WidgetbookFolder(
-              name: 'Dropdown',
-              isInitiallyExpanded: false,
-              children: [actionDropdownComponent, selectionDropdownComponent],
-            ),
-            datePickerComponent,
-            timePickerComponent,
-            fileUploadComponent,
-            aadhaarInputFieldComponent,
-            panInputFieldComponent,
+                // Display
+                badgeComponent,
+                tagComponent,
+                cardComponent,
+                dividerComponent,
 
-            // Progress & Loader
-            WidgetbookFolder(
-              name: 'Linear Progress',
-              isInitiallyExpanded: false,
-              children: [
-                linearProgressComponent,
-                animatedLinearProgressComponent,
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Circular Progress',
-              isInitiallyExpanded: false,
-              children: [
-                circularProgressComponent,
-                animatedCircularProgressComponent,
-                halfCircleProgressComponent,
-                animatedHalfCircleProgressComponent,
-              ],
-            ),
-            loaderComponent,
-
-            // Navigation & Feedback
-            WidgetbookFolder(
-              name: 'Accordion',
-              isInitiallyExpanded: false,
-              children: [accordionComponent, accordionGroupComponent],
-            ),
-            statusBannerComponent,
-            emptyStateComponent,
-            WidgetbookFolder(
-              name: 'Chips',
-              isInitiallyExpanded: false,
-              children: [
-                choiceChipComponent,
-                filterChipComponent,
-                inputChipComponent,
-                inputChipFieldComponent,
-                chipGroupComponent,
-              ],
-            ),
-            paginationComponent,
-
-            // Data
-            stepperComponent,
-            capsuleStepperComponent,
-            resultRowComponent,
-            WidgetbookFolder(
-              name: 'Social Links',
-              isInitiallyExpanded: false,
-              children: [
-                socialLinkComponent,
-                socialLinkGroupComponent,
-                socialLinkListComponent,
-              ],
-            ),
-            journeyTimelineComponent,
-            statusPipelineComponent,
-            carouselComponent,
-            slotGridComponent,
-
-            // Layout
-            appHeaderComponent,
-
-            // Overlay
-            modalComponent,
-            bottomSheetComponent,
-            toastComponent,
-            WidgetbookFolder(
-              name: 'Tooltip',
-              isInitiallyExpanded: false,
-              children: [tooltipComponent],
-            ),
-
-            // Feedback
-            WidgetbookFolder(
-              name: 'Feedback Form',
-              isInitiallyExpanded: false,
-              children: [
-                feedbackFormComponent,
-                feedbackFormNpsComponent,
-                feedbackFormCsatComponent,
-              ],
-            ),
-
-            // Biometric
-            biometricComponent,
-          ],
-        ),
-
-        // ── Utils ──────────────────────────────────────────────────────────
-        WidgetbookCategory(
-          name: 'Utils',
-          isInitiallyExpanded: false,
-          children: [
-            WidgetbookFolder(
-              name: 'Theme',
-              isInitiallyExpanded: false,
-              children: [themeColorComponent],
-            ),
-            WidgetbookFolder(
-              name: 'Dimensions',
-              isInitiallyExpanded: false,
-              children: [
-                dimensionsSpacingComponent,
-                dimensionsRadiusComponent,
-                dimensionsBorderComponent,
-              ],
-            ),
-          ],
-        ),
-
-        // ── Patterns ───────────────────────────────────────────────────────
-        WidgetbookCategory(
-          name: 'Patterns',
-          isInitiallyExpanded: false,
-          children: [
-            WidgetbookFolder(
-              name: 'Identity and Access',
-              isInitiallyExpanded: false,
-              children: [
+                // Avatar
                 WidgetbookFolder(
-                  name: 'SignIn',
+                  name: 'Avatar',
                   isInitiallyExpanded: false,
                   children: [
-                    signInDefaultComponent,
-                    signInWithMobileComponent,
-                    signInEnterOtpComponent,
-                    signInAadhaarComponent,
-                    signInSuccessComponent,
+                    avatarComponent,
+                    profileAvatarComponent,
+                    statusAvatarComponent,
+                    avatarGroupComponent,
+                  ],
+                ),
+
+                // Form
+                inputFieldComponent,
+                textAreaComponent,
+                searchFieldComponent,
+                checkboxComponent,
+                toggleComponent,
+                sliderComponent,
+                otpInputComponent,
+                radioButtonComponent,
+                WidgetbookFolder(
+                  name: 'Dropdown',
+                  isInitiallyExpanded: false,
+                  children: [
+                    actionDropdownComponent,
+                    selectionDropdownComponent,
+                  ],
+                ),
+                datePickerComponent,
+                timePickerComponent,
+                fileUploadComponent,
+                aadhaarInputFieldComponent,
+                panInputFieldComponent,
+
+                // Progress & Loader
+                WidgetbookFolder(
+                  name: 'Linear Progress',
+                  isInitiallyExpanded: false,
+                  children: [
+                    linearProgressComponent,
+                    animatedLinearProgressComponent,
                   ],
                 ),
                 WidgetbookFolder(
-                  name: 'OTP Verification',
+                  name: 'Circular Progress',
                   isInitiallyExpanded: false,
                   children: [
-                    otpVerifyMobileComponent,
-                    otpVerifyVoiceComponent,
-                    otpVerifyAttemptWarningComponent,
-                    otpVerifyLastAttemptComponent,
-                    otpVerifyAccountLockedComponent,
-                    otpVerifiedSuccessComponent,
+                    circularProgressComponent,
+                    animatedCircularProgressComponent,
+                    halfCircleProgressComponent,
+                    animatedHalfCircleProgressComponent,
                   ],
                 ),
+                loaderComponent,
+
+                // Navigation & Feedback
                 WidgetbookFolder(
-                  name: 'Session Time-out Dialog',
+                  name: 'Accordion',
                   isInitiallyExpanded: false,
-                  children: [sessionExpiringDialogComponent],
+                  children: [accordionComponent, accordionGroupComponent],
                 ),
+                statusBannerComponent,
+                emptyStateComponent,
                 WidgetbookFolder(
-                  name: 'Auth errors & lockout',
+                  name: 'Chips',
                   isInitiallyExpanded: false,
                   children: [
-                    authIncorrectOtpComponent,
-                    authOtpAttemptWarningComponent,
-                    authOtpLastAttemptComponent,
-                    authOtpAccountLockedComponent,
-                    authOtpRetryUnlockedComponent,
-                    authOtpSuspiciousActivityComponent,
+                    choiceChipComponent,
+                    filterChipComponent,
+                    inputChipComponent,
+                    inputChipFieldComponent,
+                    chipGroupComponent,
                   ],
                 ),
+                paginationComponent,
+
+                // Data
+                stepperComponent,
+                capsuleStepperComponent,
+                resultRowComponent,
                 WidgetbookFolder(
-                  name: 'Aadhaar Authentication Gate',
+                  name: 'Social Links',
                   isInitiallyExpanded: false,
                   children: [
-                    aadhaarVerifyMethodComponent,
-                    aadhaarOtpEnterComponent,
-                    aadhaarFaceAuthPermissionComponent,
-                    aadhaarVerifiedSuccessComponent,
-                    aadhaarVerificationFailedComponent,
-                    aadhaarAccountLockedComponent,
-                    operatorAssistedAuthComponent,
+                    socialLinkComponent,
+                    socialLinkGroupComponent,
+                    socialLinkListComponent,
                   ],
                 ),
+                journeyTimelineComponent,
+                statusPipelineComponent,
+                carouselComponent,
+                slotGridComponent,
+
+                // Layout
+                appHeaderComponent,
+
+                // Overlay
+                modalComponent,
+                bottomSheetComponent,
+                toastComponent,
                 WidgetbookFolder(
-                  name: 'SignUp',
+                  name: 'Tooltip',
+                  isInitiallyExpanded: false,
+                  children: [tooltipComponent],
+                ),
+
+                // Feedback
+                WidgetbookFolder(
+                  name: 'Feedback Form',
                   isInitiallyExpanded: false,
                   children: [
-                    signUpStep1Component,
-                    signUpStep2Component,
-                    signUpStep3Component,
-                    signUpStep4Component,
-                    signUpStep5Component,
+                    feedbackFormComponent,
+                    feedbackFormNpsComponent,
+                    feedbackFormCsatComponent,
                   ],
                 ),
+
+                // Biometric
+                biometricComponent,
+              ],
+            ),
+
+            // ── Utils ──────────────────────────────────────────────────────────
+            WidgetbookCategory(
+              name: 'Utils',
+              isInitiallyExpanded: false,
+              children: [
                 WidgetbookFolder(
-                  name: 'Forgot Password & Account Recovery',
+                  name: 'Theme',
+                  isInitiallyExpanded: false,
+                  children: [themeColorComponent],
+                ),
+                WidgetbookFolder(
+                  name: 'Dimensions',
+                  isInitiallyExpanded: false,
                   children: [
-                    fpStep1Component,
-                    fpStep2Component,
-                    fpStep3Component,
-                    fpStep4Component,
-                    fpStep5Component,
+                    dimensionsSpacingComponent,
+                    dimensionsRadiusComponent,
+                    dimensionsBorderComponent,
                   ],
                 ),
               ],
             ),
-            WidgetbookFolder(
-              name: 'Notification',
-              isInitiallyExpanded: false,
-              children: [
-                notificationComponent,
-                reminderAlertsComponent,
-                WidgetbookFolder(
-                  name: 'Notification Preferences',
-                  isInitiallyExpanded: false,
-                  children: [
-                    notificationChannelsComponent,
-                    updateFrequencyComponent,
-                    perServiceComponent,
-                    lockedNotificationsComponent,
-                    whatsAppConsentComponent,
-                    manageAllComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Proactive Status Update',
-                  isInitiallyExpanded: false,
-                  children: [
-                    proactiveStatusBannerComponent,
-                    proactiveStatusLiveComponent,
-                    proactiveStatusReconnectingComponent,
-                    proactiveStatusManualRefreshComponent,
-                  ],
-                ),
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Payment and Confirmation',
-              isInitiallyExpanded: false,
-              children: [
-                paymentSummaryComponent,
-                paymentMethodComponent,
-                paymentProcessingComponent,
-                paymentSuccessComponent,
-                paymentFailedComponent,
-                feeWaivedComponent,
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Status and Tracking',
-              isInitiallyExpanded: false,
-              children: [
-                appStatusTrackerComponent,
-                grievanceStatusTrackerComponent,
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Consent and Declaration',
-              isInitiallyExpanded: false,
-              children: [
-                WidgetbookFolder(
-                  name: 'Consent Capture',
-                  isInitiallyExpanded: false,
-                  children: [
-                    consentCaptureComponent,
-                    consentCaptureWithWarningComponent,
-                    consentManagementComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Data Sharing Consent',
-                  isInitiallyExpanded: false,
-                  children: [
-                    dataSharingConsentComponent,
-                    dataSharingConsentManagementComponent,
-                    withdrawConsentDialogComponent,
-                    consentHistoryComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Declaration Before Submission',
-                  isInitiallyExpanded: false,
-                  children: [
-                    declarationBeforeSubmissionComponent,
-                    declarationWithDigitalSignComponent,
-                  ],
-                ),
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Application and Submission',
-              isInitiallyExpanded: false,
-              children: [
-                WidgetbookFolder(
-                  name: 'Save and Resume',
-                  isInitiallyExpanded: false,
-                  children: [
-                    saveAndResumeComponent,
-                    continueApplicationComponent,
-                    resumeApplicationMissingInfoComponent,
-                    autoSaveFormComponent,
-                    draftExpiryFormComponent,
-                    unsavedChangesDialogComponent,
-                    discardDraftDialogComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Submission Acknowledgement',
-                  isInitiallyExpanded: false,
-                  children: [
-                    applicationSubmittedComponent,
-                    applicationQueuedComponent,
-                    couldNotSubmitComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Document scan & upload',
-                  isInitiallyExpanded: false,
-                  children: [
-                    documentScanUploadComponent,
-                    documentUploadProgressComponent,
-                    documentUploadReviewComponent,
-                    documentUploadSuccessComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Eligibility Check Wizard',
-                  isInitiallyExpanded: false,
-                  children: [
-                    eligibilityCheckWizardComponent,
-                    eligibilityQuestionStepComponent,
-                    eligibilityFinalQuestionStepComponent,
-                    eligibilitySuccessStepComponent,
-                    eligibilityFailureStepComponent,
-                    eligibilityWarningStepComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Journey Progress Indicator',
-                  isInitiallyExpanded: false,
-                  children: [
-                    journeyProgressIndicatorComponent,
-                    resumeJourneyComponent,
-                    validationErrorComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Government form with validation',
-                  isInitiallyExpanded: false,
-                  children: [
-                    governmentFormWithValidationComponent,
-                    governmentFormWithErrorsComponent,
-                    governmentFormWithMultipleErrorsComponent,
-                    applicationSentComponent,
-                  ],
-                ),
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Dashboard and My Application',
-              isInitiallyExpanded: false,
-              children: [
-                WidgetbookFolder(
-                  name: 'My Applications',
-                  isInitiallyExpanded: false,
-                  children: [
-                    myApplicationsComponent,
-                    noApplicationsComponent,
-                    searchApplicationsComponent,
-                    bulkActionsComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Pending Tasks',
-                  isInitiallyExpanded: false,
-                  children: [pendingTasksComponent, noPendingTasksComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Citizen Profile and Preferences',
-                  isInitiallyExpanded: false,
-                  children: [
-                    citizenProfileComponent,
-                    editProfileComponent,
-                    deleteAccountDialogComponent,
-                  ],
-                ),
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Search and Discovery',
-              isInitiallyExpanded: false,
-              children: [
-                WidgetbookFolder(
-                  name: 'Search and Browse',
-                  isInitiallyExpanded: false,
-                  children: [
-                    searchAndBrowseComponent,
-                    searchWithResultsComponent,
-                    searchResultsListComponent,
-                    noResultsComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Global Service Discovery',
-                  isInitiallyExpanded: false,
-                  children: [
-                    globalServiceDiscoveryComponent,
-                    categoryServiceListComponent,
-                    serviceDetailComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Consultation Slot Booking',
-                  isInitiallyExpanded: false,
-                  children: [
-                    selectAdvocateComponent,
-                    selectAppointmentTimeComponent,
-                    confirmAppointmentV2Component,
-                    appointmentConfirmedComponent,
-                  ],
-                ),
-              ],
-            ),
-            WidgetbookFolder(
-              name: 'Feedback and Communication',
-              isInitiallyExpanded: false,
-              children: [
-                WidgetbookFolder(
-                  name: 'Inline Feedback and Status Communication',
-                  isInitiallyExpanded: false,
-                  children: [
-                    inlineFeedbackComponent,
-                    inlineFeedbackErrorComponent,
-                    inlineFeedbackHintComponent,
-                    inlineFeedbackGuidanceComponent,
-                    inlineFeedbackVerificationComponent,
-                    inlineFeedbackNoteComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Service Completion and Feedback',
-                  isInitiallyExpanded: false,
-                  children: [
-                    serviceCompletionComponent,
-                    feedbackRatingComponent,
-                    rateExperienceComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Contact and Support',
-                  isInitiallyExpanded: false,
-                  children: [
-                    helpCentreComponent,
-                    faqDetailComponent,
-                    contactSupportComponent,
-                    liveChatSupportComponent,
-                    fileComplaintComponent,
-                    findServiceCentreComponent,
-                    wasThisHelpfulComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Language Switcher',
-                  isInitiallyExpanded: false,
-                  children: [
-                    languageSwitcherComponent,
-                    inlineLanguageToggleComponent,
-                    translationUnavailableComponent,
-                    allScheduledLanguagesComponent,
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
 
-      addons: [
-        // Device viewport sizes
-        ViewportAddon([
-          Viewports.none,
-          IosViewports.iPhone13,
-          IosViewports.iPhoneSE,
-          AndroidViewports.samsungGalaxyS20,
-          IosViewports.iPad,
-        ]),
-        // Light / Dark theme
-        MaterialThemeAddon(
-          themes: [
-            WidgetbookTheme(
-              name: 'Light',
-              data: Ux4gTheme.themeData(isDark: false),
-            ),
-            WidgetbookTheme(
-              name: 'Dark',
-              data: Ux4gTheme.themeData(isDark: true),
+            // ── Patterns ───────────────────────────────────────────────────────
+            WidgetbookCategory(
+              name: 'Patterns',
+              isInitiallyExpanded: false,
+              children: [
+                WidgetbookFolder(
+                  name: 'Identity and Access',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'SignIn',
+                      isInitiallyExpanded: false,
+                      children: [
+                        signInDefaultComponent,
+                        signInWithMobileComponent,
+                        signInEnterOtpComponent,
+                        signInAadhaarComponent,
+                        signInSuccessComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'OTP Verification',
+                      isInitiallyExpanded: false,
+                      children: [
+                        otpVerifyMobileComponent,
+                        otpVerifyVoiceComponent,
+                        otpVerifyAttemptWarningComponent,
+                        otpVerifyLastAttemptComponent,
+                        otpVerifyAccountLockedComponent,
+                        otpVerifiedSuccessComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Session Time-out Dialog',
+                      isInitiallyExpanded: false,
+                      children: [sessionExpiringDialogComponent],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Auth errors & lockout',
+                      isInitiallyExpanded: false,
+                      children: [
+                        authIncorrectOtpComponent,
+                        authOtpAttemptWarningComponent,
+                        authOtpLastAttemptComponent,
+                        authOtpAccountLockedComponent,
+                        authOtpRetryUnlockedComponent,
+                        authOtpSuspiciousActivityComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Aadhaar Authentication Gate',
+                      isInitiallyExpanded: false,
+                      children: [
+                        aadhaarVerifyMethodComponent,
+                        aadhaarOtpEnterComponent,
+                        aadhaarFaceAuthPermissionComponent,
+                        aadhaarVerifiedSuccessComponent,
+                        aadhaarVerificationFailedComponent,
+                        aadhaarAccountLockedComponent,
+                        operatorAssistedAuthComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'SignUp',
+                      isInitiallyExpanded: false,
+                      children: [
+                        signUpStep1Component,
+                        signUpStep2Component,
+                        signUpStep3Component,
+                        signUpStep4Component,
+                        signUpStep5Component,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Forgot Password & Account Recovery',
+                      children: [
+                        fpStep1Component,
+                        fpStep2Component,
+                        fpStep3Component,
+                        fpStep4Component,
+                        fpStep5Component,
+                      ],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Notification',
+                  isInitiallyExpanded: false,
+                  children: [
+                    notificationComponent,
+                    reminderAlertsComponent,
+                    WidgetbookFolder(
+                      name: 'Notification Preferences',
+                      isInitiallyExpanded: false,
+                      children: [
+                        notificationChannelsComponent,
+                        updateFrequencyComponent,
+                        perServiceComponent,
+                        lockedNotificationsComponent,
+                        whatsAppConsentComponent,
+                        manageAllComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Proactive Status Update',
+                      isInitiallyExpanded: false,
+                      children: [
+                        proactiveStatusBannerComponent,
+                        proactiveStatusLiveComponent,
+                        proactiveStatusReconnectingComponent,
+                        proactiveStatusManualRefreshComponent,
+                      ],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Payment and Confirmation',
+                  isInitiallyExpanded: false,
+                  children: [
+                    paymentSummaryComponent,
+                    paymentMethodComponent,
+                    paymentProcessingComponent,
+                    paymentSuccessComponent,
+                    paymentFailedComponent,
+                    feeWaivedComponent,
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Status and Tracking',
+                  isInitiallyExpanded: false,
+                  children: [
+                    appStatusTrackerComponent,
+                    grievanceStatusTrackerComponent,
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Consent and Declaration',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'Consent Capture',
+                      isInitiallyExpanded: false,
+                      children: [
+                        consentCaptureComponent,
+                        consentCaptureWithWarningComponent,
+                        consentManagementComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Data Sharing Consent',
+                      isInitiallyExpanded: false,
+                      children: [
+                        dataSharingConsentComponent,
+                        dataSharingConsentManagementComponent,
+                        withdrawConsentDialogComponent,
+                        consentHistoryComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Declaration Before Submission',
+                      isInitiallyExpanded: false,
+                      children: [
+                        declarationBeforeSubmissionComponent,
+                        declarationWithDigitalSignComponent,
+                      ],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Application and Submission',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'Save and Resume',
+                      isInitiallyExpanded: false,
+                      children: [
+                        saveAndResumeComponent,
+                        continueApplicationComponent,
+                        resumeApplicationMissingInfoComponent,
+                        autoSaveFormComponent,
+                        draftExpiryFormComponent,
+                        unsavedChangesDialogComponent,
+                        discardDraftDialogComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Submission Acknowledgement',
+                      isInitiallyExpanded: false,
+                      children: [
+                        applicationSubmittedComponent,
+                        applicationQueuedComponent,
+                        couldNotSubmitComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Document scan & upload',
+                      isInitiallyExpanded: false,
+                      children: [
+                        documentScanUploadComponent,
+                        documentUploadProgressComponent,
+                        documentUploadReviewComponent,
+                        documentUploadSuccessComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Eligibility Check Wizard',
+                      isInitiallyExpanded: false,
+                      children: [
+                        eligibilityCheckWizardComponent,
+                        eligibilityQuestionStepComponent,
+                        eligibilityFinalQuestionStepComponent,
+                        eligibilitySuccessStepComponent,
+                        eligibilityFailureStepComponent,
+                        eligibilityWarningStepComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Journey Progress Indicator',
+                      isInitiallyExpanded: false,
+                      children: [
+                        journeyProgressIndicatorComponent,
+                        resumeJourneyComponent,
+                        validationErrorComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Government form with validation',
+                      isInitiallyExpanded: false,
+                      children: [
+                        governmentFormWithValidationComponent,
+                        governmentFormWithErrorsComponent,
+                        governmentFormWithMultipleErrorsComponent,
+                        applicationSentComponent,
+                      ],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Dashboard and My Application',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'My Applications',
+                      isInitiallyExpanded: false,
+                      children: [
+                        myApplicationsComponent,
+                        noApplicationsComponent,
+                        searchApplicationsComponent,
+                        bulkActionsComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Pending Tasks',
+                      isInitiallyExpanded: false,
+                      children: [
+                        pendingTasksComponent,
+                        noPendingTasksComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Citizen Profile and Preferences',
+                      isInitiallyExpanded: false,
+                      children: [
+                        citizenProfileComponent,
+                        editProfileComponent,
+                        deleteAccountDialogComponent,
+                      ],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Search and Discovery',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'Search and Browse',
+                      isInitiallyExpanded: false,
+                      children: [
+                        searchAndBrowseComponent,
+                        searchWithResultsComponent,
+                        searchResultsListComponent,
+                        noResultsComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Global Service Discovery',
+                      isInitiallyExpanded: false,
+                      children: [
+                        globalServiceDiscoveryComponent,
+                        categoryServiceListComponent,
+                        serviceDetailComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Consultation Slot Booking',
+                      isInitiallyExpanded: false,
+                      children: [
+                        selectAdvocateComponent,
+                        selectAppointmentTimeComponent,
+                        confirmAppointmentV2Component,
+                        appointmentConfirmedComponent,
+                      ],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Feedback and Communication',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'Inline Feedback and Status Communication',
+                      isInitiallyExpanded: false,
+                      children: [
+                        inlineFeedbackComponent,
+                        inlineFeedbackErrorComponent,
+                        inlineFeedbackHintComponent,
+                        inlineFeedbackGuidanceComponent,
+                        inlineFeedbackVerificationComponent,
+                        inlineFeedbackNoteComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Service Completion and Feedback',
+                      isInitiallyExpanded: false,
+                      children: [
+                        serviceCompletionComponent,
+                        feedbackRatingComponent,
+                        rateExperienceComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Contact and Support',
+                      isInitiallyExpanded: false,
+                      children: [
+                        helpCentreComponent,
+                        faqDetailComponent,
+                        contactSupportComponent,
+                        liveChatSupportComponent,
+                        fileComplaintComponent,
+                        findServiceCentreComponent,
+                        wasThisHelpfulComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Language Switcher',
+                      isInitiallyExpanded: false,
+                      children: [
+                        languageSwitcherComponent,
+                        inlineLanguageToggleComponent,
+                        translationUnavailableComponent,
+                        allScheduledLanguagesComponent,
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
-        ),
-        // Text scale accessibility
-        TextScaleAddon(min: 0.75, max: 2.0),
-        // Alignment helper
-        AlignmentAddon(),
-      ],
+
+          addons: [
+            // Device viewport sizes
+            ViewportAddon([
+              Viewports.none,
+              IosViewports.iPhone13,
+              IosViewports.iPhoneSE,
+              AndroidViewports.samsungGalaxyS20,
+              IosViewports.iPad,
+            ]),
+            // Light / Dark theme
+            MaterialThemeAddon(
+              themes: [
+                WidgetbookTheme(
+                  name: 'Light',
+                  data: Ux4gTheme.themeData(isDark: false),
+                ),
+                WidgetbookTheme(
+                  name: 'Dark',
+                  data: Ux4gTheme.themeData(isDark: true),
+                ),
+              ],
+            ),
+            // Text scale accessibility
+            TextScaleAddon(min: 0.75, max: 2.0),
+            // Alignment helper
+            AlignmentAddon(),
+          ],
+        );
+      },
     );
   }
 }
@@ -660,48 +670,42 @@ class _SidebarLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () {
-          // ignore: invalid_use_of_internal_member
-          final state = WidgetbookState.of(context);
-          state.path = null;
-          state.notifyListeners();
-        },
-        child: Row(
-          children: [
-            SvgPicture.asset('assets/ux4g_logo.svg', height: 34, width: 34),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () {
+              // ignore: invalid_use_of_internal_member
+              final state = WidgetbookState.of(context);
+              state.path = null;
+              state.notifyListeners();
+            },
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'UX4G',
-                  style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : const Color(0xFF1A1A2E),
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-                Text(
-                  'Design System',
-                  style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? const Color(0xFF9090A0)
-                        : const Color(0xFF5A5A7A),
-                    fontSize: 10,
-                  ),
-                ),
+                SvgPicture.asset('assets/ux4g_logo.svg', height: 34, width: 34),
+                const SizedBox(width: 10),
               ],
             ),
-          ],
+          ),
         ),
-      ),
+        IconButton(
+          onPressed: () {
+            final targetMode = isDark ? ThemeMode.light : ThemeMode.dark;
+            widgetbookThemeNotifier.value = targetMode;
+          },
+          icon: Icon(
+            isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+            size: 20,
+            color: isDark ? Colors.amber : const Color(0xFF5A5A7A),
+          ),
+          tooltip: isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+        ),
+      ],
     );
   }
 }
@@ -722,9 +726,9 @@ class _Ux4gWelcomePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: bg,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(32),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(32),
+        child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 640),
             child: Column(
@@ -739,12 +743,12 @@ class _Ux4gWelcomePage extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: _primary.withOpacity(0.08),
+                    color: _primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(100),
-                    border: Border.all(color: _primary.withOpacity(0.25)),
+                    border: Border.all(color: _primary.withValues(alpha: 0.25)),
                   ),
                   child: Text(
-                    'v3.0 beta  ·  Flutter Component Library',
+                    'v3.0  ·  Flutter Component Library',
                     style: TextStyle(
                       color: isDark ? const Color(0xFFA594FF) : _primary,
                       fontSize: 12,
@@ -755,7 +759,7 @@ class _Ux4gWelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'UX4G Design System',
+                  'Flutter Documentation | UX4G Design System 3.0',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: onSurface,
@@ -777,44 +781,82 @@ class _Ux4gWelcomePage extends StatelessWidget {
                   runSpacing: 10,
                   alignment: WrapAlignment.center,
                   children: const [
-                    _StatPill('50+ Components'),
+                    _StatPill('50+ Reusable Components'),
                     _StatPill('1K+ Design Tokens'),
-                    _StatPill('10 Categories'),
+                    _StatPill('10 Patterns'),
                   ],
                 ),
                 const SizedBox(height: 48),
-                IntrinsicHeight(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: const [
-                      Expanded(
-                        child: _FeatureCard(
-                          icon: Icons.account_tree_outlined,
-                          title: 'Scalable Architecture',
-                          description:
-                              'A structured system of foundations, patterns, and components that scales across products.',
-                        ),
+                Column(
+                  children: [
+                    IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: const [
+                          Expanded(
+                            child: _FeatureCard(
+                              icon: Icons.account_tree_outlined,
+                              title: 'Scalable Architecture',
+                              description:
+                                  'A structured system of foundations, patterns, and components that scales across ministries, vendors and service teams.',
+                            ),
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: _FeatureCard(
+                              icon: Icons.palette_outlined,
+                              title: 'Token-Driven Design',
+                              description:
+                                  'Color, typography, spacing and elevation are governed through reusable tokens that keep every experience aligned.',
+                            ),
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: _FeatureCard(
+                              icon: Icons.code_rounded,
+                              title: 'Developer Friendly',
+                              description:
+                                  'Composable utilities, production-ready components, and Storybook documentation reduce friction from exploration to delivery.',
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: _FeatureCard(
-                          icon: Icons.palette_outlined,
-                          title: 'Token-Driven Design',
-                          description:
-                              'Color, typography, and spacing governed through reusable tokens for alignment.',
-                        ),
+                    ),
+                    const SizedBox(height: 16),
+                    IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: const [
+                          Expanded(
+                            child: _FeatureCard(
+                              icon: Icons.account_tree_outlined,
+                              title: 'Componenets',
+                              description:
+                                  'Form controls, navigation, feedback, and layout primitives designed for real government workflows.',
+                            ),
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: _FeatureCard(
+                              icon: Icons.palette_outlined,
+                              title: 'Tokens',
+                              description:
+                                  'Core design decisions captured as reusable color, typography, spacing, and semantic values.',
+                            ),
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: _FeatureCard(
+                              icon: Icons.code_rounded,
+                              title: 'Patterns',
+                              description:
+                                  'Reusable block-level compositions like headers, footers, and complex forms used across applications.',
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: _FeatureCard(
-                          icon: Icons.code_rounded,
-                          title: 'Developer Friendly',
-                          description:
-                              'Production-ready components with code snippets and live knobs for every story.',
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 40),
                 Container(
@@ -862,7 +904,7 @@ class _Ux4gWelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  'UX4G Design System  ·  v3.0 beta  ·  ux4g.gov.in',
+                  'UX4G Design System  ·  v3.0',
                   style: TextStyle(
                     color: isDark ? Colors.white38 : const Color(0xFF9CA3AF),
                     fontSize: 12,

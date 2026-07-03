@@ -133,7 +133,7 @@ class WidgetbookState extends ChangeNotifier {
   final List<WidgetbookIntegration>? integrations;
 
   /// The root node of the Widgetbook navigation tree.
-  final WidgetbookRoot root;
+  WidgetbookRoot root;
 
   /// The home widget is a widget that is shown on startup when no use-case is
   /// selected. This widget does not inherit from the [appBuilder] or the
@@ -165,13 +165,15 @@ class WidgetbookState extends ChangeNotifier {
   }
 
   /// A [Uri] representation of the current state.
+  /// Only path, search query, panel visibility, and preview mode are synced
+  /// to the URL. Knob and addon values are intentionally excluded from the
+  /// URL to keep it clean.
   Uri get uri {
     final queryParameters = {
       if (path != null) 'path': path,
       if (query?.isNotEmpty ?? false) 'q': query,
       if (panels?.isNotEmpty ?? false)
         'panels': panels?.map((x) => x.name).join(','),
-      ...queryParams,
     };
 
     return Uri(
@@ -271,6 +273,12 @@ class WidgetbookState extends ChangeNotifier {
     knobs.clear();
     queryParams.remove('knobs');
 
+    notifyListeners();
+  }
+
+  @internal
+  void updateRoot(WidgetbookRoot newRoot) {
+    root = newRoot;
     notifyListeners();
   }
 

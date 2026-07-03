@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'dart:ui' show PointerDeviceKind;
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 import '../foundation/dimensions.dart';
@@ -107,7 +106,14 @@ class Ux4gChoiceChip extends StatelessWidget {
                 leadingContent!,
                 const SizedBox(width: 8),
               ],
-              Text(text, style: textStyle.copyWith(color: textColor)),
+              Flexible(
+                child: Text(
+                  text,
+                  style: textStyle.copyWith(color: textColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
               if (trailingContent != null) ...[
                 const SizedBox(width: 8),
                 trailingContent!,
@@ -218,7 +224,14 @@ class Ux4gFilterChip extends StatelessWidget {
                 leadingContent!,
                 const SizedBox(width: 8),
               ],
-              Text(text, style: textStyle.copyWith(color: textColor)),
+              Flexible(
+                child: Text(
+                  text,
+                  style: textStyle.copyWith(color: textColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ],
           ),
         ),
@@ -317,7 +330,14 @@ class Ux4gInputChip extends StatelessWidget {
               leadingContent!,
               const SizedBox(width: 8),
             ],
-            Text(text, style: textStyle.copyWith(color: finalTextColor)),
+            Flexible(
+              child: Text(
+                text,
+                style: textStyle.copyWith(color: finalTextColor),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             const SizedBox(width: 8),
             GestureDetector(
               onTap: enabled ? onDismiss : null,
@@ -343,6 +363,7 @@ class Ux4gInputChipField extends StatelessWidget {
   final bool isDropdown;
   final List<String> dropdownOptions;
   final List<Widget> chips;
+  final Ux4gChipGroupArrangement arrangement;
 
   const Ux4gInputChipField({
     super.key,
@@ -354,6 +375,7 @@ class Ux4gInputChipField extends StatelessWidget {
     this.isDropdown = false,
     this.dropdownOptions = const [],
     this.chips = const [],
+    this.arrangement = Ux4gChipGroupArrangement.horizontal,
   });
 
   @override
@@ -379,28 +401,18 @@ class Ux4gInputChipField extends StatelessWidget {
             },
             trailingIcon: Icons.add,
           ),
-        const SizedBox(height: 8),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: chips
-                .map(
-                  (chip) => Padding(
-                    padding: const EdgeInsets.only(right: 8),
-                    child: chip,
-                  ),
-                )
-                .toList(),
+        if (chips.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Ux4gChipGroup(
+            chips: chips,
+            arrangement: arrangement,
           ),
-        ),
+        ],
       ],
     );
   }
 
   Widget _buildDropdownField(BuildContext context) {
-    final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
-
     return PopupMenuButton<String>(
       onSelected: (val) {
         onAddChip(val);

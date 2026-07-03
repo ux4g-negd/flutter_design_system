@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
 final modalComponent = WidgetbookComponent(
-  name: 'Ux4gModal',
+  name: 'Modals',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive Trigger',
@@ -273,9 +273,14 @@ Ux4gModal(
     WidgetbookUseCase(
       name: 'Hero Image Variants',
       builder: (context) {
-        const bodyContent = 'A modal is a design element that appears over the main content of a webpage, capturing the user\'s attention by disabling interaction with the rest of the page until the modal is addressed.';
-        
-        Widget buildPromoModal(Ux4gModalAlignment align, bool destructive, {String? imageUrl}) {
+        const bodyContent =
+            'A modal is a design element that appears over the main content of a webpage, capturing the user\'s attention by disabling interaction with the rest of the page until the modal is addressed.';
+
+        Widget buildPromoModal(
+          Ux4gModalAlignment align,
+          bool destructive, {
+          String? imageUrl,
+        }) {
           return SizedBox(
             width: 400,
             child: Ux4gModal(
@@ -284,7 +289,10 @@ Ux4gModal(
                   ? Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)], // Purple gradient
+                          colors: [
+                            Color(0xFF8E2DE2),
+                            Color(0xFF4A00E0),
+                          ], // Purple gradient
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -303,7 +311,9 @@ Ux4gModal(
               subtitleText: 'Subtitle',
               bodyText: bodyContent,
               footerButtons: Ux4gModalFooterButtons.twoButtons,
-              footerAlign: align == Ux4gModalAlignment.centered ? Ux4gModalFooterAlign.center : Ux4gModalFooterAlign.right,
+              footerAlign: align == Ux4gModalAlignment.centered
+                  ? Ux4gModalFooterAlign.center
+                  : Ux4gModalFooterAlign.right,
               isDestructive: destructive,
               primaryButtonText: 'Button',
               secondaryButtonText: 'Button',
@@ -314,7 +324,8 @@ Ux4gModal(
 
         return ComponentDocs(
           name: 'Ux4gModal — Hero Image Variants',
-          description: 'Showcases permutations of hero images with different alignments and button intents.',
+          description:
+              'Showcases permutations of hero images with different alignments and button intents.',
           code: '''Ux4gModal(
   headerImageContent: Container(
     decoration: const BoxDecoration(
@@ -350,8 +361,16 @@ Ux4gModal(
             alignment: WrapAlignment.center,
             children: [
               buildPromoModal(Ux4gModalAlignment.leftAligned, false),
-              buildPromoModal(Ux4gModalAlignment.leftAligned, true, imageUrl: 'https://picsum.photos/seed/promo1/600/300'),
-              buildPromoModal(Ux4gModalAlignment.centered, false, imageUrl: 'https://picsum.photos/seed/promo2/600/300'),
+              buildPromoModal(
+                Ux4gModalAlignment.leftAligned,
+                true,
+                imageUrl: 'https://picsum.photos/seed/promo1/600/300',
+              ),
+              buildPromoModal(
+                Ux4gModalAlignment.centered,
+                false,
+                imageUrl: 'https://picsum.photos/seed/promo2/600/300',
+              ),
               buildPromoModal(Ux4gModalAlignment.centered, true),
             ],
           ),
@@ -458,7 +477,7 @@ Ux4gModal(
 // ── Bottom Sheet ──────────────────────────────────────────────────────────────
 
 final bottomSheetComponent = WidgetbookComponent(
-  name: 'Ux4gBottomSheet',
+  name: 'BottomSheet',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive Trigger',
@@ -631,7 +650,7 @@ final bottomSheetComponent = WidgetbookComponent(
 // ── Toast ─────────────────────────────────────────────────────────────────────
 
 final toastComponent = WidgetbookComponent(
-  name: 'Ux4gToast',
+  name: 'Toasts',
   useCases: [
     WidgetbookUseCase(
       name: 'All Categories',

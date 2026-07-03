@@ -54,6 +54,18 @@ class _NavigationPanelState extends State<NavigationPanel> {
   }
 
   @override
+  void didUpdateWidget(covariant NavigationPanel oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialPath != oldWidget.initialPath) {
+      setState(() {
+        selectedNode = widget.initialPath != null
+            ? widget.root.find((child) => child.path == widget.initialPath)
+            : null;
+      });
+    }
+  }
+
+  @override
   void dispose() {
     _debounce?.cancel();
     super.dispose();
@@ -114,13 +126,13 @@ class _NavigationPanelState extends State<NavigationPanel> {
                 )
               : const SizedBox(),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: StatsBanner(
-            componentsCount: WidgetbookState.of(context).root.componentsCount,
-            useCasesCount: WidgetbookState.of(context).root.useCasesCount,
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.all(8),
+        //   child: StatsBanner(
+        //     componentsCount: WidgetbookState.of(context).root.componentsCount,
+        //     useCasesCount: WidgetbookState.of(context).root.useCasesCount,
+        //   ),
+        // ),
       ],
     );
   }

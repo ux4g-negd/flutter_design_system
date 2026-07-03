@@ -34,7 +34,6 @@ class Ux4gInputField extends StatefulWidget {
   final String? prefixText;
   final String? postfixText;
   final IconData? trailingIconLabel;
-  final bool showPasswordToggle;
   final bool enabled;
   final bool readOnly;
   final bool singleLine;
@@ -69,7 +68,6 @@ class Ux4gInputField extends StatefulWidget {
     this.prefixText,
     this.postfixText,
     this.trailingIconLabel,
-    this.showPasswordToggle = true,
     this.enabled = true,
     this.readOnly = false,
     this.singleLine = true,
@@ -304,8 +302,7 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
               ],
 
               // Trailing Icon or Eye Toggle
-              if (widget.type == Ux4gInputFieldType.password &&
-                  widget.showPasswordToggle) ...[
+              if (widget.type == Ux4gInputFieldType.password) ...[
                 const SizedBox(width: 8),
                 GestureDetector(
                   onTap: () => setState(() => _obscureText = !_obscureText),
@@ -331,8 +328,7 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
         ),
 
         // Caption Section
-        if (widget.caption != null ||
-            widget.status == Ux4gInputFieldStatus.error) ...[
+        if (widget.caption != null && widget.caption!.trim().isNotEmpty) ...[
           const SizedBox(height: 8),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -387,8 +383,9 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
         ? Ux4gPalette.neutral700
         : Ux4gPalette.neutral200;
 
-    if (!widget.enabled)
+    if (!widget.enabled) {
       return widget.disabledBorderColor ?? onSurface.withValues(alpha: 0.3);
+    }
     return switch (widget.status) {
       Ux4gInputFieldStatus.error => error,
       Ux4gInputFieldStatus.warning => warning,

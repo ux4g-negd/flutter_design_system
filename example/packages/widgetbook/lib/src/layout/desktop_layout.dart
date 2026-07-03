@@ -30,44 +30,61 @@ class DesktopLayout extends StatelessWidget implements BaseLayout {
     final state = WidgetbookState.of(context);
 
     const kSidePanelPercentage = 0.2;
-    const kWorkbenchPercentage = 1 - 2 * kSidePanelPercentage;
 
     final showNavigationPanel = state.canShowPanel(LayoutPanel.navigation);
+
+    // Hide the settings panel (Knobs/Addons) on:
+    // 1. Home screen (no use case selected)
+    // 2. Quick Guide doc pages (Overview, Installation)
+    final isHomeScreen = state.useCase == null;
+    final currentPath = state.path ?? '';
+    final isDocPage =
+        currentPath.startsWith('quick-guide') ||
+        currentPath.startsWith('utils');
     final showSettingsPanel =
-        state.canShowPanel(LayoutPanel.addons) ||
-        state.canShowPanel(LayoutPanel.knobs);
+        !isHomeScreen &&
+        !isDocPage &&
+        (state.canShowPanel(LayoutPanel.addons) ||
+            state.canShowPanel(LayoutPanel.knobs));
+
+    // Dynamically compute workbench width based on visible panels
+    final navWidth = showNavigationPanel ? kSidePanelPercentage : 0.0;
+    final settingsWidth = showSettingsPanel ? kSidePanelPercentage : 0.0;
+    final workbenchWidth = 1.0 - navWidth - settingsWidth;
 
     return ColoredBox(
       color: WidgetbookTheme.of(context).colorScheme.surface,
+      // ValueKey forces ResizableWidget to recreate when panel count changes
       child: ResizableLayout(
+        key: ValueKey('layout-$showNavigationPanel-$showSettingsPanel'),
         items: [
           if (showNavigationPanel)
             ResizableLayoutItem(
-              percentage: kSidePanelPercentage,
+              percentage: navWidth,
               child: Card(
                 child: navigationBuilder(context),
               ),
             ),
           ResizableLayoutItem(
-            percentage: kWorkbenchPercentage,
+            percentage: workbenchWidth,
             child: workbench,
           ),
           if (showSettingsPanel)
             ResizableLayoutItem(
-              percentage: kSidePanelPercentage,
+              percentage: settingsWidth,
               child: Card(
                 child: SettingsPanel(
                   settings: [
                     if (state.canShowPanel(LayoutPanel.knobs)) ...{
                       SettingsPanelData(
-                        name: 'Knobs',
+                        name: 'Panel',
                         builder: knobsBuilder,
                       ),
                     },
                     if (state.canShowPanel(LayoutPanel.addons) &&
                         state.addons != null) ...{
                       SettingsPanelData(
-                        name: 'Addons',
+                        name: 'Settings',
                         builder: addonsBuilder,
                       ),
                     },

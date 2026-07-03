@@ -88,12 +88,19 @@ class _NavigationTreeNodeState extends State<NavigationTreeNode> {
               // Leaf nodes (use-cases) and leaf components should
               // only trigger selection, not toggle expansion.
               widget.onNodeSelected?.call(targetNode);
+            } else if (widget.node is WidgetbookComponent &&
+                widget.node.children != null &&
+                widget.node.children!.isNotEmpty) {
+              if (!isExpanded) {
+                setState(() => isExpanded = true);
+                widget.onNodeSelected?.call(widget.node.children!.first);
+              } else {
+                setState(() => isExpanded = false);
+              }
             } else {
-              // Non-leaf nodes (folders, categories, components)
+              // Non-leaf nodes (folders, categories)
               // should toggle expansion on tap.
               setState(() => isExpanded = !isExpanded);
-              // Only call onNodeSelected for leaf-like behavior;
-              // for branches, just toggle expand/collapse.
             }
           },
         ),

@@ -12,14 +12,19 @@ class MaterialThemeAddon extends ThemeAddon<ThemeData> {
     super.initialTheme,
   }) : super(
          themeBuilder: (context, theme, child) {
-           return Theme(
+           return AnimatedTheme(
              data: theme,
-             child: ColoredBox(
-               color: theme.scaffoldBackgroundColor,
-               child: DefaultTextStyle(
-                 style: theme.textTheme.bodyMedium!,
-                 child: child,
-               ),
+             child: Builder(
+               builder: (context) {
+                 final animatedTheme = Theme.of(context);
+                 return ColoredBox(
+                   color: animatedTheme.scaffoldBackgroundColor,
+                   child: DefaultTextStyle(
+                     style: animatedTheme.textTheme.bodyMedium!,
+                     child: child,
+                   ),
+                 );
+               },
              ),
            );
          },

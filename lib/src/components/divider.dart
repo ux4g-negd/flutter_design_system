@@ -14,6 +14,8 @@ class Ux4gDivider extends StatelessWidget {
   final double endIndent;
   final Widget? label;
   final double labelSpacing;
+  final double? width;
+  final double? height;
 
   const Ux4gDivider({
     super.key,
@@ -25,6 +27,8 @@ class Ux4gDivider extends StatelessWidget {
     this.endIndent = 0.0,
     this.label,
     this.labelSpacing = 8.0,
+    this.width,
+    this.height,
   });
 
   @override
@@ -37,8 +41,9 @@ class Ux4gDivider extends StatelessWidget {
             .withValues(alpha: 0.2);
 
     if (label != null) {
+      Widget labeledWidget;
       if (orientation == Ux4gDividerOrientation.horizontal) {
-        return Row(
+        labeledWidget = Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -50,6 +55,7 @@ class Ux4gDivider extends StatelessWidget {
                 style: style,
                 startIndent: startIndent,
                 endIndent: 0,
+                height: height,
               ),
             ),
             SizedBox(width: labelSpacing),
@@ -63,12 +69,13 @@ class Ux4gDivider extends StatelessWidget {
                 style: style,
                 startIndent: 0,
                 endIndent: endIndent,
+                height: height,
               ),
             ),
           ],
         );
       } else {
-        return Column(
+        labeledWidget = Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -80,6 +87,7 @@ class Ux4gDivider extends StatelessWidget {
                 style: style,
                 startIndent: startIndent,
                 endIndent: 0,
+                width: width,
               ),
             ),
             SizedBox(height: labelSpacing),
@@ -93,11 +101,16 @@ class Ux4gDivider extends StatelessWidget {
                 style: style,
                 startIndent: 0,
                 endIndent: endIndent,
+                width: width,
               ),
             ),
           ],
         );
       }
+      if (width != null || height != null) {
+        return SizedBox(width: width, height: height, child: labeledWidget);
+      }
+      return labeledWidget;
     }
 
     return _Ux4gDividerLine(
@@ -107,6 +120,8 @@ class Ux4gDivider extends StatelessWidget {
       style: style,
       startIndent: startIndent,
       endIndent: endIndent,
+      width: width,
+      height: height,
     );
   }
 }
@@ -118,6 +133,8 @@ class _Ux4gDividerLine extends StatelessWidget {
   final Ux4gDividerStyle style;
   final double startIndent;
   final double endIndent;
+  final double? width;
+  final double? height;
 
   const _Ux4gDividerLine({
     required this.orientation,
@@ -126,14 +143,16 @@ class _Ux4gDividerLine extends StatelessWidget {
     required this.style,
     required this.startIndent,
     required this.endIndent,
+    this.width,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     if (orientation == Ux4gDividerOrientation.horizontal) {
       return SizedBox(
-        height: thickness,
-        width: double.infinity,
+        height: height ?? thickness,
+        width: width ?? double.infinity,
         child: CustomPaint(
           painter: _DividerPainter(
             orientation: orientation,
@@ -147,8 +166,8 @@ class _Ux4gDividerLine extends StatelessWidget {
       );
     } else {
       return SizedBox(
-        width: thickness,
-        height: double.infinity,
+        width: width ?? thickness,
+        height: height ?? double.infinity,
         child: CustomPaint(
           painter: _DividerPainter(
             orientation: orientation,

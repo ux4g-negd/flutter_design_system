@@ -181,11 +181,23 @@ class _WidgetbookState extends State<Widgetbook> {
   }
 
   @override
+  void didUpdateWidget(covariant Widgetbook oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.directories != oldWidget.directories) {
+      state.updateRoot(
+        WidgetbookRoot(
+          children: widget.directories,
+        ),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WidgetbookScope(
       state: state,
       child: MaterialApp.router(
-        title: 'Widgetbook',
+        title: 'Flutter Documentation | UX4G Design System 3.0',
         themeMode: widget.themeMode ?? ThemeMode.system,
         theme: widget.lightTheme ?? Themes.light,
         darkTheme: widget.darkTheme ?? Themes.dark,

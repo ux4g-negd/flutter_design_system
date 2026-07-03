@@ -79,7 +79,7 @@ void main() {
 
       test(
         'given a state, '
-        'then the Uri has path as the first query parameter',
+        'then the Uri has only path as a query parameter',
         () {
           final state = WidgetbookState(
             path: 'component/use-case',
@@ -91,7 +91,7 @@ void main() {
 
           expect(
             state.uri.toString(),
-            '/?path=component%2Fuse-case&foo=bar',
+            '/?path=component%2Fuse-case',
           );
         },
       );
