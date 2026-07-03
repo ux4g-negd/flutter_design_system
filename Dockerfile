@@ -1,4 +1,3 @@
-
 FROM ghcr.io/cirruslabs/flutter:stable AS build
 
 WORKDIR /app
@@ -7,7 +6,7 @@ COPY . .
 
 WORKDIR /app/example
 RUN flutter pub get
-RUN flutter build web -t lib/widgetbook.dart --release
+RUN flutter build web -t lib/widgetbook.dart --base-href=/flutter/ --release
 
 FROM nginx:alpine AS runtime
 
