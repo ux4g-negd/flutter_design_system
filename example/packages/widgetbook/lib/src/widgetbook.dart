@@ -201,6 +201,7 @@ class _WidgetbookState extends State<Widgetbook> {
         themeMode: widget.themeMode ?? ThemeMode.system,
         theme: widget.lightTheme ?? Themes.light,
         darkTheme: widget.darkTheme ?? Themes.dark,
+        themeAnimationDuration: Duration.zero,
         routerConfig: router,
         debugShowCheckedModeBanner: false,
         scrollBehavior: widget.scrollBehavior,

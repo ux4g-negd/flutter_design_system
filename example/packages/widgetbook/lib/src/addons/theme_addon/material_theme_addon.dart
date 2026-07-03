@@ -12,15 +12,15 @@ class MaterialThemeAddon extends ThemeAddon<ThemeData> {
     super.initialTheme,
   }) : super(
          themeBuilder: (context, theme, child) {
-           return AnimatedTheme(
+           return Theme(
              data: theme,
              child: Builder(
                builder: (context) {
-                 final animatedTheme = Theme.of(context);
+                 final currentTheme = Theme.of(context);
                  return ColoredBox(
-                   color: animatedTheme.scaffoldBackgroundColor,
+                   color: currentTheme.scaffoldBackgroundColor,
                    child: DefaultTextStyle(
-                     style: animatedTheme.textTheme.bodyMedium!,
+                     style: currentTheme.textTheme.bodyMedium!,
                      child: child,
                    ),
                  );
