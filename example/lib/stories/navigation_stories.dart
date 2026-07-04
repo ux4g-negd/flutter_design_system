@@ -476,19 +476,33 @@ final accordionGroupComponent = WidgetbookComponent(
                   'AccordionGroup ensures only one item is open at a time.',
               code: () {
                 final buf = StringBuffer();
-                buf.writeln("// ── Declare these variables in your widget state ──");
+                buf.writeln(
+                  "// ── Declare these variables in your widget state ──",
+                );
                 buf.writeln("int? expandedIndex = 0;");
                 buf.writeln();
                 buf.writeln("final items = <Ux4gAccordionItem>[");
-                buf.writeln("  const Ux4gAccordionItem(title: 'What is UX4G?'),");
-                buf.writeln("  const Ux4gAccordionItem(title: 'How do I install it?'),");
-                buf.writeln("  const Ux4gAccordionItem(title: 'Is it open source?'),");
+                buf.writeln(
+                  "  const Ux4gAccordionItem(title: 'What is UX4G?'),",
+                );
+                buf.writeln(
+                  "  const Ux4gAccordionItem(title: 'How do I install it?'),",
+                );
+                buf.writeln(
+                  "  const Ux4gAccordionItem(title: 'Is it open source?'),",
+                );
                 buf.writeln("];");
                 buf.writeln();
                 buf.writeln("final contents = <String>[");
-                buf.writeln("  'UX4G is a Flutter design system providing reusable UI components.',");
-                buf.writeln("  'Add it to pubspec.yaml and run flutter pub get.',");
-                buf.writeln("  'Yes, UX4G is open source under the MIT licence.',");
+                buf.writeln(
+                  "  'UX4G is a Flutter design system providing reusable UI components.',",
+                );
+                buf.writeln(
+                  "  'Add it to pubspec.yaml and run flutter pub get.',",
+                );
+                buf.writeln(
+                  "  'Yes, UX4G is open source under the MIT licence.',",
+                );
                 buf.writeln("];");
                 buf.writeln();
                 buf.writeln("// ── Use them in your build method ──");
@@ -695,9 +709,15 @@ final statusBannerComponent = WidgetbookComponent(
           code: () {
             final buf = StringBuffer();
             buf.writeln("// ── Get the typography object from theme ──");
-            buf.writeln("final typography = Theme.of(context).extension<Ux4gTypography>();");
-            buf.writeln("// typography exposes: tS_default, bS_default, bS_strong, lM_default, lXL_default, etc.");
-            buf.writeln("// Use ?. and ?? to handle null safely, or use ! if you're sure it's registered.");
+            buf.writeln(
+              "final typography = Theme.of(context).extension<Ux4gTypography>();",
+            );
+            buf.writeln(
+              "// typography exposes: tS_default, bS_default, bS_strong, lM_default, lXL_default, etc.",
+            );
+            buf.writeln(
+              "// Use ?. and ?? to handle null safely, or use ! if you're sure it's registered.",
+            );
             buf.writeln();
             buf.writeln("Column(");
             buf.writeln("  mainAxisSize: MainAxisSize.min,");
@@ -707,17 +727,27 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      borderColor: Colors.transparent,");
             buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
             buf.writeln("      title: 'Income Certificate Application',");
-            buf.writeln("      titleStyle: typography?.tS_default?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln(
+              "      titleStyle: typography?.tS_default?.copyWith(color: const Color(0xFF111827)),",
+            );
             buf.writeln("      subtitleWidget: Column(");
-            buf.writeln("        crossAxisAlignment: CrossAxisAlignment.start,");
+            buf.writeln(
+              "        crossAxisAlignment: CrossAxisAlignment.start,",
+            );
             buf.writeln("        children: [");
             buf.writeln("          const SizedBox(height: 8),");
-            buf.writeln("          Text('Step 3 of 5', style: typography?.lM_default),");
+            buf.writeln(
+              "          Text('Step 3 of 5', style: typography?.lM_default),",
+            );
             buf.writeln("          const SizedBox(height: 8),");
-            buf.writeln("          Text('Last saved: 10 Apr 2026', style: typography?.bS_default?.copyWith(color: const Color(0xFF374151))),");
+            buf.writeln(
+              "          Text('Last saved: 10 Apr 2026', style: typography?.bS_default?.copyWith(color: const Color(0xFF374151))),",
+            );
             buf.writeln("        ],");
             buf.writeln("      ),");
-            buf.writeln("      trailingIcon: const Icon(Icons.keyboard_arrow_down),");
+            buf.writeln(
+              "      trailingIcon: const Icon(Icons.keyboard_arrow_down),",
+            );
             buf.writeln("    ),");
             buf.writeln("    const SizedBox(height: 24),");
             buf.writeln();
@@ -725,7 +755,9 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("    Ux4gStatusBanner(");
             buf.writeln("      borderColor: Colors.transparent,");
             buf.writeln("      variant: Ux4gBannerVariant.warningSolid,");
-            buf.writeln("      title: 'Your draft expires tomorrow. Submit today',");
+            buf.writeln(
+              "      title: 'Your draft expires tomorrow. Submit today',",
+            );
             buf.writeln("      titleStyle: typography?.bS_strong,");
             buf.writeln("    ),");
             buf.writeln("    const SizedBox(height: 24),");
@@ -738,9 +770,13 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      trailingIcon: Row(");
             buf.writeln("        mainAxisSize: MainAxisSize.min,");
             buf.writeln("        children: [");
-            buf.writeln("          const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),");
+            buf.writeln(
+              "          const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),",
+            );
             buf.writeln("          const SizedBox(width: 8),");
-            buf.writeln("          Text('Saving', style: typography?.bS_default),");
+            buf.writeln(
+              "          Text('Saving', style: typography?.bS_default),",
+            );
             buf.writeln("        ],");
             buf.writeln("      ),");
             buf.writeln("    ),");
@@ -752,7 +788,9 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      variant: Ux4gBannerVariant.successLight,");
             buf.writeln("      title: 'Draft saved successfully at 3:14 PM',");
             buf.writeln("      titleStyle: typography?.bS_default,");
-            buf.writeln("      leadingIcon: const Icon(Icons.check_circle_outline),");
+            buf.writeln(
+              "      leadingIcon: const Icon(Icons.check_circle_outline),",
+            );
             buf.writeln("    ),");
             buf.writeln("    const SizedBox(height: 24),");
             buf.writeln();
@@ -761,7 +799,9 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      borderColor: Colors.transparent,");
             buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
             buf.writeln("      title: 'Your draft expires in 5 days',");
-            buf.writeln("      titleStyle: typography?.bS_strong?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln(
+              "      titleStyle: typography?.bS_strong?.copyWith(color: const Color(0xFF111827)),",
+            );
             buf.writeln("    ),");
             buf.writeln("    const SizedBox(height: 24),");
             buf.writeln();
@@ -770,9 +810,13 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      borderColor: Colors.transparent,");
             buf.writeln("      variant: Ux4gBannerVariant.errorLight,");
             buf.writeln("      title: 'Draft expired on 9 April\\\\n2026',");
-            buf.writeln("      titleStyle: typography?.bS_default?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln(
+              "      titleStyle: typography?.bS_default?.copyWith(color: const Color(0xFF111827)),",
+            );
             buf.writeln("      leadingIcon: const Icon(Icons.error_outline),");
-            buf.writeln("      trailingIcon: Text('Action', style: typography?.lXL_default?.copyWith(color: const Color(0xFF9A3412))),");
+            buf.writeln(
+              "      trailingIcon: Text('Action', style: typography?.lXL_default?.copyWith(color: const Color(0xFF9A3412))),",
+            );
             buf.writeln("    ),");
             buf.writeln("    const SizedBox(height: 24),");
             buf.writeln();
@@ -784,9 +828,13 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      trailingIcon: Row(");
             buf.writeln("        mainAxisSize: MainAxisSize.min,");
             buf.writeln("        children: [");
-            buf.writeln("          const Icon(Icons.check_circle_outline, size: 18),");
+            buf.writeln(
+              "          const Icon(Icons.check_circle_outline, size: 18),",
+            );
             buf.writeln("          const SizedBox(width: 4),");
-            buf.writeln("          Text('Saved 3:14 PM', style: typography?.bM_default),");
+            buf.writeln(
+              "          Text('Saved 3:14 PM', style: typography?.bM_default),",
+            );
             buf.writeln("        ],");
             buf.writeln("      ),");
             buf.writeln("    ),");
@@ -797,26 +845,40 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("      borderColor: Colors.transparent,");
             buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
             buf.writeln("      title: 'Income Certificate Application',");
-            buf.writeln("      titleStyle: typography?.tS_default?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln(
+              "      titleStyle: typography?.tS_default?.copyWith(color: const Color(0xFF111827)),",
+            );
             buf.writeln("      subtitleWidget: Column(");
-            buf.writeln("        crossAxisAlignment: CrossAxisAlignment.start,");
+            buf.writeln(
+              "        crossAxisAlignment: CrossAxisAlignment.start,",
+            );
             buf.writeln("        children: [");
             buf.writeln("          const SizedBox(height: 8),");
-            buf.writeln("          Text('Step 3 of 5', style: typography?.lM_default),");
+            buf.writeln(
+              "          Text('Step 3 of 5', style: typography?.lM_default),",
+            );
             buf.writeln("          const SizedBox(height: 8),");
-            buf.writeln("          Text('Last saved: 10 Apr 2026', style: typography?.bS_default?.copyWith(color: const Color(0xFF374151))),");
+            buf.writeln(
+              "          Text('Last saved: 10 Apr 2026', style: typography?.bS_default?.copyWith(color: const Color(0xFF374151))),",
+            );
             buf.writeln("        ],");
             buf.writeln("      ),");
-            buf.writeln("      trailingIcon: const Icon(Icons.keyboard_arrow_up),");
+            buf.writeln(
+              "      trailingIcon: const Icon(Icons.keyboard_arrow_up),",
+            );
             buf.writeln("      actionsAlignment: WrapAlignment.spaceBetween,");
             buf.writeln("      actions: [");
             buf.writeln("        TextButton(");
             buf.writeln("          onPressed: () {},");
-            buf.writeln("          child: Text('Discard', style: typography?.lXL_default?.copyWith(color: const Color(0xFFDB372D))),");
+            buf.writeln(
+              "          child: Text('Discard', style: typography?.lXL_default?.copyWith(color: const Color(0xFFDB372D))),",
+            );
             buf.writeln("        ),");
             buf.writeln("        ElevatedButton(");
             buf.writeln("          onPressed: () {},");
-            buf.writeln("          child: Text('Resume', style: typography?.lXL_default),");
+            buf.writeln(
+              "          child: Text('Resume', style: typography?.lXL_default),",
+            );
             buf.writeln("        ),");
             buf.writeln("      ],");
             buf.writeln("    ),");
@@ -1078,7 +1140,9 @@ final statusBannerComponent = WidgetbookComponent(
         code: () {
           final buf = StringBuffer();
           buf.writeln("// ── Get the typography object from theme ──");
-          buf.writeln("final typography = Theme.of(context).extension<Ux4gTypography>();");
+          buf.writeln(
+            "final typography = Theme.of(context).extension<Ux4gTypography>();",
+          );
           buf.writeln();
           buf.writeln("// Option A: Use theme-aware typography styles");
           buf.writeln("Ux4gStatusBanner(");
@@ -1096,11 +1160,15 @@ final statusBannerComponent = WidgetbookComponent(
           buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
           buf.writeln("  title: 'Custom Title',");
           buf.writeln("  titleStyle: TextStyle(");
-          buf.writeln("    fontSize: 18, fontWeight: FontWeight.w900, color: Colors.blue.shade900,");
+          buf.writeln(
+            "    fontSize: 18, fontWeight: FontWeight.w900, color: Colors.blue.shade900,",
+          );
           buf.writeln("  ),");
           buf.writeln("  subtitle: 'Custom subtitle styling example.',");
           buf.writeln("  subtitleStyle: TextStyle(");
-          buf.writeln("    fontSize: 12, fontStyle: FontStyle.italic, color: Colors.black54,");
+          buf.writeln(
+            "    fontSize: 12, fontStyle: FontStyle.italic, color: Colors.black54,",
+          );
           buf.writeln("  ),");
           buf.writeln(");");
           return buf.toString();
@@ -2070,7 +2138,7 @@ final inputChipFieldComponent = WidgetbookComponent(
 // ── Chip Group ───────────────────────────────────────────────────────────────
 
 final chipGroupComponent = WidgetbookComponent(
-  name: 'Ux4gChipGroup',
+  name: 'Chip Group',
   useCases: [
     WidgetbookUseCase(
       name: 'Wrap',
@@ -2412,7 +2480,7 @@ Ux4gChipGroup(
 // ── Pagination ────────────────────────────────────────────────────────────────
 
 final paginationComponent = WidgetbookComponent(
-  name: 'PaginationIndicator',
+  name: 'Pagination Indicator',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',

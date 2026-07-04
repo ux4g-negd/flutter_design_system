@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Input Field ──────────────────────────────────────────────────────────────
 
 final inputFieldComponent = WidgetbookComponent(
-  name: 'InputField',
+  name: 'Input',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1185,7 +1185,7 @@ String _buildSearchFieldCode({
 }
 
 final searchFieldComponent = WidgetbookComponent(
-  name: 'SearchField',
+  name: 'Search',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1611,7 +1611,7 @@ class _CheckboxExampleState extends State<CheckboxExample> {
 // ── Toggle ────────────────────────────────────────────────────────────────────
 
 final toggleComponent = WidgetbookComponent(
-  name: 'Toggle',
+  name: 'Switch(Toggle)',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -2388,7 +2388,7 @@ final sliderComponent = WidgetbookComponent(
 // ── OTP Input ─────────────────────────────────────────────────────────────────
 
 final otpInputComponent = WidgetbookComponent(
-  name: 'OtpInput',
+  name: 'Inout-OTP',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2403,7 +2403,8 @@ final otpInputComponent = WidgetbookComponent(
             );
 
             // ── Build dynamic code string ───────────────────────
-            final codeStr = '''Ux4gOtpInput(
+            final codeStr =
+                '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   onChanged: (v) => setState(() => otpValue = v),
@@ -2552,8 +2553,7 @@ final otpInputComponent = WidgetbookComponent(
                 PropRow(
                   name: 'onCountdownComplete',
                   type: 'VoidCallback?',
-                  description:
-                      'Called when the auto-countdown reaches zero.',
+                  description: 'Called when the auto-countdown reaches zero.',
                 ),
               ],
               child: SizedBox(
@@ -2786,14 +2786,26 @@ final selectionDropdownComponent = WidgetbookComponent(
                 buf.writeln("  label: 'Country',");
                 buf.writeln("  placeholder: 'Select country',");
                 buf.writeln("  options: const [");
-                buf.writeln("    Ux4gDropdownOption(id: 'in', label: 'India'),");
-                buf.writeln("    Ux4gDropdownOption(id: 'us', label: 'United States'),");
-                buf.writeln("    Ux4gDropdownOption(id: 'uk', label: 'United Kingdom'),");
-                buf.writeln("    Ux4gDropdownOption(id: 'au', label: 'Australia'),");
-                buf.writeln("    Ux4gDropdownOption(id: 'ca', label: 'Canada'),");
+                buf.writeln(
+                  "    Ux4gDropdownOption(id: 'in', label: 'India'),",
+                );
+                buf.writeln(
+                  "    Ux4gDropdownOption(id: 'us', label: 'United States'),",
+                );
+                buf.writeln(
+                  "    Ux4gDropdownOption(id: 'uk', label: 'United Kingdom'),",
+                );
+                buf.writeln(
+                  "    Ux4gDropdownOption(id: 'au', label: 'Australia'),",
+                );
+                buf.writeln(
+                  "    Ux4gDropdownOption(id: 'ca', label: 'Canada'),",
+                );
                 buf.writeln("  ],");
                 buf.writeln("  selectedOptionIds: selectedIds,");
-                buf.writeln("  onSelectionChange: (ids) => setState(() => selectedIds = ids),");
+                buf.writeln(
+                  "  onSelectionChange: (ids) => setState(() => selectedIds = ids),",
+                );
                 buf.writeln("  mode: Ux4gDropdownMode.single,");
                 buf.writeln("  searchEnabled: $searchEnabled,");
                 if (size != Ux4gDropdownSize.m) {
@@ -2963,7 +2975,7 @@ final selectionDropdownComponent = WidgetbookComponent(
 // ── Date Picker ───────────────────────────────────────────────────────────────
 
 final datePickerComponent = WidgetbookComponent(
-  name: 'DatePicker',
+  name: 'Date Picker',
   useCases: [
     // ── 1. Single Date ───────────────────────────────────────────────────
     WidgetbookUseCase(
@@ -3367,7 +3379,7 @@ final timePickerComponent = WidgetbookComponent(
 // ── File Upload ───────────────────────────────────────────────────────────────
 
 final fileUploadComponent = WidgetbookComponent(
-  name: 'FileUpload',
+  name: 'File Upload',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -3521,7 +3533,7 @@ final fileUploadComponent = WidgetbookComponent(
 // ── Radio Button ─────────────────────────────────────────────────────────────────
 
 final radioButtonComponent = WidgetbookComponent(
-  name: 'RadioButton',
+  name: 'Radio',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -3561,7 +3573,8 @@ final radioButtonComponent = WidgetbookComponent(
             );
 
             final descStr = description.isEmpty ? 'null' : "'$description'";
-            final codeStr = '''Column(
+            final codeStr =
+                '''Column(
   mainAxisSize: MainAxisSize.min,
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
@@ -3846,8 +3859,7 @@ Ux4gRadioButton(value: 'd', groupValue: 'a', onChanged: (_) {}, label: 'Disabled
             'The [status] prop drives the radio circle color so callers '
             'can show error / warning / success states alongside selection. '
             'Works for both selected and unselected radios.',
-        code:
-            '''// Selected
+        code: '''// Selected
 Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Default (purple)'),
 Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Error',  status: Ux4gRadioButtonStatus.error),
 Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Warning', status: Ux4gRadioButtonStatus.warning),

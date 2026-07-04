@@ -86,7 +86,6 @@ import 'stories/feedback_and_communication/language_switcher/inline_language_tog
 import 'stories/feedback_and_communication/language_switcher/translation_unavailable_stories.dart';
 import 'stories/feedback_and_communication/language_switcher/all_scheduled_languages_stories.dart';
 
-
 void main() {
   runApp(const UX4GWidgetbook());
 }
@@ -115,86 +114,36 @@ class UX4GWidgetbook extends StatelessWidget {
               name: 'Components',
               isInitiallyExpanded: false,
               children: [
-                // Buttons
-                WidgetbookFolder(
-                  name: 'Buttons',
-                  isInitiallyExpanded: false,
-                  children: [
-                    buttonComponent,
-                    iconButtonComponent,
-                  ],
-                ),
-
-                // Display
-                badgeComponent,
-                tagComponent,
-                cardComponent,
-                dividerComponent,
-
-                // Avatar
-                WidgetbookFolder(
-                  name: 'Avatar',
-                  isInitiallyExpanded: false,
-                  children: [
-                    avatarComponent,
-                    profileAvatarComponent,
-                    statusAvatarComponent,
-                    avatarGroupComponent,
-                  ],
-                ),
-
-                // Form
-                inputFieldComponent,
-                textAreaComponent,
-                searchFieldComponent,
-                checkboxComponent,
-                toggleComponent,
-                sliderComponent,
-                otpInputComponent,
-                radioButtonComponent,
-                WidgetbookFolder(
-                  name: 'Dropdown',
-                  isInitiallyExpanded: false,
-                  children: [
-                    actionDropdownComponent,
-                    selectionDropdownComponent,
-                  ],
-                ),
-                datePickerComponent,
-                timePickerComponent,
-                fileUploadComponent,
                 aadhaarInputFieldComponent,
-                panInputFieldComponent,
-
-                // Progress & Loader
-                WidgetbookFolder(
-                  name: 'Linear Progress',
-                  isInitiallyExpanded: false,
-                  children: [
-                    linearProgressComponent,
-                    animatedLinearProgressComponent,
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Circular Progress',
-                  isInitiallyExpanded: false,
-                  children: [
-                    circularProgressComponent,
-                    animatedCircularProgressComponent,
-                    halfCircleProgressComponent,
-                    animatedHalfCircleProgressComponent,
-                  ],
-                ),
-                loaderComponent,
-
-                // Navigation & Feedback
                 WidgetbookFolder(
                   name: 'Accordion',
                   isInitiallyExpanded: false,
                   children: [accordionComponent, accordionGroupComponent],
                 ),
-                statusBannerComponent,
-                emptyStateComponent,
+                appHeaderComponent,
+                WidgetbookFolder(
+                  name: 'Avatar',
+                  isInitiallyExpanded: false,
+                  children: [
+                    avatarComponent,
+                    avatarGroupComponent,
+                    profileAvatarComponent,
+                    statusAvatarComponent,
+                  ],
+                ),
+                badgeComponent,
+                biometricComponent,
+                //bottomSheetComponent,
+                WidgetbookFolder(
+                  name: 'Buttons',
+                  isInitiallyExpanded: false,
+                  children: [buttonComponent, iconButtonComponent],
+                ),
+                capsuleStepperComponent,
+                cardComponent,
+                carouselComponent,
+                checkboxComponent,
+                chipGroupComponent,
                 WidgetbookFolder(
                   name: 'Chips',
                   isInitiallyExpanded: false,
@@ -203,17 +152,63 @@ class UX4GWidgetbook extends StatelessWidget {
                     filterChipComponent,
                     inputChipComponent,
                     inputChipFieldComponent,
-                    chipGroupComponent,
                   ],
                 ),
-                paginationComponent,
-
-                // Data
-                stepperComponent,
-                capsuleStepperComponent,
-                resultRowComponent,
                 WidgetbookFolder(
-                  name: 'Social Links',
+                  name: 'Circular Progress',
+                  isInitiallyExpanded: false,
+                  children: [
+                    animatedCircularProgressComponent,
+                    animatedHalfCircleProgressComponent,
+                    circularProgressComponent,
+                    halfCircleProgressComponent,
+                  ],
+                ),
+                datePickerComponent,
+                dividerComponent,
+                WidgetbookFolder(
+                  name: 'Dropdown',
+                  isInitiallyExpanded: false,
+                  children: [
+                    actionDropdownComponent,
+                    selectionDropdownComponent,
+                  ],
+                ),
+                emptyStateComponent,
+                WidgetbookFolder(
+                  name: 'Feedback',
+                  isInitiallyExpanded: false,
+                  children: [
+                    feedbackFormComponent,
+                    feedbackFormCsatComponent,
+                    feedbackFormNpsComponent,
+                  ],
+                ),
+                fileUploadComponent,
+                inputFieldComponent,
+                aadhaarInputFieldComponent,
+                panInputFieldComponent,
+                otpInputComponent,
+                journeyTimelineComponent,
+                WidgetbookFolder(
+                  name: 'Linear Progress',
+                  isInitiallyExpanded: false,
+                  children: [
+                    animatedLinearProgressComponent,
+                    linearProgressComponent,
+                  ],
+                ),
+                loaderComponent,
+                modalComponent,
+                paginationComponent,
+                progressSlaIndicatorComponent,
+                radioButtonComponent,
+                resultRowComponent,
+                searchFieldComponent,
+                sliderComponent,
+                slotGridComponent,
+                WidgetbookFolder(
+                  name: 'Social Link',
                   isInitiallyExpanded: false,
                   children: [
                     socialLinkComponent,
@@ -221,37 +216,19 @@ class UX4GWidgetbook extends StatelessWidget {
                     socialLinkListComponent,
                   ],
                 ),
-                journeyTimelineComponent,
+                statusBannerComponent,
                 statusPipelineComponent,
-                carouselComponent,
-                slotGridComponent,
-
-                // Layout
-                appHeaderComponent,
-
-                // Overlay
-                modalComponent,
-                bottomSheetComponent,
+                stepperComponent,
+                toggleComponent, //switch
                 toastComponent,
+                tagComponent,
+                textAreaComponent,
+                timePickerComponent,
                 WidgetbookFolder(
                   name: 'Tooltip',
                   isInitiallyExpanded: false,
                   children: [tooltipComponent],
                 ),
-
-                // Feedback
-                WidgetbookFolder(
-                  name: 'Feedback Form',
-                  isInitiallyExpanded: false,
-                  children: [
-                    feedbackFormComponent,
-                    feedbackFormNpsComponent,
-                    feedbackFormCsatComponent,
-                  ],
-                ),
-
-                // Biometric
-                biometricComponent,
               ],
             ),
 
@@ -694,7 +671,11 @@ class _SidebarLogo extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset('assets/ux4g_logo.svg', height: 34, width: 34),
+                  SvgPicture.asset(
+                    'assets/ux4g_logo.svg',
+                    height: 34,
+                    width: 34,
+                  ),
                   const SizedBox(width: 10),
                 ],
               ),

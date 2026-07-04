@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
 final modalComponent = WidgetbookComponent(
-  name: 'Modals',
+  name: 'Modal',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive Trigger',
@@ -650,7 +650,7 @@ final bottomSheetComponent = WidgetbookComponent(
 // ── Toast ─────────────────────────────────────────────────────────────────────
 
 final toastComponent = WidgetbookComponent(
-  name: 'Toasts',
+  name: 'Switch(Toasts)',
   useCases: [
     WidgetbookUseCase(
       name: 'All Categories',

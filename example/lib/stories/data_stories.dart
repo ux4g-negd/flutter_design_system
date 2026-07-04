@@ -1218,7 +1218,7 @@ final capsuleStepperComponent = WidgetbookComponent(
 // ── Result Row ────────────────────────────────────────────────────────────────
 
 final resultRowComponent = WidgetbookComponent(
-  name: 'Result Row',
+  name: 'Result List',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1465,151 +1465,151 @@ Ux4gCard(
               Ux4gCard(
                 cornerRadius: 12,
                 child: Ux4gResultRow(
-                    title: 'Income Certificate',
-                    actionButtonText: 'Track',
-                    onActionPressed: () {},
-                    initialExpanded: false,
-                    showBottomDivider: false,
-                    metadataSegments: [
-                      Ux4gPillSegment(
-                        text: '8 days left',
+                  title: 'Income Certificate',
+                  actionButtonText: 'Track',
+                  onActionPressed: () {},
+                  initialExpanded: false,
+                  showBottomDivider: false,
+                  metadataSegments: [
+                    Ux4gPillSegment(
+                      text: '8 days left',
 
-                        leading: Container(
-                          width: 8,
-                          height: 8,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFF59E0B),
-                            shape: BoxShape.circle,
-                          ),
+                      leading: Container(
+                        width: 8,
+                        height: 8,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFF59E0B),
+                          shape: BoxShape.circle,
                         ),
                       ),
-                      const Ux4gPillSegment(
-                        text: 'Under review',
-                        textColor: Color(0xFFD97706),
-                      ),
-                    ],
-                    details: const [
-                      Ux4gResultDetail(
-                        label: 'Reference Number',
-                        value: 'INC-2026-MH-04127',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Last Updated Date',
-                        value: '10 Apr 2026',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Submitted Date',
-                        value: '1 Apr 2026',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Assigned Officer',
-                        value: 'Rahul Sharma',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Department',
-                        value: 'Revenue Department',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Documents',
-                        value: 'ID Proof, Address Proof',
-                      ),
-                    ],
-                  ),
+                    ),
+                    const Ux4gPillSegment(
+                      text: 'Under review',
+                      textColor: Color(0xFFD97706),
+                    ),
+                  ],
+                  details: const [
+                    Ux4gResultDetail(
+                      label: 'Reference Number',
+                      value: 'INC-2026-MH-04127',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Last Updated Date',
+                      value: '10 Apr 2026',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Submitted Date',
+                      value: '1 Apr 2026',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Assigned Officer',
+                      value: 'Rahul Sharma',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Department',
+                      value: 'Revenue Department',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Documents',
+                      value: 'ID Proof, Address Proof',
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 16),
               // Expanded
               Ux4gCard(
                 cornerRadius: 12,
                 child: Ux4gResultRow(
-                    title: 'Income Certificate',
-                    actionButtonText: 'Track',
-                    onActionPressed: () {},
-                    initialExpanded: true,
-                    showBottomDivider: false,
-                    metadataSegments: [
-                      Ux4gPillSegment(
-                        text: '8 days left',
+                  title: 'Income Certificate',
+                  actionButtonText: 'Track',
+                  onActionPressed: () {},
+                  initialExpanded: true,
+                  showBottomDivider: false,
+                  metadataSegments: [
+                    Ux4gPillSegment(
+                      text: '8 days left',
 
-                        leading: Container(
-                          width: 8,
-                          height: 8,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFF59E0B),
-                            shape: BoxShape.circle,
-                          ),
+                      leading: Container(
+                        width: 8,
+                        height: 8,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFF59E0B),
+                          shape: BoxShape.circle,
                         ),
                       ),
-                      const Ux4gPillSegment(
-                        text: 'Under review',
-                        textColor: Color(0xFFD97706),
-                      ),
-                    ],
-                    details: const [
-                      Ux4gResultDetail(
-                        label: 'Reference Number',
-                        value: 'INC-2026-MH-04127',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Last Updated Date',
-                        value: '10 Apr 2026',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Submitted Date',
-                        value: '1 Apr 2026',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Assigned Officer',
-                        value: 'Rahul Sharma',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Department',
-                        value: 'Revenue Department',
-                      ),
-                      Ux4gResultDetail(
-                        label: 'Documents',
-                        value: 'ID Proof, Address Proof',
-                      ),
-                    ],
-                    expandedChild: Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Escalation',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF7F1D1D),
-                              fontWeight: FontWeight.w500,
-                            ),
+                    ),
+                    const Ux4gPillSegment(
+                      text: 'Under review',
+                      textColor: Color(0xFFD97706),
+                    ),
+                  ],
+                  details: const [
+                    Ux4gResultDetail(
+                      label: 'Reference Number',
+                      value: 'INC-2026-MH-04127',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Last Updated Date',
+                      value: '10 Apr 2026',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Submitted Date',
+                      value: '1 Apr 2026',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Assigned Officer',
+                      value: 'Rahul Sharma',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Department',
+                      value: 'Revenue Department',
+                    ),
+                    Ux4gResultDetail(
+                      label: 'Documents',
+                      value: 'ID Proof, Address Proof',
+                    ),
+                  ],
+                  expandedChild: Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Escalation',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF7F1D1D),
+                            fontWeight: FontWeight.w500,
                           ),
-                          const SizedBox(height: 4),
-                          InkWell(
-                            onTap: () {},
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Text(
-                                  'Register grievance',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color(0xFF4338CA),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                SizedBox(width: 4),
-                                Icon(
-                                  Icons.arrow_forward,
-                                  size: 16,
+                        ),
+                        const SizedBox(height: 4),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Text(
+                                'Register grievance',
+                                style: TextStyle(
+                                  fontSize: 14,
                                   color: Color(0xFF4338CA),
+                                  fontWeight: FontWeight.w600,
                                 ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(width: 4),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 16,
+                                color: Color(0xFF4338CA),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
+                ),
               ),
             ],
           ),
@@ -2032,15 +2032,9 @@ Ux4gResultRow(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (withBackground) ...[
-                  Ux4gCard(
-                    cornerRadius: 12,
-                    child: buildRow(expanded: false),
-                  ),
+                  Ux4gCard(cornerRadius: 12, child: buildRow(expanded: false)),
                   const SizedBox(height: 16),
-                  Ux4gCard(
-                    cornerRadius: 12,
-                    child: buildRow(expanded: true),
-                  ),
+                  Ux4gCard(cornerRadius: 12, child: buildRow(expanded: true)),
                 ] else ...[
                   buildRow(expanded: false),
                   buildRow(expanded: true),
@@ -2248,15 +2242,9 @@ Ux4gResultRow(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (withBackground) ...[
-                  Ux4gCard(
-                    cornerRadius: 12,
-                    child: buildRow(expanded: false),
-                  ),
+                  Ux4gCard(cornerRadius: 12, child: buildRow(expanded: false)),
                   const SizedBox(height: 16),
-                  Ux4gCard(
-                    cornerRadius: 12,
-                    child: buildRow(expanded: true),
-                  ),
+                  Ux4gCard(cornerRadius: 12, child: buildRow(expanded: true)),
                 ] else ...[
                   buildRow(expanded: false),
                   buildRow(expanded: true),
@@ -2488,15 +2476,9 @@ Ux4gResultRow(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (withBackground) ...[
-                  Ux4gCard(
-                    cornerRadius: 12,
-                    child: buildRow(expanded: false),
-                  ),
+                  Ux4gCard(cornerRadius: 12, child: buildRow(expanded: false)),
                   const SizedBox(height: 16),
-                  Ux4gCard(
-                    cornerRadius: 12,
-                    child: buildRow(expanded: true),
-                  ),
+                  Ux4gCard(cornerRadius: 12, child: buildRow(expanded: true)),
                 ] else ...[
                   buildRow(expanded: false),
                   buildRow(expanded: true),
@@ -3228,7 +3210,8 @@ final slotGridComponent = WidgetbookComponent(
               'no-slots, public holiday, or weekly-off. '
               'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
               'Supports both Expanded and Compact view modes via viewMode property.',
-          code: '''class SlotGridShowcase extends StatefulWidget {
+          code:
+              '''class SlotGridShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
 
   const SlotGridShowcase({
@@ -3434,7 +3417,8 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             PropRow(
               name: 'data',
               type: 'SlotGridData',
-              description: 'Calendar data model (year, month, dates, view mode).',
+              description:
+                  'Calendar data model (year, month, dates, view mode).',
               required: true,
             ),
             PropRow(

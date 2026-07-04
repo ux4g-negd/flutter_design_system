@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -1137,3 +1138,607 @@ final animatedHalfCircleProgressComponent = WidgetbookComponent(
     ),
   ],
 );
+
+// ── Progress SLA Indicator ────────────────────────────────────────────────────
+
+final progressSlaIndicatorComponent = WidgetbookComponent(
+  name: 'Progress SLA Indicator',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Circular Progress',
+      builder: (context) {
+        final typography = Theme.of(context).extension<Ux4gTypography>()!;
+        return ComponentDocs(
+          name: 'Progress SLA Indicator (Circular)',
+          description:
+              'Circular SLA gauges displaying remaining time (e.g. days left) with gradient fills, status badges, and color-coded variants.',
+          code: '''// ── Purple / Cloud Variant ──
+Ux4gCircularProgress(
+  value: 0.65,
+  size: Ux4gCircularProgressSize.xl,
+  strokeWidth: 6,
+  strokeCap: StrokeCap.round,
+  progressGradient: const SweepGradient(
+    transform: GradientRotation(-math.pi / 2),
+    colors: [
+      Color(0xFFDCD4FF),
+      Color(0xFF6A4EFF),
+    ],
+  ),
+  centerValueText: '8',
+  centerDescription: 'days left',
+  label: 'Label',
+  description: 'Description',
+  footer: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+    decoration: BoxDecoration(
+      color: const Color(0xFFEFEAFF),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text(
+      'Label',
+      style: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF6A4EFF),
+      ),
+    ),
+  ),
+);
+
+// ── Orange / Warning Variant ──
+Ux4gCircularProgress(
+  value: 0.65,
+  size: Ux4gCircularProgressSize.xl,
+  strokeWidth: 6,
+  strokeCap: StrokeCap.round,
+  progressGradient: const SweepGradient(
+    transform: GradientRotation(-math.pi / 2),
+    colors: [
+      Color(0xFFFFF2D9),
+      Color(0xFFFFA827),
+    ],
+  ),
+  centerValueText: '8',
+  centerDescription: 'days left',
+  label: 'Label',
+  description: 'Description',
+  footer: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+    decoration: BoxDecoration(
+      color: const Color(0xFFFFF7E6),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text(
+      'Label',
+      style: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFFFFA827),
+      ),
+    ),
+  ),
+);
+
+// ── Red / Critical Variant ──
+Ux4gCircularProgress(
+  value: 0.65,
+  size: Ux4gCircularProgressSize.xl,
+  strokeWidth: 6,
+  strokeCap: StrokeCap.round,
+  progressGradient: const SweepGradient(
+    transform: GradientRotation(-math.pi / 2),
+    colors: [
+      Color(0xFFFFECEE),
+      Color(0xFFF55E57),
+    ],
+  ),
+  centerValueText: '8',
+  centerDescription: 'days left',
+  label: 'Label',
+  description: 'Description',
+  descriptionStyle: const TextStyle(
+    fontSize: 14,
+    color: Color(0xFFB3251E),
+  ),
+  footer: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+    decoration: BoxDecoration(
+      color: const Color(0xFFFFF0F0),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text(
+      'Label',
+      style: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFFF55E57),
+      ),
+    ),
+  ),
+);
+
+// ── Green / Success Variant ──
+Ux4gCircularProgress(
+  value: 0.65,
+  size: Ux4gCircularProgressSize.xl,
+  strokeWidth: 6,
+  strokeCap: StrokeCap.round,
+  progressGradient: const SweepGradient(
+    transform: GradientRotation(-math.pi / 2),
+    colors: [
+      Color(0xFFDFF9E8),
+      Color(0xFF1AA64A),
+    ],
+  ),
+  centerValueText: '8',
+  centerDescription: 'days left',
+  label: 'Label',
+  description: 'Description',
+  footer: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+    decoration: BoxDecoration(
+      color: const Color(0xFFF2FCEF),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text(
+      'Label',
+      style: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF1AA64A),
+      ),
+    ),
+  ),
+);''',
+          props: const [
+            PropRow(
+              name: 'value',
+              type: 'double',
+              description: 'Progress from 0.0 to 1.0.',
+              required: true,
+            ),
+            PropRow(
+              name: 'size',
+              type: 'Ux4gCircularProgressSize',
+              description: 'xs / s / m / l / xl / xxl / xxxl.',
+              defaultValue: 'l',
+            ),
+            PropRow(
+              name: 'diameter',
+              type: 'double?',
+              description: 'Custom diameter override.',
+            ),
+            PropRow(
+              name: 'strokeWidth',
+              type: 'double?',
+              description: 'Custom arc thickness override.',
+            ),
+            PropRow(
+              name: 'progressColor',
+              type: 'Color?',
+              description: 'Color of the progress arc.',
+            ),
+            PropRow(
+              name: 'trackColor',
+              type: 'Color?',
+              description: 'Color of the background track.',
+            ),
+            PropRow(
+              name: 'progressGradient',
+              type: 'Gradient?',
+              description: 'Gradient fill for the progress arc.',
+            ),
+            PropRow(
+              name: 'strokeCap',
+              type: 'StrokeCap',
+              description: 'butt / round / square.',
+              defaultValue: 'butt',
+            ),
+            PropRow(
+              name: 'startAngle',
+              type: 'double',
+              description: 'Starting angle in radians.',
+              defaultValue: '-π/2',
+            ),
+            PropRow(
+              name: 'centerValueText',
+              type: 'String?',
+              description: 'Large text inside/below the circle.',
+            ),
+            PropRow(
+              name: 'centerDescription',
+              type: 'String?',
+              description: 'Smaller text below centerValueText.',
+            ),
+            PropRow(
+              name: 'center',
+              type: 'Widget?',
+              description: 'Custom widget inside the circle.',
+            ),
+            PropRow(
+              name: 'label',
+              type: 'String?',
+              description: 'Main title below the circle.',
+            ),
+            PropRow(
+              name: 'description',
+              type: 'String?',
+              description: 'Supporting text below the label.',
+            ),
+            PropRow(
+              name: 'descriptionStyle',
+              type: 'TextStyle?',
+              description: 'Custom text style for the description.',
+            ),
+            PropRow(
+              name: 'footer',
+              type: 'Widget?',
+              description:
+                  'Widget shown at the very bottom (e.g. status badge).',
+            ),
+            PropRow(
+              name: 'padding',
+              type: 'EdgeInsetsGeometry?',
+              description: 'Outer padding around the gauge.',
+            ),
+            PropRow(
+              name: 'mainAxisSize',
+              type: 'MainAxisSize',
+              description: 'Vertical layout column size.',
+              defaultValue: 'min',
+            ),
+            PropRow(
+              name: 'crossAxisAlignment',
+              type: 'CrossAxisAlignment',
+              description: 'Horizontal alignment.',
+              defaultValue: 'center',
+            ),
+            PropRow(
+              name: 'textAlign',
+              type: 'TextAlign',
+              description: 'Text alignment.',
+              defaultValue: 'center',
+            ),
+            PropRow(
+              name: 'gap',
+              type: 'double',
+              description: 'Spacing between circle and label.',
+              defaultValue: '8',
+            ),
+            PropRow(
+              name: 'backgroundColor',
+              type: 'Color?',
+              description: 'Background circle color behind progress.',
+            ),
+          ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _circularSlaVariant(
+                  typography: typography,
+                  progressColor: const Color(0xFF6A4EFF),
+                  gradient: const SweepGradient(
+                    transform: GradientRotation(-math.pi / 2),
+                    colors: [
+                      Color(0xFFDCD4FF),
+                      Color(0xFF6A4EFF),
+                    ],
+                  ),
+                  footerColor: const Color(0xFFEFEAFF),
+                  footerTextColor: const Color(0xFF6A4EFF),
+                ),
+                const SizedBox(width: 24),
+                _circularSlaVariant(
+                  typography: typography,
+                  progressColor: const Color(0xFFFFA827),
+                  gradient: const SweepGradient(
+                    transform: GradientRotation(-math.pi / 2),
+                    colors: [
+                      Color(0xFFFFF2D9),
+                      Color(0xFFFFA827),
+                    ],
+                  ),
+                  footerColor: const Color(0xFFFFF7E6),
+                  footerTextColor: const Color(0xFFFFA827),
+                ),
+                const SizedBox(width: 24),
+                _circularSlaVariant(
+                  typography: typography,
+                  progressColor: const Color(0xFFF55E57),
+                  descriptionColor: const Color(0xFFB3251E),
+                  gradient: const SweepGradient(
+                    transform: GradientRotation(-math.pi / 2),
+                    colors: [
+                      Color(0xFFFFECEE),
+                      Color(0xFFF55E57),
+                    ],
+                  ),
+                  footerColor: const Color(0xFFFFF0F0),
+                  footerTextColor: const Color(0xFFF55E57),
+                ),
+                const SizedBox(width: 24),
+                _circularSlaVariant(
+                  typography: typography,
+                  progressColor: const Color(0xFF1AA64A),
+                  gradient: const SweepGradient(
+                    transform: GradientRotation(-math.pi / 2),
+                    colors: [
+                      Color(0xFFDFF9E8),
+                      Color(0xFF1AA64A),
+                    ],
+                  ),
+                  footerColor: const Color(0xFFF2FCEF),
+                  footerTextColor: const Color(0xFF1AA64A),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Linear Progress',
+      builder: (context) => ComponentDocs(
+        name: 'Progress SLA Indicator (Linear)',
+        description:
+            'Horizontal SLA progress bars featuring leading icon badges, labels, status hints, and rounded gradient fills.',
+        code: '''// ── Purple / Cloud Variant ──
+Ux4gLinearProgress(
+  value: 0.55,
+  icon: Icons.cloud_upload_outlined,
+  iconColor: const Color(0xFF6A4EFF),
+  iconBackgroundColor: const Color(0xFF6A4EFF).withValues(alpha: 0.12),
+  label: 'Label',
+  hint: 'Hint',
+  height: 10,
+  shape: Ux4gProgressShape.rounded,
+  gradientColors: const [
+    Color(0xFF6A4EFF),
+    Color(0xFF9B59B6),
+  ],
+);
+
+// ── Orange / Bolt Variant ──
+Ux4gLinearProgress(
+  value: 0.45,
+  icon: Icons.bolt_outlined,
+  iconColor: const Color(0xFFF39C12),
+  iconBackgroundColor: const Color(0xFFF39C12).withValues(alpha: 0.12),
+  label: 'Label',
+  hint: 'Hint',
+  height: 10,
+  shape: Ux4gProgressShape.rounded,
+  gradientColors: const [
+    Color(0xFFFFAE00),
+    Color(0xFFFF5F00),
+  ],
+);
+
+// ── Red / Warning Variant ──
+Ux4gLinearProgress(
+  value: 0.35,
+  icon: Icons.warning_amber_rounded,
+  iconColor: const Color(0xFFE74C3C),
+  iconBackgroundColor: const Color(0xFFE74C3C).withValues(alpha: 0.12),
+  label: 'Label',
+  hint: 'Hint',
+  height: 10,
+  shape: Ux4gProgressShape.rounded,
+  gradientColors: const [
+    Color(0xFFFFB3AE),
+    Color(0xFFE74C3C),
+  ],
+);
+
+// ── Green / Check Variant ──
+Ux4gLinearProgress(
+  value: 0.60,
+  icon: Icons.check_circle_outline,
+  iconColor: const Color(0xFF27AE60),
+  iconBackgroundColor: const Color(0xFF27AE60).withValues(alpha: 0.12),
+  label: 'Label',
+  hint: 'Hint',
+  height: 10,
+  shape: Ux4gProgressShape.rounded,
+  gradientColors: const [
+    Color(0xFF90EE90),
+    Color(0xFF27AE60),
+  ],
+);''',
+        props: const [
+          PropRow(
+            name: 'value',
+            type: 'double',
+            description: 'Progress from 0.0 to 1.0.',
+            required: true,
+          ),
+          PropRow(
+            name: 'icon',
+            type: 'IconData?',
+            description: 'Leading icon displayed above the bar.',
+          ),
+          PropRow(
+            name: 'iconColor',
+            type: 'Color?',
+            description: 'Color of the leading icon.',
+          ),
+          PropRow(
+            name: 'iconBackgroundColor',
+            type: 'Color?',
+            description: 'Background circle color for the icon badge.',
+          ),
+          PropRow(
+            name: 'label',
+            type: 'String?',
+            description: 'Primary label above the bar.',
+          ),
+          PropRow(
+            name: 'hint',
+            type: 'String?',
+            description: 'Secondary status text aligned to the right.',
+          ),
+          PropRow(
+            name: 'height',
+            type: 'double',
+            description: 'Thickness of the progress bar.',
+            defaultValue: '8',
+          ),
+          PropRow(
+            name: 'shape',
+            type: 'Ux4gProgressShape',
+            description: 'sharp or rounded corners.',
+            defaultValue: 'rounded',
+          ),
+          PropRow(
+            name: 'customBorderRadius',
+            type: 'double?',
+            description: 'Custom corner radius override.',
+          ),
+          PropRow(
+            name: 'color',
+            type: 'Color?',
+            description: 'Solid fill color.',
+          ),
+          PropRow(
+            name: 'gradientColors',
+            type: 'List<Color>?',
+            description: 'Gradient fill colors (overrides color).',
+          ),
+          PropRow(
+            name: 'trackColor',
+            type: 'Color?',
+            description: 'Background track color.',
+          ),
+          PropRow(
+            name: 'showPercentage',
+            type: 'bool',
+            description: 'Show percentage display.',
+            defaultValue: 'false',
+          ),
+          PropRow(
+            name: 'labelPosition',
+            type: 'Ux4gProgressLabelPosition',
+            description: 'outside or inside.',
+            defaultValue: 'outside',
+          ),
+          PropRow(
+            name: 'insideLabelStyle',
+            type: 'TextStyle?',
+            description:
+                'Text style for percentage when labelPosition is inside.',
+          ),
+        ],
+        child: SizedBox(
+          width: 500,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Ux4gLinearProgress(
+                value: 0.55,
+                icon: Icons.cloud_upload_outlined,
+                iconColor: const Color(0xFF6A4EFF),
+                iconBackgroundColor:
+                    const Color(0xFF6A4EFF).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: Ux4gProgressShape.rounded,
+                gradientColors: const [
+                  Color(0xFF6A4EFF),
+                  Color(0xFF9B59B6),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Ux4gLinearProgress(
+                value: 0.45,
+                icon: Icons.bolt_outlined,
+                iconColor: const Color(0xFFF39C12),
+                iconBackgroundColor:
+                    const Color(0xFFF39C12).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: Ux4gProgressShape.rounded,
+                gradientColors: const [
+                  Color(0xFFFFAE00),
+                  Color(0xFFFF5F00),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Ux4gLinearProgress(
+                value: 0.35,
+                icon: Icons.warning_amber_rounded,
+                iconColor: const Color(0xFFE74C3C),
+                iconBackgroundColor:
+                    const Color(0xFFE74C3C).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: Ux4gProgressShape.rounded,
+                gradientColors: const [
+                  Color(0xFFFFB3AE),
+                  Color(0xFFE74C3C),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Ux4gLinearProgress(
+                value: 0.60,
+                icon: Icons.check_circle_outline,
+                iconColor: const Color(0xFF27AE60),
+                iconBackgroundColor:
+                    const Color(0xFF27AE60).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: Ux4gProgressShape.rounded,
+                gradientColors: const [
+                  Color(0xFF90EE90),
+                  Color(0xFF27AE60),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  ],
+);
+
+Widget _circularSlaVariant({
+  required Ux4gTypography typography,
+  required Color progressColor,
+  required SweepGradient gradient,
+  required Color footerColor,
+  required Color footerTextColor,
+  Color? descriptionColor,
+}) {
+  return Ux4gCircularProgress(
+    value: 0.65,
+    size: Ux4gCircularProgressSize.xl,
+    strokeWidth: 6,
+    strokeCap: StrokeCap.round,
+    progressGradient: gradient,
+    centerValueText: '8',
+    centerDescription: 'days left',
+    label: 'Label',
+    description: 'Description',
+    descriptionStyle: descriptionColor != null
+        ? typography.bS_default.copyWith(color: descriptionColor)
+        : null,
+    footer: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+        color: footerColor,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        'Label',
+        style: typography.bXS_strong.copyWith(color: footerTextColor),
+      ),
+    ),
+  );
+}
