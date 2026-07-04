@@ -3541,19 +3541,50 @@ final radioButtonComponent = WidgetbookComponent(
               description:
                   'A single-selection radio button. Use a shared groupValue '
                   'and onChanged to create a mutually-exclusive group.',
-              code:
-                  '''Ux4gRadioButton(
-  value: 'Option A',
-  groupValue: selectedValue,
-  onChanged: (v) => setState(() => selectedValue = v),
-  label: 'Option A',
-  description: ${description.isEmpty ? 'null' : "'$description'"},
-  size: $size,
-  isRequired: $isRequired,
-  enabled: $enabled,
-  descriptionVariant: $descriptionVariant,
-  status: $status,
-);''',
+              code: () {
+                final buf = StringBuffer("Column(\n");
+                buf.write("  mainAxisSize: MainAxisSize.min,\n");
+                buf.write("  crossAxisAlignment: CrossAxisAlignment.start,\n");
+                buf.write(
+                    "  children: ['Option A', 'Option B', 'Option C'].map((v) {\n");
+                buf.write(
+                    "    return Padding(\n");
+                buf.write(
+                    "      padding: const EdgeInsets.symmetric(vertical: 4),\n");
+                buf.write("      child: Ux4gRadioButton(\n");
+                buf.write("        value: v,\n");
+                buf.write("        groupValue: selected,\n");
+                buf.write(
+                    "        onChanged: (val) => setState(() => selected = val!),\n");
+                buf.write("        label: v,\n");
+                if (description.isNotEmpty) {
+                  buf.write("        description: '$description',\n");
+                }
+                if (size != Ux4gRadioButtonSize.medium) {
+                  buf.write(
+                      "        size: Ux4gRadioButtonSize.${size.name},\n");
+                }
+                if (isRequired) {
+                  buf.write("        isRequired: true,\n");
+                }
+                if (!enabled) {
+                  buf.write("        enabled: false,\n");
+                }
+                if (descriptionVariant !=
+                    Ux4gRadioButtonDescriptionVariant.helper) {
+                  buf.write(
+                      "        descriptionVariant: Ux4gRadioButtonDescriptionVariant.${descriptionVariant.name},\n");
+                }
+                if (status != Ux4gRadioButtonStatus.defaultStatus) {
+                  buf.write(
+                      "        status: Ux4gRadioButtonStatus.${status.name},\n");
+                }
+                buf.write("      ),\n");
+                buf.write("    );\n");
+                buf.write("  }).toList(),\n");
+                buf.write(");\n");
+                return buf.toString();
+              }(),
               props: const [
                 PropRow(
                   name: 'value',
@@ -3647,7 +3678,9 @@ final radioButtonComponent = WidgetbookComponent(
         name: 'Ux4gRadioButton — Sizes',
         description: 'Small, medium, and large radio buttons shown together.',
         code:
-            'Ux4gRadioButton(value: \'a\', groupValue: \'a\', onChanged: (_) {}, label: \'Small\',  size: Ux4gRadioButtonSize.small);',
+            '''Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Small',  size: Ux4gRadioButtonSize.small);
+Ux4gRadioButton(value: 'b', groupValue: 'b', onChanged: (_) {}, label: 'Medium', size: Ux4gRadioButtonSize.medium);
+Ux4gRadioButton(value: 'c', groupValue: 'c', onChanged: (_) {}, label: 'Large',  size: Ux4gRadioButtonSize.large);''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -3687,12 +3720,10 @@ final radioButtonComponent = WidgetbookComponent(
             'Each variant applies a semantic colour to the helper text. '
             'Pair with [status] so the radio circle colour matches.',
         code:
-            'Ux4gRadioButton(\n'
-            '  descriptionVariant: Ux4gRadioButtonDescriptionVariant.error,\n'
-            '  status: Ux4gRadioButtonStatus.error,\n'
-            '  description: \'Error message\',\n'
-            '  ...\n'
-            ');',
+            '''Ux4gRadioButton(value: 'helper', groupValue: 'helper', onChanged: (_) {}, label: 'Helper',  description: 'helper description text');
+Ux4gRadioButton(value: 'error',  groupValue: 'error',  onChanged: (_) {}, label: 'Error',   description: 'error description text',  descriptionVariant: Ux4gRadioButtonDescriptionVariant.error,  status: Ux4gRadioButtonStatus.error);
+Ux4gRadioButton(value: 'warning', groupValue: 'warning', onChanged: (_) {}, label: 'Warning', description: 'warning description text', descriptionVariant: Ux4gRadioButtonDescriptionVariant.warning, status: Ux4gRadioButtonStatus.warning);
+Ux4gRadioButton(value: 'success', groupValue: 'success', onChanged: (_) {}, label: 'Success', description: 'success description text', descriptionVariant: Ux4gRadioButtonDescriptionVariant.success, status: Ux4gRadioButtonStatus.success);''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -3733,7 +3764,10 @@ final radioButtonComponent = WidgetbookComponent(
         name: 'Ux4gRadioButton — Disabled',
         description: 'Disabled radio buttons cannot be interacted with.',
         code:
-            'Ux4gRadioButton(value: \'a\', groupValue: \'a\', onChanged: null, label: \'Disabled (selected)\', enabled: false);',
+            '''Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Disabled (selected)',            enabled: false);
+Ux4gRadioButton(value: 'b', groupValue: 'a', onChanged: (_) {}, label: 'Disabled (unselected)',          enabled: false);
+Ux4gRadioButton(value: 'c', groupValue: 'c', onChanged: (_) {}, label: 'Disabled (selected) required',   enabled: false, isRequired: true);
+Ux4gRadioButton(value: 'd', groupValue: 'a', onChanged: (_) {}, label: 'Disabled (unselected) required', enabled: false, isRequired: true);''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -3786,13 +3820,17 @@ final radioButtonComponent = WidgetbookComponent(
             'can show error / warning / success states alongside selection. '
             'Works for both selected and unselected radios.',
         code:
-            'Ux4gRadioButton(\n'
-            '  value: \'a\',\n'
-            '  groupValue: \'a\',\n'
-            '  onChanged: (_) {},\n'
-            '  label: \'Required field\',\n'
-            '  status: Ux4gRadioButtonStatus.error,\n'
-            ');',
+            '''// Selected
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Default (purple)'),
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Error',  status: Ux4gRadioButtonStatus.error),
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Warning', status: Ux4gRadioButtonStatus.warning),
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Success', status: Ux4gRadioButtonStatus.success),
+
+// Unselected
+Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Default'),
+Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Error',  status: Ux4gRadioButtonStatus.error),
+Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Warning', status: Ux4gRadioButtonStatus.warning),
+Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Success', status: Ux4gRadioButtonStatus.success),''',
         props: const [
           PropRow(
             name: 'status',
@@ -3893,14 +3931,14 @@ final radioButtonComponent = WidgetbookComponent(
             'the label text color. Useful for brand-specific accents '
             'outside the standard status palette.',
         code:
-            'Ux4gRadioButton(\n'
-            '  value: \'a\',\n'
-            '  groupValue: \'a\',\n'
-            '  onChanged: (_) {},\n'
-            '  label: \'Custom teal\',\n'
-            '  color: Colors.teal,\n'
-            '  labelColor: Colors.teal.shade700,\n'
-            ');',
+            '''Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Teal',   color: Colors.teal,       labelColor: Colors.teal.shade700),
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Pink',   color: Colors.pink,       labelColor: Colors.pink.shade700),
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Orange', color: Colors.deepOrange,  labelColor: Colors.deepOrange.shade700),
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Indigo', color: Colors.indigo),
+
+// Mixed selected + unselected
+Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Teal (selected)',   color: Colors.teal),
+Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Teal (unselected)', color: Colors.teal),''',
         props: const [
           PropRow(
             name: 'color',
