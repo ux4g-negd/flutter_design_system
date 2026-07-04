@@ -109,6 +109,24 @@ class UX4GWidgetbook extends StatelessWidget {
           directories: [
             quickGuideComponent,
 
+            // ── Token ─────────────────────────────────────────────────────────────
+            WidgetbookCategory(
+              name: 'Token',
+              isInitiallyExpanded: false,
+              children: [
+                themeColorComponent,
+                WidgetbookFolder(
+                  name: 'Dimensions',
+                  isInitiallyExpanded: false,
+                  children: [
+                    dimensionsSpacingComponent,
+                    dimensionsRadiusComponent,
+                    dimensionsBorderComponent,
+                  ],
+                ),
+              ],
+            ),
+
             // ── Components ────────────────────────────────────────────────────────
             WidgetbookCategory(
               name: 'Components',
@@ -249,11 +267,6 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 WidgetbookFolder(
-                  name: 'Loader',
-                  isInitiallyExpanded: false,
-                  children: [loaderComponent],
-                ),
-                WidgetbookFolder(
                   name: 'Modal',
                   isInitiallyExpanded: false,
                   children: [modalComponent],
@@ -298,20 +311,19 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 WidgetbookFolder(
+                  name: 'Spinner',
+                  isInitiallyExpanded: false,
+                  children: [loaderComponent],
+                ),
+                WidgetbookFolder(
                   name: 'Status',
                   isInitiallyExpanded: false,
-                  children: [
-                    statusBannerComponent,
-                    statusPipelineComponent,
-                  ],
+                  children: [statusBannerComponent, statusPipelineComponent],
                 ),
                 WidgetbookFolder(
                   name: 'Steppers',
                   isInitiallyExpanded: false,
-                  children: [
-                    stepperComponent,
-                    capsuleStepperComponent,
-                  ],
+                  children: [stepperComponent, capsuleStepperComponent],
                 ),
                 WidgetbookFolder(
                   name: 'Switch',
@@ -335,28 +347,6 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Tooltip',
                   isInitiallyExpanded: false,
                   children: [tooltipComponent],
-                ),
-              ],
-            ),
-
-            // ── Utils ──────────────────────────────────────────────────────────
-            WidgetbookCategory(
-              name: 'Utils',
-              isInitiallyExpanded: false,
-              children: [
-                WidgetbookFolder(
-                  name: 'Theme',
-                  isInitiallyExpanded: false,
-                  children: [themeColorComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Dimensions',
-                  isInitiallyExpanded: false,
-                  children: [
-                    dimensionsSpacingComponent,
-                    dimensionsRadiusComponent,
-                    dimensionsBorderComponent,
-                  ],
                 ),
               ],
             ),

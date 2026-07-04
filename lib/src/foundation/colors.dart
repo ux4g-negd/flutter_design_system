@@ -118,7 +118,7 @@ class Ux4gPalette {
   static const Color neutral950B = Color(0xB30A0A0A);
 
   // Red
-  static const Color red = Color(0xFFF55E57);
+  static const Color red = Color(0xFFDB372D);
   static const Color red50 = Color(0xFFFFF8F8);
   static const Color red100 = Color(0xFFFFECEE);
   static const Color red200 = Color(0xFFFFDADC);
@@ -132,7 +132,7 @@ class Ux4gPalette {
   static const Color red950 = Color(0xFF3A0907);
 
   // Blue
-  static const Color blue = Color(0xFF4E8FF8);
+  static const Color blue = Color(0xFF3271EA);
   static const Color blue50 = Color(0xFFF5FAFF);
   static const Color blue100 = Color(0xFFE7F2FF);
   static const Color blue200 = Color(0xFFD0E4FF);
@@ -146,7 +146,7 @@ class Ux4gPalette {
   static const Color blue950 = Color(0xFF001944);
 
   // Sky Blue
-  static const Color skyBlue = Color(0xFF009DC9);
+  static const Color skyBlue = Color(0xFF0081A8);
   static const Color skyBlue50 = Color(0xFFF4FAFF);
   static const Color skyBlue100 = Color(0xFFE0F4FF);
   static const Color skyBlue200 = Color(0xFFBDE9FF);
@@ -160,7 +160,7 @@ class Ux4gPalette {
   static const Color skyBlue950 = Color(0xFF001F2D);
 
   // Cyan
-  static const Color cyan = Color(0xFF59D8CE);
+  static const Color cyan = Color(0xFF13C2C2);
   static const Color cyan50 = Color(0xFFE6FFFB);
   static const Color cyan100 = Color(0xFFC9F7F2);
   static const Color cyan200 = Color(0xFFADF0E9);
@@ -174,7 +174,7 @@ class Ux4gPalette {
   static const Color cyan950 = Color(0xFF002329);
 
   // Green
-  static const Color green = Color(0xFF1AA64A);
+  static const Color green = Color(0xFF128937);
   static const Color green50 = Color(0xFFF2FCEF);
   static const Color green100 = Color(0xFFDDF8D8);
   static const Color green200 = Color(0xFFBEEFBB);
@@ -188,7 +188,7 @@ class Ux4gPalette {
   static const Color green950 = Color(0xFF002110);
 
   // Lime
-  static const Color lime = Color(0xFFCAE827);
+  static const Color lime = Color(0xFFA0D911);
   static const Color lime50 = Color(0xFFFCFFE6);
   static const Color lime100 = Color(0xFFF2FFBF);
   static const Color lime200 = Color(0xFFE8FF99);
@@ -202,7 +202,7 @@ class Ux4gPalette {
   static const Color lime950 = Color(0xFF254000);
 
   // Yellow
-  static const Color yellow = Color(0xFFFFD72A);
+  static const Color yellow = Color(0xFFFADB14);
   static const Color yellow50 = Color(0xFFFEFFE6);
   static const Color yellow100 = Color(0xFFFFFBC2);
   static const Color yellow200 = Color(0xFFFFF29C);
@@ -216,7 +216,7 @@ class Ux4gPalette {
   static const Color yellow950 = Color(0xFF614700);
 
   // Gold
-  static const Color gold = Color(0xFFFFC327);
+  static const Color gold = Color(0xFFF2A90F);
   static const Color gold50 = Color(0xFFFFFBE6);
   static const Color gold100 = Color(0xFFFFF2BF);
   static const Color gold200 = Color(0xFFFFE799);
@@ -230,7 +230,7 @@ class Ux4gPalette {
   static const Color gold950 = Color(0xFF613400);
 
   // Orange
-  static const Color orange = Color(0xFF9254EA);
+  static const Color orange = Color(0xFFFA8C16);
   static const Color orange50 = Color(0xFFFFF7E6);
   static const Color orange100 = Color(0xFFFFE7BF);
   static const Color orange200 = Color(0xFFFFD899);
@@ -258,7 +258,7 @@ class Ux4gPalette {
   static const Color purple950 = Color(0xFF280255);
 
   // Pink
-  static const Color pink = Color(0xFFF94AAB);
+  static const Color pink = Color(0xFFDC258D);
   static const Color pink50 = Color(0xFFFFF7FC);
   static const Color pink100 = Color(0xFFFFECF6);
   static const Color pink200 = Color(0xFFFFD8EF);

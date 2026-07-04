@@ -106,6 +106,7 @@ final quickGuideComponent = WidgetbookComponent(
 
 final themeColorComponent = WidgetbookComponent(
   name: 'Color Palette',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Primary',
