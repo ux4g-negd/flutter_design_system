@@ -472,6 +472,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
   late List<TextEditingController> _controllers;
   late List<FocusNode> _focusNodes;
   int _focusedIndex = -1;
+  int _justClearedIndex = -1;
 
   /// When true, [didUpdateWidget] skips re-syncing controllers from
   /// [widget.value] because the change originated from user interaction
@@ -542,7 +543,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
     // per-box state and re-syncing would shift digits left.
     if (_isInternalUpdate) {
       _isInternalUpdate = false;
-    } else {
+    } else if (oldWidget.value != widget.value) {
       // Sync external value (e.g. parent programmatically set a new value)
       final chars = _splitValue(widget.value);
       for (int i = 0; i < widget.length; i++) {
@@ -580,6 +581,12 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
     // Allow only single character
     final sanitized = val.isEmpty ? '' : val.characters.last;
 
+    if (sanitized.isEmpty) {
+      _justClearedIndex = index;
+    } else {
+      _justClearedIndex = -1;
+    }
+
     _controllers[index].text = sanitized;
     _controllers[index].selection = TextSelection.fromPosition(
       TextPosition(offset: sanitized.length),
@@ -601,14 +608,21 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
 
   void _onKeyEvent(int index, KeyEvent event) {
     if (event is KeyDownEvent &&
-        event.logicalKey == LogicalKeyboardKey.backspace &&
-        _controllers[index].text.isEmpty &&
-        index > 0) {
-      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
-      _controllers[index - 1].clear();
-      _isInternalUpdate = true;
-      final full = _currentValue;
-      widget.onChanged(full);
+        event.logicalKey == LogicalKeyboardKey.backspace) {
+      if (_justClearedIndex == index) {
+        _justClearedIndex = -1;
+        if (index > 0) {
+          FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+        }
+        return;
+      }
+      if (_controllers[index].text.isEmpty && index > 0) {
+        FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+        _controllers[index - 1].clear();
+        _isInternalUpdate = true;
+        final full = _currentValue;
+        widget.onChanged(full);
+      }
     }
   }
 
@@ -728,18 +742,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
               return Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (i > 0)
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: widget.gap / 2),
-                      child: widget.showSeparator
-                          ? Text(
-                              '–',
-                              style: bmDefault.copyWith(
-                                color: onSurface.withValues(alpha: 0.35),
-                              ),
-                            )
-                          : SizedBox(width: widget.gap / 2),
-                    ),
+                  if (i > 0) SizedBox(width: widget.gap),
                   KeyboardListener(
                     focusNode: FocusNode(skipTraversal: true),
                     onKeyEvent: (e) => _onKeyEvent(i, e),
@@ -772,11 +775,9 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
                                     controller: _controllers[i],
                                     focusNode: _focusNodes[i],
                                     keyboardType: widget.keyboardType,
-                                    maxLength: 1,
                                     textAlign: TextAlign.center,
                                     showCursor: false,
                                     decoration: const InputDecoration(
-                                      counterText: '',
                                       border: InputBorder.none,
                                     ),
                                     inputFormatters: [
@@ -789,7 +790,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
                                             ),
                                     ],
                                     onChanged: (v) {
-                                      if (v.length > 1) {
+                                      if (v.length > 2) {
                                         _handlePaste(v);
                                       } else {
                                         _onDigitChanged(i, v);
