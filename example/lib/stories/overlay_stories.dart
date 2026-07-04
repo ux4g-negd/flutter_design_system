@@ -650,7 +650,7 @@ final bottomSheetComponent = WidgetbookComponent(
 // ── Toast ─────────────────────────────────────────────────────────────────────
 
 final toastComponent = WidgetbookComponent(
-  name: 'Switch(Toasts)',
+  name: 'Toasts',
   useCases: [
     WidgetbookUseCase(
       name: 'All Categories',
