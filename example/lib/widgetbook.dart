@@ -250,7 +250,6 @@ class UX4GWidgetbook extends StatelessWidget {
                     panInputFieldComponent,
                     otpInputComponent,
                     searchFieldComponent,
-                    textAreaComponent,
                   ],
                 ),
                 WidgetbookFolder(
@@ -330,7 +329,6 @@ class UX4GWidgetbook extends StatelessWidget {
                   isInitiallyExpanded: false,
                   children: [
                     toggleComponent, //switch
-                    toastComponent,
                   ],
                 ),
                 WidgetbookFolder(
@@ -342,6 +340,16 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Time Picker',
                   isInitiallyExpanded: false,
                   children: [timePickerComponent],
+                ),
+                WidgetbookFolder(
+                  name: 'Text Area',
+                  isInitiallyExpanded: false,
+                  children: [textAreaComponent],
+                ),
+                WidgetbookFolder(
+                  name: 'Toast',
+                  isInitiallyExpanded: false,
+                  children: [toastComponent],
                 ),
                 WidgetbookFolder(
                   name: 'Tooltip',
