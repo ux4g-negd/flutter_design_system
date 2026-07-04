@@ -675,21 +675,23 @@ class _SidebarLogo extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
-            onTap: () {
-              // ignore: invalid_use_of_internal_member
-              final state = WidgetbookState.of(context);
-              state.path = null;
-              state.notifyListeners();
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset('assets/ux4g_logo.svg', height: 34, width: 34),
-                const SizedBox(width: 10),
-              ],
+        Flexible(
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                // ignore: invalid_use_of_internal_member
+                final state = WidgetbookState.of(context);
+                state.path = null;
+                state.notifyListeners();
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset('assets/ux4g_logo.svg', height: 34, width: 34),
+                  const SizedBox(width: 10),
+                ],
+              ),
             ),
           ),
         ),

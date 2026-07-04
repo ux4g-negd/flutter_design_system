@@ -452,7 +452,7 @@ class Ux4gOtpInput extends StatefulWidget {
     this.obscure = false,
     this.boxSize = 48,
     this.gap = 8,
-    this.showSeparator = true,
+    this.showSeparator = false,
     this.keyboardType = TextInputType.number,
     this.captionVariant,
     this.captionLeadingText,
@@ -472,6 +472,11 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
   late List<TextEditingController> _controllers;
   late List<FocusNode> _focusNodes;
   int _focusedIndex = -1;
+
+  /// When true, [didUpdateWidget] skips re-syncing controllers from
+  /// [widget.value] because the change originated from user interaction
+  /// inside the component and controllers already hold the correct state.
+  bool _isInternalUpdate = false;
 
   // Countdown
   Timer? _timer;
@@ -531,14 +536,23 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
   @override
   void didUpdateWidget(Ux4gOtpInput oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Sync external value
-    final chars = _splitValue(widget.value);
-    for (int i = 0; i < widget.length; i++) {
-      final c = chars.length > i ? chars[i] : '';
-      if (_controllers[i].text != c) {
-        _controllers[i].text = c;
+
+    // Skip re-syncing controllers when the value change came from
+    // internal user interaction — controllers already hold the correct
+    // per-box state and re-syncing would shift digits left.
+    if (_isInternalUpdate) {
+      _isInternalUpdate = false;
+    } else {
+      // Sync external value (e.g. parent programmatically set a new value)
+      final chars = _splitValue(widget.value);
+      for (int i = 0; i < widget.length; i++) {
+        final c = chars.length > i ? chars[i] : '';
+        if (_controllers[i].text != c) {
+          _controllers[i].text = c;
+        }
       }
     }
+
     // Re-init countdown if changed
     if (widget.autoCountdownSeconds != oldWidget.autoCountdownSeconds) {
       _timer?.cancel();
@@ -571,6 +585,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
       TextPosition(offset: sanitized.length),
     );
 
+    _isInternalUpdate = true;
     final full = _currentValue;
     widget.onChanged(full);
 
@@ -591,6 +606,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
         index > 0) {
       FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
       _controllers[index - 1].clear();
+      _isInternalUpdate = true;
       final full = _currentValue;
       widget.onChanged(full);
     }
@@ -602,6 +618,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
     for (int i = 0; i < widget.length; i++) {
       _controllers[i].text = i < digits.length ? digits[i] : '';
     }
+    _isInternalUpdate = true;
     final full = _currentValue;
     widget.onChanged(full);
     if (full.length == widget.length) {

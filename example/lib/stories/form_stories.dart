@@ -2396,30 +2396,40 @@ final otpInputComponent = WidgetbookComponent(
         String otpValue = '';
         return StatefulBuilder(
           builder: (ctx, setState) {
+            // ── Read knob values ────────────────────────────────
+            final length = context.knobs.int.input(
+              label: 'Length',
+              initialValue: 6,
+            );
+
+            // ── Build dynamic code string ───────────────────────
+            final codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  onChanged: (v) => setState(() => otpValue = v),
+  onCompleted: (pin) {
+    // verify pin
+  },
+)''';
+
             return ComponentDocs(
               name: 'Ux4gOtpInput',
               description:
                   'A segmented one-time-password input field. '
                   'Automatically advances focus and calls onCompleted when all digits are filled.',
-              code: '''Ux4gOtpInput(
-  length: 6,
-  value: value,
-  onChanged: (v) => setState(() => value = v),
-  onCompleted: (pin) {
-    // verify pin
-  },
-);''',
+              code: codeStr,
               props: const [
                 PropRow(
                   name: 'value',
                   type: 'String',
-                  description: 'Current OTP string.',
+                  description: 'Current OTP string (controlled).',
                   required: true,
                 ),
                 PropRow(
                   name: 'onChanged',
                   type: 'ValueChanged<String>',
-                  description: 'Called on each digit change.',
+                  description:
+                      'Called on each digit change with the full current OTP string.',
                   required: true,
                 ),
                 PropRow(
@@ -2431,110 +2441,125 @@ final otpInputComponent = WidgetbookComponent(
                 PropRow(
                   name: 'onCompleted',
                   type: 'ValueChanged<String>?',
-                  description: 'Called when all digits are entered.',
+                  description:
+                      'Called when all digits are filled with the complete OTP.',
                 ),
                 PropRow(
                   name: 'label',
                   type: 'String?',
-                  description: 'Label shown above the boxes.',
+                  description: 'Label text shown above the OTP boxes.',
                 ),
                 PropRow(
                   name: 'required',
                   type: 'bool',
-                  description: 'Whether label has required asterisk.',
+                  description:
+                      'When true, shows a red asterisk (*) next to the label.',
                   defaultValue: 'false',
                 ),
                 PropRow(
                   name: 'labelTrailingIcon',
                   type: 'IconData?',
-                  description: 'Trailing icon next to the label.',
+                  description:
+                      'Optional trailing icon next to the label (e.g. info icon).',
                 ),
                 PropRow(
                   name: 'status',
                   type: 'Ux4gOtpInputStatus',
                   description:
-                      'Overall status — drives box border colours and caption icon.',
+                      'Overall status — drives box border colours and caption icon. '
+                      'Values: defaultStatus, error, warning, success, locked.',
                   defaultValue: 'defaultStatus',
                 ),
                 PropRow(
                   name: 'obscure',
                   type: 'bool',
-                  description: 'Obscure digits (password-style).',
+                  description:
+                      'When true, entered digits are shown as dots (password mode).',
                   defaultValue: 'false',
                 ),
                 PropRow(
                   name: 'boxSize',
                   type: 'double',
-                  description: 'Size of each box in logical pixels.',
+                  description:
+                      'Width and height of each individual OTP box in logical pixels.',
                   defaultValue: '48',
                 ),
                 PropRow(
                   name: 'gap',
                   type: 'double',
-                  description: 'Gap between boxes.',
+                  description: 'Spacing between adjacent OTP boxes.',
                   defaultValue: '8',
                 ),
                 PropRow(
                   name: 'showSeparator',
                   type: 'bool',
-                  description: 'Show a "–" dash separator between boxes.',
-                  defaultValue: 'true',
+                  description:
+                      'When true, shows a "–" dash separator between boxes.',
+                  defaultValue: 'false',
                 ),
                 PropRow(
                   name: 'keyboardType',
                   type: 'TextInputType',
-                  description: 'Keyboard type.',
+                  description:
+                      'Keyboard type for the input. Use TextInputType.number for digits only.',
                   defaultValue: 'TextInputType.number',
-                ),
-                PropRow(
-                  name: 'captionVariant',
-                  type: 'Ux4gOtpCaptionVariant?',
-                  description: 'Caption variant section below boxes.',
-                ),
-                PropRow(
-                  name: 'captionLeadingText',
-                  type: 'String?',
-                  description: 'Leading label for caption.',
-                ),
-                PropRow(
-                  name: 'captionTrailingText',
-                  type: 'String?',
-                  description: 'Trailing label for caption.',
-                ),
-                PropRow(
-                  name: 'onCaptionTrailingTap',
-                  type: 'VoidCallback?',
-                  description: 'When caption trailing text is tappable.',
-                ),
-                PropRow(
-                  name: 'captionText',
-                  type: 'String?',
-                  description: 'Plain text caption.',
-                ),
-                PropRow(
-                  name: 'autoCountdownSeconds',
-                  type: 'int?',
-                  description: 'Auto-counts down this many seconds.',
-                ),
-                PropRow(
-                  name: 'onCountdownComplete',
-                  type: 'VoidCallback?',
-                  description: 'Called when countdown reaches zero.',
                 ),
                 PropRow(
                   name: 'enabled',
                   type: 'bool',
-                  description: 'Interactive state.',
+                  description:
+                      'When false, all boxes appear disabled and cannot receive input.',
                   defaultValue: 'true',
+                ),
+                PropRow(
+                  name: 'captionVariant',
+                  type: 'Ux4gOtpCaptionVariant?',
+                  description:
+                      'Caption variant rendered below the boxes. '
+                      'Values: resendTimer, resendAction, attemptWithTimer, locked, success, warning, plain.',
+                ),
+                PropRow(
+                  name: 'captionLeadingText',
+                  type: 'String?',
+                  description:
+                      'Leading label text for the caption (e.g. "Didn\'t receive OTP?").',
+                ),
+                PropRow(
+                  name: 'captionTrailingText',
+                  type: 'String?',
+                  description:
+                      'Trailing label text for the caption (e.g. "Resend in 00:17").',
+                ),
+                PropRow(
+                  name: 'onCaptionTrailingTap',
+                  type: 'VoidCallback?',
+                  description:
+                      'Callback when caption trailing text is tapped (e.g. "Resend OTP" link).',
+                ),
+                PropRow(
+                  name: 'captionText',
+                  type: 'String?',
+                  description:
+                      'Plain text caption (used with Ux4gOtpCaptionVariant.plain).',
+                ),
+                PropRow(
+                  name: 'autoCountdownSeconds',
+                  type: 'int?',
+                  description:
+                      'When set, auto-counts down from this value and shows formatted "mm:ss" timer. '
+                      'On expiry, switches caption to resendAction variant.',
+                ),
+                PropRow(
+                  name: 'onCountdownComplete',
+                  type: 'VoidCallback?',
+                  description:
+                      'Called when the auto-countdown reaches zero.',
                 ),
               ],
               child: SizedBox(
                 width: 320,
                 child: Ux4gOtpInput(
-                  length: context.knobs.int.input(
-                    label: 'Length',
-                    initialValue: 6,
-                  ),
+                  length: length,
                   value: otpValue,
                   onChanged: (v) => setState(() => otpValue = v),
                   onCompleted: (_) {},
