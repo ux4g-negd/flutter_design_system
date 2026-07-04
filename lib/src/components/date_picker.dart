@@ -636,17 +636,23 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
           itemBuilder: (context, index) {
             final year = _yearGridStart + index;
             final isSelected = year == _currentDisplayedMonth.year;
+            final isSelectable = widget.maxDate == null ||
+                year <= widget.maxDate!.year;
             final resolvedPrimary =
                 colors?.primary ?? materialTheme.colorScheme.primary;
+            final resolvedOnSurface =
+                colors?.onSurface ?? materialTheme.colorScheme.onSurface;
             return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _currentDisplayedMonth = DateTime(
-                    year,
-                    _currentDisplayedMonth.month,
-                  );
-                });
-              },
+              onTap: isSelectable
+                  ? () {
+                      setState(() {
+                        _currentDisplayedMonth = DateTime(
+                          year,
+                          _currentDisplayedMonth.month,
+                        );
+                      });
+                    }
+                  : null,
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -664,8 +670,11 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
                           .copyWith(
                             color: isSelected
                                 ? resolvedPrimary
-                                : (colors?.onSurface ??
-                                      materialTheme.colorScheme.onSurface),
+                                : isSelectable
+                                    ? resolvedOnSurface
+                                    : resolvedOnSurface.withValues(
+                                        alpha: 0.38,
+                                      ),
                           ),
                 ),
               ),
@@ -691,18 +700,27 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
           ),
           itemCount: 12,
           itemBuilder: (context, index) {
-            final isSelected = (index + 1) == _currentDisplayedMonth.month;
+            final month = index + 1;
+            final isSelected = month == _currentDisplayedMonth.month;
+            final isSelectable = widget.maxDate == null ||
+                _currentDisplayedMonth.year < widget.maxDate!.year ||
+                (_currentDisplayedMonth.year == widget.maxDate!.year &&
+                    month <= widget.maxDate!.month);
             final resolvedPrimary =
                 colors?.primary ?? materialTheme.colorScheme.primary;
+            final resolvedOnSurface =
+                colors?.onSurface ?? materialTheme.colorScheme.onSurface;
             return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _currentDisplayedMonth = DateTime(
-                    _currentDisplayedMonth.year,
-                    index + 1,
-                  );
-                });
-              },
+              onTap: isSelectable
+                  ? () {
+                      setState(() {
+                        _currentDisplayedMonth = DateTime(
+                          _currentDisplayedMonth.year,
+                          month,
+                        );
+                      });
+                    }
+                  : null,
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -720,8 +738,11 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
                           .copyWith(
                             color: isSelected
                                 ? resolvedPrimary
-                                : (colors?.onSurface ??
-                                      materialTheme.colorScheme.onSurface),
+                                : isSelectable
+                                    ? resolvedOnSurface
+                                    : resolvedOnSurface.withValues(
+                                        alpha: 0.38,
+                                      ),
                           ),
                 ),
               ),

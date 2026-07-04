@@ -2619,9 +2619,10 @@ final actionDropdownComponent = WidgetbookComponent(
   onOptionClick: (option) {
     setState(() => selectedId = option.id);
   },
-  triggerBuilder: (context, toggle) => ElevatedButton(
+  triggerBuilder: (context, toggle) => Ux4gButton(
+    text: selectedOption?.label ?? 'Actions',
+    variant: Ux4gButtonVariant.outline,
     onPressed: toggle,
-    child: Text(selectedOption?.label ?? 'Actions'),
   ),
 );''',
               props: const [
@@ -2763,23 +2764,44 @@ final selectionDropdownComponent = WidgetbookComponent(
       builder: (context) {
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final searchEnabled = context.knobs.boolean(
+              label: 'Search enabled',
+              initialValue: false,
+            );
+            final size = context.knobs.list(
+              label: 'Size',
+              options: Ux4gDropdownSize.values,
+              initialOption: Ux4gDropdownSize.m,
+              labelBuilder: (v) => v.name,
+            );
+
             return ComponentDocs(
               name: 'Ux4gSelectionDropdown',
               description:
                   'A dropdown for selecting one or multiple options from a list. '
                   'Supports search filtering, single/multi mode, and three sizes.',
-              code: '''Ux4gSelectionDropdown(
-  label: 'Country',
-  placeholder: 'Select country',
-  options: [
-    Ux4gDropdownOption(id: 'in', label: 'India'),
-    Ux4gDropdownOption(id: 'us', label: 'United States'),
-    Ux4gDropdownOption(id: 'uk', label: 'United Kingdom'),
-  ],
-  selectedOptionIds: selectedIds,
-  onSelectionChange: (ids) => setState(() => selectedIds = ids),
-  mode: Ux4gDropdownMode.single,
-);''',
+              code: () {
+                final buf = StringBuffer();
+                buf.writeln("Ux4gSelectionDropdown(");
+                buf.writeln("  label: 'Country',");
+                buf.writeln("  placeholder: 'Select country',");
+                buf.writeln("  options: const [");
+                buf.writeln("    Ux4gDropdownOption(id: 'in', label: 'India'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'us', label: 'United States'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'uk', label: 'United Kingdom'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'au', label: 'Australia'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'ca', label: 'Canada'),");
+                buf.writeln("  ],");
+                buf.writeln("  selectedOptionIds: selectedIds,");
+                buf.writeln("  onSelectionChange: (ids) => setState(() => selectedIds = ids),");
+                buf.writeln("  mode: Ux4gDropdownMode.single,");
+                buf.writeln("  searchEnabled: $searchEnabled,");
+                if (size != Ux4gDropdownSize.m) {
+                  buf.writeln("  size: Ux4gDropdownSize.${size.name},");
+                }
+                buf.writeln(");");
+                return buf.toString();
+              }(),
               props: const [
                 PropRow(
                   name: 'options',
@@ -2878,16 +2900,8 @@ final selectionDropdownComponent = WidgetbookComponent(
                   onSelectionChange: (ids) =>
                       setState(() => _selectionDropdownSingleSelected = ids),
                   mode: Ux4gDropdownMode.single,
-                  searchEnabled: context.knobs.boolean(
-                    label: 'Search enabled',
-                    initialValue: false,
-                  ),
-                  size: context.knobs.list(
-                    label: 'Size',
-                    options: Ux4gDropdownSize.values,
-                    initialOption: Ux4gDropdownSize.m,
-                    labelBuilder: (v) => v.name,
-                  ),
+                  searchEnabled: searchEnabled,
+                  size: size,
                 ),
               ),
             );
@@ -2905,7 +2919,15 @@ final selectionDropdownComponent = WidgetbookComponent(
               description:
                   'Multi-select mode shows chips for each selected option.',
               code: '''Ux4gSelectionDropdown(
-  options: options,
+  label: 'Tags',
+  placeholder: 'Select tags',
+  options: const [
+    Ux4gDropdownOption(id: 'flutter', label: 'Flutter'),
+    Ux4gDropdownOption(id: 'dart', label: 'Dart'),
+    Ux4gDropdownOption(id: 'design', label: 'Design System'),
+    Ux4gDropdownOption(id: 'mobile', label: 'Mobile'),
+    Ux4gDropdownOption(id: 'web', label: 'Web'),
+  ],
   selectedOptionIds: selectedIds,
   onSelectionChange: (ids) => setState(() => selectedIds = ids),
   mode: Ux4gDropdownMode.multi,
@@ -3138,6 +3160,7 @@ final datePickerComponent = WidgetbookComponent(
   status: $status,
   placeholder: '$placeholder',
   enabled: $enabled,
+  maxDate: DateTime.now(),
   onDateRangeSelected: (range) {
     print('From \${range.start} to \${range.end}');
   },
@@ -3215,6 +3238,7 @@ final datePickerComponent = WidgetbookComponent(
                   status: status,
                   placeholder: placeholder,
                   enabled: enabled,
+                  maxDate: DateTime.now(),
                   onDateRangeSelected: (r) => setState(() => selectedRange = r),
                 ),
               ),
