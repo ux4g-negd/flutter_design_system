@@ -5062,7 +5062,12 @@ class BiometricShowcasePage extends StatelessWidget {
 // ─── Slot Grid Showcase ──────────────────────────────────────────────────────
 
 class SlotGridShowcase extends StatefulWidget {
-  const SlotGridShowcase({super.key});
+  final SlotPickerViewMode viewMode;
+
+  const SlotGridShowcase({
+    super.key,
+    this.viewMode = SlotPickerViewMode.expanded,
+  });
 
   @override
   State<SlotGridShowcase> createState() => _SlotGridShowcaseState();
@@ -5071,7 +5076,6 @@ class SlotGridShowcase extends StatefulWidget {
 class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   DateTime? _selectedDate;
   late SlotGridData _data;
-  SlotPickerViewMode _selectedViewMode = SlotPickerViewMode.expanded;
 
   // Mutable copy of time slots per date key (including "default").
   // Initialized from _getJsonInput() so bookings persist across taps.
@@ -5091,7 +5095,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
       "weeklyOffWeekdays": [6, 7],
       "allowTapOnPublicHoliday": false,
       "allowTapOnWeeklyOff": false,
-      "viewMode": _selectedViewMode == SlotPickerViewMode.compact
+      "viewMode": widget.viewMode == SlotPickerViewMode.compact
           ? "compact"
           : "expanded",
       "dates": [
@@ -5178,6 +5182,14 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     _data = SlotGridData.fromJson(_getJsonInput());
   }
 
+  @override
+  void didUpdateWidget(SlotGridShowcase oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.viewMode != widget.viewMode) {
+      _data = SlotGridData.fromJson(_getJsonInput());
+    }
+  }
+
   /// Returns current slots for [date], falling back to "default".
   List<SlotTimeEntry> _timeSlotsFor(DateTime date) {
     final dateStr =
@@ -5234,38 +5246,6 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // View mode toggle buttons
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8,
-          children: [
-            Ux4gButton(
-              onPressed: () {
-                setState(() {
-                  _selectedViewMode = SlotPickerViewMode.expanded;
-                  _data = SlotGridData.fromJson(_getJsonInput());
-                });
-              },
-              text: 'Expanded View',
-              variant: _selectedViewMode == SlotPickerViewMode.expanded
-                  ? Ux4gButtonVariant.primary
-                  : Ux4gButtonVariant.outline,
-            ),
-            Ux4gButton(
-              onPressed: () {
-                setState(() {
-                  _selectedViewMode = SlotPickerViewMode.compact;
-                  _data = SlotGridData.fromJson(_getJsonInput());
-                });
-              },
-              text: 'Compact View',
-              variant: _selectedViewMode == SlotPickerViewMode.compact
-                  ? Ux4gButtonVariant.primary
-                  : Ux4gButtonVariant.outline,
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
         SlotGrid(
           data: _data,
           timeSlotProvider: _timeSlotsFor,

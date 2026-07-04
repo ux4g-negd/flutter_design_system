@@ -5,44 +5,42 @@ import '../../../widgets/component_docs.dart';
 
 const Color _titleColor = Color(0xFF111827);
 const Color _subtleText = Color(0xFF4B5563);
-const Color _primaryColor = Color(0xFF432CBB);
 const Color _borderColor = Color(0xFFE5E7EB);
 
 final selectAppointmentTimeComponent = WidgetbookComponent(
   name: 'Select Appointment Time',
   useCases: [
     WidgetbookUseCase(
-      name: 'Expanded View',
+      name: 'Default',
       builder: (context) {
-        return ComponentDocs(
-          mobileMockup: true,
-          name: 'Select Appointment Time (Expanded)',
-          description:
-              'Appointment time selection pattern using Ux4gSlotGrid calendar. '
-              'Tapping a date opens the time-slot bottom sheet in expanded (vertical list) view. '
-              'Shows date statuses: available, no slots, public holiday, weekly off.',
-          code: _selectAppointmentTimeExpandedCode,
-          center: true,
-          child: const _SelectAppointmentTimeMockup(
-            viewMode: SlotPickerViewMode.expanded,
-          ),
+        final viewMode = context.knobs.list<SlotPickerViewMode>(
+          label: 'View Mode',
+          options: SlotPickerViewMode.values,
+          initialOption: SlotPickerViewMode.expanded,
+          labelBuilder: (v) => v == SlotPickerViewMode.expanded
+              ? 'Expanded View'
+              : 'Compact View',
         );
-      },
-    ),
-    WidgetbookUseCase(
-      name: 'Compact View',
-      builder: (context) {
+        final isExpanded = viewMode == SlotPickerViewMode.expanded;
+
         return ComponentDocs(
           mobileMockup: true,
-          name: 'Select Appointment Time (Compact)',
-          description:
-              'Appointment time selection pattern using Ux4gSlotGrid calendar. '
-              'Tapping a date opens the time-slot bottom sheet in compact (2-column grid) view. '
-              'Shows date statuses: available, no slots, public holiday, weekly off.',
-          code: _selectAppointmentTimeCompactCode,
+          name: isExpanded
+              ? 'Select Appointment Time (Expanded)'
+              : 'Select Appointment Time (Compact)',
+          description: isExpanded
+              ? 'Appointment time selection pattern using Ux4gSlotGrid calendar. '
+                  'Tapping a date opens the time-slot bottom sheet in expanded (vertical list) view. '
+                  'Shows date statuses: available, no slots, public holiday, weekly off.'
+              : 'Appointment time selection pattern using Ux4gSlotGrid calendar. '
+                  'Tapping a date opens the time-slot bottom sheet in compact (2-column grid) view. '
+                  'Shows date statuses: available, no slots, public holiday, weekly off.',
+          code: isExpanded
+              ? _selectAppointmentTimeExpandedCode
+              : _selectAppointmentTimeCompactCode,
           center: true,
-          child: const _SelectAppointmentTimeMockup(
-            viewMode: SlotPickerViewMode.compact,
+          child: _SelectAppointmentTimeMockup(
+            viewMode: viewMode,
           ),
         );
       },
@@ -160,7 +158,7 @@ class _SelectAppointmentTimeScreenState extends State<SelectAppointmentTimeScree
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                       decoration: BoxDecoration(
                         border: Border.all(color: Color(0xFFE5E7EB)),
-                        borderRadius: BorderRadius.circular(4),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
                         children: [
@@ -560,146 +558,124 @@ class _SelectAppointmentTimeMockupState
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Ux4gTheme.themeData(isDark: false),
-      child: Scaffold(
-        backgroundColor: const Color(0xFFFAFAFA),
-        body: SafeArea(
-          child: Column(
-            children: [
-              // App Header
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                color: _primaryColor,
-                child: const Row(
+    return Scaffold(
+      backgroundColor: const Color(0xFFFAFAFA),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Ux4gAppHeader(
+              variant: Ux4gAppHeaderVariant.filled,
+              title: 'National Services Portal',
+              showBackButton: true,
+              onBackPressed: () => Navigator.pop(context),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                    SizedBox(width: 12),
-                    Text(
-                      'National Services Portal',
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Select appointment time',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: _titleColor,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Adv. M. Sharma · 30-minute slot',
+                      style: TextStyle(fontSize: 13, color: _subtleText),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Appointment date & time label
+                    const Text(
+                      'Appointment date & time',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: _titleColor,
                       ),
+                    ),
+                    const SizedBox(height: 8),
+
+                    // Tap to pick date & time dropdown trigger
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: _borderColor),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _selectedDate != null && _selectedSlot != null
+                                  ? '${_formatDate(_selectedDate!)} · ${_selectedSlot!.time}'
+                                  : 'Tap to pick date & time',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: _selectedDate != null
+                                    ? _titleColor
+                                    : const Color(0xFF9CA3AF),
+                              ),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Color(0xFF6B7280),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // SlotGrid calendar component
+                    SlotGrid(
+                      data: _data,
+                      timeSlotProvider: _timeSlotsFor,
+                      onSlotConfirmed: (date, slot) {
+                        setState(() {
+                          _selectedDate = date;
+                          _selectedSlot = slot;
+                        });
+                      },
+                      onDateSelected: (date) {
+                        setState(() {
+                          _selectedDate = date;
+                          final json = _getJsonInput();
+                          _data = SlotGridData.fromJson({
+                            ...json,
+                            'selectedDate':
+                                '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}',
+                            'year': _data.year,
+                            'month': _data.month,
+                          });
+                        });
+                      },
+                      onMonthChanged: (year, month) {
+                        setState(() {
+                          final json = _getJsonInput();
+                          _data = SlotGridData.fromJson({
+                            ...json,
+                            'year': year,
+                            'month': month,
+                          });
+                        });
+                      },
                     ),
                   ],
                 ),
               ),
-
-              // Content
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Select appointment time',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: _titleColor,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        'Adv. M. Sharma · 30-minute slot',
-                        style: TextStyle(fontSize: 13, color: _subtleText),
-                      ),
-                      const SizedBox(height: 20),
-
-                      // Appointment date & time label
-                      const Text(
-                        'Appointment date & time',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: _titleColor,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-
-                      // Tap to pick date & time dropdown trigger
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: _borderColor),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                _selectedDate != null && _selectedSlot != null
-                                    ? '${_formatDate(_selectedDate!)} · ${_selectedSlot!.time}'
-                                    : 'Tap to pick date & time',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: _selectedDate != null
-                                      ? _titleColor
-                                      : const Color(0xFF9CA3AF),
-                                ),
-                              ),
-                            ),
-                            const Icon(
-                              Icons.keyboard_arrow_down,
-                              color: Color(0xFF6B7280),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
-                      // SlotGrid calendar component
-                      SlotGrid(
-                        data: _data,
-                        timeSlotProvider: _timeSlotsFor,
-                        onSlotConfirmed: (date, slot) {
-                          setState(() {
-                            _selectedDate = date;
-                            _selectedSlot = slot;
-                          });
-                        },
-                        onDateSelected: (date) {
-                          setState(() {
-                            _selectedDate = date;
-                            final json = _getJsonInput();
-                            _data = SlotGridData.fromJson({
-                              ...json,
-                              'selectedDate':
-                                  '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}',
-                              'year': _data.year,
-                              'month': _data.month,
-                            });
-                          });
-                        },
-                        onMonthChanged: (year, month) {
-                          setState(() {
-                            final json = _getJsonInput();
-                            _data = SlotGridData.fromJson({
-                              ...json,
-                              'year': year,
-                              'month': month,
-                            });
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

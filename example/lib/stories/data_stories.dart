@@ -3206,15 +3206,35 @@ final slotGridComponent = WidgetbookComponent(
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
-      builder: (context) => const ComponentDocs(
-        name: 'SlotGrid',
-        description:
-            'A calendar-style date picker that marks dates as available, '
-            'no-slots, public holiday, or weekly-off. '
-            'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
-            'Supports both Expanded and Compact view modes via viewMode property.',
-        code: '''class SlotGridShowcase extends StatefulWidget {
-  const SlotGridShowcase({super.key});
+      builder: (context) {
+        final viewMode = context.knobs.list<SlotPickerViewMode>(
+          label: 'View Mode',
+          options: SlotPickerViewMode.values,
+          initialOption: SlotPickerViewMode.expanded,
+          labelBuilder: (v) => v == SlotPickerViewMode.expanded
+              ? 'Expanded View'
+              : 'Compact View',
+        );
+        final isExpanded = viewMode == SlotPickerViewMode.expanded;
+        final viewModeStr = isExpanded ? 'expanded' : 'compact';
+        final enumStr = isExpanded
+            ? 'SlotPickerViewMode.expanded'
+            : 'SlotPickerViewMode.compact';
+
+        return ComponentDocs(
+          name: 'SlotGrid',
+          description:
+              'A calendar-style date picker that marks dates as available, '
+              'no-slots, public holiday, or weekly-off. '
+              'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
+              'Supports both Expanded and Compact view modes via viewMode property.',
+          code: '''class SlotGridShowcase extends StatefulWidget {
+  final SlotPickerViewMode viewMode;
+
+  const SlotGridShowcase({
+    super.key,
+    this.viewMode = $enumStr,
+  });
 
   @override
   State<SlotGridShowcase> createState() => _SlotGridShowcaseState();
@@ -3223,7 +3243,6 @@ final slotGridComponent = WidgetbookComponent(
 class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   DateTime? _selectedDate;
   late SlotGridData _data;
-  SlotPickerViewMode _selectedViewMode = SlotPickerViewMode.expanded;
 
   Map<String, List<Map<String, dynamic>>> _mutableTimeSlots = {};
 
@@ -3241,9 +3260,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
       "weeklyOffWeekdays": [6, 7],
       "allowTapOnPublicHoliday": false,
       "allowTapOnWeeklyOff": false,
-      "viewMode": _selectedViewMode == SlotPickerViewMode.compact
-          ? "compact"
-          : "expanded",
+      "viewMode": "$viewModeStr",
       "dates": [
         {
           "date": '\${now.year}-\${now.month.toString().padLeft(2, '0')}-\${_pad(now.day + 2)}',
@@ -3324,6 +3341,14 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     _data = SlotGridData.fromJson(_getJsonInput());
   }
 
+  @override
+  void didUpdateWidget(SlotGridShowcase oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.viewMode != widget.viewMode) {
+      _data = SlotGridData.fromJson(_getJsonInput());
+    }
+  }
+
   List<SlotTimeEntry> _timeSlotsFor(DateTime date) {
     final dateStr =
         '\${date.year}-\${date.month.toString().padLeft(2, '0')}-\${date.day.toString().padLeft(2, '0')}';
@@ -3373,37 +3398,6 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8,
-          children: [
-            Ux4gButton(
-              onPressed: () {
-                setState(() {
-                  _selectedViewMode = SlotPickerViewMode.expanded;
-                  _data = SlotGridData.fromJson(_getJsonInput());
-                });
-              },
-              text: 'Expanded View',
-              variant: _selectedViewMode == SlotPickerViewMode.expanded
-                  ? Ux4gButtonVariant.primary
-                  : Ux4gButtonVariant.outline,
-            ),
-            Ux4gButton(
-              onPressed: () {
-                setState(() {
-                  _selectedViewMode = SlotPickerViewMode.compact;
-                  _data = SlotGridData.fromJson(_getJsonInput());
-                });
-              },
-              text: 'Compact View',
-              variant: _selectedViewMode == SlotPickerViewMode.compact
-                  ? Ux4gButtonVariant.primary
-                  : Ux4gButtonVariant.outline,
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
         SlotGrid(
           data: _data,
           timeSlotProvider: _timeSlotsFor,
@@ -3436,38 +3430,41 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     );
   }
 }''',
-        props: [
-          PropRow(
-            name: 'data',
-            type: 'SlotGridData',
-            description: 'Calendar data model (year, month, dates, view mode).',
-            required: true,
+          props: [
+            PropRow(
+              name: 'data',
+              type: 'SlotGridData',
+              description: 'Calendar data model (year, month, dates, view mode).',
+              required: true,
+            ),
+            PropRow(
+              name: 'onDateSelected',
+              type: 'ValueChanged<DateTime>?',
+              description:
+                  'Called when user taps an available date (no timeSlotProvider).',
+            ),
+            PropRow(
+              name: 'onMonthChanged',
+              type: 'void Function(int year, int month)?',
+              description: 'Called when the prev/next month arrow is tapped.',
+            ),
+            PropRow(
+              name: 'timeSlotProvider',
+              type: 'List<SlotTimeEntry> Function(DateTime)?',
+              description:
+                  'Supply time slots — auto-opens SlotTimePickerSheet on date tap.',
+            ),
+            PropRow(
+              name: 'onSlotConfirmed',
+              type: 'void Function(DateTime, SlotTimeEntry)?',
+              description: 'Called when the user confirms a time slot.',
+            ),
+          ],
+          child: SingleChildScrollView(
+            child: SlotGridShowcase(viewMode: viewMode),
           ),
-          PropRow(
-            name: 'onDateSelected',
-            type: 'ValueChanged<DateTime>?',
-            description:
-                'Called when user taps an available date (no timeSlotProvider).',
-          ),
-          PropRow(
-            name: 'onMonthChanged',
-            type: 'void Function(int year, int month)?',
-            description: 'Called when the prev/next month arrow is tapped.',
-          ),
-          PropRow(
-            name: 'timeSlotProvider',
-            type: 'List<SlotTimeEntry> Function(DateTime)?',
-            description:
-                'Supply time slots — auto-opens SlotTimePickerSheet on date tap.',
-          ),
-          PropRow(
-            name: 'onSlotConfirmed',
-            type: 'void Function(DateTime, SlotTimeEntry)?',
-            description: 'Called when the user confirms a time slot.',
-          ),
-        ],
-        child: SingleChildScrollView(child: SlotGridShowcase()),
-      ),
+        );
+      },
     ),
     WidgetbookUseCase(
       name: 'With holidays & no-slots',
