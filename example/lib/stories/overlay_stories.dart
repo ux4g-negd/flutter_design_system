@@ -759,7 +759,7 @@ toastState.showToast(
 // ── Tooltip ───────────────────────────────────────────────────────────────────
 
 final tooltipComponent = WidgetbookComponent(
-  name: 'Ux4gTooltip',
+  name: 'Tooltip',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',

@@ -579,14 +579,8 @@ Ux4gButton(
         ),
       ),
     ),
-  ],
-);
-
-final iconButtonComponent = WidgetbookComponent(
-  name: 'IconButton',
-  useCases: [
     WidgetbookUseCase(
-      name: 'Default',
+      name: 'IconButton',
       builder: (context) => ComponentDocs(
         name: 'Ux4gIconButton',
         description:

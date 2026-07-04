@@ -137,11 +137,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   isInitiallyExpanded: false,
                   children: [accordionComponent, accordionGroupComponent],
                 ),
-                WidgetbookFolder(
-                  name: 'App Header',
-                  isInitiallyExpanded: false,
-                  children: [appHeaderComponent],
-                ),
+                appHeaderComponent,
                 WidgetbookFolder(
                   name: 'Avatar',
                   isInitiallyExpanded: false,
@@ -152,37 +148,12 @@ class UX4GWidgetbook extends StatelessWidget {
                     statusAvatarComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Badge',
-                  isInitiallyExpanded: false,
-                  children: [badgeComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Biometric',
-                  isInitiallyExpanded: false,
-                  children: [biometricComponent],
-                ),
-                //bottomSheetComponent,
-                WidgetbookFolder(
-                  name: 'Buttons',
-                  isInitiallyExpanded: false,
-                  children: [buttonComponent, iconButtonComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Card',
-                  isInitiallyExpanded: false,
-                  children: [cardComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Carousel',
-                  isInitiallyExpanded: false,
-                  children: [carouselComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Checkbox',
-                  isInitiallyExpanded: false,
-                  children: [checkboxComponent],
-                ),
+                badgeComponent,
+                biometricComponent,
+                buttonComponent,
+                cardComponent,
+                carouselComponent,
+                checkboxComponent,
                 WidgetbookFolder(
                   name: 'Chips',
                   isInitiallyExpanded: false,
@@ -198,22 +169,14 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Circular Progress',
                   isInitiallyExpanded: false,
                   children: [
-                    animatedCircularProgressComponent,
-                    animatedHalfCircleProgressComponent,
                     circularProgressComponent,
+                    animatedCircularProgressComponent,
                     halfCircleProgressComponent,
+                    animatedHalfCircleProgressComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Date Picker',
-                  isInitiallyExpanded: false,
-                  children: [datePickerComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Divider',
-                  isInitiallyExpanded: false,
-                  children: [dividerComponent],
-                ),
+                datePickerComponent,
+                dividerComponent,
                 WidgetbookFolder(
                   name: 'Dropdown',
                   isInitiallyExpanded: false,
@@ -222,11 +185,7 @@ class UX4GWidgetbook extends StatelessWidget {
                     selectionDropdownComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Empty State',
-                  isInitiallyExpanded: false,
-                  children: [emptyStateComponent],
-                ),
+                emptyStateComponent,
                 WidgetbookFolder(
                   name: 'Feedback',
                   isInitiallyExpanded: false,
@@ -236,11 +195,7 @@ class UX4GWidgetbook extends StatelessWidget {
                     feedbackFormNpsComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'File Upload',
-                  isInitiallyExpanded: false,
-                  children: [fileUploadComponent],
-                ),
+                fileUploadComponent,
                 WidgetbookFolder(
                   name: 'Input Fields',
                   isInitiallyExpanded: false,
@@ -252,54 +207,23 @@ class UX4GWidgetbook extends StatelessWidget {
                     searchFieldComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Journey Timeline',
-                  isInitiallyExpanded: false,
-                  children: [journeyTimelineComponent],
-                ),
+                journeyTimelineComponent,
                 WidgetbookFolder(
                   name: 'Linear Progress',
                   isInitiallyExpanded: false,
                   children: [
-                    animatedLinearProgressComponent,
                     linearProgressComponent,
+                    animatedLinearProgressComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Modal',
-                  isInitiallyExpanded: false,
-                  children: [modalComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Pagination',
-                  isInitiallyExpanded: false,
-                  children: [paginationComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Progress SLA Indicator',
-                  isInitiallyExpanded: false,
-                  children: [progressSlaIndicatorComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Radio Button',
-                  isInitiallyExpanded: false,
-                  children: [radioButtonComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Result List',
-                  isInitiallyExpanded: false,
-                  children: [resultRowComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Slider',
-                  isInitiallyExpanded: false,
-                  children: [sliderComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Slot Grid',
-                  isInitiallyExpanded: false,
-                  children: [slotGridComponent],
-                ),
+                loaderComponent, // Spinner / Loader
+                modalComponent,
+                paginationComponent,
+                progressSlaIndicatorComponent,
+                radioButtonComponent,
+                resultRowComponent, // Result List
+                sliderComponent,
+                slotGridComponent,
                 WidgetbookFolder(
                   name: 'Social Link',
                   isInitiallyExpanded: false,
@@ -308,11 +232,6 @@ class UX4GWidgetbook extends StatelessWidget {
                     socialLinkGroupComponent,
                     socialLinkListComponent,
                   ],
-                ),
-                WidgetbookFolder(
-                  name: 'Spinner',
-                  isInitiallyExpanded: false,
-                  children: [loaderComponent],
                 ),
                 WidgetbookFolder(
                   name: 'Status',
@@ -324,38 +243,12 @@ class UX4GWidgetbook extends StatelessWidget {
                   isInitiallyExpanded: false,
                   children: [stepperComponent, capsuleStepperComponent],
                 ),
-                WidgetbookFolder(
-                  name: 'Switch',
-                  isInitiallyExpanded: false,
-                  children: [
-                    toggleComponent, //switch
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'Tag',
-                  isInitiallyExpanded: false,
-                  children: [tagComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Time Picker',
-                  isInitiallyExpanded: false,
-                  children: [timePickerComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Text Area',
-                  isInitiallyExpanded: false,
-                  children: [textAreaComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Toast',
-                  isInitiallyExpanded: false,
-                  children: [toastComponent],
-                ),
-                WidgetbookFolder(
-                  name: 'Tooltip',
-                  isInitiallyExpanded: false,
-                  children: [tooltipComponent],
-                ),
+                toggleComponent, // Switch
+                tagComponent,
+                textAreaComponent,
+                timePickerComponent,
+                toastComponent,
+                tooltipComponent,
               ],
             ),
 
@@ -773,16 +666,20 @@ class _SidebarLogo extends StatelessWidget {
                 state.path = null;
                 state.notifyListeners();
               },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SvgPicture.asset(
-                    'assets/ux4g_logo.svg',
-                    height: 34,
-                    width: 34,
-                  ),
-                  const SizedBox(width: 10),
-                ],
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/ux4g_logo.svg',
+                      height: 34,
+                      width: 34,
+                    ),
+                    const SizedBox(width: 10),
+                  ],
+                ),
               ),
             ),
           ),

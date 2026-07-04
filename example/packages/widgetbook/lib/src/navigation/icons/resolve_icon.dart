@@ -12,7 +12,11 @@ Widget resolveIcon(WidgetbookNode node) {
     return const Icon(Icons.inventory, size: 16);
   } else if (node is WidgetbookCategory) {
     return const Icon(Icons.auto_awesome_mosaic, size: 16);
-  } else if (node is WidgetbookFolder) {
+  } else if (node is WidgetbookFolder ||
+      (node is WidgetbookComponent &&
+          node.parent is WidgetbookCategory &&
+          !['Carousel', 'File Upload', 'Spinner (Loader)', 'Spinner', 'Loader', 'Toasts', 'Toast']
+              .contains(node.name))) {
     return const Icon(Icons.folder, size: 16);
   } else if (node is WidgetbookComponent) {
     return const ComponentIcon();

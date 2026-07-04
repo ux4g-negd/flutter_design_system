@@ -14,7 +14,7 @@ abstract class WidgetbookNode {
   WidgetbookNode({
     required this.name,
     required this.children,
-    this.isInitiallyExpanded = true,
+    this.isInitiallyExpanded = false,
   }) {
     children?.forEach(
       (child) => child.parent = this,
