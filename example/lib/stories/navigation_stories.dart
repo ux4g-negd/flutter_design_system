@@ -22,10 +22,10 @@ final accordionComponent = WidgetbookComponent(
                   'Use Ux4gAccordionGroup for mutually-exclusive accordion lists.',
               code: '''// Single accordion
 Ux4gAccordion(
-  title: 'What is UX4G?',
-  expanded: expanded,
-  onExpandedChange: (v) => setState(() => expanded = v),
-  child: Text('Content here'),
+  title: 'What is UX4G?',                              // ← change this
+  expanded: expanded,                                    // ← replace 'expanded' with your state variable
+  onExpandedChange: (v) => setState(() => expanded = v),// ← replace 'expanded' with your state variable
+  child: Text('Your content here'),                     // ← replace with your widget
 );''',
               props: const [
                 PropRow(
@@ -474,13 +474,36 @@ final accordionGroupComponent = WidgetbookComponent(
               name: 'Ux4gAccordionGroup',
               description:
                   'AccordionGroup ensures only one item is open at a time.',
-              code:
-                  'Ux4gAccordionGroup(\n'
-                  '  items: items, expandedIndex: expandedIndex,\n'
-                  '  onExpandedIndexChange: (i) => setState(() => expandedIndex = i),\n'
-                  '  contentBuilder: (index, item) => Text(contents[index]),\n'
-                  '  itemSpacing: 20, // default Ux4gSpace.space20\n'
-                  ');',
+              code: () {
+                final buf = StringBuffer();
+                buf.writeln("// ── Declare these variables in your widget state ──");
+                buf.writeln("int? expandedIndex = 0;");
+                buf.writeln();
+                buf.writeln("final items = <Ux4gAccordionItem>[");
+                buf.writeln("  const Ux4gAccordionItem(title: 'What is UX4G?'),");
+                buf.writeln("  const Ux4gAccordionItem(title: 'How do I install it?'),");
+                buf.writeln("  const Ux4gAccordionItem(title: 'Is it open source?'),");
+                buf.writeln("];");
+                buf.writeln();
+                buf.writeln("final contents = <String>[");
+                buf.writeln("  'UX4G is a Flutter design system providing reusable UI components.',");
+                buf.writeln("  'Add it to pubspec.yaml and run flutter pub get.',");
+                buf.writeln("  'Yes, UX4G is open source under the MIT licence.',");
+                buf.writeln("];");
+                buf.writeln();
+                buf.writeln("// ── Use them in your build method ──");
+                buf.writeln("Ux4gAccordionGroup(");
+                buf.writeln("  items: items,");
+                buf.writeln("  expandedIndex: expandedIndex,");
+                buf.writeln("  onExpandedIndexChange: (i) =>");
+                buf.writeln("      setState(() => expandedIndex = i),");
+                buf.writeln("  contentBuilder: (index, item) => Padding(");
+                buf.writeln("    padding: const EdgeInsets.all(12),");
+                buf.writeln("    child: Text(contents[index]),");
+                buf.writeln("  ),");
+                buf.writeln(");");
+                return buf.toString();
+              }(),
               props: const [
                 PropRow(
                   name: 'items',

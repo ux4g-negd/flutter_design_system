@@ -18,6 +18,8 @@ class _AppTestState extends State<AppTest> {
   bool checked = false;
   RangeValues range = RangeValues(20, 90);
   List<String> selectedIds = [];
+  bool expanded = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,21 +45,11 @@ class _AppTestState extends State<AppTest> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Ux4gSelectionDropdown(
-                    label: 'Country',
-                    placeholder: 'Select country',
-                    options: const [
-                      Ux4gDropdownOption(id: 'in', label: 'India'),
-                      Ux4gDropdownOption(id: 'us', label: 'United States'),
-                      Ux4gDropdownOption(id: 'uk', label: 'United Kingdom'),
-                      Ux4gDropdownOption(id: 'au', label: 'Australia'),
-                      Ux4gDropdownOption(id: 'ca', label: 'Canada'),
-                    ],
-                    selectedOptionIds: selectedIds,
-                    onSelectionChange: (ids) =>
-                        setState(() => selectedIds = ids),
-                    mode: Ux4gDropdownMode.single,
-                    searchEnabled: false,
+                  Ux4gAccordion(
+                    title: 'What is UX4G?',
+                    expanded: expanded,
+                    onExpandedChange: (v) => setState(() => expanded = v),
+                    child: Text('Content here'),
                   ),
                 ],
               ),
