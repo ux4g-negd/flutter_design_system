@@ -116,8 +116,14 @@ class UX4GWidgetbook extends StatelessWidget {
               isInitiallyExpanded: false,
               children: [
                 // Buttons
-                buttonComponent,
-                iconButtonComponent,
+                WidgetbookFolder(
+                  name: 'Buttons',
+                  isInitiallyExpanded: false,
+                  children: [
+                    buttonComponent,
+                    iconButtonComponent,
+                  ],
+                ),
 
                 // Display
                 badgeComponent,
