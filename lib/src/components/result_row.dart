@@ -49,6 +49,7 @@ class Ux4gResultRow extends StatefulWidget {
   final bool initialExpanded;
   final ValueChanged<bool>? onToggle;
   final bool showBottomDivider;
+  final EdgeInsetsGeometry contentPadding;
 
   const Ux4gResultRow({
     super.key,
@@ -69,6 +70,10 @@ class Ux4gResultRow extends StatefulWidget {
     this.initialExpanded = false,
     this.onToggle,
     this.showBottomDivider = true,
+    this.contentPadding = const EdgeInsets.symmetric(
+      horizontal: Ux4gSpace.space16,
+      vertical: Ux4gSpace.space16,
+    ),
   });
 
   @override
@@ -108,7 +113,7 @@ class _Ux4gResultRowState extends State<Ux4gResultRow>
         InkWell(
           onTap: _handleToggle,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: Ux4gSpace.space16),
+            padding: widget.contentPadding,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -232,108 +237,117 @@ class _Ux4gResultRowState extends State<Ux4gResultRow>
             curve: Curves.easeInOut,
             alignment: Alignment.topCenter,
             child: _isExpanded
-                ? LayoutBuilder(
-                    builder: (context, constraints) {
-                      final availableWidth = constraints.maxWidth;
+                ? Builder(
+                    builder: (context) {
+                      final resolvedPadding = widget.contentPadding.resolve(Directionality.of(context));
                       return Padding(
-                        padding: const EdgeInsets.only(bottom: Ux4gSpace.space24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (widget.details.isNotEmpty)
-                              Wrap(
-                                runSpacing: Ux4gSpace.space20,
-                                children: List.generate(widget.details.length, (
-                                  index,
-                                ) {
-                                  final detail = widget.details[index];
-                                  final columnCount =
-                                      availableWidth > 400
-                                      ? widget.detailsColumns
-                                      : 1;
-                                  return SizedBox(
-                                    width: columnCount > 1
-                                        ? (availableWidth -
-                                                  Ux4gSpace.space80) /
-                                              columnCount
-                                        : double.infinity,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          detail.label,
-                                          style:
-                                              (ux4gTypography?.bS_default ??
-                                                      materialTheme
-                                                          .textTheme
-                                                          .bodySmall ??
-                                                      const TextStyle())
-                                                  .copyWith(
-                                                    color:
-                                                        (ux4gColors?.onSurface ??
-                                                                materialTheme
-                                                                    .colorScheme
-                                                                    .onSurface)
-                                                            .withValues(alpha: 0.5),
-                                                  ),
-                                        ),
-                                        const SizedBox(height: Ux4gSpace.space4),
-                                        if (detail.customValueWidget != null)
-                                          detail.customValueWidget!
-                                        else
-                                          Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              if (detail.icon != null) ...[
-                                                Icon(
-                                                  detail.icon,
-                                                  size: 16,
-                                                  color:
-                                                      detail.valueColor ??
-                                                      (ux4gColors?.onBackground ??
+                        padding: EdgeInsets.only(
+                          left: resolvedPadding.left,
+                          right: resolvedPadding.right,
+                          bottom: Ux4gSpace.space24,
+                        ),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            final availableWidth = constraints.maxWidth;
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (widget.details.isNotEmpty)
+                                  Wrap(
+                                    runSpacing: Ux4gSpace.space20,
+                                    children: List.generate(widget.details.length, (
+                                      index,
+                                    ) {
+                                      final detail = widget.details[index];
+                                      final columnCount =
+                                          availableWidth > 400
+                                          ? widget.detailsColumns
+                                          : 1;
+                                      return SizedBox(
+                                        width: columnCount > 1
+                                            ? (availableWidth -
+                                                      Ux4gSpace.space80) /
+                                                  columnCount
+                                            : double.infinity,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              detail.label,
+                                              style:
+                                                  (ux4gTypography?.bS_default ??
                                                           materialTheme
-                                                              .colorScheme
-                                                              .onSurface),
-                                                ),
-                                                const SizedBox(width: Ux4gSpace.space4),
-                                              ],
-                                              Flexible(
-                                                child: Text(
-                                                  detail.value,
-                                                  style:
-                                                      (detail.isBold
-                                                              ? (ux4gTypography?.bM_strong ??
-                                                                  materialTheme
-                                                                      .textTheme
-                                                                      .bodyMedium?.copyWith(
-                                                                        fontWeight: FontWeight.w700,
-                                                                      ) ??
-                                                                  const TextStyle(fontWeight: FontWeight.bold))
-                                                              : (ux4gTypography?.bM_default ??
-                                                                  materialTheme
-                                                                      .textTheme
-                                                                      .bodyMedium ??
-                                                                  const TextStyle()))
-                                                          .copyWith(
-                                                            color:
-                                                                detail.valueColor ??
-                                                                (ux4gColors?.onBackground ??
+                                                              .textTheme
+                                                              .bodySmall ??
+                                                          const TextStyle())
+                                                      .copyWith(
+                                                        color:
+                                                            (ux4gColors?.onSurface ??
                                                                     materialTheme
                                                                         .colorScheme
-                                                                        .onSurface),
-                                                          ),
-                                                ),
+                                                                        .onSurface)
+                                                                .withValues(alpha: 0.5),
+                                                      ),
+                                            ),
+                                            const SizedBox(height: Ux4gSpace.space4),
+                                            if (detail.customValueWidget != null)
+                                              detail.customValueWidget!
+                                            else
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  if (detail.icon != null) ...[
+                                                    Icon(
+                                                      detail.icon,
+                                                      size: 16,
+                                                      color:
+                                                          detail.valueColor ??
+                                                          (ux4gColors?.onBackground ??
+                                                              materialTheme
+                                                                  .colorScheme
+                                                                  .onSurface),
+                                                    ),
+                                                    const SizedBox(width: Ux4gSpace.space4),
+                                                  ],
+                                                  Flexible(
+                                                    child: Text(
+                                                      detail.value,
+                                                      style:
+                                                          (detail.isBold
+                                                                  ? (ux4gTypography?.bM_strong ??
+                                                                      materialTheme
+                                                                          .textTheme
+                                                                          .bodyMedium?.copyWith(
+                                                                            fontWeight: FontWeight.w700,
+                                                                          ) ??
+                                                                      const TextStyle(fontWeight: FontWeight.bold))
+                                                                  : (ux4gTypography?.bM_default ??
+                                                                      materialTheme
+                                                                          .textTheme
+                                                                          .bodyMedium ??
+                                                                      const TextStyle()))
+                                                              .copyWith(
+                                                                color:
+                                                                    detail.valueColor ??
+                                                                    (ux4gColors?.onBackground ??
+                                                                        materialTheme
+                                                                            .colorScheme
+                                                                            .onSurface),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
-                                      ],
-                                    ),
-                                  );
-                                }),
-                              ),
-                            if (widget.expandedChild != null)
-                              widget.expandedChild!,
-                          ],
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                if (widget.expandedChild != null)
+                                  widget.expandedChild!,
+                              ],
+                            );
+                          },
                         ),
                       );
                     },

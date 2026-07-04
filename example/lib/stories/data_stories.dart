@@ -1236,6 +1236,11 @@ final resultRowComponent = WidgetbookComponent(
   details: const [
     Ux4gResultDetail(label: 'Applicant', value: 'Ravi Kumar'),
     Ux4gResultDetail(label: 'Date', value: '12 May 2025'),
+    Ux4gResultDetail(
+      label: 'Amount',
+      value: '₹1,20,000',
+      isBold: true,
+    ),
   ],
 );''',
         props: const [
@@ -1346,9 +1351,7 @@ final resultRowComponent = WidgetbookComponent(
         code: '''// Collapsed
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       actionButtonText: 'Track',
       onActionPressed: () {},
@@ -1380,15 +1383,12 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )
 
 // Expanded
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       actionButtonText: 'Track',
       onActionPressed: () {},
@@ -1455,7 +1455,6 @@ Ux4gCard(
         ),
       ),
     ),
-  ),
 )''',
         child: SizedBox(
           width: 380,
@@ -1465,9 +1464,7 @@ Ux4gCard(
               // Collapsed
               Ux4gCard(
                 cornerRadius: 12,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Ux4gResultRow(
+                child: Ux4gResultRow(
                     title: 'Income Certificate',
                     actionButtonText: 'Track',
                     onActionPressed: () {},
@@ -1518,15 +1515,12 @@ Ux4gCard(
                       ),
                     ],
                   ),
-                ),
               ),
               const SizedBox(height: 16),
               // Expanded
               Ux4gCard(
                 cornerRadius: 12,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Ux4gResultRow(
+                child: Ux4gResultRow(
                     title: 'Income Certificate',
                     actionButtonText: 'Track',
                     onActionPressed: () {},
@@ -1616,7 +1610,6 @@ Ux4gCard(
                       ),
                     ),
                   ),
-                ),
               ),
             ],
           ),
@@ -1896,9 +1889,7 @@ Ux4gResultRow(
             ? '''// Collapsed
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       titleTrailing: const Icon(Icons.check_circle, size: 20, color: Color(0xFF16A34A)),
       actionButtonText: 'Download',
@@ -1918,15 +1909,12 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )
 
 // Expanded
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       titleTrailing: const Icon(Icons.check_circle, size: 20, color: Color(0xFF16A34A)),
       actionButtonText: 'Download',
@@ -1946,7 +1934,6 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )'''
             : '''// Collapsed
 Ux4gResultRow(
@@ -2047,18 +2034,12 @@ Ux4gResultRow(
                 if (withBackground) ...[
                   Ux4gCard(
                     cornerRadius: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: buildRow(expanded: false),
-                    ),
+                    child: buildRow(expanded: false),
                   ),
                   const SizedBox(height: 16),
                   Ux4gCard(
                     cornerRadius: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: buildRow(expanded: true),
-                    ),
+                    child: buildRow(expanded: true),
                   ),
                 ] else ...[
                   buildRow(expanded: false),
@@ -2082,9 +2063,7 @@ Ux4gResultRow(
             ? '''// Collapsed
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       statusTag: 'Paid',
       tagColorScheme: Ux4gTagColor.neutral,
@@ -2112,15 +2091,12 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )
 
 // Expanded
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       statusTag: 'Paid',
       tagColorScheme: Ux4gTagColor.neutral,
@@ -2148,7 +2124,6 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )'''
             : '''// Collapsed
 Ux4gResultRow(
@@ -2275,18 +2250,12 @@ Ux4gResultRow(
                 if (withBackground) ...[
                   Ux4gCard(
                     cornerRadius: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: buildRow(expanded: false),
-                    ),
+                    child: buildRow(expanded: false),
                   ),
                   const SizedBox(height: 16),
                   Ux4gCard(
                     cornerRadius: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: buildRow(expanded: true),
-                    ),
+                    child: buildRow(expanded: true),
                   ),
                 ] else ...[
                   buildRow(expanded: false),
@@ -2310,9 +2279,7 @@ Ux4gResultRow(
             ? '''// Collapsed
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       statusTag: 'Escalated',
       tagColorScheme: Ux4gTagColor.brand,
@@ -2345,15 +2312,12 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )
 
 // Expanded
 Ux4gCard(
   cornerRadius: 12,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Ux4gResultRow(
+  child: Ux4gResultRow(
       title: 'Income Certificate',
       statusTag: 'Escalated',
       tagColorScheme: Ux4gTagColor.brand,
@@ -2386,7 +2350,6 @@ Ux4gCard(
         Ux4gResultDetail(label: 'Documents', value: 'ID Proof, Address Proof'),
       ],
     ),
-  ),
 )'''
             : '''// Collapsed
 Ux4gResultRow(
@@ -2527,18 +2490,12 @@ Ux4gResultRow(
                 if (withBackground) ...[
                   Ux4gCard(
                     cornerRadius: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: buildRow(expanded: false),
-                    ),
+                    child: buildRow(expanded: false),
                   ),
                   const SizedBox(height: 16),
                   Ux4gCard(
                     cornerRadius: 12,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: buildRow(expanded: true),
-                    ),
+                    child: buildRow(expanded: true),
                   ),
                 ] else ...[
                   buildRow(expanded: false),

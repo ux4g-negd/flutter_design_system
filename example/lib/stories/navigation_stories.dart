@@ -692,143 +692,138 @@ final statusBannerComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'Ux4gStatusBanner',
           description: 'Various layout patterns built using Ux4gStatusBanner.',
-          code: '''Column(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    // 1. Accordion style (collapsed)
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.warningLight,
-      backgroundColor: isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED),
-      title: 'Income Certificate Application',
-      titleStyle: typography.tS_default.copyWith(color: titleColor),
-      subtitleWidget: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 8),
-          warningPill, // Uses lM_default
-          const SizedBox(height: 8),
-          Text('Last saved: 10 Apr 2026', style: typography.bS_default.copyWith(color: subtitleColor)),
-        ],
-      ),
-      trailingIcon: const Icon(Icons.keyboard_arrow_down),
-    ),
-    const SizedBox(height: 24),
-
-    // 2. Solid Warning Banner
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.warningSolid,
-      backgroundColor: isDark ? const Color(0xFFFDBA74) : const Color(0xFFEA580C),
-      title: 'Your draft expires tomorrow. Submit today',
-      titleStyle: typography.bS_strong.copyWith(color: solidBannerTextColor),
-    ),
-    const SizedBox(height: 24),
-
-    // 3. Saving State
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.warningLight,
-      backgroundColor: isDark ? const Color(0xFF873C05) : const Color(0xFFFFF7E6),
-      title: '',
-      trailingIcon: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),
-          const SizedBox(width: 8),
-          Text('Saving', style: typography.bS_default.copyWith(color: savingTextColor)),
-        ],
-      ),
-    ),
-    const SizedBox(height: 24),
-
-    // 4. Success Banner (Left Icon)
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.successLight,
-      backgroundColor: isDark ? const Color(0xFF00381F) : const Color(0xFFF2FCEF),
-      title: 'Draft saved successfully at 3:14 PM',
-      titleStyle: typography.bS_default.copyWith(color: successTextColor),
-      leadingIcon: Icon(Icons.check_circle_outline, color: isDark ? const Color(0xFF1AA64A) : const Color(0xFF128937)),
-    ),
-    const SizedBox(height: 24),
-
-    // 5. Expiry Warning with Badge
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.warningLight,
-      backgroundColor: isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED),
-      title: 'Your draft expires in 5 days',
-      titleStyle: typography.bS_strong.copyWith(color: titleColor),
-      badge: datePill,
-    ),
-    const SizedBox(height: 24),
-
-    // 6. Error Banner with Action
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.errorLight,
-      backgroundColor: isDark ? const Color(0xFF60150F) : const Color(0xFFFFF8F8),
-      title: 'Draft expired on 9 April\\n2026',
-      titleStyle: typography.bS_default.copyWith(color: errorTextColor),
-      leadingIcon: Icon(Icons.error_outline, color: isDark ? const Color(0xFFF55E57) : const Color(0xFFDB372D)),
-      trailingIcon: Text('Action', style: typography.lXL_default.copyWith(color: actionTextColor)),
-    ),
-    const SizedBox(height: 24),
-
-    // 7. Success Banner (Right Icon)
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.successLight,
-      backgroundColor: successBgColor,
-      title: '',
-      trailingIcon: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.check_circle_outline, color: successIconColor, size: 18),
-          const SizedBox(width: 4),
-          Text('Saved 3:14 PM', style: successRightTextStyle),
-        ],
-      ),
-    ),
-    const SizedBox(height: 24),
-
-    // 8. Accordion style (expanded)
-    Ux4gStatusBanner(
-      borderColor: Colors.transparent,
-      variant: Ux4gBannerVariant.warningLight,
-      backgroundColor: isDark ? const Color(0xFF7C2D12) : const Color(0xFFFFF7ED),
-      title: 'Income Certificate Application',
-      titleStyle: typography.tS_default.copyWith(color: titleColor),
-      subtitleWidget: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 8),
-          warningPill, // Uses lM_default
-          const SizedBox(height: 8),
-          Text('Last saved: 10 Apr 2026', style: typography.bS_default.copyWith(color: subtitleColor)),
-        ],
-      ),
-      trailingIcon: const Icon(Icons.keyboard_arrow_up),
-      actionsAlignment: WrapAlignment.spaceBetween,
-      actions: [
-        TextButton(
-          onPressed: () {},
-          child: Text('Discard', style: typography.lXL_default.copyWith(color: discardButtonColor)),
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF4F46E5), 
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          ),
-          child: Text('Resume', style: typography.lXL_default.copyWith(color: Colors.white)),
-        ),
-      ],
-    ),
-  ],
-)''',
+          code: () {
+            final buf = StringBuffer();
+            buf.writeln("// ── Get the typography object from theme ──");
+            buf.writeln("final typography = Theme.of(context).extension<Ux4gTypography>();");
+            buf.writeln("// typography exposes: tS_default, bS_default, bS_strong, lM_default, lXL_default, etc.");
+            buf.writeln("// Use ?. and ?? to handle null safely, or use ! if you're sure it's registered.");
+            buf.writeln();
+            buf.writeln("Column(");
+            buf.writeln("  mainAxisSize: MainAxisSize.min,");
+            buf.writeln("  children: [");
+            buf.writeln("    // 1. Accordion style (collapsed)");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
+            buf.writeln("      title: 'Income Certificate Application',");
+            buf.writeln("      titleStyle: typography?.tS_default?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln("      subtitleWidget: Column(");
+            buf.writeln("        crossAxisAlignment: CrossAxisAlignment.start,");
+            buf.writeln("        children: [");
+            buf.writeln("          const SizedBox(height: 8),");
+            buf.writeln("          Text('Step 3 of 5', style: typography?.lM_default),");
+            buf.writeln("          const SizedBox(height: 8),");
+            buf.writeln("          Text('Last saved: 10 Apr 2026', style: typography?.bS_default?.copyWith(color: const Color(0xFF374151))),");
+            buf.writeln("        ],");
+            buf.writeln("      ),");
+            buf.writeln("      trailingIcon: const Icon(Icons.keyboard_arrow_down),");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 2. Solid Warning Banner");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.warningSolid,");
+            buf.writeln("      title: 'Your draft expires tomorrow. Submit today',");
+            buf.writeln("      titleStyle: typography?.bS_strong,");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 3. Saving State");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
+            buf.writeln("      title: '',");
+            buf.writeln("      trailingIcon: Row(");
+            buf.writeln("        mainAxisSize: MainAxisSize.min,");
+            buf.writeln("        children: [");
+            buf.writeln("          const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),");
+            buf.writeln("          const SizedBox(width: 8),");
+            buf.writeln("          Text('Saving', style: typography?.bS_default),");
+            buf.writeln("        ],");
+            buf.writeln("      ),");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 4. Success Banner (Left Icon)");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.successLight,");
+            buf.writeln("      title: 'Draft saved successfully at 3:14 PM',");
+            buf.writeln("      titleStyle: typography?.bS_default,");
+            buf.writeln("      leadingIcon: const Icon(Icons.check_circle_outline),");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 5. Expiry Warning with Badge");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
+            buf.writeln("      title: 'Your draft expires in 5 days',");
+            buf.writeln("      titleStyle: typography?.bS_strong?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 6. Error Banner with Action");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.errorLight,");
+            buf.writeln("      title: 'Draft expired on 9 April\\\\n2026',");
+            buf.writeln("      titleStyle: typography?.bS_default?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln("      leadingIcon: const Icon(Icons.error_outline),");
+            buf.writeln("      trailingIcon: Text('Action', style: typography?.lXL_default?.copyWith(color: const Color(0xFF9A3412))),");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 7. Success Banner (Right Icon)");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.successLight,");
+            buf.writeln("      title: '',");
+            buf.writeln("      trailingIcon: Row(");
+            buf.writeln("        mainAxisSize: MainAxisSize.min,");
+            buf.writeln("        children: [");
+            buf.writeln("          const Icon(Icons.check_circle_outline, size: 18),");
+            buf.writeln("          const SizedBox(width: 4),");
+            buf.writeln("          Text('Saved 3:14 PM', style: typography?.bM_default),");
+            buf.writeln("        ],");
+            buf.writeln("      ),");
+            buf.writeln("    ),");
+            buf.writeln("    const SizedBox(height: 24),");
+            buf.writeln();
+            buf.writeln("    // 8. Accordion style (expanded)");
+            buf.writeln("    Ux4gStatusBanner(");
+            buf.writeln("      borderColor: Colors.transparent,");
+            buf.writeln("      variant: Ux4gBannerVariant.warningLight,");
+            buf.writeln("      title: 'Income Certificate Application',");
+            buf.writeln("      titleStyle: typography?.tS_default?.copyWith(color: const Color(0xFF111827)),");
+            buf.writeln("      subtitleWidget: Column(");
+            buf.writeln("        crossAxisAlignment: CrossAxisAlignment.start,");
+            buf.writeln("        children: [");
+            buf.writeln("          const SizedBox(height: 8),");
+            buf.writeln("          Text('Step 3 of 5', style: typography?.lM_default),");
+            buf.writeln("          const SizedBox(height: 8),");
+            buf.writeln("          Text('Last saved: 10 Apr 2026', style: typography?.bS_default?.copyWith(color: const Color(0xFF374151))),");
+            buf.writeln("        ],");
+            buf.writeln("      ),");
+            buf.writeln("      trailingIcon: const Icon(Icons.keyboard_arrow_up),");
+            buf.writeln("      actionsAlignment: WrapAlignment.spaceBetween,");
+            buf.writeln("      actions: [");
+            buf.writeln("        TextButton(");
+            buf.writeln("          onPressed: () {},");
+            buf.writeln("          child: Text('Discard', style: typography?.lXL_default?.copyWith(color: const Color(0xFFDB372D))),");
+            buf.writeln("        ),");
+            buf.writeln("        ElevatedButton(");
+            buf.writeln("          onPressed: () {},");
+            buf.writeln("          child: Text('Resume', style: typography?.lXL_default),");
+            buf.writeln("        ),");
+            buf.writeln("      ],");
+            buf.writeln("    ),");
+            buf.writeln("  ],");
+            buf.writeln(")");
+            return buf.toString();
+          }(),
           child: SizedBox(
             width: 480,
             child: SingleChildScrollView(
@@ -1080,13 +1075,36 @@ final statusBannerComponent = WidgetbookComponent(
         name: 'Ux4gStatusBanner — Custom Styling',
         description:
             'You can override the title and subtitle styles, including size, weight, and color.',
-        code: '''Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.infoLight,
-  title: 'Custom Title',
-  titleStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Colors.blue.shade900),
-  subtitle: 'Custom subtitle styling example.',
-  subtitleStyle: TextStyle(fontSize: 12, fontStyle: FontStyle.italic, color: Colors.black54),
-);''',
+        code: () {
+          final buf = StringBuffer();
+          buf.writeln("// ── Get the typography object from theme ──");
+          buf.writeln("final typography = Theme.of(context).extension<Ux4gTypography>();");
+          buf.writeln();
+          buf.writeln("// Option A: Use theme-aware typography styles");
+          buf.writeln("Ux4gStatusBanner(");
+          buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
+          buf.writeln("  title: 'Info Message',");
+          buf.writeln("  titleStyle: typography?.bM_strong,");
+          buf.writeln("  subtitle: 'Subtitle with theme-aware style.',");
+          buf.writeln("  subtitleStyle: typography?.bS_default?.copyWith(");
+          buf.writeln("    color: Colors.black54,");
+          buf.writeln("  ),");
+          buf.writeln(");");
+          buf.writeln();
+          buf.writeln("// Option B: Use a completely custom TextStyle");
+          buf.writeln("Ux4gStatusBanner(");
+          buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
+          buf.writeln("  title: 'Custom Title',");
+          buf.writeln("  titleStyle: TextStyle(");
+          buf.writeln("    fontSize: 18, fontWeight: FontWeight.w900, color: Colors.blue.shade900,");
+          buf.writeln("  ),");
+          buf.writeln("  subtitle: 'Custom subtitle styling example.',");
+          buf.writeln("  subtitleStyle: TextStyle(");
+          buf.writeln("    fontSize: 12, fontStyle: FontStyle.italic, color: Colors.black54,");
+          buf.writeln("  ),");
+          buf.writeln(");");
+          return buf.toString();
+        }(),
         child: SizedBox(
           width: 380,
           child: Ux4gStatusBanner(

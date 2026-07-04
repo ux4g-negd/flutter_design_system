@@ -3560,55 +3560,58 @@ final radioButtonComponent = WidgetbookComponent(
               labelBuilder: (s) => s.name,
             );
 
+            final descStr = description.isEmpty ? 'null' : "'$description'";
+            final codeStr = '''Column(
+  mainAxisSize: MainAxisSize.min,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Ux4gRadioButton(
+      value: 'Option A',
+      groupValue: selected,
+      onChanged: (val) => setState(() => selected = val!),
+      label: 'Option A',
+      description: $descStr,
+      size: Ux4gRadioButtonSize.${size.name},
+      isRequired: $isRequired,
+      enabled: $enabled,
+      descriptionVariant: Ux4gRadioButtonDescriptionVariant.${descriptionVariant.name},
+      status: Ux4gRadioButtonStatus.${status.name},
+    ),
+    const SizedBox(height: 8),
+    Ux4gRadioButton(
+      value: 'Option B',
+      groupValue: selected,
+      onChanged: (val) => setState(() => selected = val!),
+      label: 'Option B',
+      description: $descStr,
+      size: Ux4gRadioButtonSize.${size.name},
+      isRequired: $isRequired,
+      enabled: $enabled,
+      descriptionVariant: Ux4gRadioButtonDescriptionVariant.${descriptionVariant.name},
+      status: Ux4gRadioButtonStatus.${status.name},
+    ),
+    const SizedBox(height: 8),
+    Ux4gRadioButton(
+      value: 'Option C',
+      groupValue: selected,
+      onChanged: (val) => setState(() => selected = val!),
+      label: 'Option C',
+      description: $descStr,
+      size: Ux4gRadioButtonSize.${size.name},
+      isRequired: $isRequired,
+      enabled: $enabled,
+      descriptionVariant: Ux4gRadioButtonDescriptionVariant.${descriptionVariant.name},
+      status: Ux4gRadioButtonStatus.${status.name},
+    ),
+  ],
+)''';
+
             return ComponentDocs(
               name: 'Ux4gRadioButton',
               description:
                   'A single-selection radio button. Use a shared groupValue '
                   'and onChanged to create a mutually-exclusive group.',
-              code: () {
-                final buf = StringBuffer("Column(\n");
-                buf.write("  mainAxisSize: MainAxisSize.min,\n");
-                buf.write("  crossAxisAlignment: CrossAxisAlignment.start,\n");
-                buf.write(
-                    "  children: ['Option A', 'Option B', 'Option C'].map((v) {\n");
-                buf.write(
-                    "    return Padding(\n");
-                buf.write(
-                    "      padding: const EdgeInsets.symmetric(vertical: 4),\n");
-                buf.write("      child: Ux4gRadioButton(\n");
-                buf.write("        value: v,\n");
-                buf.write("        groupValue: selected,\n");
-                buf.write(
-                    "        onChanged: (val) => setState(() => selected = val!),\n");
-                buf.write("        label: v,\n");
-                if (description.isNotEmpty) {
-                  buf.write("        description: '$description',\n");
-                }
-                if (size != Ux4gRadioButtonSize.medium) {
-                  buf.write(
-                      "        size: Ux4gRadioButtonSize.${size.name},\n");
-                }
-                if (isRequired) {
-                  buf.write("        isRequired: true,\n");
-                }
-                if (!enabled) {
-                  buf.write("        enabled: false,\n");
-                }
-                if (descriptionVariant !=
-                    Ux4gRadioButtonDescriptionVariant.helper) {
-                  buf.write(
-                      "        descriptionVariant: Ux4gRadioButtonDescriptionVariant.${descriptionVariant.name},\n");
-                }
-                if (status != Ux4gRadioButtonStatus.defaultStatus) {
-                  buf.write(
-                      "        status: Ux4gRadioButtonStatus.${status.name},\n");
-                }
-                buf.write("      ),\n");
-                buf.write("    );\n");
-                buf.write("  }).toList(),\n");
-                buf.write(");\n");
-                return buf.toString();
-              }(),
+              code: codeStr,
               props: const [
                 PropRow(
                   name: 'value',
