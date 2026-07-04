@@ -184,54 +184,6 @@ class _ComponentDocsState extends State<ComponentDocs>
                             dividerColor: Colors.transparent,
                           ),
                         ),
-                        if (widget.code != null)
-                          Padding(
-                            padding: const EdgeInsets.only(right: 12),
-                            child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 300),
-                              child: _copied
-                                  ? Row(
-                                      key: const ValueKey('copied'),
-                                      children: [
-                                        Icon(
-                                          Icons.check_circle,
-                                          size: 16,
-                                          color: Colors.green.shade400,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          'Copied!',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.green.shade400,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  : TextButton.icon(
-                                      key: const ValueKey('copy'),
-                                      onPressed: _copy,
-                                      icon: const Icon(
-                                        Icons.copy_outlined,
-                                        size: 14,
-                                      ),
-                                      label: const Text(
-                                        'Copy',
-                                        style: TextStyle(fontSize: 12),
-                                      ),
-                                      style: TextButton.styleFrom(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                          vertical: 6,
-                                        ),
-                                        minimumSize: Size.zero,
-                                        tapTargetSize:
-                                            MaterialTapTargetSize.shrinkWrap,
-                                      ),
-                                    ),
-                            ),
-                          ),
                       ],
                     ),
                   ),
@@ -253,12 +205,11 @@ class _ComponentDocsState extends State<ComponentDocs>
                         // ── Code ────────────────────────────────────────
                         if (widget.code != null)
                           _CodePane(
-                            // Key tied to the code string forces a full
-                            // rebuild whenever the snippet changes (e.g.
-                            // when a knob switches the parent's code).
                             key: ValueKey(widget.code),
                             code: widget.code!,
                             isDark: isDark,
+                            onCopy: _copy,
+                            copied: _copied,
                           ),
 
                         // ── Props ────────────────────────────────────────
@@ -324,9 +275,17 @@ class _PreviewPane extends StatelessWidget {
 // ── Code pane ─────────────────────────────────────────────────────────────────
 
 class _CodePane extends StatelessWidget {
-  const _CodePane({super.key, required this.code, required this.isDark});
+  const _CodePane({
+    super.key,
+    required this.code,
+    required this.isDark,
+    required this.onCopy,
+    required this.copied,
+  });
   final String code;
   final bool isDark;
+  final VoidCallback onCopy;
+  final bool copied;
 
   @override
   Widget build(BuildContext context) {
@@ -338,18 +297,57 @@ class _CodePane extends StatelessWidget {
           bottomRight: Radius.circular(12),
         ),
       ),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: SelectableText(
-          code,
-          style: const TextStyle(
-            fontFamily: 'monospace',
-            fontSize: 13,
-            color: Color(0xFFE2E8F0),
-            height: 1.65,
-            letterSpacing: 0.3,
+      child: Stack(
+        children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: SelectableText(
+              code,
+              style: const TextStyle(
+                fontFamily: 'monospace',
+                fontSize: 13,
+                color: Color(0xFFE2E8F0),
+                height: 1.65,
+                letterSpacing: 0.3,
+              ),
+            ),
           ),
-        ),
+          Positioned(
+            top: 8,
+            right: 8,
+            child: GestureDetector(
+              onTap: onCopy,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  color: isDark
+                      ? const Color(0xFF2D3348)
+                      : const Color(0xFF374151),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      copied ? Icons.check : Icons.copy_outlined,
+                      size: 14,
+                      color: copied ? Colors.green.shade400 : const Color(0xFFE2E8F0),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      copied ? 'Copied!' : 'Copy',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: copied ? Colors.green.shade400 : const Color(0xFFE2E8F0),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
