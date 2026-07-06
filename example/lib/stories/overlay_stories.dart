@@ -1013,20 +1013,188 @@ final tooltipComponent = WidgetbookComponent(
           name: 'Ux4gTooltip — All Variants',
           description:
               'Visual reference for all directional placements and alignments.',
-          code: '''// Standard usage with all parameters
+          code: '''// ── Top Placements ──────────────────────────────────────────
+// Top Start
 Ux4gTooltip(
-  tooltipText: 'This is a standard tooltip.',
-  title: 'Information', // Optional (makes it a rich tooltip)
-  icon: Icons.info_outline, // Optional
-  placement: Ux4gTooltipPlacement.top, // 12 placement options
-  backgroundColor: Ux4gPalette.neutral700, // Default in light mode
-  contentColor: Ux4gPalette.neutral50, // Default in light mode
-  cornerRadius: Ux4gRadius.radius4, // Default: 4px
-  arrowWidth: 10.0,
-  arrowHeight: 6.0,
-  enableUserInput: true,
-  isPersistent: false,
-  child: Icon(Icons.help_outline),
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.topStart,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Top
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.top,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Top End
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.topEnd,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// ── Bottom Placements ───────────────────────────────────────
+// Bottom Start
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.bottomStart,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Bottom
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.bottom,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Bottom End
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.bottomEnd,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// ── Left Placements ─────────────────────────────────────────
+// Left Start
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.leftStart,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Left
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.left,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Left End
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.leftEnd,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// ── Right Placements ────────────────────────────────────────
+// Right Start
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.rightStart,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Right
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.right,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
+);
+
+// Right End
+Ux4gTooltip(
+  tooltipText: 'Tooltip',
+  icon: Icons.view_in_ar_outlined,
+  placement: Ux4gTooltipPlacement.rightEnd,
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.shade400),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: const Text('Hover Me'),
+  ),
 );''',
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
@@ -1070,6 +1238,17 @@ final richTooltipComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gRichTooltip',
         description: 'Rich tooltip with title, icon, and optional action.',
+        code: '''Ux4gRichTooltip(
+  tooltipText: 'This is a rich tooltip with a title, icon, and action.',
+  title: 'More Info',
+  icon: Icons.info_outline,
+  placement: Ux4gTooltipPlacement.bottom,
+  action: TextButton(
+    onPressed: () {},
+    child: const Text('Learn more'),
+  ),
+  child: const Icon(Icons.help_outline, size: 28),
+);''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
