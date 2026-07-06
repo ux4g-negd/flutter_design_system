@@ -510,12 +510,41 @@ Ux4gAppHeader(
       builder: (context) => ComponentDocs(
         name: 'Ux4gAppHeader — Variants',
         description: 'All three visual variants side by side.',
-        code: '''// Light
-Ux4gAppHeader(title: 'Light', variant: Ux4gAppHeaderVariant.light, ...);
-// Filled
-Ux4gAppHeader(title: 'Filled', variant: Ux4gAppHeaderVariant.filled, ...);
-// Outlined
-Ux4gAppHeader(title: 'Outlined', variant: Ux4gAppHeaderVariant.outlined, ...);''',
+        code: '''// Light Variant
+Ux4gAppHeader(
+  title: 'Light',
+  variant: Ux4gAppHeaderVariant.light,
+  actions: [
+    Ux4gAppHeaderAction(
+      icon: Icons.notifications_outlined,
+      onPressed: () {},
+    ),
+  ],
+);
+
+// Filled Variant
+Ux4gAppHeader(
+  title: 'Filled',
+  variant: Ux4gAppHeaderVariant.filled,
+  actions: [
+    Ux4gAppHeaderAction(
+      icon: Icons.notifications_outlined,
+      onPressed: () {},
+    ),
+  ],
+);
+
+// Outlined Variant
+Ux4gAppHeader(
+  title: 'Outlined',
+  variant: Ux4gAppHeaderVariant.outlined,
+  actions: [
+    Ux4gAppHeaderAction(
+      icon: Icons.notifications_outlined,
+      onPressed: () {},
+    ),
+  ],
+);''',
         center: false,
         child: Column(
           mainAxisSize: MainAxisSize.min,
