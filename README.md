@@ -24,14 +24,14 @@ Flutter package for the **UX4G design system**, providing beautifully crafted, r
 Run this command in your Flutter project:
 
 ```shell
-flutter pub add ux4g_flutter_design_system
+flutter pub add ux4g_flutter_components
 ```
 
 This will automatically add the following line to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ux4g_flutter_design_system: ^0.4.3
+  ux4g_flutter_components: ^0.4.3
 ```
 
 ### 2️⃣ Import it
@@ -39,7 +39,7 @@ dependencies:
 Now in your Dart code, you can use:
 
 ```dart
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 ```
 
 ---
@@ -50,7 +50,7 @@ Wrap your application with `Ux4gTheme` to ensure all components inherit the prop
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 void main() {
   runApp(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
@@ -84,7 +84,7 @@ final findServiceCentreComponent = WidgetbookComponent(
 const _findServiceCentreDefaultCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class FindServiceCentreScreen extends StatelessWidget {
   const FindServiceCentreScreen({super.key});
@@ -251,7 +251,7 @@ class FindServiceCentreScreen extends StatelessWidget {
 
 const _findServiceCentreCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — find service centre inside a white card on purple background.
 class FindServiceCentreCardScreen extends StatelessWidget {

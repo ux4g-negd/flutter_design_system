@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
@@ -50,7 +50,7 @@ final inputFieldComponent = WidgetbookComponent(
 
             final dynamicCode =
                 '''import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class Ux4gInputFieldDefaultExample extends StatefulWidget {
   const Ux4gInputFieldDefaultExample({super.key});
@@ -303,7 +303,7 @@ class _Ux4gInputFieldDefaultExampleState extends State<Ux4gInputFieldDefaultExam
         description:
             'Visual status variations: default, error, warning, success, and disabled.',
         code: '''import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class Ux4gInputFieldStatusesExample extends StatefulWidget {
   const Ux4gInputFieldStatusesExample({super.key});
@@ -436,7 +436,7 @@ class _Ux4gInputFieldStatusesExampleState extends State<Ux4gInputFieldStatusesEx
               description:
                   'Password type hides input and shows a visibility-toggle icon.',
               code: '''import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class Ux4gInputFieldPasswordExample extends StatefulWidget {
   const Ux4gInputFieldPasswordExample({super.key});
@@ -485,7 +485,7 @@ class _Ux4gInputFieldPasswordExampleState extends State<Ux4gInputFieldPasswordEx
               description:
                   'Leading and trailing icon slots inside the input border.',
               code: '''import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class Ux4gInputFieldIconsExample extends StatefulWidget {
   const Ux4gInputFieldIconsExample({super.key});
@@ -580,7 +580,7 @@ class _Ux4gInputFieldIconsExampleState extends State<Ux4gInputFieldIconsExample>
               description:
                   'Text decorations prepended or appended inside the field border.',
               code: '''import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class Ux4gInputFieldPrefixPostfixExample extends StatefulWidget {
   const Ux4gInputFieldPrefixPostfixExample({super.key});
@@ -654,7 +654,7 @@ class _Ux4gInputFieldPrefixPostfixExampleState extends State<Ux4gInputFieldPrefi
         description:
             'readOnly and enabled=false disable editing so user can only read the value; required shows an asterisk on the label.',
         code: '''import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class Ux4gInputFieldReadOnlyRequiredExample extends StatefulWidget {
   const Ux4gInputFieldReadOnlyRequiredExample({super.key});

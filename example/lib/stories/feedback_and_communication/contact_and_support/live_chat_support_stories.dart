@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
@@ -81,7 +81,7 @@ final liveChatSupportComponent = WidgetbookComponent(
 
 const _liveChatDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class LiveChatSupportScreen extends StatelessWidget {
   const LiveChatSupportScreen({super.key});
@@ -236,7 +236,7 @@ class LiveChatSupportScreen extends StatelessWidget {
 
 const _liveChatCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — live chat support inside a white card on purple background.
 class LiveChatSupportCardScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
@@ -81,7 +81,7 @@ final fileComplaintComponent = WidgetbookComponent(
 
 const _fileComplaintDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class FileComplaintScreen extends StatelessWidget {
   const FileComplaintScreen({super.key});
@@ -224,7 +224,7 @@ class FileComplaintScreen extends StatelessWidget {
 
 const _fileComplaintCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — file complaint form inside a white card on purple background.
 class FileComplaintCardScreen extends StatelessWidget {

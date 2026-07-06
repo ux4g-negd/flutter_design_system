@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
@@ -55,7 +55,7 @@ final translationUnavailableComponent = WidgetbookComponent(
 const _translationUnavailableDefaultCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class TranslationUnavailableScreen extends StatelessWidget {
   const TranslationUnavailableScreen({super.key});
@@ -190,7 +190,7 @@ class TranslationUnavailableScreen extends StatelessWidget {
 const _translationUnavailableCardCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — translation unavailable inside a white card on purple background.
 class TranslationUnavailableCardScreen extends StatelessWidget {

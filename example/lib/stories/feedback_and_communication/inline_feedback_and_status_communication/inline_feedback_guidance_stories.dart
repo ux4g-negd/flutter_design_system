@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../../widgets/component_docs.dart';
 
 final inlineFeedbackGuidanceComponent = WidgetbookComponent(
@@ -42,7 +42,7 @@ final inlineFeedbackGuidanceComponent = WidgetbookComponent(
 
 const _inlineFeedbackGuidanceCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackGuidanceScreen extends StatelessWidget {
   const InlineFeedbackGuidanceScreen({super.key});
@@ -205,7 +205,7 @@ class InlineFeedbackGuidanceScreen extends StatelessWidget {
 const _inlineFeedbackGuidanceCardCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackGuidanceCardScreen extends StatelessWidget {
   const InlineFeedbackGuidanceCardScreen({super.key});

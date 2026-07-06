@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  ux4g_flutter_design_system:
+  ux4g_flutter_components:
     path: ../
 
   # The following adds the Cupertino Icons font to your application.

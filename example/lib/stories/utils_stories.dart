@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:widgetbook/widgetbook.dart';
 import '../theme_notifier.dart';
 
@@ -66,13 +66,13 @@ final quickGuideComponent = WidgetbookComponent(
         codeBlocks: const [
           _CodeBlock(
             label: 'Terminal',
-            code: r'$ flutter pub add ux4g_flutter_design_system',
+            code: r'$ flutter pub add ux4g_flutter_components',
           ),
           _CodeBlock(
             label:
                 "This will add a line like this to your package's pubspec.yaml\n"
                 "(and run an implicit flutter pub get):",
-            code: 'dependencies:\n  ux4g_flutter_design_system: ^0.3.0',
+            code: 'dependencies:\n  ux4g_flutter_components: ^0.3.0',
           ),
         ],
         trailingSections: const [
@@ -85,12 +85,12 @@ final quickGuideComponent = WidgetbookComponent(
           _CodeBlock(
             label: '',
             code:
-                "import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';",
+                "import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';",
           ),
           _CodeBlock(
             label: 'Wrap your app with Ux4gTheme',
             code:
-                "import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';\n\nvoid main() {\n  runApp(\n    Ux4gTheme(\n      child: MaterialApp(\n        home: MyHomePage(),\n      ),\n    ),\n  );\n}",
+                "import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';\n\nvoid main() {\n  runApp(\n    Ux4gTheme(\n      child: MaterialApp(\n        home: MyHomePage(),\n      ),\n    ),\n  );\n}",
           ),
           _CodeBlock(
             label: 'Use any component',
@@ -682,7 +682,7 @@ final themeColorComponent = WidgetbookComponent(
           _CodeBlock(
             label: 'Dart — Ux4gPalette',
             code:
-                '''import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+                '''import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 // Fixed palette shades
 Container(color: Ux4gPalette.primary500)       // #6A4EFF  — brand purple
@@ -837,7 +837,7 @@ final dimensionsSpacingComponent = WidgetbookComponent(
           _CodeBlock(
             label: 'Dart — Ux4gSpace',
             code:
-                '''import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+                '''import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 // Padding
 Padding(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
@@ -203,7 +203,7 @@ class _ProgressStepList extends StatelessWidget {
 
 const _resumeApplicationMissingInfoDefaultCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ResumeApplicationMissingInfoScreen extends StatelessWidget {
@@ -309,7 +309,7 @@ class ResumeApplicationMissingInfoScreen extends StatelessWidget {
 
 const _resumeApplicationMissingInfoCardCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ResumeApplicationMissingInfoCardScreen extends StatelessWidget {

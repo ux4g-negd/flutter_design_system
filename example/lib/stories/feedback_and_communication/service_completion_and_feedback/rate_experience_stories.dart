@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 final rateExperienceComponent = WidgetbookComponent(
@@ -40,7 +40,7 @@ final rateExperienceComponent = WidgetbookComponent(
 
 const _rateExperienceDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class RateExperienceScreen extends StatefulWidget {
   const RateExperienceScreen({super.key});
@@ -235,7 +235,7 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
 
 const _rateExperienceCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class RateExperienceCardScreen extends StatefulWidget {
   const RateExperienceCardScreen({super.key});

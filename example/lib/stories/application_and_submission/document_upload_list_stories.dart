@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
@@ -387,7 +387,7 @@ class _DocumentList extends StatelessWidget {
 
 const _documentUploadListDefaultCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DocumentUploadListScreen extends StatelessWidget {
@@ -715,7 +715,7 @@ class DocumentUploadListScreen extends StatelessWidget {
 """;
 
 const _documentUploadListCardCode = r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DocumentUploadListCardScreen extends StatelessWidget {

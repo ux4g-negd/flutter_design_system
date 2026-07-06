@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:widgetbook/widgetbook.dart';
 import '../widgets/component_docs.dart';
 
@@ -25661,7 +25661,7 @@ class _AppStatusTrackerCardMockup extends StatelessWidget {
 const _astDefaultCode = r'''
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class ApplicationStatusTrackerDefault extends StatelessWidget {
   const ApplicationStatusTrackerDefault({super.key, this.status = 'Under Review'});
@@ -25893,7 +25893,7 @@ class ApplicationStatusTrackerDefault extends StatelessWidget {
 const _astCardCode = r'''
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class ApplicationStatusTrackerCardStyle extends StatelessWidget {
   const ApplicationStatusTrackerCardStyle({super.key, this.status = 'Under Review'});

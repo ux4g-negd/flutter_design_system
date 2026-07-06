@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../../widgets/component_docs.dart';
 
 final inlineFeedbackNoteComponent = WidgetbookComponent(
@@ -38,7 +38,7 @@ final inlineFeedbackNoteComponent = WidgetbookComponent(
 
 const _noteDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class NoteToCitizenScreen extends StatelessWidget {
   const NoteToCitizenScreen({super.key});
@@ -182,7 +182,7 @@ class NoteToCitizenScreen extends StatelessWidget {
 
 const _noteCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class NoteToCitizenCardScreen extends StatelessWidget {
   const NoteToCitizenCardScreen({super.key});

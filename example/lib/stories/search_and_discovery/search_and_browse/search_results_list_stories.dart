@@ -2,7 +2,7 @@ import 'dart:ui' show PointerDeviceKind;
 
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 final searchResultsListComponent = WidgetbookComponent(
@@ -33,7 +33,7 @@ final searchResultsListComponent = WidgetbookComponent(
 const _searchResultsListCode = r"""import 'dart:ui' show PointerDeviceKind;
 
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class SearchResultsListScreen extends StatefulWidget {
   const SearchResultsListScreen({super.key});

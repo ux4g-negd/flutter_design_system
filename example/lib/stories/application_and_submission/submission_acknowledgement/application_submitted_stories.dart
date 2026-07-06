@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
@@ -214,7 +214,7 @@ class _ActionButtons extends StatelessWidget {
 
 const _applicationSubmittedDefaultCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ApplicationSubmittedScreen extends StatelessWidget {
@@ -410,7 +410,7 @@ class ApplicationSubmittedScreen extends StatelessWidget {
 
 const _applicationSubmittedCardCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ApplicationSubmittedCardScreen extends StatelessWidget {

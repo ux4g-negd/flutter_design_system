@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/component_docs.dart';
 
@@ -115,7 +115,7 @@ class _PhoneFrame extends StatelessWidget {
 
 const _saveAndResumeDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SaveAndResumeScreen extends StatelessWidget {
@@ -241,7 +241,7 @@ class SaveAndResumeScreen extends StatelessWidget {
 
 const _saveAndResumeCardCode = r"""import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SaveAndResumeCardScreen extends StatelessWidget {

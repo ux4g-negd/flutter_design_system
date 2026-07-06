@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Component ────────────────────────────────────────────────────────────
@@ -49,7 +49,7 @@ final serviceCompletionComponent = WidgetbookComponent(
 const _serviceCompletionDefaultCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class ServiceCompletionScreen extends StatelessWidget {
   const ServiceCompletionScreen({super.key});
@@ -280,7 +280,7 @@ class ServiceCompletionScreen extends StatelessWidget {
 
 const _serviceCompletionCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — content inside a white card on purple background.
 class ServiceCompletionCardScreen extends StatelessWidget {

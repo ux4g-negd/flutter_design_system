@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
@@ -49,7 +49,7 @@ final journeyProgressIndicatorComponent = WidgetbookComponent(
 
 const _journeyProgressIndicatorDefaultCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class JourneyProgressIndicatorScreen extends StatefulWidget {
@@ -208,7 +208,7 @@ height: 48, text: 'Back',
 
 const _journeyProgressIndicatorCardCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class JourneyProgressIndicatorCardScreen extends StatefulWidget {

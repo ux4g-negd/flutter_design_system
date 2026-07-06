@@ -70,11 +70,11 @@ class Ux4gFeedbackFormCsat extends StatefulWidget {
     this.successMessage =
         'Thank you for your feedback. This helps improve government services.',
     this.ratingFaceAssets = const [
-      'packages/ux4g_flutter_design_system/assets/icons/ic_face_0.svg',
-      'packages/ux4g_flutter_design_system/assets/icons/ic_face_1.svg',
-      'packages/ux4g_flutter_design_system/assets/icons/ic_face_2.svg',
-      'packages/ux4g_flutter_design_system/assets/icons/ic_face_3.svg',
-      'packages/ux4g_flutter_design_system/assets/icons/ic_face_4.svg',
+      'packages/ux4g_flutter_components/assets/icons/ic_face_0.svg',
+      'packages/ux4g_flutter_components/assets/icons/ic_face_1.svg',
+      'packages/ux4g_flutter_components/assets/icons/ic_face_2.svg',
+      'packages/ux4g_flutter_components/assets/icons/ic_face_3.svg',
+      'packages/ux4g_flutter_components/assets/icons/ic_face_4.svg',
     ],
     this.ratingIcons = const [
       Icons.sentiment_very_dissatisfied,
@@ -278,7 +278,7 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
                             child: widget.useSvgFaces && index < widget.ratingFaceAssets.length
                                 ? SvgPicture.asset(
                                     widget.ratingFaceAssets[index],
-                                    package: 'ux4g_flutter_design_system',
+                                    package: 'ux4g_flutter_components',
                                     colorFilter: ColorFilter.mode(
                                       iconColor,
                                       BlendMode.srcIn,

@@ -19,29 +19,29 @@ class Ux4gIcons {
   static const IconData arrowRight = Icons.chevron_right;
 
   // Asset Package Name
-  static const String assetPackage = 'ux4g_flutter_design_system';
+  static const String assetPackage = 'ux4g_flutter_components';
 
   // SVG and Image Asset Paths
   static const String fillRevInfo =
-      'packages/ux4g_flutter_design_system/assets/icons/fill_rev-info.svg';
+      'packages/ux4g_flutter_components/assets/icons/fill_rev-info.svg';
   static const String lockFill =
-      'packages/ux4g_flutter_design_system/assets/icons/lock_fill.svg';
+      'packages/ux4g_flutter_components/assets/icons/lock_fill.svg';
   static const String warningFill =
-      'packages/ux4g_flutter_design_system/assets/icons/warning_fill.svg';
+      'packages/ux4g_flutter_components/assets/icons/warning_fill.svg';
   static const String nationalEmblem =
-      'packages/ux4g_flutter_design_system/assets/icons/national_amblam_logo.svg';
+      'packages/ux4g_flutter_components/assets/icons/national_amblam_logo.svg';
   static const String union =
-      'packages/ux4g_flutter_design_system/assets/icons/Union.svg';
+      'packages/ux4g_flutter_components/assets/icons/Union.svg';
   static const String star =
-      'packages/ux4g_flutter_design_system/assets/icons/star.svg';
+      'packages/ux4g_flutter_components/assets/icons/star.svg';
   static const String verification =
-      'packages/ux4g_flutter_design_system/assets/icons/verification.svg';
+      'packages/ux4g_flutter_components/assets/icons/verification.svg';
   static const String digitalIndiaLogoPng =
-      'packages/ux4g_flutter_design_system/assets/images/digital_india_logo.png';
+      'packages/ux4g_flutter_components/assets/images/digital_india_logo.png';
   static const String digitalIndiaLogoSvg =
-      'packages/ux4g_flutter_design_system/assets/icons/digital_india_logo.svg';
+      'packages/ux4g_flutter_components/assets/icons/digital_india_logo.svg';
   static const String liveChat =
-      'packages/ux4g_flutter_design_system/assets/icons/liveChat_ic.svg';
+      'packages/ux4g_flutter_components/assets/icons/liveChat_ic.svg';
   static const String inbox =
-      'packages/ux4g_flutter_design_system/assets/icons/inbox.svg';
+      'packages/ux4g_flutter_components/assets/icons/inbox.svg';
 }

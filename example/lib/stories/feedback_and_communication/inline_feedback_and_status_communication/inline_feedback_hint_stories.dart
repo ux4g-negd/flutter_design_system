@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../../widgets/component_docs.dart';
 
 final inlineFeedbackHintComponent = WidgetbookComponent(
@@ -39,7 +39,7 @@ final inlineFeedbackHintComponent = WidgetbookComponent(
 
 const _inlineFeedbackHintCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackHintScreen extends StatefulWidget {
   const InlineFeedbackHintScreen({super.key});
@@ -159,7 +159,7 @@ class _InlineFeedbackHintScreenState extends State<InlineFeedbackHintScreen> {
 
 const _inlineFeedbackHintCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackHintCardScreen extends StatefulWidget {
   const InlineFeedbackHintCardScreen({super.key});

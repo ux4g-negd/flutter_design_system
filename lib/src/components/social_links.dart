@@ -49,7 +49,7 @@ enum SocialMediaIcon {
 
   String getAssetPath({bool useColor = false}) {
     final filename = useColor ? colorFilename : whiteFilename;
-    return 'packages/ux4g_flutter_design_system/assets/icons/$filename';
+    return 'packages/ux4g_flutter_components/assets/icons/$filename';
   }
 }
 

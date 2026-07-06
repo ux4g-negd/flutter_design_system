@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class EmptyStateShowcase extends StatelessWidget {
   const EmptyStateShowcase({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/component_docs.dart';
 
@@ -111,7 +111,7 @@ class _PhoneFrame extends StatelessWidget {
 
 const _documentUploadProgressDefaultCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DocumentUploadProgressScreen extends StatelessWidget {
@@ -403,7 +403,7 @@ class _DocumentItem extends StatelessWidget {
 
 const _documentUploadProgressCardCode =
     r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DocumentUploadProgressCardScreen extends StatelessWidget {

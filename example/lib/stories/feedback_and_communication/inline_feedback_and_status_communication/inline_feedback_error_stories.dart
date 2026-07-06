@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../../widgets/component_docs.dart';
 
 final inlineFeedbackErrorComponent = WidgetbookComponent(
@@ -42,7 +42,7 @@ final inlineFeedbackErrorComponent = WidgetbookComponent(
 
 const _inlineFeedbackErrorCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackErrorScreen extends StatelessWidget {
   const InlineFeedbackErrorScreen({super.key});
@@ -157,7 +157,7 @@ class InlineFeedbackErrorScreen extends StatelessWidget {
 
 const _inlineFeedbackErrorCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackErrorCardScreen extends StatelessWidget {
   const InlineFeedbackErrorCardScreen({super.key});

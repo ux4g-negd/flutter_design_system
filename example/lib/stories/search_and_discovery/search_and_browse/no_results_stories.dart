@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 final noResultsComponent = WidgetbookComponent(
@@ -29,7 +29,7 @@ final noResultsComponent = WidgetbookComponent(
 // ───────────────────────────────────────────────────────────────────────
 
 const _noResultsCode = r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class NoResultsScreen extends StatefulWidget {
   const NoResultsScreen({super.key});

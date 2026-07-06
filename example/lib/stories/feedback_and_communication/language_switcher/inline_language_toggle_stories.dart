@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
@@ -55,7 +55,7 @@ final inlineLanguageToggleComponent = WidgetbookComponent(
 const _inlineLanguageToggleDefaultCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineLanguageToggleScreen extends StatefulWidget {
   const InlineLanguageToggleScreen({super.key});
@@ -149,7 +149,7 @@ class _InlineLanguageToggleScreenState extends State<InlineLanguageToggleScreen>
 const _inlineLanguageToggleCardCode =
     r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — inline language toggle inside a white card on purple background.
 class InlineLanguageToggleCardScreen extends StatefulWidget {

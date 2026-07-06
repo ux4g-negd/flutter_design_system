@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:widgetbook/widgetbook.dart';
 import '../../../widgets/component_docs.dart';
 
@@ -687,7 +687,7 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
 const _eligibilityCheckCode =
     r'''// Eligibility Check Wizard – Landing Screen (Flat Layout)
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -844,7 +844,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 const _eligibilityCheckCardCode =
     r'''// Eligibility Check Wizard – Landing Screen (Card Style Layout)
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -1749,7 +1749,7 @@ class _EligibilityQuestionCardMockupState
 
 const _eligibilityQuestionCode = r'''// Eligibility Question Step – Flat Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -1931,7 +1931,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 const _eligibilityQuestionCardCode =
     r'''// Eligibility Question Step – Card Style Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -2844,7 +2844,7 @@ Widget _buildGradientProgress(BuildContext context, double value) {
 
 const _eligibilitySuccessCode = r'''// Eligibility Success Step – Flat Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -3012,7 +3012,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 const _eligibilitySuccessCardCode =
     r'''// Eligibility Success Step – Card Style Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -3929,7 +3929,7 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
 
 const _eligibilityFailureCode = r'''// Eligibility Failure Step – Flat Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -4095,7 +4095,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 const _eligibilityFailureCardCode =
     r'''// Eligibility Failure Step – Card Style Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -5019,7 +5019,7 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
 
 const _eligibilityWarningCode = r'''// Eligibility Warning Step – Flat Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -5185,7 +5185,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 const _eligibilityWarningCardCode =
     r'''// Eligibility Warning Step – Card Style Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -6148,7 +6148,7 @@ class _EligibilityFinalQuestionCardMockupState
 const _eligibilityFinalQuestionCode =
     r'''// Eligibility Final Question Step – Flat Layout
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {
@@ -6367,7 +6367,7 @@ const _eligibilityFinalQuestionCardCode =
 // Follow the structure of EligibilityQuestionCardMockup
 
 import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EligibilityWizardScreen extends StatelessWidget {

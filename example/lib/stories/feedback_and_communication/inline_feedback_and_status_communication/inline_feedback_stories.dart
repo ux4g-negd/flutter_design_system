@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../../widgets/component_docs.dart';
 
 final inlineFeedbackComponent = WidgetbookComponent(
@@ -46,7 +46,7 @@ enum _CardVariant { defaultStyle, cardStyle }
 
 const _inlineFeedbackDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackScreen extends StatelessWidget {
   const InlineFeedbackScreen({super.key});
@@ -183,7 +183,7 @@ class InlineFeedbackScreen extends StatelessWidget {
 
 const _inlineFeedbackCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ux4g_flutter_design_system/ux4g_flutter_design_system.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 class InlineFeedbackCardScreen extends StatelessWidget {
   const InlineFeedbackCardScreen({super.key});
