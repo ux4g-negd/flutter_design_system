@@ -14,17 +14,24 @@ final modalComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gModal — Trigger',
         description: 'Click the button below to see the actual modal dialog.',
-        code: '''// Show via helper
-Ux4gModal.show(
-  context,
-  modal: Ux4gModal(
-    headerTitle: 'Confirmation',
-    bodyText: 'Do you want to proceed with this action?',
-    footerButtons: Ux4gModalFooterButtons.twoButtons,
-    primaryButtonText: 'Proceed',
-    secondaryButtonText: 'Cancel',
-    onDismiss: () => Navigator.of(context, rootNavigator: true).pop(),
-  ),
+        code: '''Ux4gButton(
+  text: 'Show Modal',
+  onPressed: () {
+    Ux4gModal.show(
+      context,
+      modal: Ux4gModal(
+        headerTitle: 'Confirmation',
+        bodyText: 'This is a live interactive modal triggered by a button click.',
+        alignment: Ux4gModalAlignment.leftAligned,
+        footerButtons: Ux4gModalFooterButtons.twoButtons,
+        primaryButtonText: 'Confirm',
+        secondaryButtonText: 'Cancel',
+        onPrimaryClick: () => Navigator.of(context, rootNavigator: true).pop(),
+        onSecondaryClick: () => Navigator.of(context, rootNavigator: true).pop(),
+        onDismiss: () => Navigator.of(context, rootNavigator: true).pop(),
+      ),
+    );
+  },
 );''',
         child: Ux4gButton(
           text: 'Show Modal',
@@ -243,7 +250,7 @@ Ux4gModal(
   descriptionText: 'Write description here',
   showSubtitle: true,
   subtitleText: 'Subtitle',
-  bodyText: 'A modal is a design element...',
+  bodyText: 'A modal is a design element that pops up over the main content of a webpage. It demands the user\\'s attention by temporarily disabling interaction with the rest of the page until the user addresses the content within the modal.',
   primaryButtonText: 'Save',
   secondaryButtonText: 'Close',
   onDismiss: () {},
@@ -326,7 +333,8 @@ Ux4gModal(
           name: 'Ux4gModal — Hero Image Variants',
           description:
               'Showcases permutations of hero images with different alignments and button intents.',
-          code: '''Ux4gModal(
+          code: '''// 1. Left Aligned, Gradient Header
+Ux4gModal(
   headerImageContent: Container(
     decoration: const BoxDecoration(
       gradient: LinearGradient(
@@ -339,18 +347,87 @@ Ux4gModal(
   headerImageStyle: Ux4gModalHeaderImage.fullBleed,
   leadingItem: Ux4gModalLeadingItem.icon,
   leadingIcon: Icons.category_outlined,
-  // Use red destructive colors if needed:
-  // leadingIconTint: const Color(0xFFD32F2F),
-  // isDestructive: true,
-  alignment: Ux4gModalAlignment.leftAligned, // or centered
+  alignment: Ux4gModalAlignment.leftAligned,
   headerTitle: 'Header',
   showDescription: true,
   descriptionText: 'Write description here',
   showSubtitle: true,
   subtitleText: 'Subtitle',
-  bodyText: 'A modal is a design element that appears over the main content...',
+  bodyText: 'A modal is a design element that appears over the main content of a webpage, capturing the user\\'s attention by disabling interaction with the rest of the page until the modal is addressed.',
   footerButtons: Ux4gModalFooterButtons.twoButtons,
-  footerAlign: Ux4gModalFooterAlign.right, // or center
+  footerAlign: Ux4gModalFooterAlign.right,
+  primaryButtonText: 'Button',
+  secondaryButtonText: 'Button',
+  onDismiss: () {},
+);
+
+// 2. Left Aligned, Image Header (Destructive)
+Ux4gModal(
+  headerImageUrl: 'https://picsum.photos/seed/promo1/600/300',
+  headerImageStyle: Ux4gModalHeaderImage.fullBleed,
+  leadingItem: Ux4gModalLeadingItem.icon,
+  leadingIcon: Icons.category_outlined,
+  leadingIconTint: const Color(0xFFD32F2F),
+  alignment: Ux4gModalAlignment.leftAligned,
+  headerTitle: 'Header',
+  showDescription: true,
+  descriptionText: 'Write description here',
+  showSubtitle: true,
+  subtitleText: 'Subtitle',
+  bodyText: 'A modal is a design element that appears over the main content of a webpage, capturing the user\\'s attention by disabling interaction with the rest of the page until the modal is addressed.',
+  footerButtons: Ux4gModalFooterButtons.twoButtons,
+  footerAlign: Ux4gModalFooterAlign.right,
+  isDestructive: true,
+  primaryButtonText: 'Button',
+  secondaryButtonText: 'Button',
+  onDismiss: () {},
+);
+
+// 3. Centered, Image Header
+Ux4gModal(
+  headerImageUrl: 'https://picsum.photos/seed/promo2/600/300',
+  headerImageStyle: Ux4gModalHeaderImage.fullBleed,
+  leadingItem: Ux4gModalLeadingItem.icon,
+  leadingIcon: Icons.category_outlined,
+  alignment: Ux4gModalAlignment.centered,
+  headerTitle: 'Header',
+  showDescription: true,
+  descriptionText: 'Write description here',
+  showSubtitle: true,
+  subtitleText: 'Subtitle',
+  bodyText: 'A modal is a design element that appears over the main content of a webpage, capturing the user\\'s attention by disabling interaction with the rest of the page until the modal is addressed.',
+  footerButtons: Ux4gModalFooterButtons.twoButtons,
+  footerAlign: Ux4gModalFooterAlign.center,
+  primaryButtonText: 'Button',
+  secondaryButtonText: 'Button',
+  onDismiss: () {},
+);
+
+// 4. Centered, Gradient Header (Destructive)
+Ux4gModal(
+  headerImageContent: Container(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+    ),
+  ),
+  headerImageStyle: Ux4gModalHeaderImage.fullBleed,
+  leadingItem: Ux4gModalLeadingItem.icon,
+  leadingIcon: Icons.category_outlined,
+  leadingIconTint: const Color(0xFFD32F2F),
+  alignment: Ux4gModalAlignment.centered,
+  headerTitle: 'Header',
+  showDescription: true,
+  descriptionText: 'Write description here',
+  showSubtitle: true,
+  subtitleText: 'Subtitle',
+  bodyText: 'A modal is a design element that appears over the main content of a webpage, capturing the user\\'s attention by disabling interaction with the rest of the page until the modal is addressed.',
+  footerButtons: Ux4gModalFooterButtons.twoButtons,
+  footerAlign: Ux4gModalFooterAlign.center,
+  isDestructive: true,
   primaryButtonText: 'Button',
   secondaryButtonText: 'Button',
   onDismiss: () {},
@@ -383,6 +460,11 @@ Ux4gModal(
       builder: (context) => ComponentDocs(
         name: 'Ux4gModal — All Props',
         description: 'Complete technical reference with a full visual example.',
+        code: '''Ux4gModal(
+  headerTitle: 'Full Preview Modal',
+  bodyText: 'This modal is shown here so you can see the visual effect while browsing the Props tab.',
+  onDismiss: () {},
+);''',
         props: const [
           PropRow(
             name: 'onDismiss',
@@ -484,11 +566,33 @@ final bottomSheetComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gBottomSheet — Trigger',
         description: 'Click the button to open the bottom sheet.',
-        code: '''Ux4gBottomSheet.show(
-  context,
-  title: 'Settings',
-  isDraggable: true,
-  content: MyContent(),
+        code: '''Ux4gButton(
+  text: 'Open Bottom Sheet',
+  variant: Ux4gButtonVariant.outline,
+  onPressed: () {
+    Ux4gBottomSheet.show(
+      context,
+      title: 'Filter Options',
+      description: 'Choose one of the sorting methods below.',
+      isDraggable: true,
+      footerType: Ux4gCardFooterType.primaryAndSecondary,
+      onPrimaryClick: () => Navigator.of(context, rootNavigator: true).pop(),
+      onSecondaryClick: () => Navigator.of(context, rootNavigator: true).pop(),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            leading: const Icon(Icons.sort),
+            title: const Text('Sort by date'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.filter_list),
+            title: const Text('Filter by category'),
+          ),
+        ],
+      ),
+    );
+  },
 );''',
         child: Ux4gButton(
           text: 'Open Bottom Sheet',
