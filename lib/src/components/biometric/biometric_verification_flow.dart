@@ -151,13 +151,26 @@ class _BiometricVerificationFlowState extends State<BiometricVerificationFlow>
 
     return BiometricTheme(
       data: themeData,
-      child: ListenableBuilder(
-        listenable: _controller,
-        builder: (context, _) {
-          return AnimatedSwitcher(
-            duration: themeData.animationDuration,
-            child: _buildCurrentScreen(),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final content = ListenableBuilder(
+            listenable: _controller,
+            builder: (context, _) {
+              return AnimatedSwitcher(
+                duration: themeData.animationDuration,
+                child: _buildCurrentScreen(),
+              );
+            },
           );
+
+          if (constraints.maxHeight == double.infinity) {
+            final screenHeight = MediaQuery.of(context).size.height;
+            return SizedBox(
+              height: screenHeight > 200 ? screenHeight * 0.85 : 650,
+              child: content,
+            );
+          }
+          return content;
         },
       ),
     );

@@ -136,11 +136,14 @@ class _DeviceCheckScreenState extends State<DeviceCheckScreen> {
                       children: [
                         const Icon(Icons.check, size: 18),
                         const SizedBox(width: 8),
-                        Text(
-                          'All systems ready — proceed to verify',
-                          style: theme.typography.caption.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                        Flexible(
+                          child: Text(
+                            'All systems ready — proceed to verify',
+                            style: theme.typography.caption.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],

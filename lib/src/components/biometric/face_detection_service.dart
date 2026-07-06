@@ -7,6 +7,7 @@ import 'biometric_state.dart';
 class FaceDetectionService {
   late final FaceDetector _faceDetector;
   bool _isBusy = false;
+  bool _isDisposed = false;
   DateTime _lastProcessedTime = DateTime.now();
 
   // Throttle: process at most every N milliseconds.
@@ -53,7 +54,7 @@ class FaceDetectionService {
     CameraDescription camera,
     Size previewSize,
   ) async {
-    if (_isBusy) return null;
+    if (_isDisposed || _isBusy) return null;
 
     final now = DateTime.now();
     if (now.difference(_lastProcessedTime).inMilliseconds < _throttleMs) {
@@ -65,12 +66,16 @@ class FaceDetectionService {
 
     try {
       final inputImage = _buildInputImage(image, camera);
-      if (inputImage == null) {
+      if (inputImage == null || _isDisposed) {
         _isBusy = false;
         return null;
       }
 
       final faces = await _faceDetector.processImage(inputImage);
+      if (_isDisposed) {
+        _isBusy = false;
+        return null;
+      }
       final result = _analyze(faces, previewSize);
       _isBusy = false;
       return result;
@@ -247,7 +252,16 @@ class FaceDetectionService {
   }
 
   Future<void> dispose() async {
-    await _faceDetector.close();
+    if (_isDisposed) return;
+    _isDisposed = true;
+    final startTime = DateTime.now();
+    while (_isBusy &&
+        DateTime.now().difference(startTime).inMilliseconds < 300) {
+      await Future.delayed(const Duration(milliseconds: 10));
+    }
+    try {
+      await _faceDetector.close();
+    } catch (_) {}
   }
 }
 

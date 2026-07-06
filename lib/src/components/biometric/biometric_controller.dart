@@ -29,6 +29,7 @@ class BiometricController extends ChangeNotifier {
   final Duration lockoutDuration;
 
   // ── State ──
+  bool _isDisposed = false;
   BiometricFlowState _state = BiometricFlowState.initial;
   List<DeviceCheckItem> _deviceChecks = [];
   FaceAnalysisResult? _lastAnalysis;
@@ -275,10 +276,12 @@ class BiometricController extends ChangeNotifier {
   }
 
   void _startProcessing() {
+    if (_isDisposed) return;
     _setState(BiometricFlowState.detectingFace);
     final camera = _cameraService.controller!.description;
 
     _cameraService.startImageStream((image) {
+      if (_isDisposed) return;
       _processFrame(image, camera);
     });
   }
@@ -287,6 +290,7 @@ class BiometricController extends ChangeNotifier {
     CameraImage image,
     CameraDescription camera,
   ) async {
+    if (_isDisposed) return;
     // Don't process if we're past the detection phase
     if (_state == BiometricFlowState.capturingImage ||
         _state == BiometricFlowState.processingVerification ||
@@ -497,6 +501,7 @@ class BiometricController extends ChangeNotifier {
 
   @override
   void dispose() {
+    _isDisposed = true;
     _cameraService.dispose();
     _faceDetectionService.dispose();
     super.dispose();

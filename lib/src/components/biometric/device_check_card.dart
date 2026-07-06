@@ -67,11 +67,14 @@ class DeviceCheckCard extends StatelessWidget {
         children: [
           Icon(Icons.check, size: 16, color: colors.success),
           const SizedBox(width: 4),
-          Text(
-            item.passedText,
-            style: theme.typography.caption.copyWith(
-              color: colors.success,
-              fontWeight: FontWeight.w500,
+          Flexible(
+            child: Text(
+              item.passedText,
+              style: theme.typography.caption.copyWith(
+                color: colors.success,
+                fontWeight: FontWeight.w500,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
@@ -81,11 +84,14 @@ class DeviceCheckCard extends StatelessWidget {
         children: [
           Icon(Icons.error_outline, size: 16, color: colors.error),
           const SizedBox(width: 4),
-          Text(
-            item.failedText,
-            style: theme.typography.caption.copyWith(
-              color: colors.error,
-              fontWeight: FontWeight.w500,
+          Flexible(
+            child: Text(
+              item.failedText,
+              style: theme.typography.caption.copyWith(
+                color: colors.error,
+                fontWeight: FontWeight.w500,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

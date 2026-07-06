@@ -8,15 +8,18 @@ class CameraService {
   List<CameraDescription>? _cameras;
   bool _isInitialized = false;
   bool _isStreaming = false;
+  bool _isDisposed = false;
 
   CameraController? get controller => _controller;
-  bool get isInitialized => _isInitialized;
-  bool get isStreaming => _isStreaming;
+  bool get isInitialized => _isInitialized && !_isDisposed;
+  bool get isStreaming => _isStreaming && !_isDisposed;
+  bool get isDisposed => _isDisposed;
 
   /// Discover available cameras and find the front camera.
   Future<CameraDescription?> _getFrontCamera() async {
+    if (_isDisposed) return null;
     _cameras ??= await availableCameras();
-    if (_cameras == null || _cameras!.isEmpty) return null;
+    if (_cameras == null || _cameras!.isEmpty || _isDisposed) return null;
     try {
       return _cameras!.firstWhere(
         (c) => c.lensDirection == CameraLensDirection.front,
@@ -28,14 +31,16 @@ class CameraService {
 
   /// Check if a front camera is available.
   Future<bool> isCameraAvailable() async {
+    if (_isDisposed) return false;
     final cam = await _getFrontCamera();
-    return cam != null;
+    return cam != null && !_isDisposed;
   }
 
   /// Initialize the front camera.
   Future<void> initialize() async {
+    if (_isDisposed) return;
     final cam = await _getFrontCamera();
-    if (cam == null) throw Exception('No front camera available');
+    if (cam == null || _isDisposed) throw Exception('No front camera available');
 
     _controller = CameraController(
       cam,
@@ -47,13 +52,21 @@ class CameraService {
     );
 
     await _controller!.initialize();
+    if (_isDisposed) {
+      await _controller?.dispose();
+      _controller = null;
+      return;
+    }
     _isInitialized = true;
   }
 
   /// Start the image stream. Callback receives each frame.
   void startImageStream(void Function(CameraImage image) onImage) {
-    if (_controller == null || !_isInitialized || _isStreaming) return;
-    _controller!.startImageStream(onImage);
+    if (_isDisposed || _controller == null || !_isInitialized || _isStreaming) return;
+    _controller!.startImageStream((image) {
+      if (_isDisposed) return;
+      onImage(image);
+    });
     _isStreaming = true;
   }
 
@@ -68,7 +81,7 @@ class CameraService {
 
   /// Pause the camera preview stream.
   Future<void> pausePreview() async {
-    if (_controller == null || !_isInitialized) return;
+    if (_isDisposed || _controller == null || !_isInitialized) return;
     try {
       await _controller!.pausePreview();
     } catch (_) {}
@@ -76,7 +89,7 @@ class CameraService {
 
   /// Resume the camera preview stream.
   Future<void> resumePreview() async {
-    if (_controller == null || !_isInitialized) return;
+    if (_isDisposed || _controller == null || !_isInitialized) return;
     try {
       await _controller!.resumePreview();
     } catch (_) {}
@@ -84,18 +97,25 @@ class CameraService {
 
   /// Take a picture and return the bytes.
   Future<Uint8List?> captureImage() async {
-    if (_controller == null || !_isInitialized) return null;
+    if (_isDisposed || _controller == null || !_isInitialized) return null;
     if (_isStreaming) await stopImageStream();
+    if (_isDisposed || _controller == null) return null;
     final file = await _controller!.takePicture();
     return file.readAsBytes();
   }
 
   /// Dispose the camera controller.
   Future<void> dispose() async {
-    if (_isStreaming) await stopImageStream();
-    await _controller?.dispose();
-    _controller = null;
+    if (_isDisposed) return;
+    _isDisposed = true;
     _isInitialized = false;
+    if (_isStreaming) {
+      await stopImageStream();
+    }
+    try {
+      await _controller?.dispose();
+    } catch (_) {}
+    _controller = null;
     _isStreaming = false;
   }
 }
