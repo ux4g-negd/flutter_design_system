@@ -1,44 +1,6 @@
-## 0.4.3
+## 1.0.0
 
-* Updates and styling improvements in `Ux4gButton`.
-* Minor fixes in `Ux4gCircularProgress` and `Ux4gFeedbackFormCsat`.
-* Added right control indicator support and layout enhancements in `Ux4gPagination`.
-* Enhancements and bug fixes in `Ux4gStatusBanner`.
-
-## 0.4.2
-
-* Fixed `Ux4gInputField` properties usage in `example/lib/main.dart`.
-
-## 0.4.1
-
-* Updated pub.dev default example to display the Showcase app.
-
-## 0.4.0
-
-* Updates and bug fixes in `Ux4gStatusBanner`.
-
-## 0.3.1
-
-* Updated README for installation instructions.
-
-## 0.3.0
-
-* Updated components and patterns to align with the latest design requirements.
-* Bug fixes and improvements.
-
-## 0.2.0
-
-* Updated components and foundations to align with UX4G Android Compose.
-* Added specialized input fields: `AadhaarInputField`, `PanInputField`, `OtpInput`.
-* Added new UI components: `Accordion`, `Carousel`, `JourneyTimeline`, `StatusPipeline`, `SlotGrid`.
-* Added feedback forms: `CSAT`, `NPS`, and general feedback.
-* Added Biometric components.
-* Improved `Modal`, `BottomSheet`, and `DatePicker` components.
-* Updated documentation and README for better installation guidance.
-
-## 0.0.1
-
-* Initial Flutter package setup for the UX4G design system.
+* Initial release of `ux4g_flutter_components`.
 * Added foundations for colors, typography, spacing, radii, and icons.
-* Added component implementations including buttons, cards, modals, bottom sheets, tooltips, steppers, avatars, badges, inputs, pagination, toasts, and loaders.
-* Added showcase example app for component previews and interaction testing.
+* Added 50+ component implementations including buttons, cards, modals, bottom sheets, tooltips, steppers, avatars, badges, inputs, pagination, toasts, and loaders.
+* Added showcase example app and Widgetbook documentation for component previews and interaction testing.
