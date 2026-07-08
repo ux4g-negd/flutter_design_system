@@ -50,7 +50,10 @@ class _AppTestState extends State<AppTest> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
               ),
               child: const Text('Open Biometric Verification'),
             ),
@@ -67,9 +70,7 @@ class BiometricTestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Biometric Verification'),
-      ),
+      appBar: AppBar(title: const Text('Biometric Verification')),
       body: BiometricVerificationFlow(
         mockSuccess: true,
         theme: const BiometricThemeData(
