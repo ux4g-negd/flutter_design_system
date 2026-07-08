@@ -1,3 +1,7 @@
+## 1.1.0
+
+* **Bug Fix (Biometric Component)**: Fixed an issue where pressing the back button during face verification or liveness check caused an app crash.
+
 ## 1.0.0
 
 * Initial release of `ux4g_flutter_components`.
