@@ -523,7 +523,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
     final textColor = state == Ux4gPipelineStepState.error
-        ? (errorColor ?? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800))
+        ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800)
         : (isActive ? onSurface : onSurface.withValues(alpha: 0.45));
 
     final baseStyle = size == Ux4gPipelineSize.s
@@ -559,7 +559,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
     final descColor = state == Ux4gPipelineStepState.error
-        ? (errorColor ?? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800))
+        ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800)
         : (isActive
             ? onSurface.withValues(alpha: 0.6)
             : onSurface.withValues(alpha: 0.35));

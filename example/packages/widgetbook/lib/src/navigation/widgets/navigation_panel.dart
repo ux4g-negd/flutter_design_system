@@ -73,10 +73,17 @@ class _NavigationPanelState extends State<NavigationPanel> {
 
   @override
   Widget build(BuildContext context) {
-    final query = WidgetbookState.of(context).query ?? '';
+    final state = WidgetbookState.of(context);
+    final query = state.query ?? '';
     final filteredRoot = query.isEmpty
         ? widget.root
         : widget.root.filter((node) => filterNode(node, query));
+
+    if (state.path != selectedNode?.path) {
+      selectedNode = state.path != null
+          ? widget.root.find((child) => child.path == state.path)
+          : null;
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

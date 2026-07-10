@@ -668,8 +668,7 @@ class _SidebarLogo extends StatelessWidget {
               onTap: () {
                 // ignore: invalid_use_of_internal_member
                 final state = WidgetbookState.of(context);
-                state.path = null;
-                state.notifyListeners();
+                state.updatePath(null);
               },
               child: FittedBox(
                 fit: BoxFit.scaleDown,
