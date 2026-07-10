@@ -18,7 +18,7 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gAadhaarInputField',
+              name: 'AadhaarInputField',
               description:
                   'A specialized input field for Aadhaar numbers (12 digits) '
                   'with auto-formatting (XXXX XXXX XXXX) and Verhoeff validation.',
@@ -159,7 +159,7 @@ final panInputFieldComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gPanInputField',
+              name: 'PanInputField',
               description:
                   'A specialized input field for PAN Card numbers (10 chars) '
                   'with auto-uppercase enforcement and regex validation (ABCDE1234F).',

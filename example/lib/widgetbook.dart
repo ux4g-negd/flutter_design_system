@@ -234,9 +234,14 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 WidgetbookFolder(
-                  name: 'Status',
+                  name: 'Status Banner',
                   isInitiallyExpanded: false,
-                  children: [statusBannerComponent, statusPipelineComponent],
+                  children: [statusBannerComponent],
+                ),
+                WidgetbookFolder(
+                  name: 'Status Pipeline',
+                  isInitiallyExpanded: false,
+                  children: [statusPipelineComponent],
                 ),
                 WidgetbookFolder(
                   name: 'Steppers',
@@ -663,8 +668,7 @@ class _SidebarLogo extends StatelessWidget {
               onTap: () {
                 // ignore: invalid_use_of_internal_member
                 final state = WidgetbookState.of(context);
-                state.path = null;
-                state.notifyListeners();
+                state.updatePath(null);
               },
               child: FittedBox(
                 fit: BoxFit.scaleDown,

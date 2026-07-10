@@ -17,16 +17,16 @@ final biometricComponent = WidgetbookComponent(
         description:
             'Full biometric verification lifecycle: device checks → camera → '
             'face detection → liveness → verification → success screen. '
-            'Uses the built-in mock service (mockSuccess: true) for preview. '
+            'Uses the built-in mock service for preview. '
             'On a real device, replace onVerify with your API call.',
         code: '''// Wrap in a full-screen Scaffold
 Scaffold(
   body: BiometricVerificationFlow(
+    onVerify: (imageBytes) => myApi.verify(imageBytes),
     enableBlinkCheck: true,
     enableLightingCheck: true,
     enableLiveness: true,
     maxAttempts: 3,
-    mockSuccess: true,        // remove in production
     onSuccess: (result) {
       print('Verified: \${result.maskedName}');
     },
@@ -64,8 +64,9 @@ Scaffold(
           ),
           PropRow(
             name: 'onVerify',
-            type: 'Future<BiometricVerificationResult> Function(Uint8List)?',
-            description: 'Custom API callback. Pass null to use mock service.',
+            type: 'Future<BiometricVerificationResult> Function(Uint8List)',
+            description: 'Required verification API callback.',
+            required: true,
           ),
           PropRow(
             name: 'enableBlinkCheck',
@@ -98,12 +99,6 @@ Scaffold(
             defaultValue: 'Duration(minutes: 30)',
           ),
           PropRow(
-            name: 'mockSuccess',
-            type: 'bool',
-            description: 'Mock service returns success. For testing only.',
-            defaultValue: 'true',
-          ),
-          PropRow(
             name: 'verificationTimeout',
             type: 'Duration',
             description: 'Timeout for the entire verification process.',
@@ -127,15 +122,15 @@ Scaffold(
       builder: (context) => ComponentDocs(
         name: 'BiometricVerificationFlow — Failure',
         description:
-            'Same flow with mockSuccess: false — the verification API returns '
-            'a failure, triggering the retry/lockout logic. After maxAttempts '
+            'Same flow with a failing verification API — '
+            'triggering the retry/lockout logic. After maxAttempts '
             'the user sees an OTP fallback option.',
         code: '''BiometricVerificationFlow(
+  onVerify: (imageBytes) => myApi.verify(imageBytes),
   enableBlinkCheck: true,
   enableLightingCheck: true,
   enableLiveness: true,
   maxAttempts: 2,
-  mockSuccess: false,     // simulate failure
   lockoutDuration: const Duration(minutes: 30),
   onSuccess: (result) { ... },
   onFailure: (reason, message) { ... },
@@ -155,7 +150,7 @@ Scaffold(
             'Pass a BiometricThemeData to customise colors, corner radii, '
             'typography, and animation timing across the entire flow.',
         code: '''BiometricVerificationFlow(
-  mockSuccess: true,
+  onVerify: (imageBytes) => myApi.verify(imageBytes),
   theme: BiometricThemeData(
     colors: BiometricColors(
       primary: Color(0xFF0057FF),
@@ -249,7 +244,9 @@ final deviceCheckScreenComponent = WidgetbookComponent(
         description:
             'Runs three async checks (camera, network, lighting) with animated '
             'status indicators. "Proceed" button activates once all checks pass.',
-        code: '''final controller = BiometricController();
+        code: '''final controller = BiometricController(
+  onVerify: (imageBytes) => myApi.verify(imageBytes),
+);
 
 BiometricTheme(
   data: const BiometricThemeData(),
@@ -289,7 +286,9 @@ BiometricTheme(
             child: BiometricTheme(
               data: const BiometricThemeData(),
               child: DeviceCheckScreen(
-                controller: BiometricController(),
+                controller: BiometricController(
+                  onVerify: const MockVerificationService().verify,
+                ),
                 onProceed: () {},
               ),
             ),
@@ -342,7 +341,9 @@ class _BiometricFlowPreviewState extends State<_BiometricFlowPreview> {
             clipBehavior: Clip.antiAlias,
             child: _launched
                 ? BiometricVerificationFlow(
-                    mockSuccess: widget.mockSuccess,
+                    onVerify: MockVerificationService(
+                      simulateSuccess: widget.mockSuccess,
+                    ).verify,
                     theme: widget.theme,
                     enableBlinkCheck: true,
                     enableLightingCheck: true,

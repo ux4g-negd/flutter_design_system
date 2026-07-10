@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'dart:ui';
 import 'package:camera/camera.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -7,7 +8,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'biometric_state.dart';
 import 'camera_service.dart';
 import 'face_detection_service.dart';
-import 'mock_verification_service.dart';
 
 /// Main controller that drives the biometric verification flow.
 ///
@@ -17,8 +17,7 @@ class BiometricController extends ChangeNotifier {
   // ── Services ──
   final CameraService _cameraService = CameraService();
   final FaceDetectionService _faceDetectionService = FaceDetectionService();
-  final VerifyCallback? onVerify;
-  final MockVerificationService _mockService;
+  final VerifyCallback onVerify;
 
   // ── Configuration ──
   final bool enableBlinkCheck;
@@ -47,7 +46,6 @@ class BiometricController extends ChangeNotifier {
   BiometricVerificationResult? get verificationResult => _verificationResult;
   VerificationFailureReason? get failureReason => _failureReason;
   String get instructionText => _instructionText;
-  Uint8List? get capturedImage => _capturedImage;
   String? get errorMessage => _errorMessage;
   CameraController? get cameraController => _cameraService.controller;
   bool get isCameraInitialized => _cameraService.isInitialized;
@@ -56,15 +54,14 @@ class BiometricController extends ChangeNotifier {
   bool get isLastAttempt => _attemptCount >= maxAttempts - 1;
 
   BiometricController({
-    this.onVerify,
+    required this.onVerify,
     this.enableBlinkCheck = true,
     this.enableLightingCheck = true,
     this.enableLiveness = true,
     this.verificationTimeout = const Duration(seconds: 30),
     this.maxAttempts = 3,
     this.lockoutDuration = const Duration(minutes: 30),
-    bool mockSuccess = true,
-  }) : _mockService = MockVerificationService(simulateSuccess: mockSuccess);
+  });
 
   // ══════════════════════════════════════════════════════════════════════════
   // STATE TRANSITIONS
@@ -403,8 +400,9 @@ class BiometricController extends ChangeNotifier {
       _setState(BiometricFlowState.processingVerification);
       _setInstruction('Verifying identity...');
 
-      // Call verification API (real or mock)
-      final result = await _verify(imageBytes);
+      final result = await onVerify(imageBytes);
+
+      _clearCapturedImage();
       _verificationResult = result;
 
       if (result.success) {
@@ -420,11 +418,12 @@ class BiometricController extends ChangeNotifier {
     }
   }
 
-  Future<BiometricVerificationResult> _verify(Uint8List imageBytes) async {
-    if (onVerify != null) {
-      return onVerify!(imageBytes);
+  void _clearCapturedImage() {
+    final image = _capturedImage;
+    if (image != null) {
+      image.fillRange(0, image.length, 0);
     }
-    return _mockService.verify(imageBytes);
+    _capturedImage = null;
   }
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -437,7 +436,7 @@ class BiometricController extends ChangeNotifier {
     _lastAnalysis = null;
     _verificationResult = null;
     _failureReason = null;
-    _capturedImage = null;
+    _clearCapturedImage();
     _errorMessage = null;
 
     _faceDetectionService.resetLivenessState();
@@ -459,7 +458,7 @@ class BiometricController extends ChangeNotifier {
     _lastAnalysis = null;
     _verificationResult = null;
     _failureReason = null;
-    _capturedImage = null;
+    _clearCapturedImage();
     _errorMessage = null;
     _attemptCount = 0;
 
@@ -502,6 +501,7 @@ class BiometricController extends ChangeNotifier {
   @override
   void dispose() {
     _isDisposed = true;
+    _clearCapturedImage();
     _cameraService.dispose();
     _faceDetectionService.dispose();
     super.dispose();

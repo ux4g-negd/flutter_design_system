@@ -10,7 +10,7 @@ final badgeComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Dot',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gBadge',
+        name: 'Badge',
         description:
             'A small indicator overlaid on another widget. '
             'Use the named constructors: .dot(), .count(), .label(), .icon().',
@@ -98,7 +98,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
     WidgetbookUseCase(
       name: 'Count',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gBadge — Count',
+        name: 'Badge — Count',
         description:
             'Shows a numeric count. Use the limit param to cap at 9 or 99.',
         code: '''Ux4gBadge.count(
@@ -121,7 +121,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
     WidgetbookUseCase(
       name: 'Label',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gBadge — Label',
+        name: 'Badge — Label',
         description: 'Displays a short text string as a badge.',
         code: '''Ux4gBadge.label('NEW', child: Icon(Icons.star, size: 32));''',
         child: Ux4gBadge.label(
@@ -133,7 +133,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
     WidgetbookUseCase(
       name: 'Standalone variants',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gBadge — Standalone',
+        name: 'Badge — Standalone',
         description:
             'Badges can be used without a child widget as standalone indicators.',
         code: '''Row(
@@ -189,7 +189,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
               ];
 
         return ComponentDocs(
-          name: 'Ux4gBadge — Semantic Colors & Border',
+          name: 'Badge — Semantic Colors & Border',
           description:
               'Showcasing the border stroke property across semantic colors.',
           code:

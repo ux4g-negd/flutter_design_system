@@ -20492,7 +20492,7 @@ final reminderAlertsComponent = WidgetbookComponent(
           ],
           initialOption: '30 days before expiry',
           description:
-              'Each type maps to a Ux4gToast category:\n'
+              'Each type maps to a Toast category:\n'
               'info (30 days) . warning (5 days) . '
               'error (2 days / expiry day) . success (1 hour)',
         );
@@ -20504,7 +20504,7 @@ final reminderAlertsComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'Reminder Alert',
           description:
-              'Deadline-aware reminder alerts using Ux4gToast. '
+              'Deadline-aware reminder alerts using Toast. '
               'Category changes by urgency: info . warning . '
               'error . success. Tap X to dismiss.',
           code: _reminderCodeMap[scenario] ?? _reminder30DaysCode,
@@ -23699,7 +23699,9 @@ class _PaymentFailedCardMockup extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(vertical: 6),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 6,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: isDark
                                         ? Ux4gPalette.red800
@@ -23770,10 +23772,7 @@ class _PaymentFailedCardMockup extends StatelessWidget {
                               onPressed: () {},
                               child: Text(
                                 'Pay at CSC centre',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: primary,
-                                ),
+                                style: TextStyle(fontSize: 14, color: primary),
                               ),
                             ),
                           ),

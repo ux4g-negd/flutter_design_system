@@ -5,12 +5,12 @@ import 'package:widgetbook/widgetbook.dart';
 import '../widgets/component_docs.dart';
 
 final avatarComponent = WidgetbookComponent(
-  name: 'Ux4gAvatar',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Default (icon)',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAvatar',
+        name: 'Avatar',
         description:
             'A circular avatar that can display an icon placeholder, initials, or a network image. '
             'Seven size options from xs to xxxl.',
@@ -87,7 +87,7 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
           Ux4gAvatarSize.xxxl,
         ];
         return ComponentDocs(
-          name: 'Ux4gAvatar — All Sizes',
+          name: 'Avatar — All Sizes',
           description: 'Large to XXXL sizes rendered side-by-side.',
           code: '''Row(
   children: [Ux4gAvatarSize.l, Ux4gAvatarSize.xl, Ux4gAvatarSize.xxl, Ux4gAvatarSize.xxxl]
@@ -113,7 +113,7 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
     WidgetbookUseCase(
       name: 'With initials',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAvatar — Initials',
+        name: 'Avatar — Initials',
         description:
             'Pass up to 2 letters via initials to show a text-based avatar.',
         code: 'Ux4gAvatar(initials: \'AB\', size: Ux4gAvatarSize.l)',
@@ -131,7 +131,7 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
     WidgetbookUseCase(
       name: 'With image',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAvatar — Image',
+        name: 'Avatar — Image',
         description:
             'Provide an imageUrl to display a network photo in the avatar.',
         code:
@@ -151,12 +151,12 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
 );
 
 final profileAvatarComponent = WidgetbookComponent(
-  name: 'Ux4gProfileAvatar',
+  name: 'ProfileAvatar',
   useCases: [
     WidgetbookUseCase(
       name: 'Badge variants',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gProfileAvatar',
+        name: 'ProfileAvatar',
         description:
             'Avatar with a status or role badge overlay. Supports verified, star, and admin badges, '
             'plus edit / camera / remove action overlays.',
@@ -199,7 +199,7 @@ Ux4gProfileAvatar(
           PropRow(
             name: 'variant',
             type: 'dynamic',
-            description: 'Ux4gProfileBadge or Ux4gProfileAction.',
+            description: 'ProfileBadge or ProfileAction.',
             required: true,
           ),
           PropRow(
@@ -235,7 +235,7 @@ Ux4gProfileAvatar(
     WidgetbookUseCase(
       name: 'Action overlays',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gProfileAvatar — Actions',
+        name: 'ProfileAvatar — Actions',
         description:
             'Edit, camera, and remove action overlays appear as tappable icons on the avatar.',
         code: '''Ux4gProfileAvatar(
@@ -276,12 +276,12 @@ Ux4gProfileAvatar(
 );
 
 final statusAvatarComponent = WidgetbookComponent(
-  name: 'Ux4gStatusAvatar',
+  name: 'StatusAvatar',
   useCases: [
     WidgetbookUseCase(
       name: 'All statuses',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStatusAvatar',
+        name: 'StatusAvatar',
         description:
             'Avatar with a presence/status dot: online, offline, busy, success, error, warning.',
         code: '''Ux4gStatusAvatar(
@@ -345,12 +345,12 @@ final statusAvatarComponent = WidgetbookComponent(
 );
 
 final avatarGroupComponent = WidgetbookComponent(
-  name: 'Ux4gAvatarGroup',
+  name: 'AvatarGroup',
   useCases: [
     WidgetbookUseCase(
       name: 'Image group',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAvatarGroup',
+        name: 'AvatarGroup',
         description:
             'A stacked row of avatars with an overflow count pill when items exceed maxLimit.',
         code: '''Ux4gAvatarGroup(

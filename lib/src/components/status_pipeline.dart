@@ -354,40 +354,36 @@ class Ux4gStatusPipeline extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(bottom: isLast ? 0 : Ux4gSpace.space4),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    // Center label with circle
-                    if (hasLabel)
-                      SizedBox(
-                        height: _circleSize,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            step.label!,
-                            style: _labelStyle(
-                              state,
-                              ux4gTypography,
-                              ux4gColors,
-                              materialTheme,
-                            ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: _circleSize),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (hasLabel)
+                        Text(
+                          step.label!,
+                          style: _labelStyle(
+                            state,
+                            ux4gTypography,
+                            ux4gColors,
+                            materialTheme,
                           ),
                         ),
-                      ),
-                    if (hasDesc) ...[
-                      const SizedBox(height: Ux4gSpace.space2),
-                      Text(
-                        step.description!,
-                        style: _descStyle(
-                          state,
-                          ux4gTypography,
-                          ux4gColors,
-                          materialTheme,
+                      if (hasLabel && hasDesc)
+                        const SizedBox(height: 2),
+                      if (hasDesc)
+                        Text(
+                          step.description!,
+                          style: _descStyle(
+                            state,
+                            ux4gTypography,
+                            ux4gColors,
+                            materialTheme,
+                          ),
                         ),
-                      ),
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -439,21 +435,34 @@ class Ux4gStatusPipeline extends StatelessWidget {
           ],
         ),
 
-        // ── Labels row ──
-        if (showLabels && steps.any((s) => s.label != null)) ...[
-          SizedBox(height: labelSpacing ?? Ux4gSpace.space8),
+        // ── Labels & Descriptions row ──
+        if ((showLabels && steps.any((s) => s.label != null)) ||
+            (showDescriptions && steps.any((s) => s.description != null))) ...[
+          SizedBox(height: labelSpacing ?? Ux4gSpace.space6),
           SizedBox(
-            height: 32,
+            height: (showLabels &&
+                    steps.any((s) => s.label != null) &&
+                    showDescriptions &&
+                    steps.any((s) => s.description != null))
+                ? 54
+                : 32,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (int i = 0; i < steps.length; i++) ...[
                   SizedBox(
                     width: _circleSize,
-                    child: steps[i].label != null
-                        ? OverflowBox(
-                            maxWidth: 120,
-                            maxHeight: 32,
-                            child: Text(
+                    child: OverflowBox(
+                      alignment: Alignment.topCenter,
+                      minWidth: 0,
+                      maxWidth: 120,
+                      minHeight: 0,
+                      maxHeight: 80,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (showLabels && steps[i].label != null)
+                            Text(
                               steps[i].label!,
                               style: _labelStyle(
                                 _resolveState(i),
@@ -465,31 +474,13 @@ class Ux4gStatusPipeline extends StatelessWidget {
                               overflow: TextOverflow.visible,
                               softWrap: true,
                             ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
-                  if (i < steps.length - 1) const Expanded(child: SizedBox()),
-                ],
-              ],
-            ),
-          ),
-        ],
-
-        // ── Descriptions row ──
-        if (showDescriptions && steps.any((s) => s.description != null)) ...[
-          const SizedBox(height: Ux4gSpace.space2),
-          SizedBox(
-            height: 32,
-            child: Row(
-              children: [
-                for (int i = 0; i < steps.length; i++) ...[
-                  SizedBox(
-                    width: _circleSize,
-                    child: steps[i].description != null
-                        ? OverflowBox(
-                            maxWidth: 120,
-                            maxHeight: 32,
-                            child: Text(
+                          if (showLabels &&
+                              steps[i].label != null &&
+                              showDescriptions &&
+                              steps[i].description != null)
+                            const SizedBox(height: 2),
+                          if (showDescriptions && steps[i].description != null)
+                            Text(
                               steps[i].description!,
                               style: _descStyle(
                                 _resolveState(i),
@@ -501,8 +492,9 @@ class Ux4gStatusPipeline extends StatelessWidget {
                               overflow: TextOverflow.visible,
                               softWrap: true,
                             ),
-                          )
-                        : const SizedBox.shrink(),
+                        ],
+                      ),
+                    ),
                   ),
                   if (i < steps.length - 1) const Expanded(child: SizedBox()),
                 ],
@@ -525,9 +517,14 @@ class Ux4gStatusPipeline extends StatelessWidget {
     final isActive =
         state == Ux4gPipelineStepState.completed ||
         state == Ux4gPipelineStepState.current;
+    final isDark = materialTheme.brightness == Brightness.dark;
 
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
+
+    final textColor = state == Ux4gPipelineStepState.error
+        ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800)
+        : (isActive ? onSurface : onSurface.withValues(alpha: 0.45));
 
     final baseStyle = size == Ux4gPipelineSize.s
         ? ux4gTypography?.bXS_strong ??
@@ -544,9 +541,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               );
 
-    return (baseStyle ?? const TextStyle()).copyWith(
-      color: isActive ? onSurface : onSurface.withValues(alpha: 0.45),
-    );
+    return (baseStyle ?? const TextStyle()).copyWith(color: textColor);
   }
 
   TextStyle _descStyle(
@@ -558,9 +553,16 @@ class Ux4gStatusPipeline extends StatelessWidget {
     final isActive =
         state == Ux4gPipelineStepState.completed ||
         state == Ux4gPipelineStepState.current;
+    final isDark = materialTheme.brightness == Brightness.dark;
 
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
+
+    final descColor = state == Ux4gPipelineStepState.error
+        ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800)
+        : (isActive
+            ? onSurface.withValues(alpha: 0.6)
+            : onSurface.withValues(alpha: 0.35));
 
     final baseStyle = size == Ux4gPipelineSize.s
         ? ux4gTypography?.bXS_default ?? materialTheme.textTheme.bodySmall
@@ -568,11 +570,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
         ? ux4gTypography?.bXS_default ?? materialTheme.textTheme.bodySmall
         : ux4gTypography?.bS_default ?? materialTheme.textTheme.bodyMedium;
 
-    return (baseStyle ?? const TextStyle()).copyWith(
-      color: isActive
-          ? onSurface.withValues(alpha: 0.6)
-          : onSurface.withValues(alpha: 0.35),
-    );
+    return (baseStyle ?? const TextStyle()).copyWith(color: descColor);
   }
 }
 

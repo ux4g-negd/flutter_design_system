@@ -8,12 +8,12 @@ import '../widgets/component_docs.dart';
 // ── Linear Progress ───────────────────────────────────────────────────────────
 
 final linearProgressComponent = WidgetbookComponent(
-  name: 'Ux4gLinearProgress',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gLinearProgress',
+        name: 'LinearProgress',
         description:
             'A horizontal progress bar with optional label, hint, icon, '
             'percentage display, gradient fill, and shape.',
@@ -143,12 +143,12 @@ Ux4gAnimatedLinearProgress(value: 0.6);''',
 );
 
 final animatedLinearProgressComponent = WidgetbookComponent(
-  name: 'Ux4gAnimatedLinearProgress',
+  name: 'AnimatedLinearProgress',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAnimatedLinearProgress',
+        name: 'AnimatedLinearProgress',
         description: 'Animated version of the linear progress bar.',
         code: '''Ux4gAnimatedLinearProgress(value: 0.6);''',
         props: const [
@@ -264,12 +264,12 @@ final animatedLinearProgressComponent = WidgetbookComponent(
 // ── Circular Progress ─────────────────────────────────────────────────────────
 
 final circularProgressComponent = WidgetbookComponent(
-  name: 'Ux4gCircularProgress',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCircularProgress',
+        name: 'CircularProgress',
         description:
             'A circular gauge that displays a progress value with an optional centre text and label.',
         code: '''Ux4gCircularProgress(
@@ -473,7 +473,7 @@ final circularProgressComponent = WidgetbookComponent(
         }
 
         return ComponentDocs(
-          name: 'Ux4gCircularProgress — Variants',
+          name: 'CircularProgress — Variants',
           description:
               'All sizes with different style configurations. '
               'Gradient: primary200→primary600 (light) / primary700→primary300 (dark). '
@@ -596,12 +596,12 @@ Ux4gCircularProgress(
 // ── Half-circle Progress ──────────────────────────────────────────────────────
 
 final halfCircleProgressComponent = WidgetbookComponent(
-  name: 'Ux4gHalfCircleProgress',
+  name: 'HalfCircleProgress',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gHalfCircleProgress',
+        name: 'HalfCircleProgress',
         description: 'A semi-circular gauge with optional description text.',
         code: '''Ux4gHalfCircleProgress(
   value: 0.6,
@@ -745,7 +745,7 @@ final loaderComponent = WidgetbookComponent(
         };
 
         return ComponentDocs(
-          name: 'Ux4gLoader',
+          name: 'Loader',
           description:
               'A circular spinning loader indicator. '
               'Customise size, stroke width, percentage fill, and gradient theme.',
@@ -825,14 +825,14 @@ Ux4gLoader(
 // ── Animated Circular Progress ────────────────────────────────────────────────
 
 final animatedCircularProgressComponent = WidgetbookComponent(
-  name: 'Ux4gAnimatedCircularProgress',
+  name: 'AnimatedCircularProgress',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAnimatedCircularProgress',
+        name: 'AnimatedCircularProgress',
         description:
-            'An animated version of Ux4gCircularProgress. Smoothly transitions '
+            'An animated version of CircularProgress. Smoothly transitions '
             'from 0 to the target value using a tween animation.',
         code: '''Ux4gAnimatedCircularProgress(
   value: 0.75,
@@ -1003,14 +1003,14 @@ final animatedCircularProgressComponent = WidgetbookComponent(
 // ── Animated Half-Circle Progress ─────────────────────────────────────────────
 
 final animatedHalfCircleProgressComponent = WidgetbookComponent(
-  name: 'Ux4gAnimatedHalfCircleProgress',
+  name: 'AnimatedHalfCircleProgress',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAnimatedHalfCircleProgress',
+        name: 'AnimatedHalfCircleProgress',
         description:
-            'An animated version of Ux4gHalfCircleProgress. Smoothly transitions '
+            'An animated version of HalfCircleProgress. Smoothly transitions '
             'from 0 to the target value using a tween animation.',
         code: '''Ux4gAnimatedHalfCircleProgress(
   value: 0.65,

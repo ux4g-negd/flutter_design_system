@@ -2,11 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'biometric_state.dart';
 
-/// Callback type for verification API.
-typedef VerifyCallback =
-    Future<BiometricVerificationResult> Function(Uint8List imageBytes);
-
-/// Mock verification service for testing.
+/// Mock verification service for testing only.
 /// Replace with real API integration for production.
 class MockVerificationService {
   final Duration delay;

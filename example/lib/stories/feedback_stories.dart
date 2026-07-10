@@ -7,12 +7,12 @@ import '../widgets/component_docs.dart';
 // ── Feedback Form (Star Rating) ───────────────────────────────────────────────
 
 final feedbackFormComponent = WidgetbookComponent(
-  name: 'Ux4gFeedbackForm',
+  name: 'FeedbackForm',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gFeedbackForm',
+        name: 'FeedbackForm',
         description:
             'A star-rating feedback form with improvement chip options and a comment text area. '
             'Shows a success state after submission.',
@@ -185,12 +185,12 @@ final feedbackFormComponent = WidgetbookComponent(
 // ── Feedback Form NPS ─────────────────────────────────────────────────────────
 
 final feedbackFormNpsComponent = WidgetbookComponent(
-  name: 'Ux4gFeedbackFormNps',
+  name: 'FeedbackFormNps',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gFeedbackFormNps',
+        name: 'FeedbackFormNps',
         description:
             'A Net Promoter Score (NPS) feedback form. User selects a score 0–10 '
             'and optionally provides a comment. Shows success state after submission.',
@@ -334,12 +334,12 @@ final feedbackFormNpsComponent = WidgetbookComponent(
 // ── Feedback Form CSAT ────────────────────────────────────────────────────────
 
 final feedbackFormCsatComponent = WidgetbookComponent(
-  name: 'Ux4gFeedbackFormCsat',
+  name: 'FeedbackFormCsat',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gFeedbackFormCsat',
+        name: 'FeedbackFormCsat',
         description:
             'A Customer Satisfaction (CSAT) feedback form with emoji-based satisfaction levels '
             'and an optional comment field.',

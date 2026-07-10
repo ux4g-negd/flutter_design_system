@@ -13,7 +13,7 @@ final appHeaderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader',
+        name: 'AppHeader',
         description:
             'A top app-bar component with optional back button, leading widgets, '
             'title, and action buttons. Supports three visual variants: light, filled, and outlined.',
@@ -213,7 +213,7 @@ final appHeaderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Left Aligned Title',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader — Left Aligned',
+        name: 'AppHeader — Left Aligned',
         description:
             'Header with a back button, left-aligned title, and actions.',
         code: '''Ux4gAppHeader(
@@ -239,7 +239,7 @@ final appHeaderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Centered Title',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader — Centered Title',
+        name: 'AppHeader — Centered Title',
         description: 'Header with a centered title.',
         code: '''Ux4gAppHeader(
   showBackButton: true,
@@ -278,7 +278,7 @@ final appHeaderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Avatar Header',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader — Avatar',
+        name: 'AppHeader — Avatar',
         description: 'Header with title and a user avatar on the right.',
         code: '''Ux4gAppHeader(
   title: 'Welcome, User',
@@ -298,7 +298,7 @@ final appHeaderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Full Header',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader — Full',
+        name: 'AppHeader — Full',
         description:
             'A comprehensive header with menu, title, actions, and avatar.',
         code: '''Ux4gAppHeader(
@@ -339,7 +339,7 @@ final appHeaderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Custom Leading Widgets',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader — Custom Leading Widgets',
+        name: 'AppHeader — Custom Leading Widgets',
         description:
             'Headers with custom leading widgets (emblem, logos) and trailing combinations. Fully dark mode compatible.',
         code: '''// With Avatar
@@ -508,7 +508,7 @@ Ux4gAppHeader(
     WidgetbookUseCase(
       name: 'All variants',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAppHeader — Variants',
+        name: 'AppHeader — Variants',
         description: 'All three visual variants side by side.',
         code: '''// Light Variant
 Ux4gAppHeader(

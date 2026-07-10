@@ -5030,6 +5030,7 @@ class BiometricShowcasePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BiometricVerificationFlow(
+        onVerify: MockVerificationService(simulateSuccess: mockSuccess).verify,
         onSuccess: (result) {
           Navigator.of(context).pop();
           ScaffoldMessenger.of(context).showSnackBar(
@@ -5053,7 +5054,6 @@ class BiometricShowcasePage extends StatelessWidget {
         enableLightingCheck: true,
         enableLiveness: true,
         maxAttempts: 3,
-        mockSuccess: mockSuccess,
       ),
     );
   }

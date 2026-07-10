@@ -81,7 +81,7 @@ const _stepperProps = [
 ];
 
 final stepperComponent = WidgetbookComponent(
-  name: 'Stepper',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Horizontal',
@@ -90,7 +90,7 @@ final stepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper',
+              name: 'Stepper',
               description:
                   'A multi-step progress indicator for form wizards. '
                   'Supports horizontal and vertical orientations, solid or dashed lines.',
@@ -167,7 +167,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — No Labels',
+              name: 'Stepper — No Labels',
               description: 'Horizontal stepper with showLabels: false.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -229,7 +229,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — With Descriptions',
+              name: 'Stepper — With Descriptions',
               description:
                   'Horizontal stepper with labels, descriptions, and custom statuses. All labels are center-aligned.',
               code: '''Ux4gStepper(
@@ -336,7 +336,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Bottom Lines',
+              name: 'Stepper — Bottom Lines',
               description:
                   'Horizontal stepper with connecting lines rendered below the text.',
               code: '''Ux4gStepper(
@@ -445,7 +445,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Bottom Lines + Active Background',
+              name: 'Stepper — Bottom Lines + Active Background',
               description:
                   'Horizontal stepper with bottom connecting lines and a background color for the active step.',
               code: '''Ux4gStepper(
@@ -556,7 +556,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Edge Aligned Labels',
+              name: 'Stepper — Edge Aligned Labels',
               description:
                   'Horizontal stepper where the first step label is left-aligned and the last step label is right-aligned.',
               code: '''Ux4gStepper(
@@ -665,7 +665,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical',
+              name: 'Stepper — Vertical',
               description: 'Vertical orientation stacks steps top-to-bottom.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -739,7 +739,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical (No Labels)',
+              name: 'Stepper — Vertical (No Labels)',
               description: 'Vertical orientation without any step labels.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -793,7 +793,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical (Labels Only)',
+              name: 'Stepper — Vertical (Labels Only)',
               description: 'Vertical orientation with only title labels.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -857,7 +857,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical (Icon Aligned with Description)',
+              name: 'Stepper — Vertical (Icon Aligned with Description)',
               description:
                   'Vertical orientation where the step icon aligns with the description text instead of the title.',
               code: '''Ux4gStepper(
@@ -959,7 +959,7 @@ Ux4gCapsuleStepper(
     WidgetbookUseCase(
       name: 'Dashed line',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStepper — Dashed Line',
+        name: 'Stepper — Dashed Line',
         description: 'lineStyle=dashed renders dotted connector lines.',
         code: '''Ux4gStepper(
   totalSteps: 4,
@@ -992,9 +992,9 @@ Ux4gCapsuleStepper(
     WidgetbookUseCase(
       name: 'With error step',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStepper — Error Step',
+        name: 'Stepper — Error Step',
         description:
-            'Mark a step as errored with isError: true on Ux4gStepItem.',
+            'Mark a step as errored with isError: true on StepItem.',
         code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 3,
@@ -1042,7 +1042,7 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Linear',
+              name: 'CapsuleStepper (Compact Stepper) — Linear',
               description:
                   'Capsules sandwiched between navigation arrows, labels aligned to start.',
               code: '''Ux4gCapsuleStepper(
@@ -1077,7 +1077,7 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Right Aligned',
+              name: 'CapsuleStepper (Compact Stepper) — Right Aligned',
               description:
                   'Capsules between arrows, step info on left, label/desc on right.',
               code: '''Ux4gCapsuleStepper(
@@ -1113,7 +1113,7 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name:
-                  'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
+                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
               description:
                   'Capsules at top, arrows surrounding step info in the center.',
               code: '''Ux4gCapsuleStepper(
@@ -1149,7 +1149,7 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name:
-                  'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
+                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
               description:
                   'Capsules at top, arrows pushed to the far edges of the container.',
               code: '''Ux4gCapsuleStepper(
@@ -1184,7 +1184,7 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Split',
+              name: 'CapsuleStepper (Compact Stepper) — Split',
               description:
                   'Capsules at top, labels spread across, arrows on the bottom right.',
               code: '''Ux4gCapsuleStepper(
@@ -1223,7 +1223,7 @@ final resultRowComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gResultRow',
+        name: 'ResultRow',
         description:
             'An expandable list-row that summarises a record with a status tag, '
             'key-value detail pairs, and an optional action button.',
@@ -2495,7 +2495,7 @@ Ux4gResultRow(
 // ── Social Links ──────────────────────────────────────────────────────────────
 
 final socialLinkComponent = WidgetbookComponent(
-  name: 'Ux4gSocialLink',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Single Icon',
@@ -2522,7 +2522,7 @@ final socialLinkComponent = WidgetbookComponent(
         );
 
         return ComponentDocs(
-          name: 'Ux4gSocialLink',
+          name: 'SocialLink',
           description:
               'SVG social-media icon buttons. Choose from the SocialMediaIcon enum. '
               'Enable background for a contained pill appearance.',
@@ -2606,7 +2606,7 @@ final journeyTimelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gJourneyTimeline',
+        name: 'JourneyTimeline',
         description:
             'A vertical timeline showing the progress of a multi-stage journey. '
             'Steps are: completed, current, or upcoming.',
@@ -2902,50 +2902,329 @@ final journeyTimelineComponent = WidgetbookComponent(
 
 // ── Status Pipeline ───────────────────────────────────────────────────────────
 
+const _statusPipelineProps = [
+  PropRow(
+    name: 'steps',
+    type: 'List<Ux4gPipelineStep>',
+    description: 'Pipeline stages.',
+    required: true,
+  ),
+  PropRow(
+    name: 'currentStep',
+    type: 'int',
+    description: 'Active stage index.',
+    required: true,
+  ),
+  PropRow(
+    name: 'orientation',
+    type: 'Ux4gPipelineOrientation',
+    description: 'Horizontal or vertical layout.',
+    defaultValue: 'horizontal',
+  ),
+  PropRow(
+    name: 'size',
+    type: 'Ux4gPipelineSize',
+    description: 'Size of pipeline steps (s, m, l).',
+    defaultValue: 'm',
+  ),
+  PropRow(
+    name: 'showLabels',
+    type: 'bool',
+    description: 'Whether to display labels under/next to circles.',
+    defaultValue: 'true',
+  ),
+  PropRow(
+    name: 'showDescriptions',
+    type: 'bool',
+    description: 'Whether to display descriptions under labels.',
+    defaultValue: 'true',
+  ),
+];
+
 final statusPipelineComponent = WidgetbookComponent(
-  name: 'Status Pipeline',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default',
+      name: 'Horizontal — With Labels',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStatusPipeline',
+        name: 'StatusPipeline',
         description:
-            'A horizontal pipeline showing discrete processing stages. '
-            'Steps can be completed, current, upcoming, error, or warning.',
+            'A horizontal status pipeline showing discrete stages with text labels.',
         code: '''Ux4gStatusPipeline(
-  currentStep: 2,
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: 1,
+  showDescriptions: false,
   steps: const [
-    Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-    Ux4gPipelineStep(label: 'Verified',  description: '6 Apr'),
-    Ux4gPipelineStep(label: 'In Review', description: 'In progress'),
-    Ux4gPipelineStep(label: 'Approved',  description: 'Est. 10 Apr'),
-    Ux4gPipelineStep(label: 'Disbursed', description: 'Est. 12 Apr'),
+    Ux4gPipelineStep(label: 'Submitted'),
+    Ux4gPipelineStep(label: 'Verification'),
+    Ux4gPipelineStep(label: 'Inspection'),
+    Ux4gPipelineStep(label: 'Decision'),
+    Ux4gPipelineStep(label: 'Issued'),
   ],
 );''',
-        props: const [
-          PropRow(
-            name: 'steps',
-            type: 'List<Ux4gPipelineStep>',
-            description: 'Pipeline stages.',
-            required: true,
-          ),
-          PropRow(
-            name: 'currentStep',
-            type: 'int',
-            description: 'Active stage index.',
-            required: true,
-          ),
-        ],
+        props: _statusPipelineProps,
         child: SizedBox(
           width: 380,
-          child: Ux4gStatusPipeline(
-            currentStep: 2,
-            steps: const [
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: 1,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(label: 'Submitted'),
+              Ux4gPipelineStep(label: 'Verification'),
+              Ux4gPipelineStep(label: 'Inspection'),
+              Ux4gPipelineStep(label: 'Decision'),
+              Ux4gPipelineStep(label: 'Issued'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Horizontal — Without Labels',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A compact horizontal status pipeline displaying circles only, without text labels or descriptions.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: 1,
+  showLabels: false,
+  showDescriptions: false,
+  steps: const [
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: SizedBox(
+          width: 380,
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: 1,
+            showLabels: false,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Horizontal — Labels + Descriptions',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A horizontal status pipeline with both stage labels and detailed descriptions (such as dates or status updates).',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: 1,
+  steps: const [
+    Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
+    Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+    Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+    Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+    Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: SizedBox(
+          width: 380,
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: 1,
+            steps: [
               Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-              Ux4gPipelineStep(label: 'Verified', description: '6 Apr'),
-              Ux4gPipelineStep(label: 'In Review', description: 'In progress'),
-              Ux4gPipelineStep(label: 'Approved', description: 'Est. 10 Apr'),
-              Ux4gPipelineStep(label: 'Disbursed', description: 'Est. 12 Apr'),
+              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+              Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+              Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Vertical — With Labels',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A vertical status pipeline stacked with discrete stage titles.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.vertical,
+  currentStep: 1,
+  showDescriptions: false,
+  steps: const [
+    Ux4gPipelineStep(label: 'Submitted'),
+    Ux4gPipelineStep(label: 'Verification'),
+    Ux4gPipelineStep(label: 'Inspection'),
+    Ux4gPipelineStep(label: 'Decision'),
+    Ux4gPipelineStep(label: 'Issued'),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.vertical,
+            currentStep: 1,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(label: 'Submitted'),
+              Ux4gPipelineStep(label: 'Verification'),
+              Ux4gPipelineStep(label: 'Inspection'),
+              Ux4gPipelineStep(label: 'Decision'),
+              Ux4gPipelineStep(label: 'Issued'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Vertical — Without Labels',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A compact vertical status pipeline showing circles only without text.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.vertical,
+  currentStep: 1,
+  showLabels: false,
+  showDescriptions: false,
+  steps: const [
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.vertical,
+            currentStep: 1,
+            showLabels: false,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Vertical — Labels + Descriptions',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A vertical status pipeline displaying titles and descriptive notes alongside each stage.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.vertical,
+  currentStep: 1,
+  steps: const [
+    Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
+    Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+    Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+    Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+    Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.vertical,
+            currentStep: 1,
+            steps: [
+              Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
+              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+              Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+              Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Error & Warning States',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'Demonstrating custom stage states including completed, error (failed step), warning (blocked step), and upcoming.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: -1,
+  steps: const [
+    Ux4gPipelineStep(
+      label: 'Submitted',
+      description: '5 Apr',
+      state: Ux4gPipelineStepState.completed,
+    ),
+    Ux4gPipelineStep(
+      label: 'Verification',
+      description: 'Failed',
+      state: Ux4gPipelineStepState.error,
+    ),
+    Ux4gPipelineStep(
+      label: 'Inspection',
+      description: 'Blocked',
+      state: Ux4gPipelineStepState.warning,
+    ),
+    Ux4gPipelineStep(
+      label: 'Decision',
+      state: Ux4gPipelineStepState.upcoming,
+    ),
+    Ux4gPipelineStep(
+      label: 'Issued',
+      state: Ux4gPipelineStepState.upcoming,
+    ),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: SizedBox(
+          width: 380,
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: -1,
+            steps: [
+              Ux4gPipelineStep(
+                label: 'Submitted',
+                description: '5 Apr',
+                state: Ux4gPipelineStepState.completed,
+              ),
+              Ux4gPipelineStep(
+                label: 'Verification',
+                description: 'Failed',
+                state: Ux4gPipelineStepState.error,
+              ),
+              Ux4gPipelineStep(
+                label: 'Inspection',
+                description: 'Blocked',
+                state: Ux4gPipelineStepState.warning,
+              ),
+              Ux4gPipelineStep(
+                label: 'Decision',
+                state: Ux4gPipelineStepState.upcoming,
+              ),
+              Ux4gPipelineStep(
+                label: 'Issued',
+                state: Ux4gPipelineStepState.upcoming,
+              ),
             ],
           ),
         ),
@@ -2962,7 +3241,7 @@ final carouselComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Image carousel',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCarousel',
+        name: 'Carousel',
         description:
             'A horizontal swipe carousel. Pass any list of widgets as items.',
         code: '''Ux4gCarousel(
@@ -3033,12 +3312,12 @@ final carouselComponent = WidgetbookComponent(
 // ── Social Link Group ─────────────────────────────────────────────────────────
 
 final socialLinkGroupComponent = WidgetbookComponent(
-  name: 'Ux4gSocialLinkGroup',
+  name: 'SocialLinkGroup',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gSocialLinkGroup',
+        name: 'SocialLinkGroup',
         description:
             'A horizontal row of social media icon buttons rendered as a group. '
             'Supports size, background, color, and spacing customisation.',
@@ -3101,12 +3380,12 @@ final socialLinkGroupComponent = WidgetbookComponent(
 // ── Social Link List ──────────────────────────────────────────────────────────
 
 final socialLinkListComponent = WidgetbookComponent(
-  name: 'Ux4gSocialLinkList',
+  name: 'SocialLinkList',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gSocialLinkList',
+        name: 'SocialLinkList',
         description:
             'A list of social media icon buttons that can be arranged horizontally or vertically '
             'with configurable alignment.',
