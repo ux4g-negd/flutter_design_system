@@ -72,7 +72,7 @@ class BiometricTestScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Biometric Verification')),
       body: BiometricVerificationFlow(
-        mockSuccess: true,
+        onVerify: const MockVerificationService(simulateSuccess: true).verify,
         theme: const BiometricThemeData(
           colors: BiometricColors(
             primary: Color(0xFF0057FF),
@@ -83,7 +83,7 @@ class BiometricTestScreen extends StatelessWidget {
           buttonRadius: 8,
         ),
         onSuccess: (result) {
-          print("=============>${result}");
+          debugPrint("=============>${result.maskedName}");
           Navigator.of(context).pop();
         },
         onDismiss: () => Navigator.of(context).pop(),

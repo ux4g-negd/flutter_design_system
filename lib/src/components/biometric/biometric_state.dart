@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 /// All possible states of the biometric verification flow.
 enum BiometricFlowState {
   /// Initial state before anything starts.
@@ -138,6 +140,10 @@ class BiometricVerificationResult {
     this.confidenceScore,
   });
 }
+
+/// Callback type for verification API.
+typedef VerifyCallback = Future<BiometricVerificationResult> Function(
+    Uint8List imageBytes);
 
 /// Failure reasons for the verification.
 enum VerificationFailureReason {

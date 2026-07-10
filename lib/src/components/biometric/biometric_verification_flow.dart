@@ -14,6 +14,7 @@ import 'identity_consent_screen.dart';
 ///
 /// ```dart
 /// BiometricVerificationFlow(
+///   onVerify: (imageBytes) => myApi.verify(imageBytes),
 ///   onSuccess: (result) {
 ///     print('Verified: ${result.maskedName}');
 ///   },
@@ -39,8 +40,8 @@ class BiometricVerificationFlow extends StatefulWidget {
   /// Called when user taps "Verify with OTP instead".
   final VoidCallback? onAlternateVerify;
 
-  /// Custom verification API callback. If null, uses mock service.
-  final Future<BiometricVerificationResult> Function(Uint8List imageBytes)?
+  /// Custom verification API callback. Required — must be provided.
+  final Future<BiometricVerificationResult> Function(Uint8List imageBytes)
   onVerify;
 
   /// Whether to require blink detection.
@@ -61,9 +62,6 @@ class BiometricVerificationFlow extends StatefulWidget {
   /// Lockout duration after max attempts exceeded.
   final Duration lockoutDuration;
 
-  /// Whether mock service should simulate success (for testing).
-  final bool mockSuccess;
-
   /// Verification timeout duration.
   final Duration verificationTimeout;
 
@@ -73,14 +71,13 @@ class BiometricVerificationFlow extends StatefulWidget {
     this.onFailure,
     this.onDismiss,
     this.onAlternateVerify,
-    this.onVerify,
+    required this.onVerify,
     this.enableBlinkCheck = true,
     this.enableLightingCheck = true,
     this.enableLiveness = true,
     this.theme,
     this.maxAttempts = 2,
     this.lockoutDuration = const Duration(minutes: 30),
-    this.mockSuccess = true,
     this.verificationTimeout = const Duration(seconds: 30),
   });
 
@@ -106,7 +103,6 @@ class _BiometricVerificationFlowState extends State<BiometricVerificationFlow>
       verificationTimeout: widget.verificationTimeout,
       maxAttempts: widget.maxAttempts,
       lockoutDuration: widget.lockoutDuration,
-      mockSuccess: widget.mockSuccess,
     );
 
     _controller.addListener(_onStateChange);
