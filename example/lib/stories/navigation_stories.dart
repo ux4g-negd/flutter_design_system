@@ -575,7 +575,7 @@ final accordionGroupComponent = WidgetbookComponent(
 // ── Status Banner ─────────────────────────────────────────────────────────────
 
 final statusBannerComponent = WidgetbookComponent(
-  name: 'Status Banner',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'All variants',

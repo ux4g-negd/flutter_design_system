@@ -234,9 +234,14 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 WidgetbookFolder(
-                  name: 'Status',
+                  name: 'Status Banner',
                   isInitiallyExpanded: false,
-                  children: [statusBannerComponent, statusPipelineComponent],
+                  children: [statusBannerComponent],
+                ),
+                WidgetbookFolder(
+                  name: 'Status Pipeline',
+                  isInitiallyExpanded: false,
+                  children: [statusPipelineComponent],
                 ),
                 WidgetbookFolder(
                   name: 'Steppers',

@@ -2902,50 +2902,329 @@ final journeyTimelineComponent = WidgetbookComponent(
 
 // ── Status Pipeline ───────────────────────────────────────────────────────────
 
+const _statusPipelineProps = [
+  PropRow(
+    name: 'steps',
+    type: 'List<Ux4gPipelineStep>',
+    description: 'Pipeline stages.',
+    required: true,
+  ),
+  PropRow(
+    name: 'currentStep',
+    type: 'int',
+    description: 'Active stage index.',
+    required: true,
+  ),
+  PropRow(
+    name: 'orientation',
+    type: 'Ux4gPipelineOrientation',
+    description: 'Horizontal or vertical layout.',
+    defaultValue: 'horizontal',
+  ),
+  PropRow(
+    name: 'size',
+    type: 'Ux4gPipelineSize',
+    description: 'Size of pipeline steps (s, m, l).',
+    defaultValue: 'm',
+  ),
+  PropRow(
+    name: 'showLabels',
+    type: 'bool',
+    description: 'Whether to display labels under/next to circles.',
+    defaultValue: 'true',
+  ),
+  PropRow(
+    name: 'showDescriptions',
+    type: 'bool',
+    description: 'Whether to display descriptions under labels.',
+    defaultValue: 'true',
+  ),
+];
+
 final statusPipelineComponent = WidgetbookComponent(
-  name: 'Status Pipeline',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default',
+      name: 'Horizontal — With Labels',
       builder: (context) => ComponentDocs(
         name: 'StatusPipeline',
         description:
-            'A horizontal pipeline showing discrete processing stages. '
-            'Steps can be completed, current, upcoming, error, or warning.',
+            'A horizontal status pipeline showing discrete stages with text labels.',
         code: '''Ux4gStatusPipeline(
-  currentStep: 2,
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: 1,
+  showDescriptions: false,
   steps: const [
-    Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-    Ux4gPipelineStep(label: 'Verified',  description: '6 Apr'),
-    Ux4gPipelineStep(label: 'In Review', description: 'In progress'),
-    Ux4gPipelineStep(label: 'Approved',  description: 'Est. 10 Apr'),
-    Ux4gPipelineStep(label: 'Disbursed', description: 'Est. 12 Apr'),
+    Ux4gPipelineStep(label: 'Submitted'),
+    Ux4gPipelineStep(label: 'Verification'),
+    Ux4gPipelineStep(label: 'Inspection'),
+    Ux4gPipelineStep(label: 'Decision'),
+    Ux4gPipelineStep(label: 'Issued'),
   ],
 );''',
-        props: const [
-          PropRow(
-            name: 'steps',
-            type: 'List<Ux4gPipelineStep>',
-            description: 'Pipeline stages.',
-            required: true,
-          ),
-          PropRow(
-            name: 'currentStep',
-            type: 'int',
-            description: 'Active stage index.',
-            required: true,
-          ),
-        ],
+        props: _statusPipelineProps,
         child: SizedBox(
           width: 380,
-          child: Ux4gStatusPipeline(
-            currentStep: 2,
-            steps: const [
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: 1,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(label: 'Submitted'),
+              Ux4gPipelineStep(label: 'Verification'),
+              Ux4gPipelineStep(label: 'Inspection'),
+              Ux4gPipelineStep(label: 'Decision'),
+              Ux4gPipelineStep(label: 'Issued'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Horizontal — Without Labels',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A compact horizontal status pipeline displaying circles only, without text labels or descriptions.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: 1,
+  showLabels: false,
+  showDescriptions: false,
+  steps: const [
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: SizedBox(
+          width: 380,
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: 1,
+            showLabels: false,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Horizontal — Labels + Descriptions',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A horizontal status pipeline with both stage labels and detailed descriptions (such as dates or status updates).',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: 1,
+  steps: const [
+    Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
+    Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+    Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+    Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+    Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: SizedBox(
+          width: 380,
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: 1,
+            steps: [
               Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-              Ux4gPipelineStep(label: 'Verified', description: '6 Apr'),
-              Ux4gPipelineStep(label: 'In Review', description: 'In progress'),
-              Ux4gPipelineStep(label: 'Approved', description: 'Est. 10 Apr'),
-              Ux4gPipelineStep(label: 'Disbursed', description: 'Est. 12 Apr'),
+              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+              Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+              Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Vertical — With Labels',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A vertical status pipeline stacked with discrete stage titles.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.vertical,
+  currentStep: 1,
+  showDescriptions: false,
+  steps: const [
+    Ux4gPipelineStep(label: 'Submitted'),
+    Ux4gPipelineStep(label: 'Verification'),
+    Ux4gPipelineStep(label: 'Inspection'),
+    Ux4gPipelineStep(label: 'Decision'),
+    Ux4gPipelineStep(label: 'Issued'),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.vertical,
+            currentStep: 1,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(label: 'Submitted'),
+              Ux4gPipelineStep(label: 'Verification'),
+              Ux4gPipelineStep(label: 'Inspection'),
+              Ux4gPipelineStep(label: 'Decision'),
+              Ux4gPipelineStep(label: 'Issued'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Vertical — Without Labels',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A compact vertical status pipeline showing circles only without text.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.vertical,
+  currentStep: 1,
+  showLabels: false,
+  showDescriptions: false,
+  steps: const [
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+    Ux4gPipelineStep(),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.vertical,
+            currentStep: 1,
+            showLabels: false,
+            showDescriptions: false,
+            steps: [
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+              Ux4gPipelineStep(),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Vertical — Labels + Descriptions',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'A vertical status pipeline displaying titles and descriptive notes alongside each stage.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.vertical,
+  currentStep: 1,
+  steps: const [
+    Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
+    Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+    Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+    Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+    Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.vertical,
+            currentStep: 1,
+            steps: [
+              Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
+              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
+              Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+              Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Error & Warning States',
+      builder: (context) => ComponentDocs(
+        name: 'StatusPipeline',
+        description:
+            'Demonstrating custom stage states including completed, error (failed step), warning (blocked step), and upcoming.',
+        code: '''Ux4gStatusPipeline(
+  orientation: Ux4gPipelineOrientation.horizontal,
+  currentStep: -1,
+  steps: const [
+    Ux4gPipelineStep(
+      label: 'Submitted',
+      description: '5 Apr',
+      state: Ux4gPipelineStepState.completed,
+    ),
+    Ux4gPipelineStep(
+      label: 'Verification',
+      description: 'Failed',
+      state: Ux4gPipelineStepState.error,
+    ),
+    Ux4gPipelineStep(
+      label: 'Inspection',
+      description: 'Blocked',
+      state: Ux4gPipelineStepState.warning,
+    ),
+    Ux4gPipelineStep(
+      label: 'Decision',
+      state: Ux4gPipelineStepState.upcoming,
+    ),
+    Ux4gPipelineStep(
+      label: 'Issued',
+      state: Ux4gPipelineStepState.upcoming,
+    ),
+  ],
+);''',
+        props: _statusPipelineProps,
+        child: SizedBox(
+          width: 380,
+          child: const Ux4gStatusPipeline(
+            orientation: Ux4gPipelineOrientation.horizontal,
+            currentStep: -1,
+            steps: [
+              Ux4gPipelineStep(
+                label: 'Submitted',
+                description: '5 Apr',
+                state: Ux4gPipelineStepState.completed,
+              ),
+              Ux4gPipelineStep(
+                label: 'Verification',
+                description: 'Failed',
+                state: Ux4gPipelineStepState.error,
+              ),
+              Ux4gPipelineStep(
+                label: 'Inspection',
+                description: 'Blocked',
+                state: Ux4gPipelineStepState.warning,
+              ),
+              Ux4gPipelineStep(
+                label: 'Decision',
+                state: Ux4gPipelineStepState.upcoming,
+              ),
+              Ux4gPipelineStep(
+                label: 'Issued',
+                state: Ux4gPipelineStepState.upcoming,
+              ),
             ],
           ),
         ),
