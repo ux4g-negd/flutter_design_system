@@ -278,7 +278,9 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
                             child: widget.useSvgFaces && index < widget.ratingFaceAssets.length
                                 ? SvgPicture.asset(
                                     widget.ratingFaceAssets[index],
-                                    package: 'ux4g_flutter_components',
+                                    package: widget.ratingFaceAssets[index].startsWith('packages/')
+                                        ? null
+                                        : 'ux4g_flutter_components',
                                     colorFilter: ColorFilter.mode(
                                       iconColor,
                                       BlendMode.srcIn,
