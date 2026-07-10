@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Accordion ─────────────────────────────────────────────────────────────────
 
 final accordionComponent = WidgetbookComponent(
-  name: 'Ux4gAccordion',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Single',
@@ -16,7 +16,7 @@ final accordionComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gAccordion',
+              name: 'Accordion',
               description:
                   'A collapsible panel. Toggle with onExpandedChange. '
                   'Use Ux4gAccordionGroup for mutually-exclusive accordion lists.',
@@ -132,7 +132,7 @@ Ux4gAccordion(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gAccordion — Disabled',
+        name: 'Accordion — Disabled',
         description: 'A disabled accordion cannot be expanded.',
         code:
             'Ux4gAccordion(title: \'Locked\', expanded: false, enabled: false, onExpandedChange: (_) {});',
@@ -156,7 +156,7 @@ Ux4gAccordion(
           builder: (ctx, setState) {
             final colors = Ux4gTheme.colors(context);
             return ComponentDocs(
-              name: 'Ux4gAccordion — Custom Colors',
+              name: 'Accordion — Custom Colors',
               description:
                   'Every color parameter can be overridden.\n\n'
                   'Use Ux4gTheme.colors(context) for theme-aware values that '
@@ -229,7 +229,7 @@ Ux4gAccordion(
         final baseBgColor = hasBackground ? null : Colors.transparent;
 
         return ComponentDocs(
-          name: 'Ux4gAccordion — States Showcase',
+          name: 'Accordion — States Showcase',
           description:
               'A visual showcase of the various interaction states of the accordion item.',
           code:
@@ -374,7 +374,7 @@ ${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expa
             final baseBgColor = hasBackground ? null : Colors.transparent;
 
             return ComponentDocs(
-              name: 'Ux4gAccordion — Leading Chevron',
+              name: 'Accordion — Leading Chevron',
               description:
                   'The chevron arrow can be positioned on the left side (leading) instead of the right side.',
               code:
@@ -452,7 +452,7 @@ ${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expa
 );
 
 final accordionGroupComponent = WidgetbookComponent(
-  name: 'Ux4gAccordionGroup',
+  name: 'AccordionGroup',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -471,7 +471,7 @@ final accordionGroupComponent = WidgetbookComponent(
               'Yes, UX4G is open source under the MIT licence.',
             ];
             return ComponentDocs(
-              name: 'Ux4gAccordionGroup',
+              name: 'AccordionGroup',
               description:
                   'AccordionGroup ensures only one item is open at a time.',
               code: () {
@@ -704,8 +704,8 @@ final statusBannerComponent = WidgetbookComponent(
             const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
 
         return ComponentDocs(
-          name: 'Ux4gStatusBanner',
-          description: 'Various layout patterns built using Ux4gStatusBanner.',
+          name: 'StatusBanner',
+          description: 'Various layout patterns built using StatusBanner.',
           code: () {
             final buf = StringBuffer();
             buf.writeln("// ── Get the typography object from theme ──");
@@ -1134,7 +1134,7 @@ final statusBannerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Custom styling',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStatusBanner — Custom Styling',
+        name: 'StatusBanner — Custom Styling',
         description:
             'You can override the title and subtitle styles, including size, weight, and color.',
         code: () {
@@ -1217,7 +1217,7 @@ final emptyStateComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gEmptyState',
+        name: 'EmptyState',
         description:
             'A full-page empty state placeholder with icon, title, description, and an optional CTA button.',
         code: '''Ux4gEmptyState(
@@ -1336,7 +1336,7 @@ Ux4gEmptyState(
     WidgetbookUseCase(
       name: 'With CTA button',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gEmptyState — With CTA',
+        name: 'EmptyState — With CTA',
         description:
             'Providing buttonText and onButtonPressed adds a primary action button.',
         code:
@@ -1360,7 +1360,7 @@ Ux4gEmptyState(
     WidgetbookUseCase(
       name: 'All variants',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gEmptyState — Variants',
+        name: 'EmptyState — Variants',
         description:
             'Predefined variants that automatically apply the correct icon and color.',
         code: '''Column(
@@ -1450,7 +1450,7 @@ Ux4gEmptyState(
 // ── Chips ─────────────────────────────────────────────────────────────────────
 
 final choiceChipComponent = WidgetbookComponent(
-  name: 'Ux4gChoiceChip',
+  name: 'ChoiceChip',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1459,7 +1459,7 @@ final choiceChipComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gChoiceChip',
+              name: 'ChoiceChip',
               description:
                   'Single-select chips. Exactly one option is active at a time.',
               code: '''Ux4gChoiceChip(
@@ -1578,7 +1578,7 @@ final choiceChipComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gChoiceChip — With Icon',
+              name: 'ChoiceChip — With Icon',
               description: 'Choice chips displaying leading icons or avatars.',
               code: '''Ux4gChoiceChip(
   text: 'Favorites',
@@ -1617,7 +1617,7 @@ final choiceChipComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gChoiceChip — Disabled',
+        name: 'ChoiceChip — Disabled',
         description:
             'Choice chips in disabled state (selected and unselected).',
         code: '''Ux4gChoiceChip(
@@ -1656,7 +1656,7 @@ final choiceChipComponent = WidgetbookComponent(
 );
 
 final filterChipComponent = WidgetbookComponent(
-  name: 'Ux4gFilterChip',
+  name: 'FilterChip',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1665,7 +1665,7 @@ final filterChipComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gFilterChip',
+              name: 'FilterChip',
               description:
                   'Multi-select chips. Any number of options can be active simultaneously.',
               code: '''Ux4gFilterChip(
@@ -1788,7 +1788,7 @@ final filterChipComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gFilterChip — With Icon',
+              name: 'FilterChip — With Icon',
               description: 'Filter chips with leading icons.',
               code: '''Ux4gFilterChip(
   text: 'Downloads',
@@ -1839,7 +1839,7 @@ final filterChipComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gFilterChip — Disabled',
+        name: 'FilterChip — Disabled',
         description: 'Filter chips in disabled state.',
         code: '''Ux4gFilterChip(
   text: 'Selected Disabled',
@@ -1877,7 +1877,7 @@ final filterChipComponent = WidgetbookComponent(
 );
 
 final inputChipComponent = WidgetbookComponent(
-  name: 'Ux4gInputChip',
+  name: 'InputChip',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1886,7 +1886,7 @@ final inputChipComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gInputChip',
+              name: 'InputChip',
               description: 'Dismissible tag chips. Tap × to remove.',
               code: '''Ux4gInputChip(
   text: 'Design',
@@ -1977,7 +1977,7 @@ final inputChipComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gInputChip — With Icon',
+              name: 'InputChip — With Icon',
               description: 'Input chips displaying leading icons or avatars.',
               code: '''Ux4gInputChip(
   text: 'Alice',
@@ -2004,7 +2004,7 @@ final inputChipComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gInputChip — Disabled',
+        name: 'InputChip — Disabled',
         description:
             'Input chips in disabled state where dismiss action is disabled.',
         code: '''Ux4gInputChip(
@@ -2030,7 +2030,7 @@ final inputChipComponent = WidgetbookComponent(
 );
 
 final inputChipFieldComponent = WidgetbookComponent(
-  name: 'Ux4gInputChipField',
+  name: 'InputChipField',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -2040,7 +2040,7 @@ final inputChipFieldComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gInputChipField',
+              name: 'InputChipField',
               description:
                   'A text field that allows adding multiple chips/tags.',
               code: '''Ux4gInputChipField(
@@ -2147,7 +2147,7 @@ final chipGroupComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gChipGroup (Wrap)',
+              name: 'ChipGroup (Wrap)',
               description:
                   'Wrap layout for chip group — chips flow to next line when space runs out.',
               code: '''Ux4gChipGroup(
@@ -2260,9 +2260,9 @@ final chipGroupComponent = WidgetbookComponent(
             }
 
             return ComponentDocs(
-              name: 'Ux4gChipGroup — Variants',
+              name: 'ChipGroup — Variants',
               description:
-                  'Showcasing various chip group variants with and without badges. In this example, the first row uses badges inside the trailingContent property of Ux4gChoiceChip. The second row uses Ux4gFilterChip for multi-select functionality.',
+                  'Showcasing various chip group variants with and without badges. In this example, the first row uses badges inside the trailingContent property of ChoiceChip. The second row uses FilterChip for multi-select functionality.',
               code: '''// Custom buildBadge method to match the design
 Widget buildBadge(BuildContext context, String text, bool isSelected) {
   final typography = Theme.of(context).extension<Ux4gTypography>();
@@ -2489,7 +2489,7 @@ final paginationComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gPaginationIndicator',
+              name: 'PaginationIndicator',
               description: 'A page-dot indicator for carousels or steppers.',
               code: '''Ux4gPaginationIndicator(
   totalPageCount: 5,
@@ -2603,7 +2603,7 @@ final paginationComponent = WidgetbookComponent(
                 : Ux4gPalette.primary100;
 
             return ComponentDocs(
-              name: 'Ux4gPaginationIndicator - Right Aligned Arrows',
+              name: 'PaginationIndicator - Right Aligned Arrows',
               description:
                   'Showcasing right-aligned navigation chevrons with default and outer capsule variants.',
               code: '''// Row 1: Default dots with right-aligned arrows
@@ -2669,7 +2669,7 @@ Ux4gPaginationIndicator(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gPaginationIndicator - Capsule',
+              name: 'PaginationIndicator - Capsule',
               description:
                   'The capsule variant wraps the pagination dots and arrows inside a pill-shaped container with a subtle background and border. It can be used with or without arrows.',
               code: '''// Capsule with arrows
@@ -2725,7 +2725,7 @@ Ux4gPaginationIndicator(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gPaginationIndicator - Sizes',
+              name: 'PaginationIndicator - Sizes',
               description: 'Available in small (default) and medium sizes.',
               code: '''// Small
 Ux4gPaginationIndicator(
@@ -2776,7 +2776,7 @@ Ux4gPaginationIndicator(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gPaginationIndicator - No Arrows',
+              name: 'PaginationIndicator - No Arrows',
               description:
                   'You can hide the prev/next arrow buttons by setting showArrows to false.',
               code: '''Ux4gPaginationIndicator(

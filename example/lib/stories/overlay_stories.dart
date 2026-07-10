@@ -12,7 +12,7 @@ final modalComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Interactive Trigger',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gModal — Trigger',
+        name: 'Modal — Trigger',
         description: 'Click the button below to see the actual modal dialog.',
         code: '''Ux4gButton(
   text: 'Show Modal',
@@ -68,7 +68,7 @@ final modalComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Static Variants',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gModal — Variants',
+        name: 'Modal — Variants',
         description: 'Common modal patterns used in the design system.',
         code: '''// 1. Default (Left Aligned)
 Ux4gModal(
@@ -238,7 +238,7 @@ Ux4gModal(
     WidgetbookUseCase(
       name: 'Icon Centered',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gModal — Icon Centered',
+        name: 'Modal — Icon Centered',
         description:
             'Centered modal with top icon, header, description, and subtitle.',
         code: '''Ux4gModal(
@@ -330,7 +330,7 @@ Ux4gModal(
         }
 
         return ComponentDocs(
-          name: 'Ux4gModal — Hero Image Variants',
+          name: 'Modal — Hero Image Variants',
           description:
               'Showcases permutations of hero images with different alignments and button intents.',
           code: '''// 1. Left Aligned, Gradient Header
@@ -458,7 +458,7 @@ Ux4gModal(
     WidgetbookUseCase(
       name: 'Static Full Preview',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gModal — All Props',
+        name: 'Modal — All Props',
         description: 'Complete technical reference with a full visual example.',
         code: '''Ux4gModal(
   headerTitle: 'Full Preview Modal',
@@ -564,7 +564,7 @@ final bottomSheetComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Interactive Trigger',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gBottomSheet — Trigger',
+        name: 'BottomSheet — Trigger',
         description: 'Click the button to open the bottom sheet.',
         code: '''Ux4gButton(
   text: 'Open Bottom Sheet',
@@ -636,7 +636,7 @@ final bottomSheetComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Static Preview',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gBottomSheet',
+        name: 'BottomSheet',
         description: 'Static visual preview of the sheet surface.',
         props: const [
           PropRow(
@@ -759,7 +759,7 @@ final toastComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'All Categories',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gToast',
+        name: 'Toast',
         description: 'Semantic categories for informative messages.',
         code: '''// 1. Setup Toast Host State
 final toastState = Ux4gToastHostState();
@@ -868,7 +868,7 @@ final tooltipComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTooltip — Interactive',
+        name: 'Tooltip — Interactive',
         description: 'Use knobs to test different placements and text.',
         code: '''Ux4gTooltip(
   tooltipText: 'Interactive Tooltip',
@@ -1010,7 +1010,7 @@ final tooltipComponent = WidgetbookComponent(
         }
 
         return ComponentDocs(
-          name: 'Ux4gTooltip — All Variants',
+          name: 'Tooltip — All Variants',
           description:
               'Visual reference for all directional placements and alignments.',
           code: '''// ── Top Placements ──────────────────────────────────────────
@@ -1231,12 +1231,12 @@ Ux4gTooltip(
 );
 
 final richTooltipComponent = WidgetbookComponent(
-  name: 'Ux4gRichTooltip',
+  name: 'RichTooltip',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gRichTooltip',
+        name: 'RichTooltip',
         description: 'Rich tooltip with title, icon, and optional action.',
         code: '''Ux4gRichTooltip(
   tooltipText: 'This is a rich tooltip with a title, icon, and action.',

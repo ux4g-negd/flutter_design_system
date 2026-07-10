@@ -81,7 +81,7 @@ const _stepperProps = [
 ];
 
 final stepperComponent = WidgetbookComponent(
-  name: 'Stepper',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Horizontal',
@@ -90,7 +90,7 @@ final stepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper',
+              name: 'Stepper',
               description:
                   'A multi-step progress indicator for form wizards. '
                   'Supports horizontal and vertical orientations, solid or dashed lines.',
@@ -167,7 +167,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — No Labels',
+              name: 'Stepper — No Labels',
               description: 'Horizontal stepper with showLabels: false.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -229,7 +229,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — With Descriptions',
+              name: 'Stepper — With Descriptions',
               description:
                   'Horizontal stepper with labels, descriptions, and custom statuses. All labels are center-aligned.',
               code: '''Ux4gStepper(
@@ -336,7 +336,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Bottom Lines',
+              name: 'Stepper — Bottom Lines',
               description:
                   'Horizontal stepper with connecting lines rendered below the text.',
               code: '''Ux4gStepper(
@@ -445,7 +445,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Bottom Lines + Active Background',
+              name: 'Stepper — Bottom Lines + Active Background',
               description:
                   'Horizontal stepper with bottom connecting lines and a background color for the active step.',
               code: '''Ux4gStepper(
@@ -556,7 +556,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Edge Aligned Labels',
+              name: 'Stepper — Edge Aligned Labels',
               description:
                   'Horizontal stepper where the first step label is left-aligned and the last step label is right-aligned.',
               code: '''Ux4gStepper(
@@ -665,7 +665,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical',
+              name: 'Stepper — Vertical',
               description: 'Vertical orientation stacks steps top-to-bottom.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -739,7 +739,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical (No Labels)',
+              name: 'Stepper — Vertical (No Labels)',
               description: 'Vertical orientation without any step labels.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -793,7 +793,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical (Labels Only)',
+              name: 'Stepper — Vertical (Labels Only)',
               description: 'Vertical orientation with only title labels.',
               code: '''Ux4gStepper(
   totalSteps: 4,
@@ -857,7 +857,7 @@ Ux4gCapsuleStepper(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gStepper — Vertical (Icon Aligned with Description)',
+              name: 'Stepper — Vertical (Icon Aligned with Description)',
               description:
                   'Vertical orientation where the step icon aligns with the description text instead of the title.',
               code: '''Ux4gStepper(
@@ -959,7 +959,7 @@ Ux4gCapsuleStepper(
     WidgetbookUseCase(
       name: 'Dashed line',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStepper — Dashed Line',
+        name: 'Stepper — Dashed Line',
         description: 'lineStyle=dashed renders dotted connector lines.',
         code: '''Ux4gStepper(
   totalSteps: 4,
@@ -992,9 +992,9 @@ Ux4gCapsuleStepper(
     WidgetbookUseCase(
       name: 'With error step',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStepper — Error Step',
+        name: 'Stepper — Error Step',
         description:
-            'Mark a step as errored with isError: true on Ux4gStepItem.',
+            'Mark a step as errored with isError: true on StepItem.',
         code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 3,
@@ -1042,7 +1042,7 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Linear',
+              name: 'CapsuleStepper (Compact Stepper) — Linear',
               description:
                   'Capsules sandwiched between navigation arrows, labels aligned to start.',
               code: '''Ux4gCapsuleStepper(
@@ -1077,7 +1077,7 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Right Aligned',
+              name: 'CapsuleStepper (Compact Stepper) — Right Aligned',
               description:
                   'Capsules between arrows, step info on left, label/desc on right.',
               code: '''Ux4gCapsuleStepper(
@@ -1113,7 +1113,7 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name:
-                  'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
+                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
               description:
                   'Capsules at top, arrows surrounding step info in the center.',
               code: '''Ux4gCapsuleStepper(
@@ -1149,7 +1149,7 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name:
-                  'Ux4gCapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
+                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
               description:
                   'Capsules at top, arrows pushed to the far edges of the container.',
               code: '''Ux4gCapsuleStepper(
@@ -1184,7 +1184,7 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCapsuleStepper (Compact Stepper) — Split',
+              name: 'CapsuleStepper (Compact Stepper) — Split',
               description:
                   'Capsules at top, labels spread across, arrows on the bottom right.',
               code: '''Ux4gCapsuleStepper(
@@ -1223,7 +1223,7 @@ final resultRowComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gResultRow',
+        name: 'ResultRow',
         description:
             'An expandable list-row that summarises a record with a status tag, '
             'key-value detail pairs, and an optional action button.',
@@ -2495,7 +2495,7 @@ Ux4gResultRow(
 // ── Social Links ──────────────────────────────────────────────────────────────
 
 final socialLinkComponent = WidgetbookComponent(
-  name: 'Ux4gSocialLink',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Single Icon',
@@ -2522,7 +2522,7 @@ final socialLinkComponent = WidgetbookComponent(
         );
 
         return ComponentDocs(
-          name: 'Ux4gSocialLink',
+          name: 'SocialLink',
           description:
               'SVG social-media icon buttons. Choose from the SocialMediaIcon enum. '
               'Enable background for a contained pill appearance.',
@@ -2606,7 +2606,7 @@ final journeyTimelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gJourneyTimeline',
+        name: 'JourneyTimeline',
         description:
             'A vertical timeline showing the progress of a multi-stage journey. '
             'Steps are: completed, current, or upcoming.',
@@ -2908,7 +2908,7 @@ final statusPipelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gStatusPipeline',
+        name: 'StatusPipeline',
         description:
             'A horizontal pipeline showing discrete processing stages. '
             'Steps can be completed, current, upcoming, error, or warning.',
@@ -2962,7 +2962,7 @@ final carouselComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Image carousel',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCarousel',
+        name: 'Carousel',
         description:
             'A horizontal swipe carousel. Pass any list of widgets as items.',
         code: '''Ux4gCarousel(
@@ -3033,12 +3033,12 @@ final carouselComponent = WidgetbookComponent(
 // ── Social Link Group ─────────────────────────────────────────────────────────
 
 final socialLinkGroupComponent = WidgetbookComponent(
-  name: 'Ux4gSocialLinkGroup',
+  name: 'SocialLinkGroup',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gSocialLinkGroup',
+        name: 'SocialLinkGroup',
         description:
             'A horizontal row of social media icon buttons rendered as a group. '
             'Supports size, background, color, and spacing customisation.',
@@ -3101,12 +3101,12 @@ final socialLinkGroupComponent = WidgetbookComponent(
 // ── Social Link List ──────────────────────────────────────────────────────────
 
 final socialLinkListComponent = WidgetbookComponent(
-  name: 'Ux4gSocialLinkList',
+  name: 'SocialLinkList',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gSocialLinkList',
+        name: 'SocialLinkList',
         description:
             'A list of social media icon buttons that can be arranged horizontally or vertically '
             'with configurable alignment.',

@@ -10,7 +10,7 @@ final tagComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Styles',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTag',
+        name: 'Tag',
         description:
             'A compact label chip with four style variants and six color schemes. '
             'Optionally dismissible.',
@@ -102,7 +102,7 @@ Ux4gTag(text: 'Close me', onDismiss: () {});''',
     WidgetbookUseCase(
       name: 'Unified Pill Tag',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gUnifiedPillTag',
+        name: 'UnifiedPillTag',
         description:
             'A pill-shaped tag containing multiple segments separated by dividers.',
         code: '''Ux4gUnifiedPillTag(
@@ -160,7 +160,7 @@ Ux4gTag(text: 'Close me', onDismiss: () {});''',
     WidgetbookUseCase(
       name: 'Color schemes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTag — Colors',
+        name: 'Tag — Colors',
         description: 'Six semantic color schemes available.',
         code: '''Ux4gTag(text: 'neutral', colorScheme: Ux4gTagColor.neutral);
 Ux4gTag(text: 'brand',   colorScheme: Ux4gTagColor.brand);
@@ -180,7 +180,7 @@ Ux4gTag(text: 'info',    colorScheme: Ux4gTagColor.info);''',
     WidgetbookUseCase(
       name: 'Interactive (knobs)',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTag — Interactive',
+        name: 'Tag — Interactive',
         description: 'Use the knobs panel to customise style, color, and size.',
         code: '''Ux4gTag(
   text: 'Label',
@@ -215,7 +215,7 @@ Ux4gTag(text: 'info',    colorScheme: Ux4gTagColor.info);''',
     WidgetbookUseCase(
       name: 'Shapes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTag — Shapes',
+        name: 'Tag — Shapes',
         description:
             'Circular tags are fully rounded; rectangular tags have a smaller border radius.',
         code: '''Ux4gTag(text: 'Rectangular', shape: Ux4gTagShape.rectangular);
@@ -241,7 +241,7 @@ Ux4gTag(text: 'Circular',    shape: Ux4gTagShape.circular);''',
     WidgetbookUseCase(
       name: 'Sizes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTag — Sizes',
+        name: 'Tag — Sizes',
         description: 'Small (m) and Medium (l) size variants side-by-side.',
         code: '''Ux4gTag(text: 'Small', size: Ux4gTagSize.m);
 Ux4gTag(text: 'Medium',  size: Ux4gTagSize.l);''',
@@ -272,7 +272,7 @@ final cardComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Basic content',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCard',
+        name: 'Card',
         description:
             'A surface container with optional title, subtitle, body text, '
             'media image, and footer action buttons.',
@@ -451,7 +451,7 @@ Ux4gCard(
     WidgetbookUseCase(
       name: 'With footer buttons',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCard — With Actions',
+        name: 'Card — With Actions',
         description:
             'Attach primary and/or secondary action buttons to the card footer.',
         code: '''Ux4gCard(
@@ -480,7 +480,7 @@ Ux4gCard(
     WidgetbookUseCase(
       name: 'Horizontal layout',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCard — Horizontal',
+        name: 'Card — Horizontal',
         description:
             'When direction is set to horizontal, the media thumbnail appears on the left side.',
         code: '''Ux4gCard(
@@ -507,7 +507,7 @@ Ux4gCard(
     WidgetbookUseCase(
       name: 'With media',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCard — With Media',
+        name: 'Card — With Media',
         description:
             'Provide a mediaImageUrl to display a hero image at the top of the card.',
         code: '''Ux4gCard(
@@ -529,7 +529,7 @@ Ux4gCard(
     WidgetbookUseCase(
       name: 'Complex Rich Card',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCard — Custom Composition',
+        name: 'Card — Custom Composition',
         description:
             'Replicating complex UI layouts using the child property for full flexibility.',
         code: '''Ux4gCard(
@@ -922,7 +922,7 @@ class _SmallTag extends StatelessWidget {
     WidgetbookUseCase(
       name: 'Complex Rich Card (Horizontal)',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCard — Custom Composition (Horizontal)',
+        name: 'Card — Custom Composition (Horizontal)',
         description:
             'A rich card layout in a horizontal orientation, featuring a side image and detailed content on the right.',
         code: '''Ux4gCard(
@@ -1394,7 +1394,7 @@ final dividerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Horizontal',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gDivider',
+        name: 'Divider',
         description:
             'A thin separator line. Can be horizontal or vertical, with an optional centre label.',
         code: '''SizedBox(
@@ -1482,7 +1482,7 @@ final dividerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'With label',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gDivider — With Label',
+        name: 'Divider — With Label',
         description:
             'Embed any widget (e.g. Text) in the centre of the divider line.',
         code: '''SizedBox(
@@ -1516,7 +1516,7 @@ final dividerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Vertical',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gDivider — Vertical',
+        name: 'Divider — Vertical',
         description:
             'Vertical dividers separate inline content. Specify height to use inside unconstrained containers without a SizedBox wrapper.',
         code: '''Row(
@@ -1550,7 +1550,7 @@ final dividerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Dashed & Dotted',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gDivider — Styled',
+        name: 'Divider — Styled',
         description: 'Dividers can be rendered as dashed or dotted lines.',
         code: '''Column(
   mainAxisSize: MainAxisSize.min,

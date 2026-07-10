@@ -7,7 +7,7 @@ import '../widgets/component_docs.dart';
 // ── Input Field ──────────────────────────────────────────────────────────────
 
 final inputFieldComponent = WidgetbookComponent(
-  name: 'Input',
+  name: 'Standard',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -78,7 +78,7 @@ class _Ux4gInputFieldDefaultExampleState extends State<Ux4gInputFieldDefaultExam
 }''';
 
             return ComponentDocs(
-              name: 'Ux4gInputField',
+              name: 'InputField',
               description:
                   'A styled text input with label, placeholder, caption, '
                   'status colours, and icon slots.',
@@ -299,7 +299,7 @@ class _Ux4gInputFieldDefaultExampleState extends State<Ux4gInputFieldDefaultExam
     WidgetbookUseCase(
       name: 'All statuses',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gInputField — Statuses',
+        name: 'InputField — Statuses',
         description:
             'Visual status variations: default, error, warning, success, and disabled.',
         code: '''import 'package:flutter/material.dart';
@@ -432,7 +432,7 @@ class _Ux4gInputFieldStatusesExampleState extends State<Ux4gInputFieldStatusesEx
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gInputField — Password',
+              name: 'InputField — Password',
               description:
                   'Password type hides input and shows a visibility-toggle icon.',
               code: '''import 'package:flutter/material.dart';
@@ -481,7 +481,7 @@ class _Ux4gInputFieldPasswordExampleState extends State<Ux4gInputFieldPasswordEx
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gInputField — Icons',
+              name: 'InputField — Icons',
               description:
                   'Leading and trailing icon slots inside the input border.',
               code: '''import 'package:flutter/material.dart';
@@ -576,7 +576,7 @@ class _Ux4gInputFieldIconsExampleState extends State<Ux4gInputFieldIconsExample>
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gInputField — Prefix / Postfix',
+              name: 'InputField — Prefix / Postfix',
               description:
                   'Text decorations prepended or appended inside the field border.',
               code: '''import 'package:flutter/material.dart';
@@ -650,7 +650,7 @@ class _Ux4gInputFieldPrefixPostfixExampleState extends State<Ux4gInputFieldPrefi
     WidgetbookUseCase(
       name: 'Read-only & Required',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gInputField — Read-only & Required',
+        name: 'InputField — Read-only & Required',
         description:
             'readOnly and enabled=false disable editing so user can only read the value; required shows an asterisk on the label.',
         code: '''import 'package:flutter/material.dart';
@@ -838,7 +838,7 @@ final textAreaComponent = WidgetbookComponent(
             );
 
             return ComponentDocs(
-              name: 'Ux4gTextArea',
+              name: 'TextArea',
               description:
                   'A multi-line text input with label and placeholder.',
               code: code,
@@ -970,7 +970,7 @@ final textAreaComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Sizes & Heights',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTextArea — Sizes',
+        name: 'TextArea — Sizes',
         description: 'Small and Large sizes with different minimum heights.',
         code: '''// String value = '';  ← declare this in your widget state
 Ux4gTextArea(
@@ -1020,7 +1020,7 @@ Ux4gTextArea(
     WidgetbookUseCase(
       name: 'Statuses',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTextArea — Statuses',
+        name: 'TextArea — Statuses',
         description: 'Visual feedback for different validation states.',
         code: '''// String value = '';  ← declare this in your widget state
 Ux4gTextArea(
@@ -1085,7 +1085,7 @@ Ux4gTextArea(
     WidgetbookUseCase(
       name: 'Metadata',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gTextArea — Metadata',
+        name: 'TextArea — Metadata',
         description: 'Showing character counts and helper icons.',
         code: '''// String value = '';  ← declare this in your widget state
 Ux4gTextArea(
@@ -1253,7 +1253,7 @@ final searchFieldComponent = WidgetbookComponent(
             );
 
             return ComponentDocs(
-              name: 'Ux4gSearchField',
+              name: 'SearchField',
               description:
                   'A search-optimised input field with a built-in search icon.',
               code: code,
@@ -1403,7 +1403,7 @@ final checkboxComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gCheckbox',
+              name: 'Checkbox',
               description:
                   'A tri-state checkbox (checked / unchecked / indeterminate) with label and description.',
               code: '''class CheckboxExample extends StatefulWidget {
@@ -1522,7 +1522,7 @@ class _CheckboxExampleState extends State<CheckboxExample> {
     WidgetbookUseCase(
       name: 'All states',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCheckbox — All States',
+        name: 'Checkbox — All States',
         description:
             'Checked, unchecked, indeterminate, error, and disabled states.',
         code:
@@ -1573,7 +1573,7 @@ class _CheckboxExampleState extends State<CheckboxExample> {
     WidgetbookUseCase(
       name: 'All sizes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gCheckbox — Sizes',
+        name: 'Checkbox — Sizes',
         description: 'Small, medium, and large checkbox.',
         code:
             'Ux4gCheckbox(value: true, onChanged: (_) {}, label: \'Small\',  size: Ux4gCheckboxSize.small);',
@@ -1620,7 +1620,7 @@ final toggleComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gToggle',
+              name: 'Toggle',
               description:
                   'A switch/toggle with label, description, and three size options.',
               code: '''Ux4gToggle(
@@ -1732,7 +1732,7 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'All sizes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gToggle — Sizes',
+        name: 'Toggle — Sizes',
         description: 'Small (s), medium (m), and large (l) toggle switches.',
         code:
             'Ux4gToggle(checked: true, onCheckedChange: (_) {}, label: \'Small\',  size: Ux4gToggleSize.s);',
@@ -1767,7 +1767,7 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gToggle — Disabled',
+        name: 'Toggle — Disabled',
         description: 'Toggle with onCheckedChange=null renders as disabled.',
         code:
             'Ux4gToggle(checked: false, onCheckedChange: null, label: \'Off (disabled)\');',
@@ -1801,7 +1801,7 @@ final toggleComponent = WidgetbookComponent(
             : Colors.black54;
 
         return ComponentDocs(
-          name: 'Ux4gToggle — Layout Variants',
+          name: 'Toggle — Layout Variants',
           description:
               'Demonstrates native label compositions using the new built-in properties.',
           code: '''// Native dual-sided labels
@@ -1886,9 +1886,9 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSlider',
+              name: 'Slider',
               description:
-                  'A single-thumb slider. Set size to Ux4gSliderSize.small (default). '
+                  'A single-thumb slider. Set size to SliderSize.small (default). '
                   'Pass steps to show tick marks and value labels below the track.',
               code: '''Ux4gSlider(
   value: value,
@@ -2037,7 +2037,7 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gRangeSlider',
+              name: 'RangeSlider',
               description:
                   'A dual-thumb range slider. Use size: medium for larger thumbs. '
                   'showValueLabels shows the current start/end percentages above the track.',
@@ -2162,7 +2162,7 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSlider — Value Indicator',
+              name: 'Slider — Value Indicator',
               description:
                   'showIndicator: true shows a floating bubble above the thumb '
                   'with the current value while the user is dragging.',
@@ -2203,7 +2203,7 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSlider — Input Fields',
+              name: 'Slider — Input Fields',
               description:
                   'showInputFields: true replaces the value label row with two '
                   'text-field inputs. The left field shows and edits the current '
@@ -2241,7 +2241,7 @@ final sliderComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled State',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gSlider — Disabled',
+        name: 'Slider — Disabled',
         description:
             'Set enabled: false to prevent interaction. '
             'The track and thumb render at reduced opacity. '
@@ -2276,7 +2276,7 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSlider — Error',
+              name: 'Slider — Error',
               description:
                   'captionVariant: error changes the track to the error color '
                   'and shows an error icon beside the caption text.',
@@ -2313,7 +2313,7 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSlider — Warning',
+              name: 'Slider — Warning',
               description:
                   'captionVariant: warning renders the caption in orange with a '
                   'warning icon, signalling that the selected value needs attention.',
@@ -2352,7 +2352,7 @@ final sliderComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSlider — Success',
+              name: 'Slider — Success',
               description:
                   'captionVariant: success renders the caption in green with a '
                   'check icon, confirming that the selected value is valid.',
@@ -2414,7 +2414,7 @@ final otpInputComponent = WidgetbookComponent(
 )''';
 
             return ComponentDocs(
-              name: 'Ux4gOtpInput',
+              name: 'OtpInput',
               description:
                   'A segmented one-time-password input field. '
                   'Automatically advances focus and calls onCompleted when all digits are filled.',
@@ -2541,7 +2541,7 @@ final otpInputComponent = WidgetbookComponent(
                   name: 'captionText',
                   type: 'String?',
                   description:
-                      'Plain text caption (used with Ux4gOtpCaptionVariant.plain).',
+                      'Plain text caption (used with OtpCaptionVariant.plain).',
                 ),
                 PropRow(
                   name: 'autoCountdownSeconds',
@@ -2581,7 +2581,7 @@ List<String> _selectionDropdownSingleSelected = [];
 List<String> _selectionDropdownMultiSelected = [];
 
 final actionDropdownComponent = WidgetbookComponent(
-  name: 'Ux4gActionDropdown',
+  name: 'ActionDropdown',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2605,7 +2605,7 @@ final actionDropdownComponent = WidgetbookComponent(
                   );
 
             return ComponentDocs(
-              name: 'Ux4gActionDropdown',
+              name: 'ActionDropdown',
               description:
                   'A contextual action menu triggered by a custom trigger widget. '
                   'Each option can optionally show a trailing arrow.',
@@ -2697,7 +2697,7 @@ final actionDropdownComponent = WidgetbookComponent(
             ];
 
             return ComponentDocs(
-              name: 'Ux4gActionDropdown — More Options',
+              name: 'ActionDropdown — More Options',
               description:
                   'A custom trigger button with an icon and custom styling.',
               code: '''Ux4gActionDropdown(
@@ -2757,7 +2757,7 @@ final actionDropdownComponent = WidgetbookComponent(
 // ── Selection Dropdown ────────────────────────────────────────────────────────
 
 final selectionDropdownComponent = WidgetbookComponent(
-  name: 'Ux4gSelectionDropdown',
+  name: 'SelectionDropdown',
   useCases: [
     WidgetbookUseCase(
       name: 'Single select',
@@ -2776,7 +2776,7 @@ final selectionDropdownComponent = WidgetbookComponent(
             );
 
             return ComponentDocs(
-              name: 'Ux4gSelectionDropdown',
+              name: 'SelectionDropdown',
               description:
                   'A dropdown for selecting one or multiple options from a list. '
                   'Supports search filtering, single/multi mode, and three sizes.',
@@ -2927,7 +2927,7 @@ final selectionDropdownComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gSelectionDropdown — Multi',
+              name: 'SelectionDropdown — Multi',
               description:
                   'Multi-select mode shows chips for each selected option.',
               code: '''Ux4gSelectionDropdown(
@@ -3012,7 +3012,7 @@ final datePickerComponent = WidgetbookComponent(
             );
 
             return ComponentDocs(
-              name: 'Ux4gDatePicker — Single',
+              name: 'DatePicker — Single',
               description:
                   'Single date selection. Tapping the field opens a calendar overlay. '
                   'The calendar icon sits at the right end of the field.',
@@ -3159,7 +3159,7 @@ final datePickerComponent = WidgetbookComponent(
             );
 
             return ComponentDocs(
-              name: 'Ux4gDatePicker — Range',
+              name: 'DatePicker — Range',
               description:
                   'Date range selection. First tap sets the start date, second tap sets '
                   'the end date. The selected range is displayed as "DD/MM/YYYY – DD/MM/YYYY".',
@@ -3275,7 +3275,7 @@ final timePickerComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gTimePicker — Standard',
+              name: 'TimePicker — Standard',
               description:
                   'Tapping the field opens a time picker overlay in 12-hour AM/PM format. '
                   'The clock icon sits at the right end of the field.',
@@ -3340,7 +3340,7 @@ final timePickerComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gTimePicker — Interval',
+              name: 'TimePicker — Interval',
               description:
                   'minuteInterval: 5 restricts minute selection to 5-minute steps '
                   '(00, 05, 10 … 55), useful for scheduling UIs.',
@@ -3409,7 +3409,7 @@ final fileUploadComponent = WidgetbookComponent(
         );
 
         return ComponentDocs(
-          name: 'Ux4gFileUpload',
+          name: 'FileUpload',
           description:
               'A file drop zone that allows users to select or drag-and-drop files. '
               'Shows upload progress per file with idle / uploading / success / error states.',
@@ -3620,7 +3620,7 @@ final radioButtonComponent = WidgetbookComponent(
 )''';
 
             return ComponentDocs(
-              name: 'Ux4gRadioButton',
+              name: 'RadioButton',
               description:
                   'A single-selection radio button. Use a shared groupValue '
                   'and onChanged to create a mutually-exclusive group.',
@@ -3715,7 +3715,7 @@ final radioButtonComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'All sizes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gRadioButton — Sizes',
+        name: 'RadioButton — Sizes',
         description: 'Small, medium, and large radio buttons shown together.',
         code:
             '''Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Small',  size: Ux4gRadioButtonSize.small);
@@ -3755,7 +3755,7 @@ Ux4gRadioButton(value: 'c', groupValue: 'c', onChanged: (_) {}, label: 'Large', 
     WidgetbookUseCase(
       name: 'Description variants',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gRadioButton — Description Variants',
+        name: 'RadioButton — Description Variants',
         description:
             'Each variant applies a semantic colour to the helper text. '
             'Pair with [status] so the radio circle colour matches.',
@@ -3801,7 +3801,7 @@ Ux4gRadioButton(value: 'success', groupValue: 'success', onChanged: (_) {}, labe
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gRadioButton — Disabled',
+        name: 'RadioButton — Disabled',
         description: 'Disabled radio buttons cannot be interacted with.',
         code:
             '''Ux4gRadioButton(value: 'a', groupValue: 'a', onChanged: (_) {}, label: 'Disabled (selected)',            enabled: false);
@@ -3854,7 +3854,7 @@ Ux4gRadioButton(value: 'd', groupValue: 'a', onChanged: (_) {}, label: 'Disabled
     WidgetbookUseCase(
       name: 'Status states',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gRadioButton — Status',
+        name: 'RadioButton — Status',
         description:
             'The [status] prop drives the radio circle color so callers '
             'can show error / warning / success states alongside selection. '
@@ -3963,7 +3963,7 @@ Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Success'
     WidgetbookUseCase(
       name: 'Custom color',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gRadioButton — Custom Color',
+        name: 'RadioButton — Custom Color',
         description:
             'Use [color] to override the radio circle color (overrides '
             '[status] and theme primary). Use [labelColor] to override '

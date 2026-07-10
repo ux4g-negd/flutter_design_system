@@ -35,7 +35,7 @@ final buttonComponent = WidgetbookComponent(
         }
 
         return ComponentDocs(
-          name: 'Ux4gButton',
+          name: 'Button',
           description:
               'The primary action button. Supports loading state, disabled state, '
               'and optional leading / trailing icons.',
@@ -275,7 +275,7 @@ Ux4gButton(
                   : 'contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, ');
 
         return ComponentDocs(
-          name: 'Ux4gButton — Variants',
+          name: 'Button — Variants',
           description:
               'Different visual variants, loading states, and icon configurations including Tonal options.',
           code:
@@ -438,7 +438,7 @@ Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${ton
     WidgetbookUseCase(
       name: 'Sizes',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gButton — Sizes',
+        name: 'Button — Sizes',
         description:
             'Five size options ranging from XS to XL controlling height, width, and padding.',
         code:
@@ -495,7 +495,7 @@ Ux4gButton(text: 'XL', width: 109, height: 56, onPressed: () {});''',
     WidgetbookUseCase(
       name: 'With Icons',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gButton — With Icons',
+        name: 'Button — With Icons',
         description:
             'Attach icons to the leading or trailing position of the button label.',
         code: '''Ux4gButton(
@@ -541,7 +541,7 @@ Ux4gButton(
     WidgetbookUseCase(
       name: 'States',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gButton — States',
+        name: 'Button — States',
         description: 'Default, loading, and disabled states side by side.',
         code:
             'Ux4gButton(text: \'Default\',  onPressed: () {});\n'
@@ -562,9 +562,9 @@ Ux4gButton(
     WidgetbookUseCase(
       name: 'Convenience buttons',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gOutlineButton & Ux4gTextButton',
+        name: 'OutlineButton & TextButton',
         description:
-            'Shorthand constructors: Ux4gOutlineButton wraps variant=outline, '
+            'Shorthand constructors: OutlineButton wraps variant=outline, '
             'Ux4gTextButton wraps variant=ghost.',
         code:
             'Ux4gOutlineButton(text: \'Cancel\',           onPressed: () {});\n'
@@ -582,9 +582,9 @@ Ux4gButton(
     WidgetbookUseCase(
       name: 'IconButton',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gIconButton',
+        name: 'IconButton',
         description:
-            'A square icon-only button. Same variant/size system as Ux4gButton.',
+            'A square icon-only button. Same variant/size system as Button.',
         code: '''Ux4gIconButton(icon: Icons.favorite, onPressed: () {});
 Ux4gIconButton(icon: Icons.share,    variant: Ux4gButtonVariant.outline, onPressed: () {});
 Ux4gIconButton(icon: Icons.delete,   variant: Ux4gButtonVariant.ghost,   onPressed: () {});''',

@@ -114,7 +114,10 @@ class _ComponentDocsState extends State<ComponentDocs>
                         runSpacing: 8,
                         children: [
                           Text(
-                            widget.name,
+                            widget.name.replaceFirst(
+                              RegExp(r'^[uU]x4g\s*'),
+                              '',
+                            ),
                             style: textTheme.headlineSmall?.copyWith(
                               fontWeight: FontWeight.w700,
                               color: isDark
@@ -127,7 +130,10 @@ class _ComponentDocsState extends State<ComponentDocs>
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        widget.description,
+                        widget.description.replaceAll(
+                          RegExp(r'\b[uU]x4g(?=[A-Z])'),
+                          '',
+                        ),
                         style: textTheme.bodyMedium?.copyWith(
                           color: isDark
                               ? Colors.white60
@@ -261,7 +267,10 @@ class _PreviewPane extends StatelessWidget {
             padding: const EdgeInsets.all(24),
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                minHeight: (constraints.maxHeight - 48).clamp(0.0, double.infinity),
+                minHeight: (constraints.maxHeight - 48).clamp(
+                  0.0,
+                  double.infinity,
+                ),
               ),
               child: center ? Center(child: content) : content,
             ),
@@ -318,7 +327,10 @@ class _CodePane extends StatelessWidget {
             child: GestureDetector(
               onTap: onCopy,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: isDark
                       ? const Color(0xFF2D3348)
@@ -331,14 +343,18 @@ class _CodePane extends StatelessWidget {
                     Icon(
                       copied ? Icons.check : Icons.copy_outlined,
                       size: 14,
-                      color: copied ? Colors.green.shade400 : const Color(0xFFE2E8F0),
+                      color: copied
+                          ? Colors.green.shade400
+                          : const Color(0xFFE2E8F0),
                     ),
                     const SizedBox(width: 4),
                     Text(
                       copied ? 'Copied!' : 'Copy',
                       style: TextStyle(
                         fontSize: 12,
-                        color: copied ? Colors.green.shade400 : const Color(0xFFE2E8F0),
+                        color: copied
+                            ? Colors.green.shade400
+                            : const Color(0xFFE2E8F0),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -396,8 +412,9 @@ class _PropsPane extends StatelessWidget {
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final tableWidth =
-              constraints.maxWidth > 600 ? constraints.maxWidth : 600.0;
+          final tableWidth = constraints.maxWidth > 600
+              ? constraints.maxWidth
+              : 600.0;
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: SingleChildScrollView(
