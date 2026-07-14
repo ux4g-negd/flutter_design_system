@@ -207,12 +207,12 @@ Ux4gButton(
         final colors = Theme.of(context).extension<Ux4gThemeColors>()!;
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final colorTheme = context.knobs.list<String>(
-          label: 'Color Theme',
-          options: const ['Primary', 'Red', 'Neutral'],
+          label: 'Varients',
+          options: const ['Primary', 'Danger', 'Neutral'],
           initialOption: 'Primary',
         );
 
-        final isRed = colorTheme == 'Red';
+        final isRed = colorTheme == 'Danger';
         final isNeutral = colorTheme == 'Neutral';
 
         final bgColor = isRed
