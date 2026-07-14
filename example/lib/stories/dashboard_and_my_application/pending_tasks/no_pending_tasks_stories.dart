@@ -7,17 +7,17 @@ import '../../../widgets/component_docs.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral0;
 Color _getHeaderBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
-const Color _primaryColor = Ux4gPalette.primary600;
-const Color _greenColor = Ux4gPalette.green600;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
+const Color _primaryColor = Ux4gColors.primary600;
+const Color _greenColor = Ux4gColors.green600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 

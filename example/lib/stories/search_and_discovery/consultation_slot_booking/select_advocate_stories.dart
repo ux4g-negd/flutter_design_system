@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 
 final selectAdvocateComponent = WidgetbookComponent(
   name: 'Select Advocate',
@@ -152,8 +152,8 @@ class _SelectAdvocateMockup extends StatelessWidget {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -188,8 +188,8 @@ class _SelectAdvocateMockup extends StatelessWidget {
                         'Select an advocate',
                         style: typography.hS_strong.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -197,8 +197,8 @@ class _SelectAdvocateMockup extends StatelessWidget {
                         'District Legal Services Authority, Pune · 12 available',
                         style: typography.bS_default.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -253,10 +253,10 @@ class _SelectAdvocateMockup extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
@@ -270,16 +270,16 @@ class _SelectAdvocateMockup extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   color: isDark
-                      ? Ux4gPalette.primary950
-                      : Ux4gPalette.primary50,
+                      ? Ux4gColors.primary950
+                      : Ux4gColors.primary50,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Icon(
                   Icons.balance,
                   size: 20,
                   color: isDark
-                      ? Ux4gPalette.primary300
-                      : Ux4gPalette.primary600,
+                      ? Ux4gColors.primary300
+                      : Ux4gColors.primary600,
                 ),
               ),
               const SizedBox(width: 12),
@@ -291,16 +291,16 @@ class _SelectAdvocateMockup extends StatelessWidget {
                       name,
                       style: typography.tS_strong.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                       ),
                     ),
                     Text(
                       '$specialization · $experience',
                       style: typography.lM_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral200
-                            : Ux4gPalette.neutral700,
+                            ? Ux4gColors.neutral200
+                            : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -309,13 +309,13 @@ class _SelectAdvocateMockup extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+                  color: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
                   '$slots slots',
                   style: typography.lM_strong.copyWith(
-                    color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                    color: isDark ? Ux4gColors.green300 : Ux4gColors.green700,
                   ),
                 ),
               ),
@@ -325,7 +325,7 @@ class _SelectAdvocateMockup extends StatelessWidget {
           Text(
             'Languages: $languages',
             style: typography.lM_default.copyWith(
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 12),
@@ -337,9 +337,9 @@ class _SelectAdvocateMockup extends StatelessWidget {
               variant: Ux4gButtonVariant.primary,
               size: Ux4gButtonSize.medium,
               backgroundColor: isDark
-                  ? Ux4gPalette.primary300
-                  : Ux4gPalette.primary600,
-              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
+                  ? Ux4gColors.primary300
+                  : Ux4gColors.primary600,
+              contentColor: isDark ? Ux4gColors.primary950 : Colors.white,
               textStyle: typography.lL_default,
             ),
           ),

@@ -552,7 +552,7 @@ class _TooltipBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final onSurface =
@@ -573,9 +573,9 @@ class _TooltipBubble extends StatelessWidget {
     final isDark = materialTheme.brightness == Brightness.dark;
 
     final bgColor = backgroundColor ??
-        (isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700);
+        (isDark ? Ux4gColors.neutral300 : Ux4gColors.neutral700);
     final fgColor = contentColor ??
-        (isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50);
+        (isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral50);
 
     return CustomPaint(
       painter: _TooltipPainter(

@@ -7,17 +7,17 @@ import '../../../widgets/component_docs.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral50;
 
 Color _getHeaderBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
-const Color _primaryColor = Ux4gPalette.primary600;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
+const Color _primaryColor = Ux4gColors.primary600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 
@@ -53,11 +53,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _getScaffoldBg(BuildContext context) =>
     _isDark(context) ? const Color(0xFF111827) : const Color(0xFFF9FAFB);
 
@@ -167,8 +167,8 @@ class _SearchApplicationsScreenState extends State<SearchApplicationsScreen> {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
-                      borderColor: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
-                      contentColor: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                      borderColor: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300,
+                      contentColor: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     ),
                     SizedBox(width: 8),
                     Icon(Icons.keyboard_arrow_up, size: 20, color: _getSubtleText(context)),
@@ -186,14 +186,14 @@ class _SearchApplicationsScreenState extends State<SearchApplicationsScreen> {
                     width: 8,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600,
+                      color: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600,
                       shape: BoxShape.circle,
                     ),
                   ),
                 ),
                 Ux4gPillSegment(
                   text: 'Under review',
-                  textColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange600,
+                  textColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange600,
                 ),
               ],
               borderColor: const Color(0xFFD1D5DB),
@@ -207,7 +207,7 @@ class _SearchApplicationsScreenState extends State<SearchApplicationsScreen> {
             SizedBox(height: 16),
             Text(
               'Action needed',
-              style: TextStyle(fontSize: 11, color: isDark ? Ux4gPalette.secondary600 : Ux4gPalette.secondary300),
+              style: TextStyle(fontSize: 11, color: isDark ? Ux4gColors.secondary600 : Ux4gColors.secondary300),
             ),
             SizedBox(height: 4),
             Ux4gButton(
@@ -216,7 +216,7 @@ class _SearchApplicationsScreenState extends State<SearchApplicationsScreen> {
               variant: Ux4gButtonVariant.ghost,
               size: Ux4gButtonSize.small,
               padding: EdgeInsets.zero,
-              contentColor: Ux4gPalette.primary600,
+              contentColor: Ux4gColors.primary600,
               trailingIcon: Icons.file_upload_outlined,
             ),
           ],
@@ -257,8 +257,8 @@ class _SearchApplicationsScreenState extends State<SearchApplicationsScreen> {
                       onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
-                      borderColor: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
-                      contentColor: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                      borderColor: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300,
+                      contentColor: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     ),
                     SizedBox(width: 8),
                     Icon(Icons.keyboard_arrow_down, size: 20, color: _getSubtleText(context)),
@@ -276,14 +276,14 @@ class _SearchApplicationsScreenState extends State<SearchApplicationsScreen> {
                     width: 8,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: isDark ? Ux4gPalette.secondary300 : Ux4gPalette.secondary600,
+                      color: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600,
                       shape: BoxShape.circle,
                     ),
                   ),
                 ),
                 Ux4gPillSegment(
                   text: 'Under review',
-                  textColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange600,
+                  textColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange600,
                 ),
               ],
               borderColor: const Color(0xFFD1D5DB),
@@ -512,11 +512,11 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
                       borderColor: isDark
-                          ? Ux4gPalette.neutral600
-                          : Ux4gPalette.neutral300,
+                          ? Ux4gColors.neutral600
+                          : Ux4gColors.neutral300,
                       contentColor: isDark
-                          ? Ux4gPalette.neutral50
-                          : Ux4gPalette.neutral900,
+                          ? Ux4gColors.neutral50
+                          : Ux4gColors.neutral900,
                     ),
                     SizedBox(width: 8),
                     Icon(
@@ -541,8 +541,8 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
                     height: 8,
                     decoration: BoxDecoration(
                       color: isDark
-                          ? Ux4gPalette.secondary300
-                          : Ux4gPalette.secondary600,
+                          ? Ux4gColors.secondary300
+                          : Ux4gColors.secondary600,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -550,8 +550,8 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
                 Ux4gPillSegment(
                   text: 'Under review',
                   textColor: isDark
-                      ? Ux4gPalette.orange300
-                      : Ux4gPalette.orange600,
+                      ? Ux4gColors.orange300
+                      : Ux4gColors.orange600,
                 ),
               ],
               borderColor: const Color(0xFFD1D5DB),
@@ -586,8 +586,8 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
               style: TextStyle(
                 fontSize: 11,
                 color: isDark
-                    ? Ux4gPalette.secondary600
-                    : Ux4gPalette.secondary300,
+                    ? Ux4gColors.secondary600
+                    : Ux4gColors.secondary300,
               ),
             ),
             SizedBox(height: 4),
@@ -639,11 +639,11 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
                       borderColor: isDark
-                          ? Ux4gPalette.neutral600
-                          : Ux4gPalette.neutral300,
+                          ? Ux4gColors.neutral600
+                          : Ux4gColors.neutral300,
                       contentColor: isDark
-                          ? Ux4gPalette.neutral50
-                          : Ux4gPalette.neutral900,
+                          ? Ux4gColors.neutral50
+                          : Ux4gColors.neutral900,
                     ),
                     SizedBox(width: 8),
                     Icon(
@@ -666,8 +666,8 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
                     height: 8,
                     decoration: BoxDecoration(
                       color: isDark
-                          ? Ux4gPalette.secondary300
-                          : Ux4gPalette.secondary600,
+                          ? Ux4gColors.secondary300
+                          : Ux4gColors.secondary600,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -675,8 +675,8 @@ class _SearchApplicationsMockupState extends State<_SearchApplicationsMockup> {
                 Ux4gPillSegment(
                   text: 'Under review',
                   textColor: isDark
-                      ? Ux4gPalette.orange300
-                      : Ux4gPalette.orange600,
+                      ? Ux4gColors.orange300
+                      : Ux4gColors.orange600,
                 ),
               ],
               borderColor: const Color(0xFFD1D5DB),

@@ -172,20 +172,20 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final semanticColors = isDark
             ? [
-                Ux4gPalette.primary300,
-                Ux4gPalette.green500,
-                Ux4gPalette.orange500,
-                Ux4gPalette.red300,
-                Ux4gPalette.neutral600,
-                Ux4gPalette.cyan500,
+                Ux4gColors.primary300,
+                Ux4gColors.green500,
+                Ux4gColors.orange500,
+                Ux4gColors.red300,
+                Ux4gColors.neutral600,
+                Ux4gColors.cyan500,
               ]
             : [
-                Ux4gPalette.primary600,
-                Ux4gPalette.green600,
-                Ux4gPalette.orange600,
-                Ux4gPalette.red600,
-                Ux4gPalette.neutral300,
-                Ux4gPalette.cyan600,
+                Ux4gColors.primary600,
+                Ux4gColors.green600,
+                Ux4gColors.orange600,
+                Ux4gColors.red600,
+                Ux4gColors.neutral300,
+                Ux4gColors.cyan600,
               ];
 
         return ComponentDocs(
@@ -195,8 +195,8 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
           code:
               '''// Enable showBorder: true to add a surface-colored outer stroke
 final isDark = Theme.of(context).brightness == Brightness.dark;
-final successColor = isDark ? Ux4gPalette.green500 : Ux4gPalette.green600;
-final primaryColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+final successColor = isDark ? Ux4gColors.green500 : Ux4gColors.green600;
+final primaryColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
 
 Ux4gBadge.dot(showBorder: true, containerColor: successColor);
 Ux4gBadge.icon(Icons.check, showBorder: true, containerColor: successColor);
@@ -259,8 +259,8 @@ Ux4gBadge.icon(Icons.shield, showBorder: true, containerColor: primaryColor);'''
                     Ux4gBadge.icon(
                       Icons.shield,
                       containerColor: isDark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       showBorder: true,
                     ),
                     Ux4gBadge.readyToUse(

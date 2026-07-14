@@ -12,10 +12,10 @@ class _ProactiveStatusMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     final bg = isDark ? const Color(0xFF121212) : const Color(0xFFF9FAFB);
     final cardBg = isDark ? const Color(0xFF1E1E1E) : Colors.white;
-    final borderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    final borderColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
     final onSurface = isDark ? Colors.white : const Color(0xFF111827);
     final subtle = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
 
@@ -275,12 +275,12 @@ class ProactiveStatusTrackerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final cardBg = isDark ? Ux4gPalette.neutral900 : Colors.white;
-    final borderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final cardBg = isDark ? Ux4gColors.neutral900 : Colors.white;
+    final borderColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+      backgroundColor: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Stack(
           children: [

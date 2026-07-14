@@ -54,13 +54,13 @@ class InlineFeedbackScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final successColor = isDark ? Ux4gPalette.green300 : const Color(0xFF16A34A);
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final successColor = isDark ? Ux4gColors.green300 : const Color(0xFF16A34A);
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -75,7 +75,7 @@ class InlineFeedbackScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -89,7 +89,7 @@ class InlineFeedbackScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -160,7 +160,7 @@ class InlineFeedbackScreen extends StatelessWidget {
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
                         height: 48,
-                        backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                        backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                         contentColor: isDark ? Colors.black : Colors.white,
                         borderRadius: 8,
                       ),
@@ -191,14 +191,14 @@ class InlineFeedbackCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final successColor = isDark ? Ux4gPalette.green300 : const Color(0xFF16A34A);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final successColor = isDark ? Ux4gColors.green300 : const Color(0xFF16A34A);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -213,7 +213,7 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -227,7 +227,7 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -311,7 +311,7 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
                   height: 48,
-                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                   contentColor: isDark ? Colors.black : Colors.white,
                   borderRadius: 8,
                 ),
@@ -338,18 +338,18 @@ class _InlineFeedbackMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isCard = variant == _CardVariant.cardStyle;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final successColor = isDark ? Ux4gPalette.green300 : const Color(0xFF16A34A);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final successColor = isDark ? Ux4gColors.green300 : const Color(0xFF16A34A);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
     return Theme(
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isCard 
-            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF)) 
-            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF)) 
+            : (isDark ? Ux4gColors.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -364,7 +364,7 @@ class _InlineFeedbackMockup extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                   SizedBox(
@@ -378,7 +378,7 @@ class _InlineFeedbackMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -407,7 +407,7 @@ class _InlineFeedbackMockup extends StatelessWidget {
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
                       height: 48,
-                      backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                      backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                       contentColor: isDark ? Colors.black : Colors.white,
                       borderRadius: 8,
                     ),
@@ -511,7 +511,7 @@ class _InlineFeedbackMockup extends StatelessWidget {
                 variant: Ux4gButtonVariant.primary,
                 size: Ux4gButtonSize.large,
                 height: 48,
-                backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                 contentColor: isDark ? Colors.black : Colors.white,
                 borderRadius: 8,
               ),

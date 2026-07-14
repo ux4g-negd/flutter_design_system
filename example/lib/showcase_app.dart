@@ -89,7 +89,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
 
   // Social Links
   SocialMediaIcon _selectedSocialIcon = SocialMediaIcon.github;
-  Color _selectedTintColor = Ux4gPalette.primary500;
+  Color _selectedTintColor = Ux4gColors.primary500;
 
   // File Upload
   List<UploadedFile> _uploadedFiles = [];
@@ -274,8 +274,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         child: Ux4gButton(
                           onPressed: () {},
                           text: 'Secondary Pill Button',
-                          backgroundColor: Ux4gPalette.secondary,
-                          contentColor: Ux4gPalette.neutral1000black,
+                          backgroundColor: Ux4gColors.secondary,
+                          contentColor: Ux4gColors.neutral1000black,
                           borderRadius: 24,
                           elevation: 8,
                         ),
@@ -375,7 +375,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             return Text(
                               'Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development. Its purpose is to permit a page layout to be designed, independently of the copy that will subsequently populate it.',
                               style: typography.bXS_default.copyWith(
-                                color: Ux4gPalette.neutral500,
+                                color: Ux4gColors.neutral500,
                               ),
                             );
                           },
@@ -392,22 +392,22 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             Ux4gLoader(
                               size: 40,
                               percentage: 100,
-                              color: Ux4gPalette.primary,
+                              color: Ux4gColors.primary,
                             ),
                             Ux4gLoader(
                               size: 40,
                               percentage: 60,
-                              color: Ux4gPalette.secondary,
+                              color: Ux4gColors.secondary,
                             ),
                             Ux4gLoader(
                               size: 40,
                               percentage: 30,
-                              color: Ux4gPalette.red,
+                              color: Ux4gColors.red,
                             ),
                             Ux4gLoader(
                               size: 40,
                               percentage: 75,
-                              color: Ux4gPalette.green,
+                              color: Ux4gColors.green,
                             ),
                           ],
                         ),
@@ -1167,8 +1167,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 Ux4gTooltip(
                                   tooltipText: 'Custom Color',
                                   placement: Ux4gTooltipPlacement.left,
-                                  backgroundColor: Ux4gPalette.primary,
-                                  contentColor: Ux4gPalette.white,
+                                  backgroundColor: Ux4gColors.primary,
+                                  contentColor: Ux4gColors.white,
                                   child: Ux4gButton(
                                     onPressed: () {},
                                     text: 'Left',
@@ -1513,7 +1513,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       Text(
                                         'Saving',
                                         style: typography.bM_default.copyWith(
-                                          color: Ux4gPalette.neutral500,
+                                          color: Ux4gColors.neutral500,
                                         ),
                                       ),
                                     ],
@@ -1541,7 +1541,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       Text(
                                         'Saved 3:14 PM',
                                         style: typography.bM_default.copyWith(
-                                          color: Ux4gPalette.gray900,
+                                          color: Ux4gColors.gray900,
                                         ),
                                       ),
                                     ],
@@ -1771,7 +1771,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                   label: 'SLA Status',
                                   value: 'SLA 3 days overdue',
                                   icon: Icons.priority_high,
-                                  valueColor: Ux4gPalette.orange700,
+                                  valueColor: Ux4gColors.orange700,
                                   isBold: true,
                                 ),
                                 Ux4gResultDetail(
@@ -1839,7 +1839,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               actionButtonText: 'Download',
                               actionButtonIcon: Icons.download,
                               actionButtonColor:
-                                  Ux4gPalette.blue700, // Custom Blue Button
+                                  Ux4gColors.blue700, // Custom Blue Button
                               detailsColumns: 2, // Explicitly 2 columns
                               showBottomDivider: false,
                               details: const [
@@ -1894,7 +1894,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             const SizedBox(height: 4),
                             Ux4gDivider(
                               style: Ux4gDividerStyle.dotted,
-                              color: Ux4gPalette.primary500,
+                              color: Ux4gColors.primary500,
                               thickness: 1.5,
                             ),
                             const SizedBox(height: 12),
@@ -1904,7 +1904,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               label: Text(
                                 'OR',
                                 style: typography.lS_strong.copyWith(
-                                  color: Ux4gPalette.neutral500,
+                                  color: Ux4gColors.neutral500,
                                 ),
                               ),
                             ),
@@ -1938,7 +1938,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                   Ux4gDivider(
                                     orientation:
                                         Ux4gDividerOrientation.vertical,
-                                    color: Ux4gPalette.primary500,
+                                    color: Ux4gColors.primary500,
                                     thickness: 2,
                                   ),
                                   const SizedBox(width: 8),
@@ -2207,8 +2207,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Open Destructive Modal (Centered)',
-                              backgroundColor: Ux4gPalette.red500,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.red500,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 8),
                             Ux4gButton(
@@ -2239,8 +2239,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Open Minimal Confirm Modal',
-                              backgroundColor: Ux4gPalette.gray800,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.gray800,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 8),
                             Ux4gButton(
@@ -2278,8 +2278,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Avatar Modal (Centered + Padded)',
-                              backgroundColor: Ux4gPalette.primary700,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.primary700,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 8),
                             Ux4gButton(
@@ -2290,7 +2290,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                   headerImageStyle: Ux4gModalHeaderImage.none,
                                   leadingItem: Ux4gModalLeadingItem.icon,
                                   leadingIcon: Icons.info_outline,
-                                  leadingIconTint: Ux4gPalette.red500,
+                                  leadingIconTint: Ux4gColors.red500,
                                   alignment: Ux4gModalAlignment.leftAligned,
                                   showHeader: true,
                                   headerTitle: 'Header',
@@ -2312,8 +2312,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Icon Modal (No image + Split)',
-                              backgroundColor: Ux4gPalette.red700,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.red700,
+                              contentColor: Ux4gColors.white,
                             ),
                           ],
                         ),
@@ -2331,8 +2331,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         avatar: Ux4gAvatar(
                           size: Ux4gAvatarSize.s,
                           initials: 'JD',
-                          containerColor: Ux4gPalette.primary50,
-                          contentColor: Ux4gPalette.primary700,
+                          containerColor: Ux4gColors.primary50,
+                          contentColor: Ux4gColors.primary700,
                         ),
                         title: 'Title',
                         subtitle: 'Subtitle',
@@ -2352,7 +2352,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         mediaImageUrl:
                             'https://picsum.photos/seed/card2/600/300',
                         mediaLabelText: 'New',
-                        borderColor: Ux4gPalette.primary,
+                        borderColor: Ux4gColors.primary,
                         borderWidth: 1,
                         title: 'Outlined Card',
                         subtitle: 'No avatar shown here',
@@ -2540,8 +2540,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                     onPressed: () =>
                                         setState(() => _progressValue = 1.0),
                                     text: 'Complete',
-                                    backgroundColor: Ux4gPalette.green600,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.green600,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                               ],
@@ -2635,7 +2635,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       Text(
                                         'Sharp',
                                         style: typography.lS_default.copyWith(
-                                          color: Ux4gPalette.neutral500,
+                                          color: Ux4gColors.neutral500,
                                         ),
                                       ),
                                       const SizedBox(height: 4),
@@ -2643,7 +2643,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                         value: 0.65,
                                         height: 12,
                                         shape: Ux4gProgressShape.sharp,
-                                        color: Ux4gPalette.primary,
+                                        color: Ux4gColors.primary,
                                       ),
                                     ],
                                   ),
@@ -2657,7 +2657,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       Text(
                                         'Rounded',
                                         style: typography.lS_default.copyWith(
-                                          color: Ux4gPalette.neutral500,
+                                          color: Ux4gColors.neutral500,
                                         ),
                                       ),
                                       const SizedBox(height: 4),
@@ -2665,7 +2665,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                         value: 0.65,
                                         height: 12,
                                         shape: Ux4gProgressShape.rounded,
-                                        color: Ux4gPalette.primary,
+                                        color: Ux4gColors.primary,
                                       ),
                                     ],
                                   ),
@@ -2690,7 +2690,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                           value: val,
                                           height: 16,
                                           shape: Ux4gProgressShape.sharp,
-                                          color: Ux4gPalette.primary,
+                                          color: Ux4gColors.primary,
                                           showPercentage: true,
                                           labelPosition:
                                               Ux4gProgressLabelPosition.outside,
@@ -2702,7 +2702,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                           value: val,
                                           height: 16,
                                           shape: Ux4gProgressShape.rounded,
-                                          color: Ux4gPalette.primary,
+                                          color: Ux4gColors.primary,
                                           showPercentage: true,
                                           labelPosition:
                                               Ux4gProgressLabelPosition.outside,
@@ -2714,7 +2714,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                           value: val,
                                           height: 16,
                                           shape: Ux4gProgressShape.sharp,
-                                          color: Ux4gPalette.primary,
+                                          color: Ux4gColors.primary,
                                           showPercentage: true,
                                           labelPosition:
                                               Ux4gProgressLabelPosition.inside,
@@ -2726,7 +2726,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                           value: val,
                                           height: 16,
                                           shape: Ux4gProgressShape.rounded,
-                                          color: Ux4gPalette.primary,
+                                          color: Ux4gColors.primary,
                                           showPercentage: true,
                                           labelPosition:
                                               Ux4gProgressLabelPosition.inside,
@@ -2809,8 +2809,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       () => _circularProgressValue = 1.0,
                                     ),
                                     text: 'Complete',
-                                    backgroundColor: Ux4gPalette.green600,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.green600,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                               ],
@@ -3360,11 +3360,11 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                   tag: 'Tag',
                                   status: Ux4gJourneyStepStatus(
                                     text: '2 days remaining',
-                                    dotColor: Ux4gPalette.secondary,
+                                    dotColor: Ux4gColors.secondary,
                                     badgeText: 'Pending',
-                                    badgeColor: Ux4gPalette.secondary
+                                    badgeColor: Ux4gColors.secondary
                                         .withValues(alpha: 0.12),
-                                    badgeTextColor: Ux4gPalette.secondary,
+                                    badgeTextColor: Ux4gColors.secondary,
                                   ),
                                 ),
                                 // Upcoming (gray)
@@ -3891,8 +3891,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               onPressed: () =>
                                   setState(() => _toastAtTop = !_toastAtTop),
                               text: 'Toggle Toast Position',
-                              backgroundColor: Ux4gPalette.gray800,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.gray800,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 12),
                             Row(
@@ -3908,8 +3908,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       duration: const Duration(seconds: 2),
                                     ),
                                     text: 'Success',
-                                    backgroundColor: Ux4gPalette.green500,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.green500,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -3923,8 +3923,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       duration: const Duration(seconds: 2),
                                     ),
                                     text: 'Error',
-                                    backgroundColor: Ux4gPalette.red500,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.red500,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                               ],
@@ -3942,8 +3942,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       duration: const Duration(seconds: 2),
                                     ),
                                     text: 'Warning',
-                                    backgroundColor: Ux4gPalette.gold600,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.gold600,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -3957,8 +3957,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                       duration: const Duration(seconds: 2),
                                     ),
                                     text: 'Info',
-                                    backgroundColor: Ux4gPalette.cyan600,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.cyan600,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                               ],
@@ -4107,8 +4107,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                         : null,
                                     text: 'Previous',
                                     enabled: _currentStep > 1,
-                                    backgroundColor: Ux4gPalette.gray800,
-                                    contentColor: Ux4gPalette.white,
+                                    backgroundColor: Ux4gColors.gray800,
+                                    contentColor: Ux4gColors.white,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -4244,8 +4244,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Open Full Bottom Sheet (Justified)',
-                              backgroundColor: Ux4gPalette.primary700,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.primary700,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 8),
                             Ux4gButton(
@@ -4260,8 +4260,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Open Non-Draggable Sheet',
-                              backgroundColor: Ux4gPalette.gray800,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.gray800,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 8),
                             Ux4gButton(
@@ -4310,8 +4310,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Open Custom Content Sheet',
-                              backgroundColor: Ux4gPalette.green700,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.green700,
+                              contentColor: Ux4gColors.white,
                             ),
                             const SizedBox(height: 8),
                             Ux4gButton(
@@ -4341,8 +4341,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 ),
                               ),
                               text: 'Open Long Content Sheet',
-                              backgroundColor: Ux4gPalette.cyan600,
-                              contentColor: Ux4gPalette.white,
+                              backgroundColor: Ux4gColors.cyan600,
+                              contentColor: Ux4gColors.white,
                             ),
                           ],
                         ),
@@ -4472,8 +4472,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 },
                                 text: 'Simulate Success Flow',
                                 leadingIcon: Icons.check_circle_outline,
-                                backgroundColor: Ux4gPalette.green,
-                                contentColor: Ux4gPalette.white,
+                                backgroundColor: Ux4gColors.green,
+                                contentColor: Ux4gColors.white,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -4492,8 +4492,8 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                 },
                                 text: 'Simulate Failure Flow',
                                 leadingIcon: Icons.error_outline,
-                                backgroundColor: Ux4gPalette.red,
-                                contentColor: Ux4gPalette.white,
+                                backgroundColor: Ux4gColors.red,
+                                contentColor: Ux4gColors.white,
                               ),
                             ),
                           ],
@@ -4597,7 +4597,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             child: Ux4gEmptyState(
                               variant: Ux4gEmptyStateVariant.custom,
                               icon: Icons.lock_outline_rounded,
-                              iconColor: Ux4gPalette.secondary,
+                              iconColor: Ux4gColors.secondary,
                               title: 'Access restricted',
                               subtitle:
                                   'You do not have permission to view this content.',
@@ -4633,7 +4633,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                                   Ux4gSocialLink(
                                     icon: _selectedSocialIcon,
                                     size: SocialLinkSize.xxl,
-                                    color: Ux4gPalette.white,
+                                    color: Ux4gColors.white,
                                     enableBackground: true,
                                     containerSize: 100,
                                     containerColor: _isDark
@@ -4710,12 +4710,12 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               runSpacing: 8,
                               children:
                                   [
-                                    (Ux4gPalette.red500, 'Red'),
-                                    (Ux4gPalette.green500, 'Green'),
-                                    (Ux4gPalette.primary500, 'Blue'),
-                                    (Ux4gPalette.gold600, 'Gold'),
-                                    (Ux4gPalette.purple500, 'Purple'),
-                                    (Ux4gPalette.cyan500, 'Cyan'),
+                                    (Ux4gColors.red500, 'Red'),
+                                    (Ux4gColors.green500, 'Green'),
+                                    (Ux4gColors.primary500, 'Blue'),
+                                    (Ux4gColors.gold600, 'Gold'),
+                                    (Ux4gColors.purple500, 'Purple'),
+                                    (Ux4gColors.cyan500, 'Cyan'),
                                   ].map((colorTuple) {
                                     final color = colorTuple.$1;
                                     final label = colorTuple.$2;
@@ -4917,7 +4917,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
   Widget _sectionTitle(
     String text,
     Ux4gTypography typography,
-    Ux4gColors colors,
+    Ux4gThemeColors colors,
   ) {
     return Text(
       text,
@@ -4928,7 +4928,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
   Widget _showcaseCard({
     required String title,
     required Ux4gTypography typography,
-    required Ux4gColors colors,
+    required Ux4gThemeColors colors,
     required Widget child,
   }) {
     return Padding(
@@ -4984,7 +4984,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
 }
 
 Widget _circularColorVariant({
-  required Ux4gColors colors,
+  required Ux4gThemeColors colors,
   required Ux4gTypography typography,
   required Color progressColor,
   required SweepGradient gradient,

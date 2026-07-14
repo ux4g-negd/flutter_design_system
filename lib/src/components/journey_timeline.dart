@@ -249,7 +249,7 @@ class Ux4gJourneyTimeline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -300,7 +300,7 @@ class Ux4gJourneyTimeline extends StatelessWidget {
     Color activeColor,
     Color inactiveColor,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     return Column(
@@ -337,7 +337,7 @@ class Ux4gJourneyTimeline extends StatelessWidget {
     Color activeColor,
     Color inactiveColor,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final activeIndex =
@@ -402,7 +402,7 @@ class Ux4gJourneyTimeline extends StatelessWidget {
 class _JourneyHeaderWidget extends StatelessWidget {
   final Ux4gJourneyHeader header;
   final Ux4gTypography? ux4gTypography;
-  final Ux4gColors? ux4gColors;
+  final Ux4gThemeColors? ux4gColors;
   final ThemeData materialTheme;
 
   const _JourneyHeaderWidget({
@@ -488,7 +488,7 @@ class _JourneyStepRow extends StatelessWidget {
   final TextStyle? dateStyle;
   final TextStyle? titleStyle;
   final Ux4gTypography? ux4gTypography;
-  final Ux4gColors? ux4gColors;
+  final Ux4gThemeColors? ux4gColors;
   final ThemeData materialTheme;
 
   const _JourneyStepRow({
@@ -615,7 +615,7 @@ class _StepIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
 
     switch (state) {
@@ -718,7 +718,7 @@ class _JourneyStepCard extends StatelessWidget {
   final TextStyle? dateStyle;
   final TextStyle? titleStyle;
   final Ux4gTypography? ux4gTypography;
-  final Ux4gColors? ux4gColors;
+  final Ux4gThemeColors? ux4gColors;
   final ThemeData materialTheme;
 
   const _JourneyStepCard({
@@ -755,8 +755,8 @@ class _JourneyStepCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: step.cardColor ?? cardColor ??
             (materialTheme.brightness == Brightness.dark
-                ? Ux4gPalette.neutral950
-                : Ux4gPalette.neutral0),
+                ? Ux4gColors.neutral950
+                : Ux4gColors.neutral0),
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(
           color: step.cardBorderColor ?? cardBorderColor ?? onSurface.withValues(alpha: 0.1),

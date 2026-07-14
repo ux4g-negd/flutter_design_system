@@ -8,17 +8,17 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFFAFAFA);
+    _isDark(context) ? Ux4gColors.neutral950 : const Color(0xFFFAFAFA);
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+    _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB);
+    _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB);
 Color _getStartFreshColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
@@ -130,26 +130,26 @@ class _ProgressStepList extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: step.status == _StepStatus.completed
                       ? (_isDark(context)
-                            ? Ux4gPalette.green500
-                            : Ux4gPalette.green600)
+                            ? Ux4gColors.green500
+                            : Ux4gColors.green600)
                       : step.status == _StepStatus.inProgress
                       ? (_isDark(context)
-                            ? Ux4gPalette.neutral800
+                            ? Ux4gColors.neutral800
                             : Colors.white)
                       : (_isDark(context)
-                            ? Ux4gPalette.neutral800
+                            ? Ux4gColors.neutral800
                             : Colors.white),
                   border: Border.all(
                     color: step.status == _StepStatus.completed
                         ? (_isDark(context)
-                              ? Ux4gPalette.green500
-                              : Ux4gPalette.green600)
+                              ? Ux4gColors.green500
+                              : Ux4gColors.green600)
                         : step.status == _StepStatus.inProgress
                         ? (_isDark(context)
-                              ? Ux4gPalette.neutral500
+                              ? Ux4gColors.neutral500
                               : const Color(0xFFD1D5DB))
                         : (_isDark(context)
-                              ? Ux4gPalette.neutral700
+                              ? Ux4gColors.neutral700
                               : const Color(0xFFE5E7EB)),
                     width: step.status == _StepStatus.inProgress ? 2 : 1.5,
                   ),
@@ -167,14 +167,14 @@ class _ProgressStepList extends StatelessWidget {
                     Text(
                       step.title,
                       style: (Theme.of(context).extension<Ux4gTypography>()?.bM_strong ?? const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
-                        color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                       ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       step.subtitle,
                       style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
-                        color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                        color: _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -219,8 +219,8 @@ class ContinueApplicationScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -258,7 +258,7 @@ class ContinueApplicationScreen extends StatelessWidget {
                     Text(
                       'Last saved 10 Apr 2026 at 3:12 PM',
                       style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -273,7 +273,7 @@ class ContinueApplicationScreen extends StatelessWidget {
                 children: [
                   Ux4gButton(text: 'Continue from Step 3', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, height: 48),
                 ],
               ),
             ),
@@ -327,8 +327,8 @@ class ContinueApplicationCardScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -392,7 +392,7 @@ class ContinueApplicationCardScreen extends StatelessWidget {
                 children: [
                   Ux4gButton(text: 'Continue from Step 3', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, height: 48),
                 ],
               ),
             ),
@@ -428,7 +428,7 @@ class _ContinueApplicationMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     const primaryColor = Color(0xFF432CBB);
     return Scaffold(
-      backgroundColor: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+      backgroundColor: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -456,15 +456,15 @@ class _ContinueApplicationMockup extends StatelessWidget {
                   height: 32,
                   width: 1,
                   color: _isDark(context)
-                      ? Ux4gPalette.neutral700
+                      ? Ux4gColors.neutral700
                       : const Color(0xFFD1D5DB),
                 ),
                 SvgPicture.asset(
                   _unionLogoPath,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                   height: 32,
@@ -517,7 +517,7 @@ class _ContinueApplicationMockup extends StatelessWidget {
                     Text(
                       'Last saved 10 Apr 2026 at 3:12 PM',
                       style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
-                        color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                        color: _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -563,7 +563,7 @@ class _ContinueApplicationMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 11,
                       color: _isDark(context)
-                          ? Ux4gPalette.neutral500
+                          ? Ux4gColors.neutral500
                           : const Color(0xFF9CA3AF),
                     ),
                   ),
@@ -617,7 +617,7 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
             children: [
               // Header with white background
               Container(
-                color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -645,15 +645,15 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                           height: 32,
                           width: 1,
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral700
+                              ? Ux4gColors.neutral700
                               : const Color(0xFFD1D5DB),
                         ),
                         SvgPicture.asset(
                           _unionLogoPath,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                           height: 32,
@@ -681,11 +681,11 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.neutral900
+                          ? Ux4gColors.neutral900
                           : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       border: _isDark(context)
-                          ? Border.all(color: Ux4gPalette.neutral800)
+                          ? Border.all(color: Ux4gColors.neutral800)
                           : null,
                       boxShadow: [
                         BoxShadow(
@@ -732,7 +732,7 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral500
+                                ? Ux4gColors.neutral500
                                 : const Color(0xFF9CA3AF),
                           ),
                         ),
@@ -783,7 +783,7 @@ class _ContinueApplicationCardMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: _isDark(context)
-                            ? Ux4gPalette.neutral500
+                            ? Ux4gColors.neutral500
                             : const Color(0xFF9CA3AF),
                       ),
                     ),

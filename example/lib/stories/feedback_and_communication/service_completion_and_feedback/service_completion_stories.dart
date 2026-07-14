@@ -57,7 +57,7 @@ class ServiceCompletionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -72,7 +72,7 @@ class ServiceCompletionScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -86,7 +86,7 @@ class ServiceCompletionScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -106,23 +106,23 @@ class ServiceCompletionScreen extends StatelessWidget {
                       variant: Ux4gButtonVariant.ghost,
                       size: Ux4gButtonSize.small,
                       leadingIcon: Icons.arrow_back,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     ),
                     const SizedBox(height: 20),
                     Text('Service Completed',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     const SizedBox(height: 6),
                     Text('Your income certificate has been downloaded.',
-                        style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                        style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                     const SizedBox(height: 20),
                     // Success banner
                     Builder(
                       builder: (context) {
                         final isDark = Theme.of(context).brightness == Brightness.dark;
-                        final successBg = isDark ? Ux4gPalette.green900 : Ux4gPalette.green50;
-                        final successBorder = isDark ? Ux4gPalette.green600 : Ux4gPalette.green300;
-                        final successTextColor = isDark ? Ux4gPalette.green300 : Ux4gPalette.green800;
-                        final successIconColor = isDark ? Ux4gPalette.green50 : Ux4gPalette.green600;
+                        final successBg = isDark ? Ux4gColors.green900 : Ux4gColors.green50;
+                        final successBorder = isDark ? Ux4gColors.green600 : Ux4gColors.green300;
+                        final successTextColor = isDark ? Ux4gColors.green300 : Ux4gColors.green800;
+                        final successIconColor = isDark ? Ux4gColors.green50 : Ux4gColors.green600;
 
                         return Ux4gCard(
                           backgroundColor: successBg,
@@ -186,9 +186,9 @@ class ServiceCompletionScreen extends StatelessWidget {
                     Builder(
                       builder: (context) {
                         final isDark = Theme.of(context).brightness == Brightness.dark;
-                        final fileCardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral50;
-                        final fileCardTitleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-                        final fileCardSubColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+                        final fileCardBg = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral50;
+                        final fileCardTitleColor = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+                        final fileCardSubColor = isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 
                         return Ux4gCard(
                           backgroundColor: fileCardBg,
@@ -234,8 +234,8 @@ class ServiceCompletionScreen extends StatelessWidget {
                 size: Ux4gButtonSize.large,
                 height: 48,
                 width: double.infinity,
-                borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 borderRadius: 8,
               ),
             ),
@@ -249,7 +249,7 @@ class ServiceCompletionScreen extends StatelessWidget {
                 size: Ux4gButtonSize.large,
                 height: 48,
                 width: double.infinity,
-                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 contentColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                 borderRadius: 8,
               ),
@@ -289,7 +289,7 @@ class ServiceCompletionCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100,
       body: SafeArea(
         child: Column(
           children: [
@@ -304,7 +304,7 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -318,7 +318,7 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -342,23 +342,23 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                         variant: Ux4gButtonVariant.ghost,
                         size: Ux4gButtonSize.small,
                         leadingIcon: Icons.arrow_back,
-                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                       ),
                       const SizedBox(height: 20),
                       Text('Service Completed',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                       const SizedBox(height: 6),
                       Text('Your income certificate has been downloaded.',
-                          style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                          style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                       const SizedBox(height: 20),
                       // Success banner
                       Builder(
                         builder: (context) {
                           final isDark = Theme.of(context).brightness == Brightness.dark;
-                          final successBg = isDark ? Ux4gPalette.green900 : Ux4gPalette.green50;
-                          final successBorder = isDark ? Ux4gPalette.green600 : Ux4gPalette.green300;
-                          final successTextColor = isDark ? Ux4gPalette.green300 : Ux4gPalette.green800;
-                          final successIconColor = isDark ? Ux4gPalette.green50 : Ux4gPalette.green600;
+                          final successBg = isDark ? Ux4gColors.green900 : Ux4gColors.green50;
+                          final successBorder = isDark ? Ux4gColors.green600 : Ux4gColors.green300;
+                          final successTextColor = isDark ? Ux4gColors.green300 : Ux4gColors.green800;
+                          final successIconColor = isDark ? Ux4gColors.green50 : Ux4gColors.green600;
 
                           return Ux4gCard(
                             backgroundColor: successBg,
@@ -422,9 +422,9 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                     Builder(
                       builder: (context) {
                         final isDark = Theme.of(context).brightness == Brightness.dark;
-                        final fileCardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral50;
-                        final fileCardTitleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-                        final fileCardSubColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+                        final fileCardBg = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral50;
+                        final fileCardTitleColor = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+                        final fileCardSubColor = isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 
                         return Ux4gCard(
                           backgroundColor: fileCardBg,
@@ -471,8 +471,8 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                 size: Ux4gButtonSize.large,
                 height: 48,
                 width: double.infinity,
-                borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 borderRadius: 8,
               ),
             ),
@@ -486,7 +486,7 @@ class ServiceCompletionCardScreen extends StatelessWidget {
                 size: Ux4gButtonSize.large,
                 height: 48,
                 width: double.infinity,
-                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 contentColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
                 borderRadius: 8,
               ),
@@ -525,7 +525,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
     return Theme(
       data: Ux4gTheme.themeData(isDark: Theme.of(context).brightness == Brightness.dark),
       child: Scaffold(
-        backgroundColor: isCard ? (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white),
+        backgroundColor: isCard ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -540,7 +540,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                   SizedBox(
@@ -554,7 +554,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -631,7 +631,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
           variant: Ux4gButtonVariant.ghost,
           size: Ux4gButtonSize.small,
           leadingIcon: Icons.arrow_back,
-          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
         ),
         const SizedBox(height: 20),
 
@@ -641,7 +641,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
           ),
         ),
         const SizedBox(height: 6),
@@ -649,7 +649,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
           'Your income certificate has been downloaded.',
           style: TextStyle(
             fontSize: 13,
-            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
           ),
         ),
         const SizedBox(height: 20),
@@ -657,10 +657,10 @@ class _ServiceCompletionMockup extends StatelessWidget {
         // Success banner using Ux4gCard
         (() {
           final isDark = Theme.of(context).brightness == Brightness.dark;
-          final successBg = isDark ? Ux4gPalette.green900 : Ux4gPalette.green50;
-          final successBorder = isDark ? Ux4gPalette.green600 : Ux4gPalette.green300;
-          final successTextColor = isDark ? Ux4gPalette.green300 : Ux4gPalette.green800;
-          final successIconColor = isDark ? Ux4gPalette.green50 : Ux4gPalette.green600;
+          final successBg = isDark ? Ux4gColors.green900 : Ux4gColors.green50;
+          final successBorder = isDark ? Ux4gColors.green600 : Ux4gColors.green300;
+          final successTextColor = isDark ? Ux4gColors.green300 : Ux4gColors.green800;
+          final successIconColor = isDark ? Ux4gColors.green50 : Ux4gColors.green600;
 
           return Ux4gCard(
             backgroundColor: successBg,
@@ -724,9 +724,9 @@ class _ServiceCompletionMockup extends StatelessWidget {
         // File info row using Ux4gCard
         (() {
           final isDark = Theme.of(context).brightness == Brightness.dark;
-          final fileCardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral50;
-          final fileCardTitleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-          final fileCardSubColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+          final fileCardBg = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral50;
+          final fileCardTitleColor = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+          final fileCardSubColor = isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 
           return Ux4gCard(
             backgroundColor: fileCardBg,
@@ -769,8 +769,8 @@ class _ServiceCompletionMockup extends StatelessWidget {
       size: Ux4gButtonSize.large,
       height: 48,
       width: double.infinity,
-      borderColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-      contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+      borderColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+      contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
       borderRadius: 8,
     );
   }
@@ -784,7 +784,7 @@ class _ServiceCompletionMockup extends StatelessWidget {
       size: Ux4gButtonSize.large,
       height: 48,
       width: double.infinity,
-      backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+      backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
       contentColor: isDark ? Colors.black : Colors.white,
       borderRadius: 8,
     );

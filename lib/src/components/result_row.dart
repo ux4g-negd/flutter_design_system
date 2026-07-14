@@ -100,12 +100,12 @@ class _Ux4gResultRowState extends State<Ux4gResultRow>
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
     final isDark = materialTheme.brightness == Brightness.dark;
     final borderColor = isDark
-        ? Ux4gPalette.neutral800
-        : Ux4gPalette.neutral300;
+        ? Ux4gColors.neutral800
+        : Ux4gColors.neutral300;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -204,9 +204,9 @@ class _Ux4gResultRowState extends State<Ux4gResultRow>
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.small,
                         contentColor: widget.actionButtonColor ??
-                            (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
+                            (isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900),
                         borderColor: widget.actionButtonColor ??
-                            (isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                            (isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
                         leadingIcon: widget.actionButtonIcon,
                         onPressed: widget.onActionPressed ?? () {},
                       ),

@@ -275,7 +275,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -581,7 +581,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
   Widget _buildFileItem(
     UploadedFile file,
     ThemeData materialTheme,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -722,7 +722,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
 
   Widget _getFileIcon(
     String fileName,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;

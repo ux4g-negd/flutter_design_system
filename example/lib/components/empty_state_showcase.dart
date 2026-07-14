@@ -96,7 +96,7 @@ class EmptyStateShowcase extends StatelessWidget {
           Ux4gEmptyState(
             variant: Ux4gEmptyStateVariant.custom,
             icon: Icons.lock_outline_rounded,
-            iconColor: Ux4gPalette.secondary,
+            iconColor: Ux4gColors.secondary,
             title: 'Access restricted',
             subtitle: 'You do not have permission to view this content.',
             description: 'Please contact your administrator.',
@@ -109,7 +109,7 @@ class EmptyStateShowcase extends StatelessWidget {
     );
   }
 
-  Widget _card(Ux4gColors colors, Widget child, {double? width}) {
+  Widget _card(Ux4gThemeColors colors, Widget child, {double? width}) {
     return Container(
       width: width ?? 200,
       decoration: BoxDecoration(

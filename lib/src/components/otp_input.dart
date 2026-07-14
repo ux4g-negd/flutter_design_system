@@ -65,7 +65,7 @@ class Ux4gOtpBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -119,7 +119,7 @@ class Ux4gOtpBox extends StatelessWidget {
     );
   }
 
-  Color _borderColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _borderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
@@ -137,7 +137,7 @@ class Ux4gOtpBox extends StatelessWidget {
     };
   }
 
-  Color _bgColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _bgColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -220,7 +220,7 @@ class Ux4gOtpCaption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final onSurface =
@@ -667,7 +667,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final onSurface =

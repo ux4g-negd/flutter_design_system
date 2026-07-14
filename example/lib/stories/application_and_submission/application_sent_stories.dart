@@ -11,19 +11,19 @@ bool _isDarkMode(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getUploadedBg(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green800 : Ux4gPalette.green100;
+    _isDarkMode(context) ? Ux4gColors.green800 : Ux4gColors.green100;
 Color _getUploadedBorder(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green800 : const Color(0xFFDCFCE7);
+    _isDarkMode(context) ? Ux4gColors.green800 : const Color(0xFFDCFCE7);
 Color _getUploadedIcon(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green500 : Ux4gPalette.green600;
+    _isDarkMode(context) ? Ux4gColors.green500 : Ux4gColors.green600;
 Color _getUploadedTitle(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDarkMode(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getUploadedDesc(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDarkMode(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getUploadedBtnText(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    _isDarkMode(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 Color _getUploadedBtnBorder(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.primary600 : Ux4gPalette.primary300;
+    _isDarkMode(context) ? Ux4gColors.primary600 : Ux4gColors.primary300;
 
 const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
@@ -108,7 +108,7 @@ class ApplicationSentScreen extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -124,14 +124,14 @@ class ApplicationSentScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
               ],
             ),
-            Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
 
             // Content
             Expanded(
@@ -154,13 +154,13 @@ class ApplicationSentScreen extends StatelessWidget {
                     const SizedBox(height: 32),
                     Text(
                       'Application sent!',
-                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : const Color(0xFF111827)),
+                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : const Color(0xFF111827)),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16),
                     Text(
                       'We will review and contact you within 3 working days.',
-                      style: TextStyle(fontSize: 16, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563), height: 1.5),
+                      style: TextStyle(fontSize: 16, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563), height: 1.5),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -179,8 +179,8 @@ class ApplicationSentScreen extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
                   ),
                   const SizedBox(height: 12),
                   Ux4gButton(
@@ -190,8 +190,8 @@ class ApplicationSentScreen extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
                   ),
                 ],
               ),
@@ -203,7 +203,7 @@ class ApplicationSentScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : const Color(0xFF9CA3AF))),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -229,7 +229,7 @@ class ApplicationSentCardScreen extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           children: [
@@ -249,14 +249,14 @@ class ApplicationSentCardScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
                     ],
                   ),
-                  Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB)),
+                  Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
                 ],
               ),
             ),
@@ -293,13 +293,13 @@ class ApplicationSentCardScreen extends StatelessWidget {
                       const SizedBox(height: 32),
                       Text(
                         'Application sent!',
-                        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : const Color(0xFF111827)),
+                        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : const Color(0xFF111827)),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 16),
                       Text(
                         'We will review and contact you within 3 working days.',
-                        style: TextStyle(fontSize: 16, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563), height: 1.5),
+                        style: TextStyle(fontSize: 16, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563), height: 1.5),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -319,8 +319,8 @@ class ApplicationSentCardScreen extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                    backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
                   ),
                   const SizedBox(height: 12),
                   Ux4gButton(
@@ -330,8 +330,8 @@ class ApplicationSentCardScreen extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
                   ),
                 ],
               ),
@@ -342,7 +342,7 @@ class ApplicationSentCardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : const Color(0xFF9CA3AF))),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF))),
                   const SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -368,7 +368,7 @@ class _ApplicationSentMockup extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -388,14 +388,14 @@ class _ApplicationSentMockup extends StatelessWidget {
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
                 ],
               ),
-              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB)),
+              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -423,7 +423,7 @@ class _ApplicationSentMockup extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w800,
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : const Color(0xFF111827),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : const Color(0xFF111827),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -432,7 +432,7 @@ class _ApplicationSentMockup extends StatelessWidget {
                         'We will review and contact you within 3 working days.',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
                           height: 1.5,
                         ),
                         textAlign: TextAlign.center,
@@ -451,8 +451,8 @@ class _ApplicationSentMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       height: 48,
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
@@ -462,8 +462,8 @@ class _ApplicationSentMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       height: 48,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
                     ),
                   ],
                 ),
@@ -475,7 +475,7 @@ class _ApplicationSentMockup extends StatelessWidget {
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : const Color(0xFF9CA3AF)),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF)),
                     ),
                     const SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
@@ -498,13 +498,13 @@ class _ApplicationSentCardMockup extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -522,14 +522,14 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
                       ],
                     ),
-                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB)),
+                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
                   ],
                 ),
               ),
@@ -541,7 +541,7 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                     height: 48,
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -575,7 +575,7 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w800,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : const Color(0xFF111827),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : const Color(0xFF111827),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -584,7 +584,7 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                           'We will review and contact you within 3 working days.',
                           style: TextStyle(
                             fontSize: 16,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
                             height: 1.5,
                           ),
                           textAlign: TextAlign.center,
@@ -604,8 +604,8 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       height: 48,
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
                     ),
                     const SizedBox(height: 12),
                     Ux4gButton(
@@ -615,8 +615,8 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       height: 48,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
                     ),
                   ],
                 ),
@@ -628,7 +628,7 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : const Color(0xFF9CA3AF)),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF)),
                     ),
                     const SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),

@@ -2672,7 +2672,7 @@ final actionDropdownComponent = WidgetbookComponent(
       name: 'More Options Trigger',
       builder: (context) {
         final primaryColor =
-            Theme.of(context).extension<Ux4gColors>()?.primary ??
+            Theme.of(context).extension<Ux4gThemeColors>()?.primary ??
             Theme.of(context).colorScheme.primary;
 
         return StatefulBuilder(

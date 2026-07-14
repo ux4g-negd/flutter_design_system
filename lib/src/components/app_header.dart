@@ -155,7 +155,7 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   });
 
   Color _resolveBackgroundColor(
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     if (backgroundColor != null) return backgroundColor!;
@@ -169,7 +169,7 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Color _resolveForegroundColor(
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     if (foregroundColor != null) return foregroundColor!;
@@ -188,7 +188,7 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final screenWidth = MediaQuery.of(context).size.width;

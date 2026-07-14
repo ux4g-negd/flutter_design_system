@@ -114,7 +114,7 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -281,7 +281,7 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
     );
   }
 
-  Color _getBorderColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getBorderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
@@ -299,7 +299,7 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
     };
   }
 
-  Color _getLabelColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getLabelColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final onBackground =
@@ -317,7 +317,7 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
     };
   }
 
-  Color _getCaptionColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getCaptionColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = ux4gColors?.error ?? materialTheme.colorScheme.error;

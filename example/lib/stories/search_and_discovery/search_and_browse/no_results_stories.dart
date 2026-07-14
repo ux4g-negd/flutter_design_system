@@ -193,8 +193,8 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -203,7 +203,7 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                 width: double.infinity,
                 height: 70,
                 padding: const EdgeInsets.only(left: 24, right: 16),
-                color: Ux4gPalette.primary600,
+                color: Ux4gColors.primary600,
                 child: Row(
                   children: [
                     const Icon(Icons.arrow_back, color: Colors.white, size: 20),
@@ -226,7 +226,7 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                   horizontal: 16,
                   vertical: 10,
                 ),
-                color: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0,
+                color: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral0,
                 child: Ux4gSearchField(
                   value: _searchValue,
                   onValueChange: (v) => setState(() => _searchValue = v),
@@ -252,16 +252,16 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                         Icons.search,
                         size: 52,
                         color: isDark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                       ),
                       const SizedBox(height: 16),
                       Text(
                         'No services found for "$_searchValue"',
                         style: typography.tM_strong.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -270,8 +270,8 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                         'Did you mean:',
                         style: typography.bM_default.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -282,8 +282,8 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                             isLast ? entry.value : '${entry.value},  ',
                             style: typography.lL_default.copyWith(
                               color: isDark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                             ),
                           );
                         }).toList(),
@@ -297,11 +297,11 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                         width: 180,
                         height: 44,
                         backgroundColor: isDark
-                            ? Ux4gPalette.primary800
-                            : Ux4gPalette.primary100,
+                            ? Ux4gColors.primary800
+                            : Ux4gColors.primary100,
                         contentColor: isDark
-                            ? Ux4gPalette.primary200
-                            : Ux4gPalette.primary700,
+                            ? Ux4gColors.primary200
+                            : Ux4gColors.primary700,
                         borderWidth: 0,
                       ),
                       const SizedBox(height: 48),
@@ -312,8 +312,8 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                           'Popular services',
                           style: typography.hS_default.copyWith(
                             color: isDark
-                                ? Ux4gPalette.neutral50
-                                : Ux4gPalette.neutral900,
+                                ? Ux4gColors.neutral50
+                                : Ux4gColors.neutral900,
                           ),
                         ),
                       ),
@@ -349,10 +349,10 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
@@ -361,14 +361,14 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
           Text(
             title,
             style: typography.tM_strong.copyWith(
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
           const SizedBox(height: 2),
           Text(
             dept,
             style: typography.lL_default.copyWith(
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 12),
@@ -377,15 +377,15 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
               Text(
                 fee,
                 style: typography.lL_default.copyWith(
-                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
+                  color: isDark ? Ux4gColors.green300 : Ux4gColors.green600,
                 ),
               ),
               Text(
                 '  ·  $time',
                 style: typography.lL_default.copyWith(
                   color: isDark
-                      ? Ux4gPalette.neutral200
-                      : Ux4gPalette.neutral700,
+                      ? Ux4gColors.neutral200
+                      : Ux4gColors.neutral700,
                 ),
               ),
             ],
@@ -399,11 +399,11 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
             width: 80,
             height: 38,
             borderColor: isDark
-                ? Ux4gPalette.neutral600
-                : Ux4gPalette.primary300,
+                ? Ux4gColors.neutral600
+                : Ux4gColors.primary300,
             contentColor: isDark
-                ? Ux4gPalette.neutral50
-                : Ux4gPalette.primary600,
+                ? Ux4gColors.neutral50
+                : Ux4gColors.primary600,
             textStyle: typography.lL_default,
           ),
         ],

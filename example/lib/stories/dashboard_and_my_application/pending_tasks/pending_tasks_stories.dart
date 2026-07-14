@@ -7,20 +7,20 @@ import '../../../widgets/component_docs.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral50;
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
 Color _getHeaderBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
-const Color _primaryColor = Ux4gPalette.primary600;
-const Color _errorColor = Ux4gPalette.red600;
-const Color _greenColor = Ux4gPalette.green600;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
+const Color _primaryColor = Ux4gColors.primary600;
+const Color _errorColor = Ux4gColors.red600;
+const Color _greenColor = Ux4gColors.green600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 
@@ -261,7 +261,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                       subtitle: 'Birth Certificate · ₹50 application fee',
                       urgencyText: 'Due in 5 days',
                       urgencyColor: const Color(0xFFAD4E00),
-                      urgencyBgColor: Ux4gPalette.orange100,
+                      urgencyBgColor: Ux4gColors.orange100,
                       actionText: 'Pay now',
                       actionFilled: true,
                     ),
@@ -327,11 +327,11 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             decoration: BoxDecoration(
-              color: isSelected ? Ux4gPalette.primary600 : _getCardBg(context),
+              color: isSelected ? Ux4gColors.primary600 : _getCardBg(context),
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
                 color: isSelected
-                    ? Ux4gPalette.primary600
+                    ? Ux4gColors.primary600
                     : _getBorderColor(context),
               ),
             ),
@@ -342,7 +342,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   tabs[index]['label']!,
                   style: typography.lM_default.copyWith(
                     color: isSelected
-                        ? Ux4gPalette.neutral0
+                        ? Ux4gColors.neutral0
                         : _getTitleColor(context),
                   ),
                 ),
@@ -351,7 +351,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   Text(
                     tabs[index]['count']!,
                     style: typography.lS_default.copyWith(
-                      color: Ux4gPalette.neutral0,
+                      color: Ux4gColors.neutral0,
                       height: 1,
                     ),
                   )
@@ -362,13 +362,13 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                       vertical: 1,
                     ),
                     decoration: BoxDecoration(
-                      color: Ux4gPalette.primary600,
+                      color: Ux4gColors.primary600,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
                       tabs[index]['count']!,
                       style: typography.lS_default.copyWith(
-                        color: Ux4gPalette.neutral0,
+                        color: Ux4gColors.neutral0,
                         height: 1,
                       ),
                     ),
@@ -414,8 +414,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   height: 32,
                   decoration: BoxDecoration(
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral100,
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral100,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Icon(icon, size: 16, color: _getSubtleText(context)),
@@ -458,8 +458,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
                 color: _isDark(context)
-                    ? Ux4gPalette.red950
-                    : Ux4gPalette.red100,
+                    ? Ux4gColors.red950
+                    : Ux4gColors.red100,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(
@@ -641,8 +641,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   height: 32,
                   decoration: BoxDecoration(
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral100,
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral100,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Icon(icon, size: 16, color: _getSubtleText(context)),
@@ -709,8 +709,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                 borderColor: actionFilled
                     ? null
                     : (_isDark(context)
-                          ? Ux4gPalette.primary400
-                          : Ux4gPalette.primary300),
+                          ? Ux4gColors.primary400
+                          : Ux4gColors.primary300),
               ),
             ),
           ],
@@ -745,8 +745,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
                   height: 32,
                   decoration: BoxDecoration(
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral100,
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral100,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Icon(icon, size: 16, color: _getSubtleText(context)),
@@ -789,8 +789,8 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
                 color: _isDark(context)
-                    ? Ux4gPalette.green950
-                    : Ux4gPalette.green100,
+                    ? Ux4gColors.green950
+                    : Ux4gColors.green100,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(

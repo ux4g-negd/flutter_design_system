@@ -69,12 +69,12 @@ class Ux4gFeedbackFormNps extends StatefulWidget {
     this.successBackgroundColor,
     this.selectedScoreBackgroundColor,
     this.selectedScoreTextColor,
-    this.lowScoreBackgroundColor = Ux4gPalette.red100,
-    this.lowScoreTextColor = Ux4gPalette.red800,
-    this.mediumScoreBackgroundColor = Ux4gPalette.orange100,
-    this.mediumScoreTextColor = Ux4gPalette.orange800,
-    this.highScoreBackgroundColor = Ux4gPalette.green100,
-    this.highScoreTextColor = Ux4gPalette.green800,
+    this.lowScoreBackgroundColor = Ux4gColors.red100,
+    this.lowScoreTextColor = Ux4gColors.red800,
+    this.mediumScoreBackgroundColor = Ux4gColors.orange100,
+    this.mediumScoreTextColor = Ux4gColors.orange800,
+    this.highScoreBackgroundColor = Ux4gColors.green100,
+    this.highScoreTextColor = Ux4gColors.green800,
   });
 
   @override
@@ -110,7 +110,7 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -141,7 +141,7 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
 
   Widget _buildFormView(
     ThemeData materialTheme,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -200,32 +200,32 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
             Color scoreText;
             final isDark = materialTheme.brightness == Brightness.dark;
             final resolvedLowBg =
-                isDark && widget.lowScoreBackgroundColor == Ux4gPalette.red100
-                ? Ux4gPalette.red900
+                isDark && widget.lowScoreBackgroundColor == Ux4gColors.red100
+                ? Ux4gColors.red900
                 : widget.lowScoreBackgroundColor;
             final resolvedLowText =
-                isDark && widget.lowScoreTextColor == Ux4gPalette.red800
-                ? Ux4gPalette.red300
+                isDark && widget.lowScoreTextColor == Ux4gColors.red800
+                ? Ux4gColors.red300
                 : widget.lowScoreTextColor;
 
             final resolvedMediumBg =
                 isDark &&
-                    widget.mediumScoreBackgroundColor == Ux4gPalette.orange100
-                ? Ux4gPalette.orange900
+                    widget.mediumScoreBackgroundColor == Ux4gColors.orange100
+                ? Ux4gColors.orange900
                 : widget.mediumScoreBackgroundColor;
             final resolvedMediumText =
-                isDark && widget.mediumScoreTextColor == Ux4gPalette.orange800
-                ? Ux4gPalette.orange300
+                isDark && widget.mediumScoreTextColor == Ux4gColors.orange800
+                ? Ux4gColors.orange300
                 : widget.mediumScoreTextColor;
 
             final resolvedHighBg =
                 isDark &&
-                    widget.highScoreBackgroundColor == Ux4gPalette.green100
-                ? Ux4gPalette.green900
+                    widget.highScoreBackgroundColor == Ux4gColors.green100
+                ? Ux4gColors.green900
                 : widget.highScoreBackgroundColor;
             final resolvedHighText =
-                isDark && widget.highScoreTextColor == Ux4gPalette.green800
-                ? Ux4gPalette.green300
+                isDark && widget.highScoreTextColor == Ux4gColors.green800
+                ? Ux4gColors.green300
                 : widget.highScoreTextColor;
 
             if (highlightBg != null && highlightText != null) {
@@ -333,7 +333,7 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
 
   Widget _buildSuccessView(
     ThemeData materialTheme,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
     final success = ux4gColors?.success ?? Colors.green;

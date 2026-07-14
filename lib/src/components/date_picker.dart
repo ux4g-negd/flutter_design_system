@@ -112,7 +112,7 @@ class _Ux4gDatePickerState extends State<Ux4gDatePicker> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final isSelected =
@@ -460,7 +460,7 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     return Container(
@@ -615,7 +615,7 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
   }
 
   Widget _buildMonthYearPicker(
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -754,7 +754,7 @@ class _Ux4gDatePickerDialogState extends State<_Ux4gDatePickerDialog> {
   }
 
   Widget _buildCalendarView(
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {

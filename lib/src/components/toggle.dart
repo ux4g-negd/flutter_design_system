@@ -60,7 +60,7 @@ class Ux4gToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final onSurface =
@@ -68,13 +68,13 @@ class Ux4gToggle extends StatelessWidget {
 
     // Color definitions
     final isDark = materialTheme.brightness == Brightness.dark;
-    final checkedTrackColor = ux4gColors?.primary ?? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600);
-    final uncheckedTrackColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
-    final disabledTrackColor = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200;
+    final checkedTrackColor = ux4gColors?.primary ?? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600);
+    final uncheckedTrackColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
+    final disabledTrackColor = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200;
 
     final trackColor = !enabled ? disabledTrackColor : (checked ? checkedTrackColor : uncheckedTrackColor);
 
-    final thumbColor = isDark && checked && enabled ? Ux4gPalette.gray900 : Colors.white;
+    final thumbColor = isDark && checked && enabled ? Ux4gColors.gray900 : Colors.white;
 
     final endOffset = size.width - size.thumbSize - size.thumbPadding;
     final startOffset = size.thumbPadding;

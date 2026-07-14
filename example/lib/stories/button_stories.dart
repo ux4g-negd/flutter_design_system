@@ -204,7 +204,7 @@ Ux4gButton(
     WidgetbookUseCase(
       name: 'Variants',
       builder: (context) {
-        final colors = Theme.of(context).extension<Ux4gColors>()!;
+        final colors = Theme.of(context).extension<Ux4gThemeColors>()!;
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final colorTheme = context.knobs.list<String>(
           label: 'Color Theme',
@@ -218,61 +218,61 @@ Ux4gButton(
         final bgColor = isRed
             ? colors.error
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
+                  ? (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200)
                   : null);
         final fgColor = isRed
             ? colors.onError
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900)
+                  ? (isDark ? Ux4gColors.neutral100 : Ux4gColors.neutral900)
                   : null);
         final outlineFgColor = isRed
             ? colors.error
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
+                  ? (isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800)
                   : null);
 
         final tonalBgColor = isRed
-            ? (isDark ? Ux4gPalette.red800 : Ux4gPalette.red100)
+            ? (isDark ? Ux4gColors.red800 : Ux4gColors.red100)
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
-                  : (isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100));
+                  ? (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200)
+                  : (isDark ? Ux4gColors.primary800 : Ux4gColors.primary100));
         final tonalFgColor = isRed
-            ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red600)
+            ? (isDark ? Ux4gColors.red300 : Ux4gColors.red600)
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
-                  : (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600));
+                  ? (isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800)
+                  : (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600));
 
         final bgStr = isRed
             ? 'backgroundColor: ux4gColors.error, '
             : (isNeutral
-                  ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
+                  ? 'backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200, '
                   : '');
         final fgStr = isRed
             ? 'contentColor: ux4gColors.onError, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900, '
+                  ? 'contentColor: isDark ? Ux4gColors.neutral100 : Ux4gColors.neutral900, '
                   : '');
         final outlineFgStr = isRed
             ? 'contentColor: ux4gColors.error, borderColor: ux4gColors.error, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, borderColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  ? 'contentColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, borderColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, '
                   : '');
         final ghostFgStr = isRed
             ? 'contentColor: ux4gColors.error, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  ? 'contentColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, '
                   : '');
 
         final tonalBgStr = isRed
-            ? 'backgroundColor: isDark ? Ux4gPalette.red800 : Ux4gPalette.red100, '
+            ? 'backgroundColor: isDark ? Ux4gColors.red800 : Ux4gColors.red100, '
             : (isNeutral
-                  ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
-                  : 'backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, ');
+                  ? 'backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200, '
+                  : 'backgroundColor: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100, ');
         final tonalFgStr = isRed
-            ? 'contentColor: isDark ? Ux4gPalette.red300 : Ux4gPalette.red600, '
+            ? 'contentColor: isDark ? Ux4gColors.red300 : Ux4gColors.red600, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
-                  : 'contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, ');
+                  ? 'contentColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, '
+                  : 'contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600, ');
 
         return ComponentDocs(
           name: 'Button — Variants',

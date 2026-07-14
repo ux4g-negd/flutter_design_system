@@ -63,7 +63,7 @@ class Ux4gSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final isError = captionVariant == Ux4gSliderCaptionVariant.error;
@@ -168,7 +168,7 @@ class Ux4gSlider extends StatelessWidget {
   Widget _buildTopRow(
     BuildContext context,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     return Column(
@@ -309,7 +309,7 @@ class Ux4gSlider extends StatelessWidget {
   Widget _buildMarksAndValues(
     BuildContext context,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
     Color activeColor,
     double activeMin,
@@ -374,7 +374,7 @@ class Ux4gSlider extends StatelessWidget {
   Widget _buildCaption(
     BuildContext context,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final color = switch (captionVariant) {
@@ -384,9 +384,9 @@ class Ux4gSlider extends StatelessWidget {
       Ux4gSliderCaptionVariant.error =>
         ux4gColors?.error ?? materialTheme.colorScheme.error,
       Ux4gSliderCaptionVariant.warning =>
-        ux4gColors?.warning ?? Ux4gPalette.secondary,
+        ux4gColors?.warning ?? Ux4gColors.secondary,
       Ux4gSliderCaptionVariant.success =>
-        ux4gColors?.success ?? Ux4gPalette.green,
+        ux4gColors?.success ?? Ux4gColors.green,
     };
 
     return Row(
@@ -450,7 +450,7 @@ class Ux4gRangeSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final activeColor = enabled
@@ -549,7 +549,7 @@ class Ux4gRangeSlider extends StatelessWidget {
   Widget _buildTopRow(
     BuildContext context,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     return Column(
@@ -682,7 +682,7 @@ class Ux4gRangeSlider extends StatelessWidget {
   Widget _buildMarksAndValues(
     BuildContext context,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
     Color activeColor,
     double activeMin,

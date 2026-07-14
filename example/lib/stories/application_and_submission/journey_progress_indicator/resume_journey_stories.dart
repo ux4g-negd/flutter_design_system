@@ -69,7 +69,7 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,15 +85,15 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                         colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
                   errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                 ),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                 SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
                   errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                 ),],
             ),
-            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
 
             // Main Content
             Expanded(
@@ -110,7 +110,7 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents', 
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600),
                         ),
                         Ux4gStepItem(title: ''),],
                     ),
@@ -121,9 +121,9 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                       variant: Ux4gBannerVariant.warningLight,
                       title: 'Resuming from Step 3 — review before continuing.',
                       margin: EdgeInsets.zero,
-                      leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange500, size: 20),
+                      leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange500, size: 20),
                       // Custom colors to match image exactly
-                      titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange200 : Ux4gPalette.orange800, fontWeight: FontWeight.w500),
+                      titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800, fontWeight: FontWeight.w500),
                       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     ),
                     SizedBox(height: 40),
@@ -131,12 +131,12 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                     // Title & Subtitle
                     Text(
                       'Verify your details',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2),
                     ),
                     SizedBox(height: 8),
                     Text(
                       'Confirm the information below to proceed.',
-                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
+                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600, height: 1.4),
                     ),
                     SizedBox(height: 32),
 
@@ -147,7 +147,7 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                       onValueChange: (val) => setState(() => _fullName = val),
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
-                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                     ),
                     SizedBox(height: 24),
 
@@ -157,7 +157,7 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                       onValueChange: (val) => setState(() => _panNumber = val),
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
-                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                     ),
                     SizedBox(height: 32),
 
@@ -191,8 +191,8 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
                   ),
                 ],
               ),
@@ -204,7 +204,7 @@ height: 48, text: 'Back',
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                   SizedBox(height: 6),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,  
@@ -242,14 +242,14 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -262,16 +262,16 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
                         colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
                         errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                       ),
-                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                       SvgPicture.asset(
                         Ux4gIcons.union, 
                         height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
                         errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                       ),
                     ],
                   ),
-                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                 ],
               ),
             ),
@@ -291,7 +291,7 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
                         Ux4gStepItem(title: ''),
                         Ux4gStepItem(
                           title: 'Documents', 
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600),
                         ),
                         Ux4gStepItem(title: ''),],
                     ),
@@ -301,7 +301,7 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
                     Container(
                       padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
@@ -312,9 +312,9 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
                             variant: Ux4gBannerVariant.warningLight,
                             title: 'Resuming from Step 3 — review before continuing.',
                             margin: EdgeInsets.zero,
-                            leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange500, size: 20),
+                            leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange500, size: 20),
                             // Custom colors to match image exactly
-                            titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange200 : Ux4gPalette.orange800, fontWeight: FontWeight.w500),
+                            titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800, fontWeight: FontWeight.w500),
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                           ),
                           SizedBox(height: 32),
@@ -322,12 +322,12 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
                           // Title & Subtitle
                           Text(
                             'Verify your details',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2),
                           ),
                           SizedBox(height: 8),
                           Text(
                             'Confirm the information below to proceed.',
-                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
+                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600, height: 1.4),
                           ),
                           SizedBox(height: 32),
 
@@ -383,7 +383,7 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                   ),
                 ],
               ),
@@ -395,7 +395,7 @@ height: 48, text: 'Back',
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                   SizedBox(height: 6),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,  
@@ -433,7 +433,7 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -453,17 +453,17 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                     color: Colors.grey,
                   ),
                 ),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                 SvgPicture.asset(
                   _unionLogoPath,
                   height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn),
                   errorBuilder: (c, e, s) =>
                       Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
             ),
-            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
 
             // Main Content
             Expanded(
@@ -486,7 +486,7 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                           ),
                         ),
                         Ux4gStepItem(title: ''),],
@@ -500,12 +500,12 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                       margin: EdgeInsets.zero,
                       leadingIcon: Icon(
                         Icons.error,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange500,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange500,
                         size: 20,
                       ),
                       // Custom colors to match image exactly
                       titleStyle: TextStyle(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange200 : Ux4gPalette.orange800,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800,
                         fontWeight: FontWeight.w500,
                       ),
                       padding: EdgeInsets.symmetric(
@@ -521,7 +521,7 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         height: 1.2,
                       ),
                     ),
@@ -530,7 +530,7 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                       'Confirm the information below to proceed.',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                         height: 1.4,
                       ),
                     ),
@@ -543,7 +543,7 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                       onValueChange: (val) => setState(() => _fullName = val),
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
-                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                     ),
                     SizedBox(height: 24),
 
@@ -553,7 +553,7 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                       onValueChange: (val) => setState(() => _panNumber = val),
                       placeholder: '',
                       size: Ux4gInputFieldSize.medium,
-                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                     ),
                     SizedBox(height: 32),
 
@@ -588,8 +588,8 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
                   ),
                 ],
               ),
@@ -603,7 +603,7 @@ height: 48, text: 'Back',
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                   ),
                   SizedBox(height: 6),
                   Image.asset(
@@ -644,14 +644,14 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -671,12 +671,12 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                       Container(
                         height: 32,
                         width: 1,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
                       ),
                       SvgPicture.asset(
                         _unionLogoPath,
                         height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn),
                         errorBuilder: (c, e, s) => Icon(
                           Icons.blur_on,
                           size: 32,
@@ -685,7 +685,7 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                       ),
                     ],
                   ),
-                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                 ],
               ),
             ),
@@ -711,7 +711,7 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                           ),
                         ),
                         Ux4gStepItem(title: ''),],
@@ -722,7 +722,7 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                     Container(
                       padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
@@ -736,12 +736,12 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                             margin: EdgeInsets.zero,
                             leadingIcon: Icon(
                               Icons.error,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange500,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange500,
                               size: 20,
                             ),
                             // Custom colors to match image exactly
                             titleStyle: TextStyle(
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange200 : Ux4gPalette.orange800,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800,
                               fontWeight: FontWeight.w500,
                             ),
                             padding: EdgeInsets.symmetric(
@@ -757,7 +757,7 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                               height: 1.2,
                             ),
                           ),
@@ -766,7 +766,7 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                             'Confirm the information below to proceed.',
                             style: TextStyle(
                               fontSize: 15,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                               height: 1.4,
                             ),
                           ),
@@ -827,7 +827,7 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                   ),
                 ],
               ),
@@ -841,7 +841,7 @@ height: 48, text: 'Back',
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                   ),
                   SizedBox(height: 6),
                   Image.asset(

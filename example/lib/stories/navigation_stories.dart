@@ -161,7 +161,7 @@ Ux4gAccordion(
                   'Every color parameter can be overridden.\n\n'
                   'Use Ux4gTheme.colors(context) for theme-aware values that '
                   'automatically adapt between Light and Dark.\n'
-                  'Use Ux4gPalette.xxx for fixed, always-constant palette shades.',
+                  'Use Ux4gColors.xxx for fixed, always-constant palette shades.',
               code: '''// 1. Get theme-aware semantic colors
 final colors = Ux4gTheme.colors(context);
 
@@ -178,9 +178,9 @@ Ux4gAccordion(
   expandedBorderColor: colors.primary,
 
   // fixed palette shades (override the theme-aware defaults)
-  titleColor: Ux4gPalette.primary600,
-  collapsedBorderColor: Ux4gPalette.gray200,
-  iconColor: Ux4gPalette.primary500,
+  titleColor: Ux4gColors.primary600,
+  collapsedBorderColor: Ux4gColors.gray200,
+  iconColor: Ux4gColors.primary500,
 
   child: Text(\'Content\', style: TextStyle(color: colors.onSurface)),
 );''',
@@ -192,9 +192,9 @@ Ux4gAccordion(
                   onExpandedChange: (v) => setState(() => expanded = v),
                   backgroundColor: colors.surface,
                   expandedBorderColor: colors.primary,
-                  titleColor: Ux4gPalette.primary600,
-                  collapsedBorderColor: Ux4gPalette.gray200,
-                  iconColor: Ux4gPalette.primary500,
+                  titleColor: Ux4gColors.primary600,
+                  collapsedBorderColor: Ux4gColors.gray200,
+                  iconColor: Ux4gColors.primary500,
                   child: Padding(
                     padding: const EdgeInsets.all(12),
                     child: Text(
@@ -2231,8 +2231,8 @@ final chipGroupComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             final isDark = Theme.of(context).brightness == Brightness.dark;
             final primary = isDark
-                ? Ux4gPalette.primary300
-                : Ux4gPalette.primary600;
+                ? Ux4gColors.primary300
+                : Ux4gColors.primary600;
             final surface = Theme.of(context).colorScheme.surface;
 
             Widget buildBadge(String text, bool isSelected) {
@@ -2267,7 +2267,7 @@ final chipGroupComponent = WidgetbookComponent(
 Widget buildBadge(BuildContext context, String text, bool isSelected) {
   final typography = Theme.of(context).extension<Ux4gTypography>();
   final isDark = Theme.of(context).brightness == Brightness.dark;
-  final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+  final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
   final surface = Theme.of(context).colorScheme.surface;
   final countStyle = typography?.lS_default ?? const TextStyle(fontSize: 11, fontWeight: FontWeight.w500);
 
@@ -2599,8 +2599,8 @@ final paginationComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             final isDark = Theme.of(context).brightness == Brightness.dark;
             final inactiveBg = isDark
-                ? Ux4gPalette.primary800.withValues(alpha: 0.4)
-                : Ux4gPalette.primary100;
+                ? Ux4gColors.primary800.withValues(alpha: 0.4)
+                : Ux4gColors.primary100;
 
             return ComponentDocs(
               name: 'PaginationIndicator - Right Aligned Arrows',

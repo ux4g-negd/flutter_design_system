@@ -59,14 +59,14 @@ class _QueuedIcon extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary800
-            : Ux4gPalette.primary100,
+            ? Ux4gColors.primary800
+            : Ux4gColors.primary100,
       ),
       child: Icon(
         Icons.hourglass_bottom,
         color: (Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary300
-            : Ux4gPalette.primary600),
+            ? Ux4gColors.primary300
+            : Ux4gColors.primary600),
         size: 30,
       ),
     );
@@ -83,7 +83,7 @@ class _ToastCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.neutral900
+            ? Ux4gColors.neutral900
             : Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
@@ -110,8 +110,8 @@ class _ToastCard extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: (Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900),
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900),
                   ),
                 ),
                 SizedBox(height: 4),
@@ -120,8 +120,8 @@ class _ToastCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 13,
                     color: (Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral400
-                        : Ux4gPalette.neutral500),
+                        ? Ux4gColors.neutral400
+                        : Ux4gColors.neutral500),
                   ),
                 ),
                 SizedBox(height: 8),
@@ -133,8 +133,8 @@ class _ToastCard extends StatelessWidget {
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: (Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600),
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600),
                     ),
                   ),
                 ),
@@ -147,8 +147,8 @@ class _ToastCard extends StatelessWidget {
               Icons.close,
               size: 18,
               color: (Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.neutral400
-                  : Ux4gPalette.neutral500),
+                  ? Ux4gColors.neutral400
+                  : Ux4gColors.neutral500),
             ),
           ),
         ],
@@ -171,12 +171,12 @@ class ApplicationQueuedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final titleColor = Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-    final subtleText = Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500;
+    final primaryColor = Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final titleColor = Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+    final subtleText = Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -188,14 +188,14 @@ class ApplicationQueuedScreen extends StatelessWidget {
                   variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
                   leadingWidgets: [
                     SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                    Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                    Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                     SvgPicture.asset(
                       Ux4gIcons.union, 
                       height: 32,
                       colorFilter: ColorFilter.mode(
                         Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -227,7 +227,7 @@ class ApplicationQueuedScreen extends StatelessWidget {
                         Center(
                           child: Container(
                             width: 56, height: 56,
-                            decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100),
+                            decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100),
                             child: Icon(Icons.hourglass_bottom, color: primaryColor, size: 30),
                           ),
                         ),
@@ -288,9 +288,9 @@ class ApplicationQueuedScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: Column(
                     children: [
-                      Ux4gButton(text: 'Try submitting now', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50),
+                      Ux4gButton(text: 'Try submitting now', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50),
                       SizedBox(height: 12),
-                      Ux4gButton(text: 'Save draft and exit', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                      Ux4gButton(text: 'Save draft and exit', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                     ],
                   ),
                 ),
@@ -318,7 +318,7 @@ class ApplicationQueuedScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16, offset: const Offset(0, -4)),
@@ -375,12 +375,12 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final titleColor = Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-    final subtleText = Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500;
+    final primaryColor = Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final titleColor = Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+    final subtleText = Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Stack(
           children: [
@@ -388,7 +388,7 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
               children: [
                 // Header with white background
                 Container(
-                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                   child: Column(
                     children: [
                       Ux4gAppHeader(
@@ -401,8 +401,8 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -420,7 +420,7 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 20, spreadRadius: 2, offset: const Offset(0, 4)),
@@ -446,7 +446,7 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                           Center(
                             child: Container(
                               width: 56, height: 56,
-                              decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100),
+                              decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100),
                               child: Icon(Icons.hourglass_bottom, color: primaryColor, size: 30),
                             ),
                           ),
@@ -500,9 +500,9 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: Column(
                     children: [
-                      Ux4gButton(text: 'Try submitting now', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50),
+                      Ux4gButton(text: 'Try submitting now', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50),
                       SizedBox(height: 12),
-                      Ux4gButton(text: 'Save draft and exit', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                      Ux4gButton(text: 'Save draft and exit', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                     ],
                   ),
                 ),
@@ -530,7 +530,7 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16, offset: const Offset(0, -4)),
@@ -597,7 +597,7 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Ux4gPalette.neutral900
+          ? Ux4gColors.neutral900
           : Colors.white,
       body: SafeArea(
         child: Stack(
@@ -632,16 +632,16 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                       height: 32,
                       width: 1,
                       color: (Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral700
-                          : Ux4gPalette.neutral200),
+                          ? Ux4gColors.neutral700
+                          : Ux4gColors.neutral200),
                     ),
                     SvgPicture.asset(
                       _unionLogoPath,
                       height: 32,
                       colorFilter: ColorFilter.mode(
                         Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         BlendMode.srcIn,
                       ),
                       errorBuilder: (c, e, s) =>
@@ -670,8 +670,8 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                               color:
                                   (Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600),
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600),
                             ),
                             SizedBox(width: 6),
                             Text(
@@ -682,8 +682,8 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                                 color:
                                     (Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600),
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600),
                               ),
                             ),
                           ],
@@ -705,8 +705,8 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                               color:
                                   (Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900),
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900),
                               height: 1.2,
                             ),
                           ),
@@ -721,8 +721,8 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                               color:
                                   (Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral400
-                                  : Ux4gPalette.neutral500),
+                                  ? Ux4gColors.neutral400
+                                  : Ux4gColors.neutral500),
                               height: 1.4,
                             ),
                           ),
@@ -779,12 +779,12 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                         height: 48,
                         backgroundColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         contentColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral900
-                            : Ux4gPalette.neutral50,
+                            ? Ux4gColors.neutral900
+                            : Ux4gColors.neutral50,
                       ),
                       SizedBox(height: 12),
                       Ux4gButton(
@@ -796,12 +796,12 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                         height: 48,
                         contentColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         borderColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary600
-                            : Ux4gPalette.primary300,
+                            ? Ux4gColors.primary600
+                            : Ux4gColors.primary300,
                       ),
                     ],
                   ),
@@ -875,8 +875,8 @@ class _ApplicationQueuedCardMockupState
     return Container(
       decoration: BoxDecoration(
         color: (Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50),
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -889,8 +889,8 @@ class _ApplicationQueuedCardMockupState
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
         backgroundColor: (Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50),
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50),
         body: SafeArea(
           child: Stack(
             children: [
@@ -900,7 +900,7 @@ class _ApplicationQueuedCardMockupState
                   // Header with white background
                   Container(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral900
+                        ? Ux4gColors.neutral900
                         : Colors.white,
                     child: Column(
                       children: [
@@ -935,8 +935,8 @@ class _ApplicationQueuedCardMockupState
                               height: 32,
                               colorFilter: ColorFilter.mode(
                                 Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600,
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600,
                                 BlendMode.srcIn,
                               ),
                               errorBuilder: (c, e, s) => Icon(
@@ -963,7 +963,7 @@ class _ApplicationQueuedCardMockupState
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
+                              ? Ux4gColors.neutral900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -987,8 +987,8 @@ class _ApplicationQueuedCardMockupState
                                   color:
                                       (Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600),
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600),
                                 ),
                                 SizedBox(width: 6),
                                 Text(
@@ -999,8 +999,8 @@ class _ApplicationQueuedCardMockupState
                                     color:
                                         (Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.primary300
-                                        : Ux4gPalette.primary600),
+                                        ? Ux4gColors.primary300
+                                        : Ux4gColors.primary600),
                                   ),
                                 ),
                               ],
@@ -1022,8 +1022,8 @@ class _ApplicationQueuedCardMockupState
                                   color:
                                       (Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.neutral50
-                                      : Ux4gPalette.neutral900),
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900),
                                   height: 1.2,
                                 ),
                               ),
@@ -1038,8 +1038,8 @@ class _ApplicationQueuedCardMockupState
                                   color:
                                       (Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.neutral400
-                                      : Ux4gPalette.neutral500),
+                                      ? Ux4gColors.neutral400
+                                      : Ux4gColors.neutral500),
                                   height: 1.4,
                                 ),
                               ),
@@ -1097,12 +1097,12 @@ class _ApplicationQueuedCardMockupState
                           height: 48,
                           backgroundColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                           contentColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral50,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral50,
                         ),
                         SizedBox(height: 12),
                         Ux4gButton(
@@ -1114,12 +1114,12 @@ class _ApplicationQueuedCardMockupState
                           height: 48,
                           contentColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                           borderColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary600
-                              : Ux4gPalette.primary300,
+                              ? Ux4gColors.primary600
+                              : Ux4gColors.primary300,
                         ),
                       ],
                     ),

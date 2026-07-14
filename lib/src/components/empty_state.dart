@@ -122,7 +122,7 @@ class Ux4gEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uxColors = Theme.of(context).extension<Ux4gColors>();
+    final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
     final uxTypography = Theme.of(context).extension<Ux4gTypography>();
     final materialTheme = Theme.of(context);
 

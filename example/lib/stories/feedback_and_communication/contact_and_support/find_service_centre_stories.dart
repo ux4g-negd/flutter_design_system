@@ -20,11 +20,11 @@ Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xF
 
 // ignore: unused_element
 
-Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
 
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral50;
 
 // ignore: unused_element
 
@@ -92,7 +92,7 @@ class FindServiceCentreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100,
       body: SafeArea(
         child: Column(
           children: [
@@ -115,7 +115,7 @@ class FindServiceCentreScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -156,9 +156,9 @@ class FindServiceCentreScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     // Result card
                     Ux4gCard(
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
                       cornerRadius: 12,
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
                       borderWidth: 1,
                       child: Padding(
                         padding: const EdgeInsets.all(14),
@@ -168,21 +168,21 @@ class FindServiceCentreScreen extends StatelessWidget {
                             Text(
                               'CSC Sector 12 — Pune City',
                               style: (Theme.of(context).extension<Ux4gTypography>()?.hS_default ?? const TextStyle()).copyWith(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
                               '45 Patel Nagar, Sector 12, Pune 411001',
                               style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                               ),
                             ),
                             const SizedBox(height: 4),
                             Text(
                               '1.2 km away · Open Mon-Sat 9 AM – 6 PM',
                               style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle()).copyWith(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral500,
                               ),
                             ),
                           ],
@@ -260,7 +260,7 @@ class FindServiceCentreCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -283,7 +283,7 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -329,9 +329,9 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                         const SizedBox(height: 20),
                         // Result card
                         Ux4gCard(
-                          backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
+                          backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
                           cornerRadius: 12,
-                          borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+                          borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
                           borderWidth: 1,
                           child: Padding(
                             padding: const EdgeInsets.all(14),
@@ -341,21 +341,21 @@ class FindServiceCentreCardScreen extends StatelessWidget {
                                 Text(
                                   'CSC Sector 12 — Pune City',
                                   style: (Theme.of(context).extension<Ux4gTypography>()?.hS_default ?? const TextStyle()).copyWith(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   '45 Patel Nagar, Sector 12, Pune 411001',
                                   style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   '1.2 km away · Open Mon-Sat 9 AM – 6 PM',
                                   style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle()).copyWith(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral500,
                                   ),
                                 ),
                               ],
@@ -434,7 +434,7 @@ class _FindServiceCentreMockup extends StatelessWidget {
     return Theme(
       data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
@@ -461,7 +461,7 @@ class _FindServiceCentreMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -584,9 +584,9 @@ class _FindServiceCentreMockup extends StatelessWidget {
 
         // Result card
         Ux4gCard(
-          backgroundColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
+          backgroundColor: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
           cornerRadius: 12,
-          borderColor: _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+          borderColor: _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
           borderWidth: 1,
           child: Padding(
             padding: const EdgeInsets.all(14),
@@ -596,21 +596,21 @@ class _FindServiceCentreMockup extends StatelessWidget {
                 Text(
                   'CSC Sector 12 — Pune City',
                   style: (Theme.of(context).extension<Ux4gTypography>()?.hS_default ?? const TextStyle()).copyWith(
-                    color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                   ),
                 ),
                 SizedBox(height: 4),
                 Text(
                   '45 Patel Nagar, Sector 12, Pune 411001',
                   style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
-                    color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                    color: _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                   ),
                 ),
                 SizedBox(height: 4),
                 Text(
                   '1.2 km away · Open Mon-Sat 9 AM – 6 PM',
                   style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle()).copyWith(
-                    color: _isDark(context) ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                    color: _isDark(context) ? Ux4gColors.neutral300 : Ux4gColors.neutral500,
                   ),
                 ),
               ],

@@ -6,10 +6,10 @@ import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
-Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
-Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral500 : const Color(0xFF6B7280);
-Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
+Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral500 : const Color(0xFF6B7280);
+Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gColors.primary300 : const Color(0xFF432CBB);
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -81,7 +81,7 @@ class LanguageSwitcherScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
               ],
             ),
             // Content
@@ -166,7 +166,7 @@ class LanguageSwitcherCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
               ],
             ),
             // White card content
@@ -246,8 +246,8 @@ class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
     final isDark = _isDark(context);
     return Scaffold(
         backgroundColor: widget.isCard
-            ? (isDark ? Ux4gPalette.primary800 : Color(0xFFF2EFFF))
-            : (isDark ? Ux4gPalette.neutral950 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : Color(0xFFF2EFFF))
+            : (isDark ? Ux4gColors.neutral950 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -265,10 +265,10 @@ class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
                     height: 32,
                     child: Ux4gDivider(
                       orientation: Ux4gDividerOrientation.vertical,
-                      color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
+                      color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFD1D5DB),
                     ),
                   ),
-                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
+                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
                 ],
               ),
 
@@ -278,7 +278,7 @@ class _LanguageSwitcherMockupState extends State<_LanguageSwitcherMockup> {
                   padding: const EdgeInsets.all(16),
                   child: widget.isCard
                       ? Ux4gCard(
-                          backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          backgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
@@ -443,14 +443,14 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
                 child: Material(
                   elevation: 8,
                   borderRadius: BorderRadius.circular(8),
-                  color: _isDark(context) ? Ux4gPalette.neutral900 : Colors.white,
+                  color: _isDark(context) ? Ux4gColors.neutral900 : Colors.white,
                   clipBehavior: Clip.antiAlias,
                   child: Container(
                     width: size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                        color: _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
                       ),
                     ),
                     constraints: const BoxConstraints(maxHeight: 380),
@@ -469,7 +469,7 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
                               child: Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                                 color: isSelected
-                                    ? (_isDark(context) ? Ux4gPalette.primary950 : const Color(0xFFF3E8FF))
+                                    ? (_isDark(context) ? Ux4gColors.primary950 : const Color(0xFFF3E8FF))
                                     : null,
                                 child: Row(
                                   children: [
@@ -483,7 +483,7 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
                                               fontSize: 15,
                                               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                                               color: isSelected
-                                                  ? (_isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB))
+                                                  ? (_isDark(context) ? Ux4gColors.primary300 : const Color(0xFF432CBB))
                                                   : _getTitleColor(context),
                                             ),
                                           ),
@@ -494,7 +494,7 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
                                               fontSize: 13,
                                               fontWeight: FontWeight.w400,
                                               color: isSelected
-                                                  ? (_isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB))
+                                                  ? (_isDark(context) ? Ux4gColors.primary300 : const Color(0xFF432CBB))
                                                   : _getMutedText(context),
                                             ),
                                           ),
@@ -505,7 +505,7 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
                                       Icon(
                                         Icons.check,
                                         size: 20,
-                                        color: _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB),
+                                        color: _isDark(context) ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                                       ),
                                   ],
                                 ),
@@ -514,7 +514,7 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
                           }),
                           Divider(
                             height: 1,
-                            color: _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                            color: _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
                           ),
                           InkWell(
                             onTap: _close,
@@ -566,12 +566,12 @@ class _LanguageSwitcherDropdownState extends State<_LanguageSwitcherDropdown> {
           height: 48,
           padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-            color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+            color: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
               color: _isOpen
                   ? _getPrimaryColor(context)
-                  : (_isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFD1D5DB)),
+                  : (_isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFD1D5DB)),
               width: _isOpen ? 1.5 : 1,
             ),
           ),

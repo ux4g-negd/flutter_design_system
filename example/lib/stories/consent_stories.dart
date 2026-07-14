@@ -61,12 +61,12 @@ class _PhoneFrame extends StatelessWidget {
       height: 760,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: (_isDark(context) ? Ux4gPalette.gray900 : Ux4gPalette.gray100),
+        color: (_isDark(context) ? Ux4gColors.gray900 : Ux4gColors.gray100),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: (_isDark(context)
-              ? Ux4gPalette.neutral800
-              : Ux4gPalette.neutral200),
+              ? Ux4gColors.neutral800
+              : Ux4gColors.neutral200),
         ),
         boxShadow: [
           BoxShadow(
@@ -103,20 +103,20 @@ class _ConsentHeader extends StatelessWidget {
               width: 1,
               height: 28,
               color: _isDark(context)
-                  ? Ux4gPalette.neutral600
+                  ? Ux4gColors.neutral600
                   : _isDark(context)
-                  ? Ux4gPalette.neutral600
+                  ? Ux4gColors.neutral600
                   : (_isDark(context)
-                        ? Ux4gPalette.neutral600
-                        : Ux4gPalette.neutral300),
+                        ? Ux4gColors.neutral600
+                        : Ux4gColors.neutral300),
             ),
             SvgPicture.asset(
               _unionLogoPath,
               height: 32,
               colorFilter: ColorFilter.mode(
                 _isDark(context)
-                    ? Ux4gPalette.primary300
-                    : Ux4gPalette.primary600,
+                    ? Ux4gColors.primary300
+                    : Ux4gColors.primary600,
                 BlendMode.srcIn,
               ),
             ),
@@ -129,10 +129,10 @@ class _ConsentHeader extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral700
+                        ? Ux4gColors.neutral700
                         : (_isDark(context)
-                              ? Ux4gPalette.neutral800
-                              : Ux4gPalette.neutral200),
+                              ? Ux4gColors.neutral800
+                              : Ux4gColors.neutral200),
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -153,8 +153,8 @@ class _ConsentHeader extends StatelessWidget {
           height: 1,
           thickness: 1,
           color: (_isDark(context)
-              ? Ux4gPalette.neutral800
-              : Ux4gPalette.neutral200),
+              ? Ux4gColors.neutral800
+              : Ux4gColors.neutral200),
         ),
       ],
     );
@@ -175,8 +175,8 @@ class _ConsentFooter extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               color: (_isDark(context)
-                  ? Ux4gPalette.neutral500
-                  : Ux4gPalette.neutral400),
+                  ? Ux4gColors.neutral500
+                  : Ux4gColors.neutral400),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -203,12 +203,12 @@ Widget _buildDataCard({
     width: double.infinity,
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
-      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
       border: Border.all(
         color: (_isDark(context)
-            ? Ux4gPalette.neutral800
-            : Ux4gPalette.neutral200),
+            ? Ux4gColors.neutral800
+            : Ux4gColors.neutral200),
       ),
     ),
     child: Column(
@@ -223,21 +223,21 @@ Widget _buildDataCard({
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: (_isDark(context)
-                    ? Ux4gPalette.neutral50
-                    : Ux4gPalette.gray900),
+                    ? Ux4gColors.neutral50
+                    : Ux4gColors.gray900),
               ),
             ),
             Ux4gTag(
               text: 'Required',
               customBackgroundColor: _isDark(context)
-                  ? Ux4gPalette.red900
+                  ? Ux4gColors.red900
                   : _isDark(context)
-                  ? Ux4gPalette.red900
+                  ? Ux4gColors.red900
                   : const Color(0xFFFFF0F0),
               customContentColor: _isDark(context)
-                  ? Ux4gPalette.red300
+                  ? Ux4gColors.red300
                   : _isDark(context)
-                  ? Ux4gPalette.red300
+                  ? Ux4gColors.red300
                   : const Color(0xFF8A1A16),
               shape: Ux4gTagShape.rectangular,
               size: Ux4gTagSize.m,
@@ -250,8 +250,8 @@ Widget _buildDataCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -262,8 +262,8 @@ Widget _buildDataCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -305,9 +305,9 @@ class _ConsentCaptureMobileMockupState
                     height: 56,
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.gray800
+                          ? Ux4gColors.gray800
                           : _isDark(context)
-                          ? Ux4gPalette.gray800
+                          ? Ux4gColors.gray800
                           : const Color(0xFFEEF2F6),
                       shape: BoxShape.circle,
                     ),
@@ -329,8 +329,8 @@ class _ConsentCaptureMobileMockupState
                         .hM_default
                         .copyWith(
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.gray900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.gray900,
                         ),
                   ),
                   SizedBox(height: 8),
@@ -341,8 +341,8 @@ class _ConsentCaptureMobileMockupState
                     style: TextStyle(
                       fontSize: 14,
                       color: (_isDark(context)
-                          ? Ux4gPalette.neutral400
-                          : Ux4gPalette.neutral500),
+                          ? Ux4gColors.neutral400
+                          : Ux4gColors.neutral500),
                       height: 1.4,
                     ),
                   ),
@@ -372,8 +372,8 @@ class _ConsentCaptureMobileMockupState
                   Divider(
                     height: 1,
                     color: (_isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral200),
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral200),
                   ),
                   SizedBox(height: 20),
                   // Checkboxes
@@ -410,8 +410,8 @@ class _ConsentCaptureMobileMockupState
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                     height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
@@ -450,12 +450,12 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
           Expanded(
             child: Container(
               color: _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : (_isDark(context)
-                        ? Ux4gPalette.primary900
-                        : Ux4gPalette
+                        ? Ux4gColors.primary900
+                        : Ux4gColors
                               .primary100), // Soft purple/blue card style bg
               child: Column(
                 children: [
@@ -466,7 +466,7 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.gray900
+                              ? Ux4gColors.gray900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -486,9 +486,9 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               height: 56,
                               decoration: BoxDecoration(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.gray800
+                                    ? Ux4gColors.gray800
                                     : _isDark(context)
-                                    ? Ux4gPalette.gray800
+                                    ? Ux4gColors.gray800
                                     : const Color(0xFFEEF2F6),
                                 shape: BoxShape.circle,
                               ),
@@ -510,8 +510,8 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                                   .hM_default
                                   .copyWith(
                                     color: _isDark(context)
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.gray900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.gray900,
                                   ),
                             ),
                             SizedBox(height: 8),
@@ -522,8 +522,8 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               style: TextStyle(
                                 fontSize: 13,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral500),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -553,8 +553,8 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                             Divider(
                               height: 1,
                               color: (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                             ),
                             SizedBox(height: 16),
                             // Checkboxes
@@ -595,8 +595,8 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
                               contentColor: _isDark(context)
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                               height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
@@ -629,7 +629,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -638,7 +638,7 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -650,7 +650,7 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -662,7 +662,7 @@ Column(
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray800 : _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
@@ -672,7 +672,7 @@ Column(
             Text(
               'Your Data, Your Control',
               textAlign: TextAlign.center,
-              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
             ),
             SizedBox(height: 8),
             // Description
@@ -681,7 +681,7 @@ Column(
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                 height: 1.4,
               ),
             ),
@@ -691,9 +691,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -703,20 +703,20 @@ Column(
                     children: [
                       Text(
                         'Aadhaar Number',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -726,9 +726,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -738,20 +738,20 @@ Column(
                     children: [
                       Text(
                         'Address',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -761,9 +761,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -773,25 +773,25 @@ Column(
                     children: [
                       Text(
                         'Email',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
             SizedBox(height: 24),
-            Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
             SizedBox(height: 20),
             // Checkboxes
             Ux4gCheckbox(
@@ -821,7 +821,7 @@ Column(
               text: 'Decline and exit',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
               height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
@@ -841,7 +841,7 @@ Column(
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+              color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -861,7 +861,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -870,7 +870,7 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -882,10 +882,10 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: Container(
-        color: _isDark(context) ? Ux4gPalette.primary900 : _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
+        color: _isDark(context) ? Ux4gColors.primary900 : _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple/blue card style bg
         child: Column(
           children: [
             Expanded(
@@ -894,7 +894,7 @@ Column(
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -912,7 +912,7 @@ Column(
                         width: 56,
                         height: 56,
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray800 : _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                          color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                           shape: BoxShape.circle,
                         ),
                         child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
@@ -922,7 +922,7 @@ Column(
                       Text(
                         'Your Data, Your Control',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       SizedBox(height: 8),
                       // Description
@@ -931,7 +931,7 @@ Column(
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 13,
-                          color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                           height: 1.45,
                         ),
                       ),
@@ -941,9 +941,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -953,20 +953,20 @@ Column(
                               children: [
                                 Text(
                                   'Aadhaar Number',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -976,9 +976,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -988,20 +988,20 @@ Column(
                               children: [
                                 Text(
                                   'Address',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -1011,9 +1011,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1023,25 +1023,25 @@ Column(
                               children: [
                                 Text(
                                   'Email',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
                       SizedBox(height: 20),
-                      Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       SizedBox(height: 16),
                       // Checkboxes
                       Ux4gCheckbox(
@@ -1071,7 +1071,7 @@ Column(
                         text: 'Decline and exit',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
@@ -1091,7 +1091,7 @@ Column(
                     'Powered by -',
                     style: TextStyle(
                       fontSize: 11,
-                      color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                      color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -1174,9 +1174,9 @@ class _ConsentCaptureWarningMobileMockupState
                     height: 56,
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.gray800
+                          ? Ux4gColors.gray800
                           : _isDark(context)
-                          ? Ux4gPalette.gray800
+                          ? Ux4gColors.gray800
                           : const Color(0xFFEEF2F6),
                       shape: BoxShape.circle,
                     ),
@@ -1198,8 +1198,8 @@ class _ConsentCaptureWarningMobileMockupState
                         .hM_default
                         .copyWith(
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.gray900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.gray900,
                         ),
                   ),
                   SizedBox(height: 8),
@@ -1210,8 +1210,8 @@ class _ConsentCaptureWarningMobileMockupState
                     style: TextStyle(
                       fontSize: 14,
                       color: (_isDark(context)
-                          ? Ux4gPalette.neutral400
-                          : Ux4gPalette.neutral500),
+                          ? Ux4gColors.neutral400
+                          : Ux4gColors.neutral500),
                       height: 1.4,
                     ),
                   ),
@@ -1241,8 +1241,8 @@ class _ConsentCaptureWarningMobileMockupState
                   Divider(
                     height: 1,
                     color: (_isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral200),
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral200),
                   ),
                   SizedBox(height: 20),
                   if (!_isInfoConsentGiven) ...[
@@ -1253,9 +1253,9 @@ class _ConsentCaptureWarningMobileMockupState
                       leadingIcon: Icon(
                         Icons.warning_amber_rounded,
                         color: _isDark(context)
-                            ? Ux4gPalette.orange400
+                            ? Ux4gColors.orange400
                             : _isDark(context)
-                            ? Ux4gPalette.orange300
+                            ? Ux4gColors.orange300
                             : const Color(0xFFC2410C),
                         size: 20,
                       ),
@@ -1263,9 +1263,9 @@ class _ConsentCaptureWarningMobileMockupState
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: _isDark(context)
-                            ? Ux4gPalette.orange400
+                            ? Ux4gColors.orange400
                             : _isDark(context)
-                            ? Ux4gPalette.orange300
+                            ? Ux4gColors.orange300
                             : const Color(0xFFC2410C),
                       ),
                       margin: EdgeInsets.zero,
@@ -1310,8 +1310,8 @@ class _ConsentCaptureWarningMobileMockupState
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                     height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
@@ -1348,12 +1348,12 @@ class _ConsentCaptureWarningCardMockupState
           Expanded(
             child: Container(
               color: _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : (_isDark(context)
-                        ? Ux4gPalette.primary900
-                        : Ux4gPalette.primary100),
+                        ? Ux4gColors.primary900
+                        : Ux4gColors.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -1363,7 +1363,7 @@ class _ConsentCaptureWarningCardMockupState
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.gray900
+                              ? Ux4gColors.gray900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -1383,9 +1383,9 @@ class _ConsentCaptureWarningCardMockupState
                               height: 56,
                               decoration: BoxDecoration(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.gray800
+                                    ? Ux4gColors.gray800
                                     : _isDark(context)
-                                    ? Ux4gPalette.gray800
+                                    ? Ux4gColors.gray800
                                     : const Color(0xFFEEF2F6),
                                 shape: BoxShape.circle,
                               ),
@@ -1407,8 +1407,8 @@ class _ConsentCaptureWarningCardMockupState
                                   .hM_default
                                   .copyWith(
                                     color: _isDark(context)
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.gray900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.gray900,
                                   ),
                             ),
                             SizedBox(height: 8),
@@ -1419,8 +1419,8 @@ class _ConsentCaptureWarningCardMockupState
                               style: TextStyle(
                                 fontSize: 13,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral500),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -1450,8 +1450,8 @@ class _ConsentCaptureWarningCardMockupState
                             Divider(
                               height: 1,
                               color: (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                             ),
                             SizedBox(height: 16),
                             if (!_isInfoConsentGiven) ...[
@@ -1462,9 +1462,9 @@ class _ConsentCaptureWarningCardMockupState
                                 leadingIcon: Icon(
                                   Icons.warning_amber_rounded,
                                   color: _isDark(context)
-                                      ? Ux4gPalette.orange400
+                                      ? Ux4gColors.orange400
                                       : _isDark(context)
-                                      ? Ux4gPalette.orange300
+                                      ? Ux4gColors.orange300
                                       : const Color(0xFFC2410C),
                                   size: 20,
                                 ),
@@ -1472,9 +1472,9 @@ class _ConsentCaptureWarningCardMockupState
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: _isDark(context)
-                                      ? Ux4gPalette.orange400
+                                      ? Ux4gColors.orange400
                                       : _isDark(context)
-                                      ? Ux4gPalette.orange300
+                                      ? Ux4gColors.orange300
                                       : const Color(0xFFC2410C),
                                 ),
                                 margin: EdgeInsets.zero,
@@ -1523,8 +1523,8 @@ class _ConsentCaptureWarningCardMockupState
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
                               contentColor: _isDark(context)
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                               height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
@@ -1558,7 +1558,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -1567,7 +1567,7 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -1579,7 +1579,7 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -1591,7 +1591,7 @@ Column(
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray800 : _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
@@ -1601,7 +1601,7 @@ Column(
             Text(
               'Your Data, Your Control',
               textAlign: TextAlign.center,
-              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
             ),
             SizedBox(height: 8),
             // Description
@@ -1610,7 +1610,7 @@ Column(
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                 height: 1.4,
               ),
             ),
@@ -1620,9 +1620,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1632,20 +1632,20 @@ Column(
                     children: [
                       Text(
                         'Aadhaar Number',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -1655,9 +1655,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1667,20 +1667,20 @@ Column(
                     children: [
                       Text(
                         'Address',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -1690,9 +1690,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1702,25 +1702,25 @@ Column(
                     children: [
                       Text(
                         'Email',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
             SizedBox(height: 24),
-            Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
             SizedBox(height: 20),
             if (!_isInfoConsentGiven) ...[
               Ux4gStatusBanner(
@@ -1728,13 +1728,13 @@ Column(
                 title: 'Consent not given. You cannot proceed without consenting.',
                 leadingIcon: Icon(
                   Icons.warning_amber_rounded,
-                  color: _isDark(context) ? Ux4gPalette.orange400 : _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                  color: _isDark(context) ? Ux4gColors.orange400 : _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange800,
                   size: 20,
                 ),
                 titleStyle: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
-                  color: _isDark(context) ? Ux4gPalette.orange400 : _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                  color: _isDark(context) ? Ux4gColors.orange400 : _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange800,
                 ),
                 margin: EdgeInsets.zero,
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -1769,7 +1769,7 @@ Column(
               text: 'Decline and exit',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
               height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
@@ -1789,7 +1789,7 @@ Column(
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+              color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -1810,7 +1810,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -1819,7 +1819,7 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -1831,10 +1831,10 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: Container(
-        color: _isDark(context) ? Ux4gPalette.primary900 : _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
+        color: _isDark(context) ? Ux4gColors.primary900 : _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple/blue card style bg
         child: Column(
           children: [
             Expanded(
@@ -1843,7 +1843,7 @@ Column(
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -1861,7 +1861,7 @@ Column(
                         width: 56,
                         height: 56,
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray800 : _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                          color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                           shape: BoxShape.circle,
                         ),
                         child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
@@ -1871,7 +1871,7 @@ Column(
                       Text(
                         'Your Data, Your Control',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       SizedBox(height: 8),
                       // Description
@@ -1880,7 +1880,7 @@ Column(
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 13,
-                          color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                           height: 1.45,
                         ),
                       ),
@@ -1890,9 +1890,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1902,20 +1902,20 @@ Column(
                               children: [
                                 Text(
                                   'Aadhaar Number',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -1925,9 +1925,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1937,20 +1937,20 @@ Column(
                               children: [
                                 Text(
                                   'Address',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -1960,9 +1960,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1972,25 +1972,25 @@ Column(
                               children: [
                                 Text(
                                   'Email',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
                       SizedBox(height: 20),
-                      Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       SizedBox(height: 16),
                       if (!_isInfoConsentGiven) ...[
                         Ux4gStatusBanner(
@@ -1998,13 +1998,13 @@ Column(
                           title: 'Consent not given. You cannot proceed without consenting.',
                           leadingIcon: Icon(
                             Icons.warning_amber_rounded,
-                            color: _isDark(context) ? Ux4gPalette.orange400 : _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                            color: _isDark(context) ? Ux4gColors.orange400 : _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange800,
                             size: 20,
                           ),
                           titleStyle: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: _isDark(context) ? Ux4gPalette.orange400 : _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                            color: _isDark(context) ? Ux4gColors.orange400 : _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange800,
                           ),
                           margin: EdgeInsets.zero,
                           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -2039,7 +2039,7 @@ Column(
                         text: 'Decline and exit',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
@@ -2059,7 +2059,7 @@ Column(
                     'Powered by -',
                     style: TextStyle(
                       fontSize: 11,
-                      color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                      color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -2142,9 +2142,9 @@ class _ConsentManagementMobileMockupState
                     height: 56,
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.gray800
+                          ? Ux4gColors.gray800
                           : _isDark(context)
-                          ? Ux4gPalette.gray800
+                          ? Ux4gColors.gray800
                           : const Color(0xFFEEF2F6),
                       shape: BoxShape.circle,
                     ),
@@ -2166,8 +2166,8 @@ class _ConsentManagementMobileMockupState
                         .hM_default
                         .copyWith(
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.gray900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.gray900,
                         ),
                   ),
                   SizedBox(height: 8),
@@ -2178,8 +2178,8 @@ class _ConsentManagementMobileMockupState
                     style: TextStyle(
                       fontSize: 14,
                       color: (_isDark(context)
-                          ? Ux4gPalette.neutral400
-                          : Ux4gPalette.neutral500),
+                          ? Ux4gColors.neutral400
+                          : Ux4gColors.neutral500),
                       height: 1.4,
                     ),
                   ),
@@ -2227,8 +2227,8 @@ class _ConsentManagementMobileMockupState
                               .lL_default
                               .copyWith(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600,
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600,
                               ),
                         ),
                       ),
@@ -2238,8 +2238,8 @@ class _ConsentManagementMobileMockupState
                   Divider(
                     height: 1,
                     color: (_isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral200),
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral200),
                   ),
                   SizedBox(height: 20),
                   // Actions
@@ -2256,8 +2256,8 @@ class _ConsentManagementMobileMockupState
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                     height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
@@ -2295,12 +2295,12 @@ class _ConsentManagementCardMockupState
           Expanded(
             child: Container(
               color: _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : (_isDark(context)
-                        ? Ux4gPalette.primary900
-                        : Ux4gPalette.primary100),
+                        ? Ux4gColors.primary900
+                        : Ux4gColors.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -2310,7 +2310,7 @@ class _ConsentManagementCardMockupState
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.gray900
+                              ? Ux4gColors.gray900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -2330,9 +2330,9 @@ class _ConsentManagementCardMockupState
                               height: 56,
                               decoration: BoxDecoration(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.gray800
+                                    ? Ux4gColors.gray800
                                     : _isDark(context)
-                                    ? Ux4gPalette.gray800
+                                    ? Ux4gColors.gray800
                                     : const Color(0xFFEEF2F6),
                                 shape: BoxShape.circle,
                               ),
@@ -2354,8 +2354,8 @@ class _ConsentManagementCardMockupState
                                   .hM_default
                                   .copyWith(
                                     color: _isDark(context)
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.gray900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.gray900,
                                   ),
                             ),
                             SizedBox(height: 8),
@@ -2366,8 +2366,8 @@ class _ConsentManagementCardMockupState
                               style: TextStyle(
                                 fontSize: 13,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral500),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -2418,8 +2418,8 @@ class _ConsentManagementCardMockupState
                                         .lL_default
                                         .copyWith(
                                           color: _isDark(context)
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600,
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600,
                                         ),
                                   ),
                                 ),
@@ -2429,8 +2429,8 @@ class _ConsentManagementCardMockupState
                             Divider(
                               height: 1,
                               color: (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                             ),
                             SizedBox(height: 16),
                             // Actions
@@ -2447,8 +2447,8 @@ class _ConsentManagementCardMockupState
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
                               contentColor: _isDark(context)
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                               height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
@@ -2481,12 +2481,12 @@ Widget _buildManagementCard({
     width: double.infinity,
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
-      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
       border: Border.all(
         color: (_isDark(context)
-            ? Ux4gPalette.neutral800
-            : Ux4gPalette.neutral200),
+            ? Ux4gColors.neutral800
+            : Ux4gColors.neutral200),
       ),
     ),
     child: Column(
@@ -2501,29 +2501,29 @@ Widget _buildManagementCard({
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: (_isDark(context)
-                    ? Ux4gPalette.neutral50
-                    : Ux4gPalette.gray900),
+                    ? Ux4gColors.neutral50
+                    : Ux4gColors.gray900),
               ),
             ),
             Ux4gTag(
               text: isActive ? 'Active' : 'Withdrawn',
               customBackgroundColor: isActive
                   ? (_isDark(context)
-                        ? Ux4gPalette.green900
+                        ? Ux4gColors.green900
                         : _isDark(context)
-                        ? Ux4gPalette.green900
+                        ? Ux4gColors.green900
                         : const Color(0xFFDCFCE7))
                   : _isDark(context)
-                  ? Ux4gPalette.red900
+                  ? Ux4gColors.red900
                   : const Color(0xFFFFF0F0),
               customContentColor: isActive
                   ? (_isDark(context)
-                        ? Ux4gPalette.green300
+                        ? Ux4gColors.green300
                         : _isDark(context)
-                        ? Ux4gPalette.green300
+                        ? Ux4gColors.green300
                         : const Color(0xFF166534))
                   : _isDark(context)
-                  ? Ux4gPalette.red300
+                  ? Ux4gColors.red300
                   : const Color(0xFF8A1A16),
               shape: Ux4gTagShape.rectangular,
               size: Ux4gTagSize.m,
@@ -2536,8 +2536,8 @@ Widget _buildManagementCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -2558,8 +2558,8 @@ Widget _buildManagementCard({
                       .lL_default
                       .copyWith(
                         color: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                       ),
                 ),
                 SizedBox(width: 4),
@@ -2589,7 +2589,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -2598,7 +2598,7 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -2610,7 +2610,7 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -2622,7 +2622,7 @@ Column(
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray800 : _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
@@ -2632,7 +2632,7 @@ Column(
             Text(
               'Your Data, Your Control',
               textAlign: TextAlign.center,
-              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
             ),
             SizedBox(height: 8),
             // Description
@@ -2641,7 +2641,7 @@ Column(
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                 height: 1.4,
               ),
             ),
@@ -2651,9 +2651,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -2663,18 +2663,18 @@ Column(
                     children: [
                       Text(
                         'Aadhaar Number',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: _isAadhaarActive ? 'Active' : 'Withdrawn',
-                        customBackgroundColor: _isAadhaarActive ? (_isDark(context) ? Ux4gPalette.green900 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50) : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isAadhaarActive ? (_isDark(context) ? Ux4gPalette.green300 : _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green800) : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isAadhaarActive ? (_isDark(context) ? Ux4gColors.green900 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50) : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isAadhaarActive ? (_isDark(context) ? Ux4gColors.green300 : _isDark(context) ? Ux4gColors.green400 : Ux4gColors.green800) : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('10 Apr 2026, 14:34 · v2.1', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('10 Apr 2026, 14:34 · v2.1', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 8),
                   InkWell(
                     onTap: () => setState(() => _isAadhaarActive = !_isAadhaarActive),
@@ -2682,9 +2682,9 @@ Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(_isAadhaarActive ? 'Withdraw' : 'Restore',
-                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                         SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
+                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, size: 14),
                       ],
                     ),
                   ),
@@ -2697,9 +2697,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -2709,18 +2709,18 @@ Column(
                     children: [
                       Text(
                         'Address',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: _isAddressActive ? 'Active' : 'Withdrawn',
-                        customBackgroundColor: _isAddressActive ? (_isDark(context) ? Ux4gPalette.green900 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50) : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isAddressActive ? (_isDark(context) ? Ux4gPalette.green300 : _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green800) : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isAddressActive ? (_isDark(context) ? Ux4gColors.green900 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50) : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isAddressActive ? (_isDark(context) ? Ux4gColors.green300 : _isDark(context) ? Ux4gColors.green400 : Ux4gColors.green800) : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('02 Jan 2026, 09:15 · v1.8', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('02 Jan 2026, 09:15 · v1.8', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 8),
                   InkWell(
                     onTap: () => setState(() => _isAddressActive = !_isAddressActive),
@@ -2728,9 +2728,9 @@ Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(_isAddressActive ? 'Withdraw' : 'Restore',
-                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                         SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
+                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, size: 14),
                       ],
                     ),
                   ),
@@ -2743,9 +2743,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -2755,18 +2755,18 @@ Column(
                     children: [
                       Text(
                         'Email',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: _isEmailActive ? 'Active' : 'Withdrawn',
-                        customBackgroundColor: _isEmailActive ? (_isDark(context) ? Ux4gPalette.green900 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50) : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isEmailActive ? (_isDark(context) ? Ux4gPalette.green300 : _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green800) : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isEmailActive ? (_isDark(context) ? Ux4gColors.green900 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50) : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isEmailActive ? (_isDark(context) ? Ux4gColors.green300 : _isDark(context) ? Ux4gColors.green400 : Ux4gColors.green800) : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.rectangular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('15 Sep 2025, 11:02 · v1.6', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('15 Sep 2025, 11:02 · v1.6', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 8),
                   InkWell(
                     onTap: () => setState(() => _isEmailActive = !_isEmailActive),
@@ -2774,9 +2774,9 @@ Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(_isEmailActive ? 'Withdraw' : 'Restore',
-                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                         SizedBox(width: 4),
-                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
+                        Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, size: 14),
                       ],
                     ),
                   ),
@@ -2793,13 +2793,13 @@ Column(
                   padding: EdgeInsets.symmetric(vertical: 4),
                   child: Text(
                     'Download consent history (PDF)',
-                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                   ),
                 ),
               ),
             ),
             SizedBox(height: 20),
-            Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
             SizedBox(height: 20),
             // Actions
             Ux4gButton(
@@ -2814,7 +2814,7 @@ Column(
               text: 'Cancel',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
@@ -2834,7 +2834,7 @@ Column(
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+              color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -2854,7 +2854,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -2863,7 +2863,7 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -2875,10 +2875,10 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: Container(
-        color: _isDark(context) ? Ux4gPalette.primary900 : _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
+        color: _isDark(context) ? Ux4gColors.primary900 : _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple/blue card style bg
         child: Column(
           children: [
             Expanded(
@@ -2887,7 +2887,7 @@ Column(
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -2905,7 +2905,7 @@ Column(
                         width: 56,
                         height: 56,
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray800 : _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                          color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                           shape: BoxShape.circle,
                         ),
                         child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
@@ -2915,7 +2915,7 @@ Column(
                       Text(
                         'Your Data, Your Control',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       SizedBox(height: 8),
                       // Description
@@ -2924,7 +2924,7 @@ Column(
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 13,
-                          color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                           height: 1.45,
                         ),
                       ),
@@ -2934,9 +2934,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2946,18 +2946,18 @@ Column(
                               children: [
                                 Text(
                                   'Aadhaar Number',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: _isAadhaarActive ? 'Active' : 'Withdrawn',
-                                  customBackgroundColor: _isAadhaarActive ? (_isDark(context) ? Ux4gPalette.green900 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50) : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isAadhaarActive ? (_isDark(context) ? Ux4gPalette.green300 : _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green800) : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isAadhaarActive ? (_isDark(context) ? Ux4gColors.green900 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50) : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isAadhaarActive ? (_isDark(context) ? Ux4gColors.green300 : _isDark(context) ? Ux4gColors.green400 : Ux4gColors.green800) : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('10 Apr 2026, 14:34 · v2.1', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('10 Apr 2026, 14:34 · v2.1', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 8),
                             InkWell(
                               onTap: () => setState(() => _isAadhaarActive = !_isAadhaarActive),
@@ -2965,9 +2965,9 @@ Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(_isAadhaarActive ? 'Withdraw' : 'Restore',
-                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                                   SizedBox(width: 4),
-                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
+                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, size: 14),
                                 ],
                               ),
                             ),
@@ -2980,9 +2980,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2992,18 +2992,18 @@ Column(
                               children: [
                                 Text(
                                   'Address',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: _isAddressActive ? 'Active' : 'Withdrawn',
-                                  customBackgroundColor: _isAddressActive ? (_isDark(context) ? Ux4gPalette.green900 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50) : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isAddressActive ? (_isDark(context) ? Ux4gPalette.green300 : _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green800) : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isAddressActive ? (_isDark(context) ? Ux4gColors.green900 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50) : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isAddressActive ? (_isDark(context) ? Ux4gColors.green300 : _isDark(context) ? Ux4gColors.green400 : Ux4gColors.green800) : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('02 Jan 2026, 09:15 · v1.8', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('02 Jan 2026, 09:15 · v1.8', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 8),
                             InkWell(
                               onTap: () => setState(() => _isAddressActive = !_isAddressActive),
@@ -3011,9 +3011,9 @@ Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(_isAddressActive ? 'Withdraw' : 'Restore',
-                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                                   SizedBox(width: 4),
-                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
+                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, size: 14),
                                 ],
                               ),
                             ),
@@ -3026,9 +3026,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -3038,18 +3038,18 @@ Column(
                               children: [
                                 Text(
                                   'Email',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: _isEmailActive ? 'Active' : 'Withdrawn',
-                                  customBackgroundColor: _isEmailActive ? (_isDark(context) ? Ux4gPalette.green900 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50) : _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isEmailActive ? (_isDark(context) ? Ux4gPalette.green300 : _isDark(context) ? Ux4gPalette.green400 : Ux4gPalette.green800) : _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isEmailActive ? (_isDark(context) ? Ux4gColors.green900 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50) : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isEmailActive ? (_isDark(context) ? Ux4gColors.green300 : _isDark(context) ? Ux4gColors.green400 : Ux4gColors.green800) : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.rectangular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('15 Sep 2025, 11:02 · v1.6', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('15 Sep 2025, 11:02 · v1.6', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 8),
                             InkWell(
                               onTap: () => setState(() => _isEmailActive = !_isEmailActive),
@@ -3057,9 +3057,9 @@ Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(_isEmailActive ? 'Withdraw' : 'Restore',
-                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                                    style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                                   SizedBox(width: 4),
-                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, size: 14),
+                                  Icon(Icons.arrow_forward_rounded, color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, size: 14),
                                 ],
                               ),
                             ),
@@ -3076,13 +3076,13 @@ Column(
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               'Download consent history (PDF)',
-                              style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(height: 20),
-                      Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       SizedBox(height: 16),
                       // Actions
                       Ux4gButton(
@@ -3097,7 +3097,7 @@ Column(
                         text: 'Cancel',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
@@ -3117,7 +3117,7 @@ Column(
                     'Powered by -',
                     style: TextStyle(
                       fontSize: 11,
-                      color: (_isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                      color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -3190,7 +3190,7 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                       height: 56,
                       decoration: BoxDecoration(
                         color: _isDark(context)
-                            ? Ux4gPalette.gray800
+                            ? Ux4gColors.gray800
                             : const Color(0xFFEEF2F6),
                         shape: BoxShape.circle,
                       ),
@@ -3214,8 +3214,8 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                           .hM_default
                           .copyWith(
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral50
-                                : Ux4gPalette.gray900,
+                                ? Ux4gColors.neutral50
+                                : Ux4gColors.gray900,
                           ),
                     ),
                   ),
@@ -3231,21 +3231,21 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: (_isDark(context)
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.gray900),
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.gray900),
                         ),
                       ),
                       SizedBox(height: 8),
                       Ux4gTag(
                         text: 'DPDP Act 2023',
                         customBackgroundColor: _isDark(context)
-                            ? Ux4gPalette.primary900
+                            ? Ux4gColors.primary900
                             : (_isDark(context)
-                                  ? Ux4gPalette.primary900
-                                  : Ux4gPalette.primary100),
+                                  ? Ux4gColors.primary900
+                                  : Ux4gColors.primary100),
                         customContentColor: (_isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600),
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600),
                         shape: Ux4gTagShape.circular,
                         size: Ux4gTagSize.m,
                       ),
@@ -3259,8 +3259,8 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
                       color: (_isDark(context)
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600),
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600),
                     ),
                   ),
                   SizedBox(height: 8),
@@ -3270,8 +3270,8 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color: (_isDark(context)
-                          ? Ux4gPalette.neutral400
-                          : Ux4gPalette.neutral500),
+                          ? Ux4gColors.neutral400
+                          : Ux4gColors.neutral500),
                       height: 1.4,
                     ),
                   ),
@@ -3312,7 +3312,7 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                     leadingIcon: Icon(
                       Icons.error,
                       color: _isDark(context)
-                          ? Ux4gPalette.orange300
+                          ? Ux4gColors.orange300
                           : const Color(0xFFD97706),
                       size: 22,
                     ),
@@ -3320,7 +3320,7 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: _isDark(context)
-                          ? Ux4gPalette.orange300
+                          ? Ux4gColors.orange300
                           : const Color(0xFFB45309),
                     ),
                     margin: EdgeInsets.zero,
@@ -3333,8 +3333,8 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                   Divider(
                     height: 1,
                     color: (_isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral200),
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral200),
                   ),
                   SizedBox(height: 20),
                   // Actions
@@ -3353,15 +3353,15 @@ class _DataSharingConsentMobileMockup extends StatelessWidget {
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral400
+                        ? Ux4gColors.neutral400
                         : (_isDark(context)
-                              ? Ux4gPalette.neutral400
-                              : Ux4gPalette.neutral700),
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral700),
                     borderColor: _isDark(context)
-                        ? Ux4gPalette.neutral600
+                        ? Ux4gColors.neutral600
                         : (_isDark(context)
-                              ? Ux4gPalette.neutral600
-                              : Ux4gPalette.neutral300),
+                              ? Ux4gColors.neutral600
+                              : Ux4gColors.neutral300),
                     height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
@@ -3389,10 +3389,10 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
           Expanded(
             child: Container(
               color: _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : (_isDark(context)
-                        ? Ux4gPalette.primary900
-                        : Ux4gPalette.primary100),
+                        ? Ux4gColors.primary900
+                        : Ux4gColors.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -3402,7 +3402,7 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.gray900
+                              ? Ux4gColors.gray900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -3423,7 +3423,7 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                 height: 56,
                                 decoration: BoxDecoration(
                                   color: _isDark(context)
-                                      ? Ux4gPalette.gray800
+                                      ? Ux4gColors.gray800
                                       : const Color(0xFFEEF2F6),
                                   shape: BoxShape.circle,
                                 ),
@@ -3449,8 +3449,8 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                     .hM_default
                                     .copyWith(
                                       color: _isDark(context)
-                                          ? Ux4gPalette.neutral50
-                                          : Ux4gPalette.gray900,
+                                          ? Ux4gColors.neutral50
+                                          : Ux4gColors.gray900,
                                     ),
                               ),
                             ),
@@ -3466,21 +3466,21 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w700,
                                     color: (_isDark(context)
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.gray900),
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.gray900),
                                   ),
                                 ),
                                 SizedBox(height: 8),
                                 Ux4gTag(
                                   text: 'DPDP Act 2023',
                                   customBackgroundColor: _isDark(context)
-                                      ? Ux4gPalette.primary900
+                                      ? Ux4gColors.primary900
                                       : (_isDark(context)
-                                            ? Ux4gPalette.primary900
-                                            : Ux4gPalette.primary100),
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary100),
                                   customContentColor: (_isDark(context)
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600),
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600),
                                   shape: Ux4gTagShape.circular,
                                   size: Ux4gTagSize.m,
                                 ),
@@ -3494,8 +3494,8 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600),
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600),
                               ),
                             ),
                             SizedBox(height: 8),
@@ -3505,8 +3505,8 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 13,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral500),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -3547,7 +3547,7 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                               leadingIcon: Icon(
                                 Icons.error,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.orange300
+                                    ? Ux4gColors.orange300
                                     : const Color(0xFFD97706),
                                 size: 22,
                               ),
@@ -3555,7 +3555,7 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.orange300
+                                    ? Ux4gColors.orange300
                                     : const Color(0xFFB45309),
                               ),
                               margin: EdgeInsets.zero,
@@ -3568,8 +3568,8 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                             Divider(
                               height: 1,
                               color: (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                             ),
                             SizedBox(height: 16),
                             // Actions
@@ -3588,15 +3588,15 @@ class _DataSharingConsentCardMockup extends StatelessWidget {
                               onPressed: () {},
                               variant: Ux4gButtonVariant.outline,
                               contentColor: _isDark(context)
-                                  ? Ux4gPalette.neutral400
+                                  ? Ux4gColors.neutral400
                                   : (_isDark(context)
-                                        ? Ux4gPalette.neutral400
-                                        : Ux4gPalette.neutral700),
+                                        ? Ux4gColors.neutral400
+                                        : Ux4gColors.neutral700),
                               borderColor: _isDark(context)
-                                  ? Ux4gPalette.neutral600
+                                  ? Ux4gColors.neutral600
                                   : (_isDark(context)
-                                        ? Ux4gPalette.neutral600
-                                        : Ux4gPalette.neutral300),
+                                        ? Ux4gColors.neutral600
+                                        : Ux4gColors.neutral300),
                               height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
@@ -3630,12 +3630,12 @@ Widget _buildSharingCard({
     width: double.infinity,
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
-      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
       border: Border.all(
         color: (_isDark(context)
-            ? Ux4gPalette.neutral800
-            : Ux4gPalette.neutral200),
+            ? Ux4gColors.neutral800
+            : Ux4gColors.neutral200),
       ),
     ),
     child: Column(
@@ -3650,28 +3650,28 @@ Widget _buildSharingCard({
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: (_isDark(context)
-                    ? Ux4gPalette.neutral50
-                    : Ux4gPalette.gray900),
+                    ? Ux4gColors.neutral50
+                    : Ux4gColors.gray900),
               ),
             ),
             Ux4gTag(
               text: isRequired ? 'Required' : 'Optional',
               customBackgroundColor: isRequired
                   ? _isDark(context)
-                        ? Ux4gPalette.red900
+                        ? Ux4gColors.red900
                         : const Color(0xFFFFF0F0)
                   : _isDark(context)
-                  ? Ux4gPalette.gray800
+                  ? Ux4gColors.gray800
                   : const Color(0xFFF3F4F6),
               customContentColor: isRequired
                   ? _isDark(context)
-                        ? Ux4gPalette.red300
+                        ? Ux4gColors.red300
                         : const Color(0xFF8A1A16)
                   : _isDark(context)
-                  ? Ux4gPalette.neutral400
+                  ? Ux4gColors.neutral400
                   : (_isDark(context)
-                        ? Ux4gPalette.neutral400
-                        : Ux4gPalette.neutral600),
+                        ? Ux4gColors.neutral400
+                        : Ux4gColors.neutral600),
               shape: Ux4gTagShape.circular,
               size: Ux4gTagSize.m,
             ),
@@ -3683,8 +3683,8 @@ Widget _buildSharingCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -3695,8 +3695,8 @@ Widget _buildSharingCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -3707,8 +3707,8 @@ Widget _buildSharingCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -3730,7 +3730,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -3739,11 +3739,11 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
-              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 20),
+              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 20),
             ),
           ),
         ),
@@ -3751,7 +3751,7 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -3764,10 +3764,10 @@ Column(
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                  color: _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(Icons.shield_outlined, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 28),
+                child: Icon(Icons.shield_outlined, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 28),
               ),
             ),
             SizedBox(height: 16),
@@ -3776,7 +3776,7 @@ Column(
               child: Text(
                 'Your Data, Your Control',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
               ),
             ),
             SizedBox(height: 12),
@@ -3790,14 +3790,14 @@ Column(
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                    color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                   ),
                 ),
                 SizedBox(height: 8),
                 Ux4gTag(
                   text: 'DPDP Act 2023',
-                  customBackgroundColor: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                  customContentColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                  customBackgroundColor: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                  customContentColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                   shape: Ux4gTagShape.circular,
                 ),
               ],
@@ -3809,14 +3809,14 @@ Column(
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
-                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
               ),
             ),
             SizedBox(height: 8),
             // Description
             Text(
               'To enable Direct Benefit Transfer for PM Kisan, the Agriculture Department will share your details with the following third parties.',
-              style: TextStyle(fontSize: 14, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.4),
+              style: TextStyle(fontSize: 14, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.4),
             ),
             SizedBox(height: 20),
             // 1. Bank of India Card
@@ -3824,9 +3824,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -3836,22 +3836,22 @@ Column(
                     children: [
                       Text(
                         'Bank of India',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.circular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Purpose · Account matching', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Account matching', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Duration · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Duration · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -3861,9 +3861,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -3873,22 +3873,22 @@ Column(
                     children: [
                       Text(
                         'Payment Corp',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                        customContentColor: _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                         shape: Ux4gTagShape.circular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Purpose · Payment processing', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Payment processing', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Duration · 90 days', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Duration · 90 days', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -3898,9 +3898,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -3910,22 +3910,22 @@ Column(
                     children: [
                       Text(
                         'SMS Gateway',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Optional',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                        customContentColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
+                        customContentColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
                         shape: Ux4gTagShape.circular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Purpose · Status alerts', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Purpose · Status alerts', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Duration · Scheme duration', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Duration · Scheme duration', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -3936,19 +3936,19 @@ Column(
               title: 'Required consents cannot be withdrawn as they are necessary for the scheme to function.',
               leadingIcon: Icon(
                 Icons.error,
-                color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange600,
+                color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange600,
                 size: 22,
               ),
               titleStyle: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
-                color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange700,
+                color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange700,
               ),
               margin: EdgeInsets.zero,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
             SizedBox(height: 24),
-            Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
             SizedBox(height: 20),
             // Actions
             Ux4gButton(
@@ -3965,8 +3965,8 @@ Column(
               text: 'Cancel',
               onPressed: () {},
               variant: Ux4gButtonVariant.outline,
-              contentColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
-              borderColor: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300,
+              contentColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+              borderColor: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300,
               height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
@@ -3986,7 +3986,7 @@ Column(
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400,
+              color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -4007,7 +4007,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -4016,11 +4016,11 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
-              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 20),
+              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 20),
             ),
           ),
         ),
@@ -4028,10 +4028,10 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: Container(
-        color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue card style bg
+        color: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple/blue card style bg
         child: Column(
           children: [
             Expanded(
@@ -4040,7 +4040,7 @@ Column(
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -4059,10 +4059,10 @@ Column(
                           width: 56,
                           height: 56,
                           decoration: BoxDecoration(
-                            color: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
+                            color: _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(Icons.shield_outlined, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 28),
+                          child: Icon(Icons.shield_outlined, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 28),
                         ),
                       ),
                       SizedBox(height: 16),
@@ -4071,7 +4071,7 @@ Column(
                         child: Text(
                           'Your Data, Your Control',
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                          style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                         ),
                       ),
                       SizedBox(height: 12),
@@ -4085,14 +4085,14 @@ Column(
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
-                              color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                              color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                             ),
                           ),
                           SizedBox(height: 8),
                           Ux4gTag(
                             text: 'DPDP Act 2023',
-                            customBackgroundColor: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                            customContentColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                            customBackgroundColor: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                            customContentColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             shape: Ux4gTagShape.circular,
                           ),
                         ],
@@ -4104,7 +4104,7 @@ Column(
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
-                          color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                         ),
                       ),
                       SizedBox(height: 8),
@@ -4113,7 +4113,7 @@ Column(
                         'To enable Direct Benefit Transfer for PM Kisan, the Agriculture Department will share your details with the following third parties.',
                         style: TextStyle(
                           fontSize: 13,
-                          color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                           height: 1.45,
                         ),
                       ),
@@ -4123,9 +4123,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -4135,22 +4135,22 @@ Column(
                               children: [
                                 Text(
                                   'Bank of India',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Purpose · Account matching', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Account matching', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Duration · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Duration · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -4160,9 +4160,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -4172,22 +4172,22 @@ Column(
                               children: [
                                 Text(
                                   'Payment Corp',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Purpose · Payment processing', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Payment processing', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Duration · 90 days', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Duration · 90 days', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -4197,9 +4197,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -4209,22 +4209,22 @@ Column(
                               children: [
                                 Text(
                                   'SMS Gateway',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Optional',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
+                                  customContentColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Purpose · Status alerts', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Purpose · Status alerts', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Duration · Scheme duration', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Duration · Scheme duration', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -4235,19 +4235,19 @@ Column(
                         title: 'Required consents cannot be withdrawn as they are necessary for the scheme to function.',
                         leadingIcon: Icon(
                           Icons.error,
-                          color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange600,
+                          color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange600,
                           size: 22,
                         ),
                         titleStyle: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange700,
+                          color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange700,
                         ),
                         margin: EdgeInsets.zero,
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
                       SizedBox(height: 20),
-                      Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       SizedBox(height: 16),
                       // Actions
                       Ux4gButton(
@@ -4264,8 +4264,8 @@ Column(
                         text: 'Cancel',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.outline,
-                        contentColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
-                        borderColor: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300,
+                        contentColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+                        borderColor: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300,
                         height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
@@ -4285,7 +4285,7 @@ Column(
                     'Powered by -',
                     style: TextStyle(
                       fontSize: 11,
-                      color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400,
+                      color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -4367,8 +4367,8 @@ class _ManageDataSharingConsentsMobileMockupState
                         .hM_default
                         .copyWith(
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.gray900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.gray900,
                         ),
                   ),
                   SizedBox(height: 8),
@@ -4379,8 +4379,8 @@ class _ManageDataSharingConsentsMobileMockupState
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
                       color: (_isDark(context)
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600),
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600),
                     ),
                   ),
                   SizedBox(height: 8),
@@ -4390,8 +4390,8 @@ class _ManageDataSharingConsentsMobileMockupState
                     style: TextStyle(
                       fontSize: 14,
                       color: (_isDark(context)
-                          ? Ux4gPalette.neutral400
-                          : Ux4gPalette.neutral500),
+                          ? Ux4gColors.neutral400
+                          : Ux4gColors.neutral500),
                       height: 1.45,
                     ),
                   ),
@@ -4432,7 +4432,7 @@ class _ManageDataSharingConsentsMobileMockupState
                     leadingIcon: Icon(
                       Icons.error,
                       color: _isDark(context)
-                          ? Ux4gPalette.orange300
+                          ? Ux4gColors.orange300
                           : const Color(0xFFD97706),
                       size: 22,
                     ),
@@ -4440,7 +4440,7 @@ class _ManageDataSharingConsentsMobileMockupState
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: _isDark(context)
-                          ? Ux4gPalette.orange300
+                          ? Ux4gColors.orange300
                           : const Color(0xFFB45309),
                     ),
                     margin: EdgeInsets.zero,
@@ -4453,8 +4453,8 @@ class _ManageDataSharingConsentsMobileMockupState
                   Divider(
                     height: 1,
                     color: (_isDark(context)
-                        ? Ux4gPalette.neutral800
-                        : Ux4gPalette.neutral200),
+                        ? Ux4gColors.neutral800
+                        : Ux4gColors.neutral200),
                   ),
                   SizedBox(height: 16),
                   // Actions
@@ -4471,8 +4471,8 @@ class _ManageDataSharingConsentsMobileMockupState
                     onPressed: () {},
                     variant: Ux4gButtonVariant.ghost,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                     height: 48,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
@@ -4508,10 +4508,10 @@ class _ManageDataSharingConsentsCardMockupState
           Expanded(
             child: Container(
               color: _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : (_isDark(context)
-                        ? Ux4gPalette.primary900
-                        : Ux4gPalette.primary100),
+                        ? Ux4gColors.primary900
+                        : Ux4gColors.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -4521,7 +4521,7 @@ class _ManageDataSharingConsentsCardMockupState
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.gray900
+                              ? Ux4gColors.gray900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -4543,8 +4543,8 @@ class _ManageDataSharingConsentsCardMockupState
                                   .hM_default
                                   .copyWith(
                                     color: _isDark(context)
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.gray900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.gray900,
                                   ),
                             ),
                             SizedBox(height: 8),
@@ -4555,8 +4555,8 @@ class _ManageDataSharingConsentsCardMockupState
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600),
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600),
                               ),
                             ),
                             SizedBox(height: 8),
@@ -4566,8 +4566,8 @@ class _ManageDataSharingConsentsCardMockupState
                               style: TextStyle(
                                 fontSize: 13,
                                 color: (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral500),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -4609,7 +4609,7 @@ class _ManageDataSharingConsentsCardMockupState
                               leadingIcon: Icon(
                                 Icons.error,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.orange300
+                                    ? Ux4gColors.orange300
                                     : const Color(0xFFD97706),
                                 size: 22,
                               ),
@@ -4617,7 +4617,7 @@ class _ManageDataSharingConsentsCardMockupState
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.orange300
+                                    ? Ux4gColors.orange300
                                     : const Color(0xFFB45309),
                               ),
                               margin: EdgeInsets.zero,
@@ -4630,8 +4630,8 @@ class _ManageDataSharingConsentsCardMockupState
                             Divider(
                               height: 1,
                               color: (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                             ),
                             SizedBox(height: 16),
                             // Actions
@@ -4648,8 +4648,8 @@ class _ManageDataSharingConsentsCardMockupState
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
                               contentColor: _isDark(context)
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                               height: 48,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
@@ -4684,12 +4684,12 @@ Widget _buildDataSharingManagementCard({
     width: double.infinity,
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
-      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
       borderRadius: BorderRadius.circular(12),
       border: Border.all(
         color: (_isDark(context)
-            ? Ux4gPalette.neutral800
-            : Ux4gPalette.neutral200),
+            ? Ux4gColors.neutral800
+            : Ux4gColors.neutral200),
       ),
     ),
     child: Column(
@@ -4704,32 +4704,32 @@ Widget _buildDataSharingManagementCard({
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: (_isDark(context)
-                    ? Ux4gPalette.neutral50
-                    : Ux4gPalette.gray900),
+                    ? Ux4gColors.neutral50
+                    : Ux4gColors.gray900),
               ),
             ),
             Ux4gTag(
               text: isWithdrawn ? 'Withdrawn' : 'Active',
               customBackgroundColor: isWithdrawn
                   ? _isDark(context)
-                        ? Ux4gPalette.gray800
+                        ? Ux4gColors.gray800
                         : const Color(0xFFF3F4F6)
                   : _isDark(context)
-                  ? Ux4gPalette.green900
+                  ? Ux4gColors.green900
                   : (_isDark(context)
-                        ? Ux4gPalette.green900
-                        : Ux4gPalette.green50),
+                        ? Ux4gColors.green900
+                        : Ux4gColors.green50),
               customContentColor: isWithdrawn
                   ? _isDark(context)
-                        ? Ux4gPalette.neutral400
+                        ? Ux4gColors.neutral400
                         : (_isDark(context)
-                              ? Ux4gPalette.neutral400
-                              : Ux4gPalette.neutral600)
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral600)
                   : _isDark(context)
-                  ? Ux4gPalette.green300
+                  ? Ux4gColors.green300
                   : (_isDark(context)
-                        ? Ux4gPalette.green300
-                        : Ux4gPalette.green700),
+                        ? Ux4gColors.green300
+                        : Ux4gColors.green700),
               shape: Ux4gTagShape.circular,
               size: Ux4gTagSize.m,
             ),
@@ -4741,8 +4741,8 @@ Widget _buildDataSharingManagementCard({
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral500),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral500),
             fontWeight: FontWeight.w400,
             height: 1.25,
           ),
@@ -4754,8 +4754,8 @@ Widget _buildDataSharingManagementCard({
             style: TextStyle(
               fontSize: 13,
               color: (_isDark(context)
-                  ? Ux4gPalette.neutral400
-                  : Ux4gPalette.neutral500),
+                  ? Ux4gColors.neutral400
+                  : Ux4gColors.neutral500),
               fontWeight: FontWeight.w400,
               height: 1.25,
             ),
@@ -4770,8 +4770,8 @@ Widget _buildDataSharingManagementCard({
               style: TextStyle(
                 fontSize: 14,
                 color: (_isDark(context)
-                    ? Ux4gPalette.primary300
-                    : Ux4gPalette.primary600),
+                    ? Ux4gColors.primary300
+                    : Ux4gColors.primary600),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -4795,7 +4795,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -4804,11 +4804,11 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
-              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 20),
+              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 20),
             ),
           ),
         ),
@@ -4816,7 +4816,7 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
@@ -4826,7 +4826,7 @@ Column(
             // Headline
             Text(
               'Manage Your Data Sharing Consents',
-              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
             ),
             SizedBox(height: 8),
             // Scheme Info
@@ -4835,7 +4835,7 @@ Column(
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
-                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
               ),
             ),
             SizedBox(height: 8),
@@ -4844,7 +4844,7 @@ Column(
               'You can review and withdraw optional consents below.',
               style: TextStyle(
                 fontSize: 14,
-                color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                 height: 1.45,
               ),
             ),
@@ -4854,9 +4854,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -4866,20 +4866,20 @@ Column(
                     children: [
                       Text(
                         'Bank of India',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Active',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                        customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                         shape: Ux4gTagShape.circular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -4889,9 +4889,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -4901,20 +4901,20 @@ Column(
                     children: [
                       Text(
                         'Payment Corp',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: 'Active',
-                        customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                        customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                        customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                        customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                         shape: Ux4gTagShape.circular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 2),
-                  Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                 ],
               ),
             ),
@@ -4924,9 +4924,9 @@ Column(
               width: double.infinity,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -4936,18 +4936,18 @@ Column(
                     children: [
                       Text(
                         'SMS Gateway',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       Ux4gTag(
                         text: _isSmsGatewayWithdrawn ? 'Withdrawn' : 'Active',
-                        customBackgroundColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                        customContentColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                        customBackgroundColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                        customContentColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                         shape: Ux4gTagShape.circular,
                       ),
                     ],
                   ),
                   SizedBox(height: 6),
-                  Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                  Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                   SizedBox(height: 8),
                   GestureDetector(
                     onTap: () {
@@ -4957,7 +4957,7 @@ Column(
                     },
                     child: Text(
                       _isSmsGatewayWithdrawn ? 'Undo' : 'Withdraw',
-                      style: TextStyle(fontSize: 14, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 14, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
@@ -4970,19 +4970,19 @@ Column(
               title: 'Required consents cannot be withdrawn as they are necessary for the scheme to function.',
               leadingIcon: Icon(
                 Icons.error,
-                color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange600,
+                color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange600,
                 size: 22,
               ),
               titleStyle: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
-                color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange700,
+                color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange700,
               ),
               margin: EdgeInsets.zero,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
             SizedBox(height: 20),
-            Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
             SizedBox(height: 16),
             // Actions
             Ux4gButton(
@@ -4997,7 +4997,7 @@ Column(
               text: 'Cancel',
               onPressed: () {},
               variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     height: 48,
               size: Ux4gButtonSize.large,
               width: double.infinity,
@@ -5017,7 +5017,7 @@ Column(
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400,
+              color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -5038,7 +5038,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -5047,11 +5047,11 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
-              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 20),
+              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 20),
             ),
           ),
         ),
@@ -5059,10 +5059,10 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: Container(
-        color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple/blue bg
+        color: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple/blue bg
         child: Column(
           children: [
             Expanded(
@@ -5071,7 +5071,7 @@ Column(
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -5087,7 +5087,7 @@ Column(
                       // Headline
                       Text(
                         'Manage Your Data Sharing Consents',
-                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       SizedBox(height: 8),
                       // Scheme Info
@@ -5096,7 +5096,7 @@ Column(
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
-                          color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                         ),
                       ),
                       SizedBox(height: 8),
@@ -5105,7 +5105,7 @@ Column(
                         'You can review and withdraw optional consents below.',
                         style: TextStyle(
                           fontSize: 13,
-                          color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                           height: 1.45,
                         ),
                       ),
@@ -5115,9 +5115,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -5127,20 +5127,20 @@ Column(
                               children: [
                                 Text(
                                   'Bank of India',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Active',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Data shared · Aadhaar, Name', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -5150,9 +5150,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -5162,20 +5162,20 @@ Column(
                               children: [
                                 Text(
                                   'Payment Corp',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Active',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Data shared · Transaction ID', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 2),
-                            Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Status · Required', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                           ],
                         ),
                       ),
@@ -5185,9 +5185,9 @@ Column(
                         width: double.infinity,
                         padding: EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -5197,18 +5197,18 @@ Column(
                               children: [
                                 Text(
                                   'SMS Gateway',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: _isSmsGatewayWithdrawn ? 'Withdrawn' : 'Active',
-                                  customBackgroundColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100 : _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                                  customContentColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600 : _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                                  customBackgroundColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100 : _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                                  customContentColor: _isSmsGatewayWithdrawn ? _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
                             ),
                             SizedBox(height: 6),
-                            Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, height: 1.25)),
+                            Text('Data shared · Mobile Number', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
                             SizedBox(height: 8),
                             GestureDetector(
                               onTap: () {
@@ -5218,7 +5218,7 @@ Column(
                               },
                               child: Text(
                                 _isSmsGatewayWithdrawn ? 'Undo' : 'Withdraw',
-                                style: TextStyle(fontSize: 14, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), fontWeight: FontWeight.w600),
                               ),
                             ),
                           ],
@@ -5231,19 +5231,19 @@ Column(
                         title: 'Required consents cannot be withdrawn as they are necessary for the scheme to function.',
                         leadingIcon: Icon(
                           Icons.error,
-                          color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange600,
+                          color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange600,
                           size: 22,
                         ),
                         titleStyle: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          color: _isDark(context) ? Ux4gPalette.orange300 : Ux4gPalette.orange700,
+                          color: _isDark(context) ? Ux4gColors.orange300 : Ux4gColors.orange700,
                         ),
                         margin: EdgeInsets.zero,
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
                       SizedBox(height: 20),
-                      Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       SizedBox(height: 16),
                       // Actions
                       Ux4gButton(
@@ -5258,7 +5258,7 @@ Column(
                         text: 'Cancel',
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
@@ -5278,7 +5278,7 @@ Column(
                     'Powered by -',
                     style: TextStyle(
                       fontSize: 11,
-                      color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400,
+                      color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -5325,7 +5325,7 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
           // Simulated background content (the Manage Consents screen blurred or dimmed)
           Positioned.fill(
             child: Container(
-              color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+              color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -5337,8 +5337,8 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         .hM_default
                         .copyWith(
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.gray900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.gray900,
                         ),
                   ),
                   SizedBox(height: 8),
@@ -5348,8 +5348,8 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
                       color: (_isDark(context)
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600),
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600),
                     ),
                   ),
                   SizedBox(height: 12),
@@ -5359,17 +5359,17 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.gray900
+                          ? Ux4gColors.gray900
                           : (_isDark(context)
-                                ? Ux4gPalette.gray900
-                                : Ux4gPalette.gray100),
+                                ? Ux4gColors.gray900
+                                : Ux4gColors.gray100),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: _isDark(context)
-                            ? Ux4gPalette.neutral700
+                            ? Ux4gColors.neutral700
                             : (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                       ),
                     ),
                   ),
@@ -5379,17 +5379,17 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.gray900
+                          ? Ux4gColors.gray900
                           : (_isDark(context)
-                                ? Ux4gPalette.gray900
-                                : Ux4gPalette.gray100),
+                                ? Ux4gColors.gray900
+                                : Ux4gColors.gray100),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: _isDark(context)
-                            ? Ux4gPalette.neutral700
+                            ? Ux4gColors.neutral700
                             : (_isDark(context)
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200),
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200),
                       ),
                     ),
                   ),
@@ -5406,7 +5406,7 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
               child: Ux4gModalContent(
                 onDismiss: () {},
                 backgroundColor: _isDark(context)
-                    ? Ux4gPalette.gray900
+                    ? Ux4gColors.gray900
                     : Colors.white,
                 cornerRadius: 16,
                 alignment: Ux4gModalAlignment.centered,
@@ -5429,8 +5429,8 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         height: 76,
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.orange800
-                              : Ux4gPalette
+                              ? Ux4gColors.orange800
+                              : Ux4gColors
                                     .orange100, // Soft peach/amber matching mockup
                           shape: BoxShape.circle,
                         ),
@@ -5438,8 +5438,8 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                           child: Icon(
                             Icons.warning_rounded, // Solid warning triangle
                             color: _isDark(context)
-                                ? Ux4gPalette.orange500
-                                : Ux4gPalette
+                                ? Ux4gColors.orange500
+                                : Ux4gColors
                                       .orange600, // Vivid warning orange/amber
                             size: 38,
                           ),
@@ -5455,8 +5455,8 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                             .hM_default
                             .copyWith(
                               color: _isDark(context)
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.gray900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.gray900,
                             ),
                       ),
                       SizedBox(height: 12),
@@ -5467,10 +5467,10 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14.5,
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral400
+                              ? Ux4gColors.neutral400
                               : (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral600),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral600),
                           height: 1.45,
                         ),
                       ),
@@ -5494,8 +5494,8 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         onPressed: () {},
                         variant: Ux4gButtonVariant.ghost,
                         contentColor: _isDark(context)
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                         height: 48,
                         size: Ux4gButtonSize.large,
                         width: double.infinity,
@@ -5508,10 +5508,10 @@ class _WithdrawConsentDialogMockup extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12.5,
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral400
+                              ? Ux4gColors.neutral400
                               : (_isDark(context)
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral600),
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral600),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -5534,7 +5534,7 @@ Ux4gModal.show(
   context,
   modal: Ux4gModal(
     onDismiss: () => Navigator.of(context).pop(),
-    backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+    backgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
     cornerRadius: 16,
     alignment: Ux4gModalAlignment.centered,
     showHeader: false,
@@ -5553,13 +5553,13 @@ Ux4gModal.show(
             width: 76,
             height: 76,
             decoration: BoxDecoration(
-              color: _isDark(context) ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
+              color: _isDark(context) ? Ux4gColors.orange800 : Ux4gColors.orange100,
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Icon(
                 Icons.warning_rounded,
-                color: _isDark(context) ? Ux4gPalette.orange500 : Ux4gPalette.orange600,
+                color: _isDark(context) ? Ux4gColors.orange500 : Ux4gColors.orange600,
                 size: 38,
               ),
             ),
@@ -5569,7 +5569,7 @@ Ux4gModal.show(
           Text(
             'Withdraw Consent?',
             textAlign: TextAlign.center,
-            style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+            style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
           ),
           SizedBox(height: 12),
           // Centered description
@@ -5578,7 +5578,7 @@ Ux4gModal.show(
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14.5,
-              color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+              color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
               height: 1.45,
             ),
           ),
@@ -5603,7 +5603,7 @@ Ux4gModal.show(
               Navigator.of(context).pop();
             },
             variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     height: 48,
             size: Ux4gButtonSize.large,
             width: double.infinity,
@@ -5615,7 +5615,7 @@ Ux4gModal.show(
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 12.5,
-              color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+              color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -5669,7 +5669,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -5678,11 +5678,11 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
-              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 20),
+              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 20),
             ),
           ),
         ),
@@ -5690,7 +5690,7 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     // Scrollable Content
     Expanded(
       child: SingleChildScrollView(
@@ -5706,14 +5706,14 @@ Column(
                 children: [
                   Text(
                     'Consent History',
-                    style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                    style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                   ),
                   SizedBox(height: 8),
                   Text(
                     'A complete audit trail of all your data sharing consents for government schemes.',
                     style: TextStyle(
                       fontSize: 14,
-                      color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                      color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                       height: 1.4,
                     ),
                   ),
@@ -5732,9 +5732,9 @@ Column(
                     selected: false,
                     borderRadius: 8.0,
                     onClick: () {},
-                    unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-                    unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
-                    unselectedTextColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+                    unselectedBackgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
+                    unselectedBorderColor: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
+                    unselectedTextColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
                   ),
                   SizedBox(width: 8),
                   Ux4gChoiceChip(
@@ -5742,9 +5742,9 @@ Column(
                     selected: true,
                     borderRadius: 8.0,
                     onClick: () {},
-                    selectedBackgroundColor: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                    selectedBorderColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                    selectedTextColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                    selectedBackgroundColor: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                    selectedBorderColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                    selectedTextColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                   ),
                   SizedBox(width: 8),
                   Ux4gChoiceChip(
@@ -5752,9 +5752,9 @@ Column(
                     selected: false,
                     borderRadius: 8.0,
                     onClick: () {},
-                    unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-                    unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
-                    unselectedTextColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+                    unselectedBackgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
+                    unselectedBorderColor: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
+                    unselectedTextColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
                   ),
                   SizedBox(width: 8),
                   Ux4gChoiceChip(
@@ -5762,9 +5762,9 @@ Column(
                     selected: true,
                     borderRadius: 8.0,
                     onClick: () {},
-                    selectedBackgroundColor: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                    selectedBorderColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                    selectedTextColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                    selectedBackgroundColor: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                    selectedBorderColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                    selectedTextColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                   ),
                   SizedBox(width: 8),
                   Ux4gChoiceChip(
@@ -5772,9 +5772,9 @@ Column(
                     selected: false,
                     borderRadius: 8.0,
                     onClick: () {},
-                    unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-                    unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
-                    unselectedTextColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600,
+                    unselectedBackgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
+                    unselectedBorderColor: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
+                    unselectedTextColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
                   ),
                 ],
               ),
@@ -5790,9 +5790,9 @@ Column(
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.02),
@@ -5812,13 +5812,13 @@ Column(
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                               ),
                             ),
                             Ux4gTag(
                               text: 'Active',
-                              customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                              customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                              customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                              customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                               shape: Ux4gTagShape.circular,
                             ),
                           ],
@@ -5833,18 +5833,18 @@ Column(
                                 'Scheme',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'PM Kisan',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -5861,18 +5861,18 @@ Column(
                                 'Data',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'Aadhaar, Name',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -5889,18 +5889,18 @@ Column(
                                 'Given',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 '12 Jan 2024',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -5914,7 +5914,7 @@ Column(
                             'View',
                             style: TextStyle(
                               fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
                             ),
@@ -5929,9 +5929,9 @@ Column(
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.02),
@@ -5951,13 +5951,13 @@ Column(
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                               ),
                             ),
                             Ux4gTag(
                               text: 'Active',
-                              customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                              customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                              customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                              customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                               shape: Ux4gTagShape.circular,
                             ),
                           ],
@@ -5972,18 +5972,18 @@ Column(
                                 'Scheme',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'PM Kisan',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6000,18 +6000,18 @@ Column(
                                 'Data',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'Transaction ID',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6028,18 +6028,18 @@ Column(
                                 'Given',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 '12 Jan 2024',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6053,7 +6053,7 @@ Column(
                             'View',
                             style: TextStyle(
                               fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
                             ),
@@ -6068,9 +6068,9 @@ Column(
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.02),
@@ -6090,13 +6090,13 @@ Column(
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                               ),
                             ),
                             Ux4gTag(
                               text: 'Withdrawn',
-                              customBackgroundColor: _isDark(context) ? Ux4gPalette.red900 : Ux4gPalette.red50,
-                              customContentColor: _isDark(context) ? Ux4gPalette.red300 : Ux4gPalette.red800,
+                              customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
+                              customContentColor: _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
                               shape: Ux4gTagShape.circular,
                             ),
                           ],
@@ -6111,18 +6111,18 @@ Column(
                                 'Scheme',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'PM Kisan',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6139,18 +6139,18 @@ Column(
                                 'Data',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'Mobile Number',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6167,18 +6167,18 @@ Column(
                                 'Given',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 '15 Jan 2024',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6192,7 +6192,7 @@ Column(
                             'View',
                             style: TextStyle(
                               fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
                             ),
@@ -6207,9 +6207,9 @@ Column(
                     width: double.infinity,
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                      color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                      border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withValues(alpha: 0.02),
@@ -6229,13 +6229,13 @@ Column(
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                               ),
                             ),
                             Ux4gTag(
                               text: 'Expired',
-                              customBackgroundColor: _isDark(context) ? Ux4gPalette.gray800 : Ux4gPalette.gray100,
-                              customContentColor: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray800,
+                              customBackgroundColor: _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
+                              customContentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray800,
                               shape: Ux4gTagShape.circular,
                             ),
                           ],
@@ -6250,18 +6250,18 @@ Column(
                                 'Scheme',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'PMAY',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6278,18 +6278,18 @@ Column(
                                 'Data',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 'Address, Income',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6306,18 +6306,18 @@ Column(
                                 'Given',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                                  color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold)),
+                            Text('· ', style: TextStyle(fontSize: 13.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold)),
                             Expanded(
                               child: Text(
                                 '03 Mar 2023',
                                 style: TextStyle(
                                   fontSize: 13.5,
-                                  color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900,
+                                  color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -6331,7 +6331,7 @@ Column(
                             'View',
                             style: TextStyle(
                               fontSize: 14,
-                              color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
                             ),
@@ -6352,7 +6352,7 @@ Column(
                     'Showing 4 of 4 consents',
                     style: TextStyle(
                       fontSize: 13,
-                      color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                      color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -6360,7 +6360,7 @@ Column(
                     onTap: () {},
                     child: Text(
                       'Download Consent History (PDF)',
-                      style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                      style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                     ),
                   ),
                   SizedBox(height: 24),
@@ -6370,7 +6370,7 @@ Column(
                       'Back',
                       style: TextStyle(
                         fontSize: 16,
-                        color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                        color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -6392,7 +6392,7 @@ Column(
             'Powered by -',
             style: TextStyle(
               fontSize: 11,
-              color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400,
+              color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -6449,11 +6449,11 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
         givenDate: '12 Jan 2024',
         status: 'Active',
         statusColor: _isDark(context)
-            ? Ux4gPalette.green900
-            : (_isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50),
+            ? Ux4gColors.green900
+            : (_isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50),
         textColor: _isDark(context)
-            ? Ux4gPalette.green300
-            : (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+            ? Ux4gColors.green300
+            : (_isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700),
       ),
       _ConsentHistoryItem(
         title: 'Payment Corp',
@@ -6463,11 +6463,11 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
         givenDate: '12 Jan 2024',
         status: 'Active',
         statusColor: _isDark(context)
-            ? Ux4gPalette.green900
-            : (_isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50),
+            ? Ux4gColors.green900
+            : (_isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50),
         textColor: _isDark(context)
-            ? Ux4gPalette.green300
-            : (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+            ? Ux4gColors.green300
+            : (_isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700),
       ),
       _ConsentHistoryItem(
         title: 'SMS Gateway',
@@ -6477,10 +6477,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
         givenDate: '15 Jan 2024',
         status: 'Withdrawn',
         statusColor: _isDark(context)
-            ? Ux4gPalette.red900
+            ? Ux4gColors.red900
             : const Color(0xFFFCE8E6),
         textColor: _isDark(context)
-            ? Ux4gPalette.red300
+            ? Ux4gColors.red300
             : const Color(0xFFC5221F),
       ),
       _ConsentHistoryItem(
@@ -6491,11 +6491,11 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
         givenDate: '03 Mar 2023',
         status: 'Expired',
         statusColor: _isDark(context)
-            ? Ux4gPalette.gray800
+            ? Ux4gColors.gray800
             : const Color(0xFFF1F3F4),
         textColor: _isDark(context)
-            ? Ux4gPalette.neutral50
-            : Ux4gPalette.gray800,
+            ? Ux4gColors.neutral50
+            : Ux4gColors.gray800,
       ),
     ];
     final displayedConsents = allConsents.where((item) {
@@ -6524,8 +6524,8 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                               .hM_default
                               .copyWith(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.gray900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.gray900,
                               ),
                         ),
                         SizedBox(height: 8),
@@ -6534,10 +6534,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                           style: TextStyle(
                             fontSize: 14,
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral400
+                                ? Ux4gColors.neutral400
                                 : (_isDark(context)
-                                      ? Ux4gPalette.neutral400
-                                      : Ux4gPalette.neutral500),
+                                      ? Ux4gColors.neutral400
+                                      : Ux4gColors.neutral500),
                             height: 1.4,
                           ),
                         ),
@@ -6582,10 +6582,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                 'No consents found for the selected filters.',
                                 style: TextStyle(
                                   color: _isDark(context)
-                                      ? Ux4gPalette.neutral400
+                                      ? Ux4gColors.neutral400
                                       : (_isDark(context)
-                                            ? Ux4gPalette.neutral400
-                                            : Ux4gPalette.neutral500),
+                                            ? Ux4gColors.neutral400
+                                            : Ux4gColors.neutral500),
                                 ),
                               ),
                             ),
@@ -6599,15 +6599,15 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                   padding: const EdgeInsets.all(16),
                                   decoration: BoxDecoration(
                                     color: _isDark(context)
-                                        ? Ux4gPalette.gray900
+                                        ? Ux4gColors.gray900
                                         : Colors.white,
                                     borderRadius: BorderRadius.circular(8),
                                     border: Border.all(
                                       color: _isDark(context)
-                                          ? Ux4gPalette.neutral700
+                                          ? Ux4gColors.neutral700
                                           : (_isDark(context)
-                                                ? Ux4gPalette.neutral800
-                                                : Ux4gPalette.neutral200),
+                                                ? Ux4gColors.neutral800
+                                                : Ux4gColors.neutral200),
                                     ),
                                     boxShadow: [
                                       BoxShadow(
@@ -6635,8 +6635,8 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                               color: _isDark(context)
                                                   ? Colors.white
                                                   : (_isDark(context)
-                                                        ? Ux4gPalette.neutral50
-                                                        : Ux4gPalette.gray900),
+                                                        ? Ux4gColors.neutral50
+                                                        : Ux4gColors.gray900),
                                             ),
                                           ),
                                           Ux4gTag(
@@ -6662,8 +6662,8 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: (_isDark(context)
-                                                ? Ux4gPalette.primary300
-                                                : Ux4gPalette.primary600),
+                                                ? Ux4gColors.primary300
+                                                : Ux4gColors.primary600),
                                             fontWeight: FontWeight.w600,
                                             decoration:
                                                 TextDecoration.underline,
@@ -6685,10 +6685,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                           style: TextStyle(
                             fontSize: 13,
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral400
+                                ? Ux4gColors.neutral400
                                 : (_isDark(context)
-                                      ? Ux4gPalette.neutral400
-                                      : Ux4gPalette.neutral500),
+                                      ? Ux4gColors.neutral400
+                                      : Ux4gColors.neutral500),
                           ),
                         ),
                         SizedBox(height: 8),
@@ -6701,8 +6701,8 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                                 .lL_default
                                 .copyWith(
                                   color: _isDark(context)
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                           ),
                         ),
@@ -6714,8 +6714,8 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                             style: TextStyle(
                               fontSize: 16,
                               color: (_isDark(context)
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600),
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600),
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -6737,10 +6737,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                   style: TextStyle(
                     fontSize: 11,
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral500
+                        ? Ux4gColors.neutral500
                         : (_isDark(context)
-                              ? Ux4gPalette.neutral500
-                              : Ux4gPalette.neutral400),
+                              ? Ux4gColors.neutral500
+                              : Ux4gColors.neutral400),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -6766,29 +6766,29 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
       borderRadius: 8.0,
       onClick: () => _toggleFilter(label),
       selectedBackgroundColor: _isDark(context)
-          ? Ux4gPalette.primary900
+          ? Ux4gColors.primary900
           : (_isDark(context)
-                ? Ux4gPalette.primary900
-                : Ux4gPalette.primary100),
+                ? Ux4gColors.primary900
+                : Ux4gColors.primary100),
       selectedBorderColor: (_isDark(context)
-          ? Ux4gPalette.primary300
-          : Ux4gPalette.primary600),
+          ? Ux4gColors.primary300
+          : Ux4gColors.primary600),
       selectedTextColor: (_isDark(context)
-          ? Ux4gPalette.primary300
-          : Ux4gPalette.primary600),
+          ? Ux4gColors.primary300
+          : Ux4gColors.primary600),
       unselectedBackgroundColor: _isDark(context)
-          ? Ux4gPalette.gray900
+          ? Ux4gColors.gray900
           : Colors.white,
       unselectedBorderColor: _isDark(context)
-          ? Ux4gPalette.neutral700
+          ? Ux4gColors.neutral700
           : (_isDark(context)
-                ? Ux4gPalette.neutral800
-                : Ux4gPalette.neutral200),
+                ? Ux4gColors.neutral800
+                : Ux4gColors.neutral200),
       unselectedTextColor: _isDark(context)
-          ? Ux4gPalette.neutral400
+          ? Ux4gColors.neutral400
           : (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral600),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral600),
     );
   }
 
@@ -6803,10 +6803,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
             style: TextStyle(
               fontSize: 13.5,
               color: _isDark(context)
-                  ? Ux4gPalette.neutral400
+                  ? Ux4gColors.neutral400
                   : (_isDark(context)
-                        ? Ux4gPalette.neutral400
-                        : Ux4gPalette.neutral500),
+                        ? Ux4gColors.neutral400
+                        : Ux4gColors.neutral500),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -6816,10 +6816,10 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
           style: TextStyle(
             fontSize: 13.5,
             color: _isDark(context)
-                ? Ux4gPalette.neutral400
+                ? Ux4gColors.neutral400
                 : (_isDark(context)
-                      ? Ux4gPalette.neutral400
-                      : Ux4gPalette.neutral500),
+                      ? Ux4gColors.neutral400
+                      : Ux4gColors.neutral500),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -6829,8 +6829,8 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
             style: TextStyle(
               fontSize: 13.5,
               color: _isDark(context)
-                  ? Ux4gPalette.neutral50
-                  : Ux4gPalette.gray900,
+                  ? Ux4gColors.neutral50
+                  : Ux4gColors.gray900,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -6886,11 +6886,11 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
         givenDate: '12 Jan 2024',
         status: 'Active',
         statusColor: _isDark(context)
-            ? Ux4gPalette.green900
-            : (_isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50),
+            ? Ux4gColors.green900
+            : (_isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50),
         textColor: _isDark(context)
-            ? Ux4gPalette.green300
-            : (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+            ? Ux4gColors.green300
+            : (_isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700),
       ),
       _ConsentHistoryItem(
         title: 'Payment Corp',
@@ -6900,11 +6900,11 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
         givenDate: '12 Jan 2024',
         status: 'Active',
         statusColor: _isDark(context)
-            ? Ux4gPalette.green900
-            : (_isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50),
+            ? Ux4gColors.green900
+            : (_isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50),
         textColor: _isDark(context)
-            ? Ux4gPalette.green300
-            : (_isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700),
+            ? Ux4gColors.green300
+            : (_isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700),
       ),
       _ConsentHistoryItem(
         title: 'SMS Gateway',
@@ -6914,10 +6914,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
         givenDate: '15 Jan 2024',
         status: 'Withdrawn',
         statusColor: _isDark(context)
-            ? Ux4gPalette.red900
+            ? Ux4gColors.red900
             : const Color(0xFFFCE8E6),
         textColor: _isDark(context)
-            ? Ux4gPalette.red300
+            ? Ux4gColors.red300
             : const Color(0xFFC5221F),
       ),
       _ConsentHistoryItem(
@@ -6928,11 +6928,11 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
         givenDate: '03 Mar 2023',
         status: 'Expired',
         statusColor: _isDark(context)
-            ? Ux4gPalette.gray800
+            ? Ux4gColors.gray800
             : const Color(0xFFF1F3F4),
         textColor: _isDark(context)
-            ? Ux4gPalette.neutral50
-            : Ux4gPalette.gray800,
+            ? Ux4gColors.neutral50
+            : Ux4gColors.gray800,
       ),
     ];
     final displayedConsents = allConsents.where((item) {
@@ -6946,10 +6946,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
           Expanded(
             child: Container(
               color: _isDark(context)
-                  ? Ux4gPalette.primary900
+                  ? Ux4gColors.primary900
                   : (_isDark(context)
-                        ? Ux4gPalette.primary900
-                        : Ux4gPalette.primary100),
+                        ? Ux4gColors.primary900
+                        : Ux4gColors.primary100),
               child: Column(
                 children: [
                   Expanded(
@@ -6959,7 +6959,7 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.gray900
+                              ? Ux4gColors.gray900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -6980,8 +6980,8 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                   .hM_default
                                   .copyWith(
                                     color: _isDark(context)
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.gray900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.gray900,
                                   ),
                             ),
                             SizedBox(height: 8),
@@ -6990,10 +6990,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                               style: TextStyle(
                                 fontSize: 13,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.neutral400
+                                    ? Ux4gColors.neutral400
                                     : (_isDark(context)
-                                          ? Ux4gPalette.neutral400
-                                          : Ux4gPalette.neutral500),
+                                          ? Ux4gColors.neutral400
+                                          : Ux4gColors.neutral500),
                                 height: 1.45,
                               ),
                             ),
@@ -7031,10 +7031,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                     'No consents found.',
                                     style: TextStyle(
                                       color: _isDark(context)
-                                          ? Ux4gPalette.neutral400
+                                          ? Ux4gColors.neutral400
                                           : (_isDark(context)
-                                                ? Ux4gPalette.neutral400
-                                                : Ux4gPalette.neutral500),
+                                                ? Ux4gColors.neutral400
+                                                : Ux4gColors.neutral500),
                                     ),
                                   ),
                                 ),
@@ -7049,15 +7049,15 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                       padding: const EdgeInsets.all(12),
                                       decoration: BoxDecoration(
                                         color: _isDark(context)
-                                            ? Ux4gPalette.gray900
+                                            ? Ux4gColors.gray900
                                             : Colors.white,
                                         borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                           color: _isDark(context)
-                                              ? Ux4gPalette.neutral700
+                                              ? Ux4gColors.neutral700
                                               : (_isDark(context)
-                                                    ? Ux4gPalette.neutral800
-                                                    : Ux4gPalette.neutral200),
+                                                    ? Ux4gColors.neutral800
+                                                    : Ux4gColors.neutral200),
                                         ),
                                       ),
                                       child: Column(
@@ -7076,9 +7076,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                                   color: _isDark(context)
                                                       ? Colors.white
                                                       : (_isDark(context)
-                                                            ? Ux4gPalette
+                                                            ? Ux4gColors
                                                                   .neutral50
-                                                            : Ux4gPalette
+                                                            : Ux4gColors
                                                                   .gray900),
                                                 ),
                                               ),
@@ -7112,8 +7112,8 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 color: (_isDark(context)
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600),
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600),
                                                 fontWeight: FontWeight.w600,
                                                 decoration:
                                                     TextDecoration.underline,
@@ -7135,10 +7135,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: _isDark(context)
-                                          ? Ux4gPalette.neutral400
+                                          ? Ux4gColors.neutral400
                                           : (_isDark(context)
-                                                ? Ux4gPalette.neutral400
-                                                : Ux4gPalette.neutral500),
+                                                ? Ux4gColors.neutral400
+                                                : Ux4gColors.neutral500),
                                     ),
                                   ),
                                   SizedBox(height: 8),
@@ -7151,8 +7151,8 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                           .lL_default
                                           .copyWith(
                                             color: _isDark(context)
-                                                ? Ux4gPalette.primary300
-                                                : Ux4gPalette.primary600,
+                                                ? Ux4gColors.primary300
+                                                : Ux4gColors.primary600,
                                           ),
                                     ),
                                   ),
@@ -7166,8 +7166,8 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                                         .lXL_default
                                         .copyWith(
                                           color: _isDark(context)
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600,
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600,
                                         ),
                                   ),
                                 ],
@@ -7188,10 +7188,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                           style: TextStyle(
                             fontSize: 11,
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral500
+                                ? Ux4gColors.neutral500
                                 : (_isDark(context)
-                                      ? Ux4gPalette.neutral500
-                                      : Ux4gPalette.neutral400),
+                                      ? Ux4gColors.neutral500
+                                      : Ux4gColors.neutral400),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -7221,29 +7221,29 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
       borderRadius: 8.0,
       onClick: () => _toggleFilter(label),
       selectedBackgroundColor: _isDark(context)
-          ? Ux4gPalette.primary900
+          ? Ux4gColors.primary900
           : (_isDark(context)
-                ? Ux4gPalette.primary900
-                : Ux4gPalette.primary100),
+                ? Ux4gColors.primary900
+                : Ux4gColors.primary100),
       selectedBorderColor: (_isDark(context)
-          ? Ux4gPalette.primary300
-          : Ux4gPalette.primary600),
+          ? Ux4gColors.primary300
+          : Ux4gColors.primary600),
       selectedTextColor: (_isDark(context)
-          ? Ux4gPalette.primary300
-          : Ux4gPalette.primary600),
+          ? Ux4gColors.primary300
+          : Ux4gColors.primary600),
       unselectedBackgroundColor: _isDark(context)
-          ? Ux4gPalette.gray900
+          ? Ux4gColors.gray900
           : Colors.white,
       unselectedBorderColor: _isDark(context)
-          ? Ux4gPalette.neutral700
+          ? Ux4gColors.neutral700
           : (_isDark(context)
-                ? Ux4gPalette.neutral800
-                : Ux4gPalette.neutral200),
+                ? Ux4gColors.neutral800
+                : Ux4gColors.neutral200),
       unselectedTextColor: _isDark(context)
-          ? Ux4gPalette.neutral400
+          ? Ux4gColors.neutral400
           : (_isDark(context)
-                ? Ux4gPalette.neutral400
-                : Ux4gPalette.neutral600),
+                ? Ux4gColors.neutral400
+                : Ux4gColors.neutral600),
     );
   }
 
@@ -7258,10 +7258,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
             style: TextStyle(
               fontSize: 12.5,
               color: _isDark(context)
-                  ? Ux4gPalette.neutral400
+                  ? Ux4gColors.neutral400
                   : (_isDark(context)
-                        ? Ux4gPalette.neutral400
-                        : Ux4gPalette.neutral500),
+                        ? Ux4gColors.neutral400
+                        : Ux4gColors.neutral500),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -7271,10 +7271,10 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
           style: TextStyle(
             fontSize: 12.5,
             color: _isDark(context)
-                ? Ux4gPalette.neutral400
+                ? Ux4gColors.neutral400
                 : (_isDark(context)
-                      ? Ux4gPalette.neutral400
-                      : Ux4gPalette.neutral500),
+                      ? Ux4gColors.neutral400
+                      : Ux4gColors.neutral500),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -7284,8 +7284,8 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
             style: TextStyle(
               fontSize: 12.5,
               color: _isDark(context)
-                  ? Ux4gPalette.neutral50
-                  : Ux4gPalette.gray900,
+                  ? Ux4gColors.neutral50
+                  : Ux4gColors.gray900,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -7325,7 +7325,7 @@ Column(
       title: '',
       leadingWidgets: [
         SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral300),
+        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
         SvgPicture.asset(Ux4gIcons.union,  height: 32),
       ],
       actions: [
@@ -7334,11 +7334,11 @@ Column(
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
-              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 20),
+              child: Icon(Icons.menu, color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 20),
             ),
           ),
         ),
@@ -7346,10 +7346,10 @@ Column(
       horizontalPadding: 16,
       leadingSpacing: 8,
     ),
-    Divider(height: 1, color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+    Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
     Expanded(
       child: Container(
-        color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100, // Soft purple background
+        color: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple background
         child: Column(
           children: [
             Expanded(
@@ -7358,7 +7358,7 @@ Column(
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -7373,14 +7373,14 @@ Column(
                     children: [
                       Text(
                         'Consent History',
-                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                       ),
                       SizedBox(height: 8),
                       Text(
                         'A complete audit trail of all your data sharing consents for government schemes.',
                         style: TextStyle(
                           fontSize: 13,
-                          color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                           height: 1.45,
                         ),
                       ),
@@ -7395,9 +7395,9 @@ Column(
                               selected: false,
                               borderRadius: 8.0,
                               onClick: () {},
-                              unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-                              unselectedTextColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.gray900,
-                              unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+                              unselectedBackgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
+                              unselectedTextColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.gray900,
+                              unselectedBorderColor: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
                             ),
                             SizedBox(width: 8),
                             Ux4gChoiceChip(
@@ -7405,9 +7405,9 @@ Column(
                               selected: true,
                               borderRadius: 8.0,
                               onClick: () {},
-                              selectedBackgroundColor: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                              selectedBorderColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                              selectedTextColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              selectedBackgroundColor: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                              selectedBorderColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                              selectedTextColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             ),
                             SizedBox(width: 8),
                             Ux4gChoiceChip(
@@ -7415,9 +7415,9 @@ Column(
                               selected: false,
                               borderRadius: 8.0,
                               onClick: () {},
-                              unselectedBackgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
-                              unselectedTextColor: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.gray900,
-                              unselectedBorderColor: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+                              unselectedBackgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
+                              unselectedTextColor: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.gray900,
+                              unselectedBorderColor: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
                             ),
                             SizedBox(width: 8),
                             Ux4gChoiceChip(
@@ -7425,9 +7425,9 @@ Column(
                               selected: true,
                               borderRadius: 8.0,
                               onClick: () {},
-                              selectedBackgroundColor: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                              selectedBorderColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
-                              selectedTextColor: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              selectedBackgroundColor: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                              selectedBorderColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                              selectedTextColor: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             ),
                           ],
                         ),
@@ -7438,9 +7438,9 @@ Column(
                         width: double.infinity,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -7450,12 +7450,12 @@ Column(
                               children: [
                                 Text(
                                   'Bank of India',
-                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Active',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
@@ -7471,7 +7471,7 @@ Column(
                               'View',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                                 fontWeight: FontWeight.w600,
                                 decoration: TextDecoration.underline,
                               ),
@@ -7485,9 +7485,9 @@ Column(
                         width: double.infinity,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: _isDark(context) ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -7497,12 +7497,12 @@ Column(
                               children: [
                                 Text(
                                   'Payment Corp',
-                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900),
+                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
                                 ),
                                 Ux4gTag(
                                   text: 'Active',
-                                  customBackgroundColor: _isDark(context) ? Ux4gPalette.green900 : Ux4gPalette.green50,
-                                  customContentColor: _isDark(context) ? Ux4gPalette.green300 : Ux4gPalette.green700,
+                                  customBackgroundColor: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+                                  customContentColor: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700,
                                   shape: Ux4gTagShape.circular,
                                 ),
                               ],
@@ -7518,7 +7518,7 @@ Column(
                               'View',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: (_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                                color: (_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                                 fontWeight: FontWeight.w600,
                                 decoration: TextDecoration.underline,
                               ),
@@ -7533,19 +7533,19 @@ Column(
                           children: [
                             Text(
                               'Showing 4 of 4 consents',
-                              style: TextStyle(fontSize: 12, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                              style: TextStyle(fontSize: 12, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                             ),
                             SizedBox(height: 8),
                             Text(
                               'Download Consent History (PDF)',
-                              style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              style: Theme.of(context).extension<Ux4gTypography>()!.lL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             ),
                             SizedBox(height: 24),
                             Ux4gButton(
                               text: 'Back',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.ghost,
-                              textStyle: Theme.of(context).extension<Ux4gTypography>()!.lXL_default.copyWith(color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                              textStyle: Theme.of(context).extension<Ux4gTypography>()!.lXL_default.copyWith(color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             ),
                           ],
                         ),
@@ -7563,7 +7563,7 @@ Column(
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: _isDark(context) ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 11, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
@@ -7590,17 +7590,17 @@ class _ConsentRow extends StatelessWidget {
           width: 50,
           child: Text(
             label,
-            style: TextStyle(fontSize: 12.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 12.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.w500),
           ),
         ),
         Text(
           '· ',
-          style: TextStyle(fontSize: 12.5, color: _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 12.5, color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, fontWeight: FontWeight.bold),
         ),
         Expanded(
           child: Text(
             value,
-            style: TextStyle(fontSize: 12.5, color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.gray900, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 12.5, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900, fontWeight: FontWeight.w500),
           ),
         ),
       ],

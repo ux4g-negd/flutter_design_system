@@ -59,11 +59,11 @@ class _SuccessIcon extends StatelessWidget {
       height: 56,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+        color: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
       ),
       child: Icon(
         Icons.check_circle,
-        color: isDark ? Ux4gPalette.green500 : Ux4gPalette.green600,
+        color: isDark ? Ux4gColors.green500 : Ux4gColors.green600,
         size: 36,
       ),
     );
@@ -79,9 +79,9 @@ class _ReferenceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+        color: isDark ? Ux4gColors.primary900 : Ux4gColors.primary50,
         border: Border.all(
-          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+          color: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -92,7 +92,7 @@ class _ReferenceCard extends StatelessWidget {
             'Application Reference',
             style: TextStyle(
               fontSize: 12,
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           SizedBox(height: 8),
@@ -105,13 +105,13 @@ class _ReferenceCard extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   color: isDark
-                      ? Ux4gPalette.neutral50
-                      : Ux4gPalette.neutral900,
+                      ? Ux4gColors.neutral50
+                      : Ux4gColors.neutral900,
                 ),
               ),
               Icon(
                 Icons.copy_outlined,
-                color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 size: 22,
               ),
             ],
@@ -128,8 +128,8 @@ class _NotificationRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final iconColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final textColor = isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    final iconColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final textColor = isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,9 +172,9 @@ class _ActionButtons extends StatelessWidget {
           width: double.infinity,
           height: 48,
           backgroundColor: isDark
-              ? Ux4gPalette.primary300
-              : Ux4gPalette.primary600,
-          contentColor: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+              ? Ux4gColors.primary300
+              : Ux4gColors.primary600,
+          contentColor: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
         ),
         SizedBox(height: 12),
         Ux4gButton(
@@ -185,9 +185,9 @@ class _ActionButtons extends StatelessWidget {
           width: double.infinity,
           height: 48,
           contentColor: isDark
-              ? Ux4gPalette.primary300
-              : Ux4gPalette.primary600,
-          borderColor: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+              ? Ux4gColors.primary300
+              : Ux4gColors.primary600,
+          borderColor: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300,
         ),
         SizedBox(height: 12),
         Ux4gButton(
@@ -197,11 +197,11 @@ class _ActionButtons extends StatelessWidget {
           width: double.infinity,
           height: 48,
           backgroundColor: isDark
-              ? Ux4gPalette.primary800
-              : Ux4gPalette.primary100,
+              ? Ux4gColors.primary800
+              : Ux4gColors.primary100,
           contentColor: isDark
-              ? Ux4gPalette.primary300
-              : Ux4gPalette.primary600,
+              ? Ux4gColors.primary300
+              : Ux4gColors.primary600,
         ),
       ],
     );
@@ -225,8 +225,8 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                 
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Ux4gPalette.neutral900
-          : Ux4gPalette.neutral50,
+          ? Ux4gColors.neutral900
+          : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -236,14 +236,14 @@ class ApplicationSubmittedScreen extends StatelessWidget {
               variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -263,9 +263,9 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                       onTap: () {},
                       child: Row(
                         children: [
-                          Icon(Icons.arrow_back, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          Icon(Icons.arrow_back, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                           SizedBox(width: 6),
-                          Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                         ],
                       ),
                     ),
@@ -276,8 +276,8 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                       child: Container(
                         width: 56,
                         height: 56,
-                        decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100),
-                        child: Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 36),
+                        decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green800 : Ux4gColors.green100),
+                        child: Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green500 : Ux4gColors.green600, size: 36),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -287,7 +287,7 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                       child: Text(
                         'Application Submitted\nSuccessfully',
                         textAlign: TextAlign.center,
-                        style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900),
                       ),
                     ),
                     SizedBox(height: 12),
@@ -295,7 +295,7 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                       child: Text(
                         'Your Income Certificate application is now\nunder review by the Revenue Department.',
                         textAlign: TextAlign.center,
-                        style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -304,20 +304,20 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
-                        border: Border.all(color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                        color: isDark ? Ux4gColors.primary900 : Ux4gColors.primary50,
+                        border: Border.all(color: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Application Reference', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                          Text('Application Reference', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                           SizedBox(height: 8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
-                              Icon(Icons.copy_outlined, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 22),
+                              Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                              Icon(Icons.copy_outlined, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 22),
                             ],
                           ),
                         ],
@@ -360,13 +360,13 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                        Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                         SizedBox(width: 8),
-                        Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                        Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         SizedBox(width: 16),
-                        Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                        Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                         SizedBox(width: 8),
-                        Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                        Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                       ],
                     ),
                   ],
@@ -379,11 +379,11 @@ class ApplicationSubmittedScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, contentColor: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50),
+                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600, contentColor: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral50),
                   SizedBox(height: 12),
-                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                   SizedBox(height: 12),
-                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100, contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                 ],
               ),
             ),
@@ -394,7 +394,7 @@ class ApplicationSubmittedScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400))),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400))),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -420,27 +420,27 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
                 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           children: [
             // Header with white background
             Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
                       SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                      Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                      Container(height: 32, width: 1, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                       SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -458,7 +458,7 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 20, spreadRadius: 2, offset: const Offset(0, 4)),
@@ -472,9 +472,9 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                         onTap: () {},
                         child: Row(
                           children: [
-                            Icon(Icons.arrow_back, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                            Icon(Icons.arrow_back, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             SizedBox(width: 6),
-                            Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                            Text('Return to services', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           ],
                         ),
                       ),
@@ -484,8 +484,8 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                       Center(
                         child: Container(
                           width: 56, height: 56,
-                          decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : Ux4gPalette.green100),
-                          child: Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 36),
+                          decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green800 : Ux4gColors.green100),
+                          child: Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green500 : Ux4gColors.green600, size: 36),
                         ),
                       ),
                       SizedBox(height: 20),
@@ -495,7 +495,7 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                         child: Text(
                           'Application Submitted\nSuccessfully',
                           textAlign: TextAlign.center,
-                          style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900),
                         ),
                       ),
                       SizedBox(height: 12),
@@ -503,7 +503,7 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                         child: Text(
                           'Your Income Certificate application is now\nunder review by the Revenue Department.',
                           textAlign: TextAlign.center,
-                          style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700),
                         ),
                       ),
                       SizedBox(height: 20),
@@ -512,19 +512,19 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          border: Border.all(color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)),
+                          border: Border.all(color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200)),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Application Reference', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                            Text('Application Reference', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                             SizedBox(height: 8),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
-                                Icon(Icons.copy_outlined, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600), size: 22),
+                                Text('INC-2026-MH-04127', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                                Icon(Icons.copy_outlined, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600), size: 22),
                               ],
                             ),
                           ],
@@ -567,13 +567,13 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                           SizedBox(width: 8),
-                          Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 16),
-                          Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                          Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                           SizedBox(width: 8),
-                          Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ],
@@ -587,11 +587,11 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50),
+                  Ux4gButton(text: 'Track my application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50),
                   SizedBox(height: 12),
-                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                  Ux4gButton(text: 'Download acknowledgement (PDF)', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, height: 48, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                   SizedBox(height: 12),
-                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+                  Ux4gButton(text: 'Add to calendar', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48, backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                 ],
               ),
             ),
@@ -602,7 +602,7 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400))),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400))),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -626,8 +626,8 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Ux4gPalette.neutral900
-          : Ux4gPalette.neutral50,
+          ? Ux4gColors.neutral900
+          : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -652,16 +652,16 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                   height: 32,
                   width: 1,
                   color: (Theme.of(context).brightness == Brightness.dark
-                      ? Ux4gPalette.neutral700
-                      : Ux4gPalette.neutral200),
+                      ? Ux4gColors.neutral700
+                      : Ux4gColors.neutral200),
                 ),
                 SvgPicture.asset(
                   _unionLogoPath,
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                   errorBuilder: (c, e, s) =>
@@ -688,8 +688,8 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                           Icons.arrow_back,
                           size: 18,
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                         ),
                         SizedBox(width: 6),
                         Text(
@@ -699,8 +699,8 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                           ),
                         ),
                       ],
@@ -718,8 +718,8 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                     ),
@@ -730,8 +730,8 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                       ),
                     ),
@@ -798,8 +798,8 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 11,
                       color: (Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral500
-                          : Ux4gPalette.neutral400),
+                          ? Ux4gColors.neutral500
+                          : Ux4gColors.neutral400),
                     ),
                   ),
                   SizedBox(height: 6),
@@ -835,8 +835,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50,
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -849,8 +849,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50,
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -858,8 +858,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
               // Header with white background
               Container(
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gPalette.neutral900
-                    : Ux4gPalette.neutral0,
+                    ? Ux4gColors.neutral900
+                    : Ux4gColors.neutral0,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -889,16 +889,16 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                           width: 1,
                           color:
                               (Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral700
-                              : Ux4gPalette.neutral200),
+                              ? Ux4gColors.neutral700
+                              : Ux4gColors.neutral200),
                         ),
                         SvgPicture.asset(
                           _unionLogoPath,
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                           errorBuilder: (c, e, s) =>
@@ -922,8 +922,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral900
-                          : Ux4gPalette.neutral50,
+                          ? Ux4gColors.neutral900
+                          : Ux4gColors.neutral50,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -946,8 +946,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                             ),
                             SizedBox(width: 6),
                             Text(
@@ -958,8 +958,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600,
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600,
                               ),
                             ),
                           ],
@@ -977,8 +977,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                           ),
                         ),
@@ -989,8 +989,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                           ),
                         ),
@@ -1061,8 +1061,8 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: (Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral500
-                            : Ux4gPalette.neutral400),
+                            ? Ux4gColors.neutral500
+                            : Ux4gColors.neutral400),
                       ),
                     ),
                     SizedBox(height: 6),

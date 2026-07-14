@@ -231,7 +231,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
 
   Color _stepColor(
     Ux4gPipelineStepState state,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final colorScheme = materialTheme.colorScheme;
@@ -253,7 +253,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
 
   Color _lineColor(
     Ux4gPipelineStepState fromState,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final isActive = fromState == Ux4gPipelineStepState.completed;
@@ -283,7 +283,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
 
   Widget _buildVertical(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     return Column(
@@ -298,7 +298,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
 
   Widget _buildVerticalStep(
     int index,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     ThemeData materialTheme,
   ) {
@@ -399,7 +399,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
 
   Widget _buildHorizontal(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     return Column(
@@ -511,7 +511,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
   TextStyle _labelStyle(
     Ux4gPipelineStepState state,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final isActive =
@@ -523,7 +523,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
     final textColor = state == Ux4gPipelineStepState.error
-        ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800)
+        ? (isDark ? Ux4gColors.red300 : Ux4gColors.red800)
         : (isActive ? onSurface : onSurface.withValues(alpha: 0.45));
 
     final baseStyle = size == Ux4gPipelineSize.s
@@ -547,7 +547,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
   TextStyle _descStyle(
     Ux4gPipelineStepState state,
     Ux4gTypography? ux4gTypography,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
     final isActive =
@@ -559,7 +559,7 @@ class Ux4gStatusPipeline extends StatelessWidget {
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
     final descColor = state == Ux4gPipelineStepState.error
-        ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red800)
+        ? (isDark ? Ux4gColors.red300 : Ux4gColors.red800)
         : (isActive
             ? onSurface.withValues(alpha: 0.6)
             : onSurface.withValues(alpha: 0.35));
@@ -598,7 +598,7 @@ class _StepCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     if (customIcon != null) {
       return Container(

@@ -122,7 +122,7 @@ class Ux4gModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
 
     return Dialog(
@@ -266,7 +266,7 @@ class Ux4gModalContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -446,7 +446,7 @@ class Ux4gModalContent extends StatelessWidget {
     required bool hasImage,
     required TextAlign textAlign,
     required CrossAxisAlignment horizAlign,
-    required Ux4gColors? ux4gColors,
+    required Ux4gThemeColors? ux4gColors,
     required Ux4gTypography? ux4gTypography,
     required ThemeData materialTheme,
   }) {
@@ -585,7 +585,7 @@ class _Ux4gModalFooter extends StatelessWidget {
   final VoidCallback onPrimaryClick;
   final VoidCallback onSecondaryClick;
   final VoidCallback onLeadingIconClick;
-  final Ux4gColors? ux4gColors;
+  final Ux4gThemeColors? ux4gColors;
   final ThemeData materialTheme;
 
   const _Ux4gModalFooter({

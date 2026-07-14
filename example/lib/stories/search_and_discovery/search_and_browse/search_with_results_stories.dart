@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 
 final searchWithResultsComponent = WidgetbookComponent(
   name: 'Search with Results',
@@ -143,8 +143,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -179,8 +179,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         color: isDark
-                            ? Ux4gPalette.primary950
-                            : Ux4gPalette.primary50,
+                            ? Ux4gColors.primary950
+                            : Ux4gColors.primary50,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -190,8 +190,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -200,8 +200,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                               style: TextStyle(
                                 fontSize: 13,
                                 color: isDark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             const SizedBox(height: 16),
@@ -244,8 +244,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -259,8 +259,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -320,10 +320,10 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(12, 10, 12, 8),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
         boxShadow: [
           BoxShadow(
@@ -347,7 +347,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
               ],
             ),
             style: typography.lS_default.copyWith(
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 6),
@@ -363,8 +363,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                       Icons.manage_search,
                       size: 16,
                       color: isDark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                     ),
                     const SizedBox(width: 8),
                     Expanded(
@@ -374,8 +374,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                         overflow: TextOverflow.ellipsis,
                         style: typography.lM_default.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                     ),
@@ -384,8 +384,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                       departments[service] ?? '',
                       style: typography.lS_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral400
-                            : Ux4gPalette.neutral600,
+                            ? Ux4gColors.neutral400
+                            : Ux4gColors.neutral600,
                       ),
                     ),
                   ],
@@ -425,10 +425,10 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
         return Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+            color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+              color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
             ),
           ),
           child: Column(
@@ -440,16 +440,16 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                 height: 36,
                 decoration: BoxDecoration(
                   color: isDark
-                      ? Ux4gPalette.primary950
-                      : Ux4gPalette.primary50,
+                      ? Ux4gColors.primary950
+                      : Ux4gColors.primary50,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   icon,
                   size: 20,
                   color: isDark
-                      ? Ux4gPalette.primary300
-                      : Ux4gPalette.primary600,
+                      ? Ux4gColors.primary300
+                      : Ux4gColors.primary600,
                 ),
               ),
               const SizedBox(height: 10),
@@ -461,8 +461,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                   color: isDark
-                      ? Ux4gPalette.neutral50
-                      : Ux4gPalette.neutral900,
+                      ? Ux4gColors.neutral50
+                      : Ux4gColors.neutral900,
                 ),
               ),
               const SizedBox(height: 2),
@@ -473,8 +473,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                 style: TextStyle(
                   fontSize: 11,
                   color: isDark
-                      ? Ux4gPalette.neutral200
-                      : Ux4gPalette.neutral700,
+                      ? Ux4gColors.neutral200
+                      : Ux4gColors.neutral700,
                 ),
               ),
             ],
@@ -496,10 +496,10 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
@@ -510,7 +510,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
           const SizedBox(height: 2),
@@ -518,7 +518,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
             dept,
             style: TextStyle(
               fontSize: 12,
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 8),
@@ -529,7 +529,7 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
+                  color: isDark ? Ux4gColors.green300 : Ux4gColors.green600,
                 ),
               ),
               Text(
@@ -537,8 +537,8 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
                 style: TextStyle(
                   fontSize: 12,
                   color: isDark
-                      ? Ux4gPalette.neutral200
-                      : Ux4gPalette.neutral700,
+                      ? Ux4gColors.neutral200
+                      : Ux4gColors.neutral700,
                 ),
               ),
             ],
@@ -550,11 +550,11 @@ class _SearchWithResultsMockupState extends State<_SearchWithResultsMockup> {
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
             borderColor: isDark
-                ? Ux4gPalette.neutral600
-                : Ux4gPalette.primary300,
+                ? Ux4gColors.neutral600
+                : Ux4gColors.primary300,
             contentColor: isDark
-                ? Ux4gPalette.neutral50
-                : Ux4gPalette.primary600,
+                ? Ux4gColors.neutral50
+                : Ux4gColors.primary600,
           ),
         ],
       ),

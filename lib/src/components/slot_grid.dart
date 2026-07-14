@@ -357,7 +357,7 @@ class _SlotGridState extends State<SlotGrid> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final onSurface =
@@ -398,7 +398,7 @@ class _SlotGridState extends State<SlotGrid> {
   // ------------------------------------------------------------------
 
   Widget _buildHeader(
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -437,7 +437,7 @@ class _SlotGridState extends State<SlotGrid> {
   // ------------------------------------------------------------------
 
   Widget _buildWeekdayRow(
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -475,7 +475,7 @@ class _SlotGridState extends State<SlotGrid> {
   // ------------------------------------------------------------------
 
   Widget _buildDatesGrid(
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -522,7 +522,7 @@ class _SlotGridState extends State<SlotGrid> {
   Widget _buildOutOfMonthCell(
     int dayOffset,
     int daysInMonth,
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -558,7 +558,7 @@ class _SlotGridState extends State<SlotGrid> {
 
   Widget _buildDateCell(
     DateTime date,
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -640,7 +640,7 @@ class _SlotGridState extends State<SlotGrid> {
     SlotDateStatus status,
     bool isSelected,
     bool isPast,
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -792,7 +792,7 @@ class _SlotGridState extends State<SlotGrid> {
     }
   }
 
-  Widget _buildTodayDot(Ux4gColors? colors, ThemeData materialTheme) {
+  Widget _buildTodayDot(Ux4gThemeColors? colors, ThemeData materialTheme) {
     final primary = colors?.primary ?? materialTheme.colorScheme.primary;
     return Container(
       width: 4,
@@ -807,7 +807,7 @@ class _SlotGridState extends State<SlotGrid> {
   // ------------------------------------------------------------------
 
   Widget _buildLegend(
-    Ux4gColors? colors,
+    Ux4gThemeColors? colors,
     Ux4gTypography? typography,
     ThemeData materialTheme,
   ) {
@@ -886,7 +886,7 @@ class _NavArrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -918,7 +918,7 @@ class _LegendItem extends StatelessWidget {
   final Color? borderColor;
   final String label;
   final Ux4gTypography? typography;
-  final Ux4gColors? ux4gColors;
+  final Ux4gThemeColors? ux4gColors;
   final ThemeData materialTheme;
 
   const _LegendItem({
@@ -1122,7 +1122,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -1160,7 +1160,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
 
   Widget _buildExpandedView(
     BuildContext context,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     MediaQueryData mq,
     ThemeData materialTheme,
@@ -1235,7 +1235,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
 
   Widget _buildCompactView(
     BuildContext context,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     MediaQueryData mq,
     ThemeData materialTheme,
@@ -1396,7 +1396,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
   Widget _buildCompactSlotBadge(
     SlotTimeEntry slot,
     bool isSelected,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     ThemeData materialTheme,
   ) {
@@ -1462,7 +1462,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
   // ------------------------------------------------------------------
 
   Widget _buildSheetHeader(
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     ThemeData materialTheme,
   ) {
@@ -1525,7 +1525,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
 
   Widget _buildSlotTile(
     int index,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     ThemeData materialTheme,
   ) {
@@ -1617,7 +1617,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
   // ------------------------------------------------------------------
 
   Widget _buildLegend(
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     ThemeData materialTheme,
   ) {
@@ -1708,7 +1708,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
     required Color boxColor,
     required Color borderColor,
     required String label,
-    required Ux4gColors? ux4gColors,
+    required Ux4gThemeColors? ux4gColors,
     required Ux4gTypography? ux4gTypography,
     required ThemeData materialTheme,
     IconData? icon,
@@ -1746,7 +1746,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
   // ------------------------------------------------------------------
 
   Widget _buildHeaderArrow({
-    required Ux4gColors? ux4gColors,
+    required Ux4gThemeColors? ux4gColors,
     required IconData icon,
     required VoidCallback onTap,
     required bool disabled,
@@ -1786,7 +1786,7 @@ class _SlotTimePickerSheetState extends State<SlotTimePickerSheet> {
   // ------------------------------------------------------------------
 
   Widget _buildFooter(
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
     ThemeData materialTheme,
   ) {

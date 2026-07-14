@@ -47,7 +47,7 @@ class Ux4gPaginationIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uxColors = Theme.of(context).extension<Ux4gColors>();
+    final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
     final materialTheme = Theme.of(context);
 
     final effectiveActiveColor =

@@ -67,12 +67,12 @@ class _PhoneFrame extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.neutral900
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral900
+            : Ux4gColors.neutral50,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Ux4gPalette.neutral800
+              ? Ux4gColors.neutral800
               : Color(0xFFE5E7EB),
         ),
         boxShadow: [
@@ -112,8 +112,8 @@ class _EligibilityHeader extends StatelessWidget {
               child: Ux4gDivider(
                 orientation: Ux4gDividerOrientation.vertical,
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gPalette.neutral700
-                    : Ux4gPalette.neutral200,
+                    ? Ux4gColors.neutral700
+                    : Ux4gColors.neutral200,
               ),
             ),
             SvgPicture.asset(
@@ -121,8 +121,8 @@ class _EligibilityHeader extends StatelessWidget {
               height: 32,
               colorFilter: ColorFilter.mode(
                 Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gPalette.primary300
-                    : Ux4gPalette.primary600,
+                    ? Ux4gColors.primary300
+                    : Ux4gColors.primary600,
                 BlendMode.srcIn,
               ),
             ),
@@ -134,7 +134,7 @@ class _EligibilityHeader extends StatelessWidget {
         Ux4gDivider(
           thickness: 1,
           color: Theme.of(context).brightness == Brightness.dark
-              ? Ux4gPalette.neutral800
+              ? Ux4gColors.neutral800
               : Color(0xFFE5E7EB),
         ),
       ],
@@ -171,8 +171,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                         ?.hS_strong
                         ?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                   ),
                   const SizedBox(height: 14),
@@ -186,8 +186,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                         ?.bS_default
                         ?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                   ),
                   const SizedBox(height: 32),
@@ -211,8 +211,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                               ),
                               SizedBox(width: 12),
@@ -224,8 +224,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.4,
                                   ),
                                 ),
@@ -246,8 +246,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                               ),
                               SizedBox(width: 12),
@@ -259,8 +259,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.4,
                                   ),
                                 ),
@@ -281,8 +281,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                               ),
                               SizedBox(width: 12),
@@ -294,8 +294,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.4,
                                   ),
                                 ),
@@ -315,7 +315,7 @@ class _EligibilityCheckMockup extends StatelessWidget {
           Ux4gDivider(
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.neutral800
+                ? Ux4gColors.neutral800
                 : Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
@@ -339,8 +339,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                   size: Ux4gButtonSize.large,
                   width: double.infinity,
                   contentColor: Theme.of(context).brightness == Brightness.dark
-                      ? Ux4gPalette.primary300
-                      : Ux4gPalette.primary600,
+                      ? Ux4gColors.primary300
+                      : Ux4gColors.primary600,
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -348,8 +348,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 13,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral200
-                        : Ux4gPalette.neutral700,
+                        ? Ux4gColors.neutral200
+                        : Ux4gColors.neutral700,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -368,8 +368,8 @@ class _EligibilityCheckMockup extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral500
-                        : Ux4gPalette.neutral400,
+                        ? Ux4gColors.neutral500
+                        : Ux4gColors.neutral400,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -406,8 +406,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
           Expanded(
             child: Container(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary900
-                  : Ux4gPalette.primary50,
+                  ? Ux4gColors.primary900
+                  : Ux4gColors.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -421,8 +421,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                         padding: const EdgeInsets.fromLTRB(24, 36, 24, 24),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral0,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -445,8 +445,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                                 height: 1.25,
                                 letterSpacing: -0.4,
                               ),
@@ -462,8 +462,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                                 height: 1.5,
                               ),
                             ),
@@ -489,8 +489,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                             color:
                                                 Theme.of(context).brightness ==
                                                     Brightness.dark
-                                                ? Ux4gPalette.primary300
-                                                : Ux4gPalette.primary600,
+                                                ? Ux4gColors.primary300
+                                                : Ux4gColors.primary600,
                                           ),
                                         ),
                                         SizedBox(width: 12),
@@ -504,8 +504,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.4,
                                             ),
                                           ),
@@ -527,8 +527,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                             color:
                                                 Theme.of(context).brightness ==
                                                     Brightness.dark
-                                                ? Ux4gPalette.primary300
-                                                : Ux4gPalette.primary600,
+                                                ? Ux4gColors.primary300
+                                                : Ux4gColors.primary600,
                                           ),
                                         ),
                                         SizedBox(width: 12),
@@ -542,8 +542,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.4,
                                             ),
                                           ),
@@ -565,8 +565,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                             color:
                                                 Theme.of(context).brightness ==
                                                     Brightness.dark
-                                                ? Ux4gPalette.primary300
-                                                : Ux4gPalette.primary600,
+                                                ? Ux4gColors.primary300
+                                                : Ux4gColors.primary600,
                                           ),
                                         ),
                                         SizedBox(width: 12),
@@ -580,8 +580,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.4,
                                             ),
                                           ),
@@ -623,8 +623,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                           width: double.infinity,
                           contentColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                         ),
                         const SizedBox(height: 16),
                         Text(
@@ -633,8 +633,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                             fontSize: 13,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral200
-                                : Ux4gPalette.neutral700,
+                                ? Ux4gColors.neutral200
+                                : Ux4gColors.neutral700,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -654,8 +654,8 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                             fontSize: 11,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral500
-                                : Ux4gPalette.neutral400,
+                                ? Ux4gColors.neutral500
+                                : Ux4gColors.neutral400,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -696,7 +696,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -706,14 +706,14 @@ class EligibilityWizardScreen extends StatelessWidget {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -721,7 +721,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               horizontalPadding: 16,
               leadingSpacing: 8,
             ),
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             // Scrollable Content
             Expanded(
@@ -737,7 +737,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w900,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         height: 1.25,
                         letterSpacing: -0.4,
                       ),
@@ -748,7 +748,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Text(
                       'Answer a few quick questions to see if you qualify.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.5),
+                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.5),
                     ),
                     SizedBox(height: 32),
 
@@ -758,9 +758,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           SizedBox(width: 12),
-                          Expanded(child: Text('5 questions', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('5 questions', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ),
@@ -769,9 +769,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           SizedBox(width: 12),
-                          Expanded(child: Text('~2 minutes to complete', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('~2 minutes to complete', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ),
@@ -780,9 +780,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           SizedBox(width: 12),
-                          Expanded(child: Text('No documents needed at this step', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('No documents needed at this step', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ),
@@ -792,7 +792,7 @@ class EligibilityWizardScreen extends StatelessWidget {
             ),
 
             // Actions
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
             SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
@@ -811,12 +811,12 @@ class EligibilityWizardScreen extends StatelessWidget {
                     variant: Ux4gButtonVariant.ghost,
                           size: Ux4gButtonSize.large,
                           width: double.infinity,
-                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                   ),
                   SizedBox(height: 16),
                   Text(
                     'Already applied? Track your application →',
-                    style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -828,7 +828,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -853,7 +853,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -863,14 +863,14 @@ class EligibilityWizardScreen extends StatelessWidget {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -878,11 +878,11 @@ class EligibilityWizardScreen extends StatelessWidget {
               horizontalPadding: 16,
               leadingSpacing: 8,
             ),
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             Expanded(
               child: Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50, // Soft purple background
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50, // Soft purple background
                 child: Column(
                   children: [
                     Expanded(
@@ -895,7 +895,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               child: Container(
                           padding: EdgeInsets.fromLTRB(24, 36, 24, 24),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [
                               BoxShadow(
@@ -915,7 +915,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                   height: 1.25,
                                 ),
                               ),
@@ -925,7 +925,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               Text(
                                 'Answer a few quick questions to see if you qualify.',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.5),
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.5),
                               ),
                               SizedBox(height: 20),
 
@@ -935,9 +935,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           SizedBox(width: 12),
-                          Expanded(child: Text('5 questions', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('5 questions', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ),
@@ -946,9 +946,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           SizedBox(width: 12),
-                          Expanded(child: Text('~2 minutes to complete', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('~2 minutes to complete', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ),
@@ -957,9 +957,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                          Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.circle, size: 8, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           SizedBox(width: 12),
-                          Expanded(child: Text('No documents needed at this step', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('No documents needed at this step', style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                         ],
                       ),
                     ),
@@ -980,12 +980,12 @@ class EligibilityWizardScreen extends StatelessWidget {
                                 variant: Ux4gButtonVariant.ghost,
                           size: Ux4gButtonSize.large,
                           width: double.infinity,
-                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                               ),
                               SizedBox(height: 16),
                               Text(
                                 'Already applied? Track your application →',
-                                style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, fontWeight: FontWeight.w500),
+                                style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
@@ -1000,7 +1000,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                           SizedBox(height: 6),
                           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                         ],
@@ -1094,8 +1094,8 @@ class _EligibilityQuestionMockupState
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -1110,8 +1110,8 @@ class _EligibilityQuestionMockupState
                         ?.hS_strong
                         ?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                   ),
                   const SizedBox(height: 10),
@@ -1122,8 +1122,8 @@ class _EligibilityQuestionMockupState
                         ?.bS_default
                         ?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                   ),
                   const SizedBox(height: 24),
@@ -1139,11 +1139,11 @@ class _EligibilityQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'yes'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary900
-                                  : Ux4gPalette.primary50
+                                  ? Ux4gColors.primary900
+                                  : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100,
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -1157,19 +1157,19 @@ class _EligibilityQuestionMockupState
                                 color: _selected == 'yes'
                                     ? Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.primary300
-                                          : Ux4gPalette.primary600
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600
                                     : Theme.of(context).brightness ==
                                           Brightness.dark
-                                    ? Ux4gPalette.neutral700
-                                    : Ux4gPalette.neutral200,
+                                    ? Ux4gColors.neutral700
+                                    : Ux4gColors.neutral200,
                                 width: _selected == 'yes' ? 6 : 2,
                               ),
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral900
-                                  : Ux4gPalette.neutral0,
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral0,
                             ),
                           ),
                           const SizedBox(width: 14),
@@ -1185,12 +1185,12 @@ class _EligibilityQuestionMockupState
                                     color: _selected == 'yes'
                                         ? Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600
                                         : Theme.of(context).brightness ==
                                               Brightness.dark
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.neutral900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
                                   ),
                                 ),
                                 const SizedBox(height: 2),
@@ -1201,8 +1201,8 @@ class _EligibilityQuestionMockupState
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.3,
                                   ),
                                 ),
@@ -1224,11 +1224,11 @@ class _EligibilityQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'no'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary900
-                                  : Ux4gPalette.primary50
+                                  ? Ux4gColors.primary900
+                                  : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100,
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -1242,19 +1242,19 @@ class _EligibilityQuestionMockupState
                                 color: _selected == 'no'
                                     ? Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.primary300
-                                          : Ux4gPalette.primary600
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600
                                     : Theme.of(context).brightness ==
                                           Brightness.dark
-                                    ? Ux4gPalette.neutral700
-                                    : Ux4gPalette.neutral200,
+                                    ? Ux4gColors.neutral700
+                                    : Ux4gColors.neutral200,
                                 width: _selected == 'no' ? 6 : 2,
                               ),
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral900
-                                  : Ux4gPalette.neutral0,
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral0,
                             ),
                           ),
                           const SizedBox(width: 14),
@@ -1270,12 +1270,12 @@ class _EligibilityQuestionMockupState
                                     color: _selected == 'no'
                                         ? Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600
                                         : Theme.of(context).brightness ==
                                               Brightness.dark
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.neutral900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
                                   ),
                                 ),
                                 const SizedBox(height: 2),
@@ -1286,8 +1286,8 @@ class _EligibilityQuestionMockupState
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.3,
                                   ),
                                 ),
@@ -1307,7 +1307,7 @@ class _EligibilityQuestionMockupState
           Ux4gDivider(
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.neutral800
+                ? Ux4gColors.neutral800
                 : Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
@@ -1331,8 +1331,8 @@ class _EligibilityQuestionMockupState
                   size: Ux4gButtonSize.large,
                   width: double.infinity,
                   contentColor: Theme.of(context).brightness == Brightness.dark
-                      ? Ux4gPalette.primary300
-                      : Ux4gPalette.primary600,
+                      ? Ux4gColors.primary300
+                      : Ux4gColors.primary600,
                 ),
               ],
             ),
@@ -1349,8 +1349,8 @@ class _EligibilityQuestionMockupState
                   style: TextStyle(
                     fontSize: 11,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral500
-                        : Ux4gPalette.neutral400,
+                        ? Ux4gColors.neutral500
+                        : Ux4gColors.neutral400,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -1396,8 +1396,8 @@ class _EligibilityQuestionCardMockupState
           Expanded(
             child: Container(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary900
-                  : Ux4gPalette.primary50,
+                  ? Ux4gColors.primary900
+                  : Ux4gColors.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -1411,8 +1411,8 @@ class _EligibilityQuestionCardMockupState
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral0,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -1434,8 +1434,8 @@ class _EligibilityQuestionCardMockupState
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -1451,8 +1451,8 @@ class _EligibilityQuestionCardMockupState
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                                 height: 1.3,
                                 letterSpacing: -0.3,
                               ),
@@ -1465,8 +1465,8 @@ class _EligibilityQuestionCardMockupState
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                                 height: 1.5,
                               ),
                             ),
@@ -1484,12 +1484,12 @@ class _EligibilityQuestionCardMockupState
                                   color: _selected == 'yes'
                                       ? Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.primary900
-                                            : Ux4gPalette.primary50
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gPalette.neutral800
-                                      : Ux4gPalette.neutral100,
+                                      ? Ux4gColors.neutral800
+                                      : Ux4gColors.neutral100,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -1503,19 +1503,19 @@ class _EligibilityQuestionCardMockupState
                                           color: _selected == 'yes'
                                               ? Theme.of(context).brightness ==
                                                         Brightness.dark
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600
                                               : Theme.of(context).brightness ==
                                                     Brightness.dark
-                                              ? Ux4gPalette.neutral700
-                                              : Ux4gPalette.neutral200,
+                                              ? Ux4gColors.neutral700
+                                              : Ux4gColors.neutral200,
                                           width: _selected == 'yes' ? 6 : 2,
                                         ),
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral900
-                                            : Ux4gPalette.neutral0,
+                                            ? Ux4gColors.neutral900
+                                            : Ux4gColors.neutral0,
                                       ),
                                     ),
                                     const SizedBox(width: 14),
@@ -1534,14 +1534,14 @@ class _EligibilityQuestionCardMockupState
                                                               context,
                                                             ).brightness ==
                                                             Brightness.dark
-                                                        ? Ux4gPalette.primary300
-                                                        : Ux4gPalette.primary600
+                                                        ? Ux4gColors.primary300
+                                                        : Ux4gColors.primary600
                                                   : Theme.of(
                                                           context,
                                                         ).brightness ==
                                                         Brightness.dark
-                                                  ? Ux4gPalette.neutral50
-                                                  : Ux4gPalette.neutral900,
+                                                  ? Ux4gColors.neutral50
+                                                  : Ux4gColors.neutral900,
                                             ),
                                           ),
                                           const SizedBox(height: 2),
@@ -1554,8 +1554,8 @@ class _EligibilityQuestionCardMockupState
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.3,
                                             ),
                                           ),
@@ -1578,12 +1578,12 @@ class _EligibilityQuestionCardMockupState
                                   color: _selected == 'no'
                                       ? Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.primary900
-                                            : Ux4gPalette.primary50
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gPalette.neutral800
-                                      : Ux4gPalette.neutral100,
+                                      ? Ux4gColors.neutral800
+                                      : Ux4gColors.neutral100,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -1597,19 +1597,19 @@ class _EligibilityQuestionCardMockupState
                                           color: _selected == 'no'
                                               ? Theme.of(context).brightness ==
                                                         Brightness.dark
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600
                                               : Theme.of(context).brightness ==
                                                     Brightness.dark
-                                              ? Ux4gPalette.neutral700
-                                              : Ux4gPalette.neutral200,
+                                              ? Ux4gColors.neutral700
+                                              : Ux4gColors.neutral200,
                                           width: _selected == 'no' ? 6 : 2,
                                         ),
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral900
-                                            : Ux4gPalette.neutral0,
+                                            ? Ux4gColors.neutral900
+                                            : Ux4gColors.neutral0,
                                       ),
                                     ),
                                     const SizedBox(width: 14),
@@ -1628,14 +1628,14 @@ class _EligibilityQuestionCardMockupState
                                                               context,
                                                             ).brightness ==
                                                             Brightness.dark
-                                                        ? Ux4gPalette.primary300
-                                                        : Ux4gPalette.primary600
+                                                        ? Ux4gColors.primary300
+                                                        : Ux4gColors.primary600
                                                   : Theme.of(
                                                           context,
                                                         ).brightness ==
                                                         Brightness.dark
-                                                  ? Ux4gPalette.neutral50
-                                                  : Ux4gPalette.neutral900,
+                                                  ? Ux4gColors.neutral50
+                                                  : Ux4gColors.neutral900,
                                             ),
                                           ),
                                           const SizedBox(height: 2),
@@ -1648,8 +1648,8 @@ class _EligibilityQuestionCardMockupState
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.3,
                                             ),
                                           ),
@@ -1673,7 +1673,7 @@ class _EligibilityQuestionCardMockupState
                   Ux4gDivider(
                     thickness: 1,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 16),
@@ -1698,8 +1698,8 @@ class _EligibilityQuestionCardMockupState
                           width: double.infinity,
                           contentColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                         ),
                       ],
                     ),
@@ -1717,8 +1717,8 @@ class _EligibilityQuestionCardMockupState
                             fontSize: 11,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral500
-                                : Ux4gPalette.neutral400,
+                                ? Ux4gColors.neutral500
+                                : Ux4gColors.neutral400,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -1758,7 +1758,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -1768,14 +1768,14 @@ class EligibilityWizardScreen extends StatelessWidget {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -1783,7 +1783,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               horizontalPadding: 16,
               leadingSpacing: 8,
             ),
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             Expanded(
               child: SingleChildScrollView(
@@ -1792,25 +1792,25 @@ class EligibilityWizardScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Progress
-                    Text('Question 1 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                    Text('Question 1 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                     SizedBox(height: 8),
                     Ux4gLinearProgress(
                       value: 0.2,
                       height: 6,
-                      gradientColors: Theme.of(context).brightness == Brightness.dark ? const [Ux4gPalette.primary200A, Ux4gPalette.primary300] : const [Ux4gPalette.primary200A, Ux4gPalette.primary600],
-                      trackColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB),
+                      gradientColors: Theme.of(context).brightness == Brightness.dark ? const [Ux4gColors.primary200A, Ux4gColors.primary300] : const [Ux4gColors.primary200A, Ux4gColors.primary600],
+                      trackColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB),
                     ),
                     SizedBox(height: 20),
 
                     // Question
                     Text(
                       'Are you a resident of Maharashtra?',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.3),
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.3),
                     ),
                     SizedBox(height: 10),
                     Text(
                       'You must be a resident to apply for a state-issued income certificate.',
-                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.5),
+                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.5),
                     ),
                     SizedBox(height: 24),
 
@@ -1820,7 +1820,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -1829,16 +1829,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                               width: 22, height: 22,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, width: 6),
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                                border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, width: 6),
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                               ),
                             ),
                             SizedBox(width: 14),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Yes', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
-                                Text('I am a resident of Maharashtra', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                                Text('Yes', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
+                                Text('I am a resident of Maharashtra', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               ],
                             ),
                           ],
@@ -1853,7 +1853,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -1862,16 +1862,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                               width: 22, height: 22,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200, width: 2),
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                                border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200, width: 2),
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                               ),
                             ),
                             SizedBox(width: 14),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('No', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
-                                Text('I reside in a different state', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                                Text('No', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                                Text('I reside in a different state', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               ],
                             ),
                           ],
@@ -1884,7 +1884,7 @@ class EligibilityWizardScreen extends StatelessWidget {
             ),
 
             // Actions
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
             SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.fromLTRB(20, 12, 20, 0),
@@ -1903,7 +1903,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     variant: Ux4gButtonVariant.ghost,
                           size: Ux4gButtonSize.large,
                           width: double.infinity,
-                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                   ),
                 ],
               ),
@@ -1915,7 +1915,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -1940,7 +1940,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -1949,7 +1949,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 
             Expanded(
               child: Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50, // Soft purple background
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50, // Soft purple background
                 child: Column(
                   children: [
                     Expanded(
@@ -1962,7 +1962,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               child: Container(
                           padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 16, offset: Offset(0, 4))],
                           ),
@@ -1970,7 +1970,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               // Progress indicator
-                              Text('Question 1 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              Text('Question 1 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               SizedBox(height: 8),
                               LinearProgressIndicator(value: 0.2, minHeight: 6),
                               SizedBox(height: 20),
@@ -1978,7 +1978,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               // Question
                               Text('Are you a resident of Maharashtra?', style: Theme.of(context).extension<Ux4gTypography>()?.hS_strong),
                               SizedBox(height: 10),
-                              Text('You must be a resident to apply...', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              Text('You must be a resident to apply...', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               SizedBox(height: 24),
 
                               // Radio options (same as flat layout)
@@ -1993,7 +1993,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     ),
 
                     // Continue / Back buttons (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 16),
                     Padding(
                       padding: EdgeInsets.fromLTRB(24, 8, 24, 0),
@@ -2008,7 +2008,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                         SizedBox(height: 6),
                         Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                       ]),
@@ -2112,15 +2112,15 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                       height: 1.5,
                     ),
                   ),
                   const SizedBox(height: 24),
                   Ux4gDivider(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 20),
@@ -2134,8 +2134,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                       ),
                     ),
                   ),
@@ -2154,8 +2154,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -2168,8 +2168,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -2177,8 +2177,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -2198,8 +2198,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -2212,8 +2212,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -2221,8 +2221,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -2242,8 +2242,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -2256,8 +2256,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -2265,8 +2265,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -2286,8 +2286,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -2300,8 +2300,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -2309,8 +2309,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -2330,8 +2330,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -2344,8 +2344,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -2353,8 +2353,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -2369,7 +2369,7 @@ class _EligibilitySuccessMockup extends StatelessWidget {
           Ux4gDivider(
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.neutral800
+                ? Ux4gColors.neutral800
                 : Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
@@ -2395,8 +2395,8 @@ class _EligibilitySuccessMockup extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral500
-                        : Ux4gPalette.neutral400,
+                        ? Ux4gColors.neutral500
+                        : Ux4gColors.neutral400,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -2433,8 +2433,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
           Expanded(
             child: Container(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary900
-                  : Ux4gPalette.primary50,
+                  ? Ux4gColors.primary900
+                  : Ux4gColors.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -2448,8 +2448,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral0,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -2493,8 +2493,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                                 height: 1.5,
                               ),
                             ),
@@ -2503,7 +2503,7 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral800
+                                  ? Ux4gColors.neutral800
                                   : Color(0xFFE5E7EB),
                             ),
                             const SizedBox(height: 20),
@@ -2519,8 +2519,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.neutral50
-                                      : Ux4gPalette.neutral900,
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
                                 ),
                               ),
                             ),
@@ -2539,8 +2539,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -2554,8 +2554,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -2564,8 +2564,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -2585,8 +2585,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -2600,8 +2600,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -2610,8 +2610,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -2631,8 +2631,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -2646,8 +2646,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -2656,8 +2656,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -2677,8 +2677,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -2692,8 +2692,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -2702,8 +2702,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -2723,8 +2723,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -2738,8 +2738,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -2748,8 +2748,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -2768,7 +2768,7 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                   Ux4gDivider(
                     thickness: 1,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 16),
@@ -2795,8 +2795,8 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                             fontSize: 11,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral500
-                                : Ux4gPalette.neutral400,
+                                ? Ux4gColors.neutral500
+                                : Ux4gColors.neutral400,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -2830,10 +2830,10 @@ Widget _buildGradientProgress(BuildContext context, double value) {
     value: value,
     height: 6,
     gradientColors: Theme.of(context).brightness == Brightness.dark
-        ? const [Ux4gPalette.primary200A, Ux4gPalette.primary300]
-        : const [Ux4gPalette.primary200A, Ux4gPalette.primary600],
+        ? const [Ux4gColors.primary200A, Ux4gColors.primary300]
+        : const [Ux4gColors.primary200A, Ux4gColors.primary600],
     trackColor: Theme.of(context).brightness == Brightness.dark
-        ? Ux4gPalette.neutral800
+        ? Ux4gColors.neutral800
         : Color(0xFFE5E7EB),
   );
 }
@@ -2853,7 +2853,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -2863,14 +2863,14 @@ class EligibilityWizardScreen extends StatelessWidget {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -2878,7 +2878,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               horizontalPadding: 16,
               leadingSpacing: 8,
             ),
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             Expanded(
               child: SingleChildScrollView(
@@ -2905,16 +2905,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Text(
                       'All criteria have been met. You can now proceed to apply for this service.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.5),
+                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.5),
                     ),
                     SizedBox(height: 24),
-                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 20),
             
                     // Criteria List
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                      child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     ),
                     SizedBox(height: 16),
                     Padding(
@@ -2922,9 +2922,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Age requirement met (18 years or above)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Age requirement met (18 years or above)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -2933,9 +2933,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Valid government-issued ID submitted', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Valid government-issued ID submitted', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -2944,9 +2944,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Residential address confirmed', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Residential address confirmed', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -2955,9 +2955,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Income within eligible range', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Income within eligible range', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -2966,9 +2966,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('No outstanding dues or penalties', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('No outstanding dues or penalties', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -2978,7 +2978,7 @@ class EligibilityWizardScreen extends StatelessWidget {
             ),
 
             // Actions
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
             SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
@@ -2996,7 +2996,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -3021,7 +3021,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -3030,7 +3030,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 
             Expanded(
               child: Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50, // Soft purple background
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50, // Soft purple background
                 child: Column(
                   children: [
                     Expanded(
@@ -3043,7 +3043,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               child: Container(
                           padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 16, offset: Offset(0, 4))],
                           ),
@@ -3063,15 +3063,15 @@ class EligibilityWizardScreen extends StatelessWidget {
                               SizedBox(height: 12),
                       
                               // Subtitle
-                              Text('All criteria have been met. You can now proceed...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              Text('All criteria have been met. You can now proceed...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               SizedBox(height: 24),
-                              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                               SizedBox(height: 20),
                       
                               // Criteria list
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                               ),
                               SizedBox(height: 16),
                               // ... Criteria items
@@ -3085,7 +3085,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     ),
 
                     // Apply Now button (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 16),
                     Padding(
                       padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
@@ -3096,7 +3096,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                         SizedBox(height: 6),
                         Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                       ]),
@@ -3176,15 +3176,15 @@ class _EligibilityFailureMockup extends StatelessWidget {
                     height: 64,
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.red900
-                          : Ux4gPalette.red100,
+                          ? Ux4gColors.red900
+                          : Ux4gColors.red100,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.cancel,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.red400
-                          : Ux4gPalette.red600,
+                          ? Ux4gColors.red400
+                          : Ux4gColors.red600,
                       size: 32,
                     ),
                   ),
@@ -3195,8 +3195,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                       fontSize: 24,
                       fontWeight: FontWeight.w800,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.red200
-                          : Ux4gPalette.red800,
+                          ? Ux4gColors.red200
+                          : Ux4gColors.red800,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -3206,15 +3206,15 @@ class _EligibilityFailureMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                       height: 1.5,
                     ),
                   ),
                   const SizedBox(height: 24),
                   Ux4gDivider(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 20),
@@ -3228,8 +3228,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                       ),
                     ),
                   ),
@@ -3248,8 +3248,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -3262,8 +3262,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -3271,8 +3271,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -3292,8 +3292,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -3306,8 +3306,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -3315,8 +3315,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -3336,8 +3336,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -3350,8 +3350,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -3359,8 +3359,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -3380,8 +3380,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -3394,8 +3394,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.red900
-                                : Ux4gPalette.red100,
+                                ? Ux4gColors.red900
+                                : Ux4gColors.red100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -3403,8 +3403,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.red400
-                                : Ux4gPalette.red600,
+                                ? Ux4gColors.red400
+                                : Ux4gColors.red600,
                           ),
                         ),
                       ],
@@ -3424,8 +3424,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -3438,8 +3438,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -3447,8 +3447,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -3463,7 +3463,7 @@ class _EligibilityFailureMockup extends StatelessWidget {
           Ux4gDivider(
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.neutral800
+                ? Ux4gColors.neutral800
                 : Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
@@ -3489,8 +3489,8 @@ class _EligibilityFailureMockup extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral500
-                        : Ux4gPalette.neutral400,
+                        ? Ux4gColors.neutral500
+                        : Ux4gColors.neutral400,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -3527,8 +3527,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
           Expanded(
             child: Container(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary900
-                  : Ux4gPalette.primary50,
+                  ? Ux4gColors.primary900
+                  : Ux4gColors.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -3542,8 +3542,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral0,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -3563,8 +3563,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.red900
-                                    : Ux4gPalette.red100,
+                                    ? Ux4gColors.red900
+                                    : Ux4gColors.red100,
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
@@ -3572,8 +3572,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.red400
-                                    : Ux4gPalette.red600,
+                                    ? Ux4gColors.red400
+                                    : Ux4gColors.red600,
                                 size: 32,
                               ),
                             ),
@@ -3586,8 +3586,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.red200
-                                    : Ux4gPalette.red800,
+                                    ? Ux4gColors.red200
+                                    : Ux4gColors.red800,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -3599,8 +3599,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                                 height: 1.5,
                               ),
                             ),
@@ -3609,7 +3609,7 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral800
+                                  ? Ux4gColors.neutral800
                                   : Color(0xFFE5E7EB),
                             ),
                             const SizedBox(height: 20),
@@ -3625,8 +3625,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.neutral50
-                                      : Ux4gPalette.neutral900,
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
                                 ),
                               ),
                             ),
@@ -3645,8 +3645,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -3660,8 +3660,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -3670,8 +3670,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -3691,8 +3691,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -3706,8 +3706,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -3716,8 +3716,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -3737,8 +3737,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -3752,8 +3752,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -3762,8 +3762,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -3783,8 +3783,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -3798,8 +3798,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.red900
-                                          : Ux4gPalette.red100,
+                                          ? Ux4gColors.red900
+                                          : Ux4gColors.red100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -3808,8 +3808,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.red400
-                                          : Ux4gPalette.red600,
+                                          ? Ux4gColors.red400
+                                          : Ux4gColors.red600,
                                     ),
                                   ),
                                 ],
@@ -3829,8 +3829,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -3844,8 +3844,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -3854,8 +3854,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -3874,7 +3874,7 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                   Ux4gDivider(
                     thickness: 1,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 16),
@@ -3901,8 +3901,8 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                             fontSize: 11,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral500
-                                : Ux4gPalette.neutral400,
+                                ? Ux4gColors.neutral500
+                                : Ux4gColors.neutral400,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -3938,7 +3938,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -3948,14 +3948,14 @@ class EligibilityWizardScreen extends StatelessWidget {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -3963,7 +3963,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               horizontalPadding: 16,
               leadingSpacing: 8,
             ),
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             Expanded(
               child: SingleChildScrollView(
@@ -3974,15 +3974,15 @@ class EligibilityWizardScreen extends StatelessWidget {
                     // Failure Icon
                     Container(
                       width: 64, height: 64,
-                      decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red100, shape: BoxShape.circle),
-                      child: Icon(Icons.close, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red600, size: 32),
+                      decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red100, shape: BoxShape.circle),
+                      child: Icon(Icons.close, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red600, size: 32),
                     ),
                     SizedBox(height: 16),
             
                     // Title
                     Text(
                       "Not Eligible",
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800),
                     ),
                     SizedBox(height: 12),
             
@@ -3990,16 +3990,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Text(
                       'Unfortunately, you do not meet all the required criteria for this service at this time.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.5),
+                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.5),
                     ),
                     SizedBox(height: 24),
-                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 20),
             
                     // Criteria List
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                      child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     ),
                     SizedBox(height: 16),
                     Padding(
@@ -4007,9 +4007,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Age requirement met (18 years or above)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Age requirement met (18 years or above)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -4018,9 +4018,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Valid government-issued ID submitted', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Valid government-issued ID submitted', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -4029,9 +4029,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Residential address confirmed', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Residential address confirmed', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -4040,9 +4040,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Income within eligible range', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Income within eligible range', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.close, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.close, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red600)),
                         ],
                       ),
                     ),
@@ -4051,9 +4051,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('No outstanding dues or penalties', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('No outstanding dues or penalties', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -4079,7 +4079,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -4104,7 +4104,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -4113,7 +4113,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 
             Expanded(
               child: Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50, // Soft purple background
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50, // Soft purple background
                 child: Column(
                   children: [
                     Expanded(
@@ -4126,7 +4126,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               child: Container(
                           padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 16, offset: Offset(0, 4))],
                           ),
@@ -4136,25 +4136,25 @@ class EligibilityWizardScreen extends StatelessWidget {
                               // Failure Icon
                               Container(
                                 width: 64, height: 64,
-                                decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red100, shape: BoxShape.circle),
-                                child: Icon(Icons.close, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red600, size: 32),
+                                decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red100, shape: BoxShape.circle),
+                                child: Icon(Icons.close, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red600, size: 32),
                               ),
                               SizedBox(height: 16),
                       
                               // Title
-                              Text("Not Eligible", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800)),
+                              Text("Not Eligible", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800)),
                               SizedBox(height: 12),
                       
                               // Subtitle
-                              Text('Unfortunately, you do not meet all the required...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              Text('Unfortunately, you do not meet all the required...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               SizedBox(height: 24),
-                              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                               SizedBox(height: 20),
                       
                               // Criteria list
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                               ),
                               SizedBox(height: 16),
                               // ... Criteria items with isMet: false for failed ones
@@ -4168,7 +4168,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     ),
 
                     // Explore Alternatives button (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 16),
                     Padding(
                       padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
@@ -4179,7 +4179,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                         SizedBox(height: 6),
                         Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                       ]),
@@ -4259,15 +4259,15 @@ class _EligibilityWarningMockup extends StatelessWidget {
                     height: 64,
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.orange900
-                          : Ux4gPalette.orange100,
+                          ? Ux4gColors.orange900
+                          : Ux4gColors.orange100,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.warning,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.orange400
-                          : Ux4gPalette.orange600,
+                          ? Ux4gColors.orange400
+                          : Ux4gColors.orange600,
                       size: 32,
                     ),
                   ),
@@ -4278,8 +4278,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                       fontSize: 24,
                       fontWeight: FontWeight.w800,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.orange200
-                          : Ux4gPalette.orange800,
+                          ? Ux4gColors.orange200
+                          : Ux4gColors.orange800,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -4289,15 +4289,15 @@ class _EligibilityWarningMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                       height: 1.5,
                     ),
                   ),
                   const SizedBox(height: 24),
                   Ux4gDivider(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 20),
@@ -4311,8 +4311,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                       ),
                     ),
                   ),
@@ -4331,8 +4331,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -4345,8 +4345,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -4354,8 +4354,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -4375,8 +4375,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -4389,8 +4389,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -4398,8 +4398,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -4419,8 +4419,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -4433,8 +4433,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -4442,8 +4442,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -4463,8 +4463,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -4477,8 +4477,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.orange900
-                                : Ux4gPalette.orange100,
+                                ? Ux4gColors.orange900
+                                : Ux4gColors.orange100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
@@ -4489,8 +4489,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.orange400
-                                  : Ux4gPalette.orange600,
+                                  ? Ux4gColors.orange400
+                                  : Ux4gColors.orange600,
                             ),
                           ),
                         ),
@@ -4511,8 +4511,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                               height: 1.4,
                             ),
                           ),
@@ -4525,8 +4525,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green900
-                                : Ux4gPalette.green100,
+                                ? Ux4gColors.green900
+                                : Ux4gColors.green100,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Icon(
@@ -4534,8 +4534,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                             size: 14,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                           ),
                         ),
                       ],
@@ -4550,7 +4550,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
           Ux4gDivider(
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.neutral800
+                ? Ux4gColors.neutral800
                 : Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
@@ -4576,8 +4576,8 @@ class _EligibilityWarningMockup extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral500
-                        : Ux4gPalette.neutral400,
+                        ? Ux4gColors.neutral500
+                        : Ux4gColors.neutral400,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -4614,8 +4614,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
           Expanded(
             child: Container(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary900
-                  : Ux4gPalette.primary50,
+                  ? Ux4gColors.primary900
+                  : Ux4gColors.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -4629,8 +4629,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral0,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -4650,8 +4650,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.orange900
-                                    : Ux4gPalette.orange100,
+                                    ? Ux4gColors.orange900
+                                    : Ux4gColors.orange100,
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
@@ -4659,8 +4659,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.orange400
-                                    : Ux4gPalette.orange600,
+                                    ? Ux4gColors.orange400
+                                    : Ux4gColors.orange600,
                                 size: 32,
                               ),
                             ),
@@ -4673,8 +4673,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.orange200
-                                    : Ux4gPalette.orange800,
+                                    ? Ux4gColors.orange200
+                                    : Ux4gColors.orange800,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -4686,8 +4686,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                                 height: 1.5,
                               ),
                             ),
@@ -4696,7 +4696,7 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral800
+                                  ? Ux4gColors.neutral800
                                   : Color(0xFFE5E7EB),
                             ),
                             const SizedBox(height: 20),
@@ -4712,8 +4712,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.neutral50
-                                      : Ux4gPalette.neutral900,
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
                                 ),
                               ),
                             ),
@@ -4732,8 +4732,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -4747,8 +4747,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -4757,8 +4757,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -4778,8 +4778,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -4793,8 +4793,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -4803,8 +4803,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -4824,8 +4824,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -4839,8 +4839,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -4849,8 +4849,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -4870,8 +4870,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -4885,8 +4885,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.orange900
-                                          : Ux4gPalette.orange100,
+                                          ? Ux4gColors.orange900
+                                          : Ux4gColors.orange100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Text(
@@ -4897,8 +4897,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.orange400
-                                            : Ux4gPalette.orange600,
+                                            ? Ux4gColors.orange400
+                                            : Ux4gColors.orange600,
                                       ),
                                     ),
                                   ),
@@ -4919,8 +4919,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral200
-                                            : Ux4gPalette.neutral700,
+                                            ? Ux4gColors.neutral200
+                                            : Ux4gColors.neutral700,
                                         height: 1.4,
                                       ),
                                     ),
@@ -4934,8 +4934,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green900
-                                          : Ux4gPalette.green100,
+                                          ? Ux4gColors.green900
+                                          : Ux4gColors.green100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Icon(
@@ -4944,8 +4944,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.green400
-                                          : Ux4gPalette.green600,
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600,
                                     ),
                                   ),
                                 ],
@@ -4964,7 +4964,7 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                   Ux4gDivider(
                     thickness: 1,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 16),
@@ -4991,8 +4991,8 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                             fontSize: 11,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral500
-                                : Ux4gPalette.neutral400,
+                                ? Ux4gColors.neutral500
+                                : Ux4gColors.neutral400,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -5028,7 +5028,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -5038,14 +5038,14 @@ class EligibilityWizardScreen extends StatelessWidget {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                 SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -5053,7 +5053,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               horizontalPadding: 16,
               leadingSpacing: 8,
             ),
-            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             Expanded(
               child: SingleChildScrollView(
@@ -5064,15 +5064,15 @@ class EligibilityWizardScreen extends StatelessWidget {
                     // Warning Icon
                     Container(
                       width: 64, height: 64,
-                      decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange900 : Ux4gPalette.orange100, shape: BoxShape.circle),
-                      child: Icon(Icons.warning, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange600, size: 32),
+                      decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange900 : Ux4gColors.orange100, shape: BoxShape.circle),
+                      child: Icon(Icons.warning, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange600, size: 32),
                     ),
                     SizedBox(height: 16),
             
                     // Title
                     Text(
                       "You May Be Eligible",
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange200 : Ux4gPalette.orange800),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800),
                     ),
                     SizedBox(height: 12),
             
@@ -5080,16 +5080,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Text(
                       'One or more criteria could not be confirmed automatically. An officer will review and verify your eligibility.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.5),
+                      style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.5),
                     ),
                     SizedBox(height: 24),
-                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 20),
             
                     // Criteria List
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                      child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     ),
                     SizedBox(height: 16),
                     Padding(
@@ -5097,9 +5097,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Age requirement met (18 years or above)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Age requirement met (18 years or above)', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -5108,9 +5108,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Valid government-issued ID submitted', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Valid government-issued ID submitted', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -5119,9 +5119,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Residential address confirmed', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Residential address confirmed', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -5130,9 +5130,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Income within eligible range', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('Income within eligible range', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange900 : Ux4gPalette.orange100, borderRadius: BorderRadius.circular(4)), child: Text('?', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange600))),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange900 : Ux4gColors.orange100, borderRadius: BorderRadius.circular(4)), child: Text('?', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange600))),
                         ],
                       ),
                     ),
@@ -5141,9 +5141,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('No outstanding dues or penalties', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700, height: 1.4))),
+                          Expanded(child: Text('No outstanding dues or penalties', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
                           SizedBox(width: 12),
-                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green400 : Ux4gPalette.green600)),
+                          Container(width: 20, height: 20, alignment: Alignment.center, decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green100, borderRadius: BorderRadius.circular(4)), child: Icon(Icons.check, size: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : Ux4gColors.green600)),
                         ],
                       ),
                     ),
@@ -5169,7 +5169,7 @@ class EligibilityWizardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                   SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -5194,7 +5194,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -5203,7 +5203,7 @@ class EligibilityWizardScreen extends StatelessWidget {
 
             Expanded(
               child: Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50, // Soft purple background
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50, // Soft purple background
                 child: Column(
                   children: [
                     Expanded(
@@ -5216,7 +5216,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                               child: Container(
                           padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 16, offset: Offset(0, 4))],
                           ),
@@ -5226,25 +5226,25 @@ class EligibilityWizardScreen extends StatelessWidget {
                               // Warning Icon
                               Container(
                                 width: 64, height: 64,
-                                decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange900 : Ux4gPalette.orange100, shape: BoxShape.circle),
-                                child: Icon(Icons.warning, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange400 : Ux4gPalette.orange600, size: 32),
+                                decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange900 : Ux4gColors.orange100, shape: BoxShape.circle),
+                                child: Icon(Icons.warning, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange600, size: 32),
                               ),
                               SizedBox(height: 16),
                       
                               // Title
-                              Text("You May Be Eligible", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.orange200 : Ux4gPalette.orange800)),
+                              Text("You May Be Eligible", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800)),
                               SizedBox(height: 12),
                       
                               // Subtitle
-                              Text('One or more criteria could not be confirmed...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              Text('One or more criteria could not be confirmed...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                               SizedBox(height: 24),
-                              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                              Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                               SizedBox(height: 20),
                       
                               // Criteria list
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                               ),
                               SizedBox(height: 16),
                               // ... Criteria items with isMet: null for warnings
@@ -5258,7 +5258,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     ),
 
                     // Proceed to Apply button (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                     SizedBox(height: 16),
                     Padding(
                       padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
@@ -5269,7 +5269,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                         SizedBox(height: 6),
                         Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                       ]),
@@ -5361,8 +5361,8 @@ class _EligibilityFinalQuestionMockupState
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -5376,8 +5376,8 @@ class _EligibilityFinalQuestionMockupState
                       fontSize: 20,
                       fontWeight: FontWeight.w800,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral50
-                          : Ux4gPalette.neutral900,
+                          ? Ux4gColors.neutral50
+                          : Ux4gColors.neutral900,
                       height: 1.3,
                       letterSpacing: -0.3,
                     ),
@@ -5395,11 +5395,11 @@ class _EligibilityFinalQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'first_time'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary900
-                                  : Ux4gPalette.primary50
+                                  ? Ux4gColors.primary900
+                                  : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100,
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -5413,19 +5413,19 @@ class _EligibilityFinalQuestionMockupState
                                 color: _selected == 'first_time'
                                     ? Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.primary300
-                                          : Ux4gPalette.primary600
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600
                                     : Theme.of(context).brightness ==
                                           Brightness.dark
-                                    ? Ux4gPalette.neutral700
-                                    : Ux4gPalette.neutral200,
+                                    ? Ux4gColors.neutral700
+                                    : Ux4gColors.neutral200,
                                 width: _selected == 'first_time' ? 6 : 2,
                               ),
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral900
-                                  : Ux4gPalette.neutral0,
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral0,
                             ),
                           ),
                           const SizedBox(width: 14),
@@ -5441,12 +5441,12 @@ class _EligibilityFinalQuestionMockupState
                                     color: _selected == 'first_time'
                                         ? Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600
                                         : Theme.of(context).brightness ==
                                               Brightness.dark
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.neutral900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
                                   ),
                                 ),
                                 const SizedBox(height: 2),
@@ -5457,8 +5457,8 @@ class _EligibilityFinalQuestionMockupState
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.3,
                                   ),
                                 ),
@@ -5480,11 +5480,11 @@ class _EligibilityFinalQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'expired_rejected'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary900
-                                  : Ux4gPalette.primary50
+                                  ? Ux4gColors.primary900
+                                  : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100,
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -5498,19 +5498,19 @@ class _EligibilityFinalQuestionMockupState
                                 color: _selected == 'expired_rejected'
                                     ? Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.primary300
-                                          : Ux4gPalette.primary600
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600
                                     : Theme.of(context).brightness ==
                                           Brightness.dark
-                                    ? Ux4gPalette.neutral700
-                                    : Ux4gPalette.neutral200,
+                                    ? Ux4gColors.neutral700
+                                    : Ux4gColors.neutral200,
                                 width: _selected == 'expired_rejected' ? 6 : 2,
                               ),
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral900
-                                  : Ux4gPalette.neutral0,
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral0,
                             ),
                           ),
                           const SizedBox(width: 14),
@@ -5526,12 +5526,12 @@ class _EligibilityFinalQuestionMockupState
                                     color: _selected == 'expired_rejected'
                                         ? Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600
                                         : Theme.of(context).brightness ==
                                               Brightness.dark
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.neutral900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
                                   ),
                                 ),
                                 const SizedBox(height: 2),
@@ -5542,8 +5542,8 @@ class _EligibilityFinalQuestionMockupState
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.3,
                                   ),
                                 ),
@@ -5565,11 +5565,11 @@ class _EligibilityFinalQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'currently_valid'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary900
-                                  : Ux4gPalette.primary50
+                                  ? Ux4gColors.primary900
+                                  : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100,
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -5583,19 +5583,19 @@ class _EligibilityFinalQuestionMockupState
                                 color: _selected == 'currently_valid'
                                     ? Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.primary300
-                                          : Ux4gPalette.primary600
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600
                                     : Theme.of(context).brightness ==
                                           Brightness.dark
-                                    ? Ux4gPalette.neutral700
-                                    : Ux4gPalette.neutral200,
+                                    ? Ux4gColors.neutral700
+                                    : Ux4gColors.neutral200,
                                 width: _selected == 'currently_valid' ? 6 : 2,
                               ),
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral900
-                                  : Ux4gPalette.neutral0,
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral0,
                             ),
                           ),
                           const SizedBox(width: 14),
@@ -5611,12 +5611,12 @@ class _EligibilityFinalQuestionMockupState
                                     color: _selected == 'currently_valid'
                                         ? Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.primary300
-                                              : Ux4gPalette.primary600
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600
                                         : Theme.of(context).brightness ==
                                               Brightness.dark
-                                        ? Ux4gPalette.neutral50
-                                        : Ux4gPalette.neutral900,
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
                                   ),
                                 ),
                                 const SizedBox(height: 2),
@@ -5627,8 +5627,8 @@ class _EligibilityFinalQuestionMockupState
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.neutral200
-                                        : Ux4gPalette.neutral700,
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
                                     height: 1.3,
                                   ),
                                 ),
@@ -5648,7 +5648,7 @@ class _EligibilityFinalQuestionMockupState
           Ux4gDivider(
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.neutral800
+                ? Ux4gColors.neutral800
                 : Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
@@ -5674,8 +5674,8 @@ class _EligibilityFinalQuestionMockupState
                   style: TextStyle(
                     fontSize: 11,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral500
-                        : Ux4gPalette.neutral400,
+                        ? Ux4gColors.neutral500
+                        : Ux4gColors.neutral400,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -5721,8 +5721,8 @@ class _EligibilityFinalQuestionCardMockupState
           Expanded(
             child: Container(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary900
-                  : Ux4gPalette.primary50,
+                  ? Ux4gColors.primary900
+                  : Ux4gColors.primary50,
               child: Column(
                 children: [
                   Expanded(
@@ -5736,8 +5736,8 @@ class _EligibilityFinalQuestionCardMockupState
                         padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral0,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
@@ -5759,8 +5759,8 @@ class _EligibilityFinalQuestionCardMockupState
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -5776,8 +5776,8 @@ class _EligibilityFinalQuestionCardMockupState
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                                 height: 1.3,
                                 letterSpacing: -0.3,
                               ),
@@ -5797,12 +5797,12 @@ class _EligibilityFinalQuestionCardMockupState
                                   color: _selected == 'first_time'
                                       ? Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.primary900
-                                            : Ux4gPalette.primary50
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gPalette.neutral800
-                                      : Ux4gPalette.neutral100,
+                                      ? Ux4gColors.neutral800
+                                      : Ux4gColors.neutral100,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -5816,12 +5816,12 @@ class _EligibilityFinalQuestionCardMockupState
                                           color: _selected == 'first_time'
                                               ? Theme.of(context).brightness ==
                                                         Brightness.dark
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600
                                               : Theme.of(context).brightness ==
                                                     Brightness.dark
-                                              ? Ux4gPalette.neutral700
-                                              : Ux4gPalette.neutral200,
+                                              ? Ux4gColors.neutral700
+                                              : Ux4gColors.neutral200,
                                           width: _selected == 'first_time'
                                               ? 6
                                               : 2,
@@ -5829,8 +5829,8 @@ class _EligibilityFinalQuestionCardMockupState
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral900
-                                            : Ux4gPalette.neutral0,
+                                            ? Ux4gColors.neutral900
+                                            : Ux4gColors.neutral0,
                                       ),
                                     ),
                                     const SizedBox(width: 14),
@@ -5849,14 +5849,14 @@ class _EligibilityFinalQuestionCardMockupState
                                                               context,
                                                             ).brightness ==
                                                             Brightness.dark
-                                                        ? Ux4gPalette.primary300
-                                                        : Ux4gPalette.primary600
+                                                        ? Ux4gColors.primary300
+                                                        : Ux4gColors.primary600
                                                   : Theme.of(
                                                           context,
                                                         ).brightness ==
                                                         Brightness.dark
-                                                  ? Ux4gPalette.neutral50
-                                                  : Ux4gPalette.neutral900,
+                                                  ? Ux4gColors.neutral50
+                                                  : Ux4gColors.neutral900,
                                             ),
                                           ),
                                           const SizedBox(height: 2),
@@ -5869,8 +5869,8 @@ class _EligibilityFinalQuestionCardMockupState
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.3,
                                             ),
                                           ),
@@ -5895,12 +5895,12 @@ class _EligibilityFinalQuestionCardMockupState
                                   color: _selected == 'expired_rejected'
                                       ? Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.primary900
-                                            : Ux4gPalette.primary50
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gPalette.neutral800
-                                      : Ux4gPalette.neutral100,
+                                      ? Ux4gColors.neutral800
+                                      : Ux4gColors.neutral100,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -5914,12 +5914,12 @@ class _EligibilityFinalQuestionCardMockupState
                                           color: _selected == 'expired_rejected'
                                               ? Theme.of(context).brightness ==
                                                         Brightness.dark
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600
                                               : Theme.of(context).brightness ==
                                                     Brightness.dark
-                                              ? Ux4gPalette.neutral700
-                                              : Ux4gPalette.neutral200,
+                                              ? Ux4gColors.neutral700
+                                              : Ux4gColors.neutral200,
                                           width: _selected == 'expired_rejected'
                                               ? 6
                                               : 2,
@@ -5927,8 +5927,8 @@ class _EligibilityFinalQuestionCardMockupState
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral900
-                                            : Ux4gPalette.neutral0,
+                                            ? Ux4gColors.neutral900
+                                            : Ux4gColors.neutral0,
                                       ),
                                     ),
                                     const SizedBox(width: 14),
@@ -5949,14 +5949,14 @@ class _EligibilityFinalQuestionCardMockupState
                                                               context,
                                                             ).brightness ==
                                                             Brightness.dark
-                                                        ? Ux4gPalette.primary300
-                                                        : Ux4gPalette.primary600
+                                                        ? Ux4gColors.primary300
+                                                        : Ux4gColors.primary600
                                                   : Theme.of(
                                                           context,
                                                         ).brightness ==
                                                         Brightness.dark
-                                                  ? Ux4gPalette.neutral50
-                                                  : Ux4gPalette.neutral900,
+                                                  ? Ux4gColors.neutral50
+                                                  : Ux4gColors.neutral900,
                                             ),
                                           ),
                                           const SizedBox(height: 2),
@@ -5969,8 +5969,8 @@ class _EligibilityFinalQuestionCardMockupState
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.3,
                                             ),
                                           ),
@@ -5994,12 +5994,12 @@ class _EligibilityFinalQuestionCardMockupState
                                   color: _selected == 'currently_valid'
                                       ? Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.primary900
-                                            : Ux4gPalette.primary50
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gPalette.neutral800
-                                      : Ux4gPalette.neutral100,
+                                      ? Ux4gColors.neutral800
+                                      : Ux4gColors.neutral100,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -6013,12 +6013,12 @@ class _EligibilityFinalQuestionCardMockupState
                                           color: _selected == 'currently_valid'
                                               ? Theme.of(context).brightness ==
                                                         Brightness.dark
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600
                                               : Theme.of(context).brightness ==
                                                     Brightness.dark
-                                              ? Ux4gPalette.neutral700
-                                              : Ux4gPalette.neutral200,
+                                              ? Ux4gColors.neutral700
+                                              : Ux4gColors.neutral200,
                                           width: _selected == 'currently_valid'
                                               ? 6
                                               : 2,
@@ -6026,8 +6026,8 @@ class _EligibilityFinalQuestionCardMockupState
                                         color:
                                             Theme.of(context).brightness ==
                                                 Brightness.dark
-                                            ? Ux4gPalette.neutral900
-                                            : Ux4gPalette.neutral0,
+                                            ? Ux4gColors.neutral900
+                                            : Ux4gColors.neutral0,
                                       ),
                                     ),
                                     const SizedBox(width: 14),
@@ -6047,14 +6047,14 @@ class _EligibilityFinalQuestionCardMockupState
                                                               context,
                                                             ).brightness ==
                                                             Brightness.dark
-                                                        ? Ux4gPalette.primary300
-                                                        : Ux4gPalette.primary600
+                                                        ? Ux4gColors.primary300
+                                                        : Ux4gColors.primary600
                                                   : Theme.of(
                                                           context,
                                                         ).brightness ==
                                                         Brightness.dark
-                                                  ? Ux4gPalette.neutral50
-                                                  : Ux4gPalette.neutral900,
+                                                  ? Ux4gColors.neutral50
+                                                  : Ux4gColors.neutral900,
                                             ),
                                           ),
                                           const SizedBox(height: 2),
@@ -6067,8 +6067,8 @@ class _EligibilityFinalQuestionCardMockupState
                                                         context,
                                                       ).brightness ==
                                                       Brightness.dark
-                                                  ? Ux4gPalette.neutral200
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
                                               height: 1.3,
                                             ),
                                           ),
@@ -6092,7 +6092,7 @@ class _EligibilityFinalQuestionCardMockupState
                   Ux4gDivider(
                     thickness: 1,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral800
+                        ? Ux4gColors.neutral800
                         : Color(0xFFE5E7EB),
                   ),
                   const SizedBox(height: 16),
@@ -6119,8 +6119,8 @@ class _EligibilityFinalQuestionCardMockupState
                             fontSize: 11,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral500
-                                : Ux4gPalette.neutral400,
+                                ? Ux4gColors.neutral500
+                                : Ux4gColors.neutral400,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -6157,7 +6157,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: class FinalQuestionScreen extends StatefulWidget {
           @override
@@ -6177,14 +6177,14 @@ class EligibilityWizardScreen extends StatelessWidget {
                   title: '',
                   leadingWidgets: [
                     SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                    SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200)),
+                    SizedBox(height: 20, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)),
                     SvgPicture.asset(
                           Ux4gIcons.union, 
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -6192,7 +6192,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                   horizontalPadding: 16,
                   leadingSpacing: 8,
                 ),
-                Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
                 Expanded(
                   child: SingleChildScrollView(
@@ -6201,20 +6201,20 @@ class EligibilityWizardScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Progress
-                        Text('Question 5 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                        Text('Question 5 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                         SizedBox(height: 8),
                         Ux4gLinearProgress(
                           value: 0.9,
                           height: 6,
-                          gradientColors: Theme.of(context).brightness == Brightness.dark ? const [Ux4gPalette.primary200A, Ux4gPalette.primary300] : const [Ux4gPalette.primary200A, Ux4gPalette.primary600],
-                          trackColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB),
+                          gradientColors: Theme.of(context).brightness == Brightness.dark ? const [Ux4gColors.primary200A, Ux4gColors.primary300] : const [Ux4gColors.primary200A, Ux4gColors.primary600],
+                          trackColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB),
                         ),
                         SizedBox(height: 20),
 
                         // Question
                         Text(
                           'Have you applied for this certificate before in the last 1 year?',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.3),
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.3),
                         ),
                         SizedBox(height: 24),
 
@@ -6224,7 +6224,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                             decoration: BoxDecoration(
-                              color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+                              color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -6233,8 +6233,8 @@ class EligibilityWizardScreen extends StatelessWidget {
                                   width: 22, height: 22,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200, width: _selected == 'first_time' ? 6 : 2),
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                                    border: Border.all(color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200, width: _selected == 'first_time' ? 6 : 2),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                                   ),
                                 ),
                                 SizedBox(width: 14),
@@ -6242,9 +6242,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text("No, I haven't applied before", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                      Text("No, I haven't applied before", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                                       SizedBox(height: 2),
-                                      Text('First-time applicant for this certificate', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                                      Text('First-time applicant for this certificate', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                                     ],
                                   ),
                                 ),
@@ -6258,7 +6258,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                             decoration: BoxDecoration(
-                              color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+                              color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -6267,8 +6267,8 @@ class EligibilityWizardScreen extends StatelessWidget {
                                   width: 22, height: 22,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200, width: _selected == 'expired_rejected' ? 6 : 2),
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                                    border: Border.all(color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200, width: _selected == 'expired_rejected' ? 6 : 2),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                                   ),
                                 ),
                                 SizedBox(width: 14),
@@ -6276,9 +6276,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Yes, but it expired or was rejected', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                      Text('Yes, but it expired or was rejected', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                                       SizedBox(height: 2),
-                                      Text('Previously held certificate has expired o...', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                                      Text('Previously held certificate has expired o...', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                                     ],
                                   ),
                                 ),
@@ -6292,7 +6292,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                             decoration: BoxDecoration(
-                              color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral100,
+                              color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -6301,8 +6301,8 @@ class EligibilityWizardScreen extends StatelessWidget {
                                   width: 22, height: 22,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200, width: _selected == 'currently_valid' ? 6 : 2),
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                                    border: Border.all(color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200, width: _selected == 'currently_valid' ? 6 : 2),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                                   ),
                                 ),
                                 SizedBox(width: 14),
@@ -6310,9 +6310,9 @@ class EligibilityWizardScreen extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Yes, I currently have a valid certificate', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                      Text('Yes, I currently have a valid certificate', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                                       SizedBox(height: 2),
-                                      Text('Currently holding a valid certificate', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                                      Text('Currently holding a valid certificate', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                                     ],
                                   ),
                                 ),
@@ -6326,7 +6326,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                 ),
 
                 // Actions
-                Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                 SizedBox(height: 16),
                 Padding(
                   padding: EdgeInsets.fromLTRB(24, 16, 24, 0),
@@ -6344,7 +6344,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400, fontWeight: FontWeight.w500)),
+                      Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
                       SizedBox(height: 6),
                       Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
@@ -6376,7 +6376,7 @@ class EligibilityWizardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: ,
       ),

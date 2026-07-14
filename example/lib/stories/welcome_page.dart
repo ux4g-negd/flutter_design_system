@@ -255,7 +255,9 @@ class Ux4gWelcomePage extends StatelessWidget {
                 state?.updatePath('components/accordion/standard/single');
               },
               style: OutlinedButton.styleFrom(
-                foregroundColor: isDark ? Colors.white : const Color(0xFF334155),
+                foregroundColor: isDark
+                    ? Colors.white
+                    : const Color(0xFF334155),
                 side: BorderSide(
                   color: isDark ? Colors.white24 : const Color(0xFFCBD5E1),
                 ),
@@ -515,7 +517,7 @@ class Ux4gWelcomePage extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Text(
-          'Components, tokens, and utilities are organized to help teams move from exploration to\n'
+          'Components, tokens, and Patterns are organized to help teams move from exploration to\n'
           'implementation without losing context.',
           style: TextStyle(color: subColor, fontSize: 15.5, height: 1.55),
         ),
@@ -710,8 +712,9 @@ class Ux4gWelcomePage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: isDark ? const Color(0xFFA5B4FC) : primary,
                         decoration: TextDecoration.underline,
-                        decorationColor:
-                            isDark ? const Color(0xFFA5B4FC) : primary,
+                        decorationColor: isDark
+                            ? const Color(0xFFA5B4FC)
+                            : primary,
                       ),
                     ),
                   ),
@@ -750,8 +753,9 @@ class Ux4gWelcomePage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: isDark ? const Color(0xFFA5B4FC) : primary,
                         decoration: TextDecoration.underline,
-                        decorationColor:
-                            isDark ? const Color(0xFFA5B4FC) : primary,
+                        decorationColor: isDark
+                            ? const Color(0xFFA5B4FC)
+                            : primary,
                       ),
                     ),
                   ),

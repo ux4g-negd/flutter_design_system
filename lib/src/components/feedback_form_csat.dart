@@ -91,21 +91,21 @@ class Ux4gFeedbackFormCsat extends StatefulWidget {
     this.successIconColor,
     this.successBackgroundColor,
     this.selectedBackgroundColors = const [
-      Ux4gPalette.red100, // face_0
-      Ux4gPalette.red50, // face_1
-      Ux4gPalette.orange50, // face_2
-      Ux4gPalette.green50, // face_3
-      Ux4gPalette.green100, // face_4
+      Ux4gColors.red100, // face_0
+      Ux4gColors.red50, // face_1
+      Ux4gColors.orange50, // face_2
+      Ux4gColors.green50, // face_3
+      Ux4gColors.green100, // face_4
     ],
     this.selectedIconColors = const [
-      Ux4gPalette.red600, // face_0
-      Ux4gPalette.red600, // face_1
-      Ux4gPalette.orange600, // face_2
-      Ux4gPalette.green600, // face_3
-      Ux4gPalette.green600, // face_4
+      Ux4gColors.red600, // face_0
+      Ux4gColors.red600, // face_1
+      Ux4gColors.orange600, // face_2
+      Ux4gColors.green600, // face_3
+      Ux4gColors.green600, // face_4
     ],
-    this.unselectedBackgroundColor = Ux4gPalette.neutral100,
-    this.unselectedIconColor = Ux4gPalette.neutral500,
+    this.unselectedBackgroundColor = Ux4gColors.neutral100,
+    this.unselectedIconColor = Ux4gColors.neutral500,
   });
 
   @override
@@ -141,7 +141,7 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
 
   @override
   Widget build(BuildContext context) {
-    final uxColors = Theme.of(context).extension<Ux4gColors>();
+    final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
     final uxTypography = Theme.of(context).extension<Ux4gTypography>();
     final materialTheme = Theme.of(context);
 
@@ -172,7 +172,7 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
   }
 
   Widget _buildFormView(
-    Ux4gColors? uxColors,
+    Ux4gThemeColors? uxColors,
     Ux4gTypography? uxTypography,
     ThemeData materialTheme,
   ) {
@@ -185,39 +185,39 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
     final selectedBgColors =
         isDark &&
             (widget.selectedBackgroundColors.length == 5 &&
-                widget.selectedBackgroundColors[0] == Ux4gPalette.red100 &&
-                widget.selectedBackgroundColors[1] == Ux4gPalette.red50)
+                widget.selectedBackgroundColors[0] == Ux4gColors.red100 &&
+                widget.selectedBackgroundColors[1] == Ux4gColors.red50)
         ? const [
-            Ux4gPalette.red900,
-            Ux4gPalette.red950,
-            Ux4gPalette.orange950,
-            Ux4gPalette.green950,
-            Ux4gPalette.green900,
+            Ux4gColors.red900,
+            Ux4gColors.red950,
+            Ux4gColors.orange950,
+            Ux4gColors.green950,
+            Ux4gColors.green900,
           ]
         : widget.selectedBackgroundColors;
 
     final selectedIconColors =
         isDark &&
             (widget.selectedIconColors.length == 5 &&
-                widget.selectedIconColors[0] == Ux4gPalette.red600 &&
-                widget.selectedIconColors[2] == Ux4gPalette.orange600)
+                widget.selectedIconColors[0] == Ux4gColors.red600 &&
+                widget.selectedIconColors[2] == Ux4gColors.orange600)
         ? const [
-            Ux4gPalette.red300,
-            Ux4gPalette.red300,
-            Ux4gPalette.orange300,
-            Ux4gPalette.green300,
-            Ux4gPalette.green300,
+            Ux4gColors.red300,
+            Ux4gColors.red300,
+            Ux4gColors.orange300,
+            Ux4gColors.green300,
+            Ux4gColors.green300,
           ]
         : widget.selectedIconColors;
 
     final unselectedBgColor =
-        isDark && widget.unselectedBackgroundColor == Ux4gPalette.neutral100
-        ? Ux4gPalette.neutral800
+        isDark && widget.unselectedBackgroundColor == Ux4gColors.neutral100
+        ? Ux4gColors.neutral800
         : widget.unselectedBackgroundColor;
 
     final unselectedIconColor =
-        isDark && widget.unselectedIconColor == Ux4gPalette.neutral500
-        ? Ux4gPalette.neutral400
+        isDark && widget.unselectedIconColor == Ux4gColors.neutral500
+        ? Ux4gColors.neutral400
         : widget.unselectedIconColor;
 
     return Column(
@@ -380,7 +380,7 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
   }
 
   Widget _buildSuccessView(
-    Ux4gColors? uxColors,
+    Ux4gThemeColors? uxColors,
     Ux4gTypography? uxTypography,
     ThemeData materialTheme,
   ) {

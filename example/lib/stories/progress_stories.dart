@@ -423,8 +423,8 @@ final circularProgressComponent = WidgetbookComponent(
         final typography = Ux4gTheme.typography(context);
 
         final gradientColors = isDark
-            ? [Ux4gPalette.primary700, Ux4gPalette.primary300]
-            : [Ux4gPalette.primary200, Ux4gPalette.primary600];
+            ? [Ux4gColors.primary700, Ux4gColors.primary300]
+            : [Ux4gColors.primary200, Ux4gColors.primary600];
 
         Widget buildRow({
           required bool showGradient,
@@ -444,12 +444,12 @@ final circularProgressComponent = WidgetbookComponent(
                   size: size,
                   strokeCap: strokeCap,
                   trackColor: isDark
-                      ? Ux4gPalette.neutral600
-                      : Ux4gPalette.neutral300,
+                      ? Ux4gColors.neutral600
+                      : Ux4gColors.neutral300,
                   backgroundColor: showBackground
                       ? (isDark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100)
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100)
                       : null,
                   progressGradient: showGradient
                       ? SweepGradient(
@@ -492,9 +492,9 @@ Ux4gCircularProgress(
   size: Ux4gCircularProgressSize.l,
   progressGradient: SweepGradient(
     transform: GradientRotation(-pi / 2),
-    colors: [Ux4gPalette.primary200, Ux4gPalette.primary600],
+    colors: [Ux4gColors.primary200, Ux4gColors.primary600],
   ),
-  trackColor: Ux4gPalette.neutral300,
+  trackColor: Ux4gColors.neutral300,
   centerValueText: '50%',
   description: 'Description',
 ),
@@ -503,7 +503,7 @@ Ux4gCircularProgress(
 Ux4gCircularProgress(
   value: 0.5,
   size: Ux4gCircularProgressSize.xl,
-  backgroundColor: Ux4gPalette.neutral100,
+  backgroundColor: Ux4gColors.neutral100,
   centerValueText: '50%',
   description: 'Description',
 ),
@@ -512,7 +512,7 @@ Ux4gCircularProgress(
 Ux4gCircularProgress(
   value: 0.5,
   size: Ux4gCircularProgressSize.xxl,
-  backgroundColor: Ux4gPalette.neutral100,
+  backgroundColor: Ux4gColors.neutral100,
   centerValueText: '50%',
   centerDescription: 'Description',
 ),
@@ -732,16 +732,16 @@ final loaderComponent = WidgetbookComponent(
         final gradientColors = switch (selectedTheme) {
           Ux4gLoaderGradientTheme.brand =>
             isDark
-                ? [Ux4gPalette.primary300, Ux4gPalette.primary800]
-                : [Ux4gPalette.primary600, Ux4gPalette.primary100],
+                ? [Ux4gColors.primary300, Ux4gColors.primary800]
+                : [Ux4gColors.primary600, Ux4gColors.primary100],
           Ux4gLoaderGradientTheme.neutral =>
             isDark
-                ? [Ux4gPalette.neutral950A, Ux4gPalette.neutral900]
-                : [Ux4gPalette.neutral0, Ux4gPalette.neutral50],
+                ? [Ux4gColors.neutral950A, Ux4gColors.neutral900]
+                : [Ux4gColors.neutral0, Ux4gColors.neutral50],
           Ux4gLoaderGradientTheme.destructive =>
             isDark
-                ? [Ux4gPalette.red800, Ux4gPalette.red300]
-                : [Ux4gPalette.red200, Ux4gPalette.red600],
+                ? [Ux4gColors.red800, Ux4gColors.red300]
+                : [Ux4gColors.red200, Ux4gColors.red600],
         };
 
         return ComponentDocs(
@@ -757,7 +757,7 @@ Ux4gLoader(
   size: 48,
   strokeWidth: 5,
   percentage: 75,
-  gradientColors: [Ux4gPalette.primary600, Ux4gPalette.primary100],
+  gradientColors: [Ux4gColors.primary600, Ux4gColors.primary100],
 );''',
           props: const [
             PropRow(

@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 
 final categoryServiceListComponent = WidgetbookComponent(
   name: 'Category Service List',
@@ -217,8 +217,8 @@ class _CategoryServiceListMockupState
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -249,55 +249,55 @@ class _CategoryServiceListMockupState
                   horizontal: 16,
                   vertical: 10,
                 ),
-                color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                 child: Row(
                   children: [
                     Icon(
                       Icons.home_outlined,
                       size: 14,
                       color: isDark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       'Home',
                       style: typography.lM_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral200
-                            : Ux4gPalette.neutral700,
+                            ? Ux4gColors.neutral200
+                            : Ux4gColors.neutral700,
                       ),
                     ),
                     Text(
                       '  ›  ',
                       style: typography.lM_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral400
-                            : Ux4gPalette.neutral600,
+                            ? Ux4gColors.neutral400
+                            : Ux4gColors.neutral600,
                       ),
                     ),
                     Text(
                       'Services',
                       style: typography.lM_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral200
-                            : Ux4gPalette.neutral700,
+                            ? Ux4gColors.neutral200
+                            : Ux4gColors.neutral700,
                       ),
                     ),
                     Text(
                       '  ›  ',
                       style: typography.lM_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral400
-                            : Ux4gPalette.neutral600,
+                            ? Ux4gColors.neutral400
+                            : Ux4gColors.neutral600,
                       ),
                     ),
                     Text(
                       'Health',
                       style: typography.lM_strong.copyWith(
                         color: isDark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                       ),
                     ),
                   ],
@@ -315,8 +315,8 @@ class _CategoryServiceListMockupState
                       'Health services',
                       style: typography.hXS_strong.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -324,8 +324,8 @@ class _CategoryServiceListMockupState
                       'Hospitals, certificates, insurance and disability',
                       style: typography.bS_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral200
-                            : Ux4gPalette.neutral700,
+                            ? Ux4gColors.neutral200
+                            : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -344,8 +344,8 @@ class _CategoryServiceListMockupState
                       '48 services',
                       style: typography.tS_strong.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral50
-                            : Ux4gPalette.neutral900,
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
                       ),
                     ),
                     const Spacer(),
@@ -356,11 +356,11 @@ class _CategoryServiceListMockupState
                       size: Ux4gButtonSize.small,
                       leadingIcon: Icons.tune,
                       borderColor: isDark
-                          ? Ux4gPalette.neutral600
-                          : Ux4gPalette.neutral300,
+                          ? Ux4gColors.neutral600
+                          : Ux4gColors.neutral300,
                       contentColor: isDark
-                          ? Ux4gPalette.neutral50
-                          : Ux4gPalette.neutral900,
+                          ? Ux4gColors.neutral50
+                          : Ux4gColors.neutral900,
                     ),
                   ],
                 ),
@@ -461,16 +461,16 @@ class _CategoryServiceListMockupState
                       height: 30,
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Ux4gPalette.primary800
-                            : Ux4gPalette.primary100,
+                            ? Ux4gColors.primary800
+                            : Ux4gColors.primary100,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         Icons.chevron_left,
                         size: 19,
                         color: isDark
-                            ? Ux4gPalette.primary200
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary200
+                            : Ux4gColors.primary600,
                       ),
                     ),
                     const SizedBox(width: 11),
@@ -479,8 +479,8 @@ class _CategoryServiceListMockupState
                       height: 10,
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         borderRadius: BorderRadius.circular(99),
                       ),
                     ),
@@ -494,8 +494,8 @@ class _CategoryServiceListMockupState
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: isDark
-                              ? Ux4gPalette.primary800
-                              : Ux4gPalette.primary100,
+                              ? Ux4gColors.primary800
+                              : Ux4gColors.primary100,
                         ),
                       ),
                     ),
@@ -505,16 +505,16 @@ class _CategoryServiceListMockupState
                       height: 30,
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Ux4gPalette.primary800
-                            : Ux4gPalette.primary100,
+                            ? Ux4gColors.primary800
+                            : Ux4gColors.primary100,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         Icons.chevron_right,
                         size: 19,
                         color: isDark
-                            ? Ux4gPalette.primary200
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary200
+                            : Ux4gColors.primary600,
                       ),
                     ),
                   ],
@@ -533,10 +533,10 @@ class _CategoryServiceListMockupState
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         border: Border(
           bottom: BorderSide(
-            color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+            color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
           ),
         ),
       ),
@@ -551,8 +551,8 @@ class _CategoryServiceListMockupState
                   title,
                   style: typography.tS_strong.copyWith(
                     color: isDark
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -566,16 +566,16 @@ class _CategoryServiceListMockupState
                       ),
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral200,
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral200,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
                         isPaid ? 'Paid' : 'Free',
                         style: typography.lM_default.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                     ),
@@ -585,8 +585,8 @@ class _CategoryServiceListMockupState
                         fee,
                         style: typography.lS_default.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                       ),
                     ],
@@ -596,16 +596,16 @@ class _CategoryServiceListMockupState
                       Icons.access_time,
                       size: 13,
                       color: isDark
-                          ? Ux4gPalette.neutral200
-                          : Ux4gPalette.neutral700,
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       time,
                       style: typography.lS_default.copyWith(
                         color: isDark
-                            ? Ux4gPalette.neutral200
-                            : Ux4gPalette.neutral700,
+                            ? Ux4gColors.neutral200
+                            : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -620,18 +620,18 @@ class _CategoryServiceListMockupState
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
             borderColor: isDark
-                ? Ux4gPalette.neutral600
-                : Ux4gPalette.neutral300,
+                ? Ux4gColors.neutral600
+                : Ux4gColors.neutral300,
             contentColor: isDark
-                ? Ux4gPalette.neutral50
-                : Ux4gPalette.neutral900,
+                ? Ux4gColors.neutral50
+                : Ux4gColors.neutral900,
             textStyle: typography.lL_default,
           ),
           const SizedBox(width: 6),
           Icon(
             Icons.keyboard_arrow_down,
             size: 20,
-            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
           ),
         ],
       ),

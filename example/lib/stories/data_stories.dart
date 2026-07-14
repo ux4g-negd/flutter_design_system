@@ -2804,10 +2804,10 @@ final journeyTimelineComponent = WidgetbookComponent(
       title: 'Title', date: 'Date', tag: 'Tag',
       status: Ux4gJourneyStepStatus(
         text: '2 days remaining',
-        dotColor: Ux4gPalette.secondary,
+        dotColor: Ux4gColors.secondary,
         badgeText: 'Pending',
-        badgeColor: Ux4gPalette.secondary.withValues(alpha: 0.12),
-        badgeTextColor: Ux4gPalette.secondary,
+        badgeColor: Ux4gColors.secondary.withValues(alpha: 0.12),
+        badgeTextColor: Ux4gColors.secondary,
       ),
     ),
     // Upcoming
@@ -2840,10 +2840,10 @@ final journeyTimelineComponent = WidgetbookComponent(
                 tag: 'Tag',
                 status: Ux4gJourneyStepStatus(
                   text: '2 days remaining',
-                  dotColor: Ux4gPalette.secondary,
+                  dotColor: Ux4gColors.secondary,
                   badgeText: 'Pending',
-                  badgeColor: Ux4gPalette.secondary.withValues(alpha: 0.12),
-                  badgeTextColor: Ux4gPalette.secondary,
+                  badgeColor: Ux4gColors.secondary.withValues(alpha: 0.12),
+                  badgeTextColor: Ux4gColors.secondary,
                 ),
               ),
               const Ux4gJourneyStep(title: 'Title', date: 'Date', tag: 'Tag'),

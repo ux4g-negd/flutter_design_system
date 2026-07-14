@@ -172,7 +172,7 @@ class Ux4gStepper extends StatelessWidget {
     bool isError,
   ) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -230,7 +230,7 @@ class Ux4gStepper extends StatelessWidget {
     bool isVertical = false,
   }) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
@@ -260,7 +260,7 @@ class Ux4gStepper extends StatelessWidget {
     bool centered,
   ) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final onSurface =

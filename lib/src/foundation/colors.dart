@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Ux4gPalette {
+class Ux4gColors {
   // Legacy gray aliases (used by theme definitions)
   static const Color gray100 = Color(0xFFF5F5F5);
   static const Color gray200 = Color(0xFFEEEEEE);
@@ -276,7 +276,11 @@ class Ux4gPalette {
   static const Color transparent = Color(0x00000000);
 }
 
-class Ux4gColors extends ThemeExtension<Ux4gColors> {
+/// Backward compatibility typedef. Please use [Ux4gColors] instead.
+@Deprecated('Use Ux4gColors instead. Ux4gPalette will be removed in a future release.')
+typedef Ux4gPalette = Ux4gColors;
+
+class Ux4gThemeColors extends ThemeExtension<Ux4gThemeColors> {
   final Color primary;
   final Color onPrimary;
   final Color secondary;
@@ -294,7 +298,7 @@ class Ux4gColors extends ThemeExtension<Ux4gColors> {
   final Color info;
   final Color onInfo;
 
-  const Ux4gColors({
+  const Ux4gThemeColors({
     required this.primary,
     required this.onPrimary,
     required this.secondary,
@@ -314,7 +318,7 @@ class Ux4gColors extends ThemeExtension<Ux4gColors> {
   });
 
   @override
-  ThemeExtension<Ux4gColors> copyWith({
+  ThemeExtension<Ux4gThemeColors> copyWith({
     Color? primary,
     Color? onPrimary,
     Color? secondary,
@@ -332,7 +336,7 @@ class Ux4gColors extends ThemeExtension<Ux4gColors> {
     Color? info,
     Color? onInfo,
   }) {
-    return Ux4gColors(
+    return Ux4gThemeColors(
       primary: primary ?? this.primary,
       onPrimary: onPrimary ?? this.onPrimary,
       secondary: secondary ?? this.secondary,
@@ -353,9 +357,9 @@ class Ux4gColors extends ThemeExtension<Ux4gColors> {
   }
 
   @override
-  ThemeExtension<Ux4gColors> lerp(ThemeExtension<Ux4gColors>? other, double t) {
-    if (other is! Ux4gColors) return this;
-    return Ux4gColors(
+  ThemeExtension<Ux4gThemeColors> lerp(ThemeExtension<Ux4gThemeColors>? other, double t) {
+    if (other is! Ux4gThemeColors) return this;
+    return Ux4gThemeColors(
       primary: Color.lerp(primary, other.primary, t) ?? primary,
       onPrimary: Color.lerp(onPrimary, other.onPrimary, t) ?? onPrimary,
       secondary: Color.lerp(secondary, other.secondary, t) ?? secondary,
@@ -377,40 +381,40 @@ class Ux4gColors extends ThemeExtension<Ux4gColors> {
   }
 }
 
-final lightUx4gColors = Ux4gColors(
-  primary: Ux4gPalette.primary600,
-  onPrimary: Ux4gPalette.neutral50,
-  secondary: Ux4gPalette.secondary600,
-  onSecondary: Ux4gPalette.white,
-  background: Ux4gPalette.neutral50,
-  onBackground: Ux4gPalette.neutral900,
-  surface: Ux4gPalette.white,
-  onSurface: Ux4gPalette.neutral900,
-  error: Ux4gPalette.red600,
-  onError: Ux4gPalette.neutral50,
-  success: Ux4gPalette.green600,
-  onSuccess: Ux4gPalette.neutral50,
-  warning: Ux4gPalette.orange600,
-  onWarning: Ux4gPalette.neutral900,
-  info: Ux4gPalette.cyan600,
-  onInfo: Ux4gPalette.neutral50,
+final lightUx4gColors = Ux4gThemeColors(
+  primary: Ux4gColors.primary600,
+  onPrimary: Ux4gColors.neutral50,
+  secondary: Ux4gColors.secondary600,
+  onSecondary: Ux4gColors.white,
+  background: Ux4gColors.neutral50,
+  onBackground: Ux4gColors.neutral900,
+  surface: Ux4gColors.white,
+  onSurface: Ux4gColors.neutral900,
+  error: Ux4gColors.red600,
+  onError: Ux4gColors.neutral50,
+  success: Ux4gColors.green600,
+  onSuccess: Ux4gColors.neutral50,
+  warning: Ux4gColors.orange600,
+  onWarning: Ux4gColors.neutral900,
+  info: Ux4gColors.cyan600,
+  onInfo: Ux4gColors.neutral50,
 );
 
-final darkUx4gColors = Ux4gColors(
-  primary: Ux4gPalette.primary300,
-  onPrimary: Ux4gPalette.neutral900,
-  secondary: Ux4gPalette.secondary300,
-  onSecondary: Ux4gPalette.neutral900,
-  background: Ux4gPalette.neutral900,
-  onBackground: Ux4gPalette.neutral50,
-  surface: Ux4gPalette.neutral950,
-  onSurface: Ux4gPalette.neutral50,
-  error: Ux4gPalette.red300,
-  onError: Ux4gPalette.neutral900,
-  success: Ux4gPalette.green500,
-  onSuccess: Ux4gPalette.neutral900,
-  warning: Ux4gPalette.orange500,
-  onWarning: Ux4gPalette.neutral900,
-  info: Ux4gPalette.cyan500,
-  onInfo: Ux4gPalette.neutral900,
+final darkUx4gColors = Ux4gThemeColors(
+  primary: Ux4gColors.primary300,
+  onPrimary: Ux4gColors.neutral900,
+  secondary: Ux4gColors.secondary300,
+  onSecondary: Ux4gColors.neutral900,
+  background: Ux4gColors.neutral900,
+  onBackground: Ux4gColors.neutral50,
+  surface: Ux4gColors.neutral950,
+  onSurface: Ux4gColors.neutral50,
+  error: Ux4gColors.red300,
+  onError: Ux4gColors.neutral900,
+  success: Ux4gColors.green500,
+  onSuccess: Ux4gColors.neutral900,
+  warning: Ux4gColors.orange500,
+  onWarning: Ux4gColors.neutral900,
+  info: Ux4gColors.cyan500,
+  onInfo: Ux4gColors.neutral900,
 );

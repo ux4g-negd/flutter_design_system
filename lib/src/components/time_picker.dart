@@ -77,7 +77,7 @@ class _Ux4gTimePickerState extends State<Ux4gTimePicker> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -214,7 +214,7 @@ class _Ux4gTimePickerDialogState extends State<_Ux4gTimePickerDialog> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -469,7 +469,7 @@ class _Ux4gTimePickerDialogState extends State<_Ux4gTimePickerDialog> {
     required bool isSelected,
     required bool showHighlight,
     required VoidCallback onTap,
-    required Ux4gColors? colors,
+    required Ux4gThemeColors? colors,
     required Ux4gTypography? typography,
     required ThemeData materialTheme,
   }) {
@@ -500,7 +500,7 @@ class _Ux4gTimePickerDialogState extends State<_Ux4gTimePickerDialog> {
     required String text,
     required bool isSelected,
     required VoidCallback onTap,
-    required Ux4gColors? colors,
+    required Ux4gThemeColors? colors,
     required Ux4gTypography? typography,
     required ThemeData materialTheme,
   }) {

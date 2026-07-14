@@ -20,11 +20,11 @@ Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xF
 
 // ignore: unused_element
 
-Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
 
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 
 // ignore: unused_element
 
@@ -126,7 +126,7 @@ class FaqDetailScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -280,7 +280,7 @@ class FaqDetailCardScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -324,7 +324,7 @@ class FaqDetailCardScreen extends StatelessWidget {
                         const SizedBox(height: 24),
                         // Related questions accordion
                         // Related questions accordion
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                         Ux4gAccordion(
                           title: 'My application was rejected — what next?',
                           collapsedBorderColor: Colors.transparent,
@@ -336,12 +336,12 @@ class FaqDetailCardScreen extends StatelessWidget {
                             'You may reapply after addressing the issues mentioned, or file a grievance.',
                             style: TextStyle(
                               fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
                               height: 1.5,
                             ),
                           ),
                         ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                         Ux4gAccordion(
                           title: 'How do I upload missing documents?',
                           collapsedBorderColor: Colors.transparent,
@@ -353,12 +353,12 @@ class FaqDetailCardScreen extends StatelessWidget {
                             'Supported formats: PDF, JPG, PNG (max 5MB each).',
                             style: TextStyle(
                               fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
                               height: 1.5,
                             ),
                           ),
                         ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                         Ux4gAccordion(
                           title: 'When will I receive my certificate?',
                           collapsedBorderColor: Colors.transparent,
@@ -370,12 +370,12 @@ class FaqDetailCardScreen extends StatelessWidget {
                             'You will receive an SMS and email notification once ready.',
                             style: TextStyle(
                               fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
                               height: 1.5,
                             ),
                           ),
                         ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                         Ux4gAccordion(
                           title: 'How do I contact a Revenue officer?',
                           collapsedBorderColor: Colors.transparent,
@@ -386,12 +386,12 @@ class FaqDetailCardScreen extends StatelessWidget {
                             'You can find contact details of your local Revenue officer under the help center directory, or search by PIN code.',
                             style: TextStyle(
                               fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563),
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
                               height: 1.5,
                             ),
                           ),
                         ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                       ],
                     ),
                   ),
@@ -432,7 +432,7 @@ class _FaqDetailMockup extends StatelessWidget {
     return Theme(
       data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
@@ -459,7 +459,7 @@ class _FaqDetailMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),

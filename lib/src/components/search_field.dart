@@ -146,7 +146,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
           child: Builder(
             builder: (context) {
               final materialTheme = Theme.of(context);
-              final ux4gColors = materialTheme.extension<Ux4gColors>();
+              final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
               final surface =
                   ux4gColors?.surface ?? materialTheme.colorScheme.surface;
 
@@ -174,11 +174,11 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
 
   Widget _buildAutocompleteList() {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final isDark = materialTheme.brightness == Brightness.dark;
-    final onSurface = ux4gColors?.onSurface ?? Ux4gPalette.neutral900;
+    final onSurface = ux4gColors?.onSurface ?? Ux4gColors.neutral900;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final bmDefault =
         ux4gTypography?.bM_default ??
@@ -249,8 +249,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                     separatorBuilder: (context, index) => Divider(
                       height: 1,
                       color: isDark
-                          ? Ux4gPalette.neutral800
-                          : Ux4gPalette.neutral200,
+                          ? Ux4gColors.neutral800
+                          : Ux4gColors.neutral200,
                     ),
                     itemBuilder: (context, index) {
                       final option = filteredOptions[index];
@@ -275,8 +275,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                           ),
                           color: isSelected
                               ? (isDark
-                                    ? Ux4gPalette.primary950
-                                    : Ux4gPalette.primary50)
+                                    ? Ux4gColors.primary950
+                                    : Ux4gColors.primary50)
                               : null,
                           child: Row(
                             children: [
@@ -291,8 +291,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                                         fontWeight: FontWeight.w600,
                                         color: isSelected
                                             ? (isDark
-                                                  ? Ux4gPalette.primary300
-                                                  : Ux4gPalette.primary600)
+                                                  ? Ux4gColors.primary300
+                                                  : Ux4gColors.primary600)
                                             : onSurface,
                                       ),
                                     ),
@@ -304,8 +304,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                                           fontSize: 12,
                                           color: isSelected
                                               ? (isDark
-                                                    ? Ux4gPalette.primary300
-                                                    : Ux4gPalette.primary600)
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600)
                                               : onSurface.withValues(
                                                   alpha: 0.5,
                                                 ),
@@ -319,8 +319,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                                 Icon(
                                   Icons.check,
                                   color: isDark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                   size: 20,
                                 ),
                             ],
@@ -340,7 +340,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -532,7 +532,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     );
   }
 
-  Color _getBorderColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getBorderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -552,7 +552,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     };
   }
 
-  Color _getLabelColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getLabelColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -572,7 +572,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     };
   }
 
-  Color _getCaptionColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getCaptionColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = ux4gColors?.error ?? materialTheme.colorScheme.error;

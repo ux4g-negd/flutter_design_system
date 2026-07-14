@@ -54,12 +54,12 @@ class _InlineFeedbackHintScreenState extends State<InlineFeedbackHintScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -73,7 +73,7 @@ class _InlineFeedbackHintScreenState extends State<InlineFeedbackHintScreen> {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: isDark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -87,7 +87,7 @@ class _InlineFeedbackHintScreenState extends State<InlineFeedbackHintScreen> {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -137,7 +137,7 @@ class _InlineFeedbackHintScreenState extends State<InlineFeedbackHintScreen> {
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
                         height: 48,
-                        backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                        backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                         contentColor: isDark ? Colors.black : Colors.white,
                       ),
                     ),
@@ -174,13 +174,13 @@ class _InlineFeedbackHintCardScreenState extends State<InlineFeedbackHintCardScr
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -194,7 +194,7 @@ class _InlineFeedbackHintCardScreenState extends State<InlineFeedbackHintCardScr
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: isDark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -208,7 +208,7 @@ class _InlineFeedbackHintCardScreenState extends State<InlineFeedbackHintCardScr
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -271,7 +271,7 @@ class _InlineFeedbackHintCardScreenState extends State<InlineFeedbackHintCardScr
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
                   height: 48,
-                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                   contentColor: isDark ? Colors.black : Colors.white,
                   borderRadius: 8,
                 ),
@@ -304,17 +304,17 @@ class _InlineFeedbackHintMockupState extends State<_InlineFeedbackHintMockup> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleColor = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleColor = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
     return Theme(
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: widget.isCard
-            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF))
-            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF))
+            : (isDark ? Ux4gColors.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -329,7 +329,7 @@ class _InlineFeedbackHintMockupState extends State<_InlineFeedbackHintMockup> {
                     Ux4gIcons.nationalEmblem,
                     height: 40,
                     colorFilter: isDark
-                        ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                        ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                         : null,
                   ),
                   SizedBox(
@@ -343,7 +343,7 @@ class _InlineFeedbackHintMockupState extends State<_InlineFeedbackHintMockup> {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -377,7 +377,7 @@ class _InlineFeedbackHintMockupState extends State<_InlineFeedbackHintMockup> {
                       variant: Ux4gButtonVariant.primary,
                       size: Ux4gButtonSize.large,
                       height: 48,
-                      backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                      backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                       contentColor: isDark ? Colors.black : Colors.white,
                       borderRadius: 8,
                     ),
@@ -450,7 +450,7 @@ class _InlineFeedbackHintMockupState extends State<_InlineFeedbackHintMockup> {
                 variant: Ux4gButtonVariant.primary,
                 size: Ux4gButtonSize.large,
                 height: 48,
-                backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                 contentColor: isDark ? Colors.black : Colors.white,
                 borderRadius: 8,
               ),

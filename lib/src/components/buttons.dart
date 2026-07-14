@@ -75,7 +75,7 @@ class Ux4gButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final style = _getStyle(ux4gColors, materialTheme);
@@ -188,7 +188,7 @@ class Ux4gButton extends StatelessWidget {
     );
   }
 
-  _ButtonStyle _getStyle(Ux4gColors? ux4gColors, ThemeData materialTheme) {
+  _ButtonStyle _getStyle(Ux4gThemeColors? ux4gColors, ThemeData materialTheme) {
     final colorScheme = materialTheme.colorScheme;
 
     final primary = ux4gColors?.primary ?? colorScheme.primary;
@@ -281,7 +281,7 @@ class Ux4gIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onPrimary =
