@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../theme_notifier.dart';
 
 class Ux4gWelcomePage extends StatelessWidget {
@@ -246,6 +247,31 @@ class Ux4gWelcomePage extends StatelessWidget {
                 ),
               ),
               child: const Text('Get Started'),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                final state = WidgetbookState.maybeOf(context);
+                // ignore: invalid_use_of_internal_member
+                state?.updatePath('components/accordion/standard/single');
+              },
+              style: OutlinedButton.styleFrom(
+                foregroundColor: isDark ? Colors.white : const Color(0xFF334155),
+                side: BorderSide(
+                  color: isDark ? Colors.white24 : const Color(0xFFCBD5E1),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 18,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                textStyle: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              child: const Text('Component Library'),
             ),
           ],
         ),
@@ -671,12 +697,22 @@ class Ux4gWelcomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 14, color: subColor),
                   ),
                   const SizedBox(width: 6),
-                  Text(
-                    'ux4g.gov.in',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: isDark ? const Color(0xFFA5B4FC) : primary,
+                  InkWell(
+                    onTap: () => launchUrl(
+                      Uri.parse('https://www.ux4g.gov.in'),
+                      webOnlyWindowName: '_blank',
+                    ),
+                    mouseCursor: SystemMouseCursors.click,
+                    child: Text(
+                      'ux4g.gov.in',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? const Color(0xFFA5B4FC) : primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor:
+                            isDark ? const Color(0xFFA5B4FC) : primary,
+                      ),
                     ),
                   ),
                 ],
@@ -694,13 +730,32 @@ class Ux4gWelcomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 13, color: subColor),
               ),
               const SizedBox(height: 16),
-              Text(
-                'Visit: ux4g.gov.in',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: isDark ? const Color(0xFFA5B4FC) : primary,
-                ),
+              Row(
+                children: [
+                  Text(
+                    'Visit:',
+                    style: TextStyle(fontSize: 14, color: subColor),
+                  ),
+                  const SizedBox(width: 6),
+                  InkWell(
+                    onTap: () => launchUrl(
+                      Uri.parse('https://www.ux4g.gov.in'),
+                      webOnlyWindowName: '_blank',
+                    ),
+                    mouseCursor: SystemMouseCursors.click,
+                    child: Text(
+                      'ux4g.gov.in',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? const Color(0xFFA5B4FC) : primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor:
+                            isDark ? const Color(0xFFA5B4FC) : primary,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
