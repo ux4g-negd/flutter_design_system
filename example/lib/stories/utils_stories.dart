@@ -1828,64 +1828,132 @@ class _SemanticTokenRow extends StatelessWidget {
   final List<_SemanticPair> pairs;
   const _SemanticTokenRow({required this.pairs});
 
-  String _toHex(Color c) {
-    final r = c.r.toInt();
-    final g = c.g.toInt();
-    final b = c.b.toInt();
-    return '#${r.toRadixString(16).padLeft(2, '0')}${g.toRadixString(16).padLeft(2, '0')}${b.toRadixString(16).padLeft(2, '0')}'
-        .toUpperCase();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: pairs.map((pair) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 12),
           child: Row(
             children: [
-              Expanded(child: _tokenTile(pair.baseToken, pair.baseColor)),
-              const SizedBox(width: 8),
-              Expanded(child: _tokenTile(pair.onToken, pair.onColor)),
+              Expanded(
+                child: _SemanticTile(
+                  token: pair.baseToken,
+                  color: pair.baseColor,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _SemanticTile(
+                  token: pair.onToken,
+                  color: pair.onColor,
+                ),
+              ),
             ],
           ),
         );
       }).toList(),
     );
   }
+}
 
-  Widget _tokenTile(String token, Color color) {
-    final isDark = (color.r * 0.299 + color.g * 0.587 + color.b * 0.114) < 128;
+class _SemanticTile extends StatefulWidget {
+  final String token;
+  final Color color;
+  const _SemanticTile({required this.token, required this.color});
+
+  @override
+  State<_SemanticTile> createState() => _SemanticTileState();
+}
+
+class _SemanticTileState extends State<_SemanticTile> {
+  bool _copied = false;
+
+  String _toHex(Color c) {
+    final r = (c.r * 255).toInt();
+    final g = (c.g * 255).toInt();
+    final b = (c.b * 255).toInt();
+    return '#${r.toRadixString(16).padLeft(2, '0')}${g.toRadixString(16).padLeft(2, '0')}${b.toRadixString(16).padLeft(2, '0')}'
+        .toUpperCase();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark =
+        (widget.color.r * 0.299 +
+                widget.color.g * 0.587 +
+                widget.color.b * 0.114) <
+            0.5;
     final fg = isDark ? Colors.white : Colors.black87;
-    final hex = _toHex(color);
-    return Container(
-      height: 64,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            'colors.$token',
-            style: TextStyle(
-              fontFamily: 'monospace',
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: fg,
+    final hex = _toHex(widget.color);
+    final dartCode = 'Ux4gTheme.colors(context).${widget.token}';
+
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () async {
+            await Clipboard.setData(ClipboardData(text: hex));
+            setState(() => _copied = true);
+            await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+            if (mounted) setState(() => _copied = false);
+          },
+          child: Tooltip(
+            message: 'Tap to copy $hex',
+            child: Container(
+              height: 72,
+              decoration: BoxDecoration(
+                color: widget.color,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: const Color(0xFFE5E7EB)),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'colors.${widget.token}',
+                          style: TextStyle(
+                            fontFamily: 'monospace',
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: fg,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      if (_copied) Icon(Icons.check, size: 16, color: fg),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    hex,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'monospace',
+                      color: fg.withValues(alpha: 0.75),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          Text(
-            hex,
-            style: TextStyle(fontSize: 10, color: fg.withValues(alpha: 0.7)),
+        ),
+        Positioned(
+          top: 6,
+          right: 6,
+          child: _SwatchTopCopyIcon(
+            text: dartCode,
+            swatchColor: widget.color,
+            tooltip: 'Copy Dart Code ($dartCode)',
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
