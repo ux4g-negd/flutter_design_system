@@ -36,11 +36,13 @@ class DesktopLayout extends StatelessWidget implements BaseLayout {
     // Hide the settings panel (Knobs/Addons) on:
     // 1. Home screen (no use case selected)
     // 2. Quick Guide doc pages (Overview, Installation)
+    // 3. Token sections (Colors, Typography, Elevation, Dimensions)
     final isHomeScreen = state.useCase == null;
     final currentPath = state.path ?? '';
     final isDocPage =
         currentPath.startsWith('overview') ||
         currentPath.startsWith('quick-guide') ||
+        currentPath.startsWith('token') ||
         currentPath.startsWith('utils');
     final showSettingsPanel =
         !isHomeScreen &&

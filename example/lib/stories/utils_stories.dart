@@ -83,7 +83,7 @@ final quickGuideComponent = WidgetbookComponent(
 // ── Theme — Color Palette ─────────────────────────────────────────────────────
 
 final themeColorComponent = WidgetbookComponent(
-  name: 'Color Palette',
+  name: 'Colors',
   isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
@@ -93,16 +93,16 @@ final themeColorComponent = WidgetbookComponent(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const _SectionHeader(
+              'Ux4gColors Tokens',
+              'Ux4gColors.* (Ux4gPalette is deprecated)',
+            ),
+            const SizedBox(height: 20),
             _PaletteView(
               label: 'Primary Solid Scale',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch(
-                  'primary',
-                  Ux4gColors.primary,
-                  'primary ★',
-                  main: true,
-                ),
+                _Swatch('primary', Ux4gColors.primary, 'primary ★', main: true),
                 _Swatch('primary-50', Ux4gColors.primary50, '50'),
                 _Swatch('primary-100', Ux4gColors.primary100, '100'),
                 _Swatch('primary-200', Ux4gColors.primary200, '200'),
@@ -648,6 +648,13 @@ final themeColorComponent = WidgetbookComponent(
         title: 'Using UX4G Colors',
         sections: const [
           _DocSection(
+            heading: '⚠️ Migration Notice: Ux4gPalette is Deprecated',
+            body:
+                'The static color token class Ux4gPalette has been renamed to Ux4gColors (e.g. Ux4gColors.primary600). '
+                'Ux4gPalette is retained as a deprecated alias (typedef Ux4gPalette = Ux4gColors;) so existing code continues working, '
+                'but please exclusively use Ux4gColors for all new development.',
+          ),
+          _DocSection(
             heading: '1. Palette Colors  (static, always fixed)',
             body:
                 'Ux4gColors provides fixed color constants that never change with '
@@ -777,22 +784,81 @@ final themeTypographyComponent = WidgetbookComponent(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _SectionHeader('Header Tokens', 'Ux4gTheme.typography(context).h*'),
+              const _SectionHeader(
+                'Header Tokens',
+                'Ux4gTheme.typography(context).h*',
+              ),
               const SizedBox(height: 20),
-              _TypographyRow(tokenName: 'hXXS_default', style: t.hXXS_default, label: 'Header XXS (Default)'),
-              _TypographyRow(tokenName: 'hXXS_strong', style: t.hXXS_strong, label: 'Header XXS (Strong)'),
-              _TypographyRow(tokenName: 'hXS_default', style: t.hXS_default, label: 'Header XS (Default)'),
-              _TypographyRow(tokenName: 'hXS_strong', style: t.hXS_strong, label: 'Header XS (Strong)'),
-              _TypographyRow(tokenName: 'hS_default', style: t.hS_default, label: 'Header S (Default)'),
-              _TypographyRow(tokenName: 'hS_strong', style: t.hS_strong, label: 'Header S (Strong)'),
-              _TypographyRow(tokenName: 'hM_default', style: t.hM_default, label: 'Header M (Default)'),
-              _TypographyRow(tokenName: 'hM_strong', style: t.hM_strong, label: 'Header M (Strong)'),
-              _TypographyRow(tokenName: 'hL_default', style: t.hL_default, label: 'Header L (Default)'),
-              _TypographyRow(tokenName: 'hL_strong', style: t.hL_strong, label: 'Header L (Strong)'),
-              _TypographyRow(tokenName: 'hXL_default', style: t.hXL_default, label: 'Header XL (Default)'),
-              _TypographyRow(tokenName: 'hXL_strong', style: t.hXL_strong, label: 'Header XL (Strong)'),
-              _TypographyRow(tokenName: 'hXXL_default', style: t.hXXL_default, label: 'Header XXL (Default)'),
-              _TypographyRow(tokenName: 'hXXL_strong', style: t.hXXL_strong, label: 'Header XXL (Strong)'),
+              _TypographyRow(
+                tokenName: 'hXXS_default',
+                style: t.hXXS_default,
+                label: 'Header XXS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXXS_strong',
+                style: t.hXXS_strong,
+                label: 'Header XXS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXS_default',
+                style: t.hXS_default,
+                label: 'Header XS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXS_strong',
+                style: t.hXS_strong,
+                label: 'Header XS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hS_default',
+                style: t.hS_default,
+                label: 'Header S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hS_strong',
+                style: t.hS_strong,
+                label: 'Header S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hM_default',
+                style: t.hM_default,
+                label: 'Header M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hM_strong',
+                style: t.hM_strong,
+                label: 'Header M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hL_default',
+                style: t.hL_default,
+                label: 'Header L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hL_strong',
+                style: t.hL_strong,
+                label: 'Header L (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXL_default',
+                style: t.hXL_default,
+                label: 'Header XL (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXL_strong',
+                style: t.hXL_strong,
+                label: 'Header XL (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXXL_default',
+                style: t.hXXL_default,
+                label: 'Header XXL (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXXL_strong',
+                style: t.hXXL_strong,
+                label: 'Header XXL (Strong)',
+              ),
             ],
           ),
         );
@@ -807,16 +873,51 @@ final themeTypographyComponent = WidgetbookComponent(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _SectionHeader('Display Tokens', 'Ux4gTheme.typography(context).d*'),
+              const _SectionHeader(
+                'Display Tokens',
+                'Ux4gTheme.typography(context).d*',
+              ),
               const SizedBox(height: 20),
-              _TypographyRow(tokenName: 'dXS_default', style: t.dXS_default, label: 'Display XS (Default)'),
-              _TypographyRow(tokenName: 'dXS_strong', style: t.dXS_strong, label: 'Display XS (Strong)'),
-              _TypographyRow(tokenName: 'dS_default', style: t.dS_default, label: 'Display S (Default)'),
-              _TypographyRow(tokenName: 'dS_strong', style: t.dS_strong, label: 'Display S (Strong)'),
-              _TypographyRow(tokenName: 'dM_default', style: t.dM_default, label: 'Display M (Default)'),
-              _TypographyRow(tokenName: 'dM_strong', style: t.dM_strong, label: 'Display M (Strong)'),
-              _TypographyRow(tokenName: 'dL_default', style: t.dL_default, label: 'Display L (Default)'),
-              _TypographyRow(tokenName: 'dL_strong', style: t.dL_strong, label: 'Display L (Strong)'),
+              _TypographyRow(
+                tokenName: 'dXS_default',
+                style: t.dXS_default,
+                label: 'Display XS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dXS_strong',
+                style: t.dXS_strong,
+                label: 'Display XS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'dS_default',
+                style: t.dS_default,
+                label: 'Display S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dS_strong',
+                style: t.dS_strong,
+                label: 'Display S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'dM_default',
+                style: t.dM_default,
+                label: 'Display M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dM_strong',
+                style: t.dM_strong,
+                label: 'Display M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'dL_default',
+                style: t.dL_default,
+                label: 'Display L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dL_strong',
+                style: t.dL_strong,
+                label: 'Display L (Strong)',
+              ),
             ],
           ),
         );
@@ -831,16 +932,51 @@ final themeTypographyComponent = WidgetbookComponent(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _SectionHeader('Body Tokens', 'Ux4gTheme.typography(context).b*'),
+              const _SectionHeader(
+                'Body Tokens',
+                'Ux4gTheme.typography(context).b*',
+              ),
               const SizedBox(height: 20),
-              _TypographyRow(tokenName: 'bXS_default', style: t.bXS_default, label: 'Body XS (Default)'),
-              _TypographyRow(tokenName: 'bXS_strong', style: t.bXS_strong, label: 'Body XS (Strong)'),
-              _TypographyRow(tokenName: 'bS_default', style: t.bS_default, label: 'Body S (Default)'),
-              _TypographyRow(tokenName: 'bS_strong', style: t.bS_strong, label: 'Body S (Strong)'),
-              _TypographyRow(tokenName: 'bM_default', style: t.bM_default, label: 'Body M (Default)'),
-              _TypographyRow(tokenName: 'bM_strong', style: t.bM_strong, label: 'Body M (Strong)'),
-              _TypographyRow(tokenName: 'bL_default', style: t.bL_default, label: 'Body L (Default)'),
-              _TypographyRow(tokenName: 'bL_strong', style: t.bL_strong, label: 'Body L (Strong)'),
+              _TypographyRow(
+                tokenName: 'bXS_default',
+                style: t.bXS_default,
+                label: 'Body XS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bXS_strong',
+                style: t.bXS_strong,
+                label: 'Body XS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'bS_default',
+                style: t.bS_default,
+                label: 'Body S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bS_strong',
+                style: t.bS_strong,
+                label: 'Body S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'bM_default',
+                style: t.bM_default,
+                label: 'Body M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bM_strong',
+                style: t.bM_strong,
+                label: 'Body M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'bL_default',
+                style: t.bL_default,
+                label: 'Body L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bL_strong',
+                style: t.bL_strong,
+                label: 'Body L (Strong)',
+              ),
             ],
           ),
         );
@@ -855,16 +991,51 @@ final themeTypographyComponent = WidgetbookComponent(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _SectionHeader('Label Tokens', 'Ux4gTheme.typography(context).l*'),
+              const _SectionHeader(
+                'Label Tokens',
+                'Ux4gTheme.typography(context).l*',
+              ),
               const SizedBox(height: 20),
-              _TypographyRow(tokenName: 'lS_default', style: t.lS_default, label: 'Label S (Default)'),
-              _TypographyRow(tokenName: 'lS_strong', style: t.lS_strong, label: 'Label S (Strong)'),
-              _TypographyRow(tokenName: 'lM_default', style: t.lM_default, label: 'Label M (Default)'),
-              _TypographyRow(tokenName: 'lM_strong', style: t.lM_strong, label: 'Label M (Strong)'),
-              _TypographyRow(tokenName: 'lL_default', style: t.lL_default, label: 'Label L (Default)'),
-              _TypographyRow(tokenName: 'lL_strong', style: t.lL_strong, label: 'Label L (Strong)'),
-              _TypographyRow(tokenName: 'lXL_default', style: t.lXL_default, label: 'Label XL (Default)'),
-              _TypographyRow(tokenName: 'lXL_strong', style: t.lXL_strong, label: 'Label XL (Strong)'),
+              _TypographyRow(
+                tokenName: 'lS_default',
+                style: t.lS_default,
+                label: 'Label S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lS_strong',
+                style: t.lS_strong,
+                label: 'Label S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'lM_default',
+                style: t.lM_default,
+                label: 'Label M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lM_strong',
+                style: t.lM_strong,
+                label: 'Label M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'lL_default',
+                style: t.lL_default,
+                label: 'Label L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lL_strong',
+                style: t.lL_strong,
+                label: 'Label L (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'lXL_default',
+                style: t.lXL_default,
+                label: 'Label XL (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lXL_strong',
+                style: t.lXL_strong,
+                label: 'Label XL (Strong)',
+              ),
             ],
           ),
         );
@@ -879,14 +1050,41 @@ final themeTypographyComponent = WidgetbookComponent(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const _SectionHeader('Title Tokens', 'Ux4gTheme.typography(context).t*'),
+              const _SectionHeader(
+                'Title Tokens',
+                'Ux4gTheme.typography(context).t*',
+              ),
               const SizedBox(height: 20),
-              _TypographyRow(tokenName: 'tS_default', style: t.tS_default, label: 'Title S (Default)'),
-              _TypographyRow(tokenName: 'tS_strong', style: t.tS_strong, label: 'Title S (Strong)'),
-              _TypographyRow(tokenName: 'tM_default', style: t.tM_default, label: 'Title M (Default)'),
-              _TypographyRow(tokenName: 'tM_strong', style: t.tM_strong, label: 'Title M (Strong)'),
-              _TypographyRow(tokenName: 'tL_default', style: t.tL_default, label: 'Title L (Default)'),
-              _TypographyRow(tokenName: 'tL_strong', style: t.tL_strong, label: 'Title L (Strong)'),
+              _TypographyRow(
+                tokenName: 'tS_default',
+                style: t.tS_default,
+                label: 'Title S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'tS_strong',
+                style: t.tS_strong,
+                label: 'Title S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'tM_default',
+                style: t.tM_default,
+                label: 'Title M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'tM_strong',
+                style: t.tM_strong,
+                label: 'Title M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'tL_default',
+                style: t.tL_default,
+                label: 'Title L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'tL_strong',
+                style: t.tL_strong,
+                label: 'Title L (Strong)',
+              ),
             ],
           ),
         );
@@ -908,8 +1106,7 @@ final themeTypographyComponent = WidgetbookComponent(
         codeBlocks: [
           _CodeBlock(
             label: 'Dart — Basic Usage',
-            code:
-                '''// Inside your widget build() method:
+            code: '''// Inside your widget build() method:
 Widget build(BuildContext context) {
   final typography = Ux4gTheme.typography(context);
   final colors = Ux4gTheme.colors(context);
@@ -1180,7 +1377,9 @@ final dimensionsElevationComponent = WidgetbookComponent(
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final titleColor = isDark ? Colors.white : const Color(0xFF111827);
-        final subColor = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
+        final subColor = isDark
+            ? const Color(0xFF9CA3AF)
+            : const Color(0xFF4B5563);
 
         return SingleChildScrollView(
           padding: const EdgeInsets.all(32),
@@ -1199,11 +1398,7 @@ final dimensionsElevationComponent = WidgetbookComponent(
               const SizedBox(height: 8),
               Text(
                 'Five reusable elevation styles. Each combines a key and an ambient shadow to express depth. Apply the matching effect style from UX4G Design System — never hand-set shadow values.',
-                style: TextStyle(
-                  fontSize: 14.5,
-                  color: subColor,
-                  height: 1.5,
-                ),
+                style: TextStyle(fontSize: 14.5, color: subColor, height: 1.5),
               ),
               const SizedBox(height: 36),
               Wrap(
@@ -1243,7 +1438,10 @@ final dimensionsElevationComponent = WidgetbookComponent(
                 ],
               ),
               const SizedBox(height: 48),
-              _SectionHeader('Elevation Tokens & Code Snippets', 'Ux4gElevation.*'),
+              _SectionHeader(
+                'Elevation Tokens & Code Snippets',
+                'Ux4gElevation.*',
+              ),
               const SizedBox(height: 20),
               const _ElevationCodeRow(
                 level: 0,
@@ -1725,8 +1923,8 @@ class _PaletteView extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Wrap(
-            spacing: 8,
-            runSpacing: 8,
+            spacing: 14,
+            runSpacing: 14,
             children: swatches
                 .map((s) => _SwatchTile(s, compact: compact))
                 .toList(),
@@ -1763,88 +1961,249 @@ class _SwatchTileState extends State<_SwatchTile> {
   Widget build(BuildContext context) {
     final hex = _toHex(widget.swatch.color);
     final fg = _isDark(widget.swatch.color) ? Colors.white : Colors.black;
-    final w = widget.compact ? 80.0 : 100.0;
-    final h = widget.compact ? 64.0 : 80.0;
+    final w = widget.compact ? 160.0 : 220.0;
+    final h = widget.compact ? 64.0 : 76.0;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final codeSnippet = 'Ux4gColors.${widget.swatch.token.replaceAll('-', '')}';
 
-    return GestureDetector(
-      onTap: () async {
-        await Clipboard.setData(ClipboardData(text: hex));
-        setState(() => _copied = true);
-        await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
-        if (mounted) setState(() => _copied = false);
-      },
-      child: Tooltip(
-        message: 'Tap to copy $hex',
-        child: Container(
-          width: w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: widget.swatch.main
-                ? Border.all(color: const Color(0xFF6A4EFF), width: 2)
-                : Border.all(
-                    color: isDarkTheme
-                        ? Colors.white12
-                        : const Color(0xFFE5E7EB),
-                  ),
-            boxShadow: isDarkTheme
-                ? []
-                : [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.06),
-                      blurRadius: 4,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: h,
-                decoration: BoxDecoration(
-                  color: widget.swatch.color,
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(7),
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: _copied ? Icon(Icons.check, color: fg, size: 16) : null,
+    return Container(
+      width: w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: widget.swatch.main
+            ? Border.all(color: const Color(0xFF6A4EFF), width: 2)
+            : Border.all(
+                color: isDarkTheme
+                    ? Colors.white12
+                    : const Color(0xFFE5E7EB),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                decoration: BoxDecoration(
-                  color: isDarkTheme ? const Color(0xFF1E1E2E) : Colors.white,
-                  borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(7),
+        boxShadow: isDarkTheme
+            ? []
+            : [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.06),
+                  blurRadius: 4,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Stack(
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  await Clipboard.setData(ClipboardData(text: hex));
+                  setState(() => _copied = true);
+                  await Future.delayed(
+                    const Duration(seconds: 1, milliseconds: 500),
+                  );
+                  if (mounted) setState(() => _copied = false);
+                },
+                child: Tooltip(
+                  message: 'Tap to copy $hex',
+                  child: Container(
+                    height: h,
+                    decoration: BoxDecoration(
+                      color: widget.swatch.color,
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(7),
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    child: _copied
+                        ? Icon(Icons.check, color: fg, size: 20)
+                        : null,
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              Positioned(
+                top: 6,
+                right: 6,
+                child: _SwatchTopCopyIcon(
+                  text: hex,
+                  swatchColor: widget.swatch.color,
+                  tooltip: 'Copy Hex Code ($hex)',
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: isDarkTheme ? const Color(0xFF1E1E2E) : Colors.white,
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(7),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      widget.swatch.label,
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        color: isDarkTheme
-                            ? Colors.white
-                            : const Color(0xFF111827),
+                    Expanded(
+                      child: Text(
+                        widget.swatch.label,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: isDarkTheme
+                              ? Colors.white
+                              : const Color(0xFF111827),
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Text(
                       hex,
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'monospace',
                         color: isDarkTheme
-                            ? Colors.white38
+                            ? Colors.white60
                             : const Color(0xFF6B7280),
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isDarkTheme
+                        ? Colors.white.withValues(alpha: 0.05)
+                        : const Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          codeSnippet,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'monospace',
+                            color: Color(0xFF6A4EFF),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      _MiniCopyIcon(
+                        text: codeSnippet,
+                        tooltip: 'Copy Dart Code ($codeSnippet)',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SwatchTopCopyIcon extends StatefulWidget {
+  final String text;
+  final Color swatchColor;
+  final String tooltip;
+  const _SwatchTopCopyIcon({
+    required this.text,
+    required this.swatchColor,
+    required this.tooltip,
+  });
+
+  @override
+  State<_SwatchTopCopyIcon> createState() => _SwatchTopCopyIconState();
+}
+
+class _SwatchTopCopyIconState extends State<_SwatchTopCopyIcon> {
+  bool _copied = false;
+
+  bool _isDark(Color c) => (c.r * 0.299 + c.g * 0.587 + c.b * 0.114) < 0.5;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDarkSwatch = _isDark(widget.swatchColor);
+    final iconColor = _copied
+        ? (isDarkSwatch ? const Color(0xFFA6E3A1) : const Color(0xFF059669))
+        : (isDarkSwatch ? Colors.white : Colors.black87);
+    final bgColor = isDarkSwatch
+        ? Colors.white.withValues(alpha: 0.2)
+        : Colors.black.withValues(alpha: 0.08);
+
+    return Tooltip(
+      message: _copied ? 'Copied!' : widget.tooltip,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(6),
+        onTap: () async {
+          await Clipboard.setData(ClipboardData(text: widget.text));
+          setState(() => _copied = true);
+          await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+          if (mounted) setState(() => _copied = false);
+        },
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Icon(
+            _copied ? Icons.check : Icons.content_copy,
+            size: 13,
+            color: iconColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _MiniCopyIcon extends StatefulWidget {
+  final String text;
+  final String tooltip;
+  const _MiniCopyIcon({required this.text, required this.tooltip});
+
+  @override
+  State<_MiniCopyIcon> createState() => _MiniCopyIconState();
+}
+
+class _MiniCopyIconState extends State<_MiniCopyIcon> {
+  bool _copied = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final activeColor = isDark
+        ? const Color(0xFFA6E3A1)
+        : const Color(0xFF059669);
+    final idleColor = isDark ? Colors.white54 : const Color(0xFF6B7280);
+
+    return Tooltip(
+      message: _copied ? 'Copied!' : widget.tooltip,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () async {
+          await Clipboard.setData(ClipboardData(text: widget.text));
+          setState(() => _copied = true);
+          await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+          if (mounted) setState(() => _copied = false);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Icon(
+            _copied ? Icons.check : Icons.content_copy,
+            size: 13,
+            color: _copied ? activeColor : idleColor,
           ),
         ),
       ),
@@ -1903,12 +2262,16 @@ class _TypographyRow extends StatelessWidget {
     final borderColor = isDark ? Colors.white12 : const Color(0xFFE5E7EB);
     final labelColor = isDark ? Colors.white : const Color(0xFF111827);
     final codeBg = isDark ? const Color(0xFF121212) : const Color(0xFFF3F4F6);
-    final codeColor = isDark ? const Color(0xFFCDD6F4) : const Color(0xFF374151);
+    final codeColor = isDark
+        ? const Color(0xFFCDD6F4)
+        : const Color(0xFF374151);
 
     final fontSize = style.fontSize?.toStringAsFixed(0) ?? '?';
     final fontWeightStr = _fontWeightName(style.fontWeight);
     final heightVal = style.height ?? 1.0;
-    final lineHeightPx = ((style.fontSize ?? 14) * heightVal).toStringAsFixed(0);
+    final lineHeightPx = ((style.fontSize ?? 14) * heightVal).toStringAsFixed(
+      0,
+    );
     final codeSnippet = 'Ux4gTheme.typography(context).$tokenName';
 
     return Container(
@@ -2059,8 +2422,14 @@ class _ElevationCardPreview extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               boxShadow: activeShadows,
               border: level == 0
-                  ? Border.all(color: isDark ? Colors.white12 : const Color(0xFFE5E7EB))
-                  : (isDark ? Border.all(color: Colors.white.withValues(alpha: 0.06)) : null),
+                  ? Border.all(
+                      color: isDark ? Colors.white12 : const Color(0xFFE5E7EB),
+                    )
+                  : (isDark
+                        ? Border.all(
+                            color: Colors.white.withValues(alpha: 0.06),
+                          )
+                        : null),
             ),
             alignment: Alignment.center,
             child: Text(
@@ -2086,11 +2455,7 @@ class _ElevationCardPreview extends StatelessWidget {
           Text(
             details,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 11.5,
-              color: subColor,
-              height: 1.45,
-            ),
+            style: TextStyle(fontSize: 11.5, color: subColor, height: 1.45),
           ),
         ],
       ),
@@ -2119,7 +2484,9 @@ class _ElevationCodeRow extends StatelessWidget {
     final labelColor = isDark ? Colors.white : const Color(0xFF111827);
     final subColor = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
     final codeBg = isDark ? const Color(0xFF121212) : const Color(0xFFF3F4F6);
-    final codeColor = isDark ? const Color(0xFFCDD6F4) : const Color(0xFF374151);
+    final codeColor = isDark
+        ? const Color(0xFFCDD6F4)
+        : const Color(0xFF374151);
     final codeSnippet = 'Ux4gElevation.$tokenName';
 
     return Container(
@@ -2164,10 +2531,7 @@ class _ElevationCodeRow extends StatelessWidget {
           const SizedBox(height: 6),
           Text(
             description.replaceAll('\n', ' • '),
-            style: TextStyle(
-              fontSize: 12,
-              color: subColor,
-            ),
+            style: TextStyle(fontSize: 12, color: subColor),
           ),
           const SizedBox(height: 12),
           Container(
