@@ -15,7 +15,13 @@ final buttonComponent = WidgetbookComponent(
           label: 'Size',
           options: Ux4gButtonSize.values,
           initialOption: Ux4gButtonSize.medium,
-          labelBuilder: (v) => v.name,
+          labelBuilder: (v) => switch (v) {
+            Ux4gButtonSize.xs => 'XS',
+            Ux4gButtonSize.small => 'Small',
+            Ux4gButtonSize.medium => 'Medium',
+            Ux4gButtonSize.large => 'Large',
+            Ux4gButtonSize.xl => 'XL',
+          },
         );
 
         double? width;
@@ -23,6 +29,12 @@ final buttonComponent = WidgetbookComponent(
         TextStyle? textStyle;
 
         switch (size) {
+          case Ux4gButtonSize.xs:
+            height = 24;
+            textStyle = typography?.lL_default.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            );
           case Ux4gButtonSize.small:
             height = 32;
             textStyle = typography?.lL_default;
@@ -32,6 +44,12 @@ final buttonComponent = WidgetbookComponent(
           case Ux4gButtonSize.large:
             height = 48;
             textStyle = typography?.lXL_default;
+          case Ux4gButtonSize.xl:
+            height = 56;
+            textStyle = typography?.lXL_default.copyWith(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            );
         }
 
         return ComponentDocs(
@@ -442,53 +460,24 @@ Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${ton
         description:
             'Five size options ranging from XS to XL controlling height, width, and padding.',
         code:
-            '''Ux4gButton(text: 'XS', width: 72, height: 24, padding: EdgeInsets.zero, onPressed: () {});
+            '''Ux4gButton(text: 'XS',     size: Ux4gButtonSize.xs,     onPressed: () {});
 Ux4gButton(text: 'Small',  size: Ux4gButtonSize.small,  onPressed: () {});
 Ux4gButton(text: 'Medium', size: Ux4gButtonSize.medium, onPressed: () {});
 Ux4gButton(text: 'Large',  size: Ux4gButtonSize.large,  onPressed: () {});
-Ux4gButton(text: 'XL', width: 109, height: 56, onPressed: () {});''',
+Ux4gButton(text: 'XL',     size: Ux4gButtonSize.xl,     onPressed: () {});''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
+          children: Ux4gButtonSize.values.map(
+            (s) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Ux4gButton(
                 onPressed: () {},
-                text: 'XS',
-                width: 72,
-                height: 24,
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                textStyle: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
+                text: s.name.toUpperCase(),
+                variant: Ux4gButtonVariant.primary,
+                size: s,
               ),
             ),
-            ...Ux4gButtonSize.values.map(
-              (s) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                child: Ux4gButton(
-                  onPressed: () {},
-                  text: s.name.toUpperCase(),
-                  variant: Ux4gButtonVariant.primary,
-                  size: s,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Ux4gButton(
-                onPressed: () {},
-                text: 'XL',
-                width: 109,
-                height: 56,
-                textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
+          ).toList(),
         ),
       ),
     ),

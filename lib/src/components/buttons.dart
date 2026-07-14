@@ -7,9 +7,11 @@ import 'loader.dart';
 enum Ux4gButtonVariant { primary, secondary, outline, ghost }
 
 enum Ux4gButtonSize {
+  xs(12.0, 4.0, 24.0),
   small(16.0, 7.0, 32.0),
   medium(20.0, 10.0, 40.0),
-  large(24.0, 14.0, 48.0);
+  large(24.0, 14.0, 48.0),
+  xl(28.0, 16.0, 56.0);
 
   final double horizontalPadding;
   final double verticalPadding;
@@ -100,9 +102,17 @@ class Ux4gButton extends StatelessWidget {
 
     final defaultTextStyle =
         switch (size) {
+          Ux4gButtonSize.xs => ux4gTypography?.lL_default.copyWith(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
           Ux4gButtonSize.small => ux4gTypography?.lL_default,
           Ux4gButtonSize.medium => ux4gTypography?.lXL_default,
           Ux4gButtonSize.large => ux4gTypography?.lXL_default,
+          Ux4gButtonSize.xl => ux4gTypography?.lXL_default.copyWith(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
         } ??
         materialTheme.textTheme.labelLarge ??
         const TextStyle();
