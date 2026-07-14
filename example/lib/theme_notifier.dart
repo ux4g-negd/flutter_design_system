@@ -5,5 +5,5 @@ import 'package:flutter/material.dart';
 /// Component previews in the middle panel are NOT affected — they follow
 /// the right-side Settings addon.
 final ValueNotifier<ThemeMode> widgetbookThemeNotifier = ValueNotifier(
-  ThemeMode.system,
+  ThemeMode.light,
 );
