@@ -202,7 +202,6 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 journeyTimelineComponent,
-                spinnerComponent, // ux4gSpinner
                 modalComponent,
                 paginationDottedComponent,
                 WidgetbookFolder(
@@ -233,7 +232,6 @@ class UX4GWidgetbook extends StatelessWidget {
                 radioButtonComponent,
                 resultListComponent, // Result List
                 sliderComponent,
-                timeSlotComponent, // TimeSlot
                 WidgetbookFolder(
                   name: 'Social Link',
                   isInitiallyExpanded: false,
@@ -243,6 +241,7 @@ class UX4GWidgetbook extends StatelessWidget {
                     socialLinkListComponent,
                   ],
                 ),
+                spinnerComponent, // ux4gSpinner
                 WidgetbookFolder(
                   name: 'Status Banner',
                   isInitiallyExpanded: false,
@@ -263,6 +262,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 textAreaComponent,
                 timePickerComponent,
                 toastComponent,
+                timeSlotComponent, // TimeSlot
                 tooltipComponent,
               ],
             ),
@@ -714,4 +714,3 @@ class _SidebarLogo extends StatelessWidget {
     );
   }
 }
-
