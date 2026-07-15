@@ -169,16 +169,6 @@ class UX4GWidgetbook extends StatelessWidget {
                     chipGroupComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Circular Progress',
-                  isInitiallyExpanded: false,
-                  children: [
-                    circularProgressComponent,
-                    animatedCircularProgressComponent,
-                    halfCircleProgressComponent,
-                    animatedHalfCircleProgressComponent,
-                  ],
-                ),
                 datePickerComponent,
                 dividerComponent,
                 WidgetbookFolder(
@@ -212,17 +202,33 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 journeyTimelineComponent,
-                WidgetbookFolder(
-                  name: 'Linear Progress',
-                  isInitiallyExpanded: false,
-                  children: [
-                    linearProgressComponent,
-                    animatedLinearProgressComponent,
-                  ],
-                ),
                 spinnerComponent, // ux4gSpinner
                 modalComponent,
                 paginationDottedComponent,
+                WidgetbookFolder(
+                  name: 'Progress',
+                  isInitiallyExpanded: false,
+                  children: [
+                    WidgetbookFolder(
+                      name: 'Circular Progress',
+                      isInitiallyExpanded: false,
+                      children: [
+                        circularProgressComponent,
+                        animatedCircularProgressComponent,
+                        halfCircleProgressComponent,
+                        animatedHalfCircleProgressComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Linear Progress',
+                      isInitiallyExpanded: false,
+                      children: [
+                        linearProgressComponent,
+                        animatedLinearProgressComponent,
+                      ],
+                    ),
+                  ],
+                ),
                 progressSlaIndicatorComponent,
                 radioButtonComponent,
                 resultListComponent, // Result List
