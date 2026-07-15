@@ -4,11 +4,24 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../theme_notifier.dart';
 
+// Retained icons to ensure Flutter's icon tree-shaking (--tree-shake-icons)
+// preserves them when referenced inside non-const card constructors.
+const List<IconData> _retainedIcons = [
+  Icons.account_tree_outlined,
+  Icons.accessibility_new_rounded,
+  Icons.palette_outlined,
+  Icons.code_rounded,
+  Icons.widgets_outlined,
+  Icons.style_outlined,
+  Icons.dashboard_customize_outlined,
+];
+
 class Ux4gWelcomePage extends StatelessWidget {
   const Ux4gWelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    assert(_retainedIcons.isNotEmpty);
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: widgetbookThemeNotifier,
       builder: (context, mode, _) {
@@ -228,7 +241,7 @@ class Ux4gWelcomePage extends StatelessWidget {
               onPressed: () {
                 final state = WidgetbookState.maybeOf(context);
                 // ignore: invalid_use_of_internal_member
-                state?.updatePath('quick-guide/installation');
+                state?.updatePath('quick-start-guide/installation');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: primary,
