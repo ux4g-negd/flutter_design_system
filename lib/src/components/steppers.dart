@@ -713,21 +713,27 @@ class _LinePainter extends CustomPainter {
   }
 }
 
-enum Ux4gCapsuleStepperLayout { linear, rightAligned, centered, centeredBetween, split }
+enum Ux4gCompactStepperLayout { linear, rightAligned, centered, centeredBetween, split }
 
-class Ux4gCapsuleStepper extends StatelessWidget {
+@Deprecated('Use Ux4gCompactStepperLayout instead')
+typedef Ux4gCapsuleStepperLayout = Ux4gCompactStepperLayout;
+
+@Deprecated('Use Ux4gCompactStepper instead')
+typedef Ux4gCapsuleStepper = Ux4gCompactStepper;
+
+class Ux4gCompactStepper extends StatelessWidget {
   final int totalSteps;
   final int currentStep;
   final String stepLabel;
   final String? description;
   final VoidCallback onNext;
   final VoidCallback onPrevious;
-  final Ux4gCapsuleStepperLayout layout;
+  final Ux4gCompactStepperLayout layout;
   final CrossAxisAlignment labelAlignment;
   final Color? activeColor;
   final Color? inactiveColor;
 
-  const Ux4gCapsuleStepper({
+  const Ux4gCompactStepper({
     super.key,
     required this.totalSteps,
     required this.currentStep,
@@ -735,7 +741,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
     this.description,
     this.onNext = _noop,
     this.onPrevious = _noop,
-    this.layout = Ux4gCapsuleStepperLayout.linear,
+    this.layout = Ux4gCompactStepperLayout.linear,
     this.labelAlignment = CrossAxisAlignment.start,
     this.activeColor,
     this.inactiveColor,
@@ -761,7 +767,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (layout == Ux4gCapsuleStepperLayout.linear)
+          if (layout == Ux4gCompactStepperLayout.linear)
             _LinearCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -773,7 +779,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
-          else if (layout == Ux4gCapsuleStepperLayout.rightAligned)
+          else if (layout == Ux4gCompactStepperLayout.rightAligned)
             _RightAlignedCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -784,7 +790,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
-          else if (layout == Ux4gCapsuleStepperLayout.centered)
+          else if (layout == Ux4gCompactStepperLayout.centered)
             _CenteredCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -795,7 +801,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
-          else if (layout == Ux4gCapsuleStepperLayout.centeredBetween)
+          else if (layout == Ux4gCompactStepperLayout.centeredBetween)
             _CenteredBetweenCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,

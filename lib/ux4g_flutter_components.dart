@@ -25,6 +25,7 @@ export 'src/components/loader.dart';
 export 'src/components/linear_progress.dart';
 export 'src/components/circular_progress.dart';
 export 'src/components/tag.dart';
+export 'src/components/compact_stepper.dart';
 export 'src/components/steppers.dart';
 export 'src/components/tooltips.dart';
 export 'src/components/ux4g_switch.dart';

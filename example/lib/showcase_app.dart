@@ -4348,9 +4348,9 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         ),
                       ),
 
-                      // ─── 29. Capsule Stepper ──────────────────────────
+                      // ─── 29. Compact Stepper ──────────────────────────
                       _showcaseCard(
-                        title: 'Capsule (Compact) Stepper',
+                        title: 'Compact Stepper',
                         typography: typography,
                         colors: colors,
                         child: Column(
@@ -4361,13 +4361,13 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               style: typography.lS_strong,
                             ),
                             const SizedBox(height: 8),
-                            Ux4gCapsuleStepper(
+                            Ux4gCompactStepper(
                               totalSteps: 12,
                               currentStep: _capsuleStep,
                               stepLabel: 'Account Setup',
                               description:
                                   'Enter your personal details to continue.',
-                              layout: Ux4gCapsuleStepperLayout.linear,
+                              layout: Ux4gCompactStepperLayout.linear,
                               onNext: _capsuleStep < 12
                                   ? () => setState(() => _capsuleStep++)
                                   : () {},
@@ -4383,13 +4383,13 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               style: typography.lS_strong,
                             ),
                             const SizedBox(height: 8),
-                            Ux4gCapsuleStepper(
+                            Ux4gCompactStepper(
                               totalSteps: 12,
                               currentStep: _capsuleStep,
                               stepLabel: 'Finalize Profile',
                               description:
                                   'Uploading your bio and other settings.',
-                              layout: Ux4gCapsuleStepperLayout.rightAligned,
+                              layout: Ux4gCompactStepperLayout.rightAligned,
                               onNext: _capsuleStep < 12
                                   ? () => setState(() => _capsuleStep++)
                                   : () {},
@@ -4405,13 +4405,13 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               style: typography.lS_strong,
                             ),
                             const SizedBox(height: 8),
-                            Ux4gCapsuleStepper(
+                            Ux4gCompactStepper(
                               totalSteps: 12,
                               currentStep: _capsuleStep,
                               stepLabel: 'Payment Methods',
                               description:
                                   'Review your cards and billing address.',
-                              layout: Ux4gCapsuleStepperLayout.centered,
+                              layout: Ux4gCompactStepperLayout.centered,
                               onNext: _capsuleStep < 12
                                   ? () => setState(() => _capsuleStep++)
                                   : () {},
@@ -4424,13 +4424,13 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             const SizedBox(height: 16),
                             Text('Layout: Split', style: typography.lS_strong),
                             const SizedBox(height: 8),
-                            Ux4gCapsuleStepper(
+                            Ux4gCompactStepper(
                               totalSteps: 12,
                               currentStep: _capsuleStep,
                               stepLabel: 'Confirmation',
                               description:
                                   'Almost done. Just one more click to finish your setup and start using the platform.',
-                              layout: Ux4gCapsuleStepperLayout.split,
+                              layout: Ux4gCompactStepperLayout.split,
                               onNext: _capsuleStep < 12
                                   ? () => setState(() => _capsuleStep++)
                                   : () {},

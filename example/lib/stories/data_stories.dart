@@ -80,6 +80,64 @@ const _stepperProps = [
   ),
 ];
 
+const _compactStepperProps = [
+  PropRow(
+    name: 'totalSteps',
+    type: 'int',
+    description: 'Total number of steps.',
+    required: true,
+  ),
+  PropRow(
+    name: 'currentStep',
+    type: 'int',
+    description: 'One-based active step index.',
+    required: true,
+  ),
+  PropRow(
+    name: 'stepLabel',
+    type: 'String',
+    description: 'Label string displayed for the step.',
+    required: true,
+  ),
+  PropRow(
+    name: 'description',
+    type: 'String?',
+    description: 'Secondary helper or description text.',
+  ),
+  PropRow(
+    name: 'onNext',
+    type: 'VoidCallback',
+    description: 'Callback triggered when the next arrow button is tapped.',
+  ),
+  PropRow(
+    name: 'onPrevious',
+    type: 'VoidCallback',
+    description: 'Callback triggered when the previous arrow button is tapped.',
+  ),
+  PropRow(
+    name: 'layout',
+    type: 'Ux4gCompactStepperLayout',
+    description: 'linear, rightAligned, centered, centeredBetween, or split.',
+    defaultValue: 'linear',
+  ),
+  PropRow(
+    name: 'labelAlignment',
+    type: 'CrossAxisAlignment',
+    description: 'Cross-axis alignment for step label and description text.',
+    defaultValue: 'CrossAxisAlignment.start',
+  ),
+  PropRow(
+    name: 'activeColor',
+    type: 'Color?',
+    description: 'Override color for active and completed step capsules.',
+  ),
+  PropRow(
+    name: 'inactiveColor',
+    type: 'Color?',
+    description: 'Override color for inactive step capsules.',
+  ),
+];
+
 final stepperComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [
@@ -106,8 +164,8 @@ final stepperComponent = WidgetbookComponent(
   ],
 );
 
-// Capsule variant with prev/next
-Ux4gCapsuleStepper(
+// Compact variant with prev/next
+Ux4gCompactStepper(
   totalSteps: 5,
   currentStep: 1,
   stepLabel: 'Step 2 of 5',
@@ -1032,8 +1090,8 @@ Ux4gCapsuleStepper(
   ],
 );
 
-final capsuleStepperComponent = WidgetbookComponent(
-  name: 'CapsuleStepper (Compact Stepper)',
+final compactStepperComponent = WidgetbookComponent(
+  name: 'CompactStepper',
   useCases: [
     WidgetbookUseCase(
       name: 'Linear',
@@ -1042,25 +1100,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'CapsuleStepper (Compact Stepper) — Linear',
+              name: 'CompactStepper — Linear',
               description:
                   'Capsules sandwiched between navigation arrows, labels aligned to start.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.linear,
+  layout: Ux4gCompactStepperLayout.linear,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.linear,
+                  layout: Ux4gCompactStepperLayout.linear,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1077,25 +1135,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'CapsuleStepper (Compact Stepper) — Right Aligned',
+              name: 'CompactStepper — Right Aligned',
               description:
                   'Capsules between arrows, step info on left, label/desc on right.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.rightAligned,
+  layout: Ux4gCompactStepperLayout.rightAligned,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.rightAligned,
+                  layout: Ux4gCompactStepperLayout.rightAligned,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1113,25 +1171,25 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name:
-                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
+                  'CompactStepper — Centered (Arrows Inside)',
               description:
                   'Capsules at top, arrows surrounding step info in the center.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.centered,
+  layout: Ux4gCompactStepperLayout.centered,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.centered,
+                  layout: Ux4gCompactStepperLayout.centered,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1149,25 +1207,25 @@ final capsuleStepperComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name:
-                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
+                  'CompactStepper — Centered (Arrows Outside)',
               description:
                   'Capsules at top, arrows pushed to the far edges of the container.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.centeredBetween,
+  layout: Ux4gCompactStepperLayout.centeredBetween,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.centeredBetween,
+                  layout: Ux4gCompactStepperLayout.centeredBetween,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1184,25 +1242,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'CapsuleStepper (Compact Stepper) — Split',
+              name: 'CompactStepper — Split',
               description:
                   'Capsules at top, labels spread across, arrows on the bottom right.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.split,
+  layout: Ux4gCompactStepperLayout.split,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.split,
+                  layout: Ux4gCompactStepperLayout.split,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1214,6 +1272,8 @@ final capsuleStepperComponent = WidgetbookComponent(
     ),
   ],
 );
+
+final capsuleStepperComponent = compactStepperComponent;
 
 // ── Result Row ────────────────────────────────────────────────────────────────
 
