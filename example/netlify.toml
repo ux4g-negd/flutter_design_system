@@ -1,11 +1,26 @@
 [build]
-  command = "flutter build web -t lib/widgetbook.dart --no-tree-shake-icons --release"
+  command = "flutter build web -t lib/widgetbook.dart --no-tree-shake-icons --pwa-strategy=none --release"
   publish = "build/web"
 
 [[headers]]
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.json"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
   for = "/healthcheck"
