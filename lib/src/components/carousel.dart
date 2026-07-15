@@ -117,7 +117,7 @@ class _Ux4gCarouselState extends State<Ux4gCarousel> {
               left: 0,
               right: 0,
               child: Center(
-                child: Ux4gPaginationIndicator(
+                child: Ux4gPaginationDotted(
                   totalPageCount: widget.items.length,
                   currentPageIndex: _currentIndex,
                   onPageChange: _handleManualPageChange,

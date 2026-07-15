@@ -4161,7 +4161,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
 
                       // ─── 27. Pagination ───────────────────────────────
                       _showcaseCard(
-                        title: 'Pagination Indicators',
+                        title: 'Pagination Dotted',
                         typography: typography,
                         colors: colors,
                         child: Column(
@@ -4170,7 +4170,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             Text('Default', style: typography.lM_strong),
                             const SizedBox(height: 8),
                             Center(
-                              child: Ux4gPaginationIndicator(
+                              child: Ux4gPaginationDotted(
                                 totalPageCount: 7,
                                 currentPageIndex: _pageIndex,
                                 onPageChange: (v) =>
@@ -4181,7 +4181,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             Text('Capsule', style: typography.lM_strong),
                             const SizedBox(height: 8),
                             Center(
-                              child: Ux4gPaginationIndicator(
+                              child: Ux4gPaginationDotted(
                                 totalPageCount: 7,
                                 currentPageIndex: _pageIndex,
                                 onPageChange: (v) =>
@@ -4196,7 +4196,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                             ),
                             const SizedBox(height: 8),
                             Center(
-                              child: Ux4gPaginationIndicator(
+                              child: Ux4gPaginationDotted(
                                 totalPageCount: 7,
                                 currentPageIndex: _pageIndex,
                                 onPageChange: (v) =>

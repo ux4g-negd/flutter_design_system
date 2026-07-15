@@ -13,7 +13,10 @@ enum Ux4gPaginationSize {
   const Ux4gPaginationSize(this.dotSize, this.spacing, this.arrowSize);
 }
 
-class Ux4gPaginationIndicator extends StatelessWidget {
+@Deprecated('Use Ux4gPaginationDotted instead')
+typedef Ux4gPaginationIndicator = Ux4gPaginationDotted;
+
+class Ux4gPaginationDotted extends StatelessWidget {
   final int totalPageCount;
   final int currentPageIndex;
   final ValueChanged<int> onPageChange;
@@ -28,7 +31,7 @@ class Ux4gPaginationIndicator extends StatelessWidget {
   final double? width;
   final double? height;
 
-  const Ux4gPaginationIndicator({
+  const Ux4gPaginationDotted({
     super.key,
     required this.totalPageCount,
     required this.currentPageIndex,

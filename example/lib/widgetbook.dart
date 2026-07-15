@@ -222,7 +222,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 ),
                 spinnerComponent, // ux4gSpinner
                 modalComponent,
-                paginationComponent,
+                paginationDottedComponent,
                 progressSlaIndicatorComponent,
                 radioButtonComponent,
                 resultListComponent, // Result List

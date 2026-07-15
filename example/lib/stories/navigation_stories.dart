@@ -2477,10 +2477,10 @@ Ux4gChipGroup(
   ],
 );
 
-// ── Pagination ────────────────────────────────────────────────────────────────
+// ── Ux4gPaginationDotted ────────────────────────────────────────────────────────────────
 
-final paginationComponent = WidgetbookComponent(
-  name: 'Pagination Indicator',
+final paginationDottedComponent = WidgetbookComponent(
+  name: 'Pagination Dotted',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2489,9 +2489,9 @@ final paginationComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'PaginationIndicator',
+              name: 'Ux4gPaginationDotted',
               description: 'A page-dot indicator for carousels or steppers.',
-              code: '''Ux4gPaginationIndicator(
+              code: '''Ux4gPaginationDotted(
   totalPageCount: 5,
   currentPageIndex: currentPage,
   onPageChange: (i) => setState(() => currentPage = i),
@@ -2798,3 +2798,5 @@ Ux4gPaginationIndicator(
     ),
   ],
 );
+
+final paginationComponent = paginationDottedComponent;

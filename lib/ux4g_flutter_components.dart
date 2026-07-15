@@ -17,6 +17,7 @@ export 'src/components/modal.dart';
 export 'src/components/bottom_sheet.dart';
 export 'src/components/checkbox.dart';
 export 'src/components/pagination.dart';
+export 'src/components/pagination_dotted.dart';
 export 'src/components/chips.dart';
 export 'src/components/dropdown.dart';
 export 'src/components/slider.dart';
