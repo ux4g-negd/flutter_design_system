@@ -1051,8 +1051,7 @@ Ux4gCompactStepper(
       name: 'With error step',
       builder: (context) => ComponentDocs(
         name: 'Stepper — Error Step',
-        description:
-            'Mark a step as errored with isError: true on StepItem.',
+        description: 'Mark a step as errored with isError: true on StepItem.',
         code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 3,
@@ -1170,8 +1169,7 @@ final compactStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name:
-                  'CompactStepper — Centered (Arrows Inside)',
+              name: 'CompactStepper — Centered (Arrows Inside)',
               description:
                   'Capsules at top, arrows surrounding step info in the center.',
               code: '''Ux4gCompactStepper(
@@ -1206,8 +1204,7 @@ final compactStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name:
-                  'CompactStepper — Centered (Arrows Outside)',
+              name: 'CompactStepper — Centered (Arrows Outside)',
               description:
                   'Capsules at top, arrows pushed to the far edges of the container.',
               code: '''Ux4gCompactStepper(
@@ -3103,7 +3100,10 @@ final statusPipelineComponent = WidgetbookComponent(
             currentStep: 1,
             steps: [
               Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(
+                label: 'Verification',
+                description: 'In progress',
+              ),
               Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
               Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
               Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
@@ -3211,7 +3211,10 @@ final statusPipelineComponent = WidgetbookComponent(
             currentStep: 1,
             steps: [
               Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(
+                label: 'Verification',
+                description: 'In progress',
+              ),
               Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
               Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
               Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
@@ -3518,12 +3521,12 @@ final socialLinkListComponent = WidgetbookComponent(
   ],
 );
 
-// ── TimeSlot ──────────────────────────────────────────────────────────────────
+// ── ux4gTimeslot ──────────────────────────────────────────────────────────────────
 
-// ── TimeSlot ──────────────────────────────────────────────────────────────────
+// ── ux4gTimeslot ──────────────────────────────────────────────────────────────────
 
 final timeSlotComponent = WidgetbookComponent(
-  name: 'TimeSlot',
+  name: 'Time Slot',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -3543,28 +3546,28 @@ final timeSlotComponent = WidgetbookComponent(
             : 'SlotPickerViewMode.compact';
 
         return ComponentDocs(
-          name: 'TimeSlot',
+          name: 'ux4gTimeslot',
           description:
               'A calendar-style date picker that marks dates as available, '
               'no-slots, public holiday, or weekly-off. '
               'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
               'Supports both Expanded and Compact view modes via viewMode property.',
           code:
-              '''class TimeSlotShowcase extends StatefulWidget {
+              '''class Ux4gTimeslotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
 
-  const TimeSlotShowcase({
+  const Ux4gTimeslotShowcase({
     super.key,
     this.viewMode = $enumStr,
   });
 
   @override
-  State<TimeSlotShowcase> createState() => _TimeSlotShowcaseState();
+  State<Ux4gTimeslotShowcase> createState() => _Ux4gTimeslotShowcaseState();
 }
 
-class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
+class _Ux4gTimeslotShowcaseState extends State<Ux4gTimeslotShowcase> {
   DateTime? _selectedDate;
-  late TimeSlotData _data;
+  late Ux4gTimeslotData _data;
 
   Map<String, List<Map<String, dynamic>>> _mutableTimeSlots = {};
 
@@ -3660,14 +3663,14 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
   void initState() {
     super.initState();
     _mutableTimeSlots = _buildMutableSlots();
-    _data = TimeSlotData.fromJson(_getJsonInput());
+    _data = Ux4gTimeslotData.fromJson(_getJsonInput());
   }
 
   @override
-  void didUpdateWidget(TimeSlotShowcase oldWidget) {
+  void didUpdateWidget(Ux4gTimeslotShowcase oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.viewMode != widget.viewMode) {
-      _data = TimeSlotData.fromJson(_getJsonInput());
+      _data = Ux4gTimeslotData.fromJson(_getJsonInput());
     }
   }
 
@@ -3720,7 +3723,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TimeSlot(
+        Ux4gTimeslot(
           data: _data,
           timeSlotProvider: _timeSlotsFor,
           onSlotConfirmed: (date, slot) => _onSlotBooked(date, slot),
@@ -3728,7 +3731,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
             setState(() {
               _selectedDate = date;
               final json = _getJsonInput();
-              _data = TimeSlotData.fromJson({
+              _data = Ux4gTimeslotData.fromJson({
                 ...json,
                 'selectedDate':
                     '\${date.year}-\${date.month.toString().padLeft(2, '0')}-\${date.day.toString().padLeft(2, '0')}',
@@ -3740,7 +3743,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
           onMonthChanged: (year, month) {
             setState(() {
               final json = _getJsonInput();
-              _data = TimeSlotData.fromJson({
+              _data = Ux4gTimeslotData.fromJson({
                 ...json,
                 'year': year,
                 'month': month,
@@ -3755,7 +3758,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
           props: [
             PropRow(
               name: 'data',
-              type: 'TimeSlotData',
+              type: 'Ux4gTimeslotData',
               description:
                   'Calendar data model (year, month, dates, view mode).',
               required: true,
@@ -3784,7 +3787,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
             ),
           ],
           child: SingleChildScrollView(
-            child: TimeSlotShowcase(viewMode: viewMode),
+            child: Ux4gTimeslotShowcase(viewMode: viewMode),
           ),
         );
       },
@@ -3795,7 +3798,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
-            final data = TimeSlotData(
+            final data = Ux4gTimeslotData(
               year: 2026,
               month: 5,
               today: DateTime(2026, 5, 21),
@@ -3822,11 +3825,11 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
               viewMode: SlotPickerViewMode.expanded,
             );
             return ComponentDocs(
-              name: 'TimeSlot - Holidays and No-Slots',
+              name: 'ux4gTimeslot - Holidays and No-Slots',
               description:
                   'publicHoliday and noSlots dates are styled differently and '
                   'are non-interactive by default.',
-              code: '''TimeSlotData(
+              code: '''Ux4gTimeslotData(
   year: 2026, month: 5,
   weeklyOffWeekdays: [6, 7],
   dates: [
@@ -3836,7 +3839,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
   viewMode: SlotPickerViewMode.expanded,
 );''',
               child: SingleChildScrollView(
-                child: TimeSlot(
+                child: Ux4gTimeslot(
                   data: data,
                   onDateSelected: (date) => setState(() => selected = date),
                 ),
@@ -3853,7 +3856,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
-            final data = TimeSlotData.fromJson({
+            final data = Ux4gTimeslotData.fromJson({
               'year': 2026,
               'month': 6,
               'today': '2026-06-01',
@@ -3865,11 +3868,11 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
               ],
             });
             return ComponentDocs(
-              name: 'TimeSlot - JSON',
+              name: 'ux4gTimeslot - JSON',
               description:
-                  'TimeSlotData.fromJson() deserialises a server response directly. '
+                  'Ux4gTimeslotData.fromJson() deserialises a server response directly. '
                   'viewMode can be "expanded" or "compact".',
-              code: '''final data = TimeSlotData.fromJson({
+              code: '''final data = Ux4gTimeslotData.fromJson({
   "year": 2026,
   "month": 6,
   "today": "2026-06-01",
@@ -3881,9 +3884,9 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
   ],
 });
 
-TimeSlot(data: data, onDateSelected: (d) {});''',
+Ux4gTimeslot(data: data, onDateSelected: (d) {});''',
               child: SingleChildScrollView(
-                child: TimeSlot(
+                child: Ux4gTimeslot(
                   data: data,
                   onDateSelected: (date) => setState(() => selected = date),
                 ),

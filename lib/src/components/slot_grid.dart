@@ -84,7 +84,7 @@ class SlotDateEntry {
   }
 }
 
-/// Top-level data model passed to [TimeSlot].
+/// Top-level data model passed to [Ux4gTimeslot].
 ///
 /// Example JSON:
 /// ```json
@@ -102,12 +102,15 @@ class SlotDateEntry {
 /// }
 /// ```
 /// `weeklyOffWeekdays` uses ISO 8601 weekday numbering: 1 = Monday … 7 = Sunday.
-@Deprecated('Use TimeSlotData instead')
-typedef SlotGridData = TimeSlotData;
+@Deprecated('Use Ux4gTimeslotData instead')
+typedef SlotGridData = Ux4gTimeslotData;
 
-typedef Ux4gTimeSlotData = TimeSlotData;
+@Deprecated('Use Ux4gTimeslotData instead')
+typedef TimeSlotData = Ux4gTimeslotData;
 
-class TimeSlotData {
+typedef Ux4gTimeSlotData = Ux4gTimeslotData;
+
+class Ux4gTimeslotData {
   final int year;
   final int month;
   final DateTime? selectedDate;
@@ -130,7 +133,7 @@ class TimeSlotData {
   /// Use 'expanded' for vertical list view, 'compact' for grid view.
   final SlotPickerViewMode viewMode;
 
-  const TimeSlotData({
+  const Ux4gTimeslotData({
     required this.year,
     required this.month,
     this.selectedDate,
@@ -142,12 +145,12 @@ class TimeSlotData {
     required this.viewMode,
   });
 
-  factory TimeSlotData.fromJson(Map<String, dynamic> json) {
+  factory Ux4gTimeslotData.fromJson(Map<String, dynamic> json) {
     // Parse viewMode - ensure it's always set to a valid value
     final viewModeStr = json['viewMode'];
     final viewMode = _parseViewMode(viewModeStr);
 
-    return TimeSlotData(
+    return Ux4gTimeslotData(
       year: json['year'] as int,
       month: json['month'] as int,
       selectedDate: json['selectedDate'] != null
@@ -239,16 +242,19 @@ class SlotTimeEntry {
 
 /// A calendar-style slot grid component.
 ///
-/// Pass [data] as a [TimeSlotData] (built directly or via [TimeSlotData.fromJson]).
+/// Pass [data] as a [Ux4gTimeslotData] (built directly or via [Ux4gTimeslotData.fromJson]).
 /// Provide [timeSlotProvider] to supply time slots when a date is tapped —
 /// the component will automatically open [SlotTimePickerSheet].
-@Deprecated('Use TimeSlot instead')
-typedef SlotGrid = TimeSlot;
+@Deprecated('Use Ux4gTimeslot instead')
+typedef SlotGrid = Ux4gTimeslot;
 
-typedef Ux4gTimeSlot = TimeSlot;
+@Deprecated('Use Ux4gTimeslot instead')
+typedef TimeSlot = Ux4gTimeslot;
 
-class TimeSlot extends StatefulWidget {
-  final TimeSlotData data;
+typedef Ux4gTimeSlot = Ux4gTimeslot;
+
+class Ux4gTimeslot extends StatefulWidget {
+  final Ux4gTimeslotData data;
   final ValueChanged<DateTime>? onDateSelected;
 
   /// Called when the user taps the previous (−1) or next (+1) month arrow.
@@ -263,7 +269,7 @@ class TimeSlot extends StatefulWidget {
   /// Receives the tapped [date] and the confirmed [SlotTimeEntry].
   final void Function(DateTime date, SlotTimeEntry slot)? onSlotConfirmed;
 
-  const TimeSlot({
+  const Ux4gTimeslot({
     super.key,
     required this.data,
     this.onDateSelected,
@@ -273,10 +279,10 @@ class TimeSlot extends StatefulWidget {
   });
 
   @override
-  State<TimeSlot> createState() => _TimeSlotState();
+  State<Ux4gTimeslot> createState() => _Ux4gTimeslotState();
 }
 
-class _TimeSlotState extends State<TimeSlot> {
+class _Ux4gTimeslotState extends State<Ux4gTimeslot> {
   late int _year;
   late int _month;
   DateTime? _selectedDate;
@@ -290,7 +296,7 @@ class _TimeSlotState extends State<TimeSlot> {
   }
 
   @override
-  void didUpdateWidget(TimeSlot oldWidget) {
+  void didUpdateWidget(Ux4gTimeslot oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.data != widget.data) {
       _year = widget.data.year;

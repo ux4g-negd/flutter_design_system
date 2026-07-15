@@ -4873,15 +4873,15 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
 
                       const SizedBox(height: 32),
 
-                      // ─── Slot Grid ────────────────────────────────────
-                      _sectionTitle('Slot Grid', typography, colors),
+                      // ─── ux4gTimeslot ────────────────────────────────────
+                      _sectionTitle('ux4gTimeslot', typography, colors),
                       const SizedBox(height: 12),
 
                       _showcaseCard(
-                        title: 'TimeSlot – Calendar Booking',
+                        title: 'ux4gTimeslot – Calendar Booking',
                         typography: typography,
                         colors: colors,
-                        child: TimeSlotShowcase(),
+                        child: Ux4gTimeslotShowcase(),
                       ),
 
                       const SizedBox(height: 80),
@@ -5059,23 +5059,23 @@ class BiometricShowcasePage extends StatelessWidget {
   }
 }
 
-// ─── Slot Grid Showcase ──────────────────────────────────────────────────────
+// ─── ux4gTimeslot Showcase ──────────────────────────────────────────────────────
 
-class TimeSlotShowcase extends StatefulWidget {
+class Ux4gTimeslotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
 
-  const TimeSlotShowcase({
+  const Ux4gTimeslotShowcase({
     super.key,
     this.viewMode = SlotPickerViewMode.expanded,
   });
 
   @override
-  State<TimeSlotShowcase> createState() => _TimeSlotShowcaseState();
+  State<Ux4gTimeslotShowcase> createState() => _Ux4gTimeslotShowcaseState();
 }
 
-class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
+class _Ux4gTimeslotShowcaseState extends State<Ux4gTimeslotShowcase> {
   DateTime? _selectedDate;
-  late TimeSlotData _data;
+  late Ux4gTimeslotData _data;
 
   // Mutable copy of time slots per date key (including "default").
   // Initialized from _getJsonInput() so bookings persist across taps.
@@ -5179,14 +5179,14 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
   void initState() {
     super.initState();
     _mutableTimeSlots = _buildMutableSlots();
-    _data = TimeSlotData.fromJson(_getJsonInput());
+    _data = Ux4gTimeslotData.fromJson(_getJsonInput());
   }
 
   @override
-  void didUpdateWidget(TimeSlotShowcase oldWidget) {
+  void didUpdateWidget(Ux4gTimeslotShowcase oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.viewMode != widget.viewMode) {
-      _data = TimeSlotData.fromJson(_getJsonInput());
+      _data = Ux4gTimeslotData.fromJson(_getJsonInput());
     }
   }
 
@@ -5246,7 +5246,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TimeSlot(
+        Ux4gTimeslot(
           data: _data,
           timeSlotProvider: _timeSlotsFor,
           onSlotConfirmed: (date, slot) => _onSlotBooked(date, slot),
@@ -5254,7 +5254,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
             setState(() {
               _selectedDate = date;
               final json = _getJsonInput();
-              _data = TimeSlotData.fromJson({
+              _data = Ux4gTimeslotData.fromJson({
                 ...json,
                 'selectedDate':
                     '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}',
@@ -5266,7 +5266,7 @@ class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
           onMonthChanged: (year, month) {
             setState(() {
               final json = _getJsonInput();
-              _data = TimeSlotData.fromJson({
+              _data = Ux4gTimeslotData.fromJson({
                 ...json,
                 'year': year,
                 'month': month,
