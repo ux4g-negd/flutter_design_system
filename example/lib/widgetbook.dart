@@ -220,7 +220,7 @@ class UX4GWidgetbook extends StatelessWidget {
                     animatedLinearProgressComponent,
                   ],
                 ),
-                loaderComponent, // Spinner / Loader
+                spinnerComponent, // ux4gSpinner
                 modalComponent,
                 paginationComponent,
                 progressSlaIndicatorComponent,

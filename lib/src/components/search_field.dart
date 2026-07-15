@@ -195,7 +195,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
             const Center(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Ux4gLoader(size: 24),
+                child: Ux4gSpinner(size: 24),
               ),
             )
           else if (widget.options.isEmpty)
@@ -448,7 +448,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                           widget.variant !=
                               Ux4gSearchFieldVariant.autocomplete) ...[
                         const SizedBox(width: 8),
-                        const Ux4gLoader(size: 16),
+                        const Ux4gSpinner(size: 16),
                       ],
                       if (widget.showVoiceIcon) ...[
                         const SizedBox(width: 8),

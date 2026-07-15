@@ -771,7 +771,7 @@ final statusBannerComponent = WidgetbookComponent(
             buf.writeln("        mainAxisSize: MainAxisSize.min,");
             buf.writeln("        children: [");
             buf.writeln(
-              "          const SizedBox(width: 16, height: 16, child: Ux4gLoader(strokeWidth: 2.0)),",
+              "          const SizedBox(width: 16, height: 16, child: Ux4gSpinner(strokeWidth: 2.0)),",
             );
             buf.writeln("          const SizedBox(width: 8),");
             buf.writeln(
@@ -937,7 +937,7 @@ final statusBannerComponent = WidgetbookComponent(
                         const SizedBox(
                           width: 16,
                           height: 16,
-                          child: Ux4gLoader(strokeWidth: 2.0),
+                          child: Ux4gSpinner(strokeWidth: 2.0),
                         ),
                         const SizedBox(width: 8),
                         Text('Saving', style: savingTextStyle),

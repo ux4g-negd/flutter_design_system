@@ -347,7 +347,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         ),
                       ),
 
-                      // ─── 7. Loaders ───────────────────────────────────
+                      // ─── 7. ux4gSpinner ───────────────────────────────────
                       _showcaseCard(
                         title: 'Accordion',
                         typography: typography,
@@ -383,28 +383,28 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                       ),
 
                       _showcaseCard(
-                        title: 'Loaders',
+                        title: 'ux4gSpinner',
                         typography: typography,
                         colors: colors,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Ux4gLoader(
+                            Ux4gSpinner(
                               size: 40,
                               percentage: 100,
                               color: Ux4gColors.primary,
                             ),
-                            Ux4gLoader(
+                            Ux4gSpinner(
                               size: 40,
                               percentage: 60,
                               color: Ux4gColors.secondary,
                             ),
-                            Ux4gLoader(
+                            Ux4gSpinner(
                               size: 40,
                               percentage: 30,
                               color: Ux4gColors.red,
                             ),
-                            Ux4gLoader(
+                            Ux4gSpinner(
                               size: 40,
                               percentage: 75,
                               color: Ux4gColors.green,

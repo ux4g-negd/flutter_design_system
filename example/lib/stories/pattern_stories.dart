@@ -22467,7 +22467,7 @@ class _PaymentProcessingMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Ux4gLoader(
+                    Ux4gSpinner(
                       size: 40,
                       strokeWidth: 4,
                       gradientColors: [primary.withValues(alpha: 0.2), primary],
@@ -22572,7 +22572,7 @@ class _PaymentProcessingCardMockup extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Ux4gLoader(
+                    Ux4gSpinner(
                       size: 40,
                       strokeWidth: 4,
                       gradientColors: [primary.withValues(alpha: 0.2), primary],
@@ -22689,7 +22689,7 @@ Scaffold(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Ux4gLoader(
+                Ux4gSpinner(
                   size: 40,
                   strokeWidth: 4,
                   gradientColors: [Ux4gColors.primary200, primary],
@@ -22818,7 +22818,7 @@ Scaffold(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Ux4gLoader(
+                Ux4gSpinner(
                   size: 40,
                   strokeWidth: 4,
                   gradientColors: [Ux4gColors.primary200, primary],

@@ -156,7 +156,7 @@ class Ux4gButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (isLoading) ...[
-                Ux4gLoader(
+                Ux4gSpinner(
                   size: 16,
                   color: effectiveContentColor,
                   strokeWidth: 2,

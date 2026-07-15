@@ -22,6 +22,7 @@ export 'src/components/dropdown.dart';
 export 'src/components/slider.dart';
 export 'src/components/toast.dart';
 export 'src/components/loader.dart';
+export 'src/components/spinner.dart';
 export 'src/components/linear_progress.dart';
 export 'src/components/circular_progress.dart';
 export 'src/components/tag.dart';
