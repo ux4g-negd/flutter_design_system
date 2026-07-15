@@ -194,7 +194,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Feedback',
                   isInitiallyExpanded: false,
                   children: [
-                    feedbackFormComponent,
+                    feedbackFormStarComponent,
                     feedbackFormCsatComponent,
                     feedbackFormNpsComponent,
                   ],

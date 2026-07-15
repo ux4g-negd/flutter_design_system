@@ -1569,13 +1569,13 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         ),
                       ),
 
-                      // ─── Feedback Form Showcase ───────────────────────
+                      // ─── Feedback Form (Star) Showcase ───────────────────────
                       _showcaseCard(
-                        title: 'Feedback Form',
+                        title: 'Feedback Form (Star)',
                         typography: typography,
                         colors: colors,
                         child: Center(
-                          child: Ux4gFeedbackForm(
+                          child: Ux4gFeedbackFormStar(
                             improvementOptions: const [
                               'Content accuracy',
                               'Visual design',

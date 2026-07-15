@@ -5,7 +5,10 @@ import 'buttons.dart';
 import 'chips.dart';
 import 'text_area.dart';
 
-class Ux4gFeedbackForm extends StatefulWidget {
+@Deprecated('Use Ux4gFeedbackFormStar instead')
+typedef Ux4gFeedbackForm = Ux4gFeedbackFormStar;
+
+class Ux4gFeedbackFormStar extends StatefulWidget {
   final List<String> improvementOptions;
   final int minWords;
   final int maxLength;
@@ -44,7 +47,7 @@ class Ux4gFeedbackForm extends StatefulWidget {
   /// Default is 2 (1-2 stars = lowRatingColor, 3-5 stars = highRatingColor).
   final int lowRatingThreshold;
 
-  const Ux4gFeedbackForm({
+  const Ux4gFeedbackFormStar({
     super.key,
     required this.improvementOptions,
     required this.onSubmit,
@@ -77,10 +80,10 @@ class Ux4gFeedbackForm extends StatefulWidget {
   });
 
   @override
-  State<Ux4gFeedbackForm> createState() => _Ux4gFeedbackFormState();
+  State<Ux4gFeedbackFormStar> createState() => _Ux4gFeedbackFormStarState();
 }
 
-class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
+class _Ux4gFeedbackFormStarState extends State<Ux4gFeedbackFormStar> {
   int _rating = 0;
   final Set<String> _selectedChips = {};
   String _comment = '';

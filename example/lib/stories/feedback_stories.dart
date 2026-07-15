@@ -4,19 +4,19 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
-// ── Feedback Form (Star Rating) ───────────────────────────────────────────────
+// ── Ux4gFeedbackFormStar ───────────────────────────────────────────────────────────────
 
-final feedbackFormComponent = WidgetbookComponent(
-  name: 'FeedbackForm',
+final feedbackFormStarComponent = WidgetbookComponent(
+  name: 'FeedbackFormStar',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'FeedbackForm',
+        name: 'Ux4gFeedbackFormStar',
         description:
             'A star-rating feedback form with improvement chip options and a comment text area. '
             'Shows a success state after submission.',
-        code: '''Ux4gFeedbackForm(
+        code: '''Ux4gFeedbackFormStar(
   improvementOptions: [
     'App speed',
     'UI design',
@@ -166,7 +166,7 @@ final feedbackFormComponent = WidgetbookComponent(
         ],
         child: SizedBox(
           width: 380,
-          child: Ux4gFeedbackForm(
+          child: Ux4gFeedbackFormStar(
             improvementOptions: const [
               'App speed',
               'UI design',
@@ -181,6 +181,8 @@ final feedbackFormComponent = WidgetbookComponent(
     ),
   ],
 );
+
+final feedbackFormComponent = feedbackFormStarComponent;
 
 // ── Feedback Form NPS ─────────────────────────────────────────────────────────
 

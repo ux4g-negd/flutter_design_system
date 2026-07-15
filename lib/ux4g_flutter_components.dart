@@ -46,6 +46,7 @@ export 'src/components/date_picker.dart';
 export 'src/components/time_picker.dart';
 export 'src/components/status_banner.dart';
 export 'src/components/feedback_form.dart';
+export 'src/components/feedback_form_star.dart';
 export 'src/components/feedback_form_nps.dart';
 export 'src/components/feedback_form_csat.dart';
 export 'src/components/result_row.dart';
