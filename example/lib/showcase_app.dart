@@ -2478,7 +2478,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
 
                       // --- 24. Linear Progress ---
                       _showcaseCard(
-                        title: 'Linear Progress Indicator',
+                        title: 'Linear Progress Bar',
                         typography: typography,
                         colors: colors,
                         child: Column(
@@ -2489,7 +2489,7 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                               style: typography.lS_strong,
                             ),
                             const SizedBox(height: 12),
-                            Ux4gAnimatedLinearProgress(
+                            Ux4gAnimatedLinearProgressBar(
                               value: _progressValue,
                               icon: Icons.rocket_launch_outlined,
                               iconColor: const Color(0xFF6A4EFF),

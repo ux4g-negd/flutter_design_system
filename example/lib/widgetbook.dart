@@ -219,11 +219,11 @@ class UX4GWidgetbook extends StatelessWidget {
                       ],
                     ),
                     WidgetbookFolder(
-                      name: 'Linear Progress',
+                      name: 'Linear Progress Bar',
                       isInitiallyExpanded: false,
                       children: [
-                        linearProgressComponent,
-                        animatedLinearProgressComponent,
+                        linearProgressBarComponent,
+                        animatedLinearProgressBarComponent,
                       ],
                     ),
                   ],

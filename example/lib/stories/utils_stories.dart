@@ -17,7 +17,7 @@ bool _isOuterDark(BuildContext context) {
 // ── Overview ──────────────────────────────────────────────────────────────────
 
 final overviewComponent = WidgetbookComponent(
-  name: 'Overview',
+  name: 'Introduction',
   useCases: [
     WidgetbookUseCase(
       name: 'Welcome',
@@ -29,7 +29,7 @@ final overviewComponent = WidgetbookComponent(
 // ── Quick Guide ───────────────────────────────────────────────────────────────
 
 final quickGuideComponent = WidgetbookComponent(
-  name: 'Quick Guide',
+  name: 'Quick Start Guide',
   useCases: [
     WidgetbookUseCase(
       name: 'Installation',
@@ -1845,10 +1845,7 @@ class _SemanticTokenRow extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: _SemanticTile(
-                  token: pair.onToken,
-                  color: pair.onColor,
-                ),
+                child: _SemanticTile(token: pair.onToken, color: pair.onColor),
               ),
             ],
           ),
@@ -1882,9 +1879,9 @@ class _SemanticTileState extends State<_SemanticTile> {
   Widget build(BuildContext context) {
     final isDark =
         (widget.color.r * 0.299 +
-                widget.color.g * 0.587 +
-                widget.color.b * 0.114) <
-            0.5;
+            widget.color.g * 0.587 +
+            widget.color.b * 0.114) <
+        0.5;
     final fg = isDark ? Colors.white : Colors.black87;
     final hex = _toHex(widget.color);
     final dartCode = 'Ux4gTheme.colors(context).${widget.token}';
@@ -2041,9 +2038,7 @@ class _SwatchTileState extends State<_SwatchTile> {
         border: widget.swatch.main
             ? Border.all(color: const Color(0xFF6A4EFF), width: 2)
             : Border.all(
-                color: isDarkTheme
-                    ? Colors.white12
-                    : const Color(0xFFE5E7EB),
+                color: isDarkTheme ? Colors.white12 : const Color(0xFFE5E7EB),
               ),
         boxShadow: isDarkTheme
             ? []

@@ -25,6 +25,7 @@ export 'src/components/toast.dart';
 export 'src/components/loader.dart';
 export 'src/components/spinner.dart';
 export 'src/components/linear_progress.dart';
+export 'src/components/linear_progress_bar.dart';
 export 'src/components/circular_progress.dart';
 export 'src/components/tag.dart';
 export 'src/components/compact_stepper.dart';

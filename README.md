@@ -31,7 +31,7 @@ This will automatically add the following line to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ux4g_flutter_components: ^1.1.0
+  ux4g_flutter_components: ^1.2.0
 ```
 
 ### 2️⃣ Import it

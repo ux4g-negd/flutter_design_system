@@ -13,18 +13,18 @@ final linearProgressComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'LinearProgress',
+        name: 'LinearProgressBar',
         description:
             'A horizontal progress bar with optional label, hint, icon, '
             'percentage display, gradient fill, and shape.',
-        code: '''Ux4gLinearProgress(
+        code: '''Ux4gLinearProgressBar(
   value: 0.6,                       // 0.0 – 1.0
   showPercentage: true,
   shape: Ux4gProgressShape.rounded,
 );
 
 // With label and icon
-Ux4gLinearProgress(
+Ux4gLinearProgressBar(
   value: 0.75,
   label: 'Uploading...',
   hint: 'Almost done',
@@ -33,7 +33,7 @@ Ux4gLinearProgress(
 );
 
 // Animated
-Ux4gAnimatedLinearProgress(value: 0.6);''',
+Ux4gAnimatedLinearProgressBar(value: 0.6);''',
         props: const [
           PropRow(
             name: 'value',
@@ -118,7 +118,7 @@ Ux4gAnimatedLinearProgress(value: 0.6);''',
         ],
         child: SizedBox(
           width: 300,
-          child: Ux4gLinearProgress(
+          child: Ux4gLinearProgressBar(
             value: context.knobs.double.slider(
               label: 'Value',
               initialValue: 0.6,
@@ -148,9 +148,9 @@ final animatedLinearProgressComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'AnimatedLinearProgress',
+        name: 'AnimatedLinearProgressBar',
         description: 'Animated version of the linear progress bar.',
-        code: '''Ux4gAnimatedLinearProgress(value: 0.6);''',
+        code: '''Ux4gAnimatedLinearProgressBar(value: 0.6);''',
         props: const [
           PropRow(
             name: 'value',
@@ -247,7 +247,7 @@ final animatedLinearProgressComponent = WidgetbookComponent(
         ],
         child: SizedBox(
           width: 300,
-          child: Ux4gAnimatedLinearProgress(
+          child: Ux4gAnimatedLinearProgressBar(
             value: context.knobs.double.slider(
               label: 'Value',
               initialValue: 0.6,
@@ -260,6 +260,9 @@ final animatedLinearProgressComponent = WidgetbookComponent(
     ),
   ],
 );
+
+final linearProgressBarComponent = linearProgressComponent;
+final animatedLinearProgressBarComponent = animatedLinearProgressComponent;
 
 // ── Circular Progress ─────────────────────────────────────────────────────────
 
