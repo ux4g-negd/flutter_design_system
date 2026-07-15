@@ -84,7 +84,7 @@ class SlotDateEntry {
   }
 }
 
-/// Top-level data model passed to [SlotGrid].
+/// Top-level data model passed to [TimeSlot].
 ///
 /// Example JSON:
 /// ```json
@@ -102,7 +102,12 @@ class SlotDateEntry {
 /// }
 /// ```
 /// `weeklyOffWeekdays` uses ISO 8601 weekday numbering: 1 = Monday … 7 = Sunday.
-class SlotGridData {
+@Deprecated('Use TimeSlotData instead')
+typedef SlotGridData = TimeSlotData;
+
+typedef Ux4gTimeSlotData = TimeSlotData;
+
+class TimeSlotData {
   final int year;
   final int month;
   final DateTime? selectedDate;
@@ -125,7 +130,7 @@ class SlotGridData {
   /// Use 'expanded' for vertical list view, 'compact' for grid view.
   final SlotPickerViewMode viewMode;
 
-  const SlotGridData({
+  const TimeSlotData({
     required this.year,
     required this.month,
     this.selectedDate,
@@ -137,12 +142,12 @@ class SlotGridData {
     required this.viewMode,
   });
 
-  factory SlotGridData.fromJson(Map<String, dynamic> json) {
+  factory TimeSlotData.fromJson(Map<String, dynamic> json) {
     // Parse viewMode - ensure it's always set to a valid value
     final viewModeStr = json['viewMode'];
     final viewMode = _parseViewMode(viewModeStr);
 
-    return SlotGridData(
+    return TimeSlotData(
       year: json['year'] as int,
       month: json['month'] as int,
       selectedDate: json['selectedDate'] != null
@@ -234,11 +239,16 @@ class SlotTimeEntry {
 
 /// A calendar-style slot grid component.
 ///
-/// Pass [data] as a [SlotGridData] (built directly or via [SlotGridData.fromJson]).
+/// Pass [data] as a [TimeSlotData] (built directly or via [TimeSlotData.fromJson]).
 /// Provide [timeSlotProvider] to supply time slots when a date is tapped —
 /// the component will automatically open [SlotTimePickerSheet].
-class SlotGrid extends StatefulWidget {
-  final SlotGridData data;
+@Deprecated('Use TimeSlot instead')
+typedef SlotGrid = TimeSlot;
+
+typedef Ux4gTimeSlot = TimeSlot;
+
+class TimeSlot extends StatefulWidget {
+  final TimeSlotData data;
   final ValueChanged<DateTime>? onDateSelected;
 
   /// Called when the user taps the previous (−1) or next (+1) month arrow.
@@ -253,7 +263,7 @@ class SlotGrid extends StatefulWidget {
   /// Receives the tapped [date] and the confirmed [SlotTimeEntry].
   final void Function(DateTime date, SlotTimeEntry slot)? onSlotConfirmed;
 
-  const SlotGrid({
+  const TimeSlot({
     super.key,
     required this.data,
     this.onDateSelected,
@@ -263,10 +273,10 @@ class SlotGrid extends StatefulWidget {
   });
 
   @override
-  State<SlotGrid> createState() => _SlotGridState();
+  State<TimeSlot> createState() => _TimeSlotState();
 }
 
-class _SlotGridState extends State<SlotGrid> {
+class _TimeSlotState extends State<TimeSlot> {
   late int _year;
   late int _month;
   DateTime? _selectedDate;
@@ -280,7 +290,7 @@ class _SlotGridState extends State<SlotGrid> {
   }
 
   @override
-  void didUpdateWidget(SlotGrid oldWidget) {
+  void didUpdateWidget(TimeSlot oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.data != widget.data) {
       _year = widget.data.year;

@@ -3518,12 +3518,12 @@ final socialLinkListComponent = WidgetbookComponent(
   ],
 );
 
-// ── SlotGrid ──────────────────────────────────────────────────────────────────
+// ── TimeSlot ──────────────────────────────────────────────────────────────────
 
-// ── SlotGrid ──────────────────────────────────────────────────────────────────
+// ── TimeSlot ──────────────────────────────────────────────────────────────────
 
-final slotGridComponent = WidgetbookComponent(
-  name: 'Slot Grid',
+final timeSlotComponent = WidgetbookComponent(
+  name: 'TimeSlot',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -3543,28 +3543,28 @@ final slotGridComponent = WidgetbookComponent(
             : 'SlotPickerViewMode.compact';
 
         return ComponentDocs(
-          name: 'SlotGrid',
+          name: 'TimeSlot',
           description:
               'A calendar-style date picker that marks dates as available, '
               'no-slots, public holiday, or weekly-off. '
               'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
               'Supports both Expanded and Compact view modes via viewMode property.',
           code:
-              '''class SlotGridShowcase extends StatefulWidget {
+              '''class TimeSlotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
 
-  const SlotGridShowcase({
+  const TimeSlotShowcase({
     super.key,
     this.viewMode = $enumStr,
   });
 
   @override
-  State<SlotGridShowcase> createState() => _SlotGridShowcaseState();
+  State<TimeSlotShowcase> createState() => _TimeSlotShowcaseState();
 }
 
-class _SlotGridShowcaseState extends State<SlotGridShowcase> {
+class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
   DateTime? _selectedDate;
-  late SlotGridData _data;
+  late TimeSlotData _data;
 
   Map<String, List<Map<String, dynamic>>> _mutableTimeSlots = {};
 
@@ -3660,14 +3660,14 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   void initState() {
     super.initState();
     _mutableTimeSlots = _buildMutableSlots();
-    _data = SlotGridData.fromJson(_getJsonInput());
+    _data = TimeSlotData.fromJson(_getJsonInput());
   }
 
   @override
-  void didUpdateWidget(SlotGridShowcase oldWidget) {
+  void didUpdateWidget(TimeSlotShowcase oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.viewMode != widget.viewMode) {
-      _data = SlotGridData.fromJson(_getJsonInput());
+      _data = TimeSlotData.fromJson(_getJsonInput());
     }
   }
 
@@ -3720,7 +3720,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SlotGrid(
+        TimeSlot(
           data: _data,
           timeSlotProvider: _timeSlotsFor,
           onSlotConfirmed: (date, slot) => _onSlotBooked(date, slot),
@@ -3728,7 +3728,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             setState(() {
               _selectedDate = date;
               final json = _getJsonInput();
-              _data = SlotGridData.fromJson({
+              _data = TimeSlotData.fromJson({
                 ...json,
                 'selectedDate':
                     '\${date.year}-\${date.month.toString().padLeft(2, '0')}-\${date.day.toString().padLeft(2, '0')}',
@@ -3740,7 +3740,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           onMonthChanged: (year, month) {
             setState(() {
               final json = _getJsonInput();
-              _data = SlotGridData.fromJson({
+              _data = TimeSlotData.fromJson({
                 ...json,
                 'year': year,
                 'month': month,
@@ -3755,7 +3755,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           props: [
             PropRow(
               name: 'data',
-              type: 'SlotGridData',
+              type: 'TimeSlotData',
               description:
                   'Calendar data model (year, month, dates, view mode).',
               required: true,
@@ -3784,7 +3784,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             ),
           ],
           child: SingleChildScrollView(
-            child: SlotGridShowcase(viewMode: viewMode),
+            child: TimeSlotShowcase(viewMode: viewMode),
           ),
         );
       },
@@ -3795,7 +3795,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
-            final data = SlotGridData(
+            final data = TimeSlotData(
               year: 2026,
               month: 5,
               today: DateTime(2026, 5, 21),
@@ -3822,11 +3822,11 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
               viewMode: SlotPickerViewMode.expanded,
             );
             return ComponentDocs(
-              name: 'SlotGrid - Holidays and No-Slots',
+              name: 'TimeSlot - Holidays and No-Slots',
               description:
                   'publicHoliday and noSlots dates are styled differently and '
                   'are non-interactive by default.',
-              code: '''SlotGridData(
+              code: '''TimeSlotData(
   year: 2026, month: 5,
   weeklyOffWeekdays: [6, 7],
   dates: [
@@ -3836,7 +3836,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   viewMode: SlotPickerViewMode.expanded,
 );''',
               child: SingleChildScrollView(
-                child: SlotGrid(
+                child: TimeSlot(
                   data: data,
                   onDateSelected: (date) => setState(() => selected = date),
                 ),
@@ -3853,7 +3853,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
-            final data = SlotGridData.fromJson({
+            final data = TimeSlotData.fromJson({
               'year': 2026,
               'month': 6,
               'today': '2026-06-01',
@@ -3865,11 +3865,11 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
               ],
             });
             return ComponentDocs(
-              name: 'SlotGrid - JSON',
+              name: 'TimeSlot - JSON',
               description:
-                  'SlotGridData.fromJson() deserialises a server response directly. '
+                  'TimeSlotData.fromJson() deserialises a server response directly. '
                   'viewMode can be "expanded" or "compact".',
-              code: '''final data = SlotGridData.fromJson({
+              code: '''final data = TimeSlotData.fromJson({
   "year": 2026,
   "month": 6,
   "today": "2026-06-01",
@@ -3881,9 +3881,9 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   ],
 });
 
-SlotGrid(data: data, onDateSelected: (d) {});''',
+TimeSlot(data: data, onDateSelected: (d) {});''',
               child: SingleChildScrollView(
-                child: SlotGrid(
+                child: TimeSlot(
                   data: data,
                   onDateSelected: (date) => setState(() => selected = date),
                 ),
@@ -3895,3 +3895,5 @@ SlotGrid(data: data, onDateSelected: (d) {});''',
     ),
   ],
 );
+
+final slotGridComponent = timeSlotComponent;

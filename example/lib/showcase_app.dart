@@ -4878,10 +4878,10 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                       const SizedBox(height: 12),
 
                       _showcaseCard(
-                        title: 'Slot Grid – Calendar Booking',
+                        title: 'TimeSlot – Calendar Booking',
                         typography: typography,
                         colors: colors,
-                        child: SlotGridShowcase(),
+                        child: TimeSlotShowcase(),
                       ),
 
                       const SizedBox(height: 80),
@@ -5061,21 +5061,21 @@ class BiometricShowcasePage extends StatelessWidget {
 
 // ─── Slot Grid Showcase ──────────────────────────────────────────────────────
 
-class SlotGridShowcase extends StatefulWidget {
+class TimeSlotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
 
-  const SlotGridShowcase({
+  const TimeSlotShowcase({
     super.key,
     this.viewMode = SlotPickerViewMode.expanded,
   });
 
   @override
-  State<SlotGridShowcase> createState() => _SlotGridShowcaseState();
+  State<TimeSlotShowcase> createState() => _TimeSlotShowcaseState();
 }
 
-class _SlotGridShowcaseState extends State<SlotGridShowcase> {
+class _TimeSlotShowcaseState extends State<TimeSlotShowcase> {
   DateTime? _selectedDate;
-  late SlotGridData _data;
+  late TimeSlotData _data;
 
   // Mutable copy of time slots per date key (including "default").
   // Initialized from _getJsonInput() so bookings persist across taps.
@@ -5179,14 +5179,14 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   void initState() {
     super.initState();
     _mutableTimeSlots = _buildMutableSlots();
-    _data = SlotGridData.fromJson(_getJsonInput());
+    _data = TimeSlotData.fromJson(_getJsonInput());
   }
 
   @override
-  void didUpdateWidget(SlotGridShowcase oldWidget) {
+  void didUpdateWidget(TimeSlotShowcase oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.viewMode != widget.viewMode) {
-      _data = SlotGridData.fromJson(_getJsonInput());
+      _data = TimeSlotData.fromJson(_getJsonInput());
     }
   }
 
@@ -5246,7 +5246,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SlotGrid(
+        TimeSlot(
           data: _data,
           timeSlotProvider: _timeSlotsFor,
           onSlotConfirmed: (date, slot) => _onSlotBooked(date, slot),
@@ -5254,7 +5254,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             setState(() {
               _selectedDate = date;
               final json = _getJsonInput();
-              _data = SlotGridData.fromJson({
+              _data = TimeSlotData.fromJson({
                 ...json,
                 'selectedDate':
                     '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}',
@@ -5266,7 +5266,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           onMonthChanged: (year, month) {
             setState(() {
               final json = _getJsonInput();
-              _data = SlotGridData.fromJson({
+              _data = TimeSlotData.fromJson({
                 ...json,
                 'year': year,
                 'month': month,

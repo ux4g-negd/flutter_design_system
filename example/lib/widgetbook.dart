@@ -227,7 +227,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 radioButtonComponent,
                 resultRowComponent, // Result List
                 sliderComponent,
-                slotGridComponent,
+                timeSlotComponent, // TimeSlot
                 WidgetbookFolder(
                   name: 'Social Link',
                   isInitiallyExpanded: false,
