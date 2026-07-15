@@ -27,6 +27,7 @@ export 'src/components/circular_progress.dart';
 export 'src/components/tag.dart';
 export 'src/components/steppers.dart';
 export 'src/components/tooltips.dart';
+export 'src/components/ux4g_switch.dart';
 export 'src/components/toggle.dart';
 export 'src/components/input_field.dart';
 export 'src/components/aadhaar_input_field.dart';

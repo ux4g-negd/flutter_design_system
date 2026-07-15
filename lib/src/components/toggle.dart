@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 
-enum Ux4gToggleSize {
+enum Ux4gSwitchSize {
   s(32, 18, 14, 2),
   m(40, 22, 18, 2),
   l(48, 28, 24, 2);
@@ -11,7 +11,7 @@ enum Ux4gToggleSize {
   final double height;
   final double thumbSize;
   final double thumbPadding;
-  const Ux4gToggleSize(
+  const Ux4gSwitchSize(
     this.width,
     this.height,
     this.thumbSize,
@@ -19,15 +19,24 @@ enum Ux4gToggleSize {
   );
 }
 
-enum Ux4gToggleLabelPosition { noLabel, left, right, bothSides }
+enum Ux4gSwitchLabelPosition { noLabel, left, right, bothSides }
 
-class Ux4gToggle extends StatelessWidget {
+@Deprecated('Use Ux4gSwitchSize instead')
+typedef Ux4gToggleSize = Ux4gSwitchSize;
+
+@Deprecated('Use Ux4gSwitchLabelPosition instead')
+typedef Ux4gToggleLabelPosition = Ux4gSwitchLabelPosition;
+
+@Deprecated('Use Ux4gSwitch instead')
+typedef Ux4gToggle = Ux4gSwitch;
+
+class Ux4gSwitch extends StatelessWidget {
   final bool checked;
   final ValueChanged<bool>? onCheckedChange;
   final String? label;
   final String? description;
-  final Ux4gToggleSize size;
-  final Ux4gToggleLabelPosition labelPosition;
+  final Ux4gSwitchSize size;
+  final Ux4gSwitchLabelPosition labelPosition;
   final bool enabled;
 
   // Added properties for advanced native label styling
@@ -39,14 +48,14 @@ class Ux4gToggle extends StatelessWidget {
   final bool isSecondaryRequired;
   final Widget? secondaryIcon;
 
-  const Ux4gToggle({
+  const Ux4gSwitch({
     super.key,
     required this.checked,
     this.onCheckedChange,
     this.label,
     this.description,
-    this.size = Ux4gToggleSize.m,
-    this.labelPosition = Ux4gToggleLabelPosition.right,
+    this.size = Ux4gSwitchSize.m,
+    this.labelPosition = Ux4gSwitchLabelPosition.right,
     this.enabled = true,
     this.isRequired = false,
     this.icon,
@@ -145,15 +154,15 @@ class Ux4gToggle extends StatelessWidget {
         const TextStyle();
 
     switch (size) {
-      case Ux4gToggleSize.s:
+      case Ux4gSwitchSize.s:
         labelStyleFallback = lMDefault;
         descStyleFallback = lSDefault;
         break;
-      case Ux4gToggleSize.m:
+      case Ux4gSwitchSize.m:
         labelStyleFallback = lLDefault;
         descStyleFallback = lMDefault;
         break;
-      case Ux4gToggleSize.l:
+      case Ux4gSwitchSize.l:
         labelStyleFallback = lXLDefault;
         descStyleFallback = lLDefault;
         break;
@@ -219,11 +228,11 @@ class Ux4gToggle extends StatelessWidget {
       );
     }
 
-    if (labelPosition == Ux4gToggleLabelPosition.noLabel) {
+    if (labelPosition == Ux4gSwitchLabelPosition.noLabel) {
       return toggleControl;
     }
 
-    if (labelPosition == Ux4gToggleLabelPosition.bothSides) {
+    if (labelPosition == Ux4gSwitchLabelPosition.bothSides) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -243,7 +252,7 @@ class Ux4gToggle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        if (labelPosition == Ux4gToggleLabelPosition.left) ...[
+        if (labelPosition == Ux4gSwitchLabelPosition.left) ...[
           buildTextsWidget(label, isRequired, icon, description),
           const SizedBox(width: 12),
           toggleControl,
