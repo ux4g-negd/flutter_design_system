@@ -1,9 +1,9 @@
 name: ux4g_flutter_components
 description: "Flutter implementation of the UX4G design system components and foundations."
 version: 1.2.0
-homepage: https://github.com/ux4g-negd/ux4g-flutter-design-system
-repository: https://github.com/ux4g-negd/ux4g-flutter-design-system
-issue_tracker: https://github.com/ux4g-negd/ux4g-flutter-design-system/issues
+# homepage: https://github.com/ux4g-negd/ux4g-flutter-design-system
+# repository: https://github.com/ux4g-negd/ux4g-flutter-design-system
+# issue_tracker: https://github.com/ux4g-negd/ux4g-flutter-design-system/issues
 documentation: https://docux4g.dl6.in
 
 environment:
