@@ -1,4 +1,4 @@
-## 1.2.0
+## 1.3.0
 
 * **Component Refactoring & Naming Standardization (100% Backward Compatible via Deprecated Aliases)**:
   * Renamed `Ux4gToggle` to `Ux4gSwitch` (`export 'src/components/ux4g_switch.dart'`).

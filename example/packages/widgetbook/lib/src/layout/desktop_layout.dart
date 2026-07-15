@@ -40,6 +40,8 @@ class DesktopLayout extends StatelessWidget implements BaseLayout {
     final isHomeScreen = state.useCase == null;
     final currentPath = state.path ?? '';
     final isDocPage =
+        currentPath.startsWith('introduction') ||
+        currentPath.startsWith('quick-start-guide') ||
         currentPath.startsWith('overview') ||
         currentPath.startsWith('quick-guide') ||
         currentPath.startsWith('token') ||

@@ -100,6 +100,7 @@ class UX4GWidgetbook extends StatelessWidget {
       valueListenable: widgetbookThemeNotifier,
       builder: (context, themeMode, _) {
         return Widgetbook.material(
+          initialRoute: '?path=introduction/welcome',
           themeMode: themeMode,
           // ── No wrapper needed here as MaterialThemeAddon handles the theme ─────
           appBuilder: (context, child) => child,
@@ -678,7 +679,7 @@ class _SidebarLogo extends StatelessWidget {
               onTap: () {
                 // ignore: invalid_use_of_internal_member
                 final state = WidgetbookState.of(context);
-                state.updatePath(null);
+                state.updatePath('introduction/welcome');
               },
               child: FittedBox(
                 fit: BoxFit.scaleDown,

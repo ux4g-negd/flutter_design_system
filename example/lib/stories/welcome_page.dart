@@ -711,10 +711,6 @@ class Ux4gWelcomePage extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: isDark ? const Color(0xFFA5B4FC) : primary,
-                        decoration: TextDecoration.underline,
-                        decorationColor: isDark
-                            ? const Color(0xFFA5B4FC)
-                            : primary,
                       ),
                     ),
                   ),
@@ -752,10 +748,6 @@ class Ux4gWelcomePage extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: isDark ? const Color(0xFFA5B4FC) : primary,
-                        decoration: TextDecoration.underline,
-                        decorationColor: isDark
-                            ? const Color(0xFFA5B4FC)
-                            : primary,
                       ),
                     ),
                   ),

@@ -50,7 +50,7 @@ final quickGuideComponent = WidgetbookComponent(
             label:
                 "This will add a line like this to your package's pubspec.yaml\n"
                 "(and run an implicit flutter pub get):",
-            code: 'dependencies:\n  ux4g_flutter_components: ^1.1.0',
+            code: 'dependencies:\n  ux4g_flutter_components: ^1.3.0',
           ),
         ],
         trailingSections: const [
