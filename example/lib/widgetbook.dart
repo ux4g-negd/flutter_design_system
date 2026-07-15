@@ -225,7 +225,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 paginationComponent,
                 progressSlaIndicatorComponent,
                 radioButtonComponent,
-                resultRowComponent, // Result List
+                resultListComponent, // Result List
                 sliderComponent,
                 timeSlotComponent, // TimeSlot
                 WidgetbookFolder(

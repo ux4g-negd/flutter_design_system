@@ -49,6 +49,7 @@ export 'src/components/feedback_form.dart';
 export 'src/components/feedback_form_nps.dart';
 export 'src/components/feedback_form_csat.dart';
 export 'src/components/result_row.dart';
+export 'src/components/result_list.dart';
 export 'src/components/biometric/biometric.dart';
 export 'src/components/input_extensions.dart';
 export 'src/components/empty_state.dart';

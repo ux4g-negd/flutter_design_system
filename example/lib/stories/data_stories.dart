@@ -1272,19 +1272,19 @@ final compactStepperComponent = WidgetbookComponent(
 
 final capsuleStepperComponent = compactStepperComponent;
 
-// ── Result Row ────────────────────────────────────────────────────────────────
+// ── Ux4gResultList ────────────────────────────────────────────────────────────────
 
-final resultRowComponent = WidgetbookComponent(
+final resultListComponent = WidgetbookComponent(
   name: 'Result List',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'ResultRow',
+        name: 'Ux4gResultList',
         description:
-            'An expandable list-row that summarises a record with a status tag, '
+            'An expandable list item that summarises a record with a status tag, '
             'key-value detail pairs, and an optional action button.',
-        code: '''Ux4gResultRow(
+        code: '''Ux4gResultList(
   title: 'Application #2024-001',
   statusTag: 'Approved',
   tagColorScheme: Ux4gTagColor.success,
@@ -2548,6 +2548,8 @@ Ux4gResultRow(
     ),
   ],
 );
+
+final resultRowComponent = resultListComponent;
 
 // ── Social Links ──────────────────────────────────────────────────────────────
 
