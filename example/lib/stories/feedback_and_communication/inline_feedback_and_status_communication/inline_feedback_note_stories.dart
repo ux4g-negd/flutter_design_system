@@ -47,17 +47,17 @@ class NoteToCitizenScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final typography = Ux4gTheme.typography(context);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
 
-    final bannerBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
-    final bannerBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
-    final bannerText = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
-    final bannerIcon = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+    final bannerBg = isDark ? Ux4gColors.orange900 : Ux4gColors.orange50;
+    final bannerBorder = isDark ? Ux4gColors.orange600 : Ux4gColors.orange300;
+    final bannerText = isDark ? Ux4gColors.orange300 : Ux4gColors.orange800;
+    final bannerIcon = isDark ? Ux4gColors.orange500 : Ux4gColors.orange600;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -71,7 +71,7 @@ class NoteToCitizenScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: isDark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -85,7 +85,7 @@ class NoteToCitizenScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -159,7 +159,7 @@ class NoteToCitizenScreen extends StatelessWidget {
                         variant: Ux4gButtonVariant.primary,
                         size: Ux4gButtonSize.large,
                         height: 48,
-                        backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                        backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                         contentColor: isDark ? Colors.black : Colors.white,
                         borderRadius: 8,
                       ),
@@ -191,18 +191,18 @@ class NoteToCitizenCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final typography = Ux4gTheme.typography(context);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
-    final bannerBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
-    final bannerBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
-    final bannerText = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
-    final bannerIcon = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+    final bannerBg = isDark ? Ux4gColors.orange900 : Ux4gColors.orange50;
+    final bannerBorder = isDark ? Ux4gColors.orange600 : Ux4gColors.orange300;
+    final bannerText = isDark ? Ux4gColors.orange300 : Ux4gColors.orange800;
+    final bannerIcon = isDark ? Ux4gColors.orange500 : Ux4gColors.orange600;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -216,7 +216,7 @@ class NoteToCitizenCardScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: isDark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -230,7 +230,7 @@ class NoteToCitizenCardScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -317,7 +317,7 @@ class NoteToCitizenCardScreen extends StatelessWidget {
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
                   height: 48,
-                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                   contentColor: isDark ? Colors.black : Colors.white,
                   borderRadius: 8,
                 ),
@@ -343,22 +343,22 @@ class _NoteMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
-    final bannerBg = isDark ? Ux4gPalette.orange900 : Ux4gPalette.orange50;
-    final bannerBorder = isDark ? Ux4gPalette.orange600 : Ux4gPalette.orange300;
-    final bannerText = isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800;
-    final bannerIcon = isDark ? Ux4gPalette.orange500 : Ux4gPalette.orange600;
+    final bannerBg = isDark ? Ux4gColors.orange900 : Ux4gColors.orange50;
+    final bannerBorder = isDark ? Ux4gColors.orange600 : Ux4gColors.orange300;
+    final bannerText = isDark ? Ux4gColors.orange300 : Ux4gColors.orange800;
+    final bannerIcon = isDark ? Ux4gColors.orange500 : Ux4gColors.orange600;
 
     return Theme(
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isCard
-            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF))
-            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF))
+            : (isDark ? Ux4gColors.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -373,7 +373,7 @@ class _NoteMockup extends StatelessWidget {
                     Ux4gIcons.nationalEmblem,
                     height: 40,
                     colorFilter: isDark
-                        ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                        ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                         : null,
                   ),
                   SizedBox(
@@ -387,7 +387,7 @@ class _NoteMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -415,7 +415,7 @@ class _NoteMockup extends StatelessWidget {
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.large,
                     height: 48,
-                    backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                    backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                     contentColor: isDark ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),

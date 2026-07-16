@@ -20,11 +20,11 @@ Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xF
 
 // ignore: unused_element
 
-Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
 
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 
 // ignore: unused_element
 
@@ -114,7 +114,7 @@ class HelpCentreScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -226,7 +226,7 @@ class HelpCentreCardScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -327,7 +327,7 @@ class _HelpCentreMockup extends StatelessWidget {
     return Theme(
       data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
@@ -354,7 +354,7 @@ class _HelpCentreMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),

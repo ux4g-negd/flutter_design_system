@@ -875,8 +875,8 @@ final tooltipComponent = WidgetbookComponent(
   title: 'Information', // Optional
   icon: Icons.view_in_ar_outlined, // Optional
   placement: Ux4gTooltipPlacement.top,
-  backgroundColor: Ux4gPalette.neutral700, // Light: neutral700, Dark: neutral300
-  contentColor: Ux4gPalette.neutral50, // Light: neutral50, Dark: neutral900
+  backgroundColor: Ux4gColors.neutral700, // Light: neutral700, Dark: neutral300
+  contentColor: Ux4gColors.neutral50, // Light: neutral50, Dark: neutral900
   cornerRadius: Ux4gRadius.radius4, // Default: 4.0
   arrowWidth: 10.0, // Default: 10.0
   arrowHeight: 6.0, // Default: 6.0

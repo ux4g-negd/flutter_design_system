@@ -124,7 +124,7 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -159,8 +159,8 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
 
     final isDark = materialTheme.brightness == Brightness.dark;
     final defaultBgColor = isDark
-        ? Ux4gPalette.neutral950
-        : Ux4gPalette.neutral0;
+        ? Ux4gColors.neutral950
+        : Ux4gColors.neutral0;
 
     final bgColor =
         widget.backgroundColor ??
@@ -240,8 +240,8 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
                   widget.prefixText!,
                   style: bsDefault.copyWith(
                     color: isDark
-                        ? Ux4gPalette.neutral200
-                        : Ux4gPalette.neutral700,
+                        ? Ux4gColors.neutral200
+                        : Ux4gColors.neutral700,
                   ),
                 ),
                 const SizedBox(width: 4),
@@ -277,8 +277,8 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
                       color:
                           widget.placeholderStyle?.color ??
                           (Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral300
-                              : Ux4gPalette.neutral500),
+                              ? Ux4gColors.neutral300
+                              : Ux4gColors.neutral500),
                     ),
                     isDense: true,
                     contentPadding: EdgeInsets.zero,
@@ -368,20 +368,20 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
     );
   }
 
-  Color _getBorderColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getBorderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = materialTheme.brightness == Brightness.dark
-        ? Ux4gPalette.red300
-        : Ux4gPalette.red600;
+        ? Ux4gColors.red300
+        : Ux4gColors.red600;
     final warning = ux4gColors?.warning ?? Colors.orange;
     final success = ux4gColors?.success ?? Colors.green;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
 
     final isDark = materialTheme.brightness == Brightness.dark;
     final defaultBorderColor = isDark
-        ? Ux4gPalette.neutral700
-        : Ux4gPalette.neutral200;
+        ? Ux4gColors.neutral700
+        : Ux4gColors.neutral200;
 
     if (!widget.enabled) {
       return widget.disabledBorderColor ?? onSurface.withValues(alpha: 0.3);
@@ -395,17 +395,17 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
     };
   }
 
-  Color _getLabelColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getLabelColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final isDark = materialTheme.brightness == Brightness.dark;
-    return isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    return isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
   }
 
-  Color _getStatusIconColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getStatusIconColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = materialTheme.brightness == Brightness.dark
-        ? Ux4gPalette.red500
-        : Ux4gPalette.red600;
+        ? Ux4gColors.red500
+        : Ux4gColors.red600;
     final warning = ux4gColors?.warning ?? Colors.orange;
     final success = ux4gColors?.success ?? Colors.green;
 
@@ -418,12 +418,12 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
     };
   }
 
-  Color _getStatusTextColor(ThemeData materialTheme, Ux4gColors? ux4gColors) {
+  Color _getStatusTextColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final error = materialTheme.brightness == Brightness.dark
-        ? Ux4gPalette.red300
-        : Ux4gPalette.red800;
+        ? Ux4gColors.red300
+        : Ux4gColors.red800;
     final warning = ux4gColors?.warning ?? Colors.orange;
     final success = ux4gColors?.success ?? Colors.green;
 

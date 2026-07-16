@@ -7,21 +7,21 @@ import '../../../widgets/component_docs.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral50;
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
 Color _getHeaderBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
 
-const Color _primaryColor = Ux4gPalette.primary600;
-const Color _greenColor = Ux4gPalette.green600;
-const Color _errorColor = Ux4gPalette.red600;
+const Color _primaryColor = Ux4gColors.primary600;
+const Color _greenColor = Ux4gColors.green600;
+const Color _errorColor = Ux4gColors.red600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 
@@ -510,8 +510,8 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
                     colorScheme: Ux4gTagColor.success,
                     style: Ux4gTagStyle.tonal,
                     shape: Ux4gTagShape.rectangular,
-                    customBackgroundColor: Ux4gPalette.green100,
-                    customContentColor: Ux4gPalette.green600,
+                    customBackgroundColor: Ux4gColors.green100,
+                    customContentColor: Ux4gColors.green600,
                     leadingContent: Icon(
                       Icons.check_circle,
                       size: 12,
@@ -524,8 +524,8 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
                     colorScheme: Ux4gTagColor.success,
                     style: Ux4gTagStyle.tonal,
                     shape: Ux4gTagShape.rectangular,
-                    customBackgroundColor: Ux4gPalette.green100,
-                    customContentColor: Ux4gPalette.green600,
+                    customBackgroundColor: Ux4gColors.green100,
+                    customContentColor: Ux4gColors.green600,
                     leadingContent: Icon(
                       Icons.check_circle,
                       size: 12,
@@ -551,11 +551,11 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
                       vertical: 10,
                     ),
                     borderColor: _isDark(context)
-                        ? Ux4gPalette.neutral600
-                        : Ux4gPalette.neutral300,
+                        ? Ux4gColors.neutral600
+                        : Ux4gColors.neutral300,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                   ),
                 ),
                 SizedBox(width: 12),
@@ -804,12 +804,12 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
                   style: Ux4gTagStyle.tonal,
                   size: Ux4gTagSize.m,
                   shape: Ux4gTagShape.rectangular,
-                  customBackgroundColor: Ux4gPalette.green100,
-                  customContentColor: Ux4gPalette.green600,
+                  customBackgroundColor: Ux4gColors.green100,
+                  customContentColor: Ux4gColors.green600,
                   leadingContent: Icon(
                     Icons.check_circle,
                     size: 12,
-                    color: Ux4gPalette.green600,
+                    color: Ux4gColors.green600,
                   ),
                 ),
               ],
@@ -850,12 +850,12 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
                   style: Ux4gTagStyle.tonal,
                   size: Ux4gTagSize.m,
                   shape: Ux4gTagShape.rectangular,
-                  customBackgroundColor: Ux4gPalette.orange100,
-                  customContentColor: Ux4gPalette.orange600,
+                  customBackgroundColor: Ux4gColors.orange100,
+                  customContentColor: Ux4gColors.orange600,
                   leadingContent: Icon(
                     Icons.warning_amber_rounded,
                     size: 12,
-                    color: Ux4gPalette.orange600,
+                    color: Ux4gColors.orange600,
                   ),
                 ),
               ],
@@ -991,7 +991,7 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
   Widget _buildDeleteAccountSection() {
     return Ux4gCard(
       cornerRadius: 12,
-      borderColor: _isDark(context) ? Ux4gPalette.red800 : Ux4gPalette.red300,
+      borderColor: _isDark(context) ? Ux4gColors.red800 : Ux4gColors.red300,
       borderWidth: 1,
       backgroundColor: _getCardBg(context),
       child: Padding(
@@ -1020,10 +1020,10 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
                 onPressed: () {},
                 variant: Ux4gButtonVariant.outline,
                 borderColor: _isDark(context)
-                    ? Ux4gPalette.red700
-                    : Ux4gPalette.red600,
+                    ? Ux4gColors.red700
+                    : Ux4gColors.red600,
                 contentColor: _isDark(context)
-                    ? Ux4gPalette.red300
+                    ? Ux4gColors.red300
                     : _errorColor,
               ),
             ),

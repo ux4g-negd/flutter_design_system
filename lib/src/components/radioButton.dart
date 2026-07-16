@@ -67,7 +67,7 @@ class Ux4gRadioButton<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
     final isDark = materialTheme.brightness == Brightness.dark;
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final isSelected = value == groupValue;
@@ -80,9 +80,9 @@ class Ux4gRadioButton<T> extends StatelessWidget {
       Ux4gRadioButtonDescriptionVariant.error =>
         ux4gColors?.error ?? materialTheme.colorScheme.error,
       Ux4gRadioButtonDescriptionVariant.warning =>
-        ux4gColors?.warning ?? Ux4gPalette.secondary,
+        ux4gColors?.warning ?? Ux4gColors.secondary,
       Ux4gRadioButtonDescriptionVariant.success =>
-        ux4gColors?.success ?? Ux4gPalette.green,
+        ux4gColors?.success ?? Ux4gColors.green,
     };
 
     final descriptionIcon = switch (descriptionVariant) {
@@ -127,12 +127,12 @@ class Ux4gRadioButton<T> extends StatelessWidget {
       Ux4gRadioButtonStatus.error =>
         ux4gColors?.error ?? materialTheme.colorScheme.error,
       Ux4gRadioButtonStatus.warning =>
-        ux4gColors?.warning ?? Ux4gPalette.secondary,
-      Ux4gRadioButtonStatus.success => ux4gColors?.success ?? Ux4gPalette.green,
+        ux4gColors?.warning ?? Ux4gColors.secondary,
+      Ux4gRadioButtonStatus.success => ux4gColors?.success ?? Ux4gColors.green,
       Ux4gRadioButtonStatus.defaultStatus => null,
     };
 
-    final unselectedBorderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+    final unselectedBorderColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
 
     final radioColor = !enabled
         ? onSurface.withValues(alpha: 0.38)

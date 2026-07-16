@@ -15,7 +15,13 @@ final buttonComponent = WidgetbookComponent(
           label: 'Size',
           options: Ux4gButtonSize.values,
           initialOption: Ux4gButtonSize.medium,
-          labelBuilder: (v) => v.name,
+          labelBuilder: (v) => switch (v) {
+            Ux4gButtonSize.xs => 'XS',
+            Ux4gButtonSize.small => 'Small',
+            Ux4gButtonSize.medium => 'Medium',
+            Ux4gButtonSize.large => 'Large',
+            Ux4gButtonSize.xl => 'XL',
+          },
         );
 
         double? width;
@@ -23,6 +29,12 @@ final buttonComponent = WidgetbookComponent(
         TextStyle? textStyle;
 
         switch (size) {
+          case Ux4gButtonSize.xs:
+            height = 24;
+            textStyle = typography?.lL_default.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            );
           case Ux4gButtonSize.small:
             height = 32;
             textStyle = typography?.lL_default;
@@ -32,6 +44,12 @@ final buttonComponent = WidgetbookComponent(
           case Ux4gButtonSize.large:
             height = 48;
             textStyle = typography?.lXL_default;
+          case Ux4gButtonSize.xl:
+            height = 56;
+            textStyle = typography?.lXL_default.copyWith(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            );
         }
 
         return ComponentDocs(
@@ -204,75 +222,75 @@ Ux4gButton(
     WidgetbookUseCase(
       name: 'Variants',
       builder: (context) {
-        final colors = Theme.of(context).extension<Ux4gColors>()!;
+        final colors = Theme.of(context).extension<Ux4gThemeColors>()!;
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final colorTheme = context.knobs.list<String>(
-          label: 'Color Theme',
-          options: const ['Primary', 'Red', 'Neutral'],
+          label: 'Varients',
+          options: const ['Primary', 'Danger', 'Neutral'],
           initialOption: 'Primary',
         );
 
-        final isRed = colorTheme == 'Red';
+        final isRed = colorTheme == 'Danger';
         final isNeutral = colorTheme == 'Neutral';
 
         final bgColor = isRed
             ? colors.error
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
+                  ? (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200)
                   : null);
         final fgColor = isRed
             ? colors.onError
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900)
+                  ? (isDark ? Ux4gColors.neutral100 : Ux4gColors.neutral900)
                   : null);
         final outlineFgColor = isRed
             ? colors.error
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
+                  ? (isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800)
                   : null);
 
         final tonalBgColor = isRed
-            ? (isDark ? Ux4gPalette.red800 : Ux4gPalette.red100)
+            ? (isDark ? Ux4gColors.red800 : Ux4gColors.red100)
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200)
-                  : (isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100));
+                  ? (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200)
+                  : (isDark ? Ux4gColors.primary800 : Ux4gColors.primary100));
         final tonalFgColor = isRed
-            ? (isDark ? Ux4gPalette.red300 : Ux4gPalette.red600)
+            ? (isDark ? Ux4gColors.red300 : Ux4gColors.red600)
             : (isNeutral
-                  ? (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800)
-                  : (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600));
+                  ? (isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800)
+                  : (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600));
 
         final bgStr = isRed
             ? 'backgroundColor: ux4gColors.error, '
             : (isNeutral
-                  ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
+                  ? 'backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200, '
                   : '');
         final fgStr = isRed
             ? 'contentColor: ux4gColors.onError, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral100 : Ux4gPalette.neutral900, '
+                  ? 'contentColor: isDark ? Ux4gColors.neutral100 : Ux4gColors.neutral900, '
                   : '');
         final outlineFgStr = isRed
             ? 'contentColor: ux4gColors.error, borderColor: ux4gColors.error, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, borderColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  ? 'contentColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, borderColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, '
                   : '');
         final ghostFgStr = isRed
             ? 'contentColor: ux4gColors.error, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
+                  ? 'contentColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, '
                   : '');
 
         final tonalBgStr = isRed
-            ? 'backgroundColor: isDark ? Ux4gPalette.red800 : Ux4gPalette.red100, '
+            ? 'backgroundColor: isDark ? Ux4gColors.red800 : Ux4gColors.red100, '
             : (isNeutral
-                  ? 'backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200, '
-                  : 'backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100, ');
+                  ? 'backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200, '
+                  : 'backgroundColor: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100, ');
         final tonalFgStr = isRed
-            ? 'contentColor: isDark ? Ux4gPalette.red300 : Ux4gPalette.red600, '
+            ? 'contentColor: isDark ? Ux4gColors.red300 : Ux4gColors.red600, '
             : (isNeutral
-                  ? 'contentColor: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral800, '
-                  : 'contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, ');
+                  ? 'contentColor: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800, '
+                  : 'contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600, ');
 
         return ComponentDocs(
           name: 'Button — Variants',
@@ -442,53 +460,24 @@ Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${ton
         description:
             'Five size options ranging from XS to XL controlling height, width, and padding.',
         code:
-            '''Ux4gButton(text: 'XS', width: 72, height: 24, padding: EdgeInsets.zero, onPressed: () {});
+            '''Ux4gButton(text: 'XS',     size: Ux4gButtonSize.xs,     onPressed: () {});
 Ux4gButton(text: 'Small',  size: Ux4gButtonSize.small,  onPressed: () {});
 Ux4gButton(text: 'Medium', size: Ux4gButtonSize.medium, onPressed: () {});
 Ux4gButton(text: 'Large',  size: Ux4gButtonSize.large,  onPressed: () {});
-Ux4gButton(text: 'XL', width: 109, height: 56, onPressed: () {});''',
+Ux4gButton(text: 'XL',     size: Ux4gButtonSize.xl,     onPressed: () {});''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
+          children: Ux4gButtonSize.values.map(
+            (s) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Ux4gButton(
                 onPressed: () {},
-                text: 'XS',
-                width: 72,
-                height: 24,
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                textStyle: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
+                text: s.name.toUpperCase(),
+                variant: Ux4gButtonVariant.primary,
+                size: s,
               ),
             ),
-            ...Ux4gButtonSize.values.map(
-              (s) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                child: Ux4gButton(
-                  onPressed: () {},
-                  text: s.name.toUpperCase(),
-                  variant: Ux4gButtonVariant.primary,
-                  size: s,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Ux4gButton(
-                onPressed: () {},
-                text: 'XL',
-                width: 109,
-                height: 56,
-                textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
+          ).toList(),
         ),
       ),
     ),

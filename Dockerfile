@@ -6,7 +6,7 @@ COPY . .
 
 WORKDIR /app/example
 RUN flutter pub get
-RUN flutter build web -t lib/widgetbook.dart --base-href=/flutter/ --release
+RUN flutter build web -t lib/widgetbook.dart --base-href=/flutter/ --no-tree-shake-icons --pwa-strategy=none --release
 
 FROM nginx:alpine AS runtime
 

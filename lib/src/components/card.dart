@@ -76,7 +76,7 @@ class Ux4gCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final resolvedBg =
         backgroundColor ??
         (ux4gColors?.surface ?? materialTheme.colorScheme.surface);
@@ -192,7 +192,7 @@ class Ux4gCard extends StatelessWidget {
 
   Widget _buildMedia(BuildContext context, {required bool isHorizontal}) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final image = SizedBox.expand(
       child: Image.network(

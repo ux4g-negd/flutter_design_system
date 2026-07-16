@@ -8,15 +8,15 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+    _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB);
+    _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB);
 Color _getSurface(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+    _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
 
 final autoSaveFormComponent = WidgetbookComponent(
   name: 'Auto-save Form',
@@ -88,8 +88,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -115,7 +115,7 @@ class _AutoSaveFormMockup extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: _isDark(context)
-                            ? Ux4gPalette.green900.withValues(alpha: 0.2)
+                            ? Ux4gColors.green900.withValues(alpha: 0.2)
                             : const Color(0xFFF0FDF4),
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -125,8 +125,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                           Icon(
                             Icons.check_circle_outline,
                             color: _isDark(context)
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                             size: 16,
                           ),
                           const SizedBox(width: 6),
@@ -136,8 +136,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: _isDark(context)
-                                  ? Ux4gPalette.green400
-                                  : Ux4gPalette.green700,
+                                  ? Ux4gColors.green400
+                                  : Ux4gColors.green700,
                             ),
                           ),
                         ],
@@ -153,11 +153,11 @@ class _AutoSaveFormMockup extends StatelessWidget {
                         size: Ux4gPipelineSize.s,
                         currentStep: 1,
                         completedColor: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         completedLineColor: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         steps: const [
                           Ux4gPipelineStep(label: 'Eligibility'),
                           Ux4gPipelineStep(label: 'Personal'),
@@ -255,8 +255,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                   ),
                 ],
               ),
@@ -319,7 +319,7 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
           children: [
             // Header with white background
             Container(
-              color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+              color: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -344,8 +344,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -366,11 +366,11 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral900
+                        ? Ux4gColors.neutral900
                         : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: _isDark(context)
-                        ? Border.all(color: Ux4gPalette.neutral800)
+                        ? Border.all(color: Ux4gColors.neutral800)
                         : null,
                     boxShadow: [
                       BoxShadow(
@@ -392,7 +392,7 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: _isDark(context)
-                            ? Ux4gPalette.green900.withValues(alpha: 0.2)
+                            ? Ux4gColors.green900.withValues(alpha: 0.2)
                             : const Color(0xFFF0FDF4),
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -402,8 +402,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                           Icon(
                             Icons.check_circle_outline,
                             color: _isDark(context)
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                             size: 16,
                           ),
                           const SizedBox(width: 6),
@@ -413,8 +413,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: _isDark(context)
-                                  ? Ux4gPalette.green400
-                                  : Ux4gPalette.green700,
+                                  ? Ux4gColors.green400
+                                  : Ux4gColors.green700,
                             ),
                           ),
                         ],
@@ -430,11 +430,11 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                         size: Ux4gPipelineSize.s,
                         currentStep: 1,
                         completedColor: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         completedLineColor: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         steps: const [
                           Ux4gPipelineStep(label: 'Eligibility'),
                           Ux4gPipelineStep(label: 'Personal'),
@@ -533,8 +533,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                   ),
                 ],
               ),
@@ -605,8 +605,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -632,7 +632,7 @@ class _AutoSaveFormMockup extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: _isDark(context)
-                            ? Ux4gPalette.green900.withValues(alpha: 0.2)
+                            ? Ux4gColors.green900.withValues(alpha: 0.2)
                             : const Color(0xFFF0FDF4),
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -642,8 +642,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                           Icon(
                             Icons.check_circle_outline,
                             color: _isDark(context)
-                                ? Ux4gPalette.green400
-                                : Ux4gPalette.green600,
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600,
                             size: 16,
                           ),
                           const SizedBox(width: 6),
@@ -653,8 +653,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: _isDark(context)
-                                  ? Ux4gPalette.green400
-                                  : Ux4gPalette.green700,
+                                  ? Ux4gColors.green400
+                                  : Ux4gColors.green700,
                             ),
                           ),
                         ],
@@ -670,11 +670,11 @@ class _AutoSaveFormMockup extends StatelessWidget {
                         size: Ux4gPipelineSize.s,
                         currentStep: 1,
                         completedColor: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         completedLineColor: _isDark(context)
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         steps: const [
                           Ux4gPipelineStep(label: 'Eligibility'),
                           Ux4gPipelineStep(label: 'Personal'),
@@ -772,8 +772,8 @@ class _AutoSaveFormMockup extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                   ),
                 ],
               ),
@@ -834,7 +834,7 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
             children: [
               // Header with white background
               Container(
-                color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -862,8 +862,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -884,11 +884,11 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.neutral900
+                          ? Ux4gColors.neutral900
                           : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       border: _isDark(context)
-                          ? Border.all(color: Ux4gPalette.neutral800)
+                          ? Border.all(color: Ux4gColors.neutral800)
                           : null,
                       boxShadow: [
                         BoxShadow(
@@ -910,7 +910,7 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: _isDark(context)
-                                ? Ux4gPalette.green900.withValues(alpha: 0.2)
+                                ? Ux4gColors.green900.withValues(alpha: 0.2)
                                 : const Color(0xFFF0FDF4),
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -920,8 +920,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                               Icon(
                                 Icons.check_circle_outline,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.green400
-                                    : Ux4gPalette.green600,
+                                    ? Ux4gColors.green400
+                                    : Ux4gColors.green600,
                                 size: 16,
                               ),
                               const SizedBox(width: 6),
@@ -931,8 +931,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                   color: _isDark(context)
-                                      ? Ux4gPalette.green400
-                                      : Ux4gPalette.green700,
+                                      ? Ux4gColors.green400
+                                      : Ux4gColors.green700,
                                 ),
                               ),
                             ],
@@ -948,11 +948,11 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                             size: Ux4gPipelineSize.s,
                             currentStep: 1,
                             completedColor: _isDark(context)
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             completedLineColor: _isDark(context)
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             steps: const [
                               Ux4gPipelineStep(label: 'Eligibility'),
                               Ux4gPipelineStep(label: 'Personal'),
@@ -1054,8 +1054,8 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       height: 48,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     ),
                   ],
                 ),

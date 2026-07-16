@@ -80,6 +80,64 @@ const _stepperProps = [
   ),
 ];
 
+const _compactStepperProps = [
+  PropRow(
+    name: 'totalSteps',
+    type: 'int',
+    description: 'Total number of steps.',
+    required: true,
+  ),
+  PropRow(
+    name: 'currentStep',
+    type: 'int',
+    description: 'One-based active step index.',
+    required: true,
+  ),
+  PropRow(
+    name: 'stepLabel',
+    type: 'String',
+    description: 'Label string displayed for the step.',
+    required: true,
+  ),
+  PropRow(
+    name: 'description',
+    type: 'String?',
+    description: 'Secondary helper or description text.',
+  ),
+  PropRow(
+    name: 'onNext',
+    type: 'VoidCallback',
+    description: 'Callback triggered when the next arrow button is tapped.',
+  ),
+  PropRow(
+    name: 'onPrevious',
+    type: 'VoidCallback',
+    description: 'Callback triggered when the previous arrow button is tapped.',
+  ),
+  PropRow(
+    name: 'layout',
+    type: 'Ux4gCompactStepperLayout',
+    description: 'linear, rightAligned, centered, centeredBetween, or split.',
+    defaultValue: 'linear',
+  ),
+  PropRow(
+    name: 'labelAlignment',
+    type: 'CrossAxisAlignment',
+    description: 'Cross-axis alignment for step label and description text.',
+    defaultValue: 'CrossAxisAlignment.start',
+  ),
+  PropRow(
+    name: 'activeColor',
+    type: 'Color?',
+    description: 'Override color for active and completed step capsules.',
+  ),
+  PropRow(
+    name: 'inactiveColor',
+    type: 'Color?',
+    description: 'Override color for inactive step capsules.',
+  ),
+];
+
 final stepperComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [
@@ -106,8 +164,8 @@ final stepperComponent = WidgetbookComponent(
   ],
 );
 
-// Capsule variant with prev/next
-Ux4gCapsuleStepper(
+// Compact variant with prev/next
+Ux4gCompactStepper(
   totalSteps: 5,
   currentStep: 1,
   stepLabel: 'Step 2 of 5',
@@ -993,8 +1051,7 @@ Ux4gCapsuleStepper(
       name: 'With error step',
       builder: (context) => ComponentDocs(
         name: 'Stepper — Error Step',
-        description:
-            'Mark a step as errored with isError: true on StepItem.',
+        description: 'Mark a step as errored with isError: true on StepItem.',
         code: '''Ux4gStepper(
   totalSteps: 4,
   currentStep: 3,
@@ -1032,8 +1089,8 @@ Ux4gCapsuleStepper(
   ],
 );
 
-final capsuleStepperComponent = WidgetbookComponent(
-  name: 'CapsuleStepper (Compact Stepper)',
+final compactStepperComponent = WidgetbookComponent(
+  name: 'CompactStepper',
   useCases: [
     WidgetbookUseCase(
       name: 'Linear',
@@ -1042,25 +1099,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'CapsuleStepper (Compact Stepper) — Linear',
+              name: 'CompactStepper — Linear',
               description:
                   'Capsules sandwiched between navigation arrows, labels aligned to start.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.linear,
+  layout: Ux4gCompactStepperLayout.linear,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.linear,
+                  layout: Ux4gCompactStepperLayout.linear,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1077,25 +1134,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'CapsuleStepper (Compact Stepper) — Right Aligned',
+              name: 'CompactStepper — Right Aligned',
               description:
                   'Capsules between arrows, step info on left, label/desc on right.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.rightAligned,
+  layout: Ux4gCompactStepperLayout.rightAligned,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.rightAligned,
+                  layout: Ux4gCompactStepperLayout.rightAligned,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1112,26 +1169,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name:
-                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Inside)',
+              name: 'CompactStepper — Centered (Arrows Inside)',
               description:
                   'Capsules at top, arrows surrounding step info in the center.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.centered,
+  layout: Ux4gCompactStepperLayout.centered,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.centered,
+                  layout: Ux4gCompactStepperLayout.centered,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1148,26 +1204,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name:
-                  'CapsuleStepper (Compact Stepper) — Centered (Arrows Outside)',
+              name: 'CompactStepper — Centered (Arrows Outside)',
               description:
                   'Capsules at top, arrows pushed to the far edges of the container.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.centeredBetween,
+  layout: Ux4gCompactStepperLayout.centeredBetween,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.centeredBetween,
+                  layout: Ux4gCompactStepperLayout.centeredBetween,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1184,25 +1239,25 @@ final capsuleStepperComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'CapsuleStepper (Compact Stepper) — Split',
+              name: 'CompactStepper — Split',
               description:
                   'Capsules at top, labels spread across, arrows on the bottom right.',
-              code: '''Ux4gCapsuleStepper(
+              code: '''Ux4gCompactStepper(
   totalSteps: 12,
   currentStep: 1,
   stepLabel: 'Step label',
   description: 'Description',
-  layout: Ux4gCapsuleStepperLayout.split,
+  layout: Ux4gCompactStepperLayout.split,
 );''',
-              props: const [],
+              props: _compactStepperProps,
               child: SizedBox(
                 width: 380,
-                child: Ux4gCapsuleStepper(
+                child: Ux4gCompactStepper(
                   totalSteps: 12,
                   currentStep: cap,
                   stepLabel: 'Step label',
                   description: 'Description',
-                  layout: Ux4gCapsuleStepperLayout.split,
+                  layout: Ux4gCompactStepperLayout.split,
                   onNext: cap < 12 ? () => setState(() => cap++) : () {},
                   onPrevious: cap > 1 ? () => setState(() => cap--) : () {},
                 ),
@@ -1215,19 +1270,21 @@ final capsuleStepperComponent = WidgetbookComponent(
   ],
 );
 
-// ── Result Row ────────────────────────────────────────────────────────────────
+final capsuleStepperComponent = compactStepperComponent;
 
-final resultRowComponent = WidgetbookComponent(
+// ── Ux4gResultList ────────────────────────────────────────────────────────────────
+
+final resultListComponent = WidgetbookComponent(
   name: 'Result List',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'ResultRow',
+        name: 'Ux4gResultList',
         description:
-            'An expandable list-row that summarises a record with a status tag, '
+            'An expandable list item that summarises a record with a status tag, '
             'key-value detail pairs, and an optional action button.',
-        code: '''Ux4gResultRow(
+        code: '''Ux4gResultList(
   title: 'Application #2024-001',
   statusTag: 'Approved',
   tagColorScheme: Ux4gTagColor.success,
@@ -2492,6 +2549,8 @@ Ux4gResultRow(
   ],
 );
 
+final resultRowComponent = resultListComponent;
+
 // ── Social Links ──────────────────────────────────────────────────────────────
 
 final socialLinkComponent = WidgetbookComponent(
@@ -2804,10 +2863,10 @@ final journeyTimelineComponent = WidgetbookComponent(
       title: 'Title', date: 'Date', tag: 'Tag',
       status: Ux4gJourneyStepStatus(
         text: '2 days remaining',
-        dotColor: Ux4gPalette.secondary,
+        dotColor: Ux4gColors.secondary,
         badgeText: 'Pending',
-        badgeColor: Ux4gPalette.secondary.withValues(alpha: 0.12),
-        badgeTextColor: Ux4gPalette.secondary,
+        badgeColor: Ux4gColors.secondary.withValues(alpha: 0.12),
+        badgeTextColor: Ux4gColors.secondary,
       ),
     ),
     // Upcoming
@@ -2840,10 +2899,10 @@ final journeyTimelineComponent = WidgetbookComponent(
                 tag: 'Tag',
                 status: Ux4gJourneyStepStatus(
                   text: '2 days remaining',
-                  dotColor: Ux4gPalette.secondary,
+                  dotColor: Ux4gColors.secondary,
                   badgeText: 'Pending',
-                  badgeColor: Ux4gPalette.secondary.withValues(alpha: 0.12),
-                  badgeTextColor: Ux4gPalette.secondary,
+                  badgeColor: Ux4gColors.secondary.withValues(alpha: 0.12),
+                  badgeTextColor: Ux4gColors.secondary,
                 ),
               ),
               const Ux4gJourneyStep(title: 'Title', date: 'Date', tag: 'Tag'),
@@ -3043,7 +3102,10 @@ final statusPipelineComponent = WidgetbookComponent(
             currentStep: 1,
             steps: [
               Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(
+                label: 'Verification',
+                description: 'In progress',
+              ),
               Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
               Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
               Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
@@ -3151,7 +3213,10 @@ final statusPipelineComponent = WidgetbookComponent(
             currentStep: 1,
             steps: [
               Ux4gPipelineStep(label: 'Submitted', description: '5 Apr'),
-              Ux4gPipelineStep(label: 'Verification', description: 'In progress'),
+              Ux4gPipelineStep(
+                label: 'Verification',
+                description: 'In progress',
+              ),
               Ux4gPipelineStep(label: 'Inspection', description: 'Est. 10 Apr'),
               Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
               Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
@@ -3458,12 +3523,12 @@ final socialLinkListComponent = WidgetbookComponent(
   ],
 );
 
-// ── SlotGrid ──────────────────────────────────────────────────────────────────
+// ── ux4gTimeslot ──────────────────────────────────────────────────────────────────
 
-// ── SlotGrid ──────────────────────────────────────────────────────────────────
+// ── ux4gTimeslot ──────────────────────────────────────────────────────────────────
 
-final slotGridComponent = WidgetbookComponent(
-  name: 'Slot Grid',
+final timeSlotComponent = WidgetbookComponent(
+  name: 'Time Slot',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -3483,28 +3548,28 @@ final slotGridComponent = WidgetbookComponent(
             : 'SlotPickerViewMode.compact';
 
         return ComponentDocs(
-          name: 'SlotGrid',
+          name: 'ux4gTimeslot',
           description:
               'A calendar-style date picker that marks dates as available, '
               'no-slots, public holiday, or weekly-off. '
               'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
               'Supports both Expanded and Compact view modes via viewMode property.',
           code:
-              '''class SlotGridShowcase extends StatefulWidget {
+              '''class Ux4gTimeslotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
 
-  const SlotGridShowcase({
+  const Ux4gTimeslotShowcase({
     super.key,
     this.viewMode = $enumStr,
   });
 
   @override
-  State<SlotGridShowcase> createState() => _SlotGridShowcaseState();
+  State<Ux4gTimeslotShowcase> createState() => _Ux4gTimeslotShowcaseState();
 }
 
-class _SlotGridShowcaseState extends State<SlotGridShowcase> {
+class _Ux4gTimeslotShowcaseState extends State<Ux4gTimeslotShowcase> {
   DateTime? _selectedDate;
-  late SlotGridData _data;
+  late Ux4gTimeslotData _data;
 
   Map<String, List<Map<String, dynamic>>> _mutableTimeSlots = {};
 
@@ -3600,14 +3665,14 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   void initState() {
     super.initState();
     _mutableTimeSlots = _buildMutableSlots();
-    _data = SlotGridData.fromJson(_getJsonInput());
+    _data = Ux4gTimeslotData.fromJson(_getJsonInput());
   }
 
   @override
-  void didUpdateWidget(SlotGridShowcase oldWidget) {
+  void didUpdateWidget(Ux4gTimeslotShowcase oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.viewMode != widget.viewMode) {
-      _data = SlotGridData.fromJson(_getJsonInput());
+      _data = Ux4gTimeslotData.fromJson(_getJsonInput());
     }
   }
 
@@ -3660,7 +3725,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SlotGrid(
+        Ux4gTimeslot(
           data: _data,
           timeSlotProvider: _timeSlotsFor,
           onSlotConfirmed: (date, slot) => _onSlotBooked(date, slot),
@@ -3668,7 +3733,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             setState(() {
               _selectedDate = date;
               final json = _getJsonInput();
-              _data = SlotGridData.fromJson({
+              _data = Ux4gTimeslotData.fromJson({
                 ...json,
                 'selectedDate':
                     '\${date.year}-\${date.month.toString().padLeft(2, '0')}-\${date.day.toString().padLeft(2, '0')}',
@@ -3680,7 +3745,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           onMonthChanged: (year, month) {
             setState(() {
               final json = _getJsonInput();
-              _data = SlotGridData.fromJson({
+              _data = Ux4gTimeslotData.fromJson({
                 ...json,
                 'year': year,
                 'month': month,
@@ -3695,7 +3760,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
           props: [
             PropRow(
               name: 'data',
-              type: 'SlotGridData',
+              type: 'Ux4gTimeslotData',
               description:
                   'Calendar data model (year, month, dates, view mode).',
               required: true,
@@ -3724,7 +3789,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
             ),
           ],
           child: SingleChildScrollView(
-            child: SlotGridShowcase(viewMode: viewMode),
+            child: Ux4gTimeslotShowcase(viewMode: viewMode),
           ),
         );
       },
@@ -3735,7 +3800,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
-            final data = SlotGridData(
+            final data = Ux4gTimeslotData(
               year: 2026,
               month: 5,
               today: DateTime(2026, 5, 21),
@@ -3762,11 +3827,11 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
               viewMode: SlotPickerViewMode.expanded,
             );
             return ComponentDocs(
-              name: 'SlotGrid - Holidays and No-Slots',
+              name: 'ux4gTimeslot - Holidays and No-Slots',
               description:
                   'publicHoliday and noSlots dates are styled differently and '
                   'are non-interactive by default.',
-              code: '''SlotGridData(
+              code: '''Ux4gTimeslotData(
   year: 2026, month: 5,
   weeklyOffWeekdays: [6, 7],
   dates: [
@@ -3776,7 +3841,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   viewMode: SlotPickerViewMode.expanded,
 );''',
               child: SingleChildScrollView(
-                child: SlotGrid(
+                child: Ux4gTimeslot(
                   data: data,
                   onDateSelected: (date) => setState(() => selected = date),
                 ),
@@ -3793,7 +3858,7 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
         DateTime? selected;
         return StatefulBuilder(
           builder: (ctx, setState) {
-            final data = SlotGridData.fromJson({
+            final data = Ux4gTimeslotData.fromJson({
               'year': 2026,
               'month': 6,
               'today': '2026-06-01',
@@ -3805,11 +3870,11 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
               ],
             });
             return ComponentDocs(
-              name: 'SlotGrid - JSON',
+              name: 'ux4gTimeslot - JSON',
               description:
-                  'SlotGridData.fromJson() deserialises a server response directly. '
+                  'Ux4gTimeslotData.fromJson() deserialises a server response directly. '
                   'viewMode can be "expanded" or "compact".',
-              code: '''final data = SlotGridData.fromJson({
+              code: '''final data = Ux4gTimeslotData.fromJson({
   "year": 2026,
   "month": 6,
   "today": "2026-06-01",
@@ -3821,9 +3886,9 @@ class _SlotGridShowcaseState extends State<SlotGridShowcase> {
   ],
 });
 
-SlotGrid(data: data, onDateSelected: (d) {});''',
+Ux4gTimeslot(data: data, onDateSelected: (d) {});''',
               child: SingleChildScrollView(
-                child: SlotGrid(
+                child: Ux4gTimeslot(
                   data: data,
                   onDateSelected: (date) => setState(() => selected = date),
                 ),
@@ -3835,3 +3900,5 @@ SlotGrid(data: data, onDateSelected: (d) {});''',
     ),
   ],
 );
+
+final slotGridComponent = timeSlotComponent;

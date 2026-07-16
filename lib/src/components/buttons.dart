@@ -7,9 +7,11 @@ import 'loader.dart';
 enum Ux4gButtonVariant { primary, secondary, outline, ghost }
 
 enum Ux4gButtonSize {
+  xs(12.0, 4.0, 24.0),
   small(16.0, 7.0, 32.0),
   medium(20.0, 10.0, 40.0),
-  large(24.0, 14.0, 48.0);
+  large(24.0, 14.0, 48.0),
+  xl(28.0, 16.0, 56.0);
 
   final double horizontalPadding;
   final double verticalPadding;
@@ -75,7 +77,7 @@ class Ux4gButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final style = _getStyle(ux4gColors, materialTheme);
@@ -100,9 +102,17 @@ class Ux4gButton extends StatelessWidget {
 
     final defaultTextStyle =
         switch (size) {
+          Ux4gButtonSize.xs => ux4gTypography?.lL_default.copyWith(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
           Ux4gButtonSize.small => ux4gTypography?.lL_default,
           Ux4gButtonSize.medium => ux4gTypography?.lXL_default,
           Ux4gButtonSize.large => ux4gTypography?.lXL_default,
+          Ux4gButtonSize.xl => ux4gTypography?.lXL_default.copyWith(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
         } ??
         materialTheme.textTheme.labelLarge ??
         const TextStyle();
@@ -146,7 +156,7 @@ class Ux4gButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (isLoading) ...[
-                Ux4gLoader(
+                Ux4gSpinner(
                   size: 16,
                   color: effectiveContentColor,
                   strokeWidth: 2,
@@ -188,7 +198,7 @@ class Ux4gButton extends StatelessWidget {
     );
   }
 
-  _ButtonStyle _getStyle(Ux4gColors? ux4gColors, ThemeData materialTheme) {
+  _ButtonStyle _getStyle(Ux4gThemeColors? ux4gColors, ThemeData materialTheme) {
     final colorScheme = materialTheme.colorScheme;
 
     final primary = ux4gColors?.primary ?? colorScheme.primary;
@@ -281,7 +291,7 @@ class Ux4gIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onPrimary =

@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 
 final appointmentConfirmedComponent = WidgetbookComponent(
   name: 'Appointment Confirmed',
@@ -174,8 +174,8 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -213,16 +213,16 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                         height: 56,
                         decoration: BoxDecoration(
                           color: isDark
-                              ? Ux4gPalette.green800
-                              : Ux4gPalette.green100,
+                              ? Ux4gColors.green800
+                              : Ux4gColors.green100,
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
                           Icons.check_circle,
                           size: 36,
                           color: isDark
-                              ? Ux4gPalette.green300
-                              : Ux4gPalette.green600,
+                              ? Ux4gColors.green300
+                              : Ux4gColors.green600,
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -232,8 +232,8 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                         'Appointment confirmed',
                         style: typography.hS_strong.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -246,16 +246,16 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                             'Reference  ',
                             style: typography.bS_default.copyWith(
                               color: isDark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                             ),
                           ),
                           Text(
                             'APPT-2026-04127',
                             style: typography.bS_strong.copyWith(
                               color: isDark
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                             ),
                           ),
                         ],
@@ -267,8 +267,8 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                         "We've sent details to your email and SMS.",
                         style: typography.bS_default.copyWith(
                           color: isDark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -279,13 +279,13 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: isDark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral50,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral50,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color: isDark
-                                ? Ux4gPalette.neutral800
-                                : Ux4gPalette.neutral200,
+                                ? Ux4gColors.neutral800
+                                : Ux4gColors.neutral200,
                           ),
                         ),
                         child: const Column(
@@ -326,11 +326,11 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                           size: Ux4gButtonSize.large,
                           height: 44,
                           contentColor: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.primary600,
                           borderColor: isDark
-                              ? Ux4gPalette.neutral600
-                              : Ux4gPalette.primary300,
+                              ? Ux4gColors.neutral600
+                              : Ux4gColors.primary300,
                           leadingIcon: Icons.calendar_today,
                           textStyle: typography.lL_default,
                         ),
@@ -347,11 +347,11 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                           size: Ux4gButtonSize.large,
                           height: 44,
                           contentColor: isDark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.primary600,
                           borderColor: isDark
-                              ? Ux4gPalette.neutral600
-                              : Ux4gPalette.primary300,
+                              ? Ux4gColors.neutral600
+                              : Ux4gColors.primary300,
                           leadingIcon: Icons.explore_outlined,
                           textStyle: typography.lL_default,
                         ),
@@ -383,14 +383,14 @@ class _DetailItem extends StatelessWidget {
         Text(
           label,
           style: typography.lM_strong.copyWith(
-            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+            color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
           ),
         ),
         const SizedBox(height: 2),
         Text(
           value,
           style: typography.tS_default.copyWith(
-            color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+            color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
           ),
         ),
       ],

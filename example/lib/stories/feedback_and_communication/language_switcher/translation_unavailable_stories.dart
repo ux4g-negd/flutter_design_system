@@ -6,10 +6,10 @@ import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
-Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
-Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral500 : const Color(0xFF6B7280);
-Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
+Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
+Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral500 : const Color(0xFF6B7280);
+Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gColors.primary300 : const Color(0xFF432CBB);
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -82,7 +82,7 @@ class TranslationUnavailableScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
               ],
             ),
             // Content
@@ -218,7 +218,7 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
+                SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
               ],
             ),
             // White card content
@@ -340,8 +340,8 @@ class _TranslationUnavailableMockup extends StatelessWidget {
     final isDark = _isDark(context);
     return Scaffold(
         backgroundColor: isCard
-            ? (isDark ? Ux4gPalette.primary800 : Color(0xFFF2EFFF))
-            : (isDark ? Ux4gPalette.neutral950 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : Color(0xFFF2EFFF))
+            : (isDark ? Ux4gColors.neutral950 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -359,10 +359,10 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                     height: 32,
                     child: Ux4gDivider(
                       orientation: Ux4gDividerOrientation.vertical,
-                      color: _isDark(context) ? Ux4gPalette.neutral700 : Color(0xFFD1D5DB),
+                      color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFD1D5DB),
                     ),
                   ),
-                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn)),
+                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
                 ],
               ),
 
@@ -372,7 +372,7 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: isCard
                       ? Ux4gCard(
-                          backgroundColor: _isDark(context) ? Ux4gPalette.gray900 : Colors.white,
+                          backgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),

@@ -159,7 +159,7 @@ class Ux4gCircularProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
     final isDark = materialTheme.brightness == Brightness.dark;
 
@@ -170,7 +170,7 @@ class Ux4gCircularProgress extends StatelessWidget {
         (ux4gColors?.primary ?? materialTheme.colorScheme.primary);
     final resolvedTrackColor =
         trackColor ??
-        (isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300);
+        (isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300);
     final resolvedGap = gap.clamp(4.0, 16.0);
 
     // Whether the centerValueText / centerDescription should render inside the ring
@@ -239,8 +239,8 @@ class Ux4gCircularProgress extends StatelessWidget {
                           ? SweepGradient(
                               transform: const GradientRotation(-math.pi / 2),
                               colors: isDark
-                                  ? [Ux4gPalette.primary700, Ux4gPalette.primary300]
-                                  : [Ux4gPalette.primary200, Ux4gPalette.primary600],
+                                  ? [Ux4gColors.primary700, Ux4gColors.primary300]
+                                  : [Ux4gColors.primary200, Ux4gColors.primary600],
                             )
                           : null),
                   strokeCap: strokeCap,

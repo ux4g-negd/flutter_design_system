@@ -117,7 +117,7 @@ class Ux4gHalfCircleProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
     final isDark = materialTheme.brightness == Brightness.dark;
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final w = _resolvedWidth();
@@ -208,11 +208,11 @@ class Ux4gHalfCircleProgress extends StatelessWidget {
                           ? LinearGradient(
                               colors: [
                                 isDark
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600,
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600,
                                 isDark
-                                    ? Ux4gPalette.primary950
-                                    : Ux4gPalette.primary200,
+                                    ? Ux4gColors.primary950
+                                    : Ux4gColors.primary200,
                               ],
                             )
                           : null),

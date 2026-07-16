@@ -34,7 +34,7 @@ class Ux4gDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final dividerColor =
         color ??
         (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface)

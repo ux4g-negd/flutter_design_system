@@ -127,7 +127,7 @@ class _HorizontalStepper extends StatelessWidget {
           final showActiveBg = activeStepBackground && isActive;
           final isDark = Theme.of(context).brightness == Brightness.dark;
           final bgColor = showActiveBg
-              ? (isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50)
+              ? (isDark ? Ux4gColors.primary900 : Ux4gColors.primary50)
               : Colors.transparent;
 
           return Expanded(
@@ -433,7 +433,7 @@ class _StepIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -534,7 +534,7 @@ class _StepLabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -622,7 +622,7 @@ class _StepperLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
@@ -713,21 +713,27 @@ class _LinePainter extends CustomPainter {
   }
 }
 
-enum Ux4gCapsuleStepperLayout { linear, rightAligned, centered, centeredBetween, split }
+enum Ux4gCompactStepperLayout { linear, rightAligned, centered, centeredBetween, split }
 
-class Ux4gCapsuleStepper extends StatelessWidget {
+@Deprecated('Use Ux4gCompactStepperLayout instead')
+typedef Ux4gCapsuleStepperLayout = Ux4gCompactStepperLayout;
+
+@Deprecated('Use Ux4gCompactStepper instead')
+typedef Ux4gCapsuleStepper = Ux4gCompactStepper;
+
+class Ux4gCompactStepper extends StatelessWidget {
   final int totalSteps;
   final int currentStep;
   final String stepLabel;
   final String? description;
   final VoidCallback onNext;
   final VoidCallback onPrevious;
-  final Ux4gCapsuleStepperLayout layout;
+  final Ux4gCompactStepperLayout layout;
   final CrossAxisAlignment labelAlignment;
   final Color? activeColor;
   final Color? inactiveColor;
 
-  const Ux4gCapsuleStepper({
+  const Ux4gCompactStepper({
     super.key,
     required this.totalSteps,
     required this.currentStep,
@@ -735,7 +741,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
     this.description,
     this.onNext = _noop,
     this.onPrevious = _noop,
-    this.layout = Ux4gCapsuleStepperLayout.linear,
+    this.layout = Ux4gCompactStepperLayout.linear,
     this.labelAlignment = CrossAxisAlignment.start,
     this.activeColor,
     this.inactiveColor,
@@ -746,7 +752,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
@@ -761,7 +767,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (layout == Ux4gCapsuleStepperLayout.linear)
+          if (layout == Ux4gCompactStepperLayout.linear)
             _LinearCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -773,7 +779,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
-          else if (layout == Ux4gCapsuleStepperLayout.rightAligned)
+          else if (layout == Ux4gCompactStepperLayout.rightAligned)
             _RightAlignedCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -784,7 +790,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
-          else if (layout == Ux4gCapsuleStepperLayout.centered)
+          else if (layout == Ux4gCompactStepperLayout.centered)
             _CenteredCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -795,7 +801,7 @@ class Ux4gCapsuleStepper extends StatelessWidget {
               activeColor: resolvedActiveColor,
               inactiveColor: resolvedInactiveColor,
             )
-          else if (layout == Ux4gCapsuleStepperLayout.centeredBetween)
+          else if (layout == Ux4gCompactStepperLayout.centeredBetween)
             _CenteredBetweenCapsuleStepper(
               totalSteps: totalSteps,
               currentStep: currentStep,
@@ -902,7 +908,7 @@ class _StepperIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
@@ -957,7 +963,7 @@ class _LinearCapsuleStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -1060,7 +1066,7 @@ class _RightAlignedCapsuleStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -1164,7 +1170,7 @@ class _CenteredCapsuleStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -1257,7 +1263,7 @@ class _CenteredBetweenCapsuleStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
@@ -1355,7 +1361,7 @@ class _SplitCapsuleStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;

@@ -69,7 +69,7 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,15 +85,15 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                         colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
                   errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                 ),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                 SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
                   errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                 ),],
             ),
-            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
 
             // Main Content
             Expanded(
@@ -111,7 +111,7 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                         Ux4gStepItem(
                           title: 'Documents', 
                           isError: true,
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600),
                         ),
                         Ux4gStepItem(title: ''),],
                     ),
@@ -122,17 +122,17 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                       variant: Ux4gBannerVariant.errorLight,
                       title: 'Documents — 1 error found. Tap to jump.',
                       margin: EdgeInsets.zero,
-                      leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500, size: 20),
+                      leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red500, size: 20),
                       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200,     // red200
-                      titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, fontWeight: FontWeight.w500),
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50, // red50
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red800 : Ux4gColors.red200,     // red200
+                      titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, fontWeight: FontWeight.w500),
                       subtitleWidget: GestureDetector(
                         onTap: () {},
                         child: Text(
                           'Jump to error',
                           style: TextStyle(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, // red800
                             fontWeight: FontWeight.w700,
                             fontSize: 14,
                           ),
@@ -144,12 +144,12 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                     // Title & Subtitle
                     Text(
                       'Verify your details',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2),
                     ),
                     SizedBox(height: 8),
                     Text(
                       'Confirm the information below to proceed.',
-                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
+                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600, height: 1.4),
                     ),
                     SizedBox(height: 32),
 
@@ -171,7 +171,7 @@ class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
                       size: Ux4gInputFieldSize.medium,
                       status: Ux4gInputFieldStatus.error,
                       caption: 'Enter a valid 10-character PAN.',
-                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                     ),
                     SizedBox(height: 32),
 
@@ -205,8 +205,8 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
                   ),
                 ],
               ),
@@ -218,7 +218,7 @@ height: 48, text: 'Back',
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                   SizedBox(height: 6),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,  
@@ -256,14 +256,14 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -276,16 +276,16 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                         colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
                         errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
                       ),
-                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                       SvgPicture.asset(
                         Ux4gIcons.union, 
                         height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn), 
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
                         errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                       ),
                     ],
                   ),
-                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                 ],
               ),
             ),
@@ -306,7 +306,7 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                         Ux4gStepItem(
                           title: 'Documents', 
                           isError: true,
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600),
+                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600),
                         ),
                         Ux4gStepItem(title: ''),],
                     ),
@@ -316,7 +316,7 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                     Container(
                       padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
@@ -327,17 +327,17 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                             variant: Ux4gBannerVariant.errorLight,
                             title: 'Documents — 1 error found. Tap to jump.',
                             margin: EdgeInsets.zero,
-                            leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500, size: 20),
+                            leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red500, size: 20),
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
-                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200,     // red200
-                            titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, fontWeight: FontWeight.w500),
+                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50, // red50
+                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red800 : Ux4gColors.red200,     // red200
+                            titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, fontWeight: FontWeight.w500),
                             subtitleWidget: GestureDetector(
                               onTap: () {},
                               child: Text(
                                 'Jump to error',
                                 style: TextStyle(
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, // red800
                                   fontWeight: FontWeight.w700,
                                   fontSize: 14,
                                 ),
@@ -349,12 +349,12 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                           // Title & Subtitle
                           Text(
                             'Verify your details',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900, height: 1.2),
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2),
                           ),
                           SizedBox(height: 8),
                           Text(
                             'Confirm the information below to proceed.',
-                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600, height: 1.4),
+                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600, height: 1.4),
                           ),
                           SizedBox(height: 32),
 
@@ -376,7 +376,7 @@ class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
                             size: Ux4gInputFieldSize.medium,
                             status: Ux4gInputFieldStatus.error,
                             caption: 'Enter a valid 10-character PAN.',
-                            style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                            style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                           ),
                           SizedBox(height: 32),
 
@@ -413,7 +413,7 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                   ),
                 ],
               ),
@@ -425,7 +425,7 @@ height: 48, text: 'Back',
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                   SizedBox(height: 6),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,  
@@ -463,7 +463,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -483,17 +483,17 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                     color: Colors.grey,
                   ),
                 ),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                 SvgPicture.asset(
                   _unionLogoPath,
                   height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn),
                   errorBuilder: (c, e, s) =>
                       Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
             ),
-            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
 
             // Main Content
             Expanded(
@@ -517,7 +517,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                           ),
                         ),
                         Ux4gStepItem(title: ''),],
@@ -531,17 +531,17 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       margin: EdgeInsets.zero,
                       leadingIcon: Icon(
                         Icons.error,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red500,
                         size: 20,
                       ),
                       padding: EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 12,
                       ),
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200, // red200
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50, // red50
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red800 : Ux4gColors.red200, // red200
                       titleStyle: TextStyle(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800,
                         fontWeight: FontWeight.w500,
                       ),
                       subtitleWidget: GestureDetector(
@@ -549,7 +549,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                         child: Text(
                           'Jump to error',
                           style: TextStyle(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, // red800
                             fontWeight: FontWeight.w700,
                             fontSize: 14,
                           ),
@@ -564,7 +564,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         height: 1.2,
                       ),
                     ),
@@ -573,7 +573,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       'Confirm the information below to proceed.',
                       style: TextStyle(
                         fontSize: 15,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                         height: 1.4,
                       ),
                     ),
@@ -597,7 +597,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       size: Ux4gInputFieldSize.medium,
                       status: Ux4gInputFieldStatus.error,
                       caption: 'Enter a valid 10-character PAN.',
-                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                      style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                     ),
                     SizedBox(height: 32),
 
@@ -632,8 +632,8 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
+                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
                   ),
                 ],
               ),
@@ -647,7 +647,7 @@ height: 48, text: 'Back',
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                   ),
                   SizedBox(height: 6),
                   Image.asset(
@@ -689,14 +689,14 @@ class _ValidationErrorCardMockupState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Header with white background
             Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
@@ -716,12 +716,12 @@ class _ValidationErrorCardMockupState
                       Container(
                         height: 32,
                         width: 1,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
                       ),
                       SvgPicture.asset(
                         _unionLogoPath,
                         height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn),
                         errorBuilder: (c, e, s) => Icon(
                           Icons.blur_on,
                           size: 32,
@@ -730,7 +730,7 @@ class _ValidationErrorCardMockupState
                       ),
                     ],
                   ),
-                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                 ],
               ),
             ),
@@ -757,7 +757,7 @@ class _ValidationErrorCardMockupState
                           titleStyle: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                           ),
                         ),
                         Ux4gStepItem(title: ''),],
@@ -768,7 +768,7 @@ class _ValidationErrorCardMockupState
                     Container(
                       padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
@@ -781,17 +781,17 @@ class _ValidationErrorCardMockupState
                             margin: EdgeInsets.zero,
                             leadingIcon: Icon(
                               Icons.error,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red400 : Ux4gPalette.red500,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red500,
                               size: 20,
                             ),
                             padding: EdgeInsets.symmetric(
                               horizontal: 16,
                               vertical: 12,
                             ),
-                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50, // red50
-                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red800 : Ux4gPalette.red200, // red200
+                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50, // red50
+                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red800 : Ux4gColors.red200, // red200
                             titleStyle: TextStyle(
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800,
                               fontWeight: FontWeight.w500,
                             ),
                             subtitleWidget: GestureDetector(
@@ -799,7 +799,7 @@ class _ValidationErrorCardMockupState
                               child: Text(
                                 'Jump to error',
                                 style: TextStyle(
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red200 : Ux4gPalette.red800, // red800
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, // red800
                                   fontWeight: FontWeight.w700,
                                   fontSize: 14,
                                 ),
@@ -814,7 +814,7 @@ class _ValidationErrorCardMockupState
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w800,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                               height: 1.2,
                             ),
                           ),
@@ -823,7 +823,7 @@ class _ValidationErrorCardMockupState
                             'Confirm the information below to proceed.',
                             style: TextStyle(
                               fontSize: 15,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                               height: 1.4,
                             ),
                           ),
@@ -849,7 +849,7 @@ class _ValidationErrorCardMockupState
                             size: Ux4gInputFieldSize.medium,
                             status: Ux4gInputFieldStatus.error,
                             caption: 'Enter a valid 10-character PAN.',
-                            style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500),
+                            style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500),
                           ),
                           SizedBox(height: 32),
 
@@ -887,7 +887,7 @@ height: 48, text: 'Back',
                     variant: Ux4gButtonVariant.ghost,
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                   ),
                 ],
               ),
@@ -901,7 +901,7 @@ height: 48, text: 'Back',
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                    style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                   ),
                   SizedBox(height: 6),
                   Image.asset(

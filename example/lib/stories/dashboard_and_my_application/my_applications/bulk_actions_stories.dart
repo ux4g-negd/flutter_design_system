@@ -14,18 +14,18 @@ Color _getSubtleText(BuildContext context) =>
     _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 // ignore: unused_element
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+    _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 // ignore: unused_element
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+    _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 // ignore: unused_element
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral0;
 // ignore: unused_element
 Color _getHeaderBg(BuildContext context) =>
     _isDark(context) ? const Color(0xFF161925) : Colors.white;
 // ignore: unused_element
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 // ignore: unused_element
 const Color _errorColor = Color(0xFFDC2626);
 // ignore: unused_element
@@ -291,7 +291,7 @@ class _BulkActionsMockupState extends State<_BulkActionsMockup> {
                           decoration: BoxDecoration(
                             color: _isDark(context)
                                 ? const Color(0xFF1E2130)
-                                : Ux4gPalette.primary50,
+                                : Ux4gColors.primary50,
                             borderRadius: BorderRadius.circular(9),
                           ),
                           child: Column(
@@ -376,12 +376,12 @@ class _BulkActionsMockupState extends State<_BulkActionsMockup> {
                           title: 'Income Certificate',
                           statusText: '2 days overdue',
                           statusColor: _isDark(context)
-                              ? Ux4gPalette.red300
-                              : Ux4gPalette.red600,
+                              ? Ux4gColors.red300
+                              : Ux4gColors.red600,
                           badgeText: 'Escalation available',
                           badgeColor: _isDark(context)
-                              ? Ux4gPalette.red300
-                              : Ux4gPalette.red800,
+                              ? Ux4gColors.red300
+                              : Ux4gColors.red800,
                           actionText: 'Track',
                         ),
                         _buildSelectableCard(
@@ -389,12 +389,12 @@ class _BulkActionsMockupState extends State<_BulkActionsMockup> {
                           title: 'Income Certificate',
                           statusText: '4 days left',
                           statusColor: _isDark(context)
-                              ? Ux4gPalette.red300
-                              : Ux4gPalette.red600,
+                              ? Ux4gColors.red300
+                              : Ux4gColors.red600,
                           badgeText: 'Action needed',
                           badgeColor: _isDark(context)
-                              ? Ux4gPalette.red300
-                              : Ux4gPalette.red800,
+                              ? Ux4gColors.red300
+                              : Ux4gColors.red800,
                           actionText: 'Track',
                         ),
                         _buildSelectableCard(
@@ -402,12 +402,12 @@ class _BulkActionsMockupState extends State<_BulkActionsMockup> {
                           title: 'Income Certificate',
                           statusText: '8 days left',
                           statusColor: _isDark(context)
-                              ? Ux4gPalette.secondary300
-                              : Ux4gPalette.secondary600,
+                              ? Ux4gColors.secondary300
+                              : Ux4gColors.secondary600,
                           badgeText: 'Under review',
                           badgeColor: _isDark(context)
-                              ? Ux4gPalette.orange300
-                              : Ux4gPalette.orange800,
+                              ? Ux4gColors.orange300
+                              : Ux4gColors.orange800,
                           actionText: 'Track',
                         ),
                         _buildCompletedCard(
@@ -433,7 +433,7 @@ class _BulkActionsMockupState extends State<_BulkActionsMockup> {
       variant: outlined ? Ux4gButtonVariant.outline : Ux4gButtonVariant.primary,
       height: 46,
       borderRadius: 8,
-      borderColor: outlined ? Ux4gPalette.primary400 : null,
+      borderColor: outlined ? Ux4gColors.primary400 : null,
       backgroundColor: outlined ? null : _primaryColor,
       contentColor: outlined ? _primaryColor : null,
       textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),

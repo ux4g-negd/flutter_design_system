@@ -6,15 +6,15 @@ import '../../../widgets/component_docs.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral300;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral300;
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
 
-const Color _dangerColor = Ux4gPalette.red600;
+const Color _dangerColor = Ux4gColors.red600;
 
 final deleteAccountDialogComponent = WidgetbookComponent(
   name: 'Delete Account Dialog',
@@ -109,7 +109,7 @@ class _DeleteAccountDialogMockup extends StatelessWidget {
               color: _getCardBg(context),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: isDark ? Ux4gPalette.red800 : Ux4gPalette.red300,
+                color: isDark ? Ux4gColors.red800 : Ux4gColors.red300,
               ),
               boxShadow: [
                 BoxShadow(
@@ -162,11 +162,11 @@ class _DeleteAccountDialogMockup extends StatelessWidget {
                     variant: Ux4gButtonVariant.outline,
                     height: 40,
                     borderColor: isDark
-                        ? Ux4gPalette.neutral600
-                        : Ux4gPalette.neutral300,
+                        ? Ux4gColors.neutral600
+                        : Ux4gColors.neutral300,
                     contentColor: isDark
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                     textStyle: typography.lL_default,
                   ),
                 ),

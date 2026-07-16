@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 
 final searchAndBrowseComponent = WidgetbookComponent(
   name: 'Search & Browse Services',
@@ -42,7 +42,7 @@ class SearchAndBrowseScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final typography = Ux4gTheme.typography(context);
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+      backgroundColor: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           children: [
@@ -64,11 +64,11 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     // Title + subtitle
                     Text('Find any government service',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800,
-                        color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                        color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     const SizedBox(height: 4),
                     Text('Search 3,000+ services & schemes',
                       style: TextStyle(fontSize: 13,
-                        color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                        color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                     const SizedBox(height: 16),
 
                     // Search bar
@@ -84,7 +84,7 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     // Browse by category
                     Text('Browse by category',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,
-                        color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                        color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     const SizedBox(height: 12),
                     // 2-column grid of category cards
                     GridView.count(
@@ -107,24 +107,24 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
+                        color: isDark ? Ux4gColors.primary950 : Ux4gColors.primary50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100),
+                        border: Border.all(color: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('FEATURED SCHEME',
                             style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600,
-                              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)),
+                              color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600)),
                           const SizedBox(height: 4),
                           Text('PM Awas Yojana (Urban)',
                             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700,
-                              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                           const SizedBox(height: 4),
                           Text('Subsidised housing loans — interest subsidy up to ₹2.67 lakh.',
                             style: TextStyle(fontSize: 13,
-                              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                           const SizedBox(height: 12),
                           SizedBox(
                             width: double.infinity,
@@ -132,8 +132,8 @@ class SearchAndBrowseScreen extends StatelessWidget {
                               text: 'Check eligibility',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.primary,
-                              backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
+                              backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                              contentColor: isDark ? Ux4gColors.primary950 : Colors.white,
                             ),
                           ),
                         ],
@@ -144,7 +144,7 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     // Popular services
                     Text('Popular services',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,
-                        color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                        color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     const SizedBox(height: 12),
                     _ServiceCard(
                       title: 'Income Certificate',
@@ -172,20 +172,20 @@ class SearchAndBrowseScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
+                        color: isDark ? Ux4gColors.primary950 : Ux4gColors.primary50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                        border: Border.all(color: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Not sure what you\'re eligible for?',
                             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700,
-                              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                           const SizedBox(height: 4),
                           Text('Take a 2-minute quiz to find schemes you qualify for.',
                             style: TextStyle(fontSize: 13,
-                              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                           const SizedBox(height: 12),
                           SizedBox(
                             width: double.infinity,
@@ -193,8 +193,8 @@ class SearchAndBrowseScreen extends StatelessWidget {
                               text: 'Find my schemes',
                               onPressed: () {},
                               variant: Ux4gButtonVariant.secondary,
-                              backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
-                              contentColor: isDark ? Ux4gPalette.primary200 : Ux4gPalette.primary700,
+                              backgroundColor: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
+                              contentColor: isDark ? Ux4gColors.primary200 : Ux4gColors.primary700,
                             ),
                           ),
                         ],
@@ -223,10 +223,10 @@ class _CategoryCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
@@ -234,12 +234,12 @@ class _CategoryCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, size: 24,
-            color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600),
+            color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
           const SizedBox(height: 8),
           Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600,
-            color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+            color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
           Text(count, style: TextStyle(fontSize: 11,
-            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+            color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
         ],
       ),
     );
@@ -259,26 +259,26 @@ class _ServiceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600,
-            color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+            color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
           Text(dept, style: TextStyle(fontSize: 12,
-            color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+            color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
           const SizedBox(height: 6),
           Row(
             children: [
               Text(fee, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600,
-                color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600)),
+                color: isDark ? Ux4gColors.green300 : Ux4gColors.green600)),
               Text('  ·  $time', style: TextStyle(fontSize: 12,
-                color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
             ],
           ),
           const SizedBox(height: 8),
@@ -286,8 +286,8 @@ class _ServiceCard extends StatelessWidget {
             text: 'Apply', onPressed: () {},
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
-            borderColor: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.primary300,
-            contentColor: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.primary600,
+            borderColor: isDark ? Ux4gColors.neutral600 : Ux4gColors.primary300,
+            contentColor: isDark ? Ux4gColors.neutral50 : Ux4gColors.primary600,
           ),
         ],
       ),
@@ -311,8 +311,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -347,8 +347,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.all(16),
                         color: isDark
-                            ? Ux4gPalette.primary950
-                            : Ux4gPalette.primary50,
+                            ? Ux4gColors.primary950
+                            : Ux4gColors.primary50,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -359,8 +359,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -369,8 +369,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 13,
                                 color: isDark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             const SizedBox(height: 16),
@@ -386,7 +386,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                     ),
                                     decoration: BoxDecoration(
                                       color: isDark
-                                          ? Ux4gPalette.neutral900
+                                          ? Ux4gColors.neutral900
                                           : Colors.white,
                                       borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(8),
@@ -394,8 +394,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                       ),
                                       border: Border.all(
                                         color: isDark
-                                            ? Ux4gPalette.neutral800
-                                            : Ux4gPalette.neutral200,
+                                            ? Ux4gColors.neutral800
+                                            : Ux4gColors.neutral200,
                                       ),
                                     ),
                                     child: Row(
@@ -404,8 +404,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                           Icons.search,
                                           size: 20,
                                           color: isDark
-                                              ? Ux4gPalette.neutral200
-                                              : Ux4gPalette.neutral700,
+                                              ? Ux4gColors.neutral200
+                                              : Ux4gColors.neutral700,
                                         ),
                                         const SizedBox(width: 8),
                                         Expanded(
@@ -414,8 +414,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                             style: TextStyle(
                                               fontSize: 14,
                                               color: isDark
-                                                  ? Ux4gPalette.neutral400
-                                                  : Ux4gPalette.neutral700,
+                                                  ? Ux4gColors.neutral400
+                                                  : Ux4gColors.neutral700,
                                             ),
                                           ),
                                         ),
@@ -423,16 +423,16 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                           Icons.mic,
                                           size: 20,
                                           color: isDark
-                                              ? Ux4gPalette.neutral200
-                                              : Ux4gPalette.neutral700,
+                                              ? Ux4gColors.neutral200
+                                              : Ux4gColors.neutral700,
                                         ),
                                         const SizedBox(width: 8),
                                         Icon(
                                           Icons.close,
                                           size: 18,
                                           color: isDark
-                                              ? Ux4gPalette.neutral200
-                                              : Ux4gPalette.neutral700,
+                                              ? Ux4gColors.neutral200
+                                              : Ux4gColors.neutral700,
                                         ),
                                       ],
                                     ),
@@ -443,8 +443,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                   height: 44,
                                   decoration: BoxDecoration(
                                     color: isDark
-                                        ? Ux4gPalette.primary300
-                                        : Ux4gPalette.primary600,
+                                        ? Ux4gColors.primary300
+                                        : Ux4gColors.primary600,
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(8),
                                       bottomRight: Radius.circular(8),
@@ -453,7 +453,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                   child: Icon(
                                     Icons.search,
                                     color: isDark
-                                        ? Ux4gPalette.primary950
+                                        ? Ux4gColors.primary950
                                         : Colors.white,
                                     size: 20,
                                   ),
@@ -477,8 +477,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -498,8 +498,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -572,10 +572,10 @@ class _SearchAndBrowseMockup extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+            color: isDark ? Ux4gColors.neutral900 : Colors.white,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+              color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
             ),
           ),
           child: Column(
@@ -587,16 +587,16 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                 height: 36,
                 decoration: BoxDecoration(
                   color: isDark
-                      ? Ux4gPalette.primary950
-                      : Ux4gPalette.primary50,
+                      ? Ux4gColors.primary950
+                      : Ux4gColors.primary50,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   icon,
                   size: 20,
                   color: isDark
-                      ? Ux4gPalette.primary300
-                      : Ux4gPalette.primary600,
+                      ? Ux4gColors.primary300
+                      : Ux4gColors.primary600,
                 ),
               ),
               const SizedBox(height: 10),
@@ -608,8 +608,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                   color: isDark
-                      ? Ux4gPalette.neutral50
-                      : Ux4gPalette.neutral900,
+                      ? Ux4gColors.neutral50
+                      : Ux4gColors.neutral900,
                 ),
               ),
               const SizedBox(height: 2),
@@ -620,8 +620,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 11,
                   color: isDark
-                      ? Ux4gPalette.neutral200
-                      : Ux4gPalette.neutral700,
+                      ? Ux4gColors.neutral200
+                      : Ux4gColors.neutral700,
                 ),
               ),
             ],
@@ -637,7 +637,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
+        color: isDark ? Ux4gColors.primary950 : Ux4gColors.primary50,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -648,7 +648,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+              color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
               letterSpacing: 0.5,
             ),
           ),
@@ -658,7 +658,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w700,
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
           const SizedBox(height: 4),
@@ -666,7 +666,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             'Subsidised housing loans — interest subsidy up to\n₹2.67 lakh.',
             style: TextStyle(
               fontSize: 13,
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 12),
@@ -677,9 +677,9 @@ class _SearchAndBrowseMockup extends StatelessWidget {
               onPressed: () {},
               variant: Ux4gButtonVariant.primary,
               backgroundColor: isDark
-                  ? Ux4gPalette.primary300
-                  : Ux4gPalette.primary600,
-              contentColor: isDark ? Ux4gPalette.primary950 : Colors.white,
+                  ? Ux4gColors.primary300
+                  : Ux4gColors.primary600,
+              contentColor: isDark ? Ux4gColors.primary950 : Colors.white,
               height: 44,
             ),
           ),
@@ -700,10 +700,10 @@ class _SearchAndBrowseMockup extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
@@ -714,7 +714,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
           const SizedBox(height: 2),
@@ -722,7 +722,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             dept,
             style: TextStyle(
               fontSize: 12,
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 8),
@@ -733,7 +733,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
+                  color: isDark ? Ux4gColors.green300 : Ux4gColors.green600,
                 ),
               ),
               Text(
@@ -741,8 +741,8 @@ class _SearchAndBrowseMockup extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   color: isDark
-                      ? Ux4gPalette.neutral200
-                      : Ux4gPalette.neutral700,
+                      ? Ux4gColors.neutral200
+                      : Ux4gColors.neutral700,
                 ),
               ),
             ],
@@ -754,11 +754,11 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
             borderColor: isDark
-                ? Ux4gPalette.neutral600
-                : Ux4gPalette.primary300,
+                ? Ux4gColors.neutral600
+                : Ux4gColors.primary300,
             contentColor: isDark
-                ? Ux4gPalette.neutral50
-                : Ux4gPalette.primary600,
+                ? Ux4gColors.neutral50
+                : Ux4gColors.primary600,
           ),
         ],
       ),
@@ -771,10 +771,10 @@ class _SearchAndBrowseMockup extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
+        color: isDark ? Ux4gColors.primary950 : Ux4gColors.primary50,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+          color: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300,
         ),
       ),
       child: Column(
@@ -785,7 +785,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
           const SizedBox(height: 4),
@@ -793,7 +793,7 @@ class _SearchAndBrowseMockup extends StatelessWidget {
             'Take a 2-minute quiz to find schemes you qualify for.',
             style: TextStyle(
               fontSize: 13,
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 12),
@@ -804,11 +804,11 @@ class _SearchAndBrowseMockup extends StatelessWidget {
               onPressed: () {},
               variant: Ux4gButtonVariant.secondary,
               backgroundColor: isDark
-                  ? Ux4gPalette.primary800
-                  : Ux4gPalette.primary100,
+                  ? Ux4gColors.primary800
+                  : Ux4gColors.primary100,
               contentColor: isDark
-                  ? Ux4gPalette.primary200
-                  : Ux4gPalette.primary700,
+                  ? Ux4gColors.primary200
+                  : Ux4gColors.primary700,
               height: 44,
             ),
           ),

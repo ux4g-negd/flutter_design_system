@@ -8,6 +8,7 @@ import 'stories/avatar_stories.dart';
 import 'stories/badge_stories.dart';
 import 'stories/button_stories.dart';
 import 'stories/utils_stories.dart';
+import 'stories/welcome_page.dart';
 import 'stories/data_stories.dart';
 import 'stories/display_stories.dart';
 import 'stories/feedback_stories.dart';
@@ -99,14 +100,16 @@ class UX4GWidgetbook extends StatelessWidget {
       valueListenable: widgetbookThemeNotifier,
       builder: (context, themeMode, _) {
         return Widgetbook.material(
+          initialRoute: '?path=introduction/welcome',
           themeMode: themeMode,
           // ── No wrapper needed here as MaterialThemeAddon handles the theme ─────
           appBuilder: (context, child) => child,
 
-          home: const _Ux4gWelcomePage(),
+          home: const Ux4gWelcomePage(),
           header: const _SidebarLogo(),
 
           directories: [
+            overviewComponent,
             quickGuideComponent,
 
             // ── Token ─────────────────────────────────────────────────────────────
@@ -115,6 +118,8 @@ class UX4GWidgetbook extends StatelessWidget {
               isInitiallyExpanded: false,
               children: [
                 themeColorComponent,
+                themeTypographyComponent,
+                themeElevationComponent,
                 WidgetbookFolder(
                   name: 'Dimensions',
                   isInitiallyExpanded: false,
@@ -165,16 +170,6 @@ class UX4GWidgetbook extends StatelessWidget {
                     chipGroupComponent,
                   ],
                 ),
-                WidgetbookFolder(
-                  name: 'Circular Progress',
-                  isInitiallyExpanded: false,
-                  children: [
-                    circularProgressComponent,
-                    animatedCircularProgressComponent,
-                    halfCircleProgressComponent,
-                    animatedHalfCircleProgressComponent,
-                  ],
-                ),
                 datePickerComponent,
                 dividerComponent,
                 WidgetbookFolder(
@@ -190,7 +185,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Feedback',
                   isInitiallyExpanded: false,
                   children: [
-                    feedbackFormComponent,
+                    feedbackFormStarComponent,
                     feedbackFormCsatComponent,
                     feedbackFormNpsComponent,
                   ],
@@ -208,22 +203,36 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 journeyTimelineComponent,
+                modalComponent,
+                paginationDottedComponent,
                 WidgetbookFolder(
-                  name: 'Linear Progress',
+                  name: 'Progress',
                   isInitiallyExpanded: false,
                   children: [
-                    linearProgressComponent,
-                    animatedLinearProgressComponent,
+                    WidgetbookFolder(
+                      name: 'Circular Progress',
+                      isInitiallyExpanded: false,
+                      children: [
+                        circularProgressComponent,
+                        animatedCircularProgressComponent,
+                        halfCircleProgressComponent,
+                        animatedHalfCircleProgressComponent,
+                      ],
+                    ),
+                    WidgetbookFolder(
+                      name: 'Linear Progress Bar',
+                      isInitiallyExpanded: false,
+                      children: [
+                        linearProgressBarComponent,
+                        animatedLinearProgressBarComponent,
+                      ],
+                    ),
                   ],
                 ),
-                loaderComponent, // Spinner / Loader
-                modalComponent,
-                paginationComponent,
                 progressSlaIndicatorComponent,
                 radioButtonComponent,
-                resultRowComponent, // Result List
+                resultListComponent, // Result List
                 sliderComponent,
-                slotGridComponent,
                 WidgetbookFolder(
                   name: 'Social Link',
                   isInitiallyExpanded: false,
@@ -233,6 +242,7 @@ class UX4GWidgetbook extends StatelessWidget {
                     socialLinkListComponent,
                   ],
                 ),
+                spinnerComponent, // ux4gSpinner
                 WidgetbookFolder(
                   name: 'Status Banner',
                   isInitiallyExpanded: false,
@@ -246,13 +256,14 @@ class UX4GWidgetbook extends StatelessWidget {
                 WidgetbookFolder(
                   name: 'Steppers',
                   isInitiallyExpanded: false,
-                  children: [stepperComponent, capsuleStepperComponent],
+                  children: [stepperComponent, compactStepperComponent],
                 ),
                 toggleComponent, // Switch
                 tagComponent,
                 textAreaComponent,
                 timePickerComponent,
                 toastComponent,
+                timeSlotComponent, // TimeSlot
                 tooltipComponent,
               ],
             ),
@@ -668,7 +679,7 @@ class _SidebarLogo extends StatelessWidget {
               onTap: () {
                 // ignore: invalid_use_of_internal_member
                 final state = WidgetbookState.of(context);
-                state.updatePath(null);
+                state.updatePath('introduction/welcome');
               },
               child: FittedBox(
                 fit: BoxFit.scaleDown,
@@ -701,311 +712,6 @@ class _SidebarLogo extends StatelessWidget {
           tooltip: isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode',
         ),
       ],
-    );
-  }
-}
-
-class _Ux4gWelcomePage extends StatelessWidget {
-  const _Ux4gWelcomePage();
-
-  static const _primary = Color(0xFF6A4EFF);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
-    final bg = isDark ? const Color(0xFF121212) : Colors.white;
-    final onSurface = isDark ? Colors.white : const Color(0xFF111827);
-    final subtle = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
-
-    return Scaffold(
-      backgroundColor: bg,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(32),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 640),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/ux4g_logo.svg', height: 22),
-                const SizedBox(height: 24),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _primary.withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(color: _primary.withValues(alpha: 0.25)),
-                  ),
-                  child: Text(
-                    'v3.0  ·  Flutter Component Library',
-                    style: TextStyle(
-                      color: isDark ? const Color(0xFFA594FF) : _primary,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  'Flutter Documentation | UX4G Design System 3.0',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: onSurface,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w800,
-                    height: 1.15,
-                    letterSpacing: -0.8,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Government-grade UI foundations for trusted public digital experiences.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: subtle, fontSize: 16, height: 1.6),
-                ),
-                const SizedBox(height: 32),
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  alignment: WrapAlignment.center,
-                  children: const [
-                    _StatPill('50+ Reusable Components'),
-                    _StatPill('1K+ Design Tokens'),
-                    _StatPill('10 Patterns'),
-                  ],
-                ),
-                const SizedBox(height: 48),
-                Column(
-                  children: [
-                    IntrinsicHeight(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: const [
-                          Expanded(
-                            child: _FeatureCard(
-                              icon: Icons.account_tree_outlined,
-                              title: 'Scalable Architecture',
-                              description:
-                                  'A structured system of foundations, patterns, and components that scales across ministries, vendors and service teams.',
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: _FeatureCard(
-                              icon: Icons.palette_outlined,
-                              title: 'Token-Driven Design',
-                              description:
-                                  'Color, typography, spacing and elevation are governed through reusable tokens that keep every experience aligned.',
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: _FeatureCard(
-                              icon: Icons.code_rounded,
-                              title: 'Developer Friendly',
-                              description:
-                                  'Composable utilities, production-ready components, and Storybook documentation reduce friction from exploration to delivery.',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    IntrinsicHeight(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: const [
-                          Expanded(
-                            child: _FeatureCard(
-                              icon: Icons.account_tree_outlined,
-                              title: 'Componenets',
-                              description:
-                                  'Form controls, navigation, feedback, and layout primitives designed for real government workflows.',
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: _FeatureCard(
-                              icon: Icons.palette_outlined,
-                              title: 'Tokens',
-                              description:
-                                  'Core design decisions captured as reusable color, typography, spacing, and semantic values.',
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: _FeatureCard(
-                              icon: Icons.code_rounded,
-                              title: 'Patterns',
-                              description:
-                                  'Reusable block-level compositions like headers, footers, and complex forms used across applications.',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 40),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: _primary.withOpacity(isDark ? 0.12 : 0.05),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: _primary.withOpacity(0.18)),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back_rounded,
-                        color: isDark ? const Color(0xFFA594FF) : _primary,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Getting Started',
-                              style: TextStyle(
-                                color: onSurface,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              'Select any component from the left sidebar. Use the Preview and Code tabs to explore.',
-                              style: TextStyle(
-                                color: subtle,
-                                fontSize: 13,
-                                height: 1.5,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 32),
-                Text(
-                  'UX4G Design System  ·  v3.0',
-                  style: TextStyle(
-                    color: isDark ? Colors.white38 : const Color(0xFF9CA3AF),
-                    fontSize: 12,
-                  ),
-                ),
-                const SizedBox(height: 16),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _StatPill extends StatelessWidget {
-  final String label;
-  const _StatPill(this.label);
-  static const _primary = Color(0xFF6A4EFF);
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-      decoration: BoxDecoration(
-        color: _primary.withOpacity(isDark ? 0.15 : 0.07),
-        borderRadius: BorderRadius.circular(100),
-        border: Border.all(color: _primary.withOpacity(isDark ? 0.35 : 0.2)),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: isDark ? const Color(0xFFA594FF) : _primary,
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    );
-  }
-}
-
-class _FeatureCard extends StatelessWidget {
-  final IconData icon;
-  final String title, description;
-  const _FeatureCard({
-    required this.icon,
-    required this.title,
-    required this.description,
-  });
-  static const _primary = Color(0xFF6A4EFF);
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF1E1E2E) : Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: isDark ? Colors.white12 : const Color(0xFFE5E7EB),
-        ),
-        boxShadow: isDark
-            ? []
-            : [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: _primary.withOpacity(isDark ? 0.2 : 0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Icon(
-              icon,
-              color: isDark ? const Color(0xFFA594FF) : _primary,
-              size: 20,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: TextStyle(
-              color: isDark ? Colors.white : const Color(0xFF111827),
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            description,
-            style: TextStyle(
-              color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
-              fontSize: 13,
-              height: 1.55,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

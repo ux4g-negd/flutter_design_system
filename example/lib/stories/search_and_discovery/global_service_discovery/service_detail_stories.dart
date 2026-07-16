@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
-const Color _primaryColor = Ux4gPalette.primary600;
+const Color _primaryColor = Ux4gColors.primary600;
 
 final serviceDetailComponent = WidgetbookComponent(
   name: 'Service Detail',
@@ -265,8 +265,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isDark
-            ? Ux4gPalette.neutral950
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral950
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             children: [
@@ -304,48 +304,48 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                           vertical: 10,
                         ),
                         color: isDark
-                            ? Ux4gPalette.neutral900
-                            : Ux4gPalette.neutral0,
+                            ? Ux4gColors.neutral900
+                            : Ux4gColors.neutral0,
                         child: Row(
                           children: [
                             Icon(
                               Icons.home_outlined,
                               size: 14,
                               color: isDark
-                                  ? Ux4gPalette.neutral200
-                                  : Ux4gPalette.neutral700,
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               'Home',
                               style: typography.lM_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             Text(
                               '  ›  ',
                               style: typography.lM_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral600,
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral600,
                               ),
                             ),
                             Text(
                               'Certificates',
                               style: typography.lM_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             Text(
                               '  ›  ',
                               style: typography.lM_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral400
-                                    : Ux4gPalette.neutral600,
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral600,
                               ),
                             ),
                             Flexible(
@@ -353,8 +353,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                                 'Birth Certificate',
                                 style: typography.lM_strong.copyWith(
                                   color: isDark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -371,13 +371,13 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: isDark
-                                ? Ux4gPalette.primary950
-                                : Ux4gPalette.primary50,
+                                ? Ux4gColors.primary950
+                                : Ux4gColors.primary50,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
                               color: isDark
-                                  ? Ux4gPalette.primary600
-                                  : Ux4gPalette.primary500,
+                                  ? Ux4gColors.primary600
+                                  : Ux4gColors.primary500,
                             ),
                           ),
                           child: Column(
@@ -387,8 +387,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                                 'Birth Certificate',
                                 style: typography.hXS_strong.copyWith(
                                   color: isDark
-                                      ? Ux4gPalette.neutral50
-                                      : Ux4gPalette.neutral900,
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -396,8 +396,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                                 'Municipal Corporation · Registration of Births & Deaths',
                                 style: typography.lM_default.copyWith(
                                   color: isDark
-                                      ? Ux4gPalette.neutral200
-                                      : Ux4gPalette.neutral700,
+                                      ? Ux4gColors.neutral200
+                                      : Ux4gColors.neutral700,
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -407,16 +407,16 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                                     'Free',
                                     style: typography.lM_strong.copyWith(
                                       color: isDark
-                                          ? Ux4gPalette.green300
-                                          : Ux4gPalette.green700,
+                                          ? Ux4gColors.green300
+                                          : Ux4gColors.green700,
                                     ),
                                   ),
                                   Text(
                                     '  ·  20 mins online',
                                     style: typography.lM_default.copyWith(
                                       color: isDark
-                                          ? Ux4gPalette.neutral200
-                                          : Ux4gPalette.neutral700,
+                                          ? Ux4gColors.neutral200
+                                          : Ux4gColors.neutral700,
                                     ),
                                   ),
                                   const Spacer(),
@@ -424,8 +424,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                                     'Government\nverified',
                                     style: typography.lS_default.copyWith(
                                       color: isDark
-                                          ? Ux4gPalette.green300
-                                          : Ux4gPalette.green700,
+                                          ? Ux4gColors.green300
+                                          : Ux4gColors.green700,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -440,10 +440,10 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                                   variant: Ux4gButtonVariant.primary,
                                   size: Ux4gButtonSize.medium,
                                   backgroundColor: isDark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                   contentColor: isDark
-                                      ? Ux4gPalette.primary950
+                                      ? Ux4gColors.primary950
                                       : Colors.white,
                                 ),
                               ),
@@ -458,8 +458,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                           border: Border(
                             bottom: BorderSide(
                               color: isDark
-                                  ? Ux4gPalette.neutral800
-                                  : Ux4gPalette.neutral200,
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral200,
                             ),
                           ),
                         ),
@@ -483,8 +483,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                               'About this service',
                               style: typography.hXS_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -492,8 +492,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                               'A Birth Certificate is the official record of a child\'s birth, issued by the local municipal body. It is required for school admission, passport, Aadhaar enrolment and accessing welfare schemes. Apply online with hospital records, or visit your nearest municipal office.',
                               style: typography.bS_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -526,8 +526,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
                               'Related services',
                               style: typography.hXS_default.copyWith(
                                 color: isDark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -579,7 +579,7 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
             border: Border(
               bottom: BorderSide(
                 color: isSelected
-                    ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
+                    ? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600)
                     : Colors.transparent,
                 width: 2,
               ),
@@ -591,8 +591,8 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
             overflow: TextOverflow.ellipsis,
             style: typography.lM_default.copyWith(
               color: isSelected
-                  ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
-                  : (isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                  ? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600)
+                  : (isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700),
             ),
           ),
         ),
@@ -607,10 +607,10 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.primary950 : Ux4gPalette.primary50,
+        color: isDark ? Ux4gColors.primary950 : Ux4gColors.primary50,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: isDark ? Ux4gPalette.primary600 : Ux4gPalette.primary300,
+          color: isDark ? Ux4gColors.primary600 : Ux4gColors.primary300,
         ),
       ),
       child: Column(
@@ -619,14 +619,14 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
           Text(
             title,
             style: typography.lM_strong.copyWith(
-              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+              color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
             ),
           ),
           const SizedBox(height: 4),
           Text(
             description,
             style: typography.bS_default.copyWith(
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
         ],
@@ -641,10 +641,10 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral100,
+        color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200,
+          color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
         ),
       ),
       child: Column(
@@ -653,14 +653,14 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
           Text(
             title,
             style: typography.tS_strong.copyWith(
-              color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+              color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
             ),
           ),
           const SizedBox(height: 2),
           Text(
             dept,
             style: typography.lM_default.copyWith(
-              color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+              color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
             ),
           ),
           const SizedBox(height: 8),
@@ -669,15 +669,15 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
               Text(
                 fee,
                 style: typography.lM_default.copyWith(
-                  color: isDark ? Ux4gPalette.green300 : Ux4gPalette.green600,
+                  color: isDark ? Ux4gColors.green300 : Ux4gColors.green600,
                 ),
               ),
               Text(
                 '  ·  $time',
                 style: typography.lM_default.copyWith(
                   color: isDark
-                      ? Ux4gPalette.neutral200
-                      : Ux4gPalette.neutral700,
+                      ? Ux4gColors.neutral200
+                      : Ux4gColors.neutral700,
                 ),
               ),
             ],
@@ -689,11 +689,11 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
             variant: Ux4gButtonVariant.outline,
             size: Ux4gButtonSize.small,
             borderColor: isDark
-                ? Ux4gPalette.neutral600
-                : Ux4gPalette.primary300,
+                ? Ux4gColors.neutral600
+                : Ux4gColors.primary300,
             contentColor: isDark
-                ? Ux4gPalette.neutral50
-                : Ux4gPalette.primary600,
+                ? Ux4gColors.neutral50
+                : Ux4gColors.primary600,
           ),
         ],
       ),

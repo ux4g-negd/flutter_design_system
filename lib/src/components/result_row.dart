@@ -5,7 +5,7 @@ import '../foundation/typography.dart';
 import 'buttons.dart';
 import 'tag.dart';
 
-/// Data model for detailed information items in the [Ux4gResultRow].
+/// Data model for detailed information items in the [Ux4gResultList].
 class Ux4gResultDetail {
   final String label;
   final String value;
@@ -25,7 +25,10 @@ class Ux4gResultDetail {
 }
 
 /// A configurable expandable list item component for search results and application status.
-class Ux4gResultRow extends StatefulWidget {
+@Deprecated('Use Ux4gResultList instead')
+typedef Ux4gResultRow = Ux4gResultList;
+
+class Ux4gResultList extends StatefulWidget {
   final String title;
   final Widget? titleTrailing;
   final String? statusTag;
@@ -51,7 +54,7 @@ class Ux4gResultRow extends StatefulWidget {
   final bool showBottomDivider;
   final EdgeInsetsGeometry contentPadding;
 
-  const Ux4gResultRow({
+  const Ux4gResultList({
     super.key,
     required this.title,
     this.titleTrailing,
@@ -77,10 +80,10 @@ class Ux4gResultRow extends StatefulWidget {
   });
 
   @override
-  State<Ux4gResultRow> createState() => _Ux4gResultRowState();
+  State<Ux4gResultList> createState() => _Ux4gResultListState();
 }
 
-class _Ux4gResultRowState extends State<Ux4gResultRow>
+class _Ux4gResultListState extends State<Ux4gResultList>
     with SingleTickerProviderStateMixin {
   late bool _isExpanded;
 
@@ -100,12 +103,12 @@ class _Ux4gResultRowState extends State<Ux4gResultRow>
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
     final isDark = materialTheme.brightness == Brightness.dark;
     final borderColor = isDark
-        ? Ux4gPalette.neutral800
-        : Ux4gPalette.neutral300;
+        ? Ux4gColors.neutral800
+        : Ux4gColors.neutral300;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -204,9 +207,9 @@ class _Ux4gResultRowState extends State<Ux4gResultRow>
                         variant: Ux4gButtonVariant.outline,
                         size: Ux4gButtonSize.small,
                         contentColor: widget.actionButtonColor ??
-                            (isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
+                            (isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900),
                         borderColor: widget.actionButtonColor ??
-                            (isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                            (isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
                         leadingIcon: widget.actionButtonIcon,
                         onPressed: widget.onActionPressed ?? () {},
                       ),

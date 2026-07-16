@@ -14,10 +14,10 @@ Color _getSubtleText(BuildContext context) =>
     _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 // ignore: unused_element
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+    _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 // ignore: unused_element
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+    _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 // ignore: unused_element
 Color _getCardBg(BuildContext context) =>
     _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
@@ -119,13 +119,13 @@ class NoApplicationsScreen extends StatelessWidget {
                             width: 64,
                             height: 64,
                             colorFilter: ColorFilter.mode(
-                              _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                               BlendMode.srcIn,
                             ),
                             errorBuilder: (c, e, s) => Icon(
                               Icons.inbox_outlined,
                               size: 64,
-                              color: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              color: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                             ),
                           ),
                           SizedBox(height: 20),
@@ -323,16 +323,16 @@ class _NoApplicationsMockup extends StatelessWidget {
                             height: 64,
                             colorFilter: ColorFilter.mode(
                               _isDark(context)
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                               BlendMode.srcIn,
                             ),
                             errorBuilder: (c, e, s) => Icon(
                               Icons.inbox_outlined,
                               size: 64,
                               color: _isDark(context)
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                             ),
                           ),
                           SizedBox(height: 20),

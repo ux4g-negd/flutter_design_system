@@ -3,56 +3,34 @@ import 'package:flutter/services.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:widgetbook/widgetbook.dart';
 import '../theme_notifier.dart';
+import 'welcome_page.dart';
 
-/// Returns true when the outer-frame toggle is set to dark.
-/// Falls back to platform brightness when set to [ThemeMode.system].
+/// Returns true when the active theme (either right-side settings addon or outer frame) is dark.
 bool _isOuterDark(BuildContext context) {
+  if (Theme.of(context).brightness == Brightness.dark) return true;
   final mode = widgetbookThemeNotifier.value;
   if (mode == ThemeMode.dark) return true;
   if (mode == ThemeMode.light) return false;
   return MediaQuery.platformBrightnessOf(context) == Brightness.dark;
 }
 
+// ── Overview ──────────────────────────────────────────────────────────────────
+
+final overviewComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Welcome',
+      builder: (context) => const Ux4gWelcomePage(),
+    ),
+  ],
+);
+
 // ── Quick Guide ───────────────────────────────────────────────────────────────
 
 final quickGuideComponent = WidgetbookComponent(
-  name: 'Quick Guide',
+  name: 'Quick Start Guide',
   useCases: [
-    // WidgetbookUseCase(
-    //   name: 'Overview',
-    //   builder: (context) => const _DocPage(
-    //     title: 'UX4G Flutter Design System',
-    //     sections: [
-    //       _DocSection(
-    //         heading: '',
-    //         body:
-    //             'Flutter design system is built to deliver '
-    //             'consistent, accessible, and trusted digital experiences across '
-    //             'public service applications. It provides 50+ components, design '
-    //             'tokens, and a theming system that follows UX4G accessibility '
-    //             'guidelines.',
-    //       ),
-    //       _DocSection(
-    //         heading: 'How to use this Widgetbook',
-    //         body:
-    //             'Browse components using the left sidebar. Click any component to '
-    //             'see its use cases.\n\n'
-    //             '• Preview tab — Live interactive component\n'
-    //             '• Code tab — Copy-ready Dart snippet\n'
-    //             '• Props tab — Parameter reference\n\n'
-    //             'Use the addons panel (right side) to change viewport, theme '
-    //             '(Light/Dark), text scale, and alignment.',
-    //       ),
-    //       _DocSection(
-    //         heading: 'Categories',
-    //         body:
-    //             'Buttons · Display · Avatar · Form · Progress & Loader · '
-    //             'Navigation & Feedback · Data · Layout · Overlay · Feedback Forms · '
-    //             'Utils',
-    //       ),
-    //     ],
-    //   ),
-    // ),
     WidgetbookUseCase(
       name: 'Installation',
       builder: (context) => _DocPage(
@@ -72,7 +50,7 @@ final quickGuideComponent = WidgetbookComponent(
             label:
                 "This will add a line like this to your package's pubspec.yaml\n"
                 "(and run an implicit flutter pub get):",
-            code: 'dependencies:\n  ux4g_flutter_components: ^1.1.0',
+            code: 'dependencies:\n  ux4g_flutter_components: ^1.3.0',
           ),
         ],
         trailingSections: const [
@@ -105,7 +83,7 @@ final quickGuideComponent = WidgetbookComponent(
 // ── Theme — Color Palette ─────────────────────────────────────────────────────
 
 final themeColorComponent = WidgetbookComponent(
-  name: 'Color Palette',
+  name: 'Colors',
   isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
@@ -115,27 +93,27 @@ final themeColorComponent = WidgetbookComponent(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const _SectionHeader(
+              'Ux4gColors Tokens',
+              'Ux4gColors.* (Ux4gPalette is deprecated)',
+            ),
+            const SizedBox(height: 20),
             _PaletteView(
               label: 'Primary Solid Scale',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch(
-                  'primary',
-                  Ux4gPalette.primary,
-                  'primary ★',
-                  main: true,
-                ),
-                _Swatch('primary-50', Ux4gPalette.primary50, '50'),
-                _Swatch('primary-100', Ux4gPalette.primary100, '100'),
-                _Swatch('primary-200', Ux4gPalette.primary200, '200'),
-                _Swatch('primary-300', Ux4gPalette.primary300, '300'),
-                _Swatch('primary-400', Ux4gPalette.primary400, '400'),
-                _Swatch('primary-500', Ux4gPalette.primary500, '500'),
-                _Swatch('primary-600', Ux4gPalette.primary600, '600'),
-                _Swatch('primary-700', Ux4gPalette.primary700, '700'),
-                _Swatch('primary-800', Ux4gPalette.primary800, '800'),
-                _Swatch('primary-900', Ux4gPalette.primary900, '900'),
-                _Swatch('primary-950', Ux4gPalette.primary950, '950'),
+                _Swatch('primary', Ux4gColors.primary, 'primary ★', main: true),
+                _Swatch('primary-50', Ux4gColors.primary50, '50'),
+                _Swatch('primary-100', Ux4gColors.primary100, '100'),
+                _Swatch('primary-200', Ux4gColors.primary200, '200'),
+                _Swatch('primary-300', Ux4gColors.primary300, '300'),
+                _Swatch('primary-400', Ux4gColors.primary400, '400'),
+                _Swatch('primary-500', Ux4gColors.primary500, '500'),
+                _Swatch('primary-600', Ux4gColors.primary600, '600'),
+                _Swatch('primary-700', Ux4gColors.primary700, '700'),
+                _Swatch('primary-800', Ux4gColors.primary800, '800'),
+                _Swatch('primary-900', Ux4gColors.primary900, '900'),
+                _Swatch('primary-950', Ux4gColors.primary950, '950'),
               ],
             ),
             const SizedBox(height: 24),
@@ -143,17 +121,17 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Primary Alpha Scale (25% Opacity)',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('primary-50A', Ux4gPalette.primary50A, '50A'),
-                _Swatch('primary-100A', Ux4gPalette.primary100A, '100A'),
-                _Swatch('primary-200A', Ux4gPalette.primary200A, '200A'),
-                _Swatch('primary-300A', Ux4gPalette.primary300A, '300A'),
-                _Swatch('primary-400A', Ux4gPalette.primary400A, '400A'),
-                _Swatch('primary-500A', Ux4gPalette.primary500A, '500A'),
-                _Swatch('primary-600A', Ux4gPalette.primary600A, '600A'),
-                _Swatch('primary-700A', Ux4gPalette.primary700A, '700A'),
-                _Swatch('primary-800A', Ux4gPalette.primary800A, '800A'),
-                _Swatch('primary-900A', Ux4gPalette.primary900A, '900A'),
-                _Swatch('primary-950A', Ux4gPalette.primary950A, '950A'),
+                _Swatch('primary-50A', Ux4gColors.primary50A, '50A'),
+                _Swatch('primary-100A', Ux4gColors.primary100A, '100A'),
+                _Swatch('primary-200A', Ux4gColors.primary200A, '200A'),
+                _Swatch('primary-300A', Ux4gColors.primary300A, '300A'),
+                _Swatch('primary-400A', Ux4gColors.primary400A, '400A'),
+                _Swatch('primary-500A', Ux4gColors.primary500A, '500A'),
+                _Swatch('primary-600A', Ux4gColors.primary600A, '600A'),
+                _Swatch('primary-700A', Ux4gColors.primary700A, '700A'),
+                _Swatch('primary-800A', Ux4gColors.primary800A, '800A'),
+                _Swatch('primary-900A', Ux4gColors.primary900A, '900A'),
+                _Swatch('primary-950A', Ux4gColors.primary950A, '950A'),
               ],
             ),
           ],
@@ -173,21 +151,21 @@ final themeColorComponent = WidgetbookComponent(
               swatches: const [
                 _Swatch(
                   'secondary',
-                  Ux4gPalette.secondary,
+                  Ux4gColors.secondary,
                   'secondary ★',
                   main: true,
                 ),
-                _Swatch('secondary-50', Ux4gPalette.secondary50, '50'),
-                _Swatch('secondary-100', Ux4gPalette.secondary100, '100'),
-                _Swatch('secondary-200', Ux4gPalette.secondary200, '200'),
-                _Swatch('secondary-300', Ux4gPalette.secondary300, '300'),
-                _Swatch('secondary-400', Ux4gPalette.secondary400, '400'),
-                _Swatch('secondary-500', Ux4gPalette.secondary500, '500'),
-                _Swatch('secondary-600', Ux4gPalette.secondary600, '600'),
-                _Swatch('secondary-700', Ux4gPalette.secondary700, '700'),
-                _Swatch('secondary-800', Ux4gPalette.secondary800, '800'),
-                _Swatch('secondary-900', Ux4gPalette.secondary900, '900'),
-                _Swatch('secondary-950', Ux4gPalette.secondary950, '950'),
+                _Swatch('secondary-50', Ux4gColors.secondary50, '50'),
+                _Swatch('secondary-100', Ux4gColors.secondary100, '100'),
+                _Swatch('secondary-200', Ux4gColors.secondary200, '200'),
+                _Swatch('secondary-300', Ux4gColors.secondary300, '300'),
+                _Swatch('secondary-400', Ux4gColors.secondary400, '400'),
+                _Swatch('secondary-500', Ux4gColors.secondary500, '500'),
+                _Swatch('secondary-600', Ux4gColors.secondary600, '600'),
+                _Swatch('secondary-700', Ux4gColors.secondary700, '700'),
+                _Swatch('secondary-800', Ux4gColors.secondary800, '800'),
+                _Swatch('secondary-900', Ux4gColors.secondary900, '900'),
+                _Swatch('secondary-950', Ux4gColors.secondary950, '950'),
               ],
             ),
             const SizedBox(height: 24),
@@ -195,17 +173,17 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Secondary Alpha Scale (25% Opacity)',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('secondary-50A', Ux4gPalette.secondary50A, '50A'),
-                _Swatch('secondary-100A', Ux4gPalette.secondary100A, '100A'),
-                _Swatch('secondary-200A', Ux4gPalette.secondary200A, '200A'),
-                _Swatch('secondary-300A', Ux4gPalette.secondary300A, '300A'),
-                _Swatch('secondary-400A', Ux4gPalette.secondary400A, '400A'),
-                _Swatch('secondary-500A', Ux4gPalette.secondary500A, '500A'),
-                _Swatch('secondary-600A', Ux4gPalette.secondary600A, '600A'),
-                _Swatch('secondary-700A', Ux4gPalette.secondary700A, '700A'),
-                _Swatch('secondary-800A', Ux4gPalette.secondary800A, '800A'),
-                _Swatch('secondary-900A', Ux4gPalette.secondary900A, '900A'),
-                _Swatch('secondary-950A', Ux4gPalette.secondary950A, '950A'),
+                _Swatch('secondary-50A', Ux4gColors.secondary50A, '50A'),
+                _Swatch('secondary-100A', Ux4gColors.secondary100A, '100A'),
+                _Swatch('secondary-200A', Ux4gColors.secondary200A, '200A'),
+                _Swatch('secondary-300A', Ux4gColors.secondary300A, '300A'),
+                _Swatch('secondary-400A', Ux4gColors.secondary400A, '400A'),
+                _Swatch('secondary-500A', Ux4gColors.secondary500A, '500A'),
+                _Swatch('secondary-600A', Ux4gColors.secondary600A, '600A'),
+                _Swatch('secondary-700A', Ux4gColors.secondary700A, '700A'),
+                _Swatch('secondary-800A', Ux4gColors.secondary800A, '800A'),
+                _Swatch('secondary-900A', Ux4gColors.secondary900A, '900A'),
+                _Swatch('secondary-950A', Ux4gColors.secondary950A, '950A'),
               ],
             ),
           ],
@@ -225,21 +203,21 @@ final themeColorComponent = WidgetbookComponent(
               swatches: const [
                 _Swatch(
                   'tertiary',
-                  Ux4gPalette.tertiary,
+                  Ux4gColors.tertiary,
                   'tertiary ★',
                   main: true,
                 ),
-                _Swatch('tertiary-50', Ux4gPalette.tertiary50, '50'),
-                _Swatch('tertiary-100', Ux4gPalette.tertiary100, '100'),
-                _Swatch('tertiary-200', Ux4gPalette.tertiary200, '200'),
-                _Swatch('tertiary-300', Ux4gPalette.tertiary300, '300'),
-                _Swatch('tertiary-400', Ux4gPalette.tertiary400, '400'),
-                _Swatch('tertiary-500', Ux4gPalette.tertiary500, '500'),
-                _Swatch('tertiary-600', Ux4gPalette.tertiary600, '600'),
-                _Swatch('tertiary-700', Ux4gPalette.tertiary700, '700'),
-                _Swatch('tertiary-800', Ux4gPalette.tertiary800, '800'),
-                _Swatch('tertiary-900', Ux4gPalette.tertiary900, '900'),
-                _Swatch('tertiary-950', Ux4gPalette.tertiary950, '950'),
+                _Swatch('tertiary-50', Ux4gColors.tertiary50, '50'),
+                _Swatch('tertiary-100', Ux4gColors.tertiary100, '100'),
+                _Swatch('tertiary-200', Ux4gColors.tertiary200, '200'),
+                _Swatch('tertiary-300', Ux4gColors.tertiary300, '300'),
+                _Swatch('tertiary-400', Ux4gColors.tertiary400, '400'),
+                _Swatch('tertiary-500', Ux4gColors.tertiary500, '500'),
+                _Swatch('tertiary-600', Ux4gColors.tertiary600, '600'),
+                _Swatch('tertiary-700', Ux4gColors.tertiary700, '700'),
+                _Swatch('tertiary-800', Ux4gColors.tertiary800, '800'),
+                _Swatch('tertiary-900', Ux4gColors.tertiary900, '900'),
+                _Swatch('tertiary-950', Ux4gColors.tertiary950, '950'),
               ],
             ),
             const SizedBox(height: 24),
@@ -247,17 +225,17 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Tertiary Alpha Scale (25% Opacity)',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('tertiary-50A', Ux4gPalette.tertiary50A, '50A'),
-                _Swatch('tertiary-100A', Ux4gPalette.tertiary100A, '100A'),
-                _Swatch('tertiary-200A', Ux4gPalette.tertiary200A, '200A'),
-                _Swatch('tertiary-300A', Ux4gPalette.tertiary300A, '300A'),
-                _Swatch('tertiary-400A', Ux4gPalette.tertiary400A, '400A'),
-                _Swatch('tertiary-500A', Ux4gPalette.tertiary500A, '500A'),
-                _Swatch('tertiary-600A', Ux4gPalette.tertiary600A, '600A'),
-                _Swatch('tertiary-700A', Ux4gPalette.tertiary700A, '700A'),
-                _Swatch('tertiary-800A', Ux4gPalette.tertiary800A, '800A'),
-                _Swatch('tertiary-900A', Ux4gPalette.tertiary900A, '900A'),
-                _Swatch('tertiary-950A', Ux4gPalette.tertiary950A, '950A'),
+                _Swatch('tertiary-50A', Ux4gColors.tertiary50A, '50A'),
+                _Swatch('tertiary-100A', Ux4gColors.tertiary100A, '100A'),
+                _Swatch('tertiary-200A', Ux4gColors.tertiary200A, '200A'),
+                _Swatch('tertiary-300A', Ux4gColors.tertiary300A, '300A'),
+                _Swatch('tertiary-400A', Ux4gColors.tertiary400A, '400A'),
+                _Swatch('tertiary-500A', Ux4gColors.tertiary500A, '500A'),
+                _Swatch('tertiary-600A', Ux4gColors.tertiary600A, '600A'),
+                _Swatch('tertiary-700A', Ux4gColors.tertiary700A, '700A'),
+                _Swatch('tertiary-800A', Ux4gColors.tertiary800A, '800A'),
+                _Swatch('tertiary-900A', Ux4gColors.tertiary900A, '900A'),
+                _Swatch('tertiary-950A', Ux4gColors.tertiary950A, '950A'),
               ],
             ),
           ],
@@ -269,18 +247,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Red (Error)',
         swatches: const [
-          _Swatch('red', Ux4gPalette.red, 'red ★', main: true),
-          _Swatch('red-50', Ux4gPalette.red50, '50'),
-          _Swatch('red-100', Ux4gPalette.red100, '100'),
-          _Swatch('red-200', Ux4gPalette.red200, '200'),
-          _Swatch('red-300', Ux4gPalette.red300, '300'),
-          _Swatch('red-400', Ux4gPalette.red400, '400'),
-          _Swatch('red-500', Ux4gPalette.red500, '500'),
-          _Swatch('red-600', Ux4gPalette.red600, '600'),
-          _Swatch('red-700', Ux4gPalette.red700, '700'),
-          _Swatch('red-800', Ux4gPalette.red800, '800'),
-          _Swatch('red-900', Ux4gPalette.red900, '900'),
-          _Swatch('red-950', Ux4gPalette.red950, '950'),
+          _Swatch('red', Ux4gColors.red, 'red ★', main: true),
+          _Swatch('red-50', Ux4gColors.red50, '50'),
+          _Swatch('red-100', Ux4gColors.red100, '100'),
+          _Swatch('red-200', Ux4gColors.red200, '200'),
+          _Swatch('red-300', Ux4gColors.red300, '300'),
+          _Swatch('red-400', Ux4gColors.red400, '400'),
+          _Swatch('red-500', Ux4gColors.red500, '500'),
+          _Swatch('red-600', Ux4gColors.red600, '600'),
+          _Swatch('red-700', Ux4gColors.red700, '700'),
+          _Swatch('red-800', Ux4gColors.red800, '800'),
+          _Swatch('red-900', Ux4gColors.red900, '900'),
+          _Swatch('red-950', Ux4gColors.red950, '950'),
         ],
       ),
     ),
@@ -289,18 +267,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Orange (Warning)',
         swatches: const [
-          _Swatch('orange', Ux4gPalette.orange, 'orange ★', main: true),
-          _Swatch('orange-50', Ux4gPalette.orange50, '50'),
-          _Swatch('orange-100', Ux4gPalette.orange100, '100'),
-          _Swatch('orange-200', Ux4gPalette.orange200, '200'),
-          _Swatch('orange-300', Ux4gPalette.orange300, '300'),
-          _Swatch('orange-400', Ux4gPalette.orange400, '400'),
-          _Swatch('orange-500', Ux4gPalette.orange500, '500'),
-          _Swatch('orange-600', Ux4gPalette.orange600, '600'),
-          _Swatch('orange-700', Ux4gPalette.orange700, '700'),
-          _Swatch('orange-800', Ux4gPalette.orange800, '800'),
-          _Swatch('orange-900', Ux4gPalette.orange900, '900'),
-          _Swatch('orange-950', Ux4gPalette.orange950, '950'),
+          _Swatch('orange', Ux4gColors.orange, 'orange ★', main: true),
+          _Swatch('orange-50', Ux4gColors.orange50, '50'),
+          _Swatch('orange-100', Ux4gColors.orange100, '100'),
+          _Swatch('orange-200', Ux4gColors.orange200, '200'),
+          _Swatch('orange-300', Ux4gColors.orange300, '300'),
+          _Swatch('orange-400', Ux4gColors.orange400, '400'),
+          _Swatch('orange-500', Ux4gColors.orange500, '500'),
+          _Swatch('orange-600', Ux4gColors.orange600, '600'),
+          _Swatch('orange-700', Ux4gColors.orange700, '700'),
+          _Swatch('orange-800', Ux4gColors.orange800, '800'),
+          _Swatch('orange-900', Ux4gColors.orange900, '900'),
+          _Swatch('orange-950', Ux4gColors.orange950, '950'),
         ],
       ),
     ),
@@ -309,18 +287,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Yellow',
         swatches: const [
-          _Swatch('yellow', Ux4gPalette.yellow, 'yellow ★', main: true),
-          _Swatch('yellow-50', Ux4gPalette.yellow50, '50'),
-          _Swatch('yellow-100', Ux4gPalette.yellow100, '100'),
-          _Swatch('yellow-200', Ux4gPalette.yellow200, '200'),
-          _Swatch('yellow-300', Ux4gPalette.yellow300, '300'),
-          _Swatch('yellow-400', Ux4gPalette.yellow400, '400'),
-          _Swatch('yellow-500', Ux4gPalette.yellow500, '500'),
-          _Swatch('yellow-600', Ux4gPalette.yellow600, '600'),
-          _Swatch('yellow-700', Ux4gPalette.yellow700, '700'),
-          _Swatch('yellow-800', Ux4gPalette.yellow800, '800'),
-          _Swatch('yellow-900', Ux4gPalette.yellow900, '900'),
-          _Swatch('yellow-950', Ux4gPalette.yellow950, '950'),
+          _Swatch('yellow', Ux4gColors.yellow, 'yellow ★', main: true),
+          _Swatch('yellow-50', Ux4gColors.yellow50, '50'),
+          _Swatch('yellow-100', Ux4gColors.yellow100, '100'),
+          _Swatch('yellow-200', Ux4gColors.yellow200, '200'),
+          _Swatch('yellow-300', Ux4gColors.yellow300, '300'),
+          _Swatch('yellow-400', Ux4gColors.yellow400, '400'),
+          _Swatch('yellow-500', Ux4gColors.yellow500, '500'),
+          _Swatch('yellow-600', Ux4gColors.yellow600, '600'),
+          _Swatch('yellow-700', Ux4gColors.yellow700, '700'),
+          _Swatch('yellow-800', Ux4gColors.yellow800, '800'),
+          _Swatch('yellow-900', Ux4gColors.yellow900, '900'),
+          _Swatch('yellow-950', Ux4gColors.yellow950, '950'),
         ],
       ),
     ),
@@ -329,18 +307,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Gold',
         swatches: const [
-          _Swatch('gold', Ux4gPalette.gold, 'gold ★', main: true),
-          _Swatch('gold-50', Ux4gPalette.gold50, '50'),
-          _Swatch('gold-100', Ux4gPalette.gold100, '100'),
-          _Swatch('gold-200', Ux4gPalette.gold200, '200'),
-          _Swatch('gold-300', Ux4gPalette.gold300, '300'),
-          _Swatch('gold-400', Ux4gPalette.gold400, '400'),
-          _Swatch('gold-500', Ux4gPalette.gold500, '500'),
-          _Swatch('gold-600', Ux4gPalette.gold600, '600'),
-          _Swatch('gold-700', Ux4gPalette.gold700, '700'),
-          _Swatch('gold-800', Ux4gPalette.gold800, '800'),
-          _Swatch('gold-900', Ux4gPalette.gold900, '900'),
-          _Swatch('gold-950', Ux4gPalette.gold950, '950'),
+          _Swatch('gold', Ux4gColors.gold, 'gold ★', main: true),
+          _Swatch('gold-50', Ux4gColors.gold50, '50'),
+          _Swatch('gold-100', Ux4gColors.gold100, '100'),
+          _Swatch('gold-200', Ux4gColors.gold200, '200'),
+          _Swatch('gold-300', Ux4gColors.gold300, '300'),
+          _Swatch('gold-400', Ux4gColors.gold400, '400'),
+          _Swatch('gold-500', Ux4gColors.gold500, '500'),
+          _Swatch('gold-600', Ux4gColors.gold600, '600'),
+          _Swatch('gold-700', Ux4gColors.gold700, '700'),
+          _Swatch('gold-800', Ux4gColors.gold800, '800'),
+          _Swatch('gold-900', Ux4gColors.gold900, '900'),
+          _Swatch('gold-950', Ux4gColors.gold950, '950'),
         ],
       ),
     ),
@@ -349,18 +327,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Green (Success)',
         swatches: const [
-          _Swatch('green', Ux4gPalette.green, 'green ★', main: true),
-          _Swatch('green-50', Ux4gPalette.green50, '50'),
-          _Swatch('green-100', Ux4gPalette.green100, '100'),
-          _Swatch('green-200', Ux4gPalette.green200, '200'),
-          _Swatch('green-300', Ux4gPalette.green300, '300'),
-          _Swatch('green-400', Ux4gPalette.green400, '400'),
-          _Swatch('green-500', Ux4gPalette.green500, '500'),
-          _Swatch('green-600', Ux4gPalette.green600, '600'),
-          _Swatch('green-700', Ux4gPalette.green700, '700'),
-          _Swatch('green-800', Ux4gPalette.green800, '800'),
-          _Swatch('green-900', Ux4gPalette.green900, '900'),
-          _Swatch('green-950', Ux4gPalette.green950, '950'),
+          _Swatch('green', Ux4gColors.green, 'green ★', main: true),
+          _Swatch('green-50', Ux4gColors.green50, '50'),
+          _Swatch('green-100', Ux4gColors.green100, '100'),
+          _Swatch('green-200', Ux4gColors.green200, '200'),
+          _Swatch('green-300', Ux4gColors.green300, '300'),
+          _Swatch('green-400', Ux4gColors.green400, '400'),
+          _Swatch('green-500', Ux4gColors.green500, '500'),
+          _Swatch('green-600', Ux4gColors.green600, '600'),
+          _Swatch('green-700', Ux4gColors.green700, '700'),
+          _Swatch('green-800', Ux4gColors.green800, '800'),
+          _Swatch('green-900', Ux4gColors.green900, '900'),
+          _Swatch('green-950', Ux4gColors.green950, '950'),
         ],
       ),
     ),
@@ -369,18 +347,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Lime',
         swatches: const [
-          _Swatch('lime', Ux4gPalette.lime, 'lime ★', main: true),
-          _Swatch('lime-50', Ux4gPalette.lime50, '50'),
-          _Swatch('lime-100', Ux4gPalette.lime100, '100'),
-          _Swatch('lime-200', Ux4gPalette.lime200, '200'),
-          _Swatch('lime-300', Ux4gPalette.lime300, '300'),
-          _Swatch('lime-400', Ux4gPalette.lime400, '400'),
-          _Swatch('lime-500', Ux4gPalette.lime500, '500'),
-          _Swatch('lime-600', Ux4gPalette.lime600, '600'),
-          _Swatch('lime-700', Ux4gPalette.lime700, '700'),
-          _Swatch('lime-800', Ux4gPalette.lime800, '800'),
-          _Swatch('lime-900', Ux4gPalette.lime900, '900'),
-          _Swatch('lime-950', Ux4gPalette.lime950, '950'),
+          _Swatch('lime', Ux4gColors.lime, 'lime ★', main: true),
+          _Swatch('lime-50', Ux4gColors.lime50, '50'),
+          _Swatch('lime-100', Ux4gColors.lime100, '100'),
+          _Swatch('lime-200', Ux4gColors.lime200, '200'),
+          _Swatch('lime-300', Ux4gColors.lime300, '300'),
+          _Swatch('lime-400', Ux4gColors.lime400, '400'),
+          _Swatch('lime-500', Ux4gColors.lime500, '500'),
+          _Swatch('lime-600', Ux4gColors.lime600, '600'),
+          _Swatch('lime-700', Ux4gColors.lime700, '700'),
+          _Swatch('lime-800', Ux4gColors.lime800, '800'),
+          _Swatch('lime-900', Ux4gColors.lime900, '900'),
+          _Swatch('lime-950', Ux4gColors.lime950, '950'),
         ],
       ),
     ),
@@ -389,18 +367,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Blue (Info)',
         swatches: const [
-          _Swatch('blue', Ux4gPalette.blue, 'blue ★', main: true),
-          _Swatch('blue-50', Ux4gPalette.blue50, '50'),
-          _Swatch('blue-100', Ux4gPalette.blue100, '100'),
-          _Swatch('blue-200', Ux4gPalette.blue200, '200'),
-          _Swatch('blue-300', Ux4gPalette.blue300, '300'),
-          _Swatch('blue-400', Ux4gPalette.blue400, '400'),
-          _Swatch('blue-500', Ux4gPalette.blue500, '500'),
-          _Swatch('blue-600', Ux4gPalette.blue600, '600'),
-          _Swatch('blue-700', Ux4gPalette.blue700, '700'),
-          _Swatch('blue-800', Ux4gPalette.blue800, '800'),
-          _Swatch('blue-900', Ux4gPalette.blue900, '900'),
-          _Swatch('blue-950', Ux4gPalette.blue950, '950'),
+          _Swatch('blue', Ux4gColors.blue, 'blue ★', main: true),
+          _Swatch('blue-50', Ux4gColors.blue50, '50'),
+          _Swatch('blue-100', Ux4gColors.blue100, '100'),
+          _Swatch('blue-200', Ux4gColors.blue200, '200'),
+          _Swatch('blue-300', Ux4gColors.blue300, '300'),
+          _Swatch('blue-400', Ux4gColors.blue400, '400'),
+          _Swatch('blue-500', Ux4gColors.blue500, '500'),
+          _Swatch('blue-600', Ux4gColors.blue600, '600'),
+          _Swatch('blue-700', Ux4gColors.blue700, '700'),
+          _Swatch('blue-800', Ux4gColors.blue800, '800'),
+          _Swatch('blue-900', Ux4gColors.blue900, '900'),
+          _Swatch('blue-950', Ux4gColors.blue950, '950'),
         ],
       ),
     ),
@@ -409,18 +387,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Sky Blue',
         swatches: const [
-          _Swatch('skyBlue', Ux4gPalette.skyBlue, 'skyBlue ★', main: true),
-          _Swatch('skyBlue-50', Ux4gPalette.skyBlue50, '50'),
-          _Swatch('skyBlue-100', Ux4gPalette.skyBlue100, '100'),
-          _Swatch('skyBlue-200', Ux4gPalette.skyBlue200, '200'),
-          _Swatch('skyBlue-300', Ux4gPalette.skyBlue300, '300'),
-          _Swatch('skyBlue-400', Ux4gPalette.skyBlue400, '400'),
-          _Swatch('skyBlue-500', Ux4gPalette.skyBlue500, '500'),
-          _Swatch('skyBlue-600', Ux4gPalette.skyBlue600, '600'),
-          _Swatch('skyBlue-700', Ux4gPalette.skyBlue700, '700'),
-          _Swatch('skyBlue-800', Ux4gPalette.skyBlue800, '800'),
-          _Swatch('skyBlue-900', Ux4gPalette.skyBlue900, '900'),
-          _Swatch('skyBlue-950', Ux4gPalette.skyBlue950, '950'),
+          _Swatch('skyBlue', Ux4gColors.skyBlue, 'skyBlue ★', main: true),
+          _Swatch('skyBlue-50', Ux4gColors.skyBlue50, '50'),
+          _Swatch('skyBlue-100', Ux4gColors.skyBlue100, '100'),
+          _Swatch('skyBlue-200', Ux4gColors.skyBlue200, '200'),
+          _Swatch('skyBlue-300', Ux4gColors.skyBlue300, '300'),
+          _Swatch('skyBlue-400', Ux4gColors.skyBlue400, '400'),
+          _Swatch('skyBlue-500', Ux4gColors.skyBlue500, '500'),
+          _Swatch('skyBlue-600', Ux4gColors.skyBlue600, '600'),
+          _Swatch('skyBlue-700', Ux4gColors.skyBlue700, '700'),
+          _Swatch('skyBlue-800', Ux4gColors.skyBlue800, '800'),
+          _Swatch('skyBlue-900', Ux4gColors.skyBlue900, '900'),
+          _Swatch('skyBlue-950', Ux4gColors.skyBlue950, '950'),
         ],
       ),
     ),
@@ -429,18 +407,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Cyan',
         swatches: const [
-          _Swatch('cyan', Ux4gPalette.cyan, 'cyan ★', main: true),
-          _Swatch('cyan-50', Ux4gPalette.cyan50, '50'),
-          _Swatch('cyan-100', Ux4gPalette.cyan100, '100'),
-          _Swatch('cyan-200', Ux4gPalette.cyan200, '200'),
-          _Swatch('cyan-300', Ux4gPalette.cyan300, '300'),
-          _Swatch('cyan-400', Ux4gPalette.cyan400, '400'),
-          _Swatch('cyan-500', Ux4gPalette.cyan500, '500'),
-          _Swatch('cyan-600', Ux4gPalette.cyan600, '600'),
-          _Swatch('cyan-700', Ux4gPalette.cyan700, '700'),
-          _Swatch('cyan-800', Ux4gPalette.cyan800, '800'),
-          _Swatch('cyan-900', Ux4gPalette.cyan900, '900'),
-          _Swatch('cyan-950', Ux4gPalette.cyan950, '950'),
+          _Swatch('cyan', Ux4gColors.cyan, 'cyan ★', main: true),
+          _Swatch('cyan-50', Ux4gColors.cyan50, '50'),
+          _Swatch('cyan-100', Ux4gColors.cyan100, '100'),
+          _Swatch('cyan-200', Ux4gColors.cyan200, '200'),
+          _Swatch('cyan-300', Ux4gColors.cyan300, '300'),
+          _Swatch('cyan-400', Ux4gColors.cyan400, '400'),
+          _Swatch('cyan-500', Ux4gColors.cyan500, '500'),
+          _Swatch('cyan-600', Ux4gColors.cyan600, '600'),
+          _Swatch('cyan-700', Ux4gColors.cyan700, '700'),
+          _Swatch('cyan-800', Ux4gColors.cyan800, '800'),
+          _Swatch('cyan-900', Ux4gColors.cyan900, '900'),
+          _Swatch('cyan-950', Ux4gColors.cyan950, '950'),
         ],
       ),
     ),
@@ -449,18 +427,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Purple',
         swatches: const [
-          _Swatch('purple', Ux4gPalette.purple, 'purple ★', main: true),
-          _Swatch('purple-50', Ux4gPalette.purple50, '50'),
-          _Swatch('purple-100', Ux4gPalette.purple100, '100'),
-          _Swatch('purple-200', Ux4gPalette.purple200, '200'),
-          _Swatch('purple-300', Ux4gPalette.purple300, '300'),
-          _Swatch('purple-400', Ux4gPalette.purple400, '400'),
-          _Swatch('purple-500', Ux4gPalette.purple500, '500'),
-          _Swatch('purple-600', Ux4gPalette.purple600, '600'),
-          _Swatch('purple-700', Ux4gPalette.purple700, '700'),
-          _Swatch('purple-800', Ux4gPalette.purple800, '800'),
-          _Swatch('purple-900', Ux4gPalette.purple900, '900'),
-          _Swatch('purple-950', Ux4gPalette.purple950, '950'),
+          _Swatch('purple', Ux4gColors.purple, 'purple ★', main: true),
+          _Swatch('purple-50', Ux4gColors.purple50, '50'),
+          _Swatch('purple-100', Ux4gColors.purple100, '100'),
+          _Swatch('purple-200', Ux4gColors.purple200, '200'),
+          _Swatch('purple-300', Ux4gColors.purple300, '300'),
+          _Swatch('purple-400', Ux4gColors.purple400, '400'),
+          _Swatch('purple-500', Ux4gColors.purple500, '500'),
+          _Swatch('purple-600', Ux4gColors.purple600, '600'),
+          _Swatch('purple-700', Ux4gColors.purple700, '700'),
+          _Swatch('purple-800', Ux4gColors.purple800, '800'),
+          _Swatch('purple-900', Ux4gColors.purple900, '900'),
+          _Swatch('purple-950', Ux4gColors.purple950, '950'),
         ],
       ),
     ),
@@ -469,18 +447,18 @@ final themeColorComponent = WidgetbookComponent(
       builder: (context) => _PaletteView(
         label: 'Pink',
         swatches: const [
-          _Swatch('pink', Ux4gPalette.pink, 'pink ★', main: true),
-          _Swatch('pink-50', Ux4gPalette.pink50, '50'),
-          _Swatch('pink-100', Ux4gPalette.pink100, '100'),
-          _Swatch('pink-200', Ux4gPalette.pink200, '200'),
-          _Swatch('pink-300', Ux4gPalette.pink300, '300'),
-          _Swatch('pink-400', Ux4gPalette.pink400, '400'),
-          _Swatch('pink-500', Ux4gPalette.pink500, '500'),
-          _Swatch('pink-600', Ux4gPalette.pink600, '600'),
-          _Swatch('pink-700', Ux4gPalette.pink700, '700'),
-          _Swatch('pink-800', Ux4gPalette.pink800, '800'),
-          _Swatch('pink-900', Ux4gPalette.pink900, '900'),
-          _Swatch('pink-950', Ux4gPalette.pink950, '950'),
+          _Swatch('pink', Ux4gColors.pink, 'pink ★', main: true),
+          _Swatch('pink-50', Ux4gColors.pink50, '50'),
+          _Swatch('pink-100', Ux4gColors.pink100, '100'),
+          _Swatch('pink-200', Ux4gColors.pink200, '200'),
+          _Swatch('pink-300', Ux4gColors.pink300, '300'),
+          _Swatch('pink-400', Ux4gColors.pink400, '400'),
+          _Swatch('pink-500', Ux4gColors.pink500, '500'),
+          _Swatch('pink-600', Ux4gColors.pink600, '600'),
+          _Swatch('pink-700', Ux4gColors.pink700, '700'),
+          _Swatch('pink-800', Ux4gColors.pink800, '800'),
+          _Swatch('pink-900', Ux4gColors.pink900, '900'),
+          _Swatch('pink-950', Ux4gColors.pink950, '950'),
         ],
       ),
     ),
@@ -495,21 +473,21 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Neutral Solid Scale',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('neutral-0', Ux4gPalette.neutral0, '0 (white)'),
-                _Swatch('neutral-50', Ux4gPalette.neutral50, '50'),
-                _Swatch('neutral-100', Ux4gPalette.neutral100, '100'),
-                _Swatch('neutral-200', Ux4gPalette.neutral200, '200'),
-                _Swatch('neutral-300', Ux4gPalette.neutral300, '300'),
-                _Swatch('neutral-400', Ux4gPalette.neutral400, '400'),
-                _Swatch('neutral-500', Ux4gPalette.neutral500, '500'),
-                _Swatch('neutral-600', Ux4gPalette.neutral600, '600'),
-                _Swatch('neutral-700', Ux4gPalette.neutral700, '700'),
-                _Swatch('neutral-800', Ux4gPalette.neutral800, '800'),
-                _Swatch('neutral-900', Ux4gPalette.neutral900, '900'),
-                _Swatch('neutral-950', Ux4gPalette.neutral950, '950'),
+                _Swatch('neutral-0', Ux4gColors.neutral0, '0 (white)'),
+                _Swatch('neutral-50', Ux4gColors.neutral50, '50'),
+                _Swatch('neutral-100', Ux4gColors.neutral100, '100'),
+                _Swatch('neutral-200', Ux4gColors.neutral200, '200'),
+                _Swatch('neutral-300', Ux4gColors.neutral300, '300'),
+                _Swatch('neutral-400', Ux4gColors.neutral400, '400'),
+                _Swatch('neutral-500', Ux4gColors.neutral500, '500'),
+                _Swatch('neutral-600', Ux4gColors.neutral600, '600'),
+                _Swatch('neutral-700', Ux4gColors.neutral700, '700'),
+                _Swatch('neutral-800', Ux4gColors.neutral800, '800'),
+                _Swatch('neutral-900', Ux4gColors.neutral900, '900'),
+                _Swatch('neutral-950', Ux4gColors.neutral950, '950'),
                 _Swatch(
                   'neutral-1000black',
-                  Ux4gPalette.neutral1000black,
+                  Ux4gColors.neutral1000black,
                   '1000 (black)',
                 ),
               ],
@@ -519,19 +497,19 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Neutral Alpha Scale (25% Opacity)',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('neutral-0A', Ux4gPalette.neutral0A, '0A'),
-                _Swatch('neutral-50A', Ux4gPalette.neutral50A, '50A'),
-                _Swatch('neutral-100A', Ux4gPalette.neutral100A, '100A'),
-                _Swatch('neutral-200A', Ux4gPalette.neutral200A, '200A'),
-                _Swatch('neutral-300A', Ux4gPalette.neutral300A, '300A'),
-                _Swatch('neutral-400A', Ux4gPalette.neutral400A, '400A'),
-                _Swatch('neutral-500A', Ux4gPalette.neutral500A, '500A'),
-                _Swatch('neutral-600A', Ux4gPalette.neutral600A, '600A'),
-                _Swatch('neutral-700A', Ux4gPalette.neutral700A, '700A'),
-                _Swatch('neutral-800A', Ux4gPalette.neutral800A, '800A'),
-                _Swatch('neutral-900A', Ux4gPalette.neutral900A, '900A'),
-                _Swatch('neutral-950A', Ux4gPalette.neutral950A, '950A'),
-                _Swatch('neutral-1000A', Ux4gPalette.neutral1000A, '1000A'),
+                _Swatch('neutral-0A', Ux4gColors.neutral0A, '0A'),
+                _Swatch('neutral-50A', Ux4gColors.neutral50A, '50A'),
+                _Swatch('neutral-100A', Ux4gColors.neutral100A, '100A'),
+                _Swatch('neutral-200A', Ux4gColors.neutral200A, '200A'),
+                _Swatch('neutral-300A', Ux4gColors.neutral300A, '300A'),
+                _Swatch('neutral-400A', Ux4gColors.neutral400A, '400A'),
+                _Swatch('neutral-500A', Ux4gColors.neutral500A, '500A'),
+                _Swatch('neutral-600A', Ux4gColors.neutral600A, '600A'),
+                _Swatch('neutral-700A', Ux4gColors.neutral700A, '700A'),
+                _Swatch('neutral-800A', Ux4gColors.neutral800A, '800A'),
+                _Swatch('neutral-900A', Ux4gColors.neutral900A, '900A'),
+                _Swatch('neutral-950A', Ux4gColors.neutral950A, '950A'),
+                _Swatch('neutral-1000A', Ux4gColors.neutral1000A, '1000A'),
               ],
             ),
             const SizedBox(height: 24),
@@ -539,8 +517,8 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Neutral Beta Scale (70% Opacity)',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('neutral-0B', Ux4gPalette.neutral0B, '0B'),
-                _Swatch('neutral-950B', Ux4gPalette.neutral950B, '950B'),
+                _Swatch('neutral-0B', Ux4gColors.neutral0B, '0B'),
+                _Swatch('neutral-950B', Ux4gColors.neutral950B, '950B'),
               ],
             ),
             const SizedBox(height: 24),
@@ -548,10 +526,10 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Legacy Gray Aliases',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('gray-100', Ux4gPalette.gray100, 'gray-100'),
-                _Swatch('gray-200', Ux4gPalette.gray200, 'gray-200'),
-                _Swatch('gray-800', Ux4gPalette.gray800, 'gray-800'),
-                _Swatch('gray-900', Ux4gPalette.gray900, 'gray-900'),
+                _Swatch('gray-100', Ux4gColors.gray100, 'gray-100'),
+                _Swatch('gray-200', Ux4gColors.gray200, 'gray-200'),
+                _Swatch('gray-800', Ux4gColors.gray800, 'gray-800'),
+                _Swatch('gray-900', Ux4gColors.gray900, 'gray-900'),
               ],
             ),
             const SizedBox(height: 24),
@@ -559,8 +537,8 @@ final themeColorComponent = WidgetbookComponent(
               label: 'Common Colors',
               padding: EdgeInsets.zero,
               swatches: const [
-                _Swatch('white', Ux4gPalette.white, 'white'),
-                _Swatch('transparent', Ux4gPalette.transparent, 'transparent'),
+                _Swatch('white', Ux4gColors.white, 'white'),
+                _Swatch('transparent', Ux4gColors.transparent, 'transparent'),
               ],
             ),
           ],
@@ -589,7 +567,7 @@ final themeColorComponent = WidgetbookComponent(
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  'Theme-aware colors from Ux4gColors — automatically adapt between '
+                  'Theme-aware colors from Ux4gThemeColors — automatically adapt between '
                   'Light and Dark themes. Switch the theme in the addons panel '
                   '(right side) to see the change.',
                   style: TextStyle(
@@ -670,9 +648,16 @@ final themeColorComponent = WidgetbookComponent(
         title: 'Using UX4G Colors',
         sections: const [
           _DocSection(
+            heading: '⚠️ Migration Notice: Ux4gPalette is Deprecated',
+            body:
+                'The static color token class Ux4gPalette has been renamed to Ux4gColors (e.g. Ux4gColors.primary600). '
+                'Ux4gPalette is retained as a deprecated alias (typedef Ux4gPalette = Ux4gColors;) so existing code continues working, '
+                'but please exclusively use Ux4gColors for all new development.',
+          ),
+          _DocSection(
             heading: '1. Palette Colors  (static, always fixed)',
             body:
-                'Ux4gPalette provides fixed color constants that never change with '
+                'Ux4gColors provides fixed color constants that never change with '
                 'the theme. Use these when you need a very specific shade — for '
                 'example, an illustration or a data-visualisation chart that must '
                 'always use the same hue.',
@@ -680,28 +665,28 @@ final themeColorComponent = WidgetbookComponent(
         ],
         codeBlocks: const [
           _CodeBlock(
-            label: 'Dart — Ux4gPalette',
+            label: 'Dart — Ux4gColors',
             code:
                 '''import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 // Fixed palette shades
-Container(color: Ux4gPalette.primary500)       // #6A4EFF  — brand purple
-Container(color: Ux4gPalette.primary50)        // #F2EFFF  — lightest tint
-Container(color: Ux4gPalette.primary950)       // #1A0E3D  — darkest shade
+Container(color: Ux4gColors.primary500)       // #6A4EFF  — brand purple
+Container(color: Ux4gColors.primary50)        // #F2EFFF  — lightest tint
+Container(color: Ux4gColors.primary950)       // #1A0E3D  — darkest shade
 
-Container(color: Ux4gPalette.red500)           // #F55E57  — error
-Container(color: Ux4gPalette.green500)         // #1AA64A  — success
-Container(color: Ux4gPalette.secondary500)     // #C47D00  — amber
-Container(color: Ux4gPalette.gray900)          // #121212  — near-black
-Container(color: Ux4gPalette.white)            // #FFFFFF
-Container(color: Ux4gPalette.neutral1000black) // #000000''',
+Container(color: Ux4gColors.red500)           // #F55E57  — error
+Container(color: Ux4gColors.green500)         // #1AA64A  — success
+Container(color: Ux4gColors.secondary500)     // #C47D00  — amber
+Container(color: Ux4gColors.gray900)          // #121212  — near-black
+Container(color: Ux4gColors.white)            // #FFFFFF
+Container(color: Ux4gColors.neutral1000black) // #000000''',
           ),
         ],
         trailingSections: const [
           _DocSection(
             heading: '2. Semantic Tokens  (theme-aware, recommended)',
             body:
-                '''Ux4gColors holds semantic tokens that automatically switch value when the user changes between Light and Dark themes. Always prefer these inside your own widgets to keep the UI consistent with the rest of the design system.
+                '''Ux4gThemeColors holds semantic tokens that automatically switch value when the user changes between Light and Dark themes. Always prefer these inside your own widgets to keep the UI consistent with the rest of the design system.
 
 Available tokens:
   • primary / onPrimary
@@ -755,10 +740,10 @@ Widget build(BuildContext context) {
     expandedBorderColor:  colors.primary,
 
     // fixed palette shades — always constant
-    titleColor:           Ux4gPalette.primary600,
-    collapsedBorderColor: Ux4gPalette.gray200,
+    titleColor:           Ux4gColors.primary600,
+    collapsedBorderColor: Ux4gColors.gray200,
 
-    child: Text(\'Content\', style: TextStyle(color: colors.onSurface)),
+    child: Text('Content', style: TextStyle(color: colors.onSurface)),
   );
 }''',
           ),
@@ -783,6 +768,383 @@ error      = #FF8983   onError      = #121212''',
     ),
   ],
 );
+
+// ── Theme — Typography ────────────────────────────────────────────────────────
+
+final themeTypographyComponent = WidgetbookComponent(
+  name: 'Typography',
+  isInitiallyExpanded: false,
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Header',
+      builder: (context) {
+        final t = Ux4gTheme.typography(context);
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _SectionHeader(
+                'Header Tokens',
+                'Ux4gTheme.typography(context).h*',
+              ),
+              const SizedBox(height: 20),
+              _TypographyRow(
+                tokenName: 'hXXS_default',
+                style: t.hXXS_default,
+                label: 'Header XXS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXXS_strong',
+                style: t.hXXS_strong,
+                label: 'Header XXS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXS_default',
+                style: t.hXS_default,
+                label: 'Header XS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXS_strong',
+                style: t.hXS_strong,
+                label: 'Header XS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hS_default',
+                style: t.hS_default,
+                label: 'Header S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hS_strong',
+                style: t.hS_strong,
+                label: 'Header S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hM_default',
+                style: t.hM_default,
+                label: 'Header M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hM_strong',
+                style: t.hM_strong,
+                label: 'Header M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hL_default',
+                style: t.hL_default,
+                label: 'Header L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hL_strong',
+                style: t.hL_strong,
+                label: 'Header L (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXL_default',
+                style: t.hXL_default,
+                label: 'Header XL (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXL_strong',
+                style: t.hXL_strong,
+                label: 'Header XL (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXXL_default',
+                style: t.hXXL_default,
+                label: 'Header XXL (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'hXXL_strong',
+                style: t.hXXL_strong,
+                label: 'Header XXL (Strong)',
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Display',
+      builder: (context) {
+        final t = Ux4gTheme.typography(context);
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _SectionHeader(
+                'Display Tokens',
+                'Ux4gTheme.typography(context).d*',
+              ),
+              const SizedBox(height: 20),
+              _TypographyRow(
+                tokenName: 'dXS_default',
+                style: t.dXS_default,
+                label: 'Display XS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dXS_strong',
+                style: t.dXS_strong,
+                label: 'Display XS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'dS_default',
+                style: t.dS_default,
+                label: 'Display S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dS_strong',
+                style: t.dS_strong,
+                label: 'Display S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'dM_default',
+                style: t.dM_default,
+                label: 'Display M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dM_strong',
+                style: t.dM_strong,
+                label: 'Display M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'dL_default',
+                style: t.dL_default,
+                label: 'Display L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'dL_strong',
+                style: t.dL_strong,
+                label: 'Display L (Strong)',
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Body',
+      builder: (context) {
+        final t = Ux4gTheme.typography(context);
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _SectionHeader(
+                'Body Tokens',
+                'Ux4gTheme.typography(context).b*',
+              ),
+              const SizedBox(height: 20),
+              _TypographyRow(
+                tokenName: 'bXS_default',
+                style: t.bXS_default,
+                label: 'Body XS (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bXS_strong',
+                style: t.bXS_strong,
+                label: 'Body XS (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'bS_default',
+                style: t.bS_default,
+                label: 'Body S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bS_strong',
+                style: t.bS_strong,
+                label: 'Body S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'bM_default',
+                style: t.bM_default,
+                label: 'Body M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bM_strong',
+                style: t.bM_strong,
+                label: 'Body M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'bL_default',
+                style: t.bL_default,
+                label: 'Body L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'bL_strong',
+                style: t.bL_strong,
+                label: 'Body L (Strong)',
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Label',
+      builder: (context) {
+        final t = Ux4gTheme.typography(context);
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _SectionHeader(
+                'Label Tokens',
+                'Ux4gTheme.typography(context).l*',
+              ),
+              const SizedBox(height: 20),
+              _TypographyRow(
+                tokenName: 'lS_default',
+                style: t.lS_default,
+                label: 'Label S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lS_strong',
+                style: t.lS_strong,
+                label: 'Label S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'lM_default',
+                style: t.lM_default,
+                label: 'Label M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lM_strong',
+                style: t.lM_strong,
+                label: 'Label M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'lL_default',
+                style: t.lL_default,
+                label: 'Label L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lL_strong',
+                style: t.lL_strong,
+                label: 'Label L (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'lXL_default',
+                style: t.lXL_default,
+                label: 'Label XL (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'lXL_strong',
+                style: t.lXL_strong,
+                label: 'Label XL (Strong)',
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Title',
+      builder: (context) {
+        final t = Ux4gTheme.typography(context);
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const _SectionHeader(
+                'Title Tokens',
+                'Ux4gTheme.typography(context).t*',
+              ),
+              const SizedBox(height: 20),
+              _TypographyRow(
+                tokenName: 'tS_default',
+                style: t.tS_default,
+                label: 'Title S (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'tS_strong',
+                style: t.tS_strong,
+                label: 'Title S (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'tM_default',
+                style: t.tM_default,
+                label: 'Title M (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'tM_strong',
+                style: t.tM_strong,
+                label: 'Title M (Strong)',
+              ),
+              _TypographyRow(
+                tokenName: 'tL_default',
+                style: t.tL_default,
+                label: 'Title L (Default)',
+              ),
+              _TypographyRow(
+                tokenName: 'tL_strong',
+                style: t.tL_strong,
+                label: 'Title L (Strong)',
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'How to use',
+      builder: (context) => const _DocPage(
+        title: 'Using UX4G Typography',
+        sections: [
+          _DocSection(
+            heading: '1. Accessing Typography Tokens',
+            body:
+                'All text styles in UX4G are structured under Ux4gTypography and '
+                'are accessible through the theme context using Ux4gTheme.typography(context). '
+                'Every scale has both default (standard weight) and strong (bold/semibold weight) variations.',
+          ),
+        ],
+        codeBlocks: [
+          _CodeBlock(
+            label: 'Dart — Basic Usage',
+            code: '''// Inside your widget build() method:
+Widget build(BuildContext context) {
+  final typography = Ux4gTheme.typography(context);
+  final colors = Ux4gTheme.colors(context);
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Government Service Portal',
+        style: typography.hL_strong.copyWith(color: colors.onSurface),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        'Please review the eligibility criteria carefully before applying.',
+        style: typography.bM_default.copyWith(color: colors.onSurface),
+      ),
+    ],
+  );
+}''',
+          ),
+          _CodeBlock(
+            label: 'Dart — Modifying Styles with copyWith()',
+            code:
+                '''// You can customize color, overflow, or alignment via copyWith():
+Text(
+  'Required field',
+  style: Ux4gTheme.typography(context).lS_strong.copyWith(
+    color: Ux4gTheme.colors(context).error,
+    letterSpacing: 0.5,
+  ),
+);''',
+          ),
+        ],
+      ),
+    ),
+  ],
+);
+
 // ── Utils — Dimensions ────────────────────────────────────────────────────────
 
 final dimensionsSpacingComponent = WidgetbookComponent(
@@ -1006,6 +1368,196 @@ final dimensionsBorderComponent = WidgetbookComponent(
     ),
   ],
 );
+
+final dimensionsElevationComponent = WidgetbookComponent(
+  name: 'Elevation',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Scale',
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final titleColor = isDark ? Colors.white : const Color(0xFF111827);
+        final subColor = isDark
+            ? const Color(0xFF9CA3AF)
+            : const Color(0xFF4B5563);
+
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Elevation',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w800,
+                  color: titleColor,
+                  letterSpacing: -0.5,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Five reusable elevation styles. Each combines a key and an ambient shadow to express depth. Apply the matching effect style from UX4G Design System — never hand-set shadow values.',
+                style: TextStyle(fontSize: 14.5, color: subColor, height: 1.5),
+              ),
+              const SizedBox(height: 36),
+              Wrap(
+                spacing: 24,
+                runSpacing: 32,
+                children: const [
+                  _ElevationCardPreview(
+                    level: 0,
+                    title: 'Flat Surfaces',
+                    details: 'No shadow',
+                    tokenName: 'elevation0',
+                  ),
+                  _ElevationCardPreview(
+                    level: 1,
+                    title: 'Subtle Lift',
+                    details: 'Key 0,1 · blur 2\nAmbient 0,1 · blur 2',
+                    tokenName: 'elevation1',
+                  ),
+                  _ElevationCardPreview(
+                    level: 2,
+                    title: 'Floating Content',
+                    details: 'Key 0,1 · blur 2\nAmbient 0,4 · blur 8',
+                    tokenName: 'elevation2',
+                  ),
+                  _ElevationCardPreview(
+                    level: 3,
+                    title: 'Prominent overlay',
+                    details: 'Key 0,4 · blur 8\nAmbient 0,0 · blur 16',
+                    tokenName: 'elevation3',
+                  ),
+                  _ElevationCardPreview(
+                    level: 4,
+                    title: 'Highest emphasis',
+                    details: 'Key 0,8 · blur 16\nAmbient 0,16 · blur 32',
+                    tokenName: 'elevation4',
+                  ),
+                ],
+              ),
+              const SizedBox(height: 48),
+              _SectionHeader(
+                'Elevation Tokens & Code Snippets',
+                'Ux4gElevation.*',
+              ),
+              const SizedBox(height: 20),
+              const _ElevationCodeRow(
+                level: 0,
+                tokenName: 'elevation0',
+                label: 'Flat Surfaces',
+                description: 'No shadow',
+              ),
+              const _ElevationCodeRow(
+                level: 1,
+                tokenName: 'elevation1',
+                label: 'Subtle Lift',
+                description: 'Key 0,1 · blur 2\nAmbient 0,1 · blur 2',
+              ),
+              const _ElevationCodeRow(
+                level: 2,
+                tokenName: 'elevation2',
+                label: 'Floating Content',
+                description: 'Key 0,1 · blur 2\nAmbient 0,4 · blur 8',
+              ),
+              const _ElevationCodeRow(
+                level: 3,
+                tokenName: 'elevation3',
+                label: 'Prominent overlay',
+                description: 'Key 0,4 · blur 8\nAmbient 0,0 · blur 16',
+              ),
+              const _ElevationCodeRow(
+                level: 4,
+                tokenName: 'elevation4',
+                label: 'Highest emphasis',
+                description: 'Key 0,8 · blur 16\nAmbient 0,16 · blur 32',
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'How to use',
+      builder: (context) => const _DocPage(
+        title: 'Using UX4G Elevation Tokens',
+        sections: [
+          _DocSection(
+            heading: '1. Elevation Levels  —  Ux4gElevation.*',
+            body:
+                'Ux4gElevation provides 5 BoxShadow lists expressing depth hierarchy. '
+                'Using standard elevation tokens ensures consistent lighting angles, opacity, and blur.\n\n'
+                'Available tokens:\n'
+                '• Ux4gElevation.elevation0 / flat — Flat surfaces without shadows\n'
+                '• Ux4gElevation.elevation1 / subtle — Subtle lift (cards, buttons)\n'
+                '• Ux4gElevation.elevation2 / floating — Floating content (dropdowns, snackbars)\n'
+                '• Ux4gElevation.elevation3 / prominent — Prominent overlays (modals, dialogs)\n'
+                '• Ux4gElevation.elevation4 / highest — Highest emphasis (bottom sheets, popups)',
+          ),
+          _DocSection(
+            heading: '2. Theme Adaptation  —  Ux4gElevation.get()',
+            body:
+                'In dark mode, shadows on dark surfaces need slightly higher alpha opacity to maintain visual separation. '
+                'Use `Ux4gElevation.get(level, isDark: isDark)` when you need dynamically adjusted shadows for both light and dark themes.',
+          ),
+        ],
+        codeBlocks: [
+          _CodeBlock(
+            label: 'Dart — Ux4gElevation in BoxDecoration',
+            code:
+                '''import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+
+// 1. Card with Subtle Lift (Elevation 1)
+Container(
+  decoration: BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(Ux4gRadius.radius12),
+    boxShadow: Ux4gElevation.elevation1,
+  ),
+  child: Text('Card Content'),
+);
+
+// 2. Floating Dropdown Menu (Elevation 2)
+Container(
+  decoration: BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+    boxShadow: Ux4gElevation.elevation2,
+  ),
+  child: DropdownMenu(...),
+);
+
+// 3. Dialog or Modal Overlay (Elevation 3)
+Container(
+  decoration: BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(Ux4gRadius.radius16),
+    boxShadow: Ux4gElevation.elevation3,
+  ),
+  child: ModalDialog(...),
+);
+
+// 4. Dynamic Theme-aware Elevation
+Container(
+  decoration: BoxDecoration(
+    color: Theme.of(context).cardColor,
+    borderRadius: BorderRadius.circular(16),
+    boxShadow: Ux4gElevation.get(
+      2,
+      isDark: Theme.of(context).brightness == Brightness.dark,
+    ),
+  ),
+  child: ...,
+);''',
+          ),
+        ],
+      ),
+    ),
+  ],
+);
+
+final themeElevationComponent = dimensionsElevationComponent;
 
 // ── Private widgets ───────────────────────────────────────────────────────────
 
@@ -1276,64 +1828,129 @@ class _SemanticTokenRow extends StatelessWidget {
   final List<_SemanticPair> pairs;
   const _SemanticTokenRow({required this.pairs});
 
-  String _toHex(Color c) {
-    final r = c.r.toInt();
-    final g = c.g.toInt();
-    final b = c.b.toInt();
-    return '#${r.toRadixString(16).padLeft(2, '0')}${g.toRadixString(16).padLeft(2, '0')}${b.toRadixString(16).padLeft(2, '0')}'
-        .toUpperCase();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: pairs.map((pair) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 12),
           child: Row(
             children: [
-              Expanded(child: _tokenTile(pair.baseToken, pair.baseColor)),
-              const SizedBox(width: 8),
-              Expanded(child: _tokenTile(pair.onToken, pair.onColor)),
+              Expanded(
+                child: _SemanticTile(
+                  token: pair.baseToken,
+                  color: pair.baseColor,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _SemanticTile(token: pair.onToken, color: pair.onColor),
+              ),
             ],
           ),
         );
       }).toList(),
     );
   }
+}
 
-  Widget _tokenTile(String token, Color color) {
-    final isDark = (color.r * 0.299 + color.g * 0.587 + color.b * 0.114) < 128;
+class _SemanticTile extends StatefulWidget {
+  final String token;
+  final Color color;
+  const _SemanticTile({required this.token, required this.color});
+
+  @override
+  State<_SemanticTile> createState() => _SemanticTileState();
+}
+
+class _SemanticTileState extends State<_SemanticTile> {
+  bool _copied = false;
+
+  String _toHex(Color c) {
+    final r = (c.r * 255).toInt();
+    final g = (c.g * 255).toInt();
+    final b = (c.b * 255).toInt();
+    return '#${r.toRadixString(16).padLeft(2, '0')}${g.toRadixString(16).padLeft(2, '0')}${b.toRadixString(16).padLeft(2, '0')}'
+        .toUpperCase();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark =
+        (widget.color.r * 0.299 +
+            widget.color.g * 0.587 +
+            widget.color.b * 0.114) <
+        0.5;
     final fg = isDark ? Colors.white : Colors.black87;
-    final hex = _toHex(color);
-    return Container(
-      height: 64,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            'colors.$token',
-            style: TextStyle(
-              fontFamily: 'monospace',
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: fg,
+    final hex = _toHex(widget.color);
+    final dartCode = 'Ux4gTheme.colors(context).${widget.token}';
+
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () async {
+            await Clipboard.setData(ClipboardData(text: hex));
+            setState(() => _copied = true);
+            await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+            if (mounted) setState(() => _copied = false);
+          },
+          child: Tooltip(
+            message: 'Tap to copy $hex',
+            child: Container(
+              height: 72,
+              decoration: BoxDecoration(
+                color: widget.color,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: const Color(0xFFE5E7EB)),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'colors.${widget.token}',
+                          style: TextStyle(
+                            fontFamily: 'monospace',
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: fg,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      if (_copied) Icon(Icons.check, size: 16, color: fg),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    hex,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'monospace',
+                      color: fg.withValues(alpha: 0.75),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          Text(
-            hex,
-            style: TextStyle(fontSize: 10, color: fg.withValues(alpha: 0.7)),
+        ),
+        Positioned(
+          top: 6,
+          right: 6,
+          child: _SwatchTopCopyIcon(
+            text: dartCode,
+            swatchColor: widget.color,
+            tooltip: 'Copy Dart Code ($dartCode)',
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -1371,8 +1988,8 @@ class _PaletteView extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Wrap(
-            spacing: 8,
-            runSpacing: 8,
+            spacing: 14,
+            runSpacing: 14,
             children: swatches
                 .map((s) => _SwatchTile(s, compact: compact))
                 .toList(),
@@ -1409,90 +2026,384 @@ class _SwatchTileState extends State<_SwatchTile> {
   Widget build(BuildContext context) {
     final hex = _toHex(widget.swatch.color);
     final fg = _isDark(widget.swatch.color) ? Colors.white : Colors.black;
-    final w = widget.compact ? 80.0 : 100.0;
-    final h = widget.compact ? 64.0 : 80.0;
+    final w = widget.compact ? 160.0 : 220.0;
+    final h = widget.compact ? 64.0 : 76.0;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final codeSnippet = 'Ux4gColors.${widget.swatch.token.replaceAll('-', '')}';
 
-    return GestureDetector(
-      onTap: () async {
-        await Clipboard.setData(ClipboardData(text: hex));
-        setState(() => _copied = true);
-        await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
-        if (mounted) setState(() => _copied = false);
-      },
-      child: Tooltip(
-        message: 'Tap to copy $hex',
-        child: Container(
-          width: w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: widget.swatch.main
-                ? Border.all(color: const Color(0xFF6A4EFF), width: 2)
-                : Border.all(
-                    color: isDarkTheme
-                        ? Colors.white12
-                        : const Color(0xFFE5E7EB),
-                  ),
-            boxShadow: isDarkTheme
-                ? []
-                : [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.06),
-                      blurRadius: 4,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: h,
-                decoration: BoxDecoration(
-                  color: widget.swatch.color,
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(7),
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: _copied ? Icon(Icons.check, color: fg, size: 16) : null,
+    return Container(
+      width: w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: widget.swatch.main
+            ? Border.all(color: const Color(0xFF6A4EFF), width: 2)
+            : Border.all(
+                color: isDarkTheme ? Colors.white12 : const Color(0xFFE5E7EB),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                decoration: BoxDecoration(
-                  color: isDarkTheme ? const Color(0xFF1E1E2E) : Colors.white,
-                  borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(7),
+        boxShadow: isDarkTheme
+            ? []
+            : [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.06),
+                  blurRadius: 4,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Stack(
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  await Clipboard.setData(ClipboardData(text: hex));
+                  setState(() => _copied = true);
+                  await Future.delayed(
+                    const Duration(seconds: 1, milliseconds: 500),
+                  );
+                  if (mounted) setState(() => _copied = false);
+                },
+                child: Tooltip(
+                  message: 'Tap to copy $hex',
+                  child: Container(
+                    height: h,
+                    decoration: BoxDecoration(
+                      color: widget.swatch.color,
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(7),
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    child: _copied
+                        ? Icon(Icons.check, color: fg, size: 20)
+                        : null,
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              Positioned(
+                top: 6,
+                right: 6,
+                child: _SwatchTopCopyIcon(
+                  text: hex,
+                  swatchColor: widget.swatch.color,
+                  tooltip: 'Copy Hex Code ($hex)',
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: isDarkTheme ? const Color(0xFF1E1E2E) : Colors.white,
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(7),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      widget.swatch.label,
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        color: isDarkTheme
-                            ? Colors.white
-                            : const Color(0xFF111827),
+                    Expanded(
+                      child: Text(
+                        widget.swatch.label,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: isDarkTheme
+                              ? Colors.white
+                              : const Color(0xFF111827),
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Text(
                       hex,
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'monospace',
                         color: isDarkTheme
-                            ? Colors.white38
+                            ? Colors.white60
                             : const Color(0xFF6B7280),
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isDarkTheme
+                        ? Colors.white.withValues(alpha: 0.05)
+                        : const Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          codeSnippet,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'monospace',
+                            color: Color(0xFF6A4EFF),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      _MiniCopyIcon(
+                        text: codeSnippet,
+                        tooltip: 'Copy Dart Code ($codeSnippet)',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SwatchTopCopyIcon extends StatefulWidget {
+  final String text;
+  final Color swatchColor;
+  final String tooltip;
+  const _SwatchTopCopyIcon({
+    required this.text,
+    required this.swatchColor,
+    required this.tooltip,
+  });
+
+  @override
+  State<_SwatchTopCopyIcon> createState() => _SwatchTopCopyIconState();
+}
+
+class _SwatchTopCopyIconState extends State<_SwatchTopCopyIcon> {
+  bool _copied = false;
+
+  bool _isDark(Color c) => (c.r * 0.299 + c.g * 0.587 + c.b * 0.114) < 0.5;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDarkSwatch = _isDark(widget.swatchColor);
+    final iconColor = _copied
+        ? (isDarkSwatch ? const Color(0xFFA6E3A1) : const Color(0xFF059669))
+        : (isDarkSwatch ? Colors.white : Colors.black87);
+    final bgColor = isDarkSwatch
+        ? Colors.white.withValues(alpha: 0.2)
+        : Colors.black.withValues(alpha: 0.08);
+
+    return Tooltip(
+      message: _copied ? 'Copied!' : widget.tooltip,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(6),
+        onTap: () async {
+          await Clipboard.setData(ClipboardData(text: widget.text));
+          setState(() => _copied = true);
+          await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+          if (mounted) setState(() => _copied = false);
+        },
+        child: Container(
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Icon(
+            _copied ? Icons.check : Icons.content_copy,
+            size: 13,
+            color: iconColor,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _MiniCopyIcon extends StatefulWidget {
+  final String text;
+  final String tooltip;
+  const _MiniCopyIcon({required this.text, required this.tooltip});
+
+  @override
+  State<_MiniCopyIcon> createState() => _MiniCopyIconState();
+}
+
+class _MiniCopyIconState extends State<_MiniCopyIcon> {
+  bool _copied = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final activeColor = isDark
+        ? const Color(0xFFA6E3A1)
+        : const Color(0xFF059669);
+    final idleColor = isDark ? Colors.white54 : const Color(0xFF6B7280);
+
+    return Tooltip(
+      message: _copied ? 'Copied!' : widget.tooltip,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () async {
+          await Clipboard.setData(ClipboardData(text: widget.text));
+          setState(() => _copied = true);
+          await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+          if (mounted) setState(() => _copied = false);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Icon(
+            _copied ? Icons.check : Icons.content_copy,
+            size: 13,
+            color: _copied ? activeColor : idleColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Typography widgets ────────────────────────────────────────────────────────
+
+String _fontWeightName(FontWeight? w) {
+  if (w == FontWeight.w100) return 'w100 (Thin)';
+  if (w == FontWeight.w200) return 'w200 (Extra Light)';
+  if (w == FontWeight.w300) return 'w300 (Light)';
+  if (w == FontWeight.w400) return 'w400 (Regular)';
+  if (w == FontWeight.w500) return 'w500 (Medium)';
+  if (w == FontWeight.w600) return 'w600 (SemiBold)';
+  if (w == FontWeight.w700) return 'w700 (Bold)';
+  if (w == FontWeight.w800) return 'w800 (Extra Bold)';
+  if (w == FontWeight.w900) return 'w900 (Black)';
+  return w?.toString() ?? 'Normal';
+}
+
+class _TypographyRow extends StatelessWidget {
+  final String tokenName;
+  final TextStyle style;
+  final String label;
+
+  const _TypographyRow({
+    required this.tokenName,
+    required this.style,
+    required this.label,
+  });
+
+  Widget _propPill(String text, bool isDark) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      decoration: BoxDecoration(
+        color: const Color(0xFF6A4EFF).withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: Color(0xFF6A4EFF),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = _isOuterDark(context);
+    final cardBg = isDark ? const Color(0xFF1E1E2E) : Colors.white;
+    final borderColor = isDark ? Colors.white12 : const Color(0xFFE5E7EB);
+    final labelColor = isDark ? Colors.white : const Color(0xFF111827);
+    final codeBg = isDark ? const Color(0xFF121212) : const Color(0xFFF3F4F6);
+    final codeColor = isDark
+        ? const Color(0xFFCDD6F4)
+        : const Color(0xFF374151);
+
+    final fontSize = style.fontSize?.toStringAsFixed(0) ?? '?';
+    final fontWeightStr = _fontWeightName(style.fontWeight);
+    final heightVal = style.height ?? 1.0;
+    final lineHeightPx = ((style.fontSize ?? 14) * heightVal).toStringAsFixed(
+      0,
+    );
+    final codeSnippet = 'Ux4gTheme.typography(context).$tokenName';
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: cardBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: borderColor),
+        boxShadow: isDark
+            ? []
+            : [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.04),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+      ),
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: labelColor,
+                ),
+              ),
+              _propPill('Size: ${fontSize}px', isDark),
+              _propPill('Weight: $fontWeightStr', isDark),
+              _propPill('Line height: ${lineHeightPx}px', isDark),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              color: codeBg,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: isDark ? Colors.white10 : const Color(0xFFE5E7EB),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SelectableText(
+                    codeSnippet,
+                    style: TextStyle(
+                      fontFamily: 'monospace',
+                      fontSize: 12.5,
+                      color: codeColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                _CopyButton(text: codeSnippet),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1536,6 +2447,185 @@ class _SectionHeader extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ElevationCardPreview extends StatelessWidget {
+  final int level;
+  final String title;
+  final String details;
+  final String tokenName;
+
+  const _ElevationCardPreview({
+    required this.level,
+    required this.title,
+    required this.details,
+    required this.tokenName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardBg = isDark ? const Color(0xFF1E1E2E) : Colors.white;
+    final textColor = isDark ? Colors.white : const Color(0xFF111827);
+    final subColor = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+    final activeShadows = Ux4gElevation.get(level, isDark: isDark);
+
+    return SizedBox(
+      width: 175,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 175,
+            height: 175,
+            decoration: BoxDecoration(
+              color: cardBg,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: activeShadows,
+              border: level == 0
+                  ? Border.all(
+                      color: isDark ? Colors.white12 : const Color(0xFFE5E7EB),
+                    )
+                  : (isDark
+                        ? Border.all(
+                            color: Colors.white.withValues(alpha: 0.06),
+                          )
+                        : null),
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              'Elevation $level',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: textColor,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            details,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 11.5, color: subColor, height: 1.45),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ElevationCodeRow extends StatelessWidget {
+  final int level;
+  final String tokenName;
+  final String label;
+  final String description;
+
+  const _ElevationCodeRow({
+    required this.level,
+    required this.tokenName,
+    required this.label,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardBg = isDark ? const Color(0xFF1E1E2E) : Colors.white;
+    final borderColor = isDark ? Colors.white12 : const Color(0xFFE5E7EB);
+    final labelColor = isDark ? Colors.white : const Color(0xFF111827);
+    final subColor = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+    final codeBg = isDark ? const Color(0xFF121212) : const Color(0xFFF3F4F6);
+    final codeColor = isDark
+        ? const Color(0xFFCDD6F4)
+        : const Color(0xFF374151);
+    final codeSnippet = 'Ux4gElevation.$tokenName';
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: cardBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: borderColor),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6A4EFF).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  'Elevation $level',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFF6A4EFF),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 14.5,
+                  fontWeight: FontWeight.w700,
+                  color: labelColor,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            description.replaceAll('\n', ' • '),
+            style: TextStyle(fontSize: 12, color: subColor),
+          ),
+          const SizedBox(height: 12),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              color: codeBg,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: isDark ? Colors.white10 : const Color(0xFFE5E7EB),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SelectableText(
+                    codeSnippet,
+                    style: TextStyle(
+                      fontFamily: 'monospace',
+                      fontSize: 13,
+                      color: codeColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                _CopyButton(text: codeSnippet),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

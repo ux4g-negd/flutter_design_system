@@ -9,17 +9,17 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _surface(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral0;
 Color _title(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _body(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral300 : Ux4gColors.neutral700;
 Color _border(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _primary(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 Color _cardBackground(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
 
 final draftExpiryFormComponent = WidgetbookComponent(
   name: 'Draft Expiry Form',
@@ -64,19 +64,19 @@ class DraftExpiryFormScreen extends StatelessWidget {
       Theme.of(context).brightness == Brightness.dark;
 
   Color _surface(BuildContext context) =>
-      _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0;
+      _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral0;
 
   Color _title(BuildContext context) =>
-      _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+      _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 
   Color _body(BuildContext context) =>
-      _isDark(context) ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700;
+      _isDark(context) ? Ux4gColors.neutral300 : Ux4gColors.neutral700;
 
   Color _border(BuildContext context) =>
-      _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+      _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 
   Color _primary(BuildContext context) =>
-      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +130,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -153,8 +153,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                         vertical: 12,
                       ),
                       backgroundColor: dark
-                          ? Ux4gPalette.orange950
-                          : Ux4gPalette.orange50,
+                          ? Ux4gColors.orange950
+                          : Ux4gColors.orange50,
                       borderColor: Colors.transparent,
                       titleStyle: TextStyle(
                         fontSize: 12,
@@ -166,16 +166,16 @@ class DraftExpiryFormScreen extends StatelessWidget {
                         height: 32,
                         decoration: BoxDecoration(
                           color: dark
-                              ? Ux4gPalette.orange900
-                              : Ux4gPalette.orange100,
+                              ? Ux4gColors.orange900
+                              : Ux4gColors.orange100,
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
                           Icons.inventory_2_outlined,
                           size: 16,
                           color: dark
-                              ? Ux4gPalette.orange300
-                              : Ux4gPalette.orange700,
+                              ? Ux4gColors.orange300
+                              : Ux4gColors.orange700,
                         ),
                       ),
                       trailingIcon: Container(
@@ -185,8 +185,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: dark
-                              ? Ux4gPalette.orange900
-                              : Ux4gPalette.orange100,
+                              ? Ux4gColors.orange900
+                              : Ux4gColors.orange100,
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
@@ -195,8 +195,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                             fontSize: 10,
                             fontWeight: FontWeight.w500,
                             color: dark
-                                ? Ux4gPalette.orange300
-                                : Ux4gPalette.orange800,
+                                ? Ux4gColors.orange300
+                                : Ux4gColors.orange800,
                           ),
                         ),
                       ),
@@ -244,8 +244,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                       value: 'Ramesh Kumar',
                       readOnly: true,
                       backgroundColor: dark
-                          ? Ux4gPalette.neutral900
-                          : Ux4gPalette.neutral0,
+                          ? Ux4gColors.neutral900
+                          : Ux4gColors.neutral0,
                       borderColor: _border(context),
                       textColor: _title(context),
                       labelColor: _body(context),
@@ -254,8 +254,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                     _LabeledInput(
                       label: 'Date of birth',
                       backgroundColor: dark
-                          ? Ux4gPalette.neutral900
-                          : Ux4gPalette.neutral0,
+                          ? Ux4gColors.neutral900
+                          : Ux4gColors.neutral0,
                       borderColor: _border(context),
                       textColor: _title(context),
                       labelColor: _body(context),
@@ -265,8 +265,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
                       label: 'Mobile number',
                       type: Ux4gInputFieldType.number,
                       backgroundColor: dark
-                          ? Ux4gPalette.neutral900
-                          : Ux4gPalette.neutral0,
+                          ? Ux4gColors.neutral900
+                          : Ux4gColors.neutral0,
                       borderColor: _border(context),
                       textColor: _title(context),
                       labelColor: _body(context),
@@ -421,8 +421,8 @@ class _DraftExpiryFormMockup extends StatelessWidget {
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       _isDark(context)
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -573,7 +573,7 @@ class _DraftExpiryFormCardMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -587,10 +587,10 @@ class _DraftExpiryFormCardMockup extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.fromLTRB(14, 16, 14, 16),
                   decoration: BoxDecoration(
-                    color: dark ? Ux4gPalette.neutral900 : Colors.white,
+                    color: dark ? Ux4gColors.neutral900 : Colors.white,
                     borderRadius: BorderRadius.circular(8),
                     border: dark
-                        ? Border.all(color: Ux4gPalette.neutral800)
+                        ? Border.all(color: Ux4gColors.neutral800)
                         : null,
                   ),
                   child: Column(
@@ -694,7 +694,7 @@ class _DraftExpiryBanner extends StatelessWidget {
       title: 'Your draft expires in 5 days',
       margin: EdgeInsets.zero,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-      backgroundColor: dark ? Ux4gPalette.orange950 : Ux4gPalette.orange50,
+      backgroundColor: dark ? Ux4gColors.orange950 : Ux4gColors.orange50,
       borderColor: Colors.transparent,
       titleStyle: TextStyle(
         fontSize: 12,
@@ -705,19 +705,19 @@ class _DraftExpiryBanner extends StatelessWidget {
         width: 32,
         height: 32,
         decoration: BoxDecoration(
-          color: dark ? Ux4gPalette.orange900 : Ux4gPalette.orange100,
+          color: dark ? Ux4gColors.orange900 : Ux4gColors.orange100,
           shape: BoxShape.circle,
         ),
         child: Icon(
           Icons.inventory_2_outlined,
           size: 16,
-          color: dark ? Ux4gPalette.orange300 : Ux4gPalette.orange700,
+          color: dark ? Ux4gColors.orange300 : Ux4gColors.orange700,
         ),
       ),
       trailingIcon: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: dark ? Ux4gPalette.orange900 : Ux4gPalette.orange100,
+          color: dark ? Ux4gColors.orange900 : Ux4gColors.orange100,
           borderRadius: BorderRadius.circular(4),
         ),
         child: Text(
@@ -725,7 +725,7 @@ class _DraftExpiryBanner extends StatelessWidget {
           style: TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.w500,
-            color: dark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+            color: dark ? Ux4gColors.orange300 : Ux4gColors.orange800,
           ),
         ),
       ),
@@ -738,8 +738,8 @@ class _JourneyProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     final primary = _primary(context);
     final muted = _isDark(context)
-        ? Ux4gPalette.neutral700
-        : Ux4gPalette.neutral200;
+        ? Ux4gColors.neutral700
+        : Ux4gColors.neutral200;
     return Column(
       children: [
         Row(
@@ -877,8 +877,8 @@ class _FormField extends StatelessWidget {
           type: type,
           size: Ux4gInputFieldSize.medium,
           backgroundColor: _isDark(context)
-              ? Ux4gPalette.neutral900
-              : Ux4gPalette.neutral0,
+              ? Ux4gColors.neutral900
+              : Ux4gColors.neutral0,
           borderColor: _border(context),
           style: TextStyle(fontSize: 13, color: _title(context)),
         ),

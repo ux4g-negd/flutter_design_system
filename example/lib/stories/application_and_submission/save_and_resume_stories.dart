@@ -9,38 +9,38 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFFAFAFA);
+    _isDark(context) ? Ux4gColors.neutral950 : const Color(0xFFFAFAFA);
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+    _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB);
+    _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB);
 Color _getPrimaryColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary600 : const Color(0xFF432CBB);
+    _isDark(context) ? Ux4gColors.primary600 : const Color(0xFF432CBB);
 Color _getStartFreshColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 
 bool _isDarkMode(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getUploadedBg(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green900 : Ux4gPalette.green50;
+    _isDarkMode(context) ? Ux4gColors.green900 : Ux4gColors.green50;
 Color _getUploadedBorder(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green800 : const Color(0xFFDCFCE7);
+    _isDarkMode(context) ? Ux4gColors.green800 : const Color(0xFFDCFCE7);
 Color _getUploadedIcon(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green500 : Ux4gPalette.green600;
+    _isDarkMode(context) ? Ux4gColors.green500 : Ux4gColors.green600;
 Color _getUploadedTitle(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDarkMode(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getUploadedDesc(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDarkMode(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getUploadedBtnText(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    _isDarkMode(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 Color _getUploadedBtnBorder(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.primary600 : Ux4gPalette.primary300;
+    _isDarkMode(context) ? Ux4gColors.primary600 : Ux4gColors.primary300;
 
 const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
@@ -142,8 +142,8 @@ class SaveAndResumeScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -214,7 +214,7 @@ class SaveAndResumeScreen extends StatelessWidget {
                 children: [
                   Ux4gButton(text: 'Resume application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, height: 48),
                 ],
               ),
             ),
@@ -271,8 +271,8 @@ class SaveAndResumeCardScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -359,7 +359,7 @@ class SaveAndResumeCardScreen extends StatelessWidget {
                 children: [
                   Ux4gButton(text: 'Resume application', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
                   const SizedBox(height: 12),
-                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, height: 48),
+                  Ux4gButton(height: 48, text: 'Start fresh', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, height: 48),
                 ],
               ),
             ),
@@ -416,7 +416,7 @@ class _SaveAndResumeMockup extends StatelessWidget {
                     height: 32,
                     width: 1,
                     color: _isDark(context)
-                        ? Ux4gPalette.neutral700
+                        ? Ux4gColors.neutral700
                         : const Color(0xFFD1D5DB),
                   ),
                   SvgPicture.asset(
@@ -424,8 +424,8 @@ class _SaveAndResumeMockup extends StatelessWidget {
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -445,8 +445,8 @@ class _SaveAndResumeMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.orange900
-                              : Ux4gPalette.orange50,
+                              ? Ux4gColors.orange900
+                              : Ux4gColors.orange50,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(
@@ -462,16 +462,16 @@ class _SaveAndResumeMockup extends StatelessWidget {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w700,
                                       color: _isDark(context)
-                                          ? Ux4gPalette.neutral50
-                                          : Ux4gPalette.neutral900,
+                                          ? Ux4gColors.neutral50
+                                          : Ux4gColors.neutral900,
                                     ),
                                   ),
                                 ),
                                 Icon(
                                   Icons.keyboard_arrow_down,
                                   color: _isDark(context)
-                                      ? Ux4gPalette.neutral50
-                                      : Ux4gPalette.neutral900,
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
                                 ),
                               ],
                             ),
@@ -483,8 +483,8 @@ class _SaveAndResumeMockup extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.orange800
-                                    : Ux4gPalette.orange100,
+                                    ? Ux4gColors.orange800
+                                    : Ux4gColors.orange100,
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -493,8 +493,8 @@ class _SaveAndResumeMockup extends StatelessWidget {
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                   color: _isDark(context)
-                                      ? Ux4gPalette.orange300
-                                      : Ux4gPalette.orange800,
+                                      ? Ux4gColors.orange300
+                                      : Ux4gColors.orange800,
                                 ),
                               ),
                             ),
@@ -504,8 +504,8 @@ class _SaveAndResumeMockup extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 color: _isDark(context)
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                             ),
                           ],
@@ -514,16 +514,16 @@ class _SaveAndResumeMockup extends StatelessWidget {
                       const SizedBox(height: 32),
                       Shimmer.fromColors(
                         baseColor: _isDark(context)
-                            ? Ux4gPalette.neutral800
+                            ? Ux4gColors.neutral800
                             : const Color(0xFFE5E7EB),
                         highlightColor: _isDark(context)
-                            ? Ux4gPalette.neutral700
+                            ? Ux4gColors.neutral700
                             : const Color(0xFFF9FAFB),
                         child: Container(
                           height: 140,
                           decoration: BoxDecoration(
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral900
+                                ? Ux4gColors.neutral900
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -532,16 +532,16 @@ class _SaveAndResumeMockup extends StatelessWidget {
                       const SizedBox(height: 16),
                       Shimmer.fromColors(
                         baseColor: _isDark(context)
-                            ? Ux4gPalette.neutral800
+                            ? Ux4gColors.neutral800
                             : const Color(0xFFE5E7EB),
                         highlightColor: _isDark(context)
-                            ? Ux4gPalette.neutral700
+                            ? Ux4gColors.neutral700
                             : const Color(0xFFF9FAFB),
                         child: Container(
                           height: 140,
                           decoration: BoxDecoration(
                             color: _isDark(context)
-                                ? Ux4gPalette.neutral900
+                                ? Ux4gColors.neutral900
                                 : Colors.white,
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -589,7 +589,7 @@ class _SaveAndResumeMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: _isDark(context)
-                            ? Ux4gPalette.neutral500
+                            ? Ux4gColors.neutral500
                             : const Color(0xFF9CA3AF),
                       ),
                     ),
@@ -624,7 +624,7 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -647,7 +647,7 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                           height: 32,
                           width: 1,
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral700
+                              ? Ux4gColors.neutral700
                               : const Color(0xFFD1D5DB),
                         ),
                         SvgPicture.asset(
@@ -655,8 +655,8 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -678,11 +678,11 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral900
+                              ? Ux4gColors.neutral900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           border: _isDark(context)
-                              ? Border.all(color: Ux4gPalette.neutral800)
+                              ? Border.all(color: Ux4gColors.neutral800)
                               : null,
                           boxShadow: [
                             BoxShadow(
@@ -699,8 +699,8 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
                                 color: _isDark(context)
-                                    ? Ux4gPalette.orange900
-                                    : Ux4gPalette.orange50,
+                                    ? Ux4gColors.orange900
+                                    : Ux4gColors.orange50,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Column(
@@ -717,16 +717,16 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                                             fontSize: 15,
                                             fontWeight: FontWeight.w700,
                                             color: _isDark(context)
-                                                ? Ux4gPalette.neutral50
-                                                : Ux4gPalette.neutral900,
+                                                ? Ux4gColors.neutral50
+                                                : Ux4gColors.neutral900,
                                           ),
                                         ),
                                       ),
                                       Icon(
                                         Icons.keyboard_arrow_down,
                                         color: _isDark(context)
-                                            ? Ux4gPalette.neutral50
-                                            : Ux4gPalette.neutral900,
+                                            ? Ux4gColors.neutral50
+                                            : Ux4gColors.neutral900,
                                       ),
                                     ],
                                   ),
@@ -738,8 +738,8 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                                     ),
                                     decoration: BoxDecoration(
                                       color: _isDark(context)
-                                          ? Ux4gPalette.orange800
-                                          : Ux4gPalette.orange100,
+                                          ? Ux4gColors.orange800
+                                          : Ux4gColors.orange100,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     child: Text(
@@ -748,8 +748,8 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         color: _isDark(context)
-                                            ? Ux4gPalette.orange300
-                                            : Ux4gPalette.orange800,
+                                            ? Ux4gColors.orange300
+                                            : Ux4gColors.orange800,
                                       ),
                                     ),
                                   ),
@@ -759,8 +759,8 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: _isDark(context)
-                                          ? Ux4gPalette.neutral200
-                                          : Ux4gPalette.neutral700,
+                                          ? Ux4gColors.neutral200
+                                          : Ux4gColors.neutral700,
                                     ),
                                   ),
                                 ],
@@ -769,16 +769,16 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                             const SizedBox(height: 32),
                             Shimmer.fromColors(
                               baseColor: _isDark(context)
-                                  ? Ux4gPalette.neutral800
+                                  ? Ux4gColors.neutral800
                                   : const Color(0xFFE5E7EB),
                               highlightColor: _isDark(context)
-                                  ? Ux4gPalette.neutral700
+                                  ? Ux4gColors.neutral700
                                   : const Color(0xFFF9FAFB),
                               child: Container(
                                 height: 140,
                                 decoration: BoxDecoration(
                                   color: _isDark(context)
-                                      ? Ux4gPalette.neutral900
+                                      ? Ux4gColors.neutral900
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -787,16 +787,16 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                             const SizedBox(height: 16),
                             Shimmer.fromColors(
                               baseColor: _isDark(context)
-                                  ? Ux4gPalette.neutral800
+                                  ? Ux4gColors.neutral800
                                   : const Color(0xFFE5E7EB),
                               highlightColor: _isDark(context)
-                                  ? Ux4gPalette.neutral700
+                                  ? Ux4gColors.neutral700
                                   : const Color(0xFFF9FAFB),
                               child: Container(
                                 height: 140,
                                 decoration: BoxDecoration(
                                   color: _isDark(context)
-                                      ? Ux4gPalette.neutral900
+                                      ? Ux4gColors.neutral900
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -847,7 +847,7 @@ class _SaveAndResumeCardMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: _isDark(context)
-                            ? Ux4gPalette.neutral500
+                            ? Ux4gColors.neutral500
                             : const Color(0xFF9CA3AF),
                       ),
                     ),

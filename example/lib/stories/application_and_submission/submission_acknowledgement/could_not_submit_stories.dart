@@ -63,14 +63,14 @@ class _ErrorIcon extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.red900
-            : Ux4gPalette.red50,
+            ? Ux4gColors.red900
+            : Ux4gColors.red50,
       ),
       child: Icon(
         Icons.error,
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.red500
-            : Ux4gPalette.red600,
+            ? Ux4gColors.red500
+            : Ux4gColors.red600,
         size: 30,
       ),
     );
@@ -87,7 +87,7 @@ class _ErrorToastCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.neutral900
+            ? Ux4gColors.neutral900
             : Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
@@ -104,8 +104,8 @@ class _ErrorToastCard extends StatelessWidget {
           Icon(
             Icons.error,
             color: Theme.of(context).brightness == Brightness.dark
-                ? Ux4gPalette.red500
-                : Ux4gPalette.red600,
+                ? Ux4gColors.red500
+                : Ux4gColors.red600,
             size: 20,
           ),
           const SizedBox(width: 10),
@@ -120,8 +120,8 @@ class _ErrorToastCard extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral50
-                        : Ux4gPalette.neutral900,
+                        ? Ux4gColors.neutral50
+                        : Ux4gColors.neutral900,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -130,8 +130,8 @@ class _ErrorToastCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 13,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral400
-                        : Ux4gPalette.neutral500,
+                        ? Ux4gColors.neutral400
+                        : Ux4gColors.neutral500,
                   ),
                 ),
               ],
@@ -143,8 +143,8 @@ class _ErrorToastCard extends StatelessWidget {
               Icons.close,
               size: 18,
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.neutral400
-                  : Ux4gPalette.neutral500,
+                  ? Ux4gColors.neutral400
+                  : Ux4gColors.neutral500,
             ),
           ),
         ],
@@ -173,7 +173,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
     
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -195,8 +195,8 @@ class CouldNotSubmitScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -222,7 +222,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                               Icon(
                                 Icons.arrow_back,
                                 size: 18,
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                               ),
                               const SizedBox(width: 6),
                               Text(
@@ -230,7 +230,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                 ),
                               ),
                             ],
@@ -242,8 +242,8 @@ class CouldNotSubmitScreen extends StatelessWidget {
                         Center(
                           child: Container(
                             width: 56, height: 56,
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50),
-                            child: const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 30),
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50),
+                            child: const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red500 : Ux4gColors.red600, size: 30),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -253,7 +253,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                           child: Text(
                             'Could Not Submit\nApplication',
                             textAlign: TextAlign.center,
-                            style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900),
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -261,7 +261,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                           child: Text(
                             'We could not submit your application due to\na network or server error. Your data is saved —\ntry again.',
                             textAlign: TextAlign.center,
-                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700),
                           ),
                         ),
                         const SizedBox(height: 32),
@@ -310,7 +310,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () {},
-                          child: Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                          child: Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                         ),
                       ),
                     ],
@@ -340,7 +340,7 @@ class CouldNotSubmitScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16, offset: const Offset(0, -4)),
@@ -349,21 +349,21 @@ class CouldNotSubmitScreen extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 20),
+                    const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red500 : Ux4gColors.red600, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                          Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                           const SizedBox(height: 4),
-                          Text('Network or server issue', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                          Text('Network or server issue', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.close, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                      child: Icon(Icons.close, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700),
                     ),
                   ],
                 ),
@@ -393,7 +393,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
     
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Stack(
           children: [
@@ -414,8 +414,8 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -433,7 +433,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 20, spreadRadius: 2, offset: const Offset(0, 4)),
@@ -450,7 +450,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                                 Icon(
                                   Icons.arrow_back,
                                   size: 18,
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
@@ -458,7 +458,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                   ),
                                 ),
                               ],
@@ -470,19 +470,19 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                           Center(
                             child: Container(
                               width: 56, height: 56,
-                              decoration: const BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red900 : Ux4gPalette.red50),
-                              child: const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 30),
+                              decoration: const BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50),
+                              child: const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red500 : Ux4gColors.red600, size: 30),
                             ),
                           ),
                           const SizedBox(height: 20),
 
                           // Title
                           Center(
-                            child: Text('Could Not Submit\nApplication', textAlign: TextAlign.center, style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                            child: Text('Could Not Submit\nApplication', textAlign: TextAlign.center, style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                           ),
                           const SizedBox(height: 12),
                           Center(
-                            child: Text('We could not submit your application due to\na network or server error. Your data is saved —\ntry again.', textAlign: TextAlign.center, style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                            child: Text('We could not submit your application due to\na network or server error. Your data is saved —\ntry again.', textAlign: TextAlign.center, style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                           ),
                           const SizedBox(height: 32),
 
@@ -531,7 +531,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () {},
-                          child: Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                          child: Text('Contact support', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                         ),
                       ),
                     ],
@@ -561,7 +561,7 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16, offset: const Offset(0, -4)),
@@ -570,21 +570,21 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.red500 : Ux4gPalette.red600, size: 20),
+                    const Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red500 : Ux4gColors.red600, size: 20),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                          Text('Could not submit', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                           const SizedBox(height: 4),
-                          Text('Network or server issue', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                          Text('Network or server issue', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.close, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700),
+                      child: Icon(Icons.close, size: 18, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700),
                     ),
                   ],
                 ),
@@ -616,7 +616,7 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Ux4gPalette.neutral900
+          ? Ux4gColors.neutral900
           : Colors.white,
       body: SafeArea(
         child: Stack(
@@ -659,8 +659,8 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                             height: 32,
                             colorFilter: ColorFilter.mode(
                               Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                               BlendMode.srcIn,
                             ),
                             errorBuilder: (c, e, s) => const Icon(
@@ -697,8 +697,8 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600,
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600,
                               ),
                               const SizedBox(width: 6),
                               Text(
@@ -709,8 +709,8 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                               ),
                             ],
@@ -729,8 +729,8 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                             textAlign: TextAlign.center,
                             style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                           ),
                         ),
@@ -741,8 +741,8 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                             textAlign: TextAlign.center,
                             style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                           ),
                         ),
@@ -798,12 +798,12 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                         height: 48,
                         backgroundColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         contentColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral900
-                            : Ux4gPalette.neutral50,
+                            ? Ux4gColors.neutral900
+                            : Ux4gColors.neutral50,
                       ),
                       const SizedBox(height: 12),
                       Ux4gButton(
@@ -815,12 +815,12 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                         height: 48,
                         contentColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary300
-                            : Ux4gPalette.primary600,
+                            ? Ux4gColors.primary300
+                            : Ux4gColors.primary600,
                         borderColor:
                             Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.primary600
-                            : Ux4gPalette.primary300,
+                            ? Ux4gColors.primary600
+                            : Ux4gColors.primary300,
                       ),
                       const SizedBox(height: 12),
                       Center(
@@ -834,8 +834,8 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                               color:
                                   Theme.of(context).brightness ==
                                       Brightness.dark
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                             ),
                           ),
                         ),
@@ -911,8 +911,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50,
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -925,8 +925,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50,
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50,
         body: SafeArea(
           child: Stack(
             children: [
@@ -969,8 +969,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                               height: 32,
                               colorFilter: ColorFilter.mode(
                                 Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gPalette.primary300
-                                    : Ux4gPalette.primary600,
+                                    ? Ux4gColors.primary300
+                                    : Ux4gColors.primary600,
                                 BlendMode.srcIn,
                               ),
                               errorBuilder: (c, e, s) => const Icon(
@@ -997,7 +997,7 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
+                              ? Ux4gColors.neutral900
                               : Colors.white,
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
@@ -1023,8 +1023,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                                     color:
                                         Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Ux4gPalette.primary300
-                                        : Ux4gPalette.primary600,
+                                        ? Ux4gColors.primary300
+                                        : Ux4gColors.primary600,
                                   ),
                                   const SizedBox(width: 6),
                                   Text(
@@ -1035,8 +1035,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                                       color:
                                           Theme.of(context).brightness ==
                                               Brightness.dark
-                                          ? Ux4gPalette.primary300
-                                          : Ux4gPalette.primary600,
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600,
                                     ),
                                   ),
                                 ],
@@ -1055,8 +1055,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                                 textAlign: TextAlign.center,
                                 style: (Theme.of(context).extension<Ux4gTypography>()?.hL_strong ?? const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                               ),
                             ),
@@ -1067,8 +1067,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                                 textAlign: TextAlign.center,
                                 style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle(fontSize: 14)).copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                               ),
                             ),
@@ -1125,12 +1125,12 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                           height: 48,
                           backgroundColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                           contentColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral900
-                              : Ux4gPalette.neutral50,
+                              ? Ux4gColors.neutral900
+                              : Ux4gColors.neutral50,
                         ),
                         const SizedBox(height: 12),
                         Ux4gButton(
@@ -1142,12 +1142,12 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                           height: 48,
                           contentColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                           borderColor:
                               Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.primary600
-                              : Ux4gPalette.primary300,
+                              ? Ux4gColors.primary600
+                              : Ux4gColors.primary300,
                         ),
                         const SizedBox(height: 12),
                         Center(
@@ -1161,8 +1161,8 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                                 color:
                                     Theme.of(context).brightness ==
                                         Brightness.dark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                           ),

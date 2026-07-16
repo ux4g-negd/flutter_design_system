@@ -7,13 +7,13 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+    _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
 Color _getBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : const Color(0xFFF9FAFB);
+    _isDark(context) ? Ux4gColors.neutral950 : const Color(0xFFF9FAFB);
 Color _getDialogBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Colors.white;
+    _isDark(context) ? Ux4gColors.neutral900 : Colors.white;
 
 final discardDraftDialogComponent = WidgetbookComponent(
   name: 'Discard Draft Dialog',
@@ -71,14 +71,14 @@ void showDiscardDraftDialog(BuildContext context) {
               size: Ux4gButtonSize.large,
               width: double.infinity,
               backgroundColor: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.red300
-                  : Ux4gPalette.red600,
+                  ? Ux4gColors.red300
+                  : Ux4gColors.red600,
               borderColor: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.red300
-                  : Ux4gPalette.red600,
+                  ? Ux4gColors.red300
+                  : Ux4gColors.red600,
               contentColor: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.neutral900
-                  : Ux4gPalette.neutral50,
+                  ? Ux4gColors.neutral900
+                  : Ux4gColors.neutral50,
             ),
             const SizedBox(height: 12),
             Ux4gButton(height: 48, 
@@ -88,11 +88,11 @@ void showDiscardDraftDialog(BuildContext context) {
               size: Ux4gButtonSize.large,
               width: double.infinity,
               contentColor: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary300
-                  : Ux4gPalette.primary600,
+                  ? Ux4gColors.primary300
+                  : Ux4gColors.primary600,
               borderColor: Theme.of(context).brightness == Brightness.dark
-                  ? Ux4gPalette.primary600
-                  : Ux4gPalette.primary300,
+                  ? Ux4gColors.primary600
+                  : Ux4gColors.primary300,
             ),
           ],
         ),
@@ -121,7 +121,7 @@ class _DiscardDraftDialogMockup extends StatelessWidget {
             color: _getDialogBg(context),
             borderRadius: BorderRadius.circular(16),
             border: _isDark(context)
-                ? Border.all(color: Ux4gPalette.neutral800)
+                ? Border.all(color: Ux4gColors.neutral800)
                 : null,
             boxShadow: [
               BoxShadow(
@@ -160,14 +160,14 @@ class _DiscardDraftDialogMockup extends StatelessWidget {
                 size: Ux4gButtonSize.large,
                 width: double.infinity,
                 backgroundColor: _isDark(context)
-                    ? Ux4gPalette.red300
-                    : Ux4gPalette.red600,
+                    ? Ux4gColors.red300
+                    : Ux4gColors.red600,
                 borderColor: _isDark(context)
-                    ? Ux4gPalette.red300
-                    : Ux4gPalette.red600,
+                    ? Ux4gColors.red300
+                    : Ux4gColors.red600,
                 contentColor: _isDark(context)
-                    ? Ux4gPalette.neutral900
-                    : Ux4gPalette.neutral50,
+                    ? Ux4gColors.neutral900
+                    : Ux4gColors.neutral50,
               ),
               const SizedBox(height: 12),
               Ux4gButton(
@@ -178,11 +178,11 @@ class _DiscardDraftDialogMockup extends StatelessWidget {
                 size: Ux4gButtonSize.large,
                 width: double.infinity,
                 contentColor: _isDark(context)
-                    ? Ux4gPalette.primary300
-                    : Ux4gPalette.primary600,
+                    ? Ux4gColors.primary300
+                    : Ux4gColors.primary600,
                 borderColor: _isDark(context)
-                    ? Ux4gPalette.primary600
-                    : Ux4gPalette.primary300,
+                    ? Ux4gColors.primary600
+                    : Ux4gColors.primary300,
               ),
             ],
           ),

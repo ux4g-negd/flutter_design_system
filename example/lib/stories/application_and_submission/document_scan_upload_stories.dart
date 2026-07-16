@@ -61,12 +61,12 @@ class _PhoneFrame extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.neutral900
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral900
+            : Ux4gColors.neutral50,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Ux4gPalette.neutral700
+              ? Ux4gColors.neutral700
               : const Color(0xFFE5E7EB),
         ),
         boxShadow: [
@@ -98,7 +98,7 @@ class DocumentUploadScreen extends StatelessWidget {
     const primaryColor = Color(0xFF432CBB);
 
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -108,20 +108,20 @@ class DocumentUploadScreen extends StatelessWidget {
               variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
               leadingWidgets: [
                 SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                Container(height: 32, width: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
+                Container(height: 32, width: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200),
                 SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
               ],
             ),
-            Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
 
             // Main Content
             Expanded(
@@ -142,21 +142,21 @@ class DocumentUploadScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
 
-                    Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                    Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     const SizedBox(height: 4),
-                    Text('PDF or JPG, max 5 MB each. Self-attested.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500)),
+                    Text('PDF or JPG, max 5 MB each. Self-attested.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
                     const SizedBox(height: 20),
 
-                    Text('Required documents — 1 of 4 uploaded', style: Theme.of(context).extension<Ux4gTypography>()?.lL_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                    Text('Required documents — 1 of 4 uploaded', style: Theme.of(context).extension<Ux4gTypography>()?.lL_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     const SizedBox(height: 24),
 
                     // Aadhaar Card (Uploaded)
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green900 : Ux4gPalette.green50,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green50,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green800 : const Color(0xFFDCFCE7)),
+                        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green800 : const Color(0xFFDCFCE7)),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,15 +164,15 @@ class DocumentUploadScreen extends StatelessWidget {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.green500 : Ux4gPalette.green600, size: 20),
+                              Icon(Icons.check_circle, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green500 : Ux4gColors.green600, size: 20),
                               const SizedBox(width: 12),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Aadhaar Card', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                                    Text('Aadhaar Card', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                                     const SizedBox(height: 4),
-                                    Text('aadhaar_card.pdf · 1.2 MB · Uploaded just now', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700)),
+                                    Text('aadhaar_card.pdf · 1.2 MB · Uploaded just now', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                                   ],
                                 ),
                               ),
@@ -183,8 +183,8 @@ class DocumentUploadScreen extends StatelessWidget {
                             spacing: 12,
                             runSpacing: 12,
                             children: [
-                              Ux4gButton(text: 'View', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 100, height: 40, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
-                              Ux4gButton(text: 'Re-upload', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 120, height: 40, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary600 : Ux4gPalette.primary300),
+                              Ux4gButton(text: 'View', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 100, height: 40, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300),
+                              Ux4gButton(text: 'Re-upload', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.small, width: 120, height: 40, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300),
                             ],
                           ),
                         ],
@@ -250,7 +250,7 @@ class DocumentUploadScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                   const SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -279,16 +279,16 @@ class _DocumentItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Container(width: 20, height: 20, decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200))),
+              Container(width: 20, height: 20, decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200))),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -296,7 +296,7 @@ class _DocumentItem extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Flexible(child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900))),
+                        Flexible(child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900))),
                         const SizedBox(width: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -306,7 +306,7 @@ class _DocumentItem extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    Text(subtitle, style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500)),
+                    Text(subtitle, style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
                   ],
                 ),
               ),
@@ -335,33 +335,33 @@ class DocumentUploadCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
       body: SafeArea(
         child: Column(
           children: [
             // Header
             Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Theme.of(context).brightness == Brightness.dark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
                       SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                      Container(height: 32, width: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200),
+                      Container(height: 32, width: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200),
                       SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
                     ],
                   ),
-                  Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Color(0xFFE5E7EB)),
+                  Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                 ],
               ),
             ),
@@ -373,7 +373,7 @@ class DocumentUploadCardScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4)),
@@ -392,9 +392,9 @@ class DocumentUploadCardScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 32),
-                      Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900)),
+                      Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                       const SizedBox(height: 8),
-                      Text('PDF or JPG, max 5 MB each.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500)),
+                      Text('PDF or JPG, max 5 MB each.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
                       const SizedBox(height: 24),
 
                       _DocumentItem(title: 'Aadhaar Card', subtitle: 'Self-attested copy', badge: 'Required', badgeColor: Color(0xFFFEE2E2), badgeTextColor: Color(0xFF991B1B)),
@@ -427,7 +427,7 @@ class DocumentUploadCardScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400)),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
                   const SizedBox(height: 6),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
@@ -454,8 +454,8 @@ class _DocumentUploadMockup extends StatelessWidget {
     return _PhoneFrame(
       child: Scaffold(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.neutral900
-            : Ux4gPalette.neutral50,
+            ? Ux4gColors.neutral900
+            : Ux4gColors.neutral50,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -477,16 +477,16 @@ class _DocumentUploadMockup extends StatelessWidget {
                     height: 32,
                     width: 1,
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral700
-                        : Ux4gPalette.neutral200,
+                        ? Ux4gColors.neutral700
+                        : Ux4gColors.neutral200,
                   ),
                   SvgPicture.asset(
                     _unionLogoPath,
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -495,7 +495,7 @@ class _DocumentUploadMockup extends StatelessWidget {
               Divider(
                 height: 1,
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gPalette.neutral800
+                    ? Ux4gColors.neutral800
                     : Color(0xFFE5E7EB),
               ),
               Expanded(
@@ -541,8 +541,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                         'Upload documents',
                         style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -550,8 +550,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                         'PDF or JPG, max 5 MB each. Self-attested.',
                         style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral400
-                              : Ux4gPalette.neutral500,
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral500,
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -559,8 +559,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                         'Required documents — 1 of 4 uploaded',
                         style: Theme.of(context).extension<Ux4gTypography>()?.lL_strong?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -570,13 +570,13 @@ class _DocumentUploadMockup extends StatelessWidget {
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.green900
-                              : Ux4gPalette.green50,
+                              ? Ux4gColors.green900
+                              : Ux4gColors.green50,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.green800
+                                ? Ux4gColors.green800
                                 : const Color(0xFFDCFCE7),
                           ),
                         ),
@@ -591,8 +591,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                                   color:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.green500
-                                      : Ux4gPalette.green600,
+                                      ? Ux4gColors.green500
+                                      : Ux4gColors.green600,
                                   size: 20,
                                 ),
                                 const SizedBox(width: 12),
@@ -609,8 +609,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                                           color:
                                               Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.neutral50
-                                              : Ux4gPalette.neutral900,
+                                              ? Ux4gColors.neutral50
+                                              : Ux4gColors.neutral900,
                                         ),
                                       ),
                                       const SizedBox(height: 4),
@@ -621,8 +621,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                                           color:
                                               Theme.of(context).brightness ==
                                                   Brightness.dark
-                                              ? Ux4gPalette.neutral200
-                                              : Ux4gPalette.neutral700,
+                                              ? Ux4gColors.neutral200
+                                              : Ux4gColors.neutral700,
                                         ),
                                       ),
                                     ],
@@ -645,13 +645,13 @@ class _DocumentUploadMockup extends StatelessWidget {
                                   contentColor:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                   borderColor:
                                       Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Ux4gPalette.primary600
-                                      : Ux4gPalette.primary300,
+                                      ? Ux4gColors.primary600
+                                      : Ux4gColors.primary300,
                                 ),
                                 
                                 Ux4gButton(
@@ -732,12 +732,12 @@ class _DocumentUploadMockup extends StatelessWidget {
                       height: 40,
                       contentColor:
                           Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       borderColor:
                           Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary600
-                          : Ux4gPalette.primary300,
+                          ? Ux4gColors.primary600
+                          : Ux4gColors.primary300,
                     ),
                   ],
                 ),
@@ -752,8 +752,8 @@ class _DocumentUploadMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral500
-                            : Ux4gPalette.neutral400,
+                            ? Ux4gColors.neutral500
+                            : Ux4gColors.neutral400,
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -784,16 +784,16 @@ class _DocumentUploadCardMockup extends StatelessWidget {
     return _PhoneFrame(
       child: Scaffold(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.primary900
-            : Ux4gPalette.primary50,
+            ? Ux4gColors.primary900
+            : Ux4gColors.primary50,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
                 color: Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gPalette.neutral900
-                    : Ux4gPalette.neutral0,
+                    ? Ux4gColors.neutral900
+                    : Ux4gColors.neutral0,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -814,16 +814,16 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                           height: 32,
                           width: 1,
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral700
-                              : Ux4gPalette.neutral200,
+                              ? Ux4gColors.neutral700
+                              : Ux4gColors.neutral200,
                         ),
                         SvgPicture.asset(
                           _unionLogoPath,
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -832,7 +832,7 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                     Divider(
                       height: 1,
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral800
+                          ? Ux4gColors.neutral800
                           : Color(0xFFE5E7EB),
                     ),
                   ],
@@ -848,8 +848,8 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.neutral900
-                          : Ux4gPalette.neutral50,
+                          ? Ux4gColors.neutral900
+                          : Ux4gColors.neutral50,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -899,8 +899,8 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral50
-                                : Ux4gPalette.neutral900,
+                                ? Ux4gColors.neutral50
+                                : Ux4gColors.neutral900,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -910,8 +910,8 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                             fontSize: 15,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.neutral400
-                                : Ux4gPalette.neutral500,
+                                ? Ux4gColors.neutral400
+                                : Ux4gColors.neutral500,
                           ),
                         ),
                         const SizedBox(height: 24),
@@ -969,12 +969,12 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                       height: 40,
                       contentColor:
                           Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       borderColor:
                           Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary600
-                          : Ux4gPalette.primary300,
+                          ? Ux4gColors.primary600
+                          : Ux4gColors.primary300,
                     ),
                   ],
                 ),
@@ -989,8 +989,8 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral500
-                            : Ux4gPalette.neutral400,
+                            ? Ux4gColors.neutral500
+                            : Ux4gColors.neutral400,
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -1032,12 +1032,12 @@ class _MockDocumentItem extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
-            ? Ux4gPalette.neutral900
-            : Ux4gPalette.neutral0,
+            ? Ux4gColors.neutral900
+            : Ux4gColors.neutral0,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Ux4gPalette.neutral700
+              ? Ux4gColors.neutral700
               : const Color(0xFFE5E7EB),
         ),
       ),
@@ -1053,8 +1053,8 @@ class _MockDocumentItem extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.neutral700
-                        : Ux4gPalette.neutral200,
+                        ? Ux4gColors.neutral700
+                        : Ux4gColors.neutral200,
                   ),
                 ),
               ),
@@ -1073,8 +1073,8 @@ class _MockDocumentItem extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                               color:
                                   Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.neutral50
-                                  : Ux4gPalette.neutral900,
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
                             ),
                           ),
                         ),
@@ -1105,8 +1105,8 @@ class _MockDocumentItem extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gPalette.neutral400
-                            : Ux4gPalette.neutral500,
+                            ? Ux4gColors.neutral400
+                            : Ux4gColors.neutral500,
                       ),
                     ),
                   ],

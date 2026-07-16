@@ -19,8 +19,8 @@ class Ux4gTheme extends StatelessWidget {
     );
   }
 
-  static Ux4gColors colors(BuildContext context) {
-    return Theme.of(context).extension<Ux4gColors>() ?? lightUx4gColors;
+  static Ux4gThemeColors colors(BuildContext context) {
+    return Theme.of(context).extension<Ux4gThemeColors>() ?? lightUx4gColors;
   }
 
   static Ux4gTypography typography(BuildContext context) {

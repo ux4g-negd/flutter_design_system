@@ -42,7 +42,7 @@ class Ux4gTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final defaultColors = _getTagColors(ux4gColors, materialTheme.colorScheme);
@@ -104,7 +104,7 @@ class Ux4gTag extends StatelessWidget {
     );
   }
 
-  _TagColors _getTagColors(Ux4gColors? ux4gColors, ColorScheme colorScheme) {
+  _TagColors _getTagColors(Ux4gThemeColors? ux4gColors, ColorScheme colorScheme) {
     final onSurface = ux4gColors?.onSurface ?? colorScheme.onSurface;
     final primary = ux4gColors?.primary ?? colorScheme.primary;
     final success = ux4gColors?.success ?? colorScheme.primary;
@@ -251,7 +251,7 @@ class Ux4gUnifiedPillTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final lSDefault =

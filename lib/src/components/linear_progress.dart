@@ -45,14 +45,17 @@ enum Ux4gProgressLabelPosition {
 ///   showPercentage: true,
 /// )
 /// ```
-class Ux4gLinearProgress extends StatelessWidget {
+@Deprecated('Use Ux4gLinearProgressBar instead')
+typedef Ux4gLinearProgress = Ux4gLinearProgressBar;
+
+class Ux4gLinearProgressBar extends StatelessWidget {
   /// Progress value between **0.0** (empty) and **1.0** (full).
   final double value;
 
   /// Optional leading icon shown to the left of the label row.
   final IconData? icon;
 
-  /// Optional icon color. Defaults to [Ux4gColors.primary].
+  /// Optional icon color. Defaults to [Ux4gThemeColors.primary].
   final Color? iconColor;
 
   /// Optional icon background color (circle behind icon). Pass `null` to hide bg.
@@ -97,7 +100,7 @@ class Ux4gLinearProgress extends StatelessWidget {
   /// Defaults to a small bold white style.
   final TextStyle? insideLabelStyle;
 
-  const Ux4gLinearProgress({
+  const Ux4gLinearProgressBar({
     super.key,
     required this.value,
     this.icon,
@@ -127,7 +130,7 @@ class Ux4gLinearProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
     final isDark = materialTheme.brightness == Brightness.dark;
 
@@ -248,10 +251,10 @@ class Ux4gLinearProgress extends StatelessWidget {
               gradientColors ??
               (color == null
                   ? (isDark
-                        ? const [Ux4gPalette.primary300, Ux4gPalette.primary950]
+                        ? const [Ux4gColors.primary300, Ux4gColors.primary950]
                         : const [
-                            Ux4gPalette.primary600,
-                            Ux4gPalette.primary200,
+                            Ux4gColors.primary600,
+                            Ux4gColors.primary200,
                           ])
                   : null),
           trackColor: resolvedTrack,
@@ -427,9 +430,12 @@ class _IconBubble extends StatelessWidget {
 
 // ─── Convenience: animated version ────────────────────────────────────────────
 
-/// Animated version of [Ux4gLinearProgress] — smoothly transitions when
+/// Animated version of [Ux4gLinearProgressBar] — smoothly transitions when
 /// [value] changes.
-class Ux4gAnimatedLinearProgress extends StatelessWidget {
+@Deprecated('Use Ux4gAnimatedLinearProgressBar instead')
+typedef Ux4gAnimatedLinearProgress = Ux4gAnimatedLinearProgressBar;
+
+class Ux4gAnimatedLinearProgressBar extends StatelessWidget {
   final double value;
   final IconData? icon;
   final Color? iconColor;
@@ -448,7 +454,7 @@ class Ux4gAnimatedLinearProgress extends StatelessWidget {
   final Duration duration;
   final Curve curve;
 
-  const Ux4gAnimatedLinearProgress({
+  const Ux4gAnimatedLinearProgressBar({
     super.key,
     required this.value,
     this.icon,
@@ -475,7 +481,7 @@ class Ux4gAnimatedLinearProgress extends StatelessWidget {
       tween: Tween(begin: 0, end: value.clamp(0.0, 1.0)),
       duration: duration,
       curve: curve,
-      builder: (_, animVal, child) => Ux4gLinearProgress(
+      builder: (_, animVal, child) => Ux4gLinearProgressBar(
         value: animVal,
         icon: icon,
         iconColor: iconColor,

@@ -47,12 +47,12 @@ class VerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final typography = Ux4gTheme.typography(context);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -66,7 +66,7 @@ class VerificationScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: isDark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -80,7 +80,7 @@ class VerificationScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -117,9 +117,9 @@ class VerificationScreen extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                        color: isDark ? Ux4gColors.neutral800 : Colors.white,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                        border: Border.all(color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,8 +137,8 @@ class VerificationScreen extends StatelessWidget {
                                 size: Ux4gTagSize.m,
                                 style: Ux4gTagStyle.tonal,
                                 colorScheme: Ux4gTagColor.warning,
-                                customBackgroundColor: isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
-                                customContentColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                                customBackgroundColor: isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+                                customContentColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
                                 customBorderRadius: BorderRadius.circular(4),
                               ),
                             ],
@@ -158,9 +158,9 @@ class VerificationScreen extends StatelessWidget {
                             value: 0.66,
                             height: 6,
                             gradientColors: isDark
-                                ? const [Ux4gPalette.secondary600, Ux4gPalette.secondary300]
-                                : const [Ux4gPalette.secondary200, Ux4gPalette.secondary600],
-                            trackColor: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                                ? const [Ux4gColors.secondary600, Ux4gColors.secondary300]
+                                : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
+                            trackColor: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
                             shape: Ux4gProgressShape.rounded,
                           ),
                         ],
@@ -181,8 +181,8 @@ class VerificationScreen extends StatelessWidget {
                           status: Ux4gJourneyStepStatus(
                             text: 'Passed',
                             badgeText: 'Passed',
-                            badgeColor: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
-                            badgeTextColor: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                            badgeColor: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
+                            badgeTextColor: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                             badgePosition: Ux4gJourneyBadgePosition.topRight,
                           ),
                         ),
@@ -193,8 +193,8 @@ class VerificationScreen extends StatelessWidget {
                           status: Ux4gJourneyStepStatus(
                             text: 'Passed',
                             badgeText: 'Passed',
-                            badgeColor: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
-                            badgeTextColor: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                            badgeColor: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
+                            badgeTextColor: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                             badgePosition: Ux4gJourneyBadgePosition.topRight,
                           ),
                         ),
@@ -205,8 +205,8 @@ class VerificationScreen extends StatelessWidget {
                           status: Ux4gJourneyStepStatus(
                             text: 'Verifying',
                             badgeText: 'Verifying',
-                            badgeColor: isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
-                            badgeTextColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                            badgeColor: isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+                            badgeTextColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
                             badgePosition: Ux4gJourneyBadgePosition.topRight,
                           ),
                         ),
@@ -226,7 +226,7 @@ class VerificationScreen extends StatelessWidget {
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
                   height: 48,
-                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                   contentColor: isDark ? Colors.black : Colors.white,
                 ),
               ),
@@ -254,13 +254,13 @@ class VerificationCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final typography = Ux4gTheme.typography(context);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -274,7 +274,7 @@ class VerificationCardScreen extends StatelessWidget {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: isDark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -288,7 +288,7 @@ class VerificationCardScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -332,9 +332,9 @@ class VerificationCardScreen extends StatelessWidget {
                         width: double.infinity,
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                          color: isDark ? Ux4gPalette.neutral900 : Colors.white,
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+                          border: Border.all(color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -352,8 +352,8 @@ class VerificationCardScreen extends StatelessWidget {
                                   size: Ux4gTagSize.m,
                                   style: Ux4gTagStyle.tonal,
                                   colorScheme: Ux4gTagColor.warning,
-                                  customBackgroundColor: isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
-                                  customContentColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                                  customBackgroundColor: isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+                                  customContentColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
                                   customBorderRadius: BorderRadius.circular(4),
                                 ),
                               ],
@@ -373,9 +373,9 @@ class VerificationCardScreen extends StatelessWidget {
                               value: 0.66,
                               height: 6,
                               gradientColors: isDark
-                                  ? const [Ux4gPalette.secondary600, Ux4gPalette.secondary300]
-                                  : const [Ux4gPalette.secondary200, Ux4gPalette.secondary600],
-                              trackColor: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                                  ? const [Ux4gColors.secondary600, Ux4gColors.secondary300]
+                                  : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
+                              trackColor: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
                               shape: Ux4gProgressShape.rounded,
                             ),
                           ],
@@ -396,8 +396,8 @@ class VerificationCardScreen extends StatelessWidget {
                             status: Ux4gJourneyStepStatus(
                               text: 'Passed',
                               badgeText: 'Passed',
-                              badgeColor: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
-                              badgeTextColor: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                              badgeColor: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
+                              badgeTextColor: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                               badgePosition: Ux4gJourneyBadgePosition.topRight,
                             ),
                           ),
@@ -408,8 +408,8 @@ class VerificationCardScreen extends StatelessWidget {
                             status: Ux4gJourneyStepStatus(
                               text: 'Passed',
                               badgeText: 'Passed',
-                              badgeColor: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
-                              badgeTextColor: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                              badgeColor: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
+                              badgeTextColor: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                               badgePosition: Ux4gJourneyBadgePosition.topRight,
                             ),
                           ),
@@ -420,8 +420,8 @@ class VerificationCardScreen extends StatelessWidget {
                             status: Ux4gJourneyStepStatus(
                               text: 'Verifying',
                               badgeText: 'Verifying',
-                              badgeColor: isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
-                              badgeTextColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                              badgeColor: isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+                              badgeTextColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
                               badgePosition: Ux4gJourneyBadgePosition.topRight,
                             ),
                           ),
@@ -442,7 +442,7 @@ class VerificationCardScreen extends StatelessWidget {
                   variant: Ux4gButtonVariant.primary,
                   size: Ux4gButtonSize.large,
                   height: 48,
-                  backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                  backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                   contentColor: isDark ? Colors.black : Colors.white,
                   borderRadius: 8,
                 ),
@@ -468,17 +468,17 @@ class _VerificationMockup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = isDark ? Ux4gPalette.primary300 : const Color(0xFF432CBB);
-    final titleColor = isDark ? Ux4gPalette.neutral50 : const Color(0xFF111827);
-    final subtleText = isDark ? Ux4gPalette.neutral200 : const Color(0xFF4B5563);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Colors.white;
+    final primaryColor = isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+    final titleColor = isDark ? Ux4gColors.neutral50 : const Color(0xFF111827);
+    final subtleText = isDark ? Ux4gColors.neutral200 : const Color(0xFF4B5563);
+    final cardBg = isDark ? Ux4gColors.neutral800 : Colors.white;
 
     return Theme(
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: isCard
-            ? (isDark ? Ux4gPalette.primary800 : const Color(0xFFF2EFFF))
-            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF))
+            : (isDark ? Ux4gColors.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -493,7 +493,7 @@ class _VerificationMockup extends StatelessWidget {
                     Ux4gIcons.nationalEmblem,
                     height: 40,
                     colorFilter: isDark
-                        ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                        ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                         : null,
                   ),
                   SizedBox(
@@ -507,7 +507,7 @@ class _VerificationMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -535,7 +535,7 @@ class _VerificationMockup extends StatelessWidget {
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.large,
                     height: 48,
-                    backgroundColor: isDark ? Ux4gPalette.primary300 : const Color(0xFF4A2BC2),
+                    backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF4A2BC2),
                     contentColor: isDark ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),
@@ -599,8 +599,8 @@ class _VerificationMockup extends StatelessWidget {
               status: Ux4gJourneyStepStatus(
                 text: 'Passed',
                 badgeText: 'Passed',
-                badgeColor: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
-                badgeTextColor: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                badgeColor: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
+                badgeTextColor: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                 badgePosition: Ux4gJourneyBadgePosition.topRight,
               ),
             ),
@@ -611,8 +611,8 @@ class _VerificationMockup extends StatelessWidget {
               status: Ux4gJourneyStepStatus(
                 text: 'Passed',
                 badgeText: 'Passed',
-                badgeColor: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
-                badgeTextColor: isDark ? Ux4gPalette.green300 : Ux4gPalette.green800,
+                badgeColor: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
+                badgeTextColor: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                 badgePosition: Ux4gJourneyBadgePosition.topRight,
               ),
             ),
@@ -623,8 +623,8 @@ class _VerificationMockup extends StatelessWidget {
               status: Ux4gJourneyStepStatus(
                 text: 'Verifying',
                 badgeText: 'Verifying',
-                badgeColor: isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
-                badgeTextColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                badgeColor: isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+                badgeTextColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
                 badgePosition: Ux4gJourneyBadgePosition.topRight,
               ),
             ),
@@ -641,9 +641,9 @@ class _VerificationMockup extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+        color: isDark ? Ux4gColors.neutral800 : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB)),
+        border: Border.all(color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -669,8 +669,8 @@ class _VerificationMockup extends StatelessWidget {
                 size: Ux4gTagSize.m,
                 style: Ux4gTagStyle.tonal,
                 colorScheme: Ux4gTagColor.warning,
-                customBackgroundColor: isDark ? Ux4gPalette.orange800 : Ux4gPalette.orange100,
-                customContentColor: isDark ? Ux4gPalette.orange300 : Ux4gPalette.orange800,
+                customBackgroundColor: isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+                customContentColor: isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
                 customBorderRadius: BorderRadius.circular(4),
               ),
             ],
@@ -691,9 +691,9 @@ class _VerificationMockup extends StatelessWidget {
             value: 0.66,
             height: 6,
             gradientColors: isDark
-                ? const [Ux4gPalette.secondary600, Ux4gPalette.secondary300]
-                : const [Ux4gPalette.secondary200, Ux4gPalette.secondary600],
-            trackColor: isDark ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB),
+                ? const [Ux4gColors.secondary600, Ux4gColors.secondary300]
+                : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
+            trackColor: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
             shape: Ux4gProgressShape.rounded,
           ),
         ],

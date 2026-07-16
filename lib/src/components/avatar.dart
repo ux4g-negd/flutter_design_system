@@ -43,7 +43,7 @@ class Ux4gAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final resolvedPrimary =
@@ -170,13 +170,13 @@ class Ux4gAvatarGroup extends StatelessWidget {
     if (items.isEmpty) return const SizedBox.shrink();
 
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final resolvedBorderColor =
         borderColor ??
         (ux4gColors?.surface ?? materialTheme.colorScheme.surface);
     final isDark = materialTheme.brightness == Brightness.dark;
-    final overflowBgColor = isDark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
-    final overflowTextColor = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary900;
+    final overflowBgColor = isDark ? Ux4gColors.primary900 : Ux4gColors.primary50;
+    final overflowTextColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary900;
 
     final actualLimit = maxLimit ?? items.length;
     final exceedsLimit = items.length > actualLimit;
@@ -266,7 +266,7 @@ class Ux4gProfileAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final indicatorSize = badgeSize ?? _getIndicatorSize();
     final double r = size.size / 2;
     // Distance from corner of bounding box to the 45-degree point on the circle
@@ -309,7 +309,7 @@ class Ux4gProfileAvatar extends StatelessWidget {
   }
 
   Widget _buildVariant(
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
     double size,
   ) {
@@ -396,7 +396,7 @@ class Ux4gStatusAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final indicatorSize = statusSize ?? _getStatusIndicatorSize();
     final double r = size.size / 2;
     // Distance from corner of bounding box to the 45-degree point on the circle
@@ -448,7 +448,7 @@ class Ux4gStatusAvatar extends StatelessWidget {
     };
   }
 
-  Color _getStatusColor(Ux4gColors? ux4gColors, ThemeData materialTheme) {
+  Color _getStatusColor(Ux4gThemeColors? ux4gColors, ThemeData materialTheme) {
     return switch (variant) {
       Ux4gStatusVariant.online => ux4gColors?.success ?? Colors.green,
       Ux4gStatusVariant.offline =>

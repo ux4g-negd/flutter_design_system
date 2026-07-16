@@ -13,10 +13,10 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getBorder(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300;
+    _isDark(context) ? Ux4gColors.neutral600 : Ux4gColors.neutral300;
 
 Color _getMutedText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500;
+    _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500;
 
 class _BrandHeader extends StatelessWidget {
   const _BrandHeader();
@@ -43,8 +43,8 @@ class _BrandHeader extends StatelessWidget {
               child: Ux4gDivider(
                 orientation: Ux4gDividerOrientation.vertical,
                 color: isDark
-                    ? Ux4gPalette.neutral700
-                    : Ux4gPalette.neutral300,
+                    ? Ux4gColors.neutral700
+                    : Ux4gColors.neutral300,
               ),
             ),
             SvgPicture.asset(
@@ -52,8 +52,8 @@ class _BrandHeader extends StatelessWidget {
               height: 32,
               colorFilter: ColorFilter.mode(
                 isDark
-                    ? Ux4gPalette.primary300
-                    : Ux4gPalette.primary600,
+                    ? Ux4gColors.primary300
+                    : Ux4gColors.primary600,
                 BlendMode.srcIn,
               ),
             ),
@@ -67,7 +67,7 @@ class _BrandHeader extends StatelessWidget {
                 height: 40,
                 child: Material(
                   color: isDark
-                      ? Ux4gPalette.neutral800
+                      ? Ux4gColors.neutral800
                       : Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
@@ -76,13 +76,13 @@ class _BrandHeader extends StatelessWidget {
                     child: Ink(
                       decoration: BoxDecoration(
                         color: isDark
-                            ? Ux4gPalette.neutral800
+                            ? Ux4gColors.neutral800
                             : Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                           color: isDark
-                              ? Ux4gPalette.primary600
-                              : Ux4gPalette.primary300,
+                              ? Ux4gColors.primary600
+                              : Ux4gColors.primary300,
                           width: 1.5,
                         ),
                       ),
@@ -91,8 +91,8 @@ class _BrandHeader extends StatelessWidget {
                           Icons.menu,
                           size: 20,
                           color: isDark
-                              ? Ux4gPalette.primary300
-                              : Ux4gPalette.primary600,
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
                         ),
                       ),
                     ),
@@ -150,8 +150,8 @@ class _PhoneFrame extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: _isDark(context)
-              ? Ux4gPalette.neutral950
-              : Ux4gPalette.neutral50,
+              ? Ux4gColors.neutral950
+              : Ux4gColors.neutral50,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: _getBorder(context)),
           boxShadow: [
@@ -309,8 +309,8 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
 
   Widget _buildTabButton(String label, int targetIndex, bool isDark) {
     final active = _tabIndex == targetIndex;
-    final selectedBg = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final selectedText = isDark ? Ux4gPalette.gray900 : Colors.white;
+    final selectedBg = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final selectedText = isDark ? Ux4gColors.gray900 : Colors.white;
     return GestureDetector(
       onTap: () => setState(() => _tabIndex = targetIndex),
       child: AnimatedContainer(
@@ -369,7 +369,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
+          color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300,
         ),
       ),
       child: Column(
@@ -427,11 +427,11 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
   Widget _buildDivider(bool isDark) => Divider(
     height: 1,
     thickness: 1,
-    color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
+    color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300,
   );
 
   Widget _buildFrequencyCard(bool isDark) {
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(14),
@@ -439,7 +439,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300,
+          color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300,
         ),
       ),
       child: Column(
@@ -516,7 +516,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         children: list.asMap().entries.map((entry) {
@@ -527,7 +527,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+              border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
             ),
             child: Column(
               children: [
@@ -558,7 +558,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
                   ),
                 ),
                 if (cat.expanded) ...[
-                  Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                  Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
                   ...cat.items.asMap().entries.map((itemEntry) {
                     final iIdx = itemEntry.key;
                     final item = itemEntry.value;
@@ -589,7 +589,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
                           ),
                         ),
                         if (iIdx < cat.items.length - 1)
-                          Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                          Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
                       ],
                     );
                   }),
@@ -609,14 +609,14 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         children: [
           _buildMandatoryItem('SLA breach alerts', 'Sent when an application crosses its service guarantee deadline.', isDark),
-          Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+          Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
           _buildMandatoryItem('Rejection notices', 'Sent if an application is rejected, with the reason and next steps.', isDark),
-          Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+          Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
           _buildMandatoryItem('Legal & payment deadlines', 'Sent for statutory deadlines and fee payment due dates.', isDark),
         ],
       ),
@@ -686,14 +686,14 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
   }
 
   Widget _buildWhatsAppView(bool isDark) {
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -702,9 +702,9 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+              color: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: isDark ? Ux4gPalette.green600 : Ux4gPalette.green300),
+              border: Border.all(color: isDark ? Ux4gColors.green600 : Ux4gColors.green300),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -743,7 +743,7 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
             height: 48,
             backgroundColor: primary,
             contentColor: Colors.white,
-            disabledBackgroundColor: isDark ? Ux4gPalette.primary600.withValues(alpha: 0.4) : Ux4gPalette.primary300,
+            disabledBackgroundColor: isDark ? Ux4gColors.primary600.withValues(alpha: 0.4) : Ux4gColors.primary300,
             disabledContentColor: Colors.white,
             borderRadius: 8,
           ),
@@ -776,8 +776,8 @@ class _NotifPrefMasterScreenState extends State<_NotifPrefMasterScreen> {
   }
 
   Widget _buildManageAllView(bool isDark) {
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final dividerColor = isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final dividerColor = isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300;
     final headerStyle = TextStyle(
       fontSize: 11,
       fontWeight: FontWeight.w700,
@@ -878,8 +878,8 @@ import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 // Copy this complete working code to use Notification Preferences in your Flutter application!
 
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
-Color _getBorder(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300;
-Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500;
+Color _getBorder(BuildContext context) => _isDark(context) ? Ux4gColors.neutral600 : Ux4gColors.neutral300;
+Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500;
 
 class BrandHeader extends StatelessWidget {
   const BrandHeader({super.key});
@@ -903,14 +903,14 @@ class BrandHeader extends StatelessWidget {
               height: 28,
               child: Ux4gDivider(
                 orientation: Ux4gDividerOrientation.vertical,
-                color: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300,
+                color: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
               ),
             ),
             SvgPicture.asset(
               Ux4gIcons.union,
               height: 32,
               colorFilter: ColorFilter.mode(
-                isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 BlendMode.srcIn,
               ),
             ),
@@ -923,7 +923,7 @@ class BrandHeader extends StatelessWidget {
                 width: 40,
                 height: 40,
                 child: Material(
-                  color: isDark ? Ux4gPalette.neutral800 : Colors.white,
+                  color: isDark ? Ux4gColors.neutral800 : Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
@@ -932,7 +932,7 @@ class BrandHeader extends StatelessWidget {
                       child: Icon(
                         Icons.menu,
                         size: 20,
-                        color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                        color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       ),
                     ),
                   ),
@@ -978,7 +978,7 @@ class PhoneFrame extends StatelessWidget {
         height: 760,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          color: _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50,
+          color: _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral50,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: _getBorder(context)),
         ),
@@ -1124,8 +1124,8 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
 
   Widget _buildTabButton(String label, int targetIndex, bool isDark) {
     final active = _tabIndex == targetIndex;
-    final selectedBg = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final selectedText = isDark ? Ux4gPalette.gray900 : Colors.white;
+    final selectedBg = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final selectedText = isDark ? Ux4gColors.gray900 : Colors.white;
     return GestureDetector(
       onTap: () => setState(() => _tabIndex = targetIndex),
       child: AnimatedContainer(
@@ -1134,7 +1134,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
         decoration: BoxDecoration(
           color: active ? selectedBg : (isDark ? const Color(0xFF1E1E1E) : Colors.white),
           borderRadius: BorderRadius.circular(6),
-          border: active ? null : Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+          border: active ? null : Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
         ),
         child: Text(
           label,
@@ -1165,7 +1165,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         children: [
@@ -1205,17 +1205,17 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
     );
   }
 
-  Widget _buildDivider(bool isDark) => Divider(height: 1, thickness: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300);
+  Widget _buildDivider(bool isDark) => Divider(height: 1, thickness: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300);
 
   Widget _buildFrequencyCard(bool isDark) {
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         children: [
@@ -1265,7 +1265,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         children: list.asMap().entries.map((entry) {
@@ -1276,7 +1276,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+              border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
             ),
             child: Column(
               children: [
@@ -1307,7 +1307,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
                   ),
                 ),
                 if (cat.expanded) ...[
-                  Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                  Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
                   ...cat.items.asMap().entries.map((itemEntry) {
                     final iIdx = itemEntry.key;
                     final item = itemEntry.value;
@@ -1338,7 +1338,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
                           ),
                         ),
                         if (iIdx < cat.items.length - 1)
-                          Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+                          Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
                       ],
                     );
                   }),
@@ -1358,14 +1358,14 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         children: [
           _buildMandatoryItem('SLA breach alerts', 'Sent when an application crosses its service guarantee deadline.', isDark),
-          Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+          Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
           _buildMandatoryItem('Rejection notices', 'Sent if an application is rejected, with the reason and next steps.', isDark),
-          Divider(height: 1, color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+          Divider(height: 1, color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
           _buildMandatoryItem('Legal & payment deadlines', 'Sent for statutory deadlines and fee payment due dates.', isDark),
         ],
       ),
@@ -1407,14 +1407,14 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
   }
 
   Widget _buildWhatsAppView(bool isDark) {
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300),
+        border: Border.all(color: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1423,9 +1423,9 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isDark ? Ux4gPalette.green800 : Ux4gPalette.green100,
+              color: isDark ? Ux4gColors.green800 : Ux4gColors.green100,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: isDark ? Ux4gPalette.green600 : Ux4gPalette.green300),
+              border: Border.all(color: isDark ? Ux4gColors.green600 : Ux4gColors.green300),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1464,7 +1464,7 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
             height: 48,
             backgroundColor: primary,
             contentColor: Colors.white,
-            disabledBackgroundColor: isDark ? Ux4gPalette.primary600.withValues(alpha: 0.4) : Ux4gPalette.primary300,
+            disabledBackgroundColor: isDark ? Ux4gColors.primary600.withValues(alpha: 0.4) : Ux4gColors.primary300,
             disabledContentColor: Colors.white,
             borderRadius: 8,
           ),
@@ -1497,8 +1497,8 @@ class _Ux4gNotificationPreferencesScreenState extends State<Ux4gNotificationPref
   }
 
   Widget _buildManageAllView(bool isDark) {
-    final primary = isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
-    final dividerColor = isDark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral300;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final dividerColor = isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300;
     final headerStyle = TextStyle(
       fontSize: 11,
       fontWeight: FontWeight.w700,

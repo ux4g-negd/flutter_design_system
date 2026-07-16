@@ -7,7 +7,7 @@ import '../../../widgets/component_docs.dart';
 
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
 
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral50;
 
 final wasThisHelpfulComponent = WidgetbookComponent(
   name: 'Was This Helpful Alert',
@@ -35,9 +35,9 @@ class _WasThisHelpfulMockup extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = _isDark(context);
     final scaffoldBg = _getScaffoldBg(context);
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0;
-    final borderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
-    final titleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    final cardBg = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral0;
+    final borderColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
+    final titleColor = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 
     return Theme(
       data: Ux4gTheme.themeData(isDark: isDark),
@@ -56,7 +56,7 @@ class _WasThisHelpfulMockup extends StatelessWidget {
                     Text(
                       'SUPPORT > REGISTRATION',
                       style: (Theme.of(context).extension<Ux4gTypography>()?.bXS_default ?? const TextStyle()).copyWith(
-                        color: isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                        color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -72,7 +72,7 @@ class _WasThisHelpfulMockup extends StatelessWidget {
                     Text(
                       'To update your mobile number, log in to your account dashboard and navigate to Account Settings. Under the Profile tab, locate your phone number, click Edit, enter the new mobile number, and verify using the OTP sent to your new number.',
                       style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
-                        color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                        color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                       ),
                     ),
                   ],
@@ -126,7 +126,7 @@ class _WasThisHelpfulMockup extends StatelessWidget {
                           size: Ux4gButtonSize.small,
                           leadingIcon: Icons.thumb_up_alt_outlined,
                           borderColor: borderColor,
-                          contentColor: isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral800,
+                          contentColor: isDark ? Ux4gColors.neutral300 : Ux4gColors.neutral800,
                         ),
                         const SizedBox(width: 8),
                         Ux4gButton(
@@ -136,7 +136,7 @@ class _WasThisHelpfulMockup extends StatelessWidget {
                           size: Ux4gButtonSize.small,
                           leadingIcon: Icons.thumb_down_alt_outlined,
                           borderColor: borderColor,
-                          contentColor: isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral800,
+                          contentColor: isDark ? Ux4gColors.neutral300 : Ux4gColors.neutral800,
                         ),
                       ],
                     ),
@@ -160,10 +160,10 @@ class WasThisHelpfulScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final scaffoldBg = isDark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
-    final cardBg = isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0;
-    final borderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
-    final titleColor = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    final scaffoldBg = isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral50;
+    final cardBg = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral0;
+    final borderColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
+    final titleColor = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 
     return Scaffold(
       backgroundColor: scaffoldBg,
@@ -179,7 +179,7 @@ class WasThisHelpfulScreen extends StatelessWidget {
                   Text(
                     'SUPPORT > REGISTRATION',
                     style: (Theme.of(context).extension<Ux4gTypography>()?.bXS_default ?? const TextStyle()).copyWith(
-                      color: isDark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral500,
+                      color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -193,7 +193,7 @@ class WasThisHelpfulScreen extends StatelessWidget {
                   Text(
                     'To update your mobile number, log in to your account dashboard and navigate to Account Settings. Under the Profile tab, locate your phone number, click Edit, enter the new mobile number, and verify using the OTP sent to your new number.',
                     style: (Theme.of(context).extension<Ux4gTypography>()?.bM_default ?? const TextStyle()).copyWith(
-                      color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                     ),
                   ),
                 ],
@@ -240,7 +240,7 @@ class WasThisHelpfulScreen extends StatelessWidget {
                         size: Ux4gButtonSize.small,
                         leadingIcon: Icons.thumb_up_alt_outlined,
                         borderColor: borderColor,
-                        contentColor: isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral800,
+                        contentColor: isDark ? Ux4gColors.neutral300 : Ux4gColors.neutral800,
                       ),
                       const SizedBox(width: 8),
                       Ux4gButton(
@@ -250,7 +250,7 @@ class WasThisHelpfulScreen extends StatelessWidget {
                         size: Ux4gButtonSize.small,
                         leadingIcon: Icons.thumb_down_alt_outlined,
                         borderColor: borderColor,
-                        contentColor: isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral800,
+                        contentColor: isDark ? Ux4gColors.neutral300 : Ux4gColors.neutral800,
                       ),
                     ],
                   ),

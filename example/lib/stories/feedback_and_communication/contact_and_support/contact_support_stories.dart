@@ -20,11 +20,11 @@ Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xF
 
 // ignore: unused_element
 
-Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral700 : const Color(0xFFE5E7EB);
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
 
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 
 // ignore: unused_element
 
@@ -114,7 +114,7 @@ class ContactSupportScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -223,9 +223,9 @@ class SupportCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Ux4gCard(
-      backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
+      backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
       cornerRadius: 12,
-      borderColor: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+      borderColor: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
       borderWidth: 1,
       child: Padding(
         padding: const EdgeInsets.all(14),
@@ -236,14 +236,14 @@ class SupportCard extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+                color: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: icon is IconData
                   ? Icon(
                       icon as IconData,
                       size: 20,
-                      color: isDark ? Ux4gPalette.primary500 : Ux4gPalette.primary600,
+                      color: isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
                     )
                   : Center(
                       child: SvgPicture.asset(
@@ -251,7 +251,7 @@ class SupportCard extends StatelessWidget {
                         width: 20,
                         height: 20,
                         colorFilter: ColorFilter.mode(
-                          isDark ? Ux4gPalette.primary500 : Ux4gPalette.primary600,
+                          isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -268,7 +268,7 @@ class SupportCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                      color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -276,7 +276,7 @@ class SupportCard extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 12,
-                      color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                     ),
                   ),
                 ],
@@ -290,8 +290,8 @@ class SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.small,
-                    borderColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    borderColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     borderRadius: 8,
                   )
                 : Ux4gButton(
@@ -299,7 +299,7 @@ class SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.small,
-                    backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     contentColor: isDark ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),
@@ -351,7 +351,7 @@ class ContactSupportCardScreen extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -464,9 +464,9 @@ class SupportCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Ux4gCard(
-      backgroundColor: isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral0,
+      backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
       cornerRadius: 12,
-      borderColor: isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+      borderColor: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
       borderWidth: 1,
       child: Padding(
         padding: const EdgeInsets.all(14),
@@ -477,14 +477,14 @@ class SupportCard extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+                color: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: icon is IconData
                   ? Icon(
                       icon as IconData,
                       size: 20,
-                      color: isDark ? Ux4gPalette.primary500 : Ux4gPalette.primary600,
+                      color: isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
                     )
                   : Center(
                       child: SvgPicture.asset(
@@ -492,7 +492,7 @@ class SupportCard extends StatelessWidget {
                         width: 20,
                         height: 20,
                         colorFilter: ColorFilter.mode(
-                          isDark ? Ux4gPalette.primary500 : Ux4gPalette.primary600,
+                          isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -509,7 +509,7 @@ class SupportCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                      color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -517,7 +517,7 @@ class SupportCard extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 12,
-                      color: isDark ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                     ),
                   ),
                 ],
@@ -531,8 +531,8 @@ class SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.small,
-                    borderColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    contentColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    borderColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     borderRadius: 8,
                   )
                 : Ux4gButton(
@@ -540,7 +540,7 @@ class SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.small,
-                    backgroundColor: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     contentColor: isDark ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),
@@ -566,7 +566,7 @@ class _ContactSupportMockup extends StatelessWidget {
     return Theme(
       data: Ux4gTheme.themeData(isDark: _isDark(context)),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
@@ -593,7 +593,7 @@ class _ContactSupportMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -745,9 +745,9 @@ class _SupportCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ux4gCard(
-      backgroundColor: _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+      backgroundColor: _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
       cornerRadius: 12,
-      borderColor: _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200,
+      borderColor: _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
       borderWidth: 1,
       child: Padding(
         padding: const EdgeInsets.all(14),
@@ -758,14 +758,14 @@ class _SupportCard extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+                color: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: icon is IconData
                   ? Icon(
                       icon as IconData,
                       size: 20,
-                      color: _isDark(context) ? Ux4gPalette.primary500 : Ux4gPalette.primary600,
+                      color: _isDark(context) ? Ux4gColors.primary500 : Ux4gColors.primary600,
                     )
                   : Center(
                       child: SvgPicture.asset(
@@ -773,7 +773,7 @@ class _SupportCard extends StatelessWidget {
                         width: 20,
                         height: 20,
                         colorFilter: ColorFilter.mode(
-                          _isDark(context) ? Ux4gPalette.primary500 : Ux4gPalette.primary600,
+                          _isDark(context) ? Ux4gColors.primary500 : Ux4gColors.primary600,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -790,7 +790,7 @@ class _SupportCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                      color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                     ),
                   ),
                   SizedBox(height: 2),
@@ -798,7 +798,7 @@ class _SupportCard extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 12,
-                      color: _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700,
+                      color: _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                     ),
                   ),
                 ],
@@ -812,8 +812,8 @@ class _SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.small,
-                    borderColor: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
-                    contentColor: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    borderColor: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    contentColor: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     borderRadius: 8,
                   )
                 : Ux4gButton(
@@ -821,7 +821,7 @@ class _SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.small,
-                    backgroundColor: _isDark(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    backgroundColor: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     contentColor: _isDark(context) ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),

@@ -4,10 +4,10 @@ import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-Color _bg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
-Color _cardBg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
-Color _titleColor(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-Color _subtleText(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600;
+Color _bg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50;
+Color _cardBg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50;
+Color _titleColor(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+Color _subtleText(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
@@ -62,7 +62,7 @@ class _PhoneFrame extends StatelessWidget {
       decoration: BoxDecoration(
         color: _bg(context),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
       ),
       child: child,
     );
@@ -104,7 +104,7 @@ class GovernmentFormMultipleErrorsScreenState
 
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -114,20 +114,20 @@ class GovernmentFormMultipleErrorsScreenState
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                   SvgPicture.asset(
                     _unionLogoPath,
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
                 ],
               ),
-              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Ux4gStatusBanner(
                 height: 44,
                 variant: Ux4gBannerVariant.successLight,
@@ -246,11 +246,11 @@ Text(
                         onValueChange: (val) => setState(() => _fullName = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -262,8 +262,8 @@ Text(
                             style: TextStyle(
                               fontSize: 12,
                               color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -272,8 +272,8 @@ Text(
                             Icons.open_in_new,
                             size: 12,
                             color: Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                           ),
                         ],
                       ),
@@ -287,13 +287,13 @@ Text(
                             setState(() => _mobileNumber = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         status: Ux4gInputFieldStatus.error,
                         caption: 'Mobile must be 10 digits.',
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -307,13 +307,13 @@ Text(
                             setState(() => _emailAddress = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         status: Ux4gInputFieldStatus.error,
                         caption: 'Enter a valid email.',
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -327,13 +327,13 @@ Text(
                             setState(() => _aadhaarNumber = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         status: Ux4gInputFieldStatus.error,
                         caption: 'Aadhaar must be 12 digits.',
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -363,7 +363,7 @@ Text(
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral700,
                         ),
                       ),
                       SizedBox(height: 8),
@@ -409,7 +409,7 @@ Text(
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w800,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           ),
                         ),
                         value: _income,
@@ -424,7 +424,7 @@ Text(
                       Text(
                         'Receive application status updates via SMS',
                         style: (Theme.of(context).extension<Ux4gTypography>()?.lXL_default ?? TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         ),
                       ),
                       SizedBox(height: 16),
@@ -474,7 +474,7 @@ height: 48, text: 'Back',
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral400),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
                     SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24),
@@ -528,7 +528,7 @@ class _GovernmentFormMultipleErrorsMockupState
 
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -538,20 +538,20 @@ class _GovernmentFormMultipleErrorsMockupState
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                   SvgPicture.asset(
                     _unionLogoPath,
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
                 ],
               ),
-              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Ux4gStatusBanner(
                 height: 44,
                 variant: Ux4gBannerVariant.successLight,
@@ -670,11 +670,11 @@ Text(
                         onValueChange: (val) => setState(() => _fullName = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -686,8 +686,8 @@ Text(
                             style: TextStyle(
                               fontSize: 12,
                               color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -696,8 +696,8 @@ Text(
                             Icons.open_in_new,
                             size: 12,
                             color: Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                           ),
                         ],
                       ),
@@ -711,13 +711,13 @@ Text(
                             setState(() => _mobileNumber = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         status: Ux4gInputFieldStatus.error,
                         caption: 'Mobile must be 10 digits.',
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -731,13 +731,13 @@ Text(
                             setState(() => _emailAddress = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         status: Ux4gInputFieldStatus.error,
                         caption: 'Enter a valid email.',
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -751,13 +751,13 @@ Text(
                             setState(() => _aadhaarNumber = val),
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         status: Ux4gInputFieldStatus.error,
                         caption: 'Aadhaar must be 12 digits.',
                         style: TextStyle(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           fontSize: 14,
                         ),
                       ),
@@ -787,7 +787,7 @@ Text(
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral700,
                         ),
                       ),
                       SizedBox(height: 8),
@@ -833,7 +833,7 @@ Text(
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w800,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                           ),
                         ),
                         value: _income,
@@ -848,7 +848,7 @@ Text(
                       Text(
                         'Receive application status updates via SMS',
                         style: (Theme.of(context).extension<Ux4gTypography>()?.lXL_default ?? TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                         ),
                       ),
                       SizedBox(height: 16),
@@ -898,7 +898,7 @@ height: 48, text: 'Back',
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral400),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
                     SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24),
@@ -945,7 +945,7 @@ class _GovernmentFormMultipleErrorsCardMockupState
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -953,20 +953,20 @@ class _GovernmentFormMultipleErrorsCardMockupState
                       title: '',
                       leadingWidgets: [
                         SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                        SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                        SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                         SvgPicture.asset(
                           _unionLogoPath,
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
                       ],
                     ),
-                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                   ],
                 ),
               ),
@@ -982,7 +982,7 @@ class _GovernmentFormMultipleErrorsCardMockupState
                       Container(
                         padding: EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -1104,11 +1104,11 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                   setState(() => _fullName = val),
                               labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                               style: TextStyle(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                 fontSize: 14,
                               ),
                             ),
@@ -1120,8 +1120,8 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Theme.of(context).brightness == Brightness.dark
-                                        ? Ux4gPalette.primary300
-                                        : Ux4gPalette.primary600,
+                                        ? Ux4gColors.primary300
+                                        : Ux4gColors.primary600,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -1130,8 +1130,8 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                   Icons.open_in_new,
                                   size: 12,
                                   color: Theme.of(context).brightness == Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                               ],
                             ),
@@ -1144,13 +1144,13 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                   setState(() => _mobileNumber = val),
                               labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                               status: Ux4gInputFieldStatus.error,
                               caption: 'Mobile must be 10 digits.',
                               style: TextStyle(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                 fontSize: 14,
                               ),
                             ),
@@ -1163,13 +1163,13 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                   setState(() => _emailAddress = val),
                               labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                               status: Ux4gInputFieldStatus.error,
                               caption: 'Enter a valid email.',
                               style: TextStyle(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                 fontSize: 14,
                               ),
                             ),
@@ -1182,13 +1182,13 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                   setState(() => _aadhaarNumber = val),
                               labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                               status: Ux4gInputFieldStatus.error,
                               caption: 'Aadhaar must be 12 digits.',
                               style: TextStyle(
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                 fontSize: 14,
                               ),
                             ),
@@ -1221,7 +1221,7 @@ class _GovernmentFormMultipleErrorsCardMockupState
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700,
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral700,
                               ),
                             ),
                             SizedBox(height: 8),
@@ -1271,7 +1271,7 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w800,
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900,
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                                 ),
                               ),
                               value: _income,
@@ -1331,7 +1331,7 @@ height: 48, text: 'Back',
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral400),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
                     SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24),

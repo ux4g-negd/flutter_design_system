@@ -55,25 +55,25 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final onSurface = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    final onSurface = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
     
     // Star Colors matching Ux4gFeedbackForm
     Color activeStarColor;
     if (_rating == 0) {
-      activeStarColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+      activeStarColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
     } else if (_rating <= 2) {
-      activeStarColor = isDark ? Ux4gPalette.red300 : Ux4gPalette.red600;
+      activeStarColor = isDark ? Ux4gColors.red300 : Ux4gColors.red600;
     } else {
-      activeStarColor = isDark ? Ux4gPalette.yellow500 : Ux4gPalette.yellow600;
+      activeStarColor = isDark ? Ux4gColors.yellow500 : Ux4gColors.yellow600;
     }
     
-    final inactiveStarColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+    final inactiveStarColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
 
-    final cardBg = isDark ? Ux4gPalette.neutral900 : Colors.white;
-    final cardBorder = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    final cardBg = isDark ? Ux4gColors.neutral900 : Colors.white;
+    final cardBorder = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.neutral900 : Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -87,7 +87,7 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -101,7 +101,7 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -177,11 +177,11 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
                             size: Ux4gButtonSize.large,
                             height: 40,
                             backgroundColor: _rating > 0
-                                ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
-                                : (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                                ? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600)
+                                : (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                             contentColor: _rating > 0
                                 ? (isDark ? Colors.black : Colors.white)
-                                : (isDark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                                : (isDark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                             borderRadius: 8,
                           ),
                         ),
@@ -193,7 +193,7 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                             ),
                           ),
                         ),
@@ -211,7 +211,7 @@ class _RateExperienceScreenState extends State<RateExperienceScreen> {
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: isDark ? Ux4gPalette.neutral400 : const Color(0xFF6B7280)),
+                    style: TextStyle(fontSize: 11, color: isDark ? Ux4gColors.neutral400 : const Color(0xFF6B7280)),
                   ),
                   const SizedBox(width: 4),
                   Image.asset(
@@ -250,25 +250,25 @@ class _RateExperienceCardScreenState extends State<RateExperienceCardScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final onSurface = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    final onSurface = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
     
     // Star Colors matching Ux4gFeedbackForm
     Color activeStarColor;
     if (_rating == 0) {
-      activeStarColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+      activeStarColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
     } else if (_rating <= 2) {
-      activeStarColor = isDark ? Ux4gPalette.red300 : Ux4gPalette.red600;
+      activeStarColor = isDark ? Ux4gColors.red300 : Ux4gColors.red600;
     } else {
-      activeStarColor = isDark ? Ux4gPalette.yellow500 : Ux4gPalette.yellow600;
+      activeStarColor = isDark ? Ux4gColors.yellow500 : Ux4gColors.yellow600;
     }
     
-    final inactiveStarColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+    final inactiveStarColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
 
-    final cardBg = isDark ? Ux4gPalette.neutral900 : Colors.white;
-    final cardBorder = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    final cardBg = isDark ? Ux4gColors.neutral900 : Colors.white;
+    final cardBorder = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100,
+      backgroundColor: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
       body: SafeArea(
         child: Column(
           children: [
@@ -282,7 +282,7 @@ class _RateExperienceCardScreenState extends State<RateExperienceCardScreen> {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                 SizedBox(
@@ -296,7 +296,7 @@ class _RateExperienceCardScreenState extends State<RateExperienceCardScreen> {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -372,11 +372,11 @@ class _RateExperienceCardScreenState extends State<RateExperienceCardScreen> {
                             size: Ux4gButtonSize.large,
                             height: 40,
                             backgroundColor: _rating > 0
-                                ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
-                                : (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                                ? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600)
+                                : (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                             contentColor: _rating > 0
                                 ? (isDark ? Colors.black : Colors.white)
-                                : (isDark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                                : (isDark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
                             borderRadius: 8,
                           ),
                         ),
@@ -388,7 +388,7 @@ class _RateExperienceCardScreenState extends State<RateExperienceCardScreen> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                              color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                             ),
                           ),
                         ),
@@ -406,7 +406,7 @@ class _RateExperienceCardScreenState extends State<RateExperienceCardScreen> {
                 children: [
                   Text(
                     'Powered by -',
-                    style: TextStyle(fontSize: 11, color: isDark ? Ux4gPalette.neutral400 : const Color(0xFF6B7280)),
+                    style: TextStyle(fontSize: 11, color: isDark ? Ux4gColors.neutral400 : const Color(0xFF6B7280)),
                   ),
                   const SizedBox(width: 4),
                   Image.asset(
@@ -443,22 +443,22 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final onSurface = isDark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    final onSurface = isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
     
     // Star Colors matching Ux4gFeedbackForm
     Color activeStarColor;
     if (_rating == 0) {
-      activeStarColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+      activeStarColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
     } else if (_rating <= 2) {
-      activeStarColor = isDark ? Ux4gPalette.red300 : Ux4gPalette.red600;
+      activeStarColor = isDark ? Ux4gColors.red300 : Ux4gColors.red600;
     } else {
-      activeStarColor = isDark ? Ux4gPalette.yellow500 : Ux4gPalette.yellow600;
+      activeStarColor = isDark ? Ux4gColors.yellow500 : Ux4gColors.yellow600;
     }
     
-    final inactiveStarColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300;
+    final inactiveStarColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
 
-    final cardBg = isDark ? Ux4gPalette.neutral900 : Colors.white;
-    final cardBorder = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    final cardBg = isDark ? Ux4gColors.neutral900 : Colors.white;
+    final cardBorder = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 
     Widget formContent = Container(
       width: double.infinity,
@@ -525,11 +525,11 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
               size: Ux4gButtonSize.large,
               height: 40,
               backgroundColor: _rating > 0
-                  ? (isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600)
-                  : (isDark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                  ? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600)
+                  : (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               contentColor: _rating > 0
                   ? (isDark ? Colors.black : Colors.white)
-                  : (isDark ? Ux4gPalette.neutral500 : Ux4gPalette.neutral400),
+                  : (isDark ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
               borderRadius: 8,
             ),
           ),
@@ -541,7 +541,7 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
               ),
             ),
           ),
@@ -553,8 +553,8 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
         backgroundColor: widget.isCard 
-            ? (isDark ? Ux4gPalette.primary800 : Ux4gPalette.primary100) 
-            : (isDark ? Ux4gPalette.neutral900 : Colors.white),
+            ? (isDark ? Ux4gColors.primary800 : Ux4gColors.primary100) 
+            : (isDark ? Ux4gColors.neutral900 : Colors.white),
         body: SafeArea(
           child: Column(
             children: [
@@ -568,7 +568,7 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
                   Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gPalette.neutral50, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
                   SizedBox(
@@ -582,7 +582,7 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      isDark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -605,7 +605,7 @@ class _RateExperienceMockupState extends State<_RateExperienceMockup> {
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: isDark ? Ux4gPalette.neutral400 : const Color(0xFF6B7280)),
+                      style: TextStyle(fontSize: 11, color: isDark ? Ux4gColors.neutral400 : const Color(0xFF6B7280)),
                     ),
                     const SizedBox(width: 4),
                     Image.asset(

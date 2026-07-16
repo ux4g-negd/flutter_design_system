@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import '../theme/theme.dart';
 
-class Ux4gLoader extends StatefulWidget {
+@Deprecated('Use Ux4gSpinner instead')
+typedef Ux4gLoader = Ux4gSpinner;
+
+class Ux4gSpinner extends StatefulWidget {
   final double size;
   final Color? color;
   final List<Color>? gradientColors;
@@ -10,7 +13,7 @@ class Ux4gLoader extends StatefulWidget {
   final double strokeWidth;
   final int rotationDurationMillis;
 
-  const Ux4gLoader({
+  const Ux4gSpinner({
     super.key,
     this.size = 40,
     this.color,
@@ -21,10 +24,10 @@ class Ux4gLoader extends StatefulWidget {
   });
 
   @override
-  State<Ux4gLoader> createState() => _Ux4gLoaderState();
+  State<Ux4gSpinner> createState() => _Ux4gSpinnerState();
 }
 
-class _Ux4gLoaderState extends State<Ux4gLoader>
+class _Ux4gSpinnerState extends State<Ux4gSpinner>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 

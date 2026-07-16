@@ -5,7 +5,10 @@ import 'buttons.dart';
 import 'chips.dart';
 import 'text_area.dart';
 
-class Ux4gFeedbackForm extends StatefulWidget {
+@Deprecated('Use Ux4gFeedbackFormStar instead')
+typedef Ux4gFeedbackForm = Ux4gFeedbackFormStar;
+
+class Ux4gFeedbackFormStar extends StatefulWidget {
   final List<String> improvementOptions;
   final int minWords;
   final int maxLength;
@@ -44,7 +47,7 @@ class Ux4gFeedbackForm extends StatefulWidget {
   /// Default is 2 (1-2 stars = lowRatingColor, 3-5 stars = highRatingColor).
   final int lowRatingThreshold;
 
-  const Ux4gFeedbackForm({
+  const Ux4gFeedbackFormStar({
     super.key,
     required this.improvementOptions,
     required this.onSubmit,
@@ -68,8 +71,8 @@ class Ux4gFeedbackForm extends StatefulWidget {
     this.ratingIcon = Icons.star,
     this.successIcon = Icons.thumb_up,
     this.activeRatingColor,
-    this.lowRatingColor = Ux4gPalette.red600,
-    this.highRatingColor = Ux4gPalette.yellow600,
+    this.lowRatingColor = Ux4gColors.red600,
+    this.highRatingColor = Ux4gColors.yellow600,
     this.lowRatingThreshold = 2,
     this.inactiveRatingColor,
     this.successIconColor,
@@ -77,10 +80,10 @@ class Ux4gFeedbackForm extends StatefulWidget {
   });
 
   @override
-  State<Ux4gFeedbackForm> createState() => _Ux4gFeedbackFormState();
+  State<Ux4gFeedbackFormStar> createState() => _Ux4gFeedbackFormStarState();
 }
 
-class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
+class _Ux4gFeedbackFormStarState extends State<Ux4gFeedbackFormStar> {
   int _rating = 0;
   final Set<String> _selectedChips = {};
   String _comment = '';
@@ -112,7 +115,7 @@ class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
@@ -143,7 +146,7 @@ class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
 
   Widget _buildFormView(
     ThemeData materialTheme,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
     final info = ux4gColors?.info ?? materialTheme.colorScheme.primary;
@@ -194,13 +197,13 @@ class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
               activeColor = widget.activeRatingColor!;
             } else if (_rating <= widget.lowRatingThreshold) {
               activeColor =
-                  (widget.lowRatingColor == Ux4gPalette.red600 && isDark)
-                  ? (ux4gColors?.error ?? Ux4gPalette.red300)
+                  (widget.lowRatingColor == Ux4gColors.red600 && isDark)
+                  ? (ux4gColors?.error ?? Ux4gColors.red300)
                   : (widget.lowRatingColor ?? info);
             } else {
               activeColor =
-                  (widget.highRatingColor == Ux4gPalette.yellow600 && isDark)
-                  ? Ux4gPalette.yellow500
+                  (widget.highRatingColor == Ux4gColors.yellow600 && isDark)
+                  ? Ux4gColors.yellow500
                   : (widget.highRatingColor ?? info);
             }
 
@@ -305,7 +308,7 @@ class _Ux4gFeedbackFormState extends State<Ux4gFeedbackForm> {
 
   Widget _buildSuccessView(
     ThemeData materialTheme,
-    Ux4gColors? ux4gColors,
+    Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
     final success = ux4gColors?.success ?? Colors.green;

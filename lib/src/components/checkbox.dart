@@ -40,7 +40,7 @@ class Ux4gCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final materialTheme = Theme.of(context);
-    final ux4gColors = materialTheme.extension<Ux4gColors>();
+    final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
     final descriptionColor = switch (descriptionVariant) {
@@ -107,8 +107,8 @@ class Ux4gCheckbox extends StatelessWidget {
                         : (hasError || descriptionVariant == Ux4gCheckboxDescriptionVariant.error
                             ? (ux4gColors?.error ?? materialTheme.colorScheme.error)
                             : (materialTheme.brightness == Brightness.dark
-                                ? Ux4gPalette.neutral700
-                                : Ux4gPalette.neutral200)),
+                                ? Ux4gColors.neutral700
+                                : Ux4gColors.neutral200)),
                     width: 1.5,
                   ),
                 ),

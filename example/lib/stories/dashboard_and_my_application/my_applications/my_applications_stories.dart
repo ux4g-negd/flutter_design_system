@@ -7,20 +7,20 @@ import '../../../widgets/component_docs.dart';
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 Color _getScaffoldBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Ux4gPalette.neutral50;
+    _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral50;
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
 Color _getHeaderBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0;
-const Color _primaryColor = Ux4gPalette.primary600;
-const Color _errorColor = Ux4gPalette.red600;
-const Color _greenColor = Ux4gPalette.green600;
+    _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0;
+const Color _primaryColor = Ux4gColors.primary600;
+const Color _errorColor = Ux4gColors.red600;
+const Color _greenColor = Ux4gColors.green600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 
@@ -98,12 +98,12 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                     // Greeting
                     Text(
                       'Good morning, Ramesh',
-                      style: Ux4gTypography.headingMd.copyWith(color: Ux4gPalette.neutral900),
+                      style: Ux4gTypography.headingMd.copyWith(color: Ux4gColors.neutral900),
                     ),
                     SizedBox(height: 4),
                     Text(
                       'An overview of your applications',
-                      style: Ux4gTypography.bodySmall.copyWith(color: Ux4gPalette.neutral600),
+                      style: Ux4gTypography.bodySmall.copyWith(color: Ux4gColors.neutral600),
                     ),
                     SizedBox(height: 20),
 
@@ -115,7 +115,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         ),
                         SizedBox(width: 12),
                         Expanded(
-                          child: _StatCard(value: '1', label: 'Needs attention', showDot: true, dotColor: Ux4gPalette.error500),
+                          child: _StatCard(value: '1', label: 'Needs attention', showDot: true, dotColor: Ux4gColors.error500),
                         ),
                       ],
                     ),
@@ -136,7 +136,7 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                     // Your applications title
                     Text(
                       'Your applications',
-                      style: Ux4gTypography.headingSm.copyWith(color: Ux4gPalette.neutral900),
+                      style: Ux4gTypography.headingSm.copyWith(color: Ux4gColors.neutral900),
                     ),
                     SizedBox(height: 16),
 
@@ -270,7 +270,7 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        border: Border.all(color: Ux4gPalette.neutral200),
+        border: Border.all(color: Ux4gColors.neutral200),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -278,7 +278,7 @@ class _StatCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(value, style: Ux4gTypography.headingMd.copyWith(color: Ux4gPalette.neutral900)),
+              Text(value, style: Ux4gTypography.headingMd.copyWith(color: Ux4gColors.neutral900)),
               if (showDot) ...[
                 SizedBox(width: 6),
                 Container(width: 8, height: 8, decoration: BoxDecoration(shape: BoxShape.circle, color: dotColor)),
@@ -286,7 +286,7 @@ class _StatCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 4),
-          Text(label, style: Ux4gTypography.bodyXs.copyWith(color: Ux4gPalette.neutral500)),
+          Text(label, style: Ux4gTypography.bodyXs.copyWith(color: Ux4gColors.neutral500)),
         ],
       ),
     );
@@ -307,22 +307,22 @@ class _FilterChip extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? Ux4gPalette.primary600 : Colors.white,
+          color: isSelected ? Ux4gColors.primary600 : Colors.white,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: isSelected ? Ux4gPalette.primary600 : Ux4gPalette.neutral200),
+          border: Border.all(color: isSelected ? Ux4gColors.primary600 : Ux4gColors.neutral200),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: isSelected ? Colors.white : Ux4gPalette.neutral900)),
+            Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: isSelected ? Colors.white : Ux4gColors.neutral900)),
             SizedBox(width: 6),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.white.withValues(alpha: 0.2) : Ux4gPalette.neutral100,
+                color: isSelected ? Colors.white.withValues(alpha: 0.2) : Ux4gColors.neutral100,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Text(count, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: isSelected ? Colors.white : Ux4gPalette.neutral600)),
+              child: Text(count, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: isSelected ? Colors.white : Ux4gColors.neutral600)),
             ),
           ],
         ),
@@ -467,12 +467,12 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       title: 'Income Certificate',
                       statusText: '2 days overdue',
                       statusColor: _isDark(context)
-                          ? Ux4gPalette.red300
-                          : Ux4gPalette.red600,
+                          ? Ux4gColors.red300
+                          : Ux4gColors.red600,
                       badgeText: 'Escalation available',
                       badgeColor: _isDark(context)
-                          ? Ux4gPalette.red300
-                          : Ux4gPalette.red800,
+                          ? Ux4gColors.red300
+                          : Ux4gColors.red800,
                       referenceNumber: 'PMS-2026-MH-02231',
                       lastUpdated: '10 Apr 2026',
                       submittedDate: '1 Apr 2026',
@@ -487,12 +487,12 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       title: 'Income Certificate',
                       statusText: '4 days left',
                       statusColor: _isDark(context)
-                          ? Ux4gPalette.red300
-                          : Ux4gPalette.red600,
+                          ? Ux4gColors.red300
+                          : Ux4gColors.red600,
                       badgeText: 'Action needed',
                       badgeColor: _isDark(context)
-                          ? Ux4gPalette.red300
-                          : Ux4gPalette.red800,
+                          ? Ux4gColors.red300
+                          : Ux4gColors.red800,
                       referenceNumber: 'INC-2026-MH-04127',
                       lastUpdated: '10 Apr 2026',
                       submittedDate: '1 Apr 2026',
@@ -508,12 +508,12 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       title: 'Income Certificate',
                       statusText: '8 days left',
                       statusColor: _isDark(context)
-                          ? Ux4gPalette.secondary300
-                          : Ux4gPalette.secondary600,
+                          ? Ux4gColors.secondary300
+                          : Ux4gColors.secondary600,
                       badgeText: 'Under review',
                       badgeColor: _isDark(context)
-                          ? Ux4gPalette.orange300
-                          : Ux4gPalette.orange800,
+                          ? Ux4gColors.orange300
+                          : Ux4gColors.orange800,
                     ),
                     SizedBox(height: 16),
 
@@ -608,11 +608,11 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             decoration: BoxDecoration(
-              color: isSelected ? Ux4gPalette.primary600 : _getCardBg(context),
+              color: isSelected ? Ux4gColors.primary600 : _getCardBg(context),
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
                 color: isSelected
-                    ? Ux4gPalette.primary600
+                    ? Ux4gColors.primary600
                     : _getBorderColor(context),
               ),
             ),
@@ -623,7 +623,7 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                   tabs[index]['label']!,
                   style: typography.lM_default.copyWith(
                     color: isSelected
-                        ? Ux4gPalette.neutral0
+                        ? Ux4gColors.neutral0
                         : _getTitleColor(context),
                   ),
                 ),
@@ -632,7 +632,7 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                   Text(
                     tabs[index]['count']!,
                     style: typography.lS_default.copyWith(
-                      color: Ux4gPalette.neutral0,
+                      color: Ux4gColors.neutral0,
                       height: 1,
                     ),
                   )
@@ -643,13 +643,13 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       vertical: 1,
                     ),
                     decoration: BoxDecoration(
-                      color: Ux4gPalette.primary600,
+                      color: Ux4gColors.primary600,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
                       tabs[index]['count']!,
                       style: typography.lS_default.copyWith(
-                        color: Ux4gPalette.neutral0,
+                        color: Ux4gColors.neutral0,
                         height: 1,
                       ),
                     ),
@@ -710,11 +710,11 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
                       borderColor: _isDark(context)
-                          ? Ux4gPalette.neutral600
-                          : Ux4gPalette.neutral300,
+                          ? Ux4gColors.neutral600
+                          : Ux4gColors.neutral300,
                       contentColor: _isDark(context)
-                          ? Ux4gPalette.neutral50
-                          : Ux4gPalette.neutral900,
+                          ? Ux4gColors.neutral50
+                          : Ux4gColors.neutral900,
                     ),
                     SizedBox(width: 8),
                     Icon(
@@ -900,11 +900,11 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.small,
                       borderColor: _isDark(context)
-                          ? Ux4gPalette.neutral600
-                          : Ux4gPalette.neutral300,
+                          ? Ux4gColors.neutral600
+                          : Ux4gColors.neutral300,
                       contentColor: _isDark(context)
-                          ? Ux4gPalette.neutral50
-                          : Ux4gPalette.neutral900,
+                          ? Ux4gColors.neutral50
+                          : Ux4gColors.neutral900,
                     ),
                     SizedBox(width: 8),
                     Icon(
@@ -980,11 +980,11 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
                 variant: Ux4gButtonVariant.outline,
                 size: Ux4gButtonSize.small,
                 borderColor: _isDark(context)
-                    ? Ux4gPalette.neutral600
-                    : Ux4gPalette.neutral300,
+                    ? Ux4gColors.neutral600
+                    : Ux4gColors.neutral300,
                 contentColor: _isDark(context)
-                    ? Ux4gPalette.neutral50
-                    : Ux4gPalette.neutral900,
+                    ? Ux4gColors.neutral50
+                    : Ux4gColors.neutral900,
                 leadingIcon: Icons.file_download_outlined,
               ),
               SizedBox(width: 8),

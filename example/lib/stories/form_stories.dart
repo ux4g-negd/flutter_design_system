@@ -1608,10 +1608,10 @@ class _CheckboxExampleState extends State<CheckboxExample> {
   ],
 );
 
-// ── Toggle ────────────────────────────────────────────────────────────────────
+// ── Switch ────────────────────────────────────────────────────────────────────
 
 final toggleComponent = WidgetbookComponent(
-  name: 'Switch(Toggle)',
+  name: 'Switch',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
@@ -1620,14 +1620,14 @@ final toggleComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Toggle',
+              name: 'Switch',
               description:
-                  'A switch/toggle with label, description, and three size options.',
-              code: '''Ux4gToggle(
+                  'A switch with label, description, and three size options.',
+              code: '''Ux4gSwitch(
   checked: checked,
   onCheckedChange: (v) => setState(() => checked = v),
   label: 'Enable notifications',
-  size: Ux4gToggleSize.m,
+  size: Ux4gSwitchSize.m,
 );''',
               props: const [
                 PropRow(
@@ -1653,13 +1653,13 @@ final toggleComponent = WidgetbookComponent(
                 ),
                 PropRow(
                   name: 'size',
-                  type: 'Ux4gToggleSize',
+                  type: 'Ux4gSwitchSize',
                   description: 's / m / l.',
                   defaultValue: 'm',
                 ),
                 PropRow(
                   name: 'labelPosition',
-                  type: 'Ux4gToggleLabelPosition',
+                  type: 'Ux4gSwitchLabelPosition',
                   description: 'left / right / bothSides / noLabel.',
                   defaultValue: 'right',
                 ),
@@ -1687,7 +1687,7 @@ final toggleComponent = WidgetbookComponent(
                   defaultValue: 'false',
                 ),
               ],
-              child: Ux4gToggle(
+              child: Ux4gSwitch(
                 checked: checked,
                 onCheckedChange: (v) => setState(() => checked = v),
                 label: context.knobs.string(
@@ -1700,14 +1700,14 @@ final toggleComponent = WidgetbookComponent(
                 ),
                 size: context.knobs.list(
                   label: 'Size',
-                  options: Ux4gToggleSize.values,
-                  initialOption: Ux4gToggleSize.m,
+                  options: Ux4gSwitchSize.values,
+                  initialOption: Ux4gSwitchSize.m,
                   labelBuilder: (v) => v.name,
                 ),
                 labelPosition: context.knobs.list(
                   label: 'Label Position',
-                  options: Ux4gToggleLabelPosition.values,
-                  initialOption: Ux4gToggleLabelPosition.right,
+                  options: Ux4gSwitchLabelPosition.values,
+                  initialOption: Ux4gSwitchLabelPosition.right,
                   labelBuilder: (v) => v.name,
                 ),
                 secondaryLabel:
@@ -1732,33 +1732,33 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'All sizes',
       builder: (context) => ComponentDocs(
-        name: 'Toggle — Sizes',
-        description: 'Small (s), medium (m), and large (l) toggle switches.',
+        name: 'Switch — Sizes',
+        description: 'Small (s), medium (m), and large (l) switches.',
         code:
-            'Ux4gToggle(checked: true, onCheckedChange: (_) {}, label: \'Small\',  size: Ux4gToggleSize.s);',
+            'Ux4gSwitch(checked: true, onCheckedChange: (_) {}, label: \'Small\',  size: Ux4gSwitchSize.s);',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Ux4gToggle(
+            Ux4gSwitch(
               checked: true,
               onCheckedChange: (_) {},
               label: 'Small',
-              size: Ux4gToggleSize.s,
+              size: Ux4gSwitchSize.s,
             ),
             const SizedBox(height: 8),
-            Ux4gToggle(
+            Ux4gSwitch(
               checked: true,
               onCheckedChange: (_) {},
               label: 'Medium',
-              size: Ux4gToggleSize.m,
+              size: Ux4gSwitchSize.m,
             ),
             const SizedBox(height: 8),
-            Ux4gToggle(
+            Ux4gSwitch(
               checked: true,
               onCheckedChange: (_) {},
               label: 'Large',
-              size: Ux4gToggleSize.l,
+              size: Ux4gSwitchSize.l,
             ),
           ],
         ),
@@ -1767,21 +1767,21 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Toggle — Disabled',
-        description: 'Toggle with onCheckedChange=null renders as disabled.',
+        name: 'Switch — Disabled',
+        description: 'Switch with onCheckedChange=null renders as disabled.',
         code:
-            'Ux4gToggle(checked: false, onCheckedChange: null, label: \'Off (disabled)\');',
+            'Ux4gSwitch(checked: false, onCheckedChange: null, label: \'Off (disabled)\');',
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Ux4gToggle(
+            Ux4gSwitch(
               checked: false,
               onCheckedChange: null,
               label: 'Off (disabled)',
             ),
             const SizedBox(height: 8),
-            Ux4gToggle(
+            Ux4gSwitch(
               checked: true,
               onCheckedChange: null,
               label: 'On  (disabled)',
@@ -1801,13 +1801,13 @@ final toggleComponent = WidgetbookComponent(
             : Colors.black54;
 
         return ComponentDocs(
-          name: 'Toggle — Layout Variants',
+          name: 'Switch — Layout Variants',
           description:
               'Demonstrates native label compositions using the new built-in properties.',
           code: '''// Native dual-sided labels
-Ux4gToggle(
+Ux4gSwitch(
   checked: false,
-  labelPosition: Ux4gToggleLabelPosition.bothSides,
+  labelPosition: Ux4gSwitchLabelPosition.bothSides,
   label: 'Label text',
   isRequired: true,
   icon: Icon(Icons.category_outlined, size: 16),
@@ -1820,17 +1820,17 @@ Ux4gToggle(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 1. No label
-              Ux4gToggle(
+              Ux4gSwitch(
                 checked: false,
                 onCheckedChange: (_) {},
-                labelPosition: Ux4gToggleLabelPosition.noLabel,
+                labelPosition: Ux4gSwitchLabelPosition.noLabel,
               ),
               const SizedBox(height: 24),
               // 2. Right label
-              Ux4gToggle(
+              Ux4gSwitch(
                 checked: false,
                 onCheckedChange: (_) {},
-                labelPosition: Ux4gToggleLabelPosition.right,
+                labelPosition: Ux4gSwitchLabelPosition.right,
                 label: 'Label text',
                 isRequired: true,
                 icon: Icon(Icons.category_outlined, size: 16, color: iconColor),
@@ -1838,10 +1838,10 @@ Ux4gToggle(
               ),
               const SizedBox(height: 24),
               // 3. Left label
-              Ux4gToggle(
+              Ux4gSwitch(
                 checked: false,
                 onCheckedChange: (_) {},
-                labelPosition: Ux4gToggleLabelPosition.left,
+                labelPosition: Ux4gSwitchLabelPosition.left,
                 label: 'Label text',
                 isRequired: true,
                 icon: Icon(Icons.category_outlined, size: 16, color: iconColor),
@@ -1849,10 +1849,10 @@ Ux4gToggle(
               ),
               const SizedBox(height: 24),
               // 4. Both sides label
-              Ux4gToggle(
+              Ux4gSwitch(
                 checked: false,
                 onCheckedChange: (_) {},
-                labelPosition: Ux4gToggleLabelPosition.bothSides,
+                labelPosition: Ux4gSwitchLabelPosition.bothSides,
                 label: 'Label text',
                 isRequired: true,
                 icon: Icon(Icons.category_outlined, size: 16, color: iconColor),
@@ -2672,7 +2672,7 @@ final actionDropdownComponent = WidgetbookComponent(
       name: 'More Options Trigger',
       builder: (context) {
         final primaryColor =
-            Theme.of(context).extension<Ux4gColors>()?.primary ??
+            Theme.of(context).extension<Ux4gThemeColors>()?.primary ??
             Theme.of(context).colorScheme.primary;
 
         return StatefulBuilder(

@@ -13,18 +13,18 @@ final linearProgressComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'LinearProgress',
+        name: 'LinearProgressBar',
         description:
             'A horizontal progress bar with optional label, hint, icon, '
             'percentage display, gradient fill, and shape.',
-        code: '''Ux4gLinearProgress(
+        code: '''Ux4gLinearProgressBar(
   value: 0.6,                       // 0.0 – 1.0
   showPercentage: true,
   shape: Ux4gProgressShape.rounded,
 );
 
 // With label and icon
-Ux4gLinearProgress(
+Ux4gLinearProgressBar(
   value: 0.75,
   label: 'Uploading...',
   hint: 'Almost done',
@@ -33,7 +33,7 @@ Ux4gLinearProgress(
 );
 
 // Animated
-Ux4gAnimatedLinearProgress(value: 0.6);''',
+Ux4gAnimatedLinearProgressBar(value: 0.6);''',
         props: const [
           PropRow(
             name: 'value',
@@ -118,7 +118,7 @@ Ux4gAnimatedLinearProgress(value: 0.6);''',
         ],
         child: SizedBox(
           width: 300,
-          child: Ux4gLinearProgress(
+          child: Ux4gLinearProgressBar(
             value: context.knobs.double.slider(
               label: 'Value',
               initialValue: 0.6,
@@ -148,9 +148,9 @@ final animatedLinearProgressComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'AnimatedLinearProgress',
+        name: 'AnimatedLinearProgressBar',
         description: 'Animated version of the linear progress bar.',
-        code: '''Ux4gAnimatedLinearProgress(value: 0.6);''',
+        code: '''Ux4gAnimatedLinearProgressBar(value: 0.6);''',
         props: const [
           PropRow(
             name: 'value',
@@ -247,7 +247,7 @@ final animatedLinearProgressComponent = WidgetbookComponent(
         ],
         child: SizedBox(
           width: 300,
-          child: Ux4gAnimatedLinearProgress(
+          child: Ux4gAnimatedLinearProgressBar(
             value: context.knobs.double.slider(
               label: 'Value',
               initialValue: 0.6,
@@ -260,6 +260,9 @@ final animatedLinearProgressComponent = WidgetbookComponent(
     ),
   ],
 );
+
+final linearProgressBarComponent = linearProgressComponent;
+final animatedLinearProgressBarComponent = animatedLinearProgressComponent;
 
 // ── Circular Progress ─────────────────────────────────────────────────────────
 
@@ -423,8 +426,8 @@ final circularProgressComponent = WidgetbookComponent(
         final typography = Ux4gTheme.typography(context);
 
         final gradientColors = isDark
-            ? [Ux4gPalette.primary700, Ux4gPalette.primary300]
-            : [Ux4gPalette.primary200, Ux4gPalette.primary600];
+            ? [Ux4gColors.primary700, Ux4gColors.primary300]
+            : [Ux4gColors.primary200, Ux4gColors.primary600];
 
         Widget buildRow({
           required bool showGradient,
@@ -444,12 +447,12 @@ final circularProgressComponent = WidgetbookComponent(
                   size: size,
                   strokeCap: strokeCap,
                   trackColor: isDark
-                      ? Ux4gPalette.neutral600
-                      : Ux4gPalette.neutral300,
+                      ? Ux4gColors.neutral600
+                      : Ux4gColors.neutral300,
                   backgroundColor: showBackground
                       ? (isDark
-                            ? Ux4gPalette.neutral800
-                            : Ux4gPalette.neutral100)
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral100)
                       : null,
                   progressGradient: showGradient
                       ? SweepGradient(
@@ -492,9 +495,9 @@ Ux4gCircularProgress(
   size: Ux4gCircularProgressSize.l,
   progressGradient: SweepGradient(
     transform: GradientRotation(-pi / 2),
-    colors: [Ux4gPalette.primary200, Ux4gPalette.primary600],
+    colors: [Ux4gColors.primary200, Ux4gColors.primary600],
   ),
-  trackColor: Ux4gPalette.neutral300,
+  trackColor: Ux4gColors.neutral300,
   centerValueText: '50%',
   description: 'Description',
 ),
@@ -503,7 +506,7 @@ Ux4gCircularProgress(
 Ux4gCircularProgress(
   value: 0.5,
   size: Ux4gCircularProgressSize.xl,
-  backgroundColor: Ux4gPalette.neutral100,
+  backgroundColor: Ux4gColors.neutral100,
   centerValueText: '50%',
   description: 'Description',
 ),
@@ -512,7 +515,7 @@ Ux4gCircularProgress(
 Ux4gCircularProgress(
   value: 0.5,
   size: Ux4gCircularProgressSize.xxl,
-  backgroundColor: Ux4gPalette.neutral100,
+  backgroundColor: Ux4gColors.neutral100,
   centerValueText: '50%',
   centerDescription: 'Description',
 ),
@@ -704,18 +707,21 @@ final halfCircleProgressComponent = WidgetbookComponent(
   ],
 );
 
-// ── Loader ────────────────────────────────────────────────────────────────────
+// ── ux4gSpinner ──────────────────────────────────────────────────────────────────
 
-enum Ux4gLoaderGradientTheme {
+@Deprecated('Use Ux4gSpinnerGradientTheme instead')
+typedef Ux4gLoaderGradientTheme = Ux4gSpinnerGradientTheme;
+
+enum Ux4gSpinnerGradientTheme {
   brand('Brand'),
   neutral('Neutral'),
   destructive('Destructive');
 
   final String label;
-  const Ux4gLoaderGradientTheme(this.label);
+  const Ux4gSpinnerGradientTheme(this.label);
 }
 
-final loaderComponent = WidgetbookComponent(
+final spinnerComponent = WidgetbookComponent(
   name: 'Spinner (Loader)',
   useCases: [
     WidgetbookUseCase(
@@ -724,46 +730,46 @@ final loaderComponent = WidgetbookComponent(
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final selectedTheme = context.knobs.list(
           label: 'Color Theme',
-          options: Ux4gLoaderGradientTheme.values,
-          initialOption: Ux4gLoaderGradientTheme.brand,
+          options: Ux4gSpinnerGradientTheme.values,
+          initialOption: Ux4gSpinnerGradientTheme.brand,
           labelBuilder: (v) => v.label,
         );
 
         final gradientColors = switch (selectedTheme) {
-          Ux4gLoaderGradientTheme.brand =>
+          Ux4gSpinnerGradientTheme.brand =>
             isDark
-                ? [Ux4gPalette.primary300, Ux4gPalette.primary800]
-                : [Ux4gPalette.primary600, Ux4gPalette.primary100],
-          Ux4gLoaderGradientTheme.neutral =>
+                ? [Ux4gColors.primary300, Ux4gColors.primary800]
+                : [Ux4gColors.primary600, Ux4gColors.primary100],
+          Ux4gSpinnerGradientTheme.neutral =>
             isDark
-                ? [Ux4gPalette.neutral950A, Ux4gPalette.neutral900]
-                : [Ux4gPalette.neutral0, Ux4gPalette.neutral50],
-          Ux4gLoaderGradientTheme.destructive =>
+                ? [Ux4gColors.neutral950A, Ux4gColors.neutral900]
+                : [Ux4gColors.neutral0, Ux4gColors.neutral50],
+          Ux4gSpinnerGradientTheme.destructive =>
             isDark
-                ? [Ux4gPalette.red800, Ux4gPalette.red300]
-                : [Ux4gPalette.red200, Ux4gPalette.red600],
+                ? [Ux4gColors.red800, Ux4gColors.red300]
+                : [Ux4gColors.red200, Ux4gColors.red600],
         };
 
         return ComponentDocs(
-          name: 'Loader',
+          name: 'ux4gSpinner',
           description:
-              'A circular spinning loader indicator. '
+              'A circular spinning indicator. '
               'Customise size, stroke width, percentage fill, and gradient theme.',
           code: '''// Basic spinner
-Ux4gLoader(size: 40);
+Ux4gSpinner(size: 40);
 
 // Customised with Gradient
-Ux4gLoader(
+Ux4gSpinner(
   size: 48,
   strokeWidth: 5,
   percentage: 75,
-  gradientColors: [Ux4gPalette.primary600, Ux4gPalette.primary100],
+  gradientColors: [Ux4gColors.primary600, Ux4gColors.primary100],
 );''',
           props: const [
             PropRow(
               name: 'size',
               type: 'double',
-              description: 'Diameter of the loader.',
+              description: 'Diameter of the spinner.',
               defaultValue: '40',
             ),
             PropRow(
@@ -795,7 +801,7 @@ Ux4gLoader(
               defaultValue: '1200',
             ),
           ],
-          child: Ux4gLoader(
+          child: Ux4gSpinner(
             size: context.knobs.double.slider(
               label: 'Size',
               initialValue: 40,
@@ -819,8 +825,56 @@ Ux4gLoader(
         );
       },
     ),
+    WidgetbookUseCase(
+      name: 'Variants',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'ux4gSpinner — Variants',
+          description:
+              'Various color and percentage variations of the Ux4gSpinner indicator.',
+          code: '''// Primary Color
+Ux4gSpinner(size: 40, percentage: 100, color: Ux4gColors.primary);
+
+// Secondary Color (60%)
+Ux4gSpinner(size: 40, percentage: 60, color: Ux4gColors.secondary);
+
+// Danger / Red (30%)
+Ux4gSpinner(size: 40, percentage: 30, color: Ux4gColors.red);
+
+// Success / Green (75%)
+Ux4gSpinner(size: 40, percentage: 75, color: Ux4gColors.green);''',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Ux4gSpinner(
+                size: 40,
+                percentage: 100,
+                color: Ux4gColors.primary,
+              ),
+              Ux4gSpinner(
+                size: 40,
+                percentage: 60,
+                color: Ux4gColors.secondary,
+              ),
+              Ux4gSpinner(
+                size: 40,
+                percentage: 30,
+                color: Ux4gColors.red,
+              ),
+              Ux4gSpinner(
+                size: 40,
+                percentage: 75,
+                color: Ux4gColors.green,
+              ),
+            ],
+          ),
+        );
+      },
+    ),
   ],
 );
+
+final loaderComponent = spinnerComponent;
 
 // ── Animated Circular Progress ────────────────────────────────────────────────
 

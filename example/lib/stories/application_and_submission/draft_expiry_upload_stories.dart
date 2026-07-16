@@ -8,39 +8,39 @@ bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral950 : Colors.white;
+    _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary900 : Ux4gPalette.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
 Color _getTitleColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral50 : const Color(0xFF111827);
+    _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
 Color _getSubtleText(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral400 : const Color(0xFF4B5563);
+    _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
 Color _getBorderColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.neutral800 : const Color(0xFFE5E7EB);
+    _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB);
 Color _getPrimaryColor(BuildContext context) =>
-    _isDark(context) ? Ux4gPalette.primary600 : const Color(0xFF432CBB);
+    _isDark(context) ? Ux4gColors.primary600 : const Color(0xFF432CBB);
 Color _getGreenColor(BuildContext context) => _isDark(context)
-    ? Ux4gPalette.green600
-    : (_isDark(context) ? Ux4gPalette.green500 : Ux4gPalette.green600);
+    ? Ux4gColors.green600
+    : (_isDark(context) ? Ux4gColors.green500 : Ux4gColors.green600);
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 
 bool _isDarkMode(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
 Color _getUploadedBg(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green900 : Ux4gPalette.green50;
+    _isDarkMode(context) ? Ux4gColors.green900 : Ux4gColors.green50;
 Color _getUploadedBorder(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green800 : const Color(0xFFDCFCE7);
+    _isDarkMode(context) ? Ux4gColors.green800 : const Color(0xFFDCFCE7);
 Color _getUploadedIcon(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.green500 : Ux4gPalette.green600;
+    _isDarkMode(context) ? Ux4gColors.green500 : Ux4gColors.green600;
 Color _getUploadedTitle(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
+    _isDarkMode(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
 Color _getUploadedDesc(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.neutral200 : Ux4gPalette.neutral700;
+    _isDarkMode(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 Color _getUploadedBtnText(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.primary300 : Ux4gPalette.primary600;
+    _isDarkMode(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 Color _getUploadedBtnBorder(BuildContext context) =>
-    _isDarkMode(context) ? Ux4gPalette.primary600 : Ux4gPalette.primary300;
+    _isDarkMode(context) ? Ux4gColors.primary600 : Ux4gColors.primary300;
 
 const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
@@ -97,13 +97,13 @@ class _ExpiryBanner extends StatelessWidget {
       leadingIcon: Icon(
         Icons.error,
         color: _isDark(context)
-            ? Ux4gPalette.yellow400
+            ? Ux4gColors.yellow400
             : const Color(0xFFF59E0B),
         size: 20,
       ),
       titleStyle: TextStyle(
         color: _isDark(context)
-            ? Ux4gPalette.yellow400
+            ? Ux4gColors.yellow400
             : const Color(0xFFAD530A),
         fontWeight: FontWeight.w500,
         fontSize: 13,
@@ -113,7 +113,7 @@ class _ExpiryBanner extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
         decoration: BoxDecoration(
           color: _isDark(context)
-              ? Ux4gPalette.yellow900.withOpacity(0.3)
+              ? Ux4gColors.yellow900.withOpacity(0.3)
               : const Color(0xFFFFEDD5),
           borderRadius: BorderRadius.circular(4),
         ),
@@ -123,7 +123,7 @@ class _ExpiryBanner extends StatelessWidget {
             fontSize: 11,
             fontWeight: FontWeight.w600,
             color: _isDark(context)
-                ? Ux4gPalette.yellow400
+                ? Ux4gColors.yellow400
                 : const Color(0xFF9A3412),
           ),
         ),
@@ -141,11 +141,11 @@ class _UploadedDocItem extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: _isDark(context)
-            ? Ux4gPalette.green900.withOpacity(0.2)
+            ? Ux4gColors.green900.withOpacity(0.2)
             : const Color(0xFFF0FDF4),
         border: Border.all(
           color: _isDark(context)
-              ? Ux4gPalette.green800
+              ? Ux4gColors.green800
               : const Color(0xFFBBF7D0),
         ),
         borderRadius: BorderRadius.circular(12),
@@ -306,10 +306,10 @@ class _PendingDocItem extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: isRequired
                                 ? (_isDark(context)
-                                      ? Ux4gPalette.red900.withOpacity(0.3)
+                                      ? Ux4gColors.red900.withOpacity(0.3)
                                       : const Color(0xFFFEE2E2))
                                 : (_isDark(context)
-                                      ? Ux4gPalette.neutral800
+                                      ? Ux4gColors.neutral800
                                       : const Color(0xFFF3F4F6)),
                             borderRadius: BorderRadius.circular(4),
                           ),
@@ -320,10 +320,10 @@ class _PendingDocItem extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               color: isRequired
                                   ? (_isDark(context)
-                                        ? Ux4gPalette.red400
+                                        ? Ux4gColors.red400
                                         : const Color(0xFFDC2626))
                                   : (_isDark(context)
-                                        ? Ux4gPalette.neutral400
+                                        ? Ux4gColors.neutral400
                                         : const Color(0xFF6B7280)),
                             ),
                           ),
@@ -450,8 +450,8 @@ class DraftExpiryUploadScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -698,7 +698,7 @@ class DraftExpiryUploadScreen extends StatelessWidget {
                                       });
                                     },
                                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -707,7 +707,7 @@ class DraftExpiryUploadScreen extends StatelessWidget {
                                     'All documents must be self-attested. AI flags quality issues; officers make the final call.',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                                       height: 1.4,
                                     ),
                                   ),
@@ -789,8 +789,8 @@ class DraftExpiryUploadCardScreen extends StatelessWidget {
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -1049,7 +1049,7 @@ class DraftExpiryUploadCardScreen extends StatelessWidget {
                                       });
                                     },
                                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -1058,7 +1058,7 @@ class DraftExpiryUploadCardScreen extends StatelessWidget {
                                     'All documents must be self-attested. AI flags quality issues; officers make the final call.',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                                       height: 1.4,
                                     ),
                                   ),
@@ -1145,15 +1145,15 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
                   height: 32,
                   width: 1,
                   color: _isDark(context)
-                      ? Ux4gPalette.neutral700
+                      ? Ux4gColors.neutral700
                       : const Color(0xFFD1D5DB),
                 ),
                 SvgPicture.asset(
                   _unionLogoPath,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gPalette.primary300
-                        : Ux4gPalette.primary600,
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                   height: 32,
@@ -1268,7 +1268,7 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
                                       });
                                     },
                                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -1277,7 +1277,7 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
                                     'All documents must be self-attested. AI flags quality issues; officers make the final call.',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                                       height: 1.4,
                                     ),
                                   ),
@@ -1314,10 +1314,10 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     contentColor: _isDark(context)
-                        ? Ux4gPalette.neutral400
+                        ? Ux4gColors.neutral400
                         : const Color(0xFF6B7280),
                     borderColor: _isDark(context)
-                        ? Ux4gPalette.neutral700
+                        ? Ux4gColors.neutral700
                         : const Color(0xFFD1D5DB),
                   ),
                 ],
@@ -1335,7 +1335,7 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 11,
                       color: _isDark(context)
-                          ? Ux4gPalette.neutral500
+                          ? Ux4gColors.neutral500
                           : const Color(0xFF9CA3AF),
                     ),
                   ),
@@ -1388,7 +1388,7 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
             children: [
               // Header with white background
               Container(
-                color: _isDark(context) ? Ux4gPalette.neutral950 : Colors.white,
+                color: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -1416,15 +1416,15 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
                           height: 32,
                           width: 1,
                           color: _isDark(context)
-                              ? Ux4gPalette.neutral700
+                              ? Ux4gColors.neutral700
                               : const Color(0xFFD1D5DB),
                         ),
                         SvgPicture.asset(
                           _unionLogoPath,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                           height: 32,
@@ -1452,11 +1452,11 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: _isDark(context)
-                          ? Ux4gPalette.neutral900
+                          ? Ux4gColors.neutral900
                           : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       border: _isDark(context)
-                          ? Border.all(color: Ux4gPalette.neutral800)
+                          ? Border.all(color: Ux4gColors.neutral800)
                           : null,
                       boxShadow: [
                         BoxShadow(
@@ -1564,7 +1564,7 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
                                       });
                                     },
                                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary300 : Ux4gPalette.primary600,
+                                    activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -1573,7 +1573,7 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
                                     'All documents must be self-attested. AI flags quality issues; officers make the final call.',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral600,
+                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600,
                                       height: 1.4,
                                     ),
                                   ),
@@ -1614,10 +1614,10 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       contentColor: _isDark(context)
-                          ? Ux4gPalette.neutral400
+                          ? Ux4gColors.neutral400
                           : const Color(0xFF6B7280),
                       borderColor: _isDark(context)
-                          ? Ux4gPalette.neutral700
+                          ? Ux4gColors.neutral700
                           : const Color(0xFFD1D5DB),
                     ),
                   ],
@@ -1635,7 +1635,7 @@ class _DraftExpiryUploadCardMockup extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 11,
                         color: _isDark(context)
-                            ? Ux4gPalette.neutral500
+                            ? Ux4gColors.neutral500
                             : const Color(0xFF9CA3AF),
                       ),
                     ),

@@ -348,13 +348,13 @@ Ux4gAppHeader(
     SvgPicture.asset(
       Ux4gIcons.nationalEmblem, 
       height: 32,
-      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.neutral900, BlendMode.srcIn),
+      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gColors.neutral900, BlendMode.srcIn),
     ),
     Container(height: 24, width: 1, color: Colors.grey, margin: const EdgeInsets.symmetric(horizontal: 8)),
     SvgPicture.asset(
       Ux4gIcons.union, 
       height: 24,
-      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn),
+      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gColors.primary500, BlendMode.srcIn),
     ),
   ],
   actions: [
@@ -370,13 +370,13 @@ Ux4gAppHeader(
     SvgPicture.asset(
       Ux4gIcons.nationalEmblem, 
       height: 32,
-      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.neutral900, BlendMode.srcIn),
+      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gColors.neutral900, BlendMode.srcIn),
     ),
     Container(height: 24, width: 1, color: Colors.grey, margin: const EdgeInsets.symmetric(horizontal: 8)),
     SvgPicture.asset(
       Ux4gIcons.union, 
       height: 24,
-      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gPalette.primary500, BlendMode.srcIn),
+      colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Colors.white : Ux4gColors.primary500, BlendMode.srcIn),
     ),
   ],
   actions: [
@@ -410,7 +410,7 @@ Ux4gAppHeader(
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
-                        : Ux4gPalette.neutral900,
+                        : Ux4gColors.neutral900,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -426,7 +426,7 @@ Ux4gAppHeader(
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
-                        : Ux4gPalette.primary500,
+                        : Ux4gColors.primary500,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -452,7 +452,7 @@ Ux4gAppHeader(
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
-                        : Ux4gPalette.neutral900,
+                        : Ux4gColors.neutral900,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -468,7 +468,7 @@ Ux4gAppHeader(
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
-                        : Ux4gPalette.primary500,
+                        : Ux4gColors.primary500,
                     BlendMode.srcIn,
                   ),
                 ),

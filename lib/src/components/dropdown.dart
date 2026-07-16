@@ -122,7 +122,7 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
                   elevation: 4,
                   borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
                   color:
-                      Theme.of(context).extension<Ux4gColors>()?.surface ??
+                      Theme.of(context).extension<Ux4gThemeColors>()?.surface ??
                       Theme.of(context).colorScheme.surface,
                   child: Container(
                     constraints: const BoxConstraints(maxHeight: 300),
@@ -135,7 +135,7 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
                         final typography = Theme.of(
                           context,
                         ).extension<Ux4gTypography>();
-                        final uxColors = Theme.of(context).extension<Ux4gColors>();
+                        final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
                         final materialTheme = Theme.of(context);
                         final isSelected = widget.selectedOptionId != null && widget.selectedOptionId == option.id;
 
@@ -297,7 +297,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
                 elevation: 8,
                 borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
                 color:
-                    Theme.of(context).extension<Ux4gColors>()?.surface ??
+                    Theme.of(context).extension<Ux4gThemeColors>()?.surface ??
                     Theme.of(context).colorScheme.surface,
                 clipBehavior: Clip.antiAlias,
                 child: Container(
@@ -372,7 +372,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
             itemBuilder: (context, index) {
               final option = filteredOptions[index];
               final isSelected = widget.selectedOptionIds.contains(option.id);
-              final uxColors = Theme.of(context).extension<Ux4gColors>();
+              final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
               final uxTypography = Theme.of(
                 context,
               ).extension<Ux4gTypography>();
@@ -462,7 +462,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    final uxColors = Theme.of(context).extension<Ux4gColors>();
+    final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
     final uxTypography = Theme.of(context).extension<Ux4gTypography>();
     final materialTheme = Theme.of(context);
 
@@ -482,8 +482,8 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
     };
 
     final isDark = materialTheme.brightness == Brightness.dark;
-    final defaultBgColor = isDark ? Ux4gPalette.neutral950 : Ux4gPalette.neutral0;
-    final defaultBorderColor = isDark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral200;
+    final defaultBgColor = isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral0;
+    final defaultBorderColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200;
 
     final borderColor = switch (widget.status) {
       Ux4gDropdownStatus.disabled =>
@@ -567,7 +567,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
                         ? Text(
                             widget.placeholder,
                             style: (textStyle ?? const TextStyle()).copyWith(
-                              color: isDark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral500,
+                              color: isDark ? Ux4gColors.neutral300 : Ux4gColors.neutral500,
                             ),
                           )
                         : (widget.mode == Ux4gDropdownMode.single

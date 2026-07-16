@@ -4,10 +4,10 @@ import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/component_docs.dart';
 
-Color _bg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral50;
-Color _cardBg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.primary900 : Ux4gPalette.primary50;
-Color _titleColor(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral50 : Ux4gPalette.neutral900;
-Color _subtleText(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral400 : Ux4gPalette.neutral600;
+Color _bg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50;
+Color _cardBg(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50;
+Color _titleColor(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900;
+Color _subtleText(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral600;
 const String _nationalEmblemLogoPath = Ux4gIcons.nationalEmblem;
 const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
@@ -62,7 +62,7 @@ class _PhoneFrame extends StatelessWidget {
       decoration: BoxDecoration(
         color: _bg(context),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
       ),
       child: child,
     );
@@ -103,7 +103,7 @@ class GovernmentFormErrorsScreenState
     const primaryColor = Color(0xFF432CBB);
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -113,20 +113,20 @@ class GovernmentFormErrorsScreenState
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                   SvgPicture.asset(
                     _unionLogoPath,
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
                 ],
               ),
-              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Ux4gStatusBanner(
                 height: 44,
                 variant: Ux4gBannerVariant.successLight,
@@ -211,13 +211,13 @@ Text(
                         size: Ux4gInputFieldSize.medium,
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         style: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                       SizedBox(height: 8),
@@ -228,8 +228,8 @@ Text(
                             style: TextStyle(
                               fontSize: 12,
                               color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -238,8 +238,8 @@ Text(
                             Icons.open_in_new,
                             size: 12,
                             color: Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                           ),
                         ],
                       ),
@@ -280,7 +280,7 @@ Text(
                         size: Ux4gDropdownSize.m,
                       ),
                       SizedBox(height: 24),
-                      Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700)),
+                      Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral700)),
                       SizedBox(height: 8),
                       Ux4gRadioButton(value: 'Single', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Single'),
                       Ux4gRadioButton(value: 'Married', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Married'),
@@ -371,7 +371,7 @@ height: 48, text: 'Back',
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral400),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
                     SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24),
@@ -424,7 +424,7 @@ class _GovernmentFormErrorsMockupState
     const primaryColor = Color(0xFF432CBB);
     return _PhoneFrame(
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -434,20 +434,20 @@ class _GovernmentFormErrorsMockupState
                 title: '',
                 leadingWidgets: [
                   SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                   SvgPicture.asset(
                     _unionLogoPath,
                     height: 32,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gPalette.primary300
-                          : Ux4gPalette.primary600,
+                          ? Ux4gColors.primary300
+                          : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
                 ],
               ),
-              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Ux4gStatusBanner(
                 height: 44,
                 variant: Ux4gBannerVariant.successLight,
@@ -532,13 +532,13 @@ Text(
                         size: Ux4gInputFieldSize.medium,
                         labelStyle: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral200
-                              : Ux4gPalette.neutral700,
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral700,
                         ),
                         style: TextStyle(
                           color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gPalette.neutral50
-                              : Ux4gPalette.neutral900,
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
                         ),
                       ),
                       SizedBox(height: 8),
@@ -549,8 +549,8 @@ Text(
                             style: TextStyle(
                               fontSize: 12,
                               color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gPalette.primary300
-                                  : Ux4gPalette.primary600,
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -559,8 +559,8 @@ Text(
                             Icons.open_in_new,
                             size: 12,
                             color: Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                           ),
                         ],
                       ),
@@ -601,7 +601,7 @@ Text(
                         size: Ux4gDropdownSize.m,
                       ),
                       SizedBox(height: 24),
-                      Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700)),
+                      Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral700)),
                       SizedBox(height: 8),
                       Ux4gRadioButton(value: 'Single', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Single'),
                       Ux4gRadioButton(value: 'Married', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Married'),
@@ -692,7 +692,7 @@ height: 48, text: 'Back',
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral400),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
                     SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24),
@@ -737,7 +737,7 @@ class _GovernmentFormErrorsCardMockupState
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                 child: Column(
                   children: [
                     Ux4gAppHeader(
@@ -745,20 +745,20 @@ class _GovernmentFormErrorsCardMockupState
                       title: '',
                       leadingWidgets: [
                         SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
-                        SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral700 : Ux4gPalette.neutral300)),
+                        SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                         SvgPicture.asset(
                           _unionLogoPath,
                           height: 32,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gPalette.primary300
-                                : Ux4gPalette.primary600,
+                                ? Ux4gColors.primary300
+                                : Ux4gColors.primary600,
                             BlendMode.srcIn,
                           ),
                         ),
                       ],
                     ),
-                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral800 : Ux4gPalette.neutral200),
+                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                   ],
                 ),
               ),
@@ -773,7 +773,7 @@ class _GovernmentFormErrorsCardMockupState
                       Container(
                         padding: EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral900 : Ux4gPalette.neutral0,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -860,13 +860,13 @@ class _GovernmentFormErrorsCardMockupState
                               size: Ux4gInputFieldSize.medium,
                               labelStyle: TextStyle(
                                 color: Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gPalette.neutral200
-                                    : Ux4gPalette.neutral700,
+                                    ? Ux4gColors.neutral200
+                                    : Ux4gColors.neutral700,
                               ),
                               style: TextStyle(
                                 color: Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gPalette.neutral50
-                                    : Ux4gPalette.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                               ),
                             ),
                             SizedBox(height: 8),
@@ -877,8 +877,8 @@ class _GovernmentFormErrorsCardMockupState
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: Theme.of(context).brightness == Brightness.dark
-                                        ? Ux4gPalette.primary300
-                                        : Ux4gPalette.primary600,
+                                        ? Ux4gColors.primary300
+                                        : Ux4gColors.primary600,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -887,8 +887,8 @@ class _GovernmentFormErrorsCardMockupState
                                   Icons.open_in_new,
                                   size: 12,
                                   color: Theme.of(context).brightness == Brightness.dark
-                                      ? Ux4gPalette.primary300
-                                      : Ux4gPalette.primary600,
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
                                 ),
                               ],
                             ),
@@ -924,7 +924,7 @@ class _GovernmentFormErrorsCardMockupState
                               size: Ux4gDropdownSize.m,
                             ),
                             SizedBox(height: 24),
-                            Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral300 : Ux4gPalette.neutral700)),
+                            Text('Your marital status', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral700)),
                             SizedBox(height: 8),
                             Ux4gRadioButton(value: 'Single', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Single'),
                             Ux4gRadioButton(value: 'Married', groupValue: _maritalStatus, onChanged: (val) => setState(() => _maritalStatus = val), label: 'Married'),
@@ -1019,7 +1019,7 @@ height: 48, text: 'Back',
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gPalette.neutral600 : Ux4gPalette.neutral400),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
                     SizedBox(height: 6),
                     Image.asset(_digitalIndiaLogoPath, height: 24),
