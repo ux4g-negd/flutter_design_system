@@ -199,11 +199,8 @@ class UX4GWidgetbook extends StatelessWidget {
                 WidgetbookFolder(
                   name: 'Input',
                   isInitiallyExpanded: false,
-                  children: [
-                    inputFieldComponent,
-                  ],
+                  children: [inputFieldComponent],
                 ),
-                searchFieldComponent,
                 aadhaarInputFieldComponent,
                 panInputFieldComponent,
                 otpInputComponent,
@@ -237,6 +234,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 progressSlaIndicatorComponent,
                 radioButtonComponent,
                 resultListComponent, // Result List
+                searchFieldComponent,
                 sliderComponent,
                 WidgetbookFolder(
                   name: 'Social Link',
