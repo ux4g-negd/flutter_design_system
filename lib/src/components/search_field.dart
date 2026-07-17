@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 import '../foundation/dimensions.dart';
 import 'loader.dart';
+
+enum Ux4gSearchFilterType { contains, startsWith, startsWithPerTerm }
 
 enum Ux4gSearchFieldVariant { basicSearch, searchWithSubmit, autocomplete }
 
@@ -23,6 +26,7 @@ enum Ux4gSearchFieldButtonStyle { filled, tonal }
 class Ux4gSearchField extends StatefulWidget {
   final String value;
   final ValueChanged<String> onValueChange;
+  final Ux4gSearchFilterType filterType;
   final Ux4gSearchFieldVariant variant;
   final Ux4gSearchFieldSize size;
   final Ux4gSearchFieldStatus status;
@@ -41,11 +45,14 @@ class Ux4gSearchField extends StatefulWidget {
   final bool enabled;
   final bool readOnly;
   final TextStyle? placeholderStyle;
+  final double dropdownMinHeight;
+  final double dropdownMaxHeight;
 
   const Ux4gSearchField({
     super.key,
     required this.value,
     required this.onValueChange,
+    this.filterType = Ux4gSearchFilterType.contains,
     this.variant = Ux4gSearchFieldVariant.basicSearch,
     this.size = Ux4gSearchFieldSize.medium,
     this.status = Ux4gSearchFieldStatus.defaultStatus,
@@ -64,6 +71,8 @@ class Ux4gSearchField extends StatefulWidget {
     this.enabled = true,
     this.readOnly = false,
     this.placeholderStyle,
+    this.dropdownMinHeight = 0.0,
+    this.dropdownMaxHeight = 350.0,
   });
 
   @override
@@ -84,10 +93,26 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     super.initState();
     _controller = TextEditingController(text: widget.value);
     _focusNode.addListener(() {
+      if (!mounted) return;
       setState(() => _isFocused = _focusNode.hasFocus);
-      if (_focusNode.hasFocus &&
-          widget.variant == Ux4gSearchFieldVariant.autocomplete) {
-        _showAutocomplete();
+      _updateOverlayState();
+    });
+  }
+
+  void _updateOverlayState() {
+    if (!mounted) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final shouldShow = _isFocused &&
+          widget.value.trim().isNotEmpty &&
+          (widget.options.isNotEmpty ||
+              widget.variant == Ux4gSearchFieldVariant.autocomplete);
+      if (shouldShow) {
+        if (_overlayEntry == null) {
+          _showAutocomplete();
+        } else {
+          _overlayEntry?.markNeedsBuild();
+        }
       } else {
         _hideAutocomplete();
       }
@@ -100,11 +125,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     if (widget.value != _controller.text) {
       _controller.text = widget.value;
     }
-    if (_isFocused && widget.variant == Ux4gSearchFieldVariant.autocomplete) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _overlayEntry?.markNeedsBuild();
-      });
-    }
+    _updateOverlayState();
   }
 
   @override
@@ -116,15 +137,25 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
   }
 
   void _showAutocomplete() {
-    if (_overlayEntry == null) {
+    if (_overlayEntry == null && mounted) {
       _overlayEntry = _createOverlayEntry();
       Overlay.of(context).insert(_overlayEntry!);
     }
   }
 
   void _hideAutocomplete() {
-    _overlayEntry?.remove();
-    _overlayEntry = null;
+    if (_overlayEntry != null) {
+      final entry = _overlayEntry;
+      _overlayEntry = null;
+      if (SchedulerBinding.instance.schedulerPhase ==
+          SchedulerPhase.persistentCallbacks) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          entry?.remove();
+        });
+      } else {
+        entry?.remove();
+      }
+    }
   }
 
   OverlayEntry _createOverlayEntry() {
@@ -135,9 +166,11 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
             _fieldKey.currentContext?.findRenderObject() as RenderBox?;
         final width = renderBox?.size.width ?? 0;
 
-        // Show dropdown when focused and has options
-        final isVisible =
-            _isFocused && widget.variant == Ux4gSearchFieldVariant.autocomplete;
+        // Show dropdown only when focused, has typed text, and has options or variant is autocomplete
+        final isVisible = _isFocused &&
+            widget.value.trim().isNotEmpty &&
+            (widget.options.isNotEmpty ||
+                widget.variant == Ux4gSearchFieldVariant.autocomplete);
 
         if (!isVisible) return const SizedBox.shrink();
 
@@ -179,14 +212,16 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
 
     final isDark = materialTheme.brightness == Brightness.dark;
     final onSurface = ux4gColors?.onSurface ?? Ux4gColors.neutral900;
-    final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final bmDefault =
         ux4gTypography?.bM_default ??
         materialTheme.textTheme.bodyMedium ??
         const TextStyle(fontSize: 16);
 
     return Container(
-      constraints: const BoxConstraints(maxHeight: 350),
+      constraints: BoxConstraints(
+        minHeight: widget.dropdownMinHeight,
+        maxHeight: widget.dropdownMaxHeight,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,14 +234,16 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
               ),
             )
           else if (widget.options.isEmpty)
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  "No results found",
-                  style: bmDefault.copyWith(
-                    color: onSurface.withValues(alpha: 0.5),
-                  ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 14,
+              ),
+              child: Text(
+                "No results found",
+                style: bmDefault.copyWith(
+                  fontSize: 14,
+                  color: onSurface.withValues(alpha: 0.5),
                 ),
               ),
             )
@@ -214,120 +251,143 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
             Flexible(
               child: Builder(
                 builder: (context) {
-                  final query = widget.value.toLowerCase();
-                  // Check if value matches any option's name exactly (means user selected it)
+                  final query = widget.value.toLowerCase().trim();
+                  // Check if value matches any option exactly (means user selected it)
                   final isExactSelection = widget.options.any((opt) {
-                    final parts = opt.split(' - ');
-                    final name = parts.isNotEmpty ? parts[0].trim() : opt;
-                    return name.toLowerCase() == query;
+                    return opt.toLowerCase().trim() == query;
                   });
-                  // If exact selection, show all options; otherwise filter
+                  // If exact selection, show all options; otherwise filter by filterType
                   final filteredOptions = isExactSelection || query.isEmpty
                       ? widget.options
                       : widget.options.where((option) {
-                          return option.toLowerCase().contains(query);
+                          final lowerOpt = option.toLowerCase();
+                          return switch (widget.filterType) {
+                            Ux4gSearchFilterType.contains =>
+                              lowerOpt.contains(query),
+                            Ux4gSearchFilterType.startsWith =>
+                              lowerOpt.startsWith(query),
+                            Ux4gSearchFilterType.startsWithPerTerm => () {
+                                final queryTerms = query
+                                    .split(' ')
+                                    .where((t) => t.isNotEmpty);
+                                final labelTerms = lowerOpt
+                                    .split(' ')
+                                    .where((t) => t.isNotEmpty);
+                                return queryTerms.every(
+                                  (qTerm) => labelTerms
+                                      .any((lTerm) => lTerm.startsWith(qTerm)),
+                                );
+                              }(),
+                          };
                         }).toList();
 
                   if (filteredOptions.isEmpty) {
-                    return Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          "No results found",
-                          style: bmDefault.copyWith(
-                            color: onSurface.withValues(alpha: 0.5),
-                          ),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 14,
+                      ),
+                      child: Text(
+                        "No results found",
+                        style: bmDefault.copyWith(
+                          fontSize: 14,
+                          color: onSurface.withValues(alpha: 0.5),
                         ),
                       ),
                     );
                   }
 
-                  return ListView.separated(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    itemCount: filteredOptions.length,
-                    separatorBuilder: (context, index) => Divider(
-                      height: 1,
-                      color: isDark
-                          ? Ux4gColors.neutral800
-                          : Ux4gColors.neutral200,
-                    ),
-                    itemBuilder: (context, index) {
-                      final option = filteredOptions[index];
-                      final parts = option.split(' - ');
-                      final name = parts.isNotEmpty ? parts[0].trim() : option;
-                      final subtitle = parts.length > 1
-                          ? parts[1].trim()
-                          : null;
-                      final isSelected =
-                          widget.value == name || widget.value == option;
+                  final queryText = widget.value.trim();
 
-                      return InkWell(
-                        onTap: () {
-                          widget.onOptionSelected?.call(option);
-                          widget.onValueChange(name);
-                          _focusNode.unfocus();
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 12,
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (queryText.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 16,
+                            right: 16,
+                            top: 12,
+                            bottom: 8,
                           ),
-                          color: isSelected
-                              ? (isDark
-                                    ? Ux4gColors.primary950
-                                    : Ux4gColors.primary50)
-                              : null,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                          child: RichText(
+                            text: TextSpan(
+                              style: bmDefault.copyWith(
+                                fontSize: 13,
+                                color: onSurface.withValues(alpha: 0.6),
+                              ),
+                              children: [
+                                const TextSpan(text: "Searching for "),
+                                TextSpan(
+                                  text: "'$queryText'",
+                                  style: bmDefault.copyWith(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                    color: onSurface,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      Flexible(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.only(bottom: 6),
+                          itemCount: filteredOptions.length,
+                          itemBuilder: (context, index) {
+                            final option = filteredOptions[index];
+                            final isSelected = widget.value == option;
+
+                            return InkWell(
+                              onTap: () {
+                                widget.onOptionSelected?.call(option);
+                                widget.onValueChange(option);
+                                _focusNode.unfocus();
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 10,
+                                ),
+                                color: isSelected
+                                    ? (isDark
+                                          ? Ux4gColors.primary950
+                                          : Ux4gColors.primary50)
+                                    : null,
+                                child: Row(
                                   children: [
-                                    Text(
-                                      name,
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                        color: isSelected
-                                            ? (isDark
-                                                  ? Ux4gColors.primary300
-                                                  : Ux4gColors.primary600)
-                                            : onSurface,
-                                      ),
-                                    ),
-                                    if (subtitle != null) ...[
-                                      const SizedBox(height: 2),
-                                      Text(
-                                        subtitle,
-                                        style: TextStyle(
-                                          fontSize: 12,
+                                    Expanded(
+                                      child: Text(
+                                        option,
+                                        style: bmDefault.copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
                                           color: isSelected
                                               ? (isDark
                                                     ? Ux4gColors.primary300
                                                     : Ux4gColors.primary600)
-                                              : onSurface.withValues(
-                                                  alpha: 0.5,
-                                                ),
+                                              : onSurface,
                                         ),
                                       ),
-                                    ],
+                                    ),
+                                    if (isSelected)
+                                      Icon(
+                                        Icons.check,
+                                        color: isDark
+                                            ? Ux4gColors.primary300
+                                            : Ux4gColors.primary600,
+                                        size: 18,
+                                      ),
                                   ],
                                 ),
                               ),
-                              if (isSelected)
-                                Icon(
-                                  Icons.check,
-                                  color: isDark
-                                      ? Ux4gColors.primary300
-                                      : Ux4gColors.primary600,
-                                  size: 20,
-                                ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   );
                 },
               ),
@@ -541,8 +601,11 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     final success = ux4gColors?.success ?? Colors.green;
 
     if (!widget.enabled) return onSurface.withValues(alpha: 0.3);
-    if (_isFocused && widget.variant == Ux4gSearchFieldVariant.autocomplete)
+    if (_isFocused &&
+        (widget.options.isNotEmpty ||
+            widget.variant == Ux4gSearchFieldVariant.autocomplete)) {
       return primary;
+    }
     return switch (widget.status) {
       Ux4gSearchFieldStatus.error => error,
       Ux4gSearchFieldStatus.warning => warning,

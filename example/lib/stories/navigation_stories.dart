@@ -2480,7 +2480,7 @@ Ux4gChipGroup(
 // ── Ux4gPaginationDotted ────────────────────────────────────────────────────────────────
 
 final paginationDottedComponent = WidgetbookComponent(
-  name: 'Pagination Dotted',
+  name: 'Pagination Dots Varient',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
