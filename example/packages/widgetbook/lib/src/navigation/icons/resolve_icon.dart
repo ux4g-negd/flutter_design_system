@@ -15,8 +15,17 @@ Widget resolveIcon(WidgetbookNode node) {
   } else if (node is WidgetbookFolder ||
       (node is WidgetbookComponent &&
           node.parent is WidgetbookCategory &&
-          !['Carousel', 'File Upload', 'Toasts', 'Toast', 'Search']
-              .contains(node.name))) {
+          ![
+            'Carousel',
+            'File Upload',
+            'Toasts',
+            'Toast',
+            'Search',
+            'Input Aadhaar',
+            'Input Pan-Card',
+            'Input-OTP',
+            'Input-OTP',
+          ].contains(node.name))) {
     return const Icon(Icons.folder, size: 16);
   } else if (node is WidgetbookComponent) {
     return const ComponentIcon();

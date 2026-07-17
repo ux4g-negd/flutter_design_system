@@ -2490,7 +2490,7 @@ final sliderComponent = WidgetbookComponent(
 // ── OTP Input ─────────────────────────────────────────────────────────────────
 
 final otpInputComponent = WidgetbookComponent(
-  name: 'Inout-OTP',
+  name: 'Input-OTP',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
