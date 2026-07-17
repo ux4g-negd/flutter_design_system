@@ -1136,12 +1136,16 @@ Ux4gTextArea(
 String _buildSearchFieldCode({
   required String placeholder,
   required Ux4gSearchFieldVariant variant,
+  required Ux4gSearchFilterType filterType,
   required Ux4gSearchFieldSize size,
   required Ux4gSearchFieldStatus status,
   required bool showVoiceIcon,
   required bool showClearIcon,
   required bool enabled,
   required bool readOnly,
+  required List<String> options,
+  required double dropdownMinHeight,
+  required double dropdownMaxHeight,
   String? label,
   String? caption,
 }) {
@@ -1150,11 +1154,27 @@ String _buildSearchFieldCode({
   buf.writeln("Ux4gSearchField(");
   buf.writeln("  value: value,");
   buf.writeln("  onValueChange: (v) => setState(() => value = v),");
+  if (dropdownMinHeight != 0.0) {
+    buf.writeln("  dropdownMinHeight: $dropdownMinHeight,");
+  }
+  if (dropdownMaxHeight != 350.0) {
+    buf.writeln("  dropdownMaxHeight: $dropdownMaxHeight,");
+  }
   if (placeholder.isNotEmpty) {
     buf.writeln("  placeholder: '$placeholder',");
   }
+  if (filterType != Ux4gSearchFilterType.contains) {
+    buf.writeln("  filterType: Ux4gSearchFilterType.${filterType.name},");
+  }
   if (variant != Ux4gSearchFieldVariant.basicSearch) {
     buf.writeln("  variant: Ux4gSearchFieldVariant.${variant.name},");
+  }
+  if (options.isNotEmpty) {
+    buf.writeln("  options: const [");
+    for (final opt in options) {
+      buf.writeln("    '$opt',");
+    }
+    buf.writeln("  ],");
   }
   if (size != Ux4gSearchFieldSize.medium) {
     buf.writeln("  size: Ux4gSearchFieldSize.${size.name},");
@@ -1202,6 +1222,54 @@ final searchFieldComponent = WidgetbookComponent(
               options: Ux4gSearchFieldVariant.values,
               initialOption: Ux4gSearchFieldVariant.basicSearch,
             );
+            final filterType = context.knobs.list(
+              label: 'Filter Type',
+              options: Ux4gSearchFilterType.values,
+              initialOption: Ux4gSearchFilterType.contains,
+            );
+            final options = context.knobs.list<List<String>>(
+              label: 'Suggestions / Options',
+              options: const [
+                [
+                  'Label for the list item',
+                  'Label for the list item 2',
+                  'Label for the list item 3',
+                  'Label for the list item 4',
+                ],
+                [
+                  'Apple',
+                  'Apricot',
+                  'Avocado',
+                  'Banana',
+                  'Blackberry',
+                  'Blueberry',
+                  'Cherry',
+                  'Cranberry',
+                  'Date',
+                  'Dragonfruit',
+                  'Elderberry',
+                  'Fig',
+                  'Grape',
+                  'Guava',
+                ],
+                [
+                  'Aadhaar Update',
+                  'PAN Card Application',
+                  'Passport Renewal',
+                  'Voter ID Registration',
+                  'Driving License',
+                  'Ration Card',
+                  'Birth Certificate',
+                ],
+                [],
+              ],
+              initialOption: const [
+                'Label for the list item',
+                'Label for the list item 2',
+                'Label for the list item 3',
+                'Label for the list item 4',
+              ],
+            );
             final size = context.knobs.list(
               label: 'Size',
               options: Ux4gSearchFieldSize.values,
@@ -1238,10 +1306,20 @@ final searchFieldComponent = WidgetbookComponent(
               label: 'Read Only',
               initialValue: false,
             );
+            final dropdownMinHeight = context.knobs.double.input(
+              label: 'Dropdown Min Height',
+              initialValue: 0.0,
+            );
+            final dropdownMaxHeight = context.knobs.double.input(
+              label: 'Dropdown Max Height',
+              initialValue: 350.0,
+            );
 
             final code = _buildSearchFieldCode(
               placeholder: placeholder,
               variant: variant,
+              filterType: filterType,
+              options: options,
               size: size,
               status: status,
               label: label,
@@ -1250,6 +1328,8 @@ final searchFieldComponent = WidgetbookComponent(
               showClearIcon: showClearIcon,
               enabled: enabled,
               readOnly: readOnly,
+              dropdownMinHeight: dropdownMinHeight,
+              dropdownMaxHeight: dropdownMaxHeight,
             );
 
             return ComponentDocs(
@@ -1275,6 +1355,12 @@ final searchFieldComponent = WidgetbookComponent(
                   type: 'Ux4gSearchFieldVariant',
                   description: 'basicSearch / searchWithSubmit / autocomplete.',
                   defaultValue: 'basicSearch',
+                ),
+                PropRow(
+                  name: 'filterType',
+                  type: 'Ux4gSearchFilterType',
+                  description: 'contains / startsWith / startsWithPerTerm.',
+                  defaultValue: 'contains',
                 ),
                 PropRow(
                   name: 'size',
@@ -1365,6 +1451,18 @@ final searchFieldComponent = WidgetbookComponent(
                   description: 'Non-editable state.',
                   defaultValue: 'false',
                 ),
+                PropRow(
+                  name: 'dropdownMinHeight',
+                  type: 'double',
+                  description: 'Minimum height of autocomplete dropdown.',
+                  defaultValue: '0.0',
+                ),
+                PropRow(
+                  name: 'dropdownMaxHeight',
+                  type: 'double',
+                  description: 'Maximum height of autocomplete dropdown.',
+                  defaultValue: '350.0',
+                ),
               ],
               child: SizedBox(
                 width: 320,
@@ -1372,15 +1470,19 @@ final searchFieldComponent = WidgetbookComponent(
                   value: value,
                   onValueChange: (v) => setState(() => value = v),
                   placeholder: placeholder,
+                  filterType: filterType,
                   variant: variant,
                   size: size,
                   status: status,
                   label: label,
                   caption: caption,
+                  options: options,
                   showVoiceIcon: showVoiceIcon,
                   showClearIcon: showClearIcon,
                   enabled: enabled,
                   readOnly: readOnly,
+                  dropdownMinHeight: dropdownMinHeight,
+                  dropdownMaxHeight: dropdownMaxHeight,
                 ),
               ),
             );
@@ -2388,7 +2490,7 @@ final sliderComponent = WidgetbookComponent(
 // ── OTP Input ─────────────────────────────────────────────────────────────────
 
 final otpInputComponent = WidgetbookComponent(
-  name: 'Inout-OTP',
+  name: 'Input-OTP',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',

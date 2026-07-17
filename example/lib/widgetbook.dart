@@ -173,6 +173,11 @@ class UX4GWidgetbook extends StatelessWidget {
                 datePickerComponent,
                 dividerComponent,
                 WidgetbookFolder(
+                  name: 'Draft Status',
+                  isInitiallyExpanded: false,
+                  children: [statusBannerComponent],
+                ),
+                WidgetbookFolder(
                   name: 'Dropdown',
                   isInitiallyExpanded: false,
                   children: [
@@ -192,21 +197,21 @@ class UX4GWidgetbook extends StatelessWidget {
                 ),
                 fileUploadComponent,
                 WidgetbookFolder(
-                  name: 'Input Fields',
+                  name: 'Input',
                   isInitiallyExpanded: false,
                   children: [
                     inputFieldComponent,
-                    aadhaarInputFieldComponent,
-                    panInputFieldComponent,
-                    otpInputComponent,
-                    searchFieldComponent,
                   ],
                 ),
+                searchFieldComponent,
+                aadhaarInputFieldComponent,
+                panInputFieldComponent,
+                otpInputComponent,
                 journeyTimelineComponent,
                 modalComponent,
                 paginationDottedComponent,
                 WidgetbookFolder(
-                  name: 'Progress',
+                  name: 'Progress Indicator',
                   isInitiallyExpanded: false,
                   children: [
                     WidgetbookFolder(
@@ -244,17 +249,12 @@ class UX4GWidgetbook extends StatelessWidget {
                 ),
                 spinnerComponent, // ux4gSpinner
                 WidgetbookFolder(
-                  name: 'Status Banner',
-                  isInitiallyExpanded: false,
-                  children: [statusBannerComponent],
-                ),
-                WidgetbookFolder(
                   name: 'Status Pipeline',
                   isInitiallyExpanded: false,
                   children: [statusPipelineComponent],
                 ),
                 WidgetbookFolder(
-                  name: 'Steppers',
+                  name: 'Stepper',
                   isInitiallyExpanded: false,
                   children: [stepperComponent, compactStepperComponent],
                 ),
