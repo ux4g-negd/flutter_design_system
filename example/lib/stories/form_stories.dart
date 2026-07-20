@@ -3493,12 +3493,6 @@ final fileUploadComponent = WidgetbookComponent(
               initialOption: Ux4gFileUploadBorderStyle.solid,
             );
 
-        final variant = context.knobs.object.dropdown<Ux4gFileUploadVariant>(
-          label: 'Variant',
-          options: Ux4gFileUploadVariant.values,
-          initialOption: Ux4gFileUploadVariant.standard,
-        );
-
         final errorTitle = context.knobs.string(
           label: 'Error Title',
           initialValue: 'Could not scan',
@@ -3532,37 +3526,48 @@ final fileUploadComponent = WidgetbookComponent(
 );''',
           props: const [
             PropRow(
+              name: 'onFilesChanged',
+              type: 'ValueChanged<List<UploadedFile>>?',
+              description: 'Called whenever the file list changes.',
+              required: true,
+            ),
+            PropRow(
+              name: 'onUpload',
+              type: 'Future<bool> Function(UploadedFile)?',
+              description:
+                  'Handles uploading a single file; return true on success.',
+              required: true,
+            ),
+            PropRow(
               name: 'maxFiles',
-              type: 'int?',
+              type: 'int',
               description: 'Max number of files allowed.',
+              defaultValue: '5',
             ),
             PropRow(
               name: 'maxFileSize',
-              type: 'int?',
-              description: 'Max file size in bytes (defaults to 5MB).',
+              type: 'int',
+              description: 'Max file size in bytes.',
+              defaultValue: '5 MB',
             ),
             PropRow(
               name: 'allowedExtensions',
-              type: 'List<String>?',
-              description:
-                  "List of allowed file extensions (defaults to ['jpg', 'png', 'pdf']).",
+              type: 'List<String>',
+              description: 'List of allowed file extensions.',
+              defaultValue: "['jpg', 'png', 'pdf']",
             ),
             PropRow(
               name: 'borderStyle',
               type: 'Ux4gFileUploadBorderStyle',
               description:
-                  'Border style for the upload area. Options: solid, dashed. Default: solid.',
-            ),
-            PropRow(
-              name: 'variant',
-              type: 'Ux4gFileUploadVariant',
-              description:
-                  'Upload area layout variant. Options: standard (two buttons), dropzone (single upload button with "Or" divider). Default: standard.',
+                  'Border style for the upload area. Options: solid, dashed.',
+              defaultValue: 'solid',
             ),
             PropRow(
               name: 'buttonBorderRadius',
               type: 'double',
-              description: 'Border radius for upload buttons. Default: 8.',
+              description: 'Border radius for upload buttons.',
+              defaultValue: '8',
             ),
             PropRow(
               name: 'buttonColor',
@@ -3580,17 +3585,6 @@ final fileUploadComponent = WidgetbookComponent(
               type: 'ButtonStyle?',
               description:
                   'Fully custom ButtonStyle for the upload button. Overrides other button params when provided.',
-            ),
-            PropRow(
-              name: 'onFilesChanged',
-              type: 'ValueChanged<List<UploadedFile>>?',
-              description: 'Called whenever the file list changes.',
-            ),
-            PropRow(
-              name: 'onUpload',
-              type: 'Future<bool> Function(UploadedFile)?',
-              description:
-                  'Handles uploading a single file; return true on success.',
             ),
             PropRow(
               name: 'errorTitle',
@@ -3619,7 +3613,6 @@ final fileUploadComponent = WidgetbookComponent(
               maxFiles: 5,
               maxFileSize: 5 * 1024 * 1024,
               borderStyle: borderStyle,
-              variant: variant,
               errorTitle: errorTitle,
               errorText: errorText,
               onFilesChanged: (_) {},

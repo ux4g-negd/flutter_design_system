@@ -57,8 +57,6 @@ enum UploadStatus { idle, uploading, success, error }
 
 enum Ux4gFileUploadBorderStyle { solid, dashed }
 
-enum Ux4gFileUploadVariant { standard, dropzone }
-
 class Ux4gFileUpload extends StatefulWidget {
   final int maxFiles;
   final int maxFileSize; // in bytes, default 5MB
@@ -66,7 +64,6 @@ class Ux4gFileUpload extends StatefulWidget {
   final Future<bool> Function(UploadedFile)? onUpload;
   final List<String> allowedExtensions;
   final Ux4gFileUploadBorderStyle borderStyle;
-  final Ux4gFileUploadVariant variant;
   final double buttonBorderRadius;
   final Color? buttonColor;
   final Color? buttonBorderColor;
@@ -84,7 +81,6 @@ class Ux4gFileUpload extends StatefulWidget {
     this.onUpload,
     this.allowedExtensions = const ['jpg', 'png', 'pdf'],
     this.borderStyle = Ux4gFileUploadBorderStyle.solid,
-    this.variant = Ux4gFileUploadVariant.standard,
     this.buttonBorderRadius = 8,
     this.buttonColor,
     this.buttonBorderColor,
@@ -381,108 +377,6 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     TextStyle tS_strong,
     TextStyle bS_default,
   ) {
-    if (widget.variant == Ux4gFileUploadVariant.dropzone) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Upload icon
-          if (_hasGlobalError)
-            Icon(Icons.error_outline, size: 36, color: errorColor)
-          else
-            Icon(Icons.cloud_upload_outlined, size: 36, color: primary),
-          const SizedBox(height: 12),
-
-          // Header
-          Text(
-            _hasGlobalError
-                ? (_currentErrorTitle ?? 'Could not scan')
-                : 'Drop file here',
-            style: _hasGlobalError
-                ? (widget.errorTitleStyle ??
-                      tS_strong.copyWith(
-                        color: onBackground,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ))
-                : tS_strong.copyWith(
-                    color: onBackground,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 6),
-
-          // Description
-          Text(
-            _hasGlobalError
-                ? (_currentErrorText ?? 'File exceeds the upload limit.')
-                : 'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
-            style: _hasGlobalError
-                ? (widget.errorTextStyle ??
-                      bS_default.copyWith(color: errorColor))
-                : bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 16),
-
-          // Or divider
-          if (!_hasGlobalError) ...[
-            Row(
-              children: [
-                Expanded(
-                  child: Divider(color: onSurface.withValues(alpha: 0.2)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    'Or',
-                    style: bS_default.copyWith(
-                      color: onSurface.withValues(alpha: 0.5),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Divider(color: onSurface.withValues(alpha: 0.2)),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-          ],
-
-          // Single Upload button
-          OutlinedButton.icon(
-            onPressed: () => _pickFile(fromCamera: false),
-            icon: Icon(
-              Icons.cloud_upload_outlined,
-              color: widget.buttonColor ?? primary,
-            ),
-            label: Text(
-              'Upload',
-              style: TextStyle(color: widget.buttonColor ?? primary),
-            ),
-            style:
-                widget.buttonStyle ??
-                OutlinedButton.styleFrom(
-                  side: BorderSide(
-                    color: widget.buttonBorderColor ?? primary,
-                    width: 1.5,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 10,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      widget.buttonBorderRadius,
-                    ),
-                  ),
-                ),
-          ),
-        ],
-      );
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
