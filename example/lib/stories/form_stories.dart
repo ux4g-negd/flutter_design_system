@@ -3513,7 +3513,8 @@ final fileUploadComponent = WidgetbookComponent(
               '''Ux4gFileUpload(
   maxFiles: 5,
   maxFileSize: 5 * 1024 * 1024,  // 5 MB
-  borderStyle: Ux4gFileUploadBorderStyle.dashed,
+  allowedExtensions: const ['jpg', 'png', 'pdf'],
+  borderStyle: Ux4gFileUploadBorderStyle.${borderStyle.name},
   errorTitle: '$errorTitle',
   errorText: '$errorText',
   onFilesChanged: (files) {
