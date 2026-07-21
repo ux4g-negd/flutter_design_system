@@ -12,8 +12,7 @@ final badgeComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Badge',
         description:
-            'A small indicator overlaid on another widget. '
-            'Use the named constructors: .dot(), .count(), .label(), .icon().',
+            'Badge displays concise contextual information such as counts, statuses or notifications. It is commonly attached to other interface elements to draw attention without interrupting the user experience.',
         code: '''// Dot badge – simple presence indicator
 Ux4gBadge.dot(
   child: Icon(Icons.notifications, size: 32),

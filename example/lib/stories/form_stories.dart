@@ -80,8 +80,7 @@ class _Ux4gInputFieldDefaultExampleState extends State<Ux4gInputFieldDefaultExam
             return ComponentDocs(
               name: 'InputField',
               description:
-                  'A styled text input with label, placeholder, caption, '
-                  'status colours, and icon slots.',
+                  'Input - Text Field allow users to enter, edit and submit information such as names, emails, passwords or search queries. They support user interaction by enabling data input in forms, searches and workflows, ensuring a smooth and efficient user experience.',
               code: dynamicCode,
               props: const [
                 PropRow(
@@ -1335,7 +1334,7 @@ final searchFieldComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'SearchField',
               description:
-                  'A search-optimised input field with a built-in search icon.',
+                  'Search component allows users to quickly find relevant information within an application. It enhances navigation, improves content discoverability and supports text based, voice or filter-assisted search functionality.',
               code: code,
               props: const [
                 PropRow(
@@ -1507,7 +1506,7 @@ final checkboxComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Checkbox',
               description:
-                  'A tri-state checkbox (checked / unchecked / indeterminate) with label and description.',
+                  'Checkbox present a list of options where users can make multiple selections, a single selection or none at all. They support user interaction by allowing the selection of independent items ensuring that users can easily customize settings, filter search results and submit multi choice forms with clarity.',
               code: '''class CheckboxExample extends StatefulWidget {
   const CheckboxExample({super.key});
 
@@ -1724,7 +1723,7 @@ final toggleComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Switch',
               description:
-                  'A switch with label, description, and three size options.',
+                  'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switchs provide a quick and intuitive way to modify system or feature preferences with a single action.',
               code: '''Ux4gSwitch(
   checked: checked,
   onCheckedChange: (v) => setState(() => checked = v),
@@ -1990,8 +1989,7 @@ final sliderComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Slider',
               description:
-                  'A single-thumb slider. Set size to SliderSize.small (default). '
-                  'Pass steps to show tick marks and value labels below the track.',
+                  'Slider is an interactive input control that allows users to select a value or a range of values by dragging a handle along a horizontal track. It provides an intuitive, visually appealing way to adjust continuous settings or explore approximate ranges.',
               code: '''Ux4gSlider(
   value: value,
   min: 0,
@@ -2141,8 +2139,7 @@ final sliderComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'RangeSlider',
               description:
-                  'A dual-thumb range slider. Use size: medium for larger thumbs. '
-                  'showValueLabels shows the current start/end percentages above the track.',
+                  'Range Slider component allows users to select a value or a range within a predefined scale by dragging a handle. It provides a more interactive and visual alternative to numeric input fields, making it ideal for adjustable settings, pricing filters, volume controls and progress tracking.',
               code: '''Ux4gRangeSlider(
   values: RangeValues(20, 90),
   min: 0,
@@ -2518,8 +2515,7 @@ final otpInputComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'OtpInput',
               description:
-                  'A segmented one-time-password input field. '
-                  'Automatically advances focus and calls onCompleted when all digits are filled.',
+                  'Input - OTP component consists of multiple input fields designed for entering a one-time password. It automatically advances focus between fields and provides clear feedback for a secure and seamless verification experience.',
               code: codeStr,
               props: const [
                 PropRow(
@@ -2709,8 +2705,7 @@ final actionDropdownComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'ActionDropdown',
               description:
-                  'A contextual action menu triggered by a custom trigger widget. '
-                  'Each option can optionally show a trailing arrow.',
+                  'Dropdown menu is a user interface element that reveals a hidden list of options, links or actions when you click a trigger button.',
               code: '''Ux4gActionDropdown(
   options: [
     Ux4gActionDropdownOption(id: '1', label: 'Edit'),
@@ -3116,8 +3111,7 @@ final datePickerComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'DatePicker — Single',
               description:
-                  'Single date selection. Tapping the field opens a calendar overlay. '
-                  'The calendar icon sits at the right end of the field.',
+                  'Date Picker component allows users to select a single date or a range of dates using a calendar interface. It ensures accurate and consistent date selection across workflows.',
               code:
                   '''Ux4gDatePicker(
   mode: Ux4gDatePickerMode.single,
@@ -3379,8 +3373,7 @@ final timePickerComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'TimePicker — Standard',
               description:
-                  'Tapping the field opens a time picker overlay in 12-hour AM/PM format. '
-                  'The clock icon sits at the right end of the field.',
+                  'Time picker allows users to select a specific time or time range. It ensures inputs are formatted correctly and eliminates the need for manual typing. They are frequently used for booking appointments, setting alarms and scheduling calendar events.',
               code: '''Ux4gTimePicker(
   placeholder: 'Select time',
   onTimeSelected: (time) {
@@ -3507,8 +3500,7 @@ final fileUploadComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'FileUpload',
           description:
-              'A file drop zone that allows users to select or drag-and-drop files. '
-              'Shows upload progress per file with idle / uploading / success / error states.',
+              'File upload allows users to upload and attach one or more files. It shows the upload progress and status of each file.',
           code:
               '''Ux4gFileUpload(
   maxFiles: 5,
@@ -3718,8 +3710,7 @@ final radioButtonComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'RadioButton',
               description:
-                  'A single-selection radio button. Use a shared groupValue '
-                  'and onChanged to create a mutually-exclusive group.',
+                  'Radio Button presents a list of mutually exclusive options where users can make exactly one selection from the group. It supports user interaction by allowing the selection of a single choice out of multiple predefined items, ensuring that users can easily define precise preferences, answer single choice binary questions, and submit forms with distinct clarity.',
               code: codeStr,
               props: const [
                 PropRow(

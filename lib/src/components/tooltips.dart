@@ -24,7 +24,7 @@ enum Ux4gTooltipPlacement {
 
 class Ux4gTooltip extends StatefulWidget {
   final Widget child;
-  final String tooltipText;
+  final String? tooltipText;
   final String? title;
   final IconData? icon;
   final Ux4gTooltipPlacement placement;
@@ -37,11 +37,13 @@ class Ux4gTooltip extends StatefulWidget {
   final bool enableUserInput;
   final bool isPersistent;
   final Widget? action;
+  final Widget? customContent;
+  final double? maxWidth;
 
   const Ux4gTooltip({
     super.key,
     required this.child,
-    required this.tooltipText,
+    this.tooltipText,
     this.title,
     this.icon,
     this.placement = Ux4gTooltipPlacement.top,
@@ -54,6 +56,8 @@ class Ux4gTooltip extends StatefulWidget {
     this.enableUserInput = true,
     this.isPersistent = false,
     this.action,
+    this.customContent,
+    this.maxWidth,
   });
 
   @override
@@ -62,7 +66,7 @@ class Ux4gTooltip extends StatefulWidget {
 
 class Ux4gRichTooltip extends StatelessWidget {
   final Widget child;
-  final String tooltipText;
+  final String? tooltipText;
   final String? title;
   final IconData? icon;
   final Ux4gTooltipPlacement placement;
@@ -73,11 +77,13 @@ class Ux4gRichTooltip extends StatelessWidget {
   final double arrowHeight;
   final bool enableUserInput;
   final Widget? action;
+  final Widget? customContent;
+  final double? maxWidth;
 
   const Ux4gRichTooltip({
     super.key,
     required this.child,
-    required this.tooltipText,
+    this.tooltipText,
     this.title,
     this.icon,
     this.placement = Ux4gTooltipPlacement.top,
@@ -88,6 +94,8 @@ class Ux4gRichTooltip extends StatelessWidget {
     this.arrowHeight = 6,
     this.enableUserInput = true,
     this.action,
+    this.customContent,
+    this.maxWidth,
   });
 
   @override
@@ -105,6 +113,8 @@ class Ux4gRichTooltip extends StatelessWidget {
       enableUserInput: enableUserInput,
       isPersistent: true,
       action: action,
+      customContent: customContent,
+      maxWidth: maxWidth,
       child: child,
     );
   }
@@ -276,6 +286,8 @@ class _Ux4gTooltipState extends State<Ux4gTooltip>
                     icon: widget.icon,
                     placement: effectivePlacement,
                     action: widget.action,
+                    customContent: widget.customContent,
+                    maxWidth: widget.maxWidth,
                     backgroundColor: widget.backgroundColor,
                     contentColor: widget.contentColor,
                     textStyle: widget.textStyle,
@@ -523,11 +535,13 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
 }
 
 class _TooltipBubble extends StatelessWidget {
-  final String text;
+  final String? text;
   final String? title;
   final IconData? icon;
   final Ux4gTooltipPlacement placement;
   final Widget? action;
+  final Widget? customContent;
+  final double? maxWidth;
   final Color? backgroundColor;
   final Color? contentColor;
   final TextStyle? textStyle;
@@ -536,11 +550,13 @@ class _TooltipBubble extends StatelessWidget {
   final double arrowHeight;
 
   const _TooltipBubble({
-    required this.text,
+    this.text,
     this.title,
     this.icon,
     required this.placement,
     this.action,
+    this.customContent,
+    this.maxWidth,
     this.backgroundColor,
     this.contentColor,
     this.textStyle,
@@ -586,9 +602,9 @@ class _TooltipBubble extends StatelessWidget {
         cornerRadius: cornerRadius,
       ),
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 240),
+        constraints: BoxConstraints(maxWidth: maxWidth ?? 240),
         padding: _bubblePadding(),
-        child: Column(
+        child: customContent ?? Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -603,7 +619,7 @@ class _TooltipBubble extends StatelessWidget {
                   ],
                   Flexible(
                     child: Text(
-                      text,
+                      text ?? '',
                       style: (textStyle ?? lSDefault).copyWith(color: fgColor),
                     ),
                   ),
@@ -628,7 +644,7 @@ class _TooltipBubble extends StatelessWidget {
                   ],
                 ),
               if (title != null || icon != null) const SizedBox(height: 8),
-              Text(text, style: lSDefault.copyWith(color: fgColor)),
+              if (text != null) Text(text!, style: lSDefault.copyWith(color: fgColor)),
               if (action != null) ...[
                 const SizedBox(height: 12),
                 Align(alignment: Alignment.centerRight, child: action!),

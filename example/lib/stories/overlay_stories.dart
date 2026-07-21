@@ -13,7 +13,8 @@ final modalComponent = WidgetbookComponent(
       name: 'Interactive Trigger',
       builder: (context) => ComponentDocs(
         name: 'Modal — Trigger',
-        description: 'Click the button below to see the actual modal dialog.',
+        description:
+            'Modal component displays important information, confirmations, or actions in a focused overlay above the main interface. It requires user interaction before returning to the underlying content.',
         code: '''Ux4gButton(
   text: 'Show Modal',
   onPressed: () {
@@ -869,7 +870,8 @@ final tooltipComponent = WidgetbookComponent(
       name: 'Interactive',
       builder: (context) => ComponentDocs(
         name: 'Tooltip — Interactive',
-        description: 'Use knobs to test different placements and text.',
+        description:
+            'Tooltip is a small, contextual popup that appears when you tap on a UI element (like a button or icon). It provides quick explanatory text or a hint about the element\'s function without permanently cluttering the screen.',
         code: '''Ux4gTooltip(
   tooltipText: 'Interactive Tooltip',
   title: 'Information', // Optional
@@ -1013,7 +1015,8 @@ final tooltipComponent = WidgetbookComponent(
           name: 'Tooltip — All Variants',
           description:
               'Visual reference for all directional placements and alignments.',
-          code: '''// ── Top Placements ──────────────────────────────────────────
+          code:
+              '''// ── Top Placements ──────────────────────────────────────────
 // Top Start
 Ux4gTooltip(
   tooltipText: 'Tooltip',
@@ -1222,6 +1225,124 @@ Ux4gTooltip(
                   Ux4gTooltipPlacement.rightEnd,
                 ]),
               ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Popover',
+      builder: (context) {
+        final typography = Ux4gTheme.typography(context);
+        return ComponentDocs(
+          name: 'Popover',
+          description:
+              'Popover displays additional information or actions in a lightweight overlay triggered by user interaction. It can contain interactive content such as buttons, links, and form controls.',
+          code: '''Ux4gTooltip(
+  isPersistent: true,
+  enableUserInput: true,
+  placement: Ux4gTooltipPlacement.bottom,
+  backgroundColor: Colors.white,
+  contentColor: Colors.black,
+  maxWidth: 400,
+  customContent: Column(
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        children: [
+          const Icon(Icons.grid_view_outlined, size: 20, color: Colors.black87),
+          const SizedBox(width: 8),
+          const Text('Popover Title', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87)),
+          const SizedBox(width: 8),
+          const Text('Label', style: TextStyle(color: Colors.black54)),
+          const Spacer(),
+          const Icon(Icons.more_vert, size: 20, color: Colors.deepPurple),
+        ],
+      ),
+      const SizedBox(height: 12),
+      const Text('This is a subtitle text', style: TextStyle(color: Colors.black87)),
+      const SizedBox(height: 8),
+      const Text(
+        'A Popover is a small overlay UI component that appears floating above the page content, anchored to a trigger element (like a button).',
+        style: TextStyle(color: Colors.black87),
+      ),
+      const SizedBox(height: 12),
+      InkWell(
+        onTap: () {},
+        child: const Text('Link', style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold)),
+      ),
+    ],
+  ),
+  child: const Ux4gButton(text: 'Complex Popover', onPressed: () {}),
+);''',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            child: Center(
+              child: Ux4gTooltip(
+                isPersistent: true,
+                enableUserInput: true,
+                placement: Ux4gTooltipPlacement.bottom,
+                backgroundColor: Colors.white,
+                contentColor: Colors.black,
+                maxWidth: 400,
+                customContent: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.grid_view_outlined,
+                          size: 20,
+                          color: Colors.black87,
+                        ),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Popover Title',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Label',
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                        const Spacer(),
+                        const Icon(
+                          Icons.more_vert,
+                          size: 20,
+                          color: Colors.deepPurple,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'This is a subtitle text',
+                      style: TextStyle(color: Colors.black87),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'A Popover is a small overlay UI component that appears floating above the page content, anchored to a trigger element (like a button).',
+                      style: TextStyle(color: Colors.black87),
+                    ),
+                    const SizedBox(height: 12),
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        'Link',
+                        style: TextStyle(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                child: Ux4gButton(text: 'Complex Popover', onPressed: () {}),
+              ),
             ),
           ),
         );

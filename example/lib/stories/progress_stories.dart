@@ -5,8 +5,224 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
-// ── Linear Progress ───────────────────────────────────────────────────────────
+// ── Introduction ──────────────────────────────────────────────────────────────
 
+final progressIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Overview',
+      builder: (context) {
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(40.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              const Text(
+                'Progress Indicator',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Progress indicators inform users about the status of ongoing processes by providing visual feedback about the progress of a task or operation. It is commonly seen in design patterns like: File uploads, Password strength etc.',
+                style: TextStyle(
+                  fontSize: 16,
+                  height: 1.5,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white70
+                      : Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 48),
+              const Text(
+                'Examples',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                'Linear Progress Bar',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 32,
+                runSpacing: 32,
+                children: [
+                  const SizedBox(
+                    width: 200,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Basic', style: TextStyle(fontWeight: FontWeight.w500)),
+                        SizedBox(height: 8),
+                        Ux4gLinearProgressBar(
+                          value: 0.4,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 200,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('With Labels & Percentage', style: TextStyle(fontWeight: FontWeight.w500)),
+                        SizedBox(height: 8),
+                        Ux4gLinearProgressBar(
+                          value: 0.75,
+                          label: 'Uploading...',
+                          hint: 'Almost done',
+                          showPercentage: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 200,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Inside Label', style: TextStyle(fontWeight: FontWeight.w500)),
+                        SizedBox(height: 8),
+                        Ux4gLinearProgressBar(
+                          value: 0.8,
+                          showPercentage: true,
+                          labelPosition: Ux4gProgressLabelPosition.inside,
+                          height: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 48),
+              const Text(
+                'Circular Progress Indicator',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Wrap(
+                spacing: 48,
+                runSpacing: 32,
+                crossAxisAlignment: WrapCrossAlignment.end,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Small', style: TextStyle(fontWeight: FontWeight.w500)),
+                      SizedBox(height: 16),
+                      Ux4gCircularProgress(
+                        value: 0.4,
+                        size: Ux4gCircularProgressSize.s,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Medium w/ Text', style: TextStyle(fontWeight: FontWeight.w500)),
+                      SizedBox(height: 16),
+                      Ux4gCircularProgress(
+                        value: 0.65,
+                        centerValueText: '65%',
+                        size: Ux4gCircularProgressSize.m,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Large w/ Label', style: TextStyle(fontWeight: FontWeight.w500)),
+                      SizedBox(height: 16),
+                      Ux4gCircularProgress(
+                        value: 0.8,
+                        centerValueText: '80%',
+                        label: 'Loading',
+                        size: Ux4gCircularProgressSize.l,
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Extra Large', style: TextStyle(fontWeight: FontWeight.w500)),
+                      SizedBox(height: 16),
+                      Ux4gCircularProgress(
+                        value: 0.9,
+                        centerValueText: '90%',
+                        label: 'Almost Done',
+                        size: Ux4gCircularProgressSize.xl,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 48),
+              const Text(
+                'Half Circle Progress',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Wrap(
+                spacing: 48,
+                runSpacing: 32,
+                crossAxisAlignment: WrapCrossAlignment.end,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Standard', style: TextStyle(fontWeight: FontWeight.w500)),
+                      SizedBox(height: 16),
+                      Ux4gHalfCircleProgress(
+                        value: 0.5,
+                        size: Ux4gHalfCircleProgressSize.m,
+                        valueText: '50%',
+                        description: 'Halfway there',
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('With Scale', style: TextStyle(fontWeight: FontWeight.w500)),
+                      SizedBox(height: 16),
+                      Ux4gHalfCircleProgress(
+                        value: 0.85,
+                        size: Ux4gHalfCircleProgressSize.l,
+                        valueText: '85%',
+                        description: 'Excellent',
+                        showScale: true,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  ),
+  ],
+);
+
+// ── Linear Progress ───────────────────────────────────────────────────────────
 final linearProgressComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [

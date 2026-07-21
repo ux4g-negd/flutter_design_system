@@ -55,8 +55,7 @@ final buttonComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'Button',
           description:
-              'The primary action button. Supports loading state, disabled state, '
-              'and optional leading / trailing icons.',
+              'Button trigger an action or event, such as submitting a form, opening a dialog or performing a specific task. It provide users with a clear Call to Action (CTA), guiding them through a workflow.',
           code: '''Ux4gButton(
   text: 'Primary Button',
   variant: Ux4gButtonVariant.primary,
@@ -467,17 +466,19 @@ Ux4gButton(text: 'Large',  size: Ux4gButtonSize.large,  onPressed: () {});
 Ux4gButton(text: 'XL',     size: Ux4gButtonSize.xl,     onPressed: () {});''',
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: Ux4gButtonSize.values.map(
-            (s) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Ux4gButton(
-                onPressed: () {},
-                text: s.name.toUpperCase(),
-                variant: Ux4gButtonVariant.primary,
-                size: s,
-              ),
-            ),
-          ).toList(),
+          children: Ux4gButtonSize.values
+              .map(
+                (s) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Ux4gButton(
+                    onPressed: () {},
+                    text: s.name.toUpperCase(),
+                    variant: Ux4gButtonVariant.primary,
+                    size: s,
+                  ),
+                ),
+              )
+              .toList(),
         ),
       ),
     ),
@@ -573,7 +574,7 @@ Ux4gButton(
       builder: (context) => ComponentDocs(
         name: 'IconButton',
         description:
-            'A square icon-only button. Same variant/size system as Button.',
+            'Icon button contain only an icon and do not include text labels. It is used to represent common actions in a compact and visually efficient manner. Common examples include search button, close button and menu button.',
         code: '''Ux4gIconButton(icon: Icons.favorite, onPressed: () {});
 Ux4gIconButton(icon: Icons.share,    variant: Ux4gButtonVariant.outline, onPressed: () {});
 Ux4gIconButton(icon: Icons.delete,   variant: Ux4gButtonVariant.ghost,   onPressed: () {});''',

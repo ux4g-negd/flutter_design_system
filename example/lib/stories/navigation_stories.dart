@@ -705,7 +705,8 @@ final statusBannerComponent = WidgetbookComponent(
 
         return ComponentDocs(
           name: 'StatusBanner',
-          description: 'Various layout patterns built using StatusBanner.',
+          description:
+              'Draft Status Banner component displays a persistent notification indicating that content is currently in draft mode. It helps users distinguish unpublished content from published information.',
           code: () {
             final buf = StringBuffer();
             buf.writeln("// ── Get the typography object from theme ──");
@@ -1219,7 +1220,7 @@ final emptyStateComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'EmptyState',
         description:
-            'A full-page empty state placeholder with icon, title, description, and an optional CTA button.',
+            'An Empty state screen is used to prompt the user to take action or provide input when there is no existing data or content to display.',
         code: '''Ux4gEmptyState(
   title: 'No results found',
   description: 'Try adjusting your search.',

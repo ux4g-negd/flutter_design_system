@@ -20,8 +20,7 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'AadhaarInputField',
               description:
-                  'A specialized input field for Aadhaar numbers (12 digits) '
-                  'with auto-formatting (XXXX XXXX XXXX) and Verhoeff validation.',
+                  'Input-Aadhaar field allow users to securely enter, format and validate their 12-digit unique identification number. They support user interaction by enabling standardized data entry in identity verification, government applications and secure onboarding workflows, ensuring a smooth and compliant user experience.',
               code: '''Ux4gAadhaarInputField(
   value: value,
   onValueChange: (v) => setState(() => value = v),
@@ -161,8 +160,7 @@ final panInputFieldComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'PanInputField',
               description:
-                  'A specialized input field for PAN Card numbers (10 chars) '
-                  'with auto-uppercase enforcement and regex validation (ABCDE1234F).',
+                  'Input - Pan Card allows users to enter, format and validate a Permanent Account Number (PAN). It supports standardized data entry across financial, taxation, and banking workflows.',
               code: '''Ux4gPanInputField(
   value: value,
   onValueChange: (v) => setState(() => value = v),
