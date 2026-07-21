@@ -19,206 +19,216 @@ final progressIntroductionComponent = WidgetbookComponent(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              const Text(
-                'Progress Indicator',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+                const Text(
+                  'Progress Indicator',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Progress indicators inform users about the status of ongoing processes by providing visual feedback about the progress of a task or operation. It is commonly seen in design patterns like: File uploads, Password strength etc.',
-                style: TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white70
-                      : Colors.black87,
+                const SizedBox(height: 16),
+                Text(
+                  'Progress indicators inform users about the status of ongoing processes by providing visual feedback about the progress of a task or operation. It is commonly seen in design patterns like: File uploads, Password strength etc.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    height: 1.5,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white70
+                        : Colors.black87,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 48),
-              const Text(
-                'Examples',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                const SizedBox(height: 48),
+                const Text(
+                  'Examples',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                'Linear Progress Bar',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                const SizedBox(height: 24),
+                const Text(
+                  'Linear Progress Bar',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Wrap(
-                spacing: 32,
-                runSpacing: 32,
-                children: [
-                  const SizedBox(
-                    width: 200,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                const SizedBox(height: 16),
+                Wrap(
+                  spacing: 32,
+                  runSpacing: 32,
+                  children: [
+                    const SizedBox(
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Basic',
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(height: 8),
+                          Ux4gLinearProgressBar(value: 0.4),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'With Labels & Percentage',
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(height: 8),
+                          Ux4gLinearProgressBar(
+                            value: 0.75,
+                            label: 'Uploading...',
+                            hint: 'Almost done',
+                            showPercentage: true,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Inside Label',
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(height: 8),
+                          Ux4gLinearProgressBar(
+                            value: 0.8,
+                            showPercentage: true,
+                            labelPosition: Ux4gProgressLabelPosition.inside,
+                            height: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 48),
+                const Text(
+                  'Circular Progress Indicator',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(height: 16),
+                const Wrap(
+                  spacing: 48,
+                  runSpacing: 32,
+                  crossAxisAlignment: WrapCrossAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('Basic', style: TextStyle(fontWeight: FontWeight.w500)),
-                        SizedBox(height: 8),
-                        Ux4gLinearProgressBar(
+                        Text(
+                          'Small',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: 16),
+                        Ux4gCircularProgress(
                           value: 0.4,
+                          size: Ux4gCircularProgressSize.s,
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(
-                    width: 200,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('With Labels & Percentage', style: TextStyle(fontWeight: FontWeight.w500)),
-                        SizedBox(height: 8),
-                        Ux4gLinearProgressBar(
-                          value: 0.75,
-                          label: 'Uploading...',
-                          hint: 'Almost done',
-                          showPercentage: true,
+                        Text(
+                          'Medium w/ Text',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: 16),
+                        Ux4gCircularProgress(
+                          value: 0.65,
+                          centerValueText: '65%',
+                          size: Ux4gCircularProgressSize.m,
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(
-                    width: 200,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('Inside Label', style: TextStyle(fontWeight: FontWeight.w500)),
-                        SizedBox(height: 8),
-                        Ux4gLinearProgressBar(
+                        Text(
+                          'Large w/ Label',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: 16),
+                        Ux4gCircularProgress(
                           value: 0.8,
-                          showPercentage: true,
-                          labelPosition: Ux4gProgressLabelPosition.inside,
-                          height: 16,
+                          centerValueText: '80%',
+                          label: 'Loading',
+                          size: Ux4gCircularProgressSize.l,
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 48),
-              const Text(
-                'Circular Progress Indicator',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Extra Large',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: 16),
+                        Ux4gCircularProgress(
+                          value: 0.9,
+                          centerValueText: '90%',
+                          label: 'Almost Done',
+                          size: Ux4gCircularProgressSize.xl,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 16),
-              const Wrap(
-                spacing: 48,
-                runSpacing: 32,
-                crossAxisAlignment: WrapCrossAlignment.end,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Small', style: TextStyle(fontWeight: FontWeight.w500)),
-                      SizedBox(height: 16),
-                      Ux4gCircularProgress(
-                        value: 0.4,
-                        size: Ux4gCircularProgressSize.s,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Medium w/ Text', style: TextStyle(fontWeight: FontWeight.w500)),
-                      SizedBox(height: 16),
-                      Ux4gCircularProgress(
-                        value: 0.65,
-                        centerValueText: '65%',
-                        size: Ux4gCircularProgressSize.m,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Large w/ Label', style: TextStyle(fontWeight: FontWeight.w500)),
-                      SizedBox(height: 16),
-                      Ux4gCircularProgress(
-                        value: 0.8,
-                        centerValueText: '80%',
-                        label: 'Loading',
-                        size: Ux4gCircularProgressSize.l,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Extra Large', style: TextStyle(fontWeight: FontWeight.w500)),
-                      SizedBox(height: 16),
-                      Ux4gCircularProgress(
-                        value: 0.9,
-                        centerValueText: '90%',
-                        label: 'Almost Done',
-                        size: Ux4gCircularProgressSize.xl,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 48),
-              const Text(
-                'Half Circle Progress',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                const SizedBox(height: 48),
+                const Text(
+                  'Half Circle Progress',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
-              ),
-              const SizedBox(height: 16),
-              const Wrap(
-                spacing: 48,
-                runSpacing: 32,
-                crossAxisAlignment: WrapCrossAlignment.end,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Standard', style: TextStyle(fontWeight: FontWeight.w500)),
-                      SizedBox(height: 16),
-                      Ux4gHalfCircleProgress(
-                        value: 0.5,
-                        size: Ux4gHalfCircleProgressSize.m,
-                        valueText: '50%',
-                        description: 'Halfway there',
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('With Scale', style: TextStyle(fontWeight: FontWeight.w500)),
-                      SizedBox(height: 16),
-                      Ux4gHalfCircleProgress(
-                        value: 0.85,
-                        size: Ux4gHalfCircleProgressSize.l,
-                        valueText: '85%',
-                        description: 'Excellent',
-                        showScale: true,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                const SizedBox(height: 16),
+                const Wrap(
+                  spacing: 48,
+                  runSpacing: 32,
+                  crossAxisAlignment: WrapCrossAlignment.end,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Standard',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: 16),
+                        Ux4gHalfCircleProgress(
+                          value: 0.5,
+                          size: Ux4gHalfCircleProgressSize.m,
+                          valueText: '50%',
+                          description: 'Halfway there',
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'With Scale',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        SizedBox(height: 16),
+                        Ux4gHalfCircleProgress(
+                          value: 0.85,
+                          size: Ux4gHalfCircleProgressSize.l,
+                          valueText: '85%',
+                          description: 'Excellent',
+                          showScale: true,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      );
-    },
-  ),
+        );
+      },
+    ),
   ],
 );
 
@@ -231,8 +241,7 @@ final linearProgressComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'LinearProgressBar',
         description:
-            'A horizontal progress bar with optional label, hint, icon, '
-            'percentage display, gradient fill, and shape.',
+            'Linear Progress indicators inform users about the status of ongoing processes by providing visual feedback about the progress of a task or operation. It is commonly seen in design patterns like: File uploads, Password strength etc.',
         code: '''Ux4gLinearProgressBar(
   value: 0.6,                       // 0.0 – 1.0
   showPercentage: true,
@@ -490,7 +499,7 @@ final circularProgressComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'CircularProgress',
         description:
-            'A circular gauge that displays a progress value with an optional centre text and label.',
+            'Circular Progress indicators inform users about the status of ongoing processes by providing visual feedback about the progress of a task or operation. It is commonly seen in design patterns like: File uploads, Password strength etc.',
         code: '''Ux4gCircularProgress(
   value: 0.65,
   centerValueText: '65%',
@@ -666,9 +675,7 @@ final circularProgressComponent = WidgetbookComponent(
                       ? Ux4gColors.neutral600
                       : Ux4gColors.neutral300,
                   backgroundColor: showBackground
-                      ? (isDark
-                            ? Ux4gColors.neutral800
-                            : Ux4gColors.neutral100)
+                      ? (isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral100)
                       : null,
                   progressGradient: showGradient
                       ? SweepGradient(
@@ -969,8 +976,7 @@ final spinnerComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'ux4gSpinner',
           description:
-              'A circular spinning indicator. '
-              'Customise size, stroke width, percentage fill, and gradient theme.',
+              'Spinner component is a visual indicator used to represent loading, processing or system activity. It provides feedback to users that an operation is in progress and helps prevent confusion when waiting for content to load.',
           code: '''// Basic spinner
 Ux4gSpinner(size: 40);
 
@@ -1062,26 +1068,14 @@ Ux4gSpinner(size: 40, percentage: 75, color: Ux4gColors.green);''',
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Ux4gSpinner(
-                size: 40,
-                percentage: 100,
-                color: Ux4gColors.primary,
-              ),
+              Ux4gSpinner(size: 40, percentage: 100, color: Ux4gColors.primary),
               Ux4gSpinner(
                 size: 40,
                 percentage: 60,
                 color: Ux4gColors.secondary,
               ),
-              Ux4gSpinner(
-                size: 40,
-                percentage: 30,
-                color: Ux4gColors.red,
-              ),
-              Ux4gSpinner(
-                size: 40,
-                percentage: 75,
-                color: Ux4gColors.green,
-              ),
+              Ux4gSpinner(size: 40, percentage: 30, color: Ux4gColors.red),
+              Ux4gSpinner(size: 40, percentage: 75, color: Ux4gColors.green),
             ],
           ),
         );
@@ -1421,7 +1415,7 @@ final progressSlaIndicatorComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'Progress SLA Indicator (Circular)',
           description:
-              'Circular SLA gauges displaying remaining time (e.g. days left) with gradient fills, status badges, and color-coded variants.',
+              'An SLA progress indicator visually tracks the time remaining to fulfill a guaranteed service or task. It communicates progress and status through color and supporting information.',
           code: '''// ── Purple / Cloud Variant ──
 Ux4gCircularProgress(
   value: 0.65,
@@ -1692,10 +1686,7 @@ Ux4gCircularProgress(
                   progressColor: const Color(0xFF6A4EFF),
                   gradient: const SweepGradient(
                     transform: GradientRotation(-math.pi / 2),
-                    colors: [
-                      Color(0xFFDCD4FF),
-                      Color(0xFF6A4EFF),
-                    ],
+                    colors: [Color(0xFFDCD4FF), Color(0xFF6A4EFF)],
                   ),
                   footerColor: const Color(0xFFEFEAFF),
                   footerTextColor: const Color(0xFF6A4EFF),
@@ -1706,10 +1697,7 @@ Ux4gCircularProgress(
                   progressColor: const Color(0xFFFFA827),
                   gradient: const SweepGradient(
                     transform: GradientRotation(-math.pi / 2),
-                    colors: [
-                      Color(0xFFFFF2D9),
-                      Color(0xFFFFA827),
-                    ],
+                    colors: [Color(0xFFFFF2D9), Color(0xFFFFA827)],
                   ),
                   footerColor: const Color(0xFFFFF7E6),
                   footerTextColor: const Color(0xFFFFA827),
@@ -1721,10 +1709,7 @@ Ux4gCircularProgress(
                   descriptionColor: const Color(0xFFB3251E),
                   gradient: const SweepGradient(
                     transform: GradientRotation(-math.pi / 2),
-                    colors: [
-                      Color(0xFFFFECEE),
-                      Color(0xFFF55E57),
-                    ],
+                    colors: [Color(0xFFFFECEE), Color(0xFFF55E57)],
                   ),
                   footerColor: const Color(0xFFFFF0F0),
                   footerTextColor: const Color(0xFFF55E57),
@@ -1735,10 +1720,7 @@ Ux4gCircularProgress(
                   progressColor: const Color(0xFF1AA64A),
                   gradient: const SweepGradient(
                     transform: GradientRotation(-math.pi / 2),
-                    colors: [
-                      Color(0xFFDFF9E8),
-                      Color(0xFF1AA64A),
-                    ],
+                    colors: [Color(0xFFDFF9E8), Color(0xFF1AA64A)],
                   ),
                   footerColor: const Color(0xFFF2FCEF),
                   footerTextColor: const Color(0xFF1AA64A),
@@ -1754,7 +1736,7 @@ Ux4gCircularProgress(
       builder: (context) => ComponentDocs(
         name: 'Progress SLA Indicator (Linear)',
         description:
-            'Horizontal SLA progress bars featuring leading icon badges, labels, status hints, and rounded gradient fills.',
+            'An SLA progress indicator visually tracks the time remaining to fulfill a guaranteed service or task. It communicates progress and status through color and supporting information.',
         code: '''// ── Purple / Cloud Variant ──
 Ux4gLinearProgress(
   value: 0.55,
@@ -1911,64 +1893,56 @@ Ux4gLinearProgress(
                 value: 0.55,
                 icon: Icons.cloud_upload_outlined,
                 iconColor: const Color(0xFF6A4EFF),
-                iconBackgroundColor:
-                    const Color(0xFF6A4EFF).withValues(alpha: 0.12),
+                iconBackgroundColor: const Color(
+                  0xFF6A4EFF,
+                ).withValues(alpha: 0.12),
                 label: 'Label',
                 hint: 'Hint',
                 height: 10,
                 shape: Ux4gProgressShape.rounded,
-                gradientColors: const [
-                  Color(0xFF6A4EFF),
-                  Color(0xFF9B59B6),
-                ],
+                gradientColors: const [Color(0xFF6A4EFF), Color(0xFF9B59B6)],
               ),
               const SizedBox(height: 20),
               Ux4gLinearProgress(
                 value: 0.45,
                 icon: Icons.bolt_outlined,
                 iconColor: const Color(0xFFF39C12),
-                iconBackgroundColor:
-                    const Color(0xFFF39C12).withValues(alpha: 0.12),
+                iconBackgroundColor: const Color(
+                  0xFFF39C12,
+                ).withValues(alpha: 0.12),
                 label: 'Label',
                 hint: 'Hint',
                 height: 10,
                 shape: Ux4gProgressShape.rounded,
-                gradientColors: const [
-                  Color(0xFFFFAE00),
-                  Color(0xFFFF5F00),
-                ],
+                gradientColors: const [Color(0xFFFFAE00), Color(0xFFFF5F00)],
               ),
               const SizedBox(height: 20),
               Ux4gLinearProgress(
                 value: 0.35,
                 icon: Icons.warning_amber_rounded,
                 iconColor: const Color(0xFFE74C3C),
-                iconBackgroundColor:
-                    const Color(0xFFE74C3C).withValues(alpha: 0.12),
+                iconBackgroundColor: const Color(
+                  0xFFE74C3C,
+                ).withValues(alpha: 0.12),
                 label: 'Label',
                 hint: 'Hint',
                 height: 10,
                 shape: Ux4gProgressShape.rounded,
-                gradientColors: const [
-                  Color(0xFFFFB3AE),
-                  Color(0xFFE74C3C),
-                ],
+                gradientColors: const [Color(0xFFFFB3AE), Color(0xFFE74C3C)],
               ),
               const SizedBox(height: 20),
               Ux4gLinearProgress(
                 value: 0.60,
                 icon: Icons.check_circle_outline,
                 iconColor: const Color(0xFF27AE60),
-                iconBackgroundColor:
-                    const Color(0xFF27AE60).withValues(alpha: 0.12),
+                iconBackgroundColor: const Color(
+                  0xFF27AE60,
+                ).withValues(alpha: 0.12),
                 label: 'Label',
                 hint: 'Hint',
                 height: 10,
                 shape: Ux4gProgressShape.rounded,
-                gradientColors: const [
-                  Color(0xFF90EE90),
-                  Color(0xFF27AE60),
-                ],
+                gradientColors: const [Color(0xFF90EE90), Color(0xFF27AE60)],
               ),
             ],
           ),

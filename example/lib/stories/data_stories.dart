@@ -1280,10 +1280,9 @@ final resultListComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gResultList',
+        name: 'Result List',
         description:
-            'An expandable list item that summarises a record with a status tag, '
-            'key-value detail pairs, and an optional action button.',
+            'A Result List Row displays a single item within a list of search results, records, or data entries. It presents key information in a structured format, enabling users to quickly scan, compare, and access relevant details or actions.',
         code: '''Ux4gResultList(
   title: 'Application #2024-001',
   statusTag: 'Approved',
@@ -2667,8 +2666,7 @@ final journeyTimelineComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'JourneyTimeline',
         description:
-            'A vertical timeline showing the progress of a multi-stage journey. '
-            'Steps are: completed, current, or upcoming.',
+            'A composite component combining a Stepper (progress indicators) with an Info',
         code: '''Ux4gJourneyTimeline(
   currentStep: 1,
   steps: const [
@@ -3006,9 +3004,9 @@ final statusPipelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Horizontal — With Labels',
       builder: (context) => ComponentDocs(
-        name: 'StatusPipeline',
+        name: 'Horizontal Status Pipeline',
         description:
-            'A horizontal status pipeline showing discrete stages with text labels.',
+            'A Horizontal Status Pipeline visually represents the stages of a process in a sequential flow, helping users track progress, understand their current position and identify completed, active, or upcoming steps within a journey.',
         code: '''Ux4gStatusPipeline(
   orientation: Ux4gPipelineOrientation.horizontal,
   currentStep: 1,
@@ -3117,9 +3115,9 @@ final statusPipelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Vertical — With Labels',
       builder: (context) => ComponentDocs(
-        name: 'StatusPipeline',
+        name: 'Vertical Status Pipeline',
         description:
-            'A vertical status pipeline stacked with discrete stage titles.',
+            'A Vertical Status Pipeline displays the stages of a process in a top-to-bottom sequence, helping users track progress, understand the current stage and view completed and upcoming steps in a clear, structured format.',
         code: '''Ux4gStatusPipeline(
   orientation: Ux4gPipelineOrientation.vertical,
   currentStep: 1,
@@ -3308,7 +3306,7 @@ final carouselComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Carousel',
         description:
-            'A horizontal swipe carousel. Pass any list of widgets as items.',
+            'Carousel is a horizontally scrollable layout that displays a series of items. It shows a collection of carousel items that can be scrolled on and off the screen. It may come with controls (e.g. arrows or buttons) allowing the user to manually scroll through. Carousel UI elements are commonly seen in the following design patterns:',
         code: '''Ux4gCarousel(
   items: List.generate(
     4,
@@ -3548,12 +3546,9 @@ final timeSlotComponent = WidgetbookComponent(
             : 'SlotPickerViewMode.compact';
 
         return ComponentDocs(
-          name: 'ux4gTimeslot',
+          name: 'Time Slot',
           description:
-              'A calendar-style date picker that marks dates as available, '
-              'no-slots, public holiday, or weekly-off. '
-              'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
-              'Supports both Expanded and Compact view modes via viewMode property.',
+              'A Time Slot represents a specific period available for scheduling, booking, or appointments. It helps users select a convenient date and time, ensuring organized planning and efficient allocation of resources.',
           code:
               '''class Ux4gTimeslotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;

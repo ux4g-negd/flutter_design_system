@@ -12,8 +12,7 @@ final tagComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Tag',
         description:
-            'A compact label chip with four style variants and six color schemes. '
-            'Optionally dismissible.',
+            'Tag is a small, interactive element used to label, categorize or filter content. Tag allow users to quickly identify metadata and make selections.',
         code: '''// Style variants
 Ux4gTag(text: 'Tonal',   style: Ux4gTagStyle.tonal);
 Ux4gTag(text: 'Filled',  style: Ux4gTagStyle.filled);
@@ -274,8 +273,7 @@ final cardComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Card',
         description:
-            'A surface container with optional title, subtitle, body text, '
-            'media image, and footer action buttons.',
+            'Card is a flexible, container like component that visually groups related pieces of information and actions about a single subject. It supports images, text and actions in a flexible content container.',
         code: '''Ux4gCard(
   title: 'Card Title',
   subtitle: 'Subtitle',
@@ -1396,7 +1394,7 @@ final dividerComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Divider',
         description:
-            'A thin separator line. Can be horizontal or vertical, with an optional centre label.',
+            'Divider is a thin line that groups content in lists and containers. It helps in improving content organization by separating content visually, making it easier for users to scan and understand information.',
         code: '''SizedBox(
   width: 300,
   child: Column(

@@ -18,8 +18,7 @@ final accordionComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Accordion',
               description:
-                  'A collapsible panel. Toggle with onExpandedChange. '
-                  'Use Ux4gAccordionGroup for mutually-exclusive accordion lists.',
+                  'Accordion are used to organize content in a compact, collapsible manner, making it easier for users to navigate and find information without overwhelming them too much content at once',
               code: '''// Single accordion
 Ux4gAccordion(
   title: 'What is UX4G?',                              // ← change this
@@ -2150,7 +2149,7 @@ final chipGroupComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'ChipGroup (Wrap)',
               description:
-                  'Wrap layout for chip group — chips flow to next line when space runs out.',
+                  'A collection of compact interactive chips for filtering or selecting options. Supports Filter (multi-select) and Choice (single-select) types, horizontal and wrapped layouts, and overflow handling for both desktop and mobile contexts. Image Image component displays photographic or illustrative content in a consistent and responsive manner. It supports configurable aspect ratios, corner styles, and overlays to maintain visual consistency across interfaces.',
               code: '''Ux4gChipGroup(
   arrangement: Ux4gChipGroupArrangement.wrap,
   spacing: 8,
@@ -2263,7 +2262,7 @@ final chipGroupComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'ChipGroup — Variants',
               description:
-                  'Showcasing various chip group variants with and without badges. In this example, the first row uses badges inside the trailingContent property of ChoiceChip. The second row uses FilterChip for multi-select functionality.',
+                  'A collection of compact interactive chips for filtering or selecting options. Supports Filter (multi-select) and Choice (single-select) types, horizontal and wrapped layouts, and overflow handling for both desktop and mobile contexts. Image Image component displays photographic or illustrative content in a consistent and responsive manner. It supports configurable aspect ratios, corner styles, and overlays to maintain visual consistency across interfaces.',
               code: '''// Custom buildBadge method to match the design
 Widget buildBadge(BuildContext context, String text, bool isSelected) {
   final typography = Theme.of(context).extension<Ux4gTypography>();
@@ -2481,7 +2480,7 @@ Ux4gChipGroup(
 // ── Ux4gPaginationDotted ────────────────────────────────────────────────────────────────
 
 final paginationDottedComponent = WidgetbookComponent(
-  name: 'Pagination Dots Varient',
+  name: 'Pagination Dots Variant',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -2490,8 +2489,9 @@ final paginationDottedComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Ux4gPaginationDotted',
-              description: 'A page-dot indicator for carousels or steppers.',
+              name: 'Pagination Dots Variant',
+              description:
+                  'Pagination divides large datasets into manageable pages, allowing users to navigate through information efficiently. It enhances performance, readability, and user experience in lists, tables, and search results. here.',
               code: '''Ux4gPaginationDotted(
   totalPageCount: 5,
   currentPageIndex: currentPage,
