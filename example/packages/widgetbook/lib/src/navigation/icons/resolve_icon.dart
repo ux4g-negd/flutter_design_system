@@ -17,12 +17,11 @@ Widget resolveIcon(WidgetbookNode node) {
           node.parent is WidgetbookCategory &&
           ![
             'Carousel',
-            'File Upload',
             'Toasts',
             'Toast',
             'Search',
-            'Input Aadhaar',
-            'Input Pan-Card',
+            // 'Input Aadhaar',
+            // 'Input Pan-Card',
             'Input-OTP',
             'Input-OTP',
           ].contains(node.name))) {

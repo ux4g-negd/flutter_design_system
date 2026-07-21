@@ -19,6 +19,7 @@ class ComponentDocs extends StatefulWidget {
     this.props = const [],
     this.center = true,
     this.mobileMockup = false,
+    this.showPreview = true,
   });
 
   final String name;
@@ -28,6 +29,7 @@ class ComponentDocs extends StatefulWidget {
   final List<PropRow> props;
   final bool center;
   final bool mobileMockup;
+  final bool showPreview;
 
   @override
   State<ComponentDocs> createState() => _ComponentDocsState();
@@ -149,84 +151,91 @@ class _ComponentDocsState extends State<ComponentDocs>
 
             const SizedBox(height: 20),
 
-            // ── Tab bar + content ─────────────────────────────────────────
-            _Card(
-              isDark: isDark,
-              child: Column(
-                children: [
-                  // Tab bar
-                  Container(
-                    decoration: BoxDecoration(
-                      color: isDark
-                          ? const Color(0xFF1E2130)
-                          : const Color(0xFFEEF2F7),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
+            if (widget.showPreview) ...[
+              // ── Tab bar + content ─────────────────────────────────────────
+              _Card(
+                isDark: isDark,
+                child: Column(
+                  children: [
+                    // Tab bar
+                    Container(
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? const Color(0xFF1E2130)
+                            : const Color(0xFFEEF2F7),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          topRight: Radius.circular(12),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TabBar(
+                              controller: _tab,
+                              tabs: tabs,
+                              labelColor: scheme.primary,
+                              unselectedLabelColor: isDark
+                                  ? Colors.white38
+                                  : Colors.black38,
+                              labelStyle: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              unselectedLabelStyle:
+                                  const TextStyle(fontSize: 13),
+                              indicator: UnderlineTabIndicator(
+                                borderSide: BorderSide(
+                                  color: scheme.primary,
+                                  width: 2.5,
+                                ),
+                              ),
+                              indicatorSize: TabBarIndicatorSize.label,
+                              dividerColor: Colors.transparent,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TabBar(
-                            controller: _tab,
-                            tabs: tabs,
-                            labelColor: scheme.primary,
-                            unselectedLabelColor: isDark
-                                ? Colors.white38
-                                : Colors.black38,
-                            labelStyle: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            unselectedLabelStyle: const TextStyle(fontSize: 13),
-                            indicator: UnderlineTabIndicator(
-                              borderSide: BorderSide(
-                                color: scheme.primary,
-                                width: 2.5,
-                              ),
-                            ),
-                            indicatorSize: TabBarIndicatorSize.label,
-                            dividerColor: Colors.transparent,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
 
-                  // Tab views
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.75,
-                    child: TabBarView(
-                      controller: _tab,
-                      children: [
-                        // ── Preview ─────────────────────────────────────
-                        _PreviewPane(
-                          center: widget.center,
-                          isDark: isDark,
-                          mobileMockup: widget.mobileMockup,
-                          child: widget.child,
-                        ),
-
-                        // ── Code ────────────────────────────────────────
-                        if (widget.code != null)
-                          _CodePane(
-                            key: ValueKey(widget.code),
-                            code: widget.code!,
+                    // Tab views
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      child: TabBarView(
+                        controller: _tab,
+                        children: [
+                          // ── Preview ─────────────────────────────────────
+                          _PreviewPane(
+                            center: widget.center,
                             isDark: isDark,
-                            onCopy: _copy,
-                            copied: _copied,
+                            mobileMockup: widget.mobileMockup,
+                            child: widget.child,
                           ),
 
-                        // ── Props ────────────────────────────────────────
-                        if (widget.props.isNotEmpty)
-                          _PropsPane(props: widget.props, isDark: isDark),
-                      ],
+                          // ── Code ────────────────────────────────────────
+                          if (widget.code != null)
+                            _CodePane(
+                              key: ValueKey(widget.code),
+                              code: widget.code!,
+                              isDark: isDark,
+                              onCopy: _copy,
+                              copied: _copied,
+                            ),
+
+                          // ── Props ────────────────────────────────────────
+                          if (widget.props.isNotEmpty)
+                            _PropsPane(props: widget.props, isDark: isDark),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+            ] else
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: widget.child,
+              ),
           ],
         ),
       ),

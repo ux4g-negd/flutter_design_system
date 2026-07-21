@@ -758,6 +758,41 @@ final toastComponent = WidgetbookComponent(
   name: 'Toasts',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Toast',
+        description:
+            'Toggle component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Toggles provide a quick and intuitive way to modify system or feature preferences with a single action.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Categories',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            ...Ux4gToastCategory.values
+                .where((c) => c != Ux4gToastCategory.slot)
+                .map(
+                  (c) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Ux4gToast(
+                      category: c,
+                      title:
+                          '${c.name[0].toUpperCase()}${c.name.substring(1)} message',
+                      subtitle: 'Supporting description text.',
+                    ),
+                  ),
+                ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'All Categories',
       builder: (context) => ComponentDocs(
         name: 'Toast',

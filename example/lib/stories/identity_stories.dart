@@ -13,6 +13,56 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
   name: 'Input Aadhaar',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Input Aadhaar',
+        description:
+            'Input-Aadhaar field allow users to securely enter, format and validate their 12-digit unique identification number. They support user interaction by enabling standardized data entry in identity verification, government applications and secure onboarding workflows, ensuring a smooth and compliant user experience.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gAadhaarInputField(
+              value: '',
+              onValueChange: (_) {},
+              label: 'Default',
+              status: Ux4gInputFieldStatus.defaultStatus,
+            ),
+            const SizedBox(height: 16),
+            Ux4gAadhaarInputField(
+              value: '',
+              onValueChange: (_) {},
+              label: 'Error state',
+              status: Ux4gInputFieldStatus.error,
+              caption: 'Please enter a valid Aadhaar number',
+            ),
+            const SizedBox(height: 16),
+            Ux4gAadhaarInputField(
+              value: '1234 5678 9012',
+              onValueChange: (_) {},
+              label: 'Success state',
+              status: Ux4gInputFieldStatus.success,
+            ),
+            const SizedBox(height: 16),
+            Ux4gAadhaarInputField(
+              value: '',
+              onValueChange: (_) {},
+              label: 'Disabled',
+              enabled: false,
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         return StatefulBuilder(
@@ -152,6 +202,56 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
 final panInputFieldComponent = WidgetbookComponent(
   name: 'Input Pan-Card',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Input Pan-Card',
+        description:
+            'Input - Pan Card allows users to enter, format and validate a Permanent Account Number (PAN). It supports standardized data entry across financial, taxation, and banking workflows.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gPanInputField(
+              value: '',
+              onValueChange: (_) {},
+              label: 'Default',
+              status: Ux4gInputFieldStatus.defaultStatus,
+            ),
+            const SizedBox(height: 16),
+            Ux4gPanInputField(
+              value: '',
+              onValueChange: (_) {},
+              label: 'Error state',
+              status: Ux4gInputFieldStatus.error,
+              caption: 'Please enter a valid PAN number',
+            ),
+            const SizedBox(height: 16),
+            Ux4gPanInputField(
+              value: 'ABCDE1234F',
+              onValueChange: (_) {},
+              label: 'Success state',
+              status: Ux4gInputFieldStatus.success,
+            ),
+            const SizedBox(height: 16),
+            Ux4gPanInputField(
+              value: '',
+              onValueChange: (_) {},
+              label: 'Disabled',
+              enabled: false,
+            ),
+          ],
+        ),
+      ),
+    ),
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {

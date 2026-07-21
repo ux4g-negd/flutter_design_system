@@ -8,6 +8,88 @@ final buttonComponent = WidgetbookComponent(
   name: 'Buttons',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Button',
+        description:
+            'Button trigger an action or event, such as submitting a form, opening a dialog or performing a specific task. It provide users with a clear Call to Action (CTA), guiding them through a workflow.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Variants',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: [
+                Ux4gButton(
+                  text: 'Primary',
+                  variant: Ux4gButtonVariant.primary,
+                  onPressed: () {},
+                ),
+                Ux4gButton(
+                  text: 'Secondary',
+                  variant: Ux4gButtonVariant.secondary,
+                  onPressed: () {},
+                ),
+                Ux4gButton(
+                  text: 'Outline',
+                  variant: Ux4gButtonVariant.outline,
+                  onPressed: () {},
+                ),
+                Ux4gButton(
+                  text: 'Ghost',
+                  variant: Ux4gButtonVariant.ghost,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
+            Text(
+              'Icon Variants',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: [
+                Ux4gIconButton(
+                  icon: Icons.favorite,
+                  variant: Ux4gButtonVariant.primary,
+                  onPressed: () {},
+                ),
+                Ux4gIconButton(
+                  icon: Icons.favorite,
+                  variant: Ux4gButtonVariant.secondary,
+                  onPressed: () {},
+                ),
+                Ux4gIconButton(
+                  icon: Icons.favorite,
+                  variant: Ux4gButtonVariant.outline,
+                  onPressed: () {},
+                ),
+                Ux4gIconButton(
+                  icon: Icons.favorite,
+                  variant: Ux4gButtonVariant.ghost,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Primary',
       builder: (context) {
         final typography = Theme.of(context).extension<Ux4gTypography>();

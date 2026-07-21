@@ -1498,6 +1498,80 @@ final checkboxComponent = WidgetbookComponent(
   name: 'Checkbox',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Checkbox',
+        description:
+            'Checkbox present a list of options where users can make multiple selections, a single selection or none at all. They support user interaction by allowing the selection of independent items ensuring that users can easily customize settings, filter search results and submit multi choice forms with clarity.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gCheckbox(value: true, onChanged: (_) {}, label: 'Checked'),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(value: false, onChanged: (_) {}, label: 'Unchecked'),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: null,
+              onChanged: (_) {},
+              label: 'Indeterminate',
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: false,
+              onChanged: (_) {},
+              label: 'Error state',
+              isRequired: true,
+              hasError: true,
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Disabled',
+              enabled: false,
+            ),
+            const SizedBox(height: 32),
+            Text(
+              'Sizes',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Small',
+              size: Ux4gCheckboxSize.small,
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Medium',
+              size: Ux4gCheckboxSize.medium,
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Large',
+              size: Ux4gCheckboxSize.large,
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
         bool? value = false;
@@ -1714,6 +1788,59 @@ class _CheckboxExampleState extends State<CheckboxExample> {
 final toggleComponent = WidgetbookComponent(
   name: 'Switch',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Switch',
+        description:
+            'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Toggles provide a quick and intuitive way to modify system or feature preferences with a single action.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gSwitch(checked: true, onCheckedChange: (_) {}, label: 'On'),
+            const SizedBox(height: 8),
+            Ux4gSwitch(checked: false, onCheckedChange: (_) {}, label: 'Off'),
+            const SizedBox(height: 32),
+            Text(
+              'Sizes',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gSwitch(
+              checked: true,
+              onCheckedChange: (_) {},
+              label: 'Small',
+              size: Ux4gSwitchSize.s,
+            ),
+            const SizedBox(height: 8),
+            Ux4gSwitch(
+              checked: true,
+              onCheckedChange: (_) {},
+              label: 'Medium',
+              size: Ux4gSwitchSize.m,
+            ),
+            const SizedBox(height: 8),
+            Ux4gSwitch(
+              checked: true,
+              onCheckedChange: (_) {},
+              label: 'Large',
+              size: Ux4gSwitchSize.l,
+            ),
+          ],
+        ),
+      ),
+    ),
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
@@ -3476,6 +3603,49 @@ final timePickerComponent = WidgetbookComponent(
 final fileUploadComponent = WidgetbookComponent(
   name: 'File Upload',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'File Upload',
+        description:
+            'File upload allows users to upload and attach one or more files. It shows the upload progress and status of each file.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Border Styles',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: 360,
+              child: Ux4gFileUpload(
+                maxFiles: 5,
+                maxFileSize: 5 * 1024 * 1024,
+                borderStyle: Ux4gFileUploadBorderStyle.solid,
+                onFilesChanged: (_) {},
+                onUpload: (file) async => true,
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: 360,
+              child: Ux4gFileUpload(
+                maxFiles: 5,
+                maxFileSize: 5 * 1024 * 1024,
+                borderStyle: Ux4gFileUploadBorderStyle.dashed,
+                onFilesChanged: (_) {},
+                onUpload: (file) async => true,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
