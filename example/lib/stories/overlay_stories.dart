@@ -803,7 +803,7 @@ final toastComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Toast',
         description:
-            'Toggle component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Toggles provide a quick and intuitive way to modify system or feature preferences with a single action.',
+            'The Toast component displays temporary, non-intrusive notifications to inform users about the outcome of an action, system updates, or important feedback. It appears for a short duration and automatically disappears, ensuring users stay informed without disrupting their current task',
         showPreview: false,
         child: Column(
           mainAxisSize: MainAxisSize.min,

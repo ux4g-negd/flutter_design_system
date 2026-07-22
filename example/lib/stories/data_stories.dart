@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+import 'package:ux4g_flutter_components/src/components/social_links.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';

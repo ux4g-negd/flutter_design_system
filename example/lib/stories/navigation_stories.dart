@@ -6,40 +6,120 @@ import '../widgets/component_docs.dart';
 
 // ── Accordion ─────────────────────────────────────────────────────────────────
 
+class _AccordionShowcase extends StatefulWidget {
+  const _AccordionShowcase();
+
+  @override
+  State<_AccordionShowcase> createState() => _AccordionShowcaseState();
+}
+
+class _AccordionShowcaseState extends State<_AccordionShowcase> {
+  bool _exp1 = false;
+  bool _exp2 = false;
+  bool _exp3 = false;
+  bool _exp4 = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF3F4F6),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Simple Accordion Showcase',
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Live previews taken directly from the simple Accordion showcase blocks in src/index.html.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[700],
+                ),
+          ),
+          const SizedBox(height: 32),
+          Text(
+            'Title Left, Arrow Right',
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall
+                ?.copyWith(fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: 16),
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  expanded: _exp1,
+                  onExpandedChange: (v) => setState(() => _exp1 = v),
+                  child: const Text('Accordion content goes here.'),
+                ),
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  expanded: _exp2,
+                  onExpandedChange: (v) => setState(() => _exp2 = v),
+                  child: const Text('Accordion content goes here.'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 48),
+          Text(
+            'Arrow Left + Title',
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall
+                ?.copyWith(fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: 16),
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  expanded: _exp3,
+                  onExpandedChange: (v) => setState(() => _exp3 = v),
+                  chevronPosition: Ux4gAccordionChevronPosition.leading,
+                  child: const Text('Accordion content goes here.'),
+                ),
+                Ux4gAccordion(
+                  title: 'Accordion Item',
+                  expanded: _exp4,
+                  onExpandedChange: (v) => setState(() => _exp4 = v),
+                  chevronPosition: Ux4gAccordionChevronPosition.leading,
+                  child: const Text('Accordion content goes here.'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 final accordionIntroductionComponent = WidgetbookComponent(
   name: 'Introduction',
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Accordion',
           description:
               'Accordion are used to organize content in a compact, collapsible manner, making it easier for users to navigate and find information without overwhelming them too much content at once.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(
-                child: SizedBox(
-                  width: 300,
-                  child: Ux4gAccordion(
-                    title: 'Accordion Title',
-                    expanded: false,
-                    child: Text('Accordion content goes here.'),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: _AccordionShowcase(),
         );
       },
     ),
