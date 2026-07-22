@@ -168,13 +168,14 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Chips',
                   isInitiallyExpanded: false,
                   children: [
+                    chipIntroductionComponent,
                     choiceChipComponent,
                     filterChipComponent,
                     inputChipComponent,
                     inputChipFieldComponent,
-                    chipGroupComponent,
                   ],
                 ),
+                chipGroupComponent,
                 datePickerComponent,
                 dividerComponent,
                 statusBannerComponent,
@@ -199,17 +200,14 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 fileUploadComponent,
-                WidgetbookFolder(
-                  name: 'Input',
-                  isInitiallyExpanded: false,
-                  children: [inputIntroductionComponent, inputFieldComponent],
-                ),
+                inputFieldComponent,
                 aadhaarInputFieldComponent,
                 panInputFieldComponent,
                 otpInputComponent,
                 journeyTimelineComponent,
                 modalComponent,
                 paginationDottedComponent,
+                popoverComponent,
                 WidgetbookFolder(
                   name: 'Progress Indicator',
                   isInitiallyExpanded: false,
@@ -236,11 +234,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 progressSlaIndicatorComponent,
-                WidgetbookFolder(
-                  name: 'Radio',
-                  isInitiallyExpanded: false,
-                  children: [radioIntroductionComponent, radioButtonComponent],
-                ),
+                radioButtonComponent,
                 resultListComponent, // Result List
                 WidgetbookFolder(
                   name: 'Search',
@@ -274,7 +268,6 @@ class UX4GWidgetbook extends StatelessWidget {
                 timePickerComponent,
                 toastComponent,
                 timeSlotComponent, // TimeSlot
-                popoverComponent,
                 tooltipComponent,
               ],
             ),

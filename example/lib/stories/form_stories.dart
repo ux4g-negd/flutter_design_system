@@ -6,11 +6,11 @@ import '../widgets/component_docs.dart';
 
 // ── Input Field ──────────────────────────────────────────────────────────────
 
-final inputIntroductionComponent = WidgetbookComponent(
-  name: 'Introduction',
+final inputFieldComponent = WidgetbookComponent(
+  name: 'Input',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default',
+      name: 'Introduction',
       builder: (context) => ComponentDocs(
         name: 'Input',
         description:
@@ -63,12 +63,6 @@ final inputIntroductionComponent = WidgetbookComponent(
         ),
       ),
     ),
-  ],
-);
-
-final inputFieldComponent = WidgetbookComponent(
-  name: 'Standard',
-  useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
@@ -833,6 +827,48 @@ String _buildTextAreaCode({
 final textAreaComponent = WidgetbookComponent(
   name: 'TextArea',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        String value = '';
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'TextArea',
+              description:
+                  'Textareas support longer-form text entry with counters, helper messaging, and validation feedback using the UX4G design system.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Example',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: SizedBox(
+                      width: 400,
+                      child: Ux4gTextArea(
+                        label: 'Description',
+                        placeholder: 'Write something...',
+                        value: value,
+                        onValueChange: (v) => setState(() => value = v),
+                        size: Ux4gTextAreaSize.large,
+                        minHeight: Ux4gTextAreaMinHeight.medium,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
@@ -2214,6 +2250,48 @@ Ux4gSwitch(
 final sliderComponent = WidgetbookComponent(
   name: 'Slider',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        double value = 50;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Slider',
+              description:
+                  'Slider is an interactive input control that allows users to select a value or a range of values by dragging a handle along a horizontal track. It provides an intuitive, visually appealing way to adjust continuous settings or explore approximate ranges.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Example',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: SizedBox(
+                      width: 300,
+                      child: Ux4gSlider(
+                        value: value,
+                        min: 0,
+                        max: 100,
+                        size: Ux4gSliderSize.medium,
+                        showMarksAndValues: true,
+                        onValueChange: (v) => setState(() => value = v),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
     // ── 1. Basic Single Slider (Small) ─────────────────────────────────
     WidgetbookUseCase(
       name: 'Slider',
@@ -4096,11 +4174,11 @@ final fileUploadComponent = WidgetbookComponent(
 
 // ── Radio Introduction ────────────────────────────────────────────────────────
 
-final radioIntroductionComponent = WidgetbookComponent(
-  name: 'Introduction',
+final radioButtonComponent = WidgetbookComponent(
+  name: 'Radio',
   useCases: [
     WidgetbookUseCase(
-      name: 'Default',
+      name: 'Introduction',
       builder: (context) {
         String selectedOption = 'Option 1';
         return StatefulBuilder(
@@ -4161,14 +4239,6 @@ final radioIntroductionComponent = WidgetbookComponent(
         );
       },
     ),
-  ],
-);
-
-// ── Radio Button ─────────────────────────────────────────────────────────────────
-
-final radioButtonComponent = WidgetbookComponent(
-  name: 'Radio',
-  useCases: [
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {

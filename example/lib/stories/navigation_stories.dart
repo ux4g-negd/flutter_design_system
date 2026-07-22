@@ -1551,6 +1551,54 @@ Ux4gEmptyState(
 
 // ── Chips ─────────────────────────────────────────────────────────────────────
 
+final chipIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Chips',
+          description:
+              'Chips are compact UI elements that represent discrete information, such as tags, categories, selections, or input. They help users quickly filter, select, or manage items in an interface.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    Ux4gChoiceChip(
+                      text: 'Active Chip',
+                      selected: true,
+                      onClick: () {},
+                    ),
+                    Ux4gChoiceChip(
+                      text: 'Inactive Chip',
+                      selected: false,
+                      onClick: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  ],
+);
+
 final choiceChipComponent = WidgetbookComponent(
   name: 'ChoiceChip',
   useCases: [
@@ -2242,6 +2290,59 @@ final inputChipFieldComponent = WidgetbookComponent(
 final chipGroupComponent = WidgetbookComponent(
   name: 'Chip Group',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Chip Group',
+          description:
+              'A collection of compact interactive chips for filtering or selecting options. Supports Filter (multi-select) and Choice (single-select) types, horizontal and wrapped layouts, and overflow handling for both desktop and mobile contexts.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: Ux4gChipGroup(
+                  arrangement: Ux4gChipGroupArrangement.wrap,
+                  spacing: 8,
+                  runSpacing: 8,
+                  chips: [
+                    Ux4gChoiceChip(
+                      text: 'English',
+                      selected: true,
+                      onClick: () {},
+                    ),
+                    Ux4gChoiceChip(
+                      text: 'हिन्दी',
+                      selected: false,
+                      onClick: () {},
+                    ),
+                    Ux4gChoiceChip(
+                      text: 'தமிழ்',
+                      selected: false,
+                      onClick: () {},
+                    ),
+                    Ux4gChoiceChip(
+                      text: 'తెలుగు',
+                      selected: false,
+                      onClick: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Wrap',
       builder: (context) {

@@ -16,7 +16,7 @@ Widget resolveIcon(WidgetbookNode node) {
       (node is WidgetbookComponent &&
           node.parent is WidgetbookCategory &&
           ![
-            'Carousel',
+            // 'Carousel',
             // 'Toasts',
             'Toast',
             'Search',
