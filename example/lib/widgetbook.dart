@@ -258,11 +258,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 spinnerComponent, // ux4gSpinner
-                WidgetbookFolder(
-                  name: 'Status Pipeline',
-                  isInitiallyExpanded: false,
-                  children: [statusPipelineComponent],
-                ),
+                statusPipelineComponent,
                 WidgetbookFolder(
                   name: 'Stepper',
                   isInitiallyExpanded: false,

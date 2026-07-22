@@ -3123,8 +3123,49 @@ const _statusPipelineProps = [
 ];
 
 final statusPipelineComponent = WidgetbookComponent(
-  name: 'Standard',
+  name: 'Status Pipeline',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Status Pipeline',
+          description:
+              'A Status Pipeline is a UI component that communicates the progression of a multi-step process. It enables users to easily identify completed, current, and upcoming stages, improving clarity and navigation through sequential workflows. The component is available in horizontal and vertical variants, allowing it to adapt to different layouts and use cases.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 380,
+                  child: Ux4gStatusPipeline(
+                    orientation: Ux4gPipelineOrientation.horizontal,
+                    currentStep: 1,
+                    showDescriptions: false,
+                    steps: [
+                      Ux4gPipelineStep(label: 'Submitted'),
+                      Ux4gPipelineStep(label: 'Verification'),
+                      Ux4gPipelineStep(label: 'Inspection'),
+                      Ux4gPipelineStep(label: 'Decision'),
+                      Ux4gPipelineStep(label: 'Issued'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Horizontal — With Labels',
       builder: (context) => ComponentDocs(
