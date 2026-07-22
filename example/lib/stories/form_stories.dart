@@ -6,6 +6,66 @@ import '../widgets/component_docs.dart';
 
 // ── Input Field ──────────────────────────────────────────────────────────────
 
+final inputIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) => ComponentDocs(
+        name: 'Input',
+        description:
+            'Input - Text Field allow users to enter, edit and submit information such as names, emails, passwords or search queries. They support user interaction by enabling data input in forms, searches and workflows, ensuring a smooth and efficient user experience.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Default',
+              placeholder: 'Enter text...',
+              value: '',
+              onValueChange: (_) {},
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Error state',
+              placeholder: 'Enter text...',
+              value: 'Invalid input',
+              onValueChange: (_) {},
+              status: Ux4gInputFieldStatus.error,
+              caption: 'Error message here',
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Success state',
+              placeholder: 'Enter text...',
+              value: 'Valid input',
+              onValueChange: (_) {},
+              status: Ux4gInputFieldStatus.success,
+              caption: 'Looks good!',
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Disabled',
+              placeholder: 'Enter text...',
+              value: '',
+              onValueChange: (_) {},
+              enabled: false,
+            ),
+          ],
+        ),
+      ),
+    ),
+  ],
+);
+
 final inputFieldComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [
@@ -1203,6 +1263,54 @@ String _buildSearchFieldCode({
   return buf.toString();
 }
 
+// ── Search Introduction ────────────────────────────────────────────────────────
+
+final searchIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        String value = '';
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Search',
+              description:
+                  'Search component allows users to quickly find relevant information within an application. It enhances navigation, improves content discoverability and supports text based, voice or filter-assisted search functionality.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'States',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gSearchField(
+                    value: value,
+                    onValueChange: (v) => setState(() => value = v),
+                    placeholder: 'Default Search...',
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gSearchField(
+                    value: '',
+                    onValueChange: (_) {},
+                    placeholder: 'Disabled Search...',
+                    enabled: false,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+  ],
+);
 final searchFieldComponent = WidgetbookComponent(
   name: 'Search',
   useCases: [
@@ -2108,7 +2216,7 @@ final sliderComponent = WidgetbookComponent(
   useCases: [
     // ── 1. Basic Single Slider (Small) ─────────────────────────────────
     WidgetbookUseCase(
-      name: 'Basic Single Slider (Small)',
+      name: 'Slider',
       builder: (context) {
         double value = 50;
         return StatefulBuilder(
@@ -2258,7 +2366,7 @@ final sliderComponent = WidgetbookComponent(
 
     // ── 2. Basic Range Slider (Medium) ─────────────────────────────────
     WidgetbookUseCase(
-      name: 'Basic Range Slider (Medium)',
+      name: 'Range Slider',
       builder: (context) {
         RangeValues range = const RangeValues(20, 90);
         return StatefulBuilder(
@@ -2617,6 +2725,61 @@ final otpInputComponent = WidgetbookComponent(
   name: 'Input-OTP',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Input-OTP',
+        description:
+            'Input - OTP component consists of multiple input fields designed for entering a one-time password. It automatically advances focus between fields and provides clear feedback for a secure and seamless verification experience.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '',
+              onChanged: (_) {},
+              label: 'Default',
+              status: Ux4gOtpInputStatus.defaultStatus,
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '123456',
+              onChanged: (_) {},
+              label: 'Error state',
+              status: Ux4gOtpInputStatus.error,
+              captionVariant: Ux4gOtpCaptionVariant.plain,
+              captionText: 'Invalid OTP entered',
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '123456',
+              onChanged: (_) {},
+              label: 'Success state',
+              status: Ux4gOtpInputStatus.success,
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '',
+              onChanged: (_) {},
+              label: 'Disabled',
+              enabled: false,
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         String otpValue = '';
@@ -2798,8 +2961,73 @@ final otpInputComponent = WidgetbookComponent(
   ],
 );
 
-// ── Action Dropdown ───────────────────────────────────────────────────────────
+// ── Dropdown Introduction ──────────────────────────────────────────────────────
 
+final dropdownIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        List<String> selectedSelectionIds = [];
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Dropdown',
+              description:
+                  'Dropdown menu is a user interface element that reveals a hidden list of options, links or actions when you click or hover over a trigger button.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'States',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Action Dropdown'),
+                  const SizedBox(height: 8),
+                  Ux4gActionDropdown(
+                    options: const [
+                      Ux4gActionDropdownOption(id: '1', label: 'Action 1'),
+                      Ux4gActionDropdownOption(id: '2', label: 'Action 2'),
+                    ],
+                    onOptionClick: (_) {},
+                    triggerBuilder: (context, toggle) => Ux4gButton(
+                      text: 'Actions',
+                      variant: Ux4gButtonVariant.outline,
+                      onPressed: toggle,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Selection Dropdown'),
+                  const SizedBox(height: 8),
+                  Ux4gSelectionDropdown(
+                    label: 'Selection',
+                    placeholder: 'Select option',
+                    options: const [
+                      Ux4gDropdownOption(id: '1', label: 'Option 1'),
+                      Ux4gDropdownOption(id: '2', label: 'Option 2'),
+                    ],
+                    selectedOptionIds: selectedSelectionIds,
+                    onSelectionChange: (ids) =>
+                        setState(() => selectedSelectionIds = ids),
+                    mode: Ux4gDropdownMode.single,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+  ],
+);
+
+// ── Action Dropdown ───────────────────────────────────────────────────────────
 String? _actionDropdownDefaultSelectedId;
 String? _actionDropdownMoreSelectedId;
 List<String> _selectionDropdownSingleSelected = [];
@@ -3197,10 +3425,50 @@ final selectionDropdownComponent = WidgetbookComponent(
 );
 
 // ── Date Picker ───────────────────────────────────────────────────────────────
-
 final datePickerComponent = WidgetbookComponent(
   name: 'Date Picker',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        DateTime? selectedDate;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Date Picker',
+              description:
+                  'Date Picker component allows users to select a single date or a range of dates using a calendar interface. It ensures accurate and consistent date selection across workflows.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'States',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gDatePicker(
+                    mode: Ux4gDatePickerMode.single,
+                    placeholder: 'Default Date Picker...',
+                    onDateSelected: (d) => setState(() => selectedDate = d),
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gDatePicker(
+                    mode: Ux4gDatePickerMode.single,
+                    placeholder: 'Disabled Date Picker...',
+                    onDateSelected: (d) => setState(() => selectedDate = d),
+                    enabled: false,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
     // ── 1. Single Date ───────────────────────────────────────────────────
     WidgetbookUseCase(
       name: 'Single Date',
@@ -3486,10 +3754,48 @@ final datePickerComponent = WidgetbookComponent(
 );
 
 // ── Time Picker ───────────────────────────────────────────────────────────────
-
 final timePickerComponent = WidgetbookComponent(
   name: 'TimePicker',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        TimeOfDay? selectedTime;
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Time Picker',
+              description:
+                  'Time picker allows users to select a specific time or time range. It ensures inputs are formatted correctly and eliminates the need for manual typing. They are frequently used for booking appointments, setting alarms and scheduling calendar events.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'States',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gTimePicker(
+                    placeholder: 'Default Time Picker...',
+                    onTimeSelected: (t) => setState(() => selectedTime = t),
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gTimePicker(
+                    placeholder: 'Disabled Time Picker...',
+                    onTimeSelected: (t) => setState(() => selectedTime = t),
+                    enabled: false,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
     // ── 1. Standard ──────────────────────────────────────────────────────
     WidgetbookUseCase(
       name: 'Standard',
@@ -3616,9 +3922,9 @@ final fileUploadComponent = WidgetbookComponent(
           children: [
             Text(
               'Border Styles',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 16),
             SizedBox(
@@ -3782,6 +4088,76 @@ final fileUploadComponent = WidgetbookComponent(
               onUpload: (file) async => true,
             ),
           ),
+        );
+      },
+    ),
+  ],
+);
+
+// ── Radio Introduction ────────────────────────────────────────────────────────
+
+final radioIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        String selectedOption = 'Option 1';
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Radio Button',
+              description:
+                  'Radio Button presents a list of mutually exclusive options where users can make exactly one selection from the group.It supports user interaction by allowing the selection of a single choice out of multiple predefined items, ensuring that users can easily define precise preferences, answer single choice binary questions, and submit forms with distinct clarity.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'States',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gRadioButton<String>(
+                    label: 'Default',
+                    value: 'Option 1',
+                    groupValue: selectedOption,
+                    onChanged: (val) {
+                      if (val != null) setState(() => selectedOption = val);
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gRadioButton<String>(
+                    label: 'Selected',
+                    value: 'Option 2',
+                    groupValue: 'Option 2',
+                    onChanged: (_) {},
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gRadioButton<String>(
+                    label: 'Disabled',
+                    value: 'Option 3',
+                    groupValue: selectedOption,
+                    onChanged: (_) {},
+                    enabled: false,
+                  ),
+                  const SizedBox(height: 16),
+                  Ux4gRadioButton<String>(
+                    label: 'Error State',
+                    value: 'Option 4',
+                    groupValue: selectedOption,
+                    onChanged: (val) {
+                      if (val != null) setState(() => selectedOption = val);
+                    },
+                    status: Ux4gRadioButtonStatus.error,
+                  ),
+                ],
+              ),
+            );
+          },
         );
       },
     ),

@@ -17,13 +17,13 @@ Widget resolveIcon(WidgetbookNode node) {
           node.parent is WidgetbookCategory &&
           ![
             'Carousel',
-            'Toasts',
+            // 'Toasts',
             'Toast',
             'Search',
             // 'Input Aadhaar',
             // 'Input Pan-Card',
-            'Input-OTP',
-            'Input-OTP',
+            // 'Input-OTP',
+            // 'Input-OTP',
           ].contains(node.name))) {
     return const Icon(Icons.folder, size: 16);
   } else if (node is WidgetbookComponent) {
