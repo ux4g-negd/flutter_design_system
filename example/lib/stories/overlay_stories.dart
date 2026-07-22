@@ -10,6 +10,47 @@ final modalComponent = WidgetbookComponent(
   name: 'Modal',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Modal',
+          description:
+              'Modal component displays important information, confirmations, or actions in a focused overlay above the main interface. It requires user interaction before returning to the underlying content.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Ux4gModal(
+                  headerTitle: 'Confirmation',
+                  bodyText: 'This is an inline preview of the modal component.',
+                  alignment: Ux4gModalAlignment.leftAligned,
+                  footerButtons: Ux4gModalFooterButtons.twoButtons,
+                  primaryButtonText: 'Confirm',
+                  secondaryButtonText: 'Cancel',
+                  onDismiss: () {},
+                  onPrimaryClick: () {},
+                  onSecondaryClick: () {},
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Interactive Trigger',
       builder: (context) => ComponentDocs(
         name: 'Modal — Trigger',
@@ -770,9 +811,9 @@ final toastComponent = WidgetbookComponent(
           children: [
             Text(
               'Categories',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 16),
             ...Ux4gToastCategory.values
@@ -901,6 +942,39 @@ toastState.showToast(
 final tooltipComponent = WidgetbookComponent(
   name: 'Tooltip',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Tooltip',
+          description:
+              'Tooltip is a small, contextual popup that appears when you hover over, tap or focus on a UI element (like a button or icon).\nIt provides quick explanatory text or a hint about the element\'s function without permanently cluttering the screen.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gTooltip(
+                  tooltipText: 'Interactive Tooltip',
+                  title: 'Information',
+                  icon: Icons.view_in_ar_outlined,
+                  placement: Ux4gTooltipPlacement.top,
+                  child: Ux4gButton(text: 'Hover or Tap Me', onPressed: null),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) => ComponentDocs(

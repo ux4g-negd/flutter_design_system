@@ -4,6 +4,50 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
+// ── Feedback Introduction ────────────────────────────────────────────────────────
+
+final feedbackIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Feedback',
+              description:
+                  'Feedback allows users to provide ratings and share opinions about their experience. It supports multiple feedback formats, including thumbs, stars, NPS, and emoji ratings.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Example',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: 320,
+                    child: Ux4gFeedbackFormStar(
+                      improvementOptions: const ['App speed', 'UI design'],
+                      onSubmit: (rating, chip, comment) {},
+                      onSkip: () {},
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+  ],
+);
+
 // ── Ux4gFeedbackFormStar ───────────────────────────────────────────────────────────────
 
 final feedbackFormStarComponent = WidgetbookComponent(

@@ -187,6 +187,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Feedback',
                   isInitiallyExpanded: false,
                   children: [
+                    feedbackIntroductionComponent,
                     feedbackFormStarComponent,
                     feedbackFormCsatComponent,
                     feedbackFormNpsComponent,
@@ -208,7 +209,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   name: 'Progress Indicator',
                   isInitiallyExpanded: false,
                   children: [
-                    // progressIntroductionComponent,
+                    progressIntroductionComponent,
                     WidgetbookFolder(
                       name: 'Circular Progress',
                       isInitiallyExpanded: false,
