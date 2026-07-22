@@ -10,31 +10,12 @@ final tagComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Tag',
           description:
               'Tag is a small, interactive element used to label, categorize or filter content. Tag allow users to quickly identify metadata and make selections.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(
-                child: Ux4gTag(
-                  text: 'Example Tag',
-                  colorScheme: Ux4gTagColor.brand,
-                  size: Ux4gTagSize.m,
-                ),
-              ),
-            ],
-          ),
+          child: _TagVisualShowcase(),
         );
       },
     ),
@@ -1499,19 +1480,141 @@ final dividerComponent = WidgetbookComponent(
           description:
               'Divider is a thin line that groups content in lists and containers. It helps in  improving content organization by separating content visually, making it easier for users to scan and understand information.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(child: SizedBox(width: 300, child: Ux4gDivider())),
-            ],
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Visual demonstration of horizontal and vertical dividers.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                // 1. Horizontal Divider Section
+                Text(
+                  'Horizontal Divider',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Item 1',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Ux4gDivider(
+                        orientation: Ux4gDividerOrientation.horizontal,
+                      ),
+                      SizedBox(height: 16),
+                      Text(
+                        'Item 2',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                // 2. Vertical Divider Section
+                Text(
+                  'Vertical Divider',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Item 1',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                      SizedBox(width: 16),
+                      Ux4gDivider(
+                        orientation: Ux4gDividerOrientation.vertical,
+                        height: 20,
+                      ),
+                      SizedBox(width: 16),
+                      Text(
+                        'Item 2',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                      SizedBox(width: 16),
+                      Ux4gDivider(
+                        orientation: Ux4gDividerOrientation.vertical,
+                        height: 20,
+                      ),
+                      SizedBox(width: 16),
+                      Text(
+                        'Item 3',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -2026,4 +2129,110 @@ Widget _buildShowcaseHorizontalCard(BuildContext context, {bool isCompact = fals
             ),
     ),
   );
+}
+
+class _TagVisualShowcase extends StatelessWidget {
+  const _TagVisualShowcase();
+
+  @override
+  Widget build(BuildContext context) {
+    const icon = Icon(Icons.hexagon_outlined, size: 14);
+
+    final colors = [
+      (label: 'Neutral', color: Ux4gTagColor.neutral),
+      (label: 'Brand', color: Ux4gTagColor.brand),
+      (label: 'Success', color: Ux4gTagColor.success),
+      (label: 'Warning', color: Ux4gTagColor.warning),
+      (label: 'Error', color: Ux4gTagColor.error),
+      (label: 'Info', color: Ux4gTagColor.info),
+    ];
+
+    final styles = [
+      (title: 'Tonal Tags', style: Ux4gTagStyle.tonal),
+      (title: 'Filled Tags', style: Ux4gTagStyle.filled),
+      (title: 'Outline Tags', style: Ux4gTagStyle.outline),
+      (title: 'Text Tags', style: Ux4gTagStyle.text),
+    ];
+
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of tag style variants (Tonal, Filled, Outline, Text) across all semantic color schemes.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: styles.map((s) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      s.title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF111827),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24.0,
+                        vertical: 20.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Wrap(
+                        spacing: 24,
+                        runSpacing: 16,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: colors.map((c) {
+                          return Ux4gTag(
+                            text: c.label,
+                            style: s.style,
+                            colorScheme: c.color,
+                            leadingContent: icon,
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
 }

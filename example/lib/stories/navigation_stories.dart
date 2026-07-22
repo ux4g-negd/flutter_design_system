@@ -699,31 +699,12 @@ final statusBannerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Draft Status',
           description:
               'Draft Status Banner component displays a persistent notification indicating that content is currently in draft mode. It helps users distinguish unpublished content from published information.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              Ux4gStatusBanner(
-                variant: Ux4gBannerVariant.warningLight,
-                title: 'Application is in Draft status',
-                titleStyle: Theme.of(
-                  context,
-                ).extension<Ux4gTypography>()?.tS_default,
-              ),
-            ],
-          ),
+          child: _DraftStatusVisualShowcase(),
         );
       },
     ),
@@ -1368,31 +1349,12 @@ final emptyStateComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Empty State',
           description:
               'An Empty state screen is used to prompt the user to take action or provide input when there is no existing data or content to display.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(
-                child: Ux4gEmptyState(
-                  title: 'No results found',
-                  description: 'Try adjusting your search.',
-                  icon: Icons.search_off,
-                ),
-              ),
-            ],
-          ),
+          child: _EmptyStateVisualShowcase(),
         );
       },
     ),
@@ -1637,42 +1599,12 @@ final chipIntroductionComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Chips',
           description:
               'Chips are compact UI elements that represent discrete information, such as tags, categories, selections, or input. They help users quickly filter, select, or manage items in an interface.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              Center(
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    Ux4gChoiceChip(
-                      text: 'Active Chip',
-                      selected: true,
-                      onClick: () {},
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'Inactive Chip',
-                      selected: false,
-                      onClick: () {},
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          child: _ChipVisualShowcase(),
         );
       },
     ),
@@ -2373,53 +2305,12 @@ final chipGroupComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Chip Group',
           description:
               'A collection of compact interactive chips for filtering or selecting options. Supports Filter (multi-select) and Choice (single-select) types, horizontal and wrapped layouts, and overflow handling for both desktop and mobile contexts.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              Center(
-                child: Ux4gChipGroup(
-                  arrangement: Ux4gChipGroupArrangement.wrap,
-                  spacing: 8,
-                  runSpacing: 8,
-                  chips: [
-                    Ux4gChoiceChip(
-                      text: 'English',
-                      selected: true,
-                      onClick: () {},
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'हिन्दी',
-                      selected: false,
-                      onClick: () {},
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'தமிழ்',
-                      selected: false,
-                      onClick: () {},
-                    ),
-                    Ux4gChoiceChip(
-                      text: 'తెలుగు',
-                      selected: false,
-                      onClick: () {},
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          child: _ChipGroupVisualShowcase(),
         );
       },
     ),
@@ -2768,31 +2659,12 @@ final paginationDottedComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Pagination',
           description:
-              'Pagination divides large datasets into manageable pages, allowing users to navigate through information efficiently. It enhances performance, readability, and user experience in lists, tables, and search results. here.',
+              'Pagination divides large datasets into manageable pages, allowing users to navigate through information efficiently. It enhances performance, readability, and user experience in lists, tables, and search results.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              Center(
-                child: Ux4gPaginationIndicator(
-                  totalPageCount: 5,
-                  currentPageIndex: 2,
-                  onPageChange: (_) {},
-                ),
-              ),
-            ],
-          ),
+          child: _PaginationDottedVisualShowcase(),
         );
       },
     ),
@@ -3115,3 +2987,985 @@ Ux4gPaginationIndicator(
 );
 
 final paginationComponent = paginationDottedComponent;
+
+class _PaginationDottedVisualShowcase extends StatefulWidget {
+  const _PaginationDottedVisualShowcase();
+
+  @override
+  State<_PaginationDottedVisualShowcase> createState() =>
+      _PaginationDottedVisualShowcaseState();
+}
+
+class _PaginationDottedVisualShowcaseState
+    extends State<_PaginationDottedVisualShowcase> {
+  int _pageIndex1 = 2; // Default dots with arrows (as in image)
+  int _pageIndex2 = 2; // Capsule with arrows
+  int _pageIndex3 = 2; // Capsule without arrows
+  int _pageIndex4 = 2; // Capsule with right-aligned arrows
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of pagination dot indicators, capsule container variants, and chevron alignments.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+
+          // 1. Standard Dot Pagination (Matching Image Card)
+          _buildPaginationSectionCard(
+            title: 'Pagination Dots with Chevrons',
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Ux4gPaginationIndicator(
+                totalPageCount: 7,
+                currentPageIndex: _pageIndex1,
+                showArrows: true,
+                onPageChange: (i) => setState(() => _pageIndex1 = i),
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 2. Capsule Variant (With Arrows)
+          _buildPaginationSectionCard(
+            title: 'Capsule Variant with Arrows',
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Ux4gPaginationIndicator(
+                totalPageCount: 7,
+                currentPageIndex: _pageIndex2,
+                variant: Ux4gPaginationVariant.capsule,
+                showArrows: true,
+                onPageChange: (i) => setState(() => _pageIndex2 = i),
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 3. Capsule Variant (Without Arrows)
+          _buildPaginationSectionCard(
+            title: 'Capsule Variant without Arrows',
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Ux4gPaginationIndicator(
+                totalPageCount: 7,
+                currentPageIndex: _pageIndex3,
+                variant: Ux4gPaginationVariant.capsule,
+                showArrows: false,
+                onPageChange: (i) => setState(() => _pageIndex3 = i),
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 4. Capsule Variant (Right-Aligned Arrows)
+          _buildPaginationSectionCard(
+            title: 'Capsule Variant with Right-Aligned Arrows',
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Ux4gPaginationIndicator(
+                totalPageCount: 7,
+                currentPageIndex: _pageIndex4,
+                variant: Ux4gPaginationVariant.capsule,
+                showArrows: true,
+                arrowsOnRight: true,
+                onPageChange: (i) => setState(() => _pageIndex4 = i),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPaginationSectionCard({
+    required String title,
+    required Widget child,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF111827),
+            ),
+          ),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _ChipVisualShowcase extends StatefulWidget {
+  const _ChipVisualShowcase();
+
+  @override
+  State<_ChipVisualShowcase> createState() => _ChipVisualShowcaseState();
+}
+
+class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
+  // Card 1 state
+  bool _card1ChoiceSelected = true;
+  bool _card1FilterSelected = true;
+
+  // Card 2 state
+  int _card2SizeIndex = 1; // 0 for S, 1 for M
+  bool _card2IconSelected = false;
+  bool _card2AvatarSelected = true;
+
+  // Card 3 state
+  int _card3ChoiceIndex = 0;
+  final Set<String> _card3Filters = {'Design System', 'Flutter'};
+  final List<String> _card3Tags = ['Flutter', 'Dart', 'UX4G', 'UI Kit'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'A compact tour of the chip patterns used across the source-backed stories.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+          // Card 1: Chip Types & Variants
+          _buildChipSectionCard(
+            title: 'Chip Types & Variants',
+            child: Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Ux4gChoiceChip(
+                  text: 'Choice Chip',
+                  selected: _card1ChoiceSelected,
+                  onClick: () => setState(() => _card1ChoiceSelected = !_card1ChoiceSelected),
+                ),
+                Ux4gFilterChip(
+                  text: 'Filter Chip',
+                  selected: _card1FilterSelected,
+                  leadingContent: _card1FilterSelected
+                      ? const Icon(Icons.check, size: 14, color: Color(0xFF4F46E5))
+                      : null,
+                  onClick: () => setState(() => _card1FilterSelected = !_card1FilterSelected),
+                ),
+                Ux4gInputChip(
+                  text: 'Deletable Input',
+                  onDismiss: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Deletable Input Chip dismissed'),
+                        duration: Duration(seconds: 1),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          // Card 2: Sizes & Configurations
+          _buildChipSectionCard(
+            title: 'Sizes & Configurations',
+            child: Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Ux4gChoiceChip(
+                  text: 'Small (S)',
+                  size: Ux4gChoiceChipSize.s,
+                  selected: _card2SizeIndex == 0,
+                  onClick: () => setState(() => _card2SizeIndex = 0),
+                ),
+                Ux4gChoiceChip(
+                  text: 'Medium (M)',
+                  size: Ux4gChoiceChipSize.m,
+                  selected: _card2SizeIndex == 1,
+                  onClick: () => setState(() => _card2SizeIndex = 1),
+                ),
+                Ux4gChoiceChip(
+                  text: 'With Icon',
+                  selected: _card2IconSelected,
+                  leadingContent: const Icon(Icons.star_outline, size: 16),
+                  onClick: () => setState(() => _card2IconSelected = !_card2IconSelected),
+                ),
+                Ux4gChoiceChip(
+                  text: 'With Avatar',
+                  selected: _card2AvatarSelected,
+                  leadingContent: const CircleAvatar(
+                    radius: 10,
+                    backgroundImage: NetworkImage(
+                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                    ),
+                  ),
+                  onClick: () => setState(() => _card2AvatarSelected = !_card2AvatarSelected),
+                ),
+                Ux4gChoiceChip(
+                  text: 'Disabled',
+                  selected: false,
+                  enabled: false,
+                  onClick: () {},
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          // Card 3: Interactive Working Live Patterns
+          _buildChipSectionCard(
+            title: 'Interactive Chip Patterns (Live Working)',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Single-Select Category (Choice Chips)',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[800],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: List.generate(4, (index) {
+                    final labels = ['All', 'Components', 'Templates', 'Guidelines'];
+                    return Ux4gChoiceChip(
+                      text: labels[index],
+                      selected: _card3ChoiceIndex == index,
+                      onClick: () => setState(() => _card3ChoiceIndex = index),
+                    );
+                  }),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  'Multi-Select Filters (Filter Chips)',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[800],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: ['Design System', 'Flutter', 'Web', 'Mobile'].map((filter) {
+                    final isSelected = _card3Filters.contains(filter);
+                    return Ux4gFilterChip(
+                      text: filter,
+                      selected: isSelected,
+                      leadingContent: isSelected
+                          ? const Icon(Icons.check, size: 14, color: Color(0xFF4F46E5))
+                          : null,
+                      onClick: () {
+                        setState(() {
+                          if (isSelected) {
+                            _card3Filters.remove(filter);
+                          } else {
+                            _card3Filters.add(filter);
+                          }
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Removable Input Tags (Input Chips)',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                    if (_card3Tags.length < 4)
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            _card3Tags.clear();
+                            _card3Tags.addAll(['Flutter', 'Dart', 'UX4G', 'UI Kit']);
+                          });
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                          child: Text(
+                            'Reset Tags',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF4F46E5),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                _card3Tags.isEmpty
+                    ? Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade100,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          'All tags dismissed. Click "Reset Tags" above to restore.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[700],
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      )
+                    : Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: _card3Tags.map((tag) {
+                          return Ux4gInputChip(
+                            text: tag,
+                            onDismiss: () {
+                              setState(() {
+                                _card3Tags.remove(tag);
+                              });
+                            },
+                          );
+                        }).toList(),
+                      ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _EmptyStateVisualShowcase extends StatelessWidget {
+  const _EmptyStateVisualShowcase();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of semantic empty state variants including search results, empty data, coming soon, and error states.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+          // Grid layout for 4 empty state variants
+          Wrap(
+            spacing: 24,
+            runSpacing: 24,
+            children: [
+              // 1. No Results
+              _buildEmptyStateCard(
+                title: 'No Results Preset',
+                child: Ux4gEmptyState(
+                  variant: Ux4gEmptyStateVariant.noResults,
+                  title: 'No results found',
+                  subtitle: 'Did you mean:',
+                  description: 'Driving License, Ration Card',
+                  buttonText: 'Clear all filters',
+                  onButtonPressed: () {},
+                ),
+              ),
+              // 2. No Data
+              _buildEmptyStateCard(
+                title: 'No Data Preset',
+                child: Ux4gEmptyState(
+                  variant: Ux4gEmptyStateVariant.noData,
+                  title: 'No active applications',
+                  subtitle: 'Start your application easily',
+                  description: 'by clicking on the button below.',
+                  buttonText: 'Start application',
+                  onButtonPressed: () {},
+                ),
+              ),
+              // 3. Coming Soon
+              _buildEmptyStateCard(
+                title: 'Coming Soon Preset',
+                child: Ux4gEmptyState(
+                  variant: Ux4gEmptyStateVariant.comingSoon,
+                  title: 'Coming soon',
+                  subtitle: 'This feature is under development.',
+                  buttonText: 'Go Back',
+                  onButtonPressed: () {},
+                ),
+              ),
+              // 4. Error State
+              _buildEmptyStateCard(
+                title: 'Error State Preset',
+                child: Ux4gEmptyState(
+                  variant: Ux4gEmptyStateVariant.error,
+                  title: 'Could not load data',
+                  subtitle: 'Last updated: 4 minutes ago',
+                  buttonText: 'Refresh',
+                  onButtonPressed: () {},
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmptyStateCard({required String title, required Widget child}) {
+    return Container(
+      width: 340,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF111827),
+            ),
+          ),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _DraftStatusVisualShowcase extends StatelessWidget {
+  const _DraftStatusVisualShowcase();
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final ux4gTypography = Theme.of(context).extension<Ux4gTypography>();
+
+    final titleColor = isDark ? const Color(0xFFF9FAFB) : const Color(0xFF111827);
+    final warningBg = isDark ? const Color(0xFFAD4E00) : const Color(0xFFFFE7BF);
+    final warningText = isDark ? const Color(0xFFFFC973) : const Color(0xFFAD4E00);
+
+    final warningPillStyle =
+        ux4gTypography?.lM_default?.copyWith(color: warningText) ??
+        TextStyle(color: warningText, fontSize: 12, fontWeight: FontWeight.w500);
+
+    final stepBadge = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: warningBg,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text('Step 3 of 5 Document Upload', style: warningPillStyle),
+    );
+
+    final dateBadge = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: warningBg,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text('16 Apr', style: warningPillStyle),
+    );
+
+    final solidBannerBg = isDark ? const Color(0xFFFDBA74) : const Color(0xFFEA580C);
+    final solidBannerTextColor = isDark ? const Color(0xFF111827) : const Color(0xFFF9FAFB);
+    final solidBannerTitleStyle =
+        ux4gTypography?.bS_strong?.copyWith(color: solidBannerTextColor) ??
+        TextStyle(color: solidBannerTextColor, fontWeight: FontWeight.bold);
+
+    final savingBgColor = isDark ? const Color(0xFF873C05) : const Color(0xFFFFF7E6);
+    final savingTextColor = isDark ? const Color(0xFFD9D9D9) : const Color(0xFF737373);
+    final savingTextStyle =
+        ux4gTypography?.bS_default?.copyWith(color: savingTextColor) ??
+        TextStyle(color: savingTextColor, fontSize: 14);
+
+    final successBgColor = isDark ? const Color(0xFF00381F) : const Color(0xFFF2FCEF);
+    final successIconColor = isDark ? const Color(0xFF1AA64A) : const Color(0xFF128937);
+    final successTextStyle =
+        ux4gTypography?.bS_default?.copyWith(color: isDark ? Colors.white : const Color(0xFF111827)) ??
+        TextStyle(color: isDark ? Colors.white : const Color(0xFF111827), fontSize: 14);
+
+    final errorBgColor = isDark ? const Color(0xFF60150F) : const Color(0xFFFFF8F8);
+    final errorIconColor = isDark ? const Color(0xFFF55E57) : const Color(0xFFDB372D);
+    final errorTextStyle =
+        ux4gTypography?.bS_default?.copyWith(color: isDark ? Colors.white : const Color(0xFF111827)) ??
+        const TextStyle(fontSize: 14);
+    final actionTextColor = isDark ? const Color(0xFFFDBA74) : const Color(0xFF9A3412);
+    final actionTextStyle =
+        ux4gTypography?.lXL_default?.copyWith(color: actionTextColor) ??
+        TextStyle(color: actionTextColor, fontWeight: FontWeight.bold);
+
+    final successRightTextColor = isDark ? const Color(0xFF80DA88) : const Color(0xFF00522C);
+    final successRightTextStyle =
+        ux4gTypography?.bM_default?.copyWith(color: successRightTextColor) ??
+        TextStyle(color: successRightTextColor, fontSize: 14);
+
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Implementation Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Visual demonstration of various Draft Status Bar types and save states.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 1. General Draft Status
+          Text(
+            'General Draft Status',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.warningLight,
+            leadingIcon: Container(
+              padding: const EdgeInsets.all(6),
+              decoration: const BoxDecoration(
+                color: Color(0xFFFFE7BF),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.inventory_2_outlined, size: 16, color: Color(0xFFAD4E00)),
+            ),
+            title: 'Income Certificate Application',
+            badge: stepBadge,
+            subtitle: 'Last saved: 10 Apr 2026',
+            actionsAlignment: WrapAlignment.end,
+            actions: [
+              TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Discard',
+                  style: TextStyle(color: Color(0xFFDB372D), fontWeight: FontWeight.w600),
+                ),
+              ),
+              Ux4gButton(
+                text: 'Resume',
+                size: Ux4gButtonSize.small,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+
+          // 2. Expiration Warnings
+          Text(
+            'Expiration Warnings',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          // 2a. Expiring in 5 days
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.warningLight,
+            leadingIcon: Container(
+              padding: const EdgeInsets.all(6),
+              decoration: const BoxDecoration(
+                color: Color(0xFFFFE7BF),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.inventory_2_outlined, size: 16, color: Color(0xFFAD4E00)),
+            ),
+            title: 'Your draft expires in 5 days',
+            badge: dateBadge,
+          ),
+          const SizedBox(height: 12),
+          // 2b. Solid warning (Expires tomorrow)
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.warningSolid,
+            backgroundColor: solidBannerBg,
+            leadingIcon: Container(
+              padding: const EdgeInsets.all(6),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.inventory_2_outlined, size: 16, color: Color(0xFFEA580C)),
+            ),
+            title: 'Your draft expires tomorrow. Submit today',
+            titleStyle: solidBannerTitleStyle,
+          ),
+          const SizedBox(height: 12),
+          // 2c. Expired error banner
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.errorLight,
+            backgroundColor: errorBgColor,
+            title: 'Draft expired on 9 April 2026',
+            titleStyle: errorTextStyle,
+            leadingIcon: Icon(Icons.error_outline, color: errorIconColor),
+            trailingIcon: Text('Action', style: actionTextStyle),
+          ),
+          const SizedBox(height: 24),
+
+          // 3. Auto-save States
+          Text(
+            'Auto-save States',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          // 3a. Saving state
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.warningLight,
+            backgroundColor: savingBgColor,
+            title: '',
+            trailingIcon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: Ux4gSpinner(strokeWidth: 2.0),
+                ),
+                const SizedBox(width: 8),
+                Text('Saving', style: savingTextStyle),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          // 3b. Saved timestamp state
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.successLight,
+            backgroundColor: successBgColor,
+            title: '',
+            trailingIcon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.check_circle_outline, size: 18, color: successIconColor),
+                const SizedBox(width: 4),
+                Text('Saved 3:14 PM', style: successRightTextStyle),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 4. Success State
+          Text(
+            'Success State',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Ux4gStatusBanner(
+            borderColor: Colors.transparent,
+            variant: Ux4gBannerVariant.successLight,
+            backgroundColor: successBgColor,
+            title: 'Draft saved successfully at 3:14 PM',
+            titleStyle: successTextStyle,
+            leadingIcon: Icon(Icons.check_circle_outline, color: successIconColor),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ChipGroupVisualShowcase extends StatefulWidget {
+  const _ChipGroupVisualShowcase();
+
+  @override
+  State<_ChipGroupVisualShowcase> createState() => _ChipGroupVisualShowcaseState();
+}
+
+class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
+  int _selectedRow1 = 2; // Under Review
+  final Set<int> _selectedRow2 = {1, 3}; // Full-Time, Remote
+
+  Widget _buildBadge(BuildContext context, String text, bool isSelected) {
+    final typography = Theme.of(context).extension<Ux4gTypography>();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+    final surface = Theme.of(context).colorScheme.surface;
+    final countStyle = typography?.lS_default ??
+        const TextStyle(fontSize: 11, fontWeight: FontWeight.w500);
+
+    return Container(
+      constraints: const BoxConstraints(
+        minWidth: 18,
+        minHeight: 18,
+      ),
+      padding: EdgeInsets.symmetric(horizontal: text.length <= 2 ? 0 : 4),
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.transparent : primary,
+        borderRadius: BorderRadius.circular(100),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: countStyle.copyWith(
+          color: surface,
+          height: 1.0,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Interactive chip group patterns for application status filtering, employment types, and custom badges.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+          _buildChipSectionCard(
+            title: 'Application Status Filters with Badges',
+            child: Ux4gChipGroup(
+              arrangement: Ux4gChipGroupArrangement.wrap,
+              spacing: 12,
+              chips: [
+                Ux4gChoiceChip(
+                  text: 'All',
+                  selected: _selectedRow1 == 0,
+                  onClick: () => setState(() => _selectedRow1 = 0),
+                  trailingContent: _buildBadge(context, '62', _selectedRow1 == 0),
+                ),
+                Ux4gChoiceChip(
+                  text: 'Pending',
+                  selected: _selectedRow1 == 1,
+                  onClick: () => setState(() => _selectedRow1 = 1),
+                  trailingContent: _buildBadge(context, '3', _selectedRow1 == 1),
+                ),
+                Ux4gChoiceChip(
+                  text: 'Under Review',
+                  selected: _selectedRow1 == 2,
+                  onClick: () => setState(() => _selectedRow1 = 2),
+                  trailingContent: _buildBadge(context, '12', _selectedRow1 == 2),
+                ),
+                Ux4gChoiceChip(
+                  text: 'Approved',
+                  selected: _selectedRow1 == 3,
+                  onClick: () => setState(() => _selectedRow1 = 3),
+                  trailingContent: _buildBadge(context, '41', _selectedRow1 == 3),
+                ),
+                Ux4gChoiceChip(
+                  text: 'Rejected',
+                  selected: _selectedRow1 == 4,
+                  onClick: () => setState(() => _selectedRow1 = 4),
+                  trailingContent: _buildBadge(context, '6', _selectedRow1 == 4),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          _buildChipSectionCard(
+            title: 'Employment Type Filters',
+            child: Ux4gChipGroup(
+              arrangement: Ux4gChipGroupArrangement.wrap,
+              spacing: 12,
+              chips: [
+                Ux4gFilterChip(
+                  text: 'All',
+                  selected: _selectedRow2.contains(0),
+                  onClick: () => setState(() {
+                    _selectedRow2.contains(0)
+                        ? _selectedRow2.remove(0)
+                        : _selectedRow2.add(0);
+                  }),
+                ),
+                Ux4gFilterChip(
+                  text: 'Full-Time',
+                  selected: _selectedRow2.contains(1),
+                  onClick: () => setState(() {
+                    _selectedRow2.contains(1)
+                        ? _selectedRow2.remove(1)
+                        : _selectedRow2.add(1);
+                  }),
+                ),
+                Ux4gFilterChip(
+                  text: 'Part-Time',
+                  selected: _selectedRow2.contains(2),
+                  onClick: () => setState(() {
+                    _selectedRow2.contains(2)
+                        ? _selectedRow2.remove(2)
+                        : _selectedRow2.add(2);
+                  }),
+                ),
+                Ux4gFilterChip(
+                  text: 'Remote',
+                  selected: _selectedRow2.contains(3),
+                  onClick: () => setState(() {
+                    _selectedRow2.contains(3)
+                        ? _selectedRow2.remove(3)
+                        : _selectedRow2.add(3);
+                  }),
+                ),
+                Ux4gFilterChip(
+                  text: 'Hybrid',
+                  selected: _selectedRow2.contains(4),
+                  onClick: () => setState(() {
+                    _selectedRow2.contains(4)
+                        ? _selectedRow2.remove(4)
+                        : _selectedRow2.add(4);
+                  }),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Widget _buildChipSectionCard({
+  required String title,
+  required Widget child,
+}) {
+  return Container(
+    width: double.infinity,
+    padding: const EdgeInsets.all(20.0),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12.0),
+      border: Border.all(color: const Color(0xFFE5E7EB)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.02),
+          blurRadius: 6,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF111827),
+          ),
+        ),
+        const SizedBox(height: 16),
+        child,
+      ],
+    ),
+  );
+}

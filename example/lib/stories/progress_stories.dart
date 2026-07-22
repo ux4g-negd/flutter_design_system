@@ -950,25 +950,12 @@ final spinnerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        return ComponentDocs(
+        return const ComponentDocs(
           name: 'Spinner (Loader)',
           description:
               'Spinner component is a visual indicator used to represent loading, processing or system activity. It provides feedback to users that an operation is in progress and helps prevent confusion when waiting for content to load.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(child: Ux4gSpinner(size: 40, strokeWidth: 4)),
-            ],
-          ),
+          child: _SpinnerVisualShowcase(),
         );
       },
     ),
@@ -1436,33 +1423,262 @@ final progressSlaIndicatorComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final typography = Theme.of(context).extension<Ux4gTypography>()!;
+
+        Widget buildLinearStack(Ux4gProgressShape shape) {
+          return Column(
+            children: [
+              Ux4gLinearProgress(
+                value: 0.50,
+                icon: Icons.hexagon_outlined,
+                iconColor: const Color(0xFF6A4EFF),
+                iconBackgroundColor: const Color(0xFF6A4EFF).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: shape,
+                showPercentage: true,
+                gradientColors: const [Color(0xFF6A4EFF), Color(0xFF9B59B6)],
+              ),
+              const SizedBox(height: 16),
+              Ux4gLinearProgress(
+                value: 0.50,
+                icon: Icons.hexagon_outlined,
+                iconColor: const Color(0xFFF39C12),
+                iconBackgroundColor: const Color(0xFFF39C12).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: shape,
+                showPercentage: true,
+                gradientColors: const [Color(0xFFFFAE00), Color(0xFFFF5F00)],
+              ),
+              const SizedBox(height: 16),
+              Ux4gLinearProgress(
+                value: 0.50,
+                icon: Icons.hexagon_outlined,
+                iconColor: const Color(0xFFE74C3C),
+                iconBackgroundColor: const Color(0xFFE74C3C).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: shape,
+                showPercentage: true,
+                gradientColors: const [Color(0xFFFFB3AE), Color(0xFFE74C3C)],
+              ),
+              const SizedBox(height: 16),
+              Ux4gLinearProgress(
+                value: 0.50,
+                icon: Icons.hexagon_outlined,
+                iconColor: const Color(0xFF27AE60),
+                iconBackgroundColor: const Color(0xFF27AE60).withValues(alpha: 0.12),
+                label: 'Label',
+                hint: 'Hint',
+                height: 10,
+                shape: shape,
+                showPercentage: true,
+                gradientColors: const [Color(0xFF90EE90), Color(0xFF27AE60)],
+              ),
+            ],
+          );
+        }
+
         return ComponentDocs(
           name: 'Progress SLA Indicator',
           description:
               'An SLA progress indicator visually tracks the time remaining to fulfill a guaranteed service or task. It communicates progress and status through color and supporting information.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(
-                child: Ux4gCircularProgress(
-                  value: 0.75,
-                  size: Ux4gCircularProgressSize.xl,
-                  strokeWidth: 8,
-                  strokeCap: StrokeCap.round,
-                  progressColor: Colors.blue,
-                  centerValueText: '75%',
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Visual Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  'Demonstration of circular and linear SLA progress indicators with status colors, badges, sharp, and rounded bars.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(24.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Section 1: SLA Circular Progress
+                      const Text(
+                        'SLA Circular Progress',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF111827),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            _circularSlaVariant(
+                              typography: typography,
+                              progressColor: const Color(0xFF6A4EFF),
+                              gradient: const SweepGradient(
+                                transform: GradientRotation(-math.pi / 2),
+                                colors: [Color(0xFFDCD4FF), Color(0xFF6A4EFF)],
+                              ),
+                              footerColor: const Color(0xFFEFEAFF),
+                              footerTextColor: const Color(0xFF6A4EFF),
+                            ),
+                            const SizedBox(width: 48),
+                            _circularSlaVariant(
+                              typography: typography,
+                              progressColor: const Color(0xFFFFA827),
+                              gradient: const SweepGradient(
+                                transform: GradientRotation(-math.pi / 2),
+                                colors: [Color(0xFFFFF2D9), Color(0xFFFFA827)],
+                              ),
+                              footerColor: const Color(0xFFFFF7E6),
+                              footerTextColor: const Color(0xFFFFA827),
+                            ),
+                            const SizedBox(width: 48),
+                            _circularSlaVariant(
+                              typography: typography,
+                              progressColor: const Color(0xFFF55E57),
+                              descriptionColor: const Color(0xFFB3251E),
+                              gradient: const SweepGradient(
+                                transform: GradientRotation(-math.pi / 2),
+                                colors: [Color(0xFFFFECEE), Color(0xFFF55E57)],
+                              ),
+                              footerColor: const Color(0xFFFFF0F0),
+                              footerTextColor: const Color(0xFFF55E57),
+                            ),
+                            const SizedBox(width: 48),
+                            _circularSlaVariant(
+                              typography: typography,
+                              progressColor: const Color(0xFF1AA64A),
+                              gradient: const SweepGradient(
+                                transform: GradientRotation(-math.pi / 2),
+                                colors: [Color(0xFFDFF9E8), Color(0xFF1AA64A)],
+                              ),
+                              footerColor: const Color(0xFFF2FCEF),
+                              footerTextColor: const Color(0xFF1AA64A),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 48),
+
+                      // Section 2: Linear Progress
+                      const Text(
+                        'Linear Progress',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF111827),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          final isWide = constraints.maxWidth > 700;
+                          return isWide
+                              ? Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Sharp',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFF6B7280),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 16),
+                                          buildLinearStack(Ux4gProgressShape.sharp),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 48),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Rounded',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFF6B7280),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 16),
+                                          buildLinearStack(Ux4gProgressShape.rounded),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      'Sharp',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xFF6B7280),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    buildLinearStack(Ux4gProgressShape.sharp),
+                                    const SizedBox(height: 32),
+                                    const Text(
+                                      'Rounded',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xFF6B7280),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    buildLinearStack(Ux4gProgressShape.rounded),
+                                  ],
+                                );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -2044,4 +2260,110 @@ Widget _circularSlaVariant({
       ),
     ),
   );
+}
+
+class _SpinnerVisualShowcase extends StatelessWidget {
+  const _SpinnerVisualShowcase();
+
+  @override
+  Widget build(BuildContext context) {
+    final sizes = [
+      (size: 48.0, stroke: 4.5),
+      (size: 36.0, stroke: 3.5),
+      (size: 28.0, stroke: 3.0),
+      (size: 20.0, stroke: 2.5),
+      (size: 14.0, stroke: 2.0),
+    ];
+
+    final rows = [
+      (label: 'Full', percentage: 90.0),
+      (label: 'Split', percentage: 50.0),
+      (label: 'Partial', percentage: 20.0),
+    ];
+
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of spinner arc fill variations (Full, Split, Partial) across 5 standardized size scale steps.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.0),
+              border: Border.all(color: const Color(0xFFE5E7EB)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 6,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Column(
+              children: rows.map((r) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 80,
+                        child: Text(
+                          r.label,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: sizes.map((s) {
+                            return SizedBox(
+                              width: 56,
+                              height: 56,
+                              child: Center(
+                                child: Ux4gSpinner(
+                                  size: s.size,
+                                  strokeWidth: s.stroke,
+                                  percentage: r.percentage,
+                                  color: Ux4gColors.primary,
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
