@@ -269,6 +269,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 timePickerComponent,
                 toastComponent,
                 timeSlotComponent, // TimeSlot
+                popoverComponent,
                 tooltipComponent,
               ],
             ),

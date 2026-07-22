@@ -960,20 +960,127 @@ final tooltipComponent = WidgetbookComponent(
                   context,
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
               ),
-              const SizedBox(height: 16),
-              const Center(
-                child: Ux4gTooltip(
-                  tooltipText: 'Interactive Tooltip',
-                  title: 'Information',
-                  icon: Icons.view_in_ar_outlined,
-                  placement: Ux4gTooltipPlacement.top,
-                  child: Ux4gButton(text: 'Hover or Tap Me', onPressed: null),
-                ),
+              const SizedBox(height: 32),
+              const Wrap(
+                spacing: 32,
+                runSpacing: 32,
+                alignment: WrapAlignment.center,
+                children: [
+                  Ux4gTooltip(
+                    tooltipText: 'Top Tooltip',
+                    placement: Ux4gTooltipPlacement.top,
+                    child: Ux4gButton(text: 'Top', onPressed: null),
+                  ),
+                  Ux4gTooltip(
+                    tooltipText: 'Bottom Tooltip',
+                    placement: Ux4gTooltipPlacement.bottom,
+                    child: Ux4gButton(text: 'Bottom', onPressed: null),
+                  ),
+                  Ux4gTooltip(
+                    tooltipText: 'Left Tooltip',
+                    placement: Ux4gTooltipPlacement.left,
+                    child: Ux4gButton(text: 'Left', onPressed: null),
+                  ),
+                  Ux4gTooltip(
+                    tooltipText: 'Right Tooltip',
+                    placement: Ux4gTooltipPlacement.right,
+                    child: Ux4gButton(text: 'Right', onPressed: null),
+                  ),
+                ],
               ),
+              const SizedBox(height: 16),
             ],
           ),
         );
       },
+    ),
+    WidgetbookUseCase(
+      name: 'Top Placement',
+      builder: (context) => ComponentDocs(
+        name: 'Top Placement',
+        description: 'Tooltip placed at the top of the target element.',
+        code: '''Ux4gTooltip(
+  tooltipText: 'Top Tooltip',
+  placement: Ux4gTooltipPlacement.top,
+  child: const Ux4gButton(text: 'Top', onPressed: null),
+);''',
+        child: Padding(
+          padding: EdgeInsets.all(40),
+          child: Center(
+            child: Ux4gTooltip(
+              tooltipText: 'Top Tooltip',
+              placement: Ux4gTooltipPlacement.top,
+              child: Ux4gButton(text: 'Top', onPressed: null),
+            ),
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Bottom Placement',
+      builder: (context) => ComponentDocs(
+        name: 'Bottom Placement',
+        description: 'Tooltip placed at the bottom of the target element.',
+        code: '''Ux4gTooltip(
+  tooltipText: 'Bottom Tooltip',
+  placement: Ux4gTooltipPlacement.bottom,
+  child: const Ux4gButton(text: 'Bottom', onPressed: null),
+);''',
+        child: Padding(
+          padding: EdgeInsets.all(40),
+          child: Center(
+            child: Ux4gTooltip(
+              tooltipText: 'Bottom Tooltip',
+              placement: Ux4gTooltipPlacement.bottom,
+              child: Ux4gButton(text: 'Bottom', onPressed: null),
+            ),
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Left Placement',
+      builder: (context) => ComponentDocs(
+        name: 'Left Placement',
+        description: 'Tooltip placed to the left of the target element.',
+        code: '''Ux4gTooltip(
+  tooltipText: 'Left Tooltip',
+  placement: Ux4gTooltipPlacement.left,
+  child: const Ux4gButton(text: 'Left', onPressed: null),
+);''',
+        child: Padding(
+          padding: EdgeInsets.all(40),
+          child: Center(
+            child: Ux4gTooltip(
+              tooltipText: 'Left Tooltip',
+              placement: Ux4gTooltipPlacement.left,
+              child: Ux4gButton(text: 'Left', onPressed: null),
+            ),
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
+      name: 'Right Placement',
+      builder: (context) => ComponentDocs(
+        name: 'Right Placement',
+        description: 'Tooltip placed to the right of the target element.',
+        code: '''Ux4gTooltip(
+  tooltipText: 'Right Tooltip',
+  placement: Ux4gTooltipPlacement.right,
+  child: const Ux4gButton(text: 'Right', onPressed: null),
+);''',
+        child: Padding(
+          padding: EdgeInsets.all(40),
+          child: Center(
+            child: Ux4gTooltip(
+              tooltipText: 'Right Tooltip',
+              placement: Ux4gTooltipPlacement.right,
+              child: Ux4gButton(text: 'Right', onPressed: null),
+            ),
+          ),
+        ),
+      ),
     ),
     WidgetbookUseCase(
       name: 'Interactive',
@@ -1339,14 +1446,332 @@ Ux4gTooltip(
         );
       },
     ),
+  ],
+);
+
+// ── Popover ───────────────────────────────────────────────────────────────────
+
+final popoverComponent = WidgetbookComponent(
+  name: 'Popover',
+  useCases: [
     WidgetbookUseCase(
-      name: 'Popover',
+      name: 'Introduction',
       builder: (context) {
-        final typography = Ux4gTheme.typography(context);
         return ComponentDocs(
           name: 'Popover',
           description:
               'Popover displays additional information or actions in a lightweight overlay triggered by user interaction. It can contain interactive content such as buttons, links, and form controls.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 32),
+              const Wrap(
+                spacing: 32,
+                runSpacing: 32,
+                alignment: WrapAlignment.center,
+                children: [
+                  Ux4gTooltip(
+                    isPersistent: true,
+                    enableUserInput: true,
+                    placement: Ux4gTooltipPlacement.top,
+                    backgroundColor: Colors.white,
+                    contentColor: Colors.black,
+                    maxWidth: 200,
+                    customContent: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'Top Popover',
+                        style: TextStyle(color: Colors.black87),
+                      ),
+                    ),
+                    child: Ux4gButton(text: 'Top', onPressed: null),
+                  ),
+                  Ux4gTooltip(
+                    isPersistent: true,
+                    enableUserInput: true,
+                    placement: Ux4gTooltipPlacement.bottom,
+                    backgroundColor: Colors.white,
+                    contentColor: Colors.black,
+                    maxWidth: 200,
+                    customContent: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'Bottom Popover',
+                        style: TextStyle(color: Colors.black87),
+                      ),
+                    ),
+                    child: Ux4gButton(text: 'Bottom', onPressed: null),
+                  ),
+                  Ux4gTooltip(
+                    isPersistent: true,
+                    enableUserInput: true,
+                    placement: Ux4gTooltipPlacement.left,
+                    backgroundColor: Colors.white,
+                    contentColor: Colors.black,
+                    maxWidth: 200,
+                    customContent: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'Left Popover',
+                        style: TextStyle(color: Colors.black87),
+                      ),
+                    ),
+                    child: Ux4gButton(text: 'Left', onPressed: null),
+                  ),
+                  Ux4gTooltip(
+                    isPersistent: true,
+                    enableUserInput: true,
+                    placement: Ux4gTooltipPlacement.right,
+                    backgroundColor: Colors.white,
+                    contentColor: Colors.black,
+                    maxWidth: 200,
+                    customContent: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'Right Popover',
+                        style: TextStyle(color: Colors.black87),
+                      ),
+                    ),
+                    child: Ux4gButton(text: 'Right', onPressed: null),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Top Placement',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Top Placement',
+          description: 'Popover placed at the top of the target element.',
+          code: '''Ux4gTooltip(
+  isPersistent: true,
+  enableUserInput: true,
+  placement: Ux4gTooltipPlacement.top,
+  backgroundColor: Colors.white,
+  contentColor: Colors.black,
+  maxWidth: 200,
+  customContent: const Padding(
+    padding: EdgeInsets.all(12),
+    child: Text('Top Popover', style: TextStyle(color: Colors.black87)),
+  ),
+  child: const Ux4gButton(text: 'Top', onPressed: () {}),
+);''',
+          child: Padding(
+            padding: EdgeInsets.all(40),
+            child: Center(
+              child: Ux4gTooltip(
+                isPersistent: true,
+                enableUserInput: true,
+                placement: Ux4gTooltipPlacement.top,
+                backgroundColor: Colors.white,
+                contentColor: Colors.black,
+                maxWidth: 200,
+                customContent: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'Top Popover',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+                child: Ux4gButton(text: 'Top', onPressed: () {}),
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Bottom Placement',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Bottom Placement',
+          description: 'Popover placed at the bottom of the target element.',
+          code: '''Ux4gTooltip(
+  isPersistent: true,
+  enableUserInput: true,
+  placement: Ux4gTooltipPlacement.bottom,
+  backgroundColor: Colors.white,
+  contentColor: Colors.black,
+  maxWidth: 200,
+  customContent: const Padding(
+    padding: EdgeInsets.all(12),
+    child: Text('Bottom Popover', style: TextStyle(color: Colors.black87)),
+  ),
+  child: const Ux4gButton(text: 'Bottom', onPressed: () {}),
+);''',
+          child: Padding(
+            padding: EdgeInsets.all(40),
+            child: Center(
+              child: Ux4gTooltip(
+                isPersistent: true,
+                enableUserInput: true,
+                placement: Ux4gTooltipPlacement.bottom,
+                backgroundColor: Colors.white,
+                contentColor: Colors.black,
+                maxWidth: 200,
+                customContent: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'Bottom Popover',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+                child: Ux4gButton(text: 'Bottom', onPressed: () {}),
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Left Placement',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Left Placement',
+          description: 'Popover placed to the left of the target element.',
+          code: '''Ux4gTooltip(
+  isPersistent: true,
+  enableUserInput: true,
+  placement: Ux4gTooltipPlacement.left,
+  backgroundColor: Colors.white,
+  contentColor: Colors.black,
+  maxWidth: 200,
+  customContent: const Padding(
+    padding: EdgeInsets.all(12),
+    child: Text('Left Popover', style: TextStyle(color: Colors.black87)),
+  ),
+  child: const Ux4gButton(text: 'Left', onPressed: () {}),
+);''',
+          child: Padding(
+            padding: EdgeInsets.all(40),
+            child: Center(
+              child: Ux4gTooltip(
+                isPersistent: true,
+                enableUserInput: true,
+                placement: Ux4gTooltipPlacement.left,
+                backgroundColor: Colors.white,
+                contentColor: Colors.black,
+                maxWidth: 200,
+                customContent: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'Left Popover',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+                child: Ux4gButton(text: 'Left', onPressed: () {}),
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Right Placement',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Right Placement',
+          description: 'Popover placed to the right of the target element.',
+          code: '''Ux4gTooltip(
+  isPersistent: true,
+  enableUserInput: true,
+  placement: Ux4gTooltipPlacement.right,
+  backgroundColor: Colors.white,
+  contentColor: Colors.black,
+  maxWidth: 200,
+  customContent: const Padding(
+    padding: EdgeInsets.all(12),
+    child: Text('Right Popover', style: TextStyle(color: Colors.black87)),
+  ),
+  child: const Ux4gButton(text: 'Right', onPressed: () {}),
+);''',
+          child: Padding(
+            padding: EdgeInsets.all(40),
+            child: Center(
+              child: Ux4gTooltip(
+                isPersistent: true,
+                enableUserInput: true,
+                placement: Ux4gTooltipPlacement.right,
+                backgroundColor: Colors.white,
+                contentColor: Colors.black,
+                maxWidth: 200,
+                customContent: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'Right Popover',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+                child: Ux4gButton(text: 'Right', onPressed: () {}),
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Basic Popover',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Basic Popover',
+          description: 'A simple popover containing just text.',
+          code: '''Ux4gTooltip(
+  isPersistent: true,
+  enableUserInput: true,
+  placement: Ux4gTooltipPlacement.bottom,
+  backgroundColor: Colors.white,
+  contentColor: Colors.black,
+  maxWidth: 300,
+  customContent: const Padding(
+    padding: EdgeInsets.all(12),
+    child: Text('This is a basic popover.', style: TextStyle(color: Colors.black87)),
+  ),
+  child: const Ux4gButton(text: 'Basic', onPressed: () {}),
+);''',
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              child: Ux4gTooltip(
+                isPersistent: true,
+                enableUserInput: true,
+                placement: Ux4gTooltipPlacement.bottom,
+                backgroundColor: Colors.white,
+                contentColor: Colors.black,
+                maxWidth: 300,
+                customContent: const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'This is a basic popover.',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+                child: Ux4gButton(text: 'Basic Popover', onPressed: () {}),
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Complex Popover',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Complex Popover',
+          description:
+              'A popover containing a complex layout with icons, titles, links, and multiple sections.',
           code: '''Ux4gTooltip(
   isPersistent: true,
   enableUserInput: true,
