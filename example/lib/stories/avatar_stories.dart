@@ -4,6 +4,38 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
+final avatarIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Avatar',
+          description:
+              'Avatar is a visual representation of a user, business, or entity. It provide quick visual identification in headers, comments, chat messages, and user profiles.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gAvatar(initials: 'AB', size: Ux4gAvatarSize.xl),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  ],
+);
 final avatarComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [

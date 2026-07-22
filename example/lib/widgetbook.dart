@@ -140,13 +140,18 @@ class UX4GWidgetbook extends StatelessWidget {
                 WidgetbookFolder(
                   name: 'Accordion',
                   isInitiallyExpanded: false,
-                  children: [accordionComponent, accordionGroupComponent],
+                  children: [
+                    accordionIntroductionComponent,
+                    accordionComponent,
+                    accordionGroupComponent,
+                  ],
                 ),
                 appHeaderComponent,
                 WidgetbookFolder(
                   name: 'Avatar',
                   isInitiallyExpanded: false,
                   children: [
+                    avatarIntroductionComponent,
                     avatarComponent,
                     avatarGroupComponent,
                     profileAvatarComponent,

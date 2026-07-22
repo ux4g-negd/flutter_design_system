@@ -6,6 +6,46 @@ import '../widgets/component_docs.dart';
 
 // ── Accordion ─────────────────────────────────────────────────────────────────
 
+final accordionIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Accordion',
+          description:
+              'Accordion are used to organize content in a compact, collapsible manner, making it easier for users to navigate and find information without overwhelming them too much content at once.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 300,
+                  child: Ux4gAccordion(
+                    title: 'Accordion Title',
+                    expanded: false,
+                    child: Text('Accordion content goes here.'),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  ],
+);
+
 final accordionComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [
@@ -1245,6 +1285,37 @@ final statusBannerComponent = WidgetbookComponent(
 final emptyStateComponent = WidgetbookComponent(
   name: 'Empty State',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Empty State',
+          description:
+              'An Empty state screen is used to prompt the user to take action or provide input when there is no existing data or content to display.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gEmptyState(
+                  title: 'No results found',
+                  description: 'Try adjusting your search.',
+                  icon: Icons.search_off,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(

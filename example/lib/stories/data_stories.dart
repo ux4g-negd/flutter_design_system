@@ -3302,6 +3302,65 @@ final carouselComponent = WidgetbookComponent(
   name: 'Carousel',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Carousel',
+          description:
+              'Carousel is a horizontally scrollable layout that displays a series of items. It shows a collection of carousel items that can be scrolled on and off the screen.\nIt may come with controls (e.g. arrows or buttons) allowing the user to manually scroll through. Carousel UI elements are commonly seen in the following design patterns: Image gallery, Onboarding screens, Product catalogs.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gCarousel(
+                  height: 200,
+                  viewportFraction: 0.8,
+                  items: [
+                    Card(
+                      color: Colors.blue,
+                      child: Center(
+                        child: Text(
+                          '1',
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Colors.red,
+                      child: Center(
+                        child: Text(
+                          '2',
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Colors.green,
+                      child: Center(
+                        child: Text(
+                          '3',
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Image carousel',
       builder: (context) => ComponentDocs(
         name: 'Carousel',

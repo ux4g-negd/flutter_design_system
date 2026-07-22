@@ -8,6 +8,37 @@ final tagComponent = WidgetbookComponent(
   name: 'Tags',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Tag',
+          description:
+              'Tag is a small, interactive element used to label, categorize or filter content. Tag allow users to quickly identify metadata and make selections.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gTag(
+                  text: 'Example Tag',
+                  colorScheme: Ux4gTagColor.brand,
+                  size: Ux4gTagSize.m,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Styles',
       builder: (context) => ComponentDocs(
         name: 'Tag',
@@ -268,6 +299,40 @@ Ux4gTag(text: 'Medium',  size: Ux4gTagSize.l);''',
 final cardComponent = WidgetbookComponent(
   name: 'Cards',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Card',
+          description:
+              'Card is a flexible, container like component that visually groups related pieces of information and actions about a single subject. It supports images, text and actions in a flexible content container.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 300,
+                  child: Ux4gCard(
+                    title: 'Card Title',
+                    subtitle: 'Subtitle here',
+                    body: 'This is a simple card preview.',
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Basic content',
       builder: (context) => ComponentDocs(
@@ -1389,6 +1454,31 @@ class _SmallTag extends StatelessWidget {
 final dividerComponent = WidgetbookComponent(
   name: 'Divider',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Divider',
+          description:
+              'Divider is a thin line that groups content in lists and containers. It helps in  improving content organization by separating content visually, making it easier for users to scan and understand information.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(child: SizedBox(width: 300, child: Ux4gDivider())),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Horizontal',
       builder: (context) => ComponentDocs(

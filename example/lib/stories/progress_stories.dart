@@ -1409,6 +1409,40 @@ final progressSlaIndicatorComponent = WidgetbookComponent(
   name: 'Progress SLA Indicator',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Progress SLA Indicator',
+          description:
+              'An SLA progress indicator visually tracks the time remaining to fulfill a guaranteed service or task. It communicates progress and status through color and supporting information.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gCircularProgress(
+                  value: 0.75,
+                  size: Ux4gCircularProgressSize.xl,
+                  strokeWidth: 8,
+                  strokeCap: StrokeCap.round,
+                  progressColor: Colors.blue,
+                  centerValueText: '75%',
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Circular Progress',
       builder: (context) {
         final typography = Theme.of(context).extension<Ux4gTypography>()!;
