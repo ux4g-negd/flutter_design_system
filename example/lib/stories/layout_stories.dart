@@ -11,6 +11,40 @@ final appHeaderComponent = WidgetbookComponent(
   name: 'App Header',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Mobile App Header',
+          description:
+              'Mobile App Header serves as the top navigation area of an application, providing users with key contextual information, navigation controls and quick access to important actions while ensuring a consistent and intuitive user experience.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 320,
+                  child: Ux4gAppHeader(
+                    title: 'Home',
+                    variant: Ux4gAppHeaderVariant.light,
+                    showBackButton: true,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
         name: 'AppHeader',

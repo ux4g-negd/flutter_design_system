@@ -138,6 +138,49 @@ const _compactStepperProps = [
   ),
 ];
 
+final stepperIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Stepper',
+          description:
+              'Stepper visually represents a multi-step process, guiding users through a sequence of actions. It enhances usability by breaking down complex workflows into manageable steps.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: Ux4gStepper(
+                  totalSteps: 4,
+                  currentStep: 1,
+                  orientation: StepperOrientation.horizontal,
+                  steps: [
+                    Ux4gStepItem(title: 'Personal'),
+                    Ux4gStepItem(title: 'Address'),
+                    Ux4gStepItem(title: 'Documents'),
+                    Ux4gStepItem(title: 'Review'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  ],
+);
+
 final stepperComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [

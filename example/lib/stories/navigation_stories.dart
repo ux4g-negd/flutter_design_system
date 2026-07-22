@@ -2585,6 +2585,37 @@ final paginationDottedComponent = WidgetbookComponent(
   name: 'Pagination Dots Variant',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Pagination',
+          description:
+              'Pagination divides large datasets into manageable pages, allowing users to navigate through information efficiently. It enhances performance, readability, and user experience in lists, tables, and search results. here.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: Ux4gPaginationIndicator(
+                  totalPageCount: 5,
+                  currentPageIndex: 2,
+                  onPageChange: (_) {},
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         int current = 0;

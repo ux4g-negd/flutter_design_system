@@ -9,6 +9,37 @@ import '../widgets/component_docs.dart';
 final biometricComponent = WidgetbookComponent(
   name: 'Biometric Verification',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Biometric Capture',
+          description:
+              'Biometric capture is the process of collecting a user\'s unique physical (e.g., face) characteristics through a digital interface. It acts as a secure, frictionless alternative to passwords by verifying a person\'s identity.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 300,
+                  height: 500,
+                  child: _BiometricFlowPreview(mockSuccess: true),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     // ── 0. Default Flow ──────────────────────────────────────────────────
     WidgetbookUseCase(
       name: 'Default',

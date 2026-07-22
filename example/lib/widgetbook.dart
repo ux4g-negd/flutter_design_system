@@ -266,7 +266,11 @@ class UX4GWidgetbook extends StatelessWidget {
                 WidgetbookFolder(
                   name: 'Stepper',
                   isInitiallyExpanded: false,
-                  children: [stepperComponent, compactStepperComponent],
+                  children: [
+                    stepperIntroductionComponent,
+                    stepperComponent,
+                    compactStepperComponent,
+                  ],
                 ),
                 toggleComponent, // Switch
                 tagComponent,
