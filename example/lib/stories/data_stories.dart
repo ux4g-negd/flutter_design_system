@@ -1278,6 +1278,43 @@ final resultListComponent = WidgetbookComponent(
   name: 'Result List',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Result List Row',
+          description:
+              'A Result List Row displays a single item within a list of search results, records, or data entries. It presents key information in a structured format, enabling users to quickly scan, compare, and access relevant details or actions.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: Ux4gResultList(
+                  title: 'Application #2024-001',
+                  statusTag: 'Approved',
+                  tagColorScheme: Ux4gTagColor.success,
+                  actionButtonText: 'View',
+                  onActionPressed: () {},
+                  details: const [
+                    Ux4gResultDetail(label: 'Applicant', value: 'Ravi Kumar'),
+                    Ux4gResultDetail(label: 'Date', value: '12 May 2025'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
         name: 'Result List',
@@ -2662,6 +2699,50 @@ final journeyTimelineComponent = WidgetbookComponent(
   name: 'Journey Timeline',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Journey Timeline',
+          description:
+              'A composite component combining a Stepper (progress indicators) with an Info List (content items) to visualise multi-step processes, application statuses, and service journeys.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 300,
+                  child: Ux4gJourneyTimeline(
+                    currentStep: 1,
+                    steps: [
+                      Ux4gJourneyStep(
+                        title: 'Application Submitted',
+                        date: '01 Jan 2025',
+                        state: Ux4gJourneyStepState.completed,
+                      ),
+                      Ux4gJourneyStep(
+                        title: 'Under Review',
+                        date: '05 Jan 2025',
+                        state: Ux4gJourneyStepState.current,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
         name: 'JourneyTimeline',
@@ -3587,6 +3668,31 @@ final socialLinkListComponent = WidgetbookComponent(
 final timeSlotComponent = WidgetbookComponent(
   name: 'Time Slot',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Time Slot',
+          description:
+              'A Time Slot represents a specific period available for scheduling, booking, or appointments. It helps users select a convenient date and time, ensuring organized planning and efficient allocation of resources.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(child: Ux4gTimeslotShowcase()),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {

@@ -948,6 +948,31 @@ final spinnerComponent = WidgetbookComponent(
   name: 'Spinner (Loader)',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Spinner (Loader)',
+          description:
+              'Spinner component is a visual indicator used to represent loading, processing or system activity. It provides feedback to users that an operation is in progress and helps prevent confusion when waiting for content to load.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(child: Ux4gSpinner(size: 40, strokeWidth: 4)),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
