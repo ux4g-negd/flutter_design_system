@@ -3475,56 +3475,294 @@ final carouselComponent = WidgetbookComponent(
           description:
               'Carousel is a horizontally scrollable layout that displays a series of items. It shows a collection of carousel items that can be scrolled on and off the screen.\nIt may come with controls (e.g. arrows or buttons) allowing the user to manually scroll through. Carousel UI elements are commonly seen in the following design patterns: Image gallery, Onboarding screens, Product catalogs.',
           showPreview: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Example',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 16),
-              const Center(
-                child: Ux4gCarousel(
-                  height: 200,
-                  viewportFraction: 0.8,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Interactive carousel component displaying featured content, hero slides, and product cards.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Text(
+                  '1. Hero Banner Carousel',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Ux4gCarousel(
+                  height: 240,
+                  viewportFraction: 1.0,
+                  autoPlay: true,
+                  showPagination: true,
                   items: [
-                    Card(
-                      color: Colors.blue,
-                      child: Center(
-                        child: Text(
-                          '1',
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        ),
-                      ),
+                    _buildCarouselSlide(
+                      gradientColors: const [
+                        Color(0xFF4F46E5),
+                        Color(0xFF7C3AED),
+                      ],
+                      badgeText: 'FEATURED',
+                      title: 'Digital Services Portal 2.0',
+                      description:
+                          'Seamlessly access government citizen services with single sign-on and instant verification.',
+                      buttonText: 'Explore Services',
                     ),
-                    Card(
-                      color: Colors.red,
-                      child: Center(
-                        child: Text(
-                          '2',
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        ),
-                      ),
+                    _buildCarouselSlide(
+                      gradientColors: const [
+                        Color(0xFF0D9488),
+                        Color(0xFF0284C7),
+                      ],
+                      badgeText: 'NEW UPDATE',
+                      title: 'Biometric Identity Capture',
+                      description:
+                          'Fast, secure face verification integration with real-time liveness checks.',
+                      buttonText: 'View Documentation',
                     ),
-                    Card(
-                      color: Colors.green,
-                      child: Center(
-                        child: Text(
-                          '3',
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        ),
-                      ),
+                    _buildCarouselSlide(
+                      gradientColors: const [
+                        Color(0xFFD97706),
+                        Color(0xFFE11D48),
+                      ],
+                      badgeText: 'POPULAR',
+                      title: 'Unified Design System',
+                      description:
+                          'Production-ready accessible Flutter UI components built for digital infrastructure.',
+                      buttonText: 'Get Started',
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 36),
+                Text(
+                  '2. Image Gallery Carousel',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Ux4gCarousel(
+                  height: 240,
+                  viewportFraction: 1.0,
+                  autoPlay: true,
+                  showPagination: true,
+                  items: [
+                    _buildImageCarouselSlide(
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80',
+                      badgeText: 'DESIGN',
+                      title: 'Modern UI System Architecture',
+                      subtitle:
+                          'Crafted with accessible design tokens & fluid responsive components.',
+                    ),
+                    _buildImageCarouselSlide(
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+                      badgeText: 'NETWORK',
+                      title: 'Global Cloud Infrastructure',
+                      subtitle:
+                          'High availability and low latency cross-region deployment.',
+                    ),
+                    _buildImageCarouselSlide(
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+                      badgeText: 'SECURITY',
+                      title: 'Cryptographic Hardware Modules',
+                      subtitle:
+                          'Next-generation secure key storage and identity management.',
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
+    ),
+    WidgetbookUseCase(
+      name: 'Rich hero carousel',
+      builder: (context) => ComponentDocs(
+        name: 'Carousel — Rich Hero Banner',
+        description:
+            'Create engaging hero banners and featured content slides using gradients, badges, titles, descriptions, and action buttons.',
+        code: '''Ux4gCarousel(
+  height: 240,
+  viewportFraction: 1.0,
+  autoPlay: true,
+  showPagination: true,
+  items: [
+    _buildCarouselSlide(
+      gradientColors: const [Color(0xFF4F46E5), Color(0xFF7C3AED)],
+      badgeText: 'FEATURED',
+      title: 'Digital Services Portal 2.0',
+      description: 'Seamlessly access citizen services with single sign-on and instant verification.',
+      buttonText: 'Explore Services',
+    ),
+    _buildCarouselSlide(
+      gradientColors: const [Color(0xFF0D9488), Color(0xFF0284C7)],
+      badgeText: 'NEW UPDATE',
+      title: 'Biometric Identity Capture',
+      description: 'Fast, secure face verification integration with real-time liveness checks.',
+      buttonText: 'View Documentation',
+    ),
+    _buildCarouselSlide(
+      gradientColors: const [Color(0xFFD97706), Color(0xFFE11D48)],
+      badgeText: 'POPULAR',
+      title: 'Unified Design System',
+      description: 'Production-ready accessible Flutter UI components built for digital infrastructure.',
+      buttonText: 'Get Started',
+    ),
+  ],
+);
+
+// Slide builder helper
+Widget _buildCarouselSlide({
+  required List<Color> gradientColors,
+  required String badgeText,
+  required String title,
+  required String description,
+  required String buttonText,
+}) {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 4.0),
+    padding: const EdgeInsets.all(24.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16.0),
+      gradient: LinearGradient(
+        colors: gradientColors,
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: gradientColors.first.withOpacity(0.3),
+          blurRadius: 12,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.25),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            badgeText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              description,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+                height: 1.3,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: gradientColors.first,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          ),
+          child: Text(
+            buttonText,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          ),
+        ),
+      ],
+    ),
+  );
+}''',
+        child: SizedBox(
+          width: 600,
+          child: Ux4gCarousel(
+            height: 240,
+            viewportFraction: 1.0,
+            autoPlay: true,
+            showPagination: true,
+            items: [
+              _buildCarouselSlide(
+                gradientColors: const [
+                  Color(0xFF4F46E5),
+                  Color(0xFF7C3AED),
+                ],
+                badgeText: 'FEATURED',
+                title: 'Digital Services Portal 2.0',
+                description:
+                    'Seamlessly access government citizen services with single sign-on and instant verification.',
+                buttonText: 'Explore Services',
+              ),
+              _buildCarouselSlide(
+                gradientColors: const [
+                  Color(0xFF0D9488),
+                  Color(0xFF0284C7),
+                ],
+                badgeText: 'NEW UPDATE',
+                title: 'Biometric Identity Capture',
+                description:
+                    'Fast, secure face verification integration with real-time liveness checks.',
+                buttonText: 'View Documentation',
+              ),
+              _buildCarouselSlide(
+                gradientColors: const [
+                  Color(0xFFD97706),
+                  Color(0xFFE11D48),
+                ],
+                badgeText: 'POPULAR',
+                title: 'Unified Design System',
+                description:
+                    'Production-ready accessible Flutter UI components built for digital infrastructure.',
+                buttonText: 'Get Started',
+              ),
+            ],
+          ),
+        ),
+      ),
     ),
     WidgetbookUseCase(
       name: 'Image carousel',
@@ -4147,3 +4385,175 @@ Ux4gTimeslot(data: data, onDateSelected: (d) {});''',
 );
 
 final slotGridComponent = timeSlotComponent;
+
+Widget _buildCarouselSlide({
+  required List<Color> gradientColors,
+  required String badgeText,
+  required String title,
+  required String description,
+  required String buttonText,
+}) {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 4.0),
+    padding: const EdgeInsets.all(24.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16.0),
+      gradient: LinearGradient(
+        colors: gradientColors,
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: gradientColors.first.withOpacity(0.3),
+          blurRadius: 12,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.25),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            badgeText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              description,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+                height: 1.3,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: gradientColors.first,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          ),
+          child: Text(
+            buttonText,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildImageCarouselSlide({
+  required String imageUrl,
+  required String badgeText,
+  required String title,
+  required String subtitle,
+}) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(16.0),
+    child: Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.network(
+          imageUrl,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: Colors.grey.shade300,
+              child: const Icon(Icons.image, size: 48, color: Colors.grey),
+            );
+          },
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.transparent, Colors.black87],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 16,
+          left: 16,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.6),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text(
+              badgeText,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 20,
+          left: 20,
+          right: 20,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}

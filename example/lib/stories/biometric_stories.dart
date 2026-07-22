@@ -30,8 +30,8 @@ final biometricComponent = WidgetbookComponent(
               const SizedBox(height: 16),
               const Center(
                 child: SizedBox(
-                  width: 300,
-                  height: 500,
+                  width: 360,
+                  height: 640,
                   child: _BiometricFlowPreview(mockSuccess: true),
                 ),
               ),
@@ -426,9 +426,11 @@ class _LaunchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xFFF8F9FC),
-      padding: const EdgeInsets.all(28),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      alignment: Alignment.center,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             width: 72,
@@ -510,6 +512,7 @@ class _LaunchCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 }
