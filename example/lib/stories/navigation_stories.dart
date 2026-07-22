@@ -574,8 +574,39 @@ final accordionGroupComponent = WidgetbookComponent(
 // ── Status Banner ─────────────────────────────────────────────────────────────
 
 final statusBannerComponent = WidgetbookComponent(
-  name: 'Standard',
+  name: 'Draft Status',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Draft Status',
+          description:
+              'Draft Status Banner component displays a persistent notification indicating that content is currently in draft mode. It helps users distinguish unpublished content from published information.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              Ux4gStatusBanner(
+                variant: Ux4gBannerVariant.warningLight,
+                title: 'Application is in Draft status',
+                titleStyle: Theme.of(
+                  context,
+                ).extension<Ux4gTypography>()?.tS_default,
+              ),
+            ],
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'All variants',
       builder: (context) {

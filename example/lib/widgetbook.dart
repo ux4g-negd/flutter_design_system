@@ -172,11 +172,7 @@ class UX4GWidgetbook extends StatelessWidget {
                 ),
                 datePickerComponent,
                 dividerComponent,
-                WidgetbookFolder(
-                  name: 'Draft Status',
-                  isInitiallyExpanded: false,
-                  children: [statusBannerComponent],
-                ),
+                statusBannerComponent,
                 WidgetbookFolder(
                   name: 'Dropdown',
                   isInitiallyExpanded: false,

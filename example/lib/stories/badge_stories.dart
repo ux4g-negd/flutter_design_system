@@ -8,6 +8,40 @@ final badgeComponent = WidgetbookComponent(
   name: 'Badge',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Badge',
+        description:
+            'Badge displays concise contextual information such as counts, statuses or notifications. It is commonly attached to other interface elements to draw attention without interrupting the user experience.',
+        showPreview: false,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Types',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 32,
+              runSpacing: 16,
+              children: [
+                Ux4gBadge.dot(child: const Icon(Icons.notifications, size: 32)),
+                Ux4gBadge.count(5, child: const Icon(Icons.mail, size: 32)),
+                Ux4gBadge.label('NEW', child: const Icon(Icons.star, size: 32)),
+                Ux4gBadge.icon(
+                  Icons.check,
+                  child: const Icon(Icons.person, size: 32),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Dot',
       builder: (context) => ComponentDocs(
         name: 'Badge',
