@@ -57,8 +57,6 @@ enum UploadStatus { idle, uploading, success, error }
 
 enum Ux4gFileUploadBorderStyle { solid, dashed }
 
-enum Ux4gFileUploadVariant { standard, dropzone }
-
 class Ux4gFileUpload extends StatefulWidget {
   final int maxFiles;
   final int maxFileSize; // in bytes, default 5MB
@@ -66,7 +64,6 @@ class Ux4gFileUpload extends StatefulWidget {
   final Future<bool> Function(UploadedFile)? onUpload;
   final List<String> allowedExtensions;
   final Ux4gFileUploadBorderStyle borderStyle;
-  final Ux4gFileUploadVariant variant;
   final double buttonBorderRadius;
   final Color? buttonColor;
   final Color? buttonBorderColor;
@@ -82,13 +79,8 @@ class Ux4gFileUpload extends StatefulWidget {
     this.maxFileSize = 5 * 1024 * 1024, // 5MB
     this.onFilesChanged,
     this.onUpload,
-    this.allowedExtensions = const [
-      'jpg',
-      'png',
-      'pdf',
-    ],
+    this.allowedExtensions = const ['jpg', 'png', 'pdf'],
     this.borderStyle = Ux4gFileUploadBorderStyle.solid,
-    this.variant = Ux4gFileUploadVariant.standard,
     this.buttonBorderRadius = 8,
     this.buttonColor,
     this.buttonBorderColor,
@@ -106,7 +98,7 @@ class Ux4gFileUpload extends StatefulWidget {
 class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
   final List<UploadedFile> _files = [];
   final ImagePicker _picker = ImagePicker();
-  
+
   bool _hasGlobalError = false;
   String? _currentErrorTitle;
   String? _currentErrorText;
@@ -128,9 +120,15 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         );
 
         if (result != null && result.files.single.path != null) {
-          file = XFile(result.files.single.path!, name: result.files.single.name);
+          file = XFile(
+            result.files.single.path!,
+            name: result.files.single.name,
+          );
         } else if (result != null && result.files.single.bytes != null) {
-          file = XFile.fromData(result.files.single.bytes!, name: result.files.single.name);
+          file = XFile.fromData(
+            result.files.single.bytes!,
+            name: result.files.single.name,
+          );
         }
       }
 
@@ -141,7 +139,8 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
       if (fileSize > widget.maxFileSize) {
         _showErrorDialog(
           'File too large',
-          'File size exceeds ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB limit',
+          '${file.name} exceeds the ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)}MB upload limit. Please compress it or select a smaller file.',
+          fileName: file.name,
         );
         return;
       }
@@ -245,11 +244,15 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     widget.onFilesChanged?.call(_files);
   }
 
-  void _showErrorDialog(String title, String message) {
+  void _showErrorDialog(String title, String message, {String? fileName}) {
     setState(() {
       _hasGlobalError = true;
       _currentErrorTitle = widget.errorTitle ?? title;
-      _currentErrorText = widget.errorText ?? message;
+      String errorText = widget.errorText ?? message;
+      if (fileName != null) {
+        errorText = errorText.replaceAll('[File Name]', fileName);
+      }
+      _currentErrorText = errorText;
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -285,17 +288,16 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         ux4gColors?.onBackground ?? materialTheme.colorScheme.onSurface;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final errorColor =
-        ux4gColors?.error ?? materialTheme.colorScheme.error;
+    final errorColor = ux4gColors?.error ?? materialTheme.colorScheme.error;
 
-    final borderColor = _hasGlobalError ? errorColor : primary.withValues(alpha: 0.3);
+    final borderColor = _hasGlobalError ? errorColor : primary;
 
-    final lmStrong =
-        ux4gTypography?.lM_strong ??
-        materialTheme.textTheme.labelLarge?.copyWith(
+    final tsStrong =
+        ux4gTypography?.tS_strong ??
+        materialTheme.textTheme.titleSmall?.copyWith(
           fontWeight: FontWeight.w700,
         ) ??
-        const TextStyle(fontWeight: FontWeight.w700, fontSize: 12);
+        const TextStyle(fontWeight: FontWeight.w700, fontSize: 14);
     final bsDefault =
         ux4gTypography?.bS_default ??
         materialTheme.textTheme.bodySmall ??
@@ -321,7 +323,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                     onBackground,
                     onSurface,
                     errorColor,
-                    lmStrong,
+                    tsStrong,
                     bsDefault,
                   ),
                 ),
@@ -344,7 +346,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                     onBackground,
                     onSurface,
                     errorColor,
-                    lmStrong,
+                    tsStrong,
                     bsDefault,
                   ),
                 ),
@@ -377,106 +379,9 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     Color onBackground,
     Color onSurface,
     Color errorColor,
-    TextStyle lM_strong,
+    TextStyle tS_strong,
     TextStyle bS_default,
   ) {
-    if (widget.variant == Ux4gFileUploadVariant.dropzone) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Upload icon
-          if (_hasGlobalError)
-            Icon(Icons.error_outline, size: 36, color: errorColor)
-          else
-            Icon(Icons.cloud_upload_outlined, size: 36, color: primary),
-          const SizedBox(height: 12),
-
-          // Header
-          Text(
-            _hasGlobalError
-                ? (_currentErrorTitle ?? 'Could not scan')
-                : 'Drop file here',
-            style: _hasGlobalError
-                ? (widget.errorTitleStyle ??
-                    lM_strong.copyWith(
-                      color: onBackground,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ))
-                : lM_strong.copyWith(
-                    color: onBackground,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 6),
-
-          // Description
-          Text(
-            _hasGlobalError
-                ? (_currentErrorText ?? 'File exceeds the upload limit.')
-                : 'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
-            style: _hasGlobalError
-                ? (widget.errorTextStyle ?? bS_default.copyWith(color: errorColor))
-                : bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 16),
-
-          // Or divider
-          if (!_hasGlobalError) ...[
-            Row(
-              children: [
-                Expanded(child: Divider(color: onSurface.withValues(alpha: 0.2))),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    'Or',
-                    style: bS_default.copyWith(
-                      color: onSurface.withValues(alpha: 0.5),
-                    ),
-                  ),
-                ),
-                Expanded(child: Divider(color: onSurface.withValues(alpha: 0.2))),
-              ],
-            ),
-            const SizedBox(height: 16),
-          ],
-
-          // Single Upload button
-          OutlinedButton.icon(
-            onPressed: () => _pickFile(fromCamera: false),
-            icon: Icon(
-              Icons.cloud_upload_outlined,
-              color: widget.buttonColor ?? primary,
-            ),
-            label: Text(
-              'Upload',
-              style: TextStyle(color: widget.buttonColor ?? primary),
-            ),
-            style:
-                widget.buttonStyle ??
-                OutlinedButton.styleFrom(
-                  side: BorderSide(
-                    color: widget.buttonBorderColor ?? primary,
-                    width: 1.5,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 10,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      widget.buttonBorderRadius,
-                    ),
-                  ),
-                ),
-          ),
-        ],
-      );
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -484,15 +389,7 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         if (_hasGlobalError)
           Icon(Icons.error_outline, size: 32, color: errorColor)
         else
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: primary.withValues(alpha: 0.1),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(Icons.cloud_upload_outlined, size: 32, color: primary),
-          ),
+          Icon(Icons.cloud_upload_outlined, size: 32, color: primary),
         const SizedBox(height: 16),
 
         // Header
@@ -502,12 +399,12 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
               : 'Upload Documents',
           style: _hasGlobalError
               ? (widget.errorTitleStyle ??
-                  lM_strong.copyWith(
-                    color: onBackground,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ))
-              : lM_strong.copyWith(
+                    tS_strong.copyWith(
+                      color: onBackground,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ))
+              : tS_strong.copyWith(
                   color: onBackground,
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
@@ -522,7 +419,8 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
               ? (_currentErrorText ?? 'File exceeds the upload limit.')
               : 'File type: PDF JPG PNG Max size: ${(widget.maxFileSize / (1024 * 1024)).toStringAsFixed(0)} MB',
           style: _hasGlobalError
-              ? (widget.errorTextStyle ?? bS_default.copyWith(color: errorColor))
+              ? (widget.errorTextStyle ??
+                    bS_default.copyWith(color: errorColor))
               : bS_default.copyWith(color: onSurface.withValues(alpha: 0.6)),
           textAlign: TextAlign.center,
         ),
@@ -584,14 +482,9 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
-    final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
-    final success = ux4gColors?.success ?? Colors.green;
-    final onPrimary =
-        ux4gColors?.onPrimary ?? materialTheme.colorScheme.onPrimary;
 
     final tsStrong =
         ux4gTypography?.tS_strong ??
@@ -599,121 +492,139 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
           fontWeight: FontWeight.w700,
         ) ??
         const TextStyle(fontWeight: FontWeight.w700, fontSize: 14);
-    final bmDefault =
-        ux4gTypography?.bM_default ??
-        materialTheme.textTheme.bodyMedium ??
-        const TextStyle(fontSize: 16);
+    final bsDefault =
+        ux4gTypography?.bS_default ??
+        materialTheme.textTheme.bodySmall ??
+        const TextStyle(fontSize: 12);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         decoration: BoxDecoration(
-          color: surface,
-          border: Border.all(
-            color: file.status == UploadStatus.error
-                ? error.withValues(alpha: 0.2)
-                : onSurface.withValues(alpha: 0.08),
-          ),
+          color: Ux4gColors.neutral0,
+          border: Border.all(color: Ux4gColors.neutral200),
           borderRadius: BorderRadius.circular(8),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-        child: Row(
+        child: Column(
           children: [
-            // File icon
-            _getFileIcon(file.name, ux4gColors, materialTheme),
-            const SizedBox(width: 12),
-
-            // File info
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: Row(
                 children: [
-                  Text(
-                    file.name,
-                    style: tsStrong.copyWith(
-                      color: onSurface,
+                  // File icon
+                  _getFileIcon(file.name, ux4gColors, materialTheme),
+                  const SizedBox(width: 12),
+
+                  // File info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          file.name,
+                          style: tsStrong.copyWith(
+                            color: Ux4gColors.neutral900,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          file.formattedSize,
+                          style: bsDefault.copyWith(
+                            color: Ux4gColors.neutral500,
+                          ),
+                          maxLines: 1,
+                        ),
+                      ],
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
-                    file.formattedSize,
-                    style: bmDefault.copyWith(
-                      color: onSurface.withValues(alpha: 0.6),
-                      fontSize: 12,
-                    ),
-                    maxLines: 1,
-                  ),
-                  if (file.status == UploadStatus.error)
-                    Text(
-                      file.errorMessage ?? 'Error',
-                      style: bmDefault.copyWith(color: error),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  if (file.status == UploadStatus.uploading)
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: LinearProgressIndicator(
-                        value: file.progress,
-                        minHeight: 4,
-                        backgroundColor: onSurface.withValues(alpha: 0.1),
-                        valueColor: AlwaysStoppedAnimation<Color>(primary),
+                  const SizedBox(width: 8),
+
+                  // Success check icon
+                  if (file.status == UploadStatus.success)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Icon(
+                        Icons.check_circle,
+                        size: 22,
+                        color: Ux4gColors.green600,
                       ),
                     ),
+
+                  // Close button
+                  GestureDetector(
+                    onTap: () => _removeFile(file.id),
+                    child: Icon(
+                      Icons.close,
+                      size: 20,
+                      color: Ux4gColors.neutral500,
+                    ),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(width: 12),
 
-            // Status indicator
+            // Progress bar + percentage at bottom
             if (file.status == UploadStatus.uploading)
-              Text(
-                '${(file.progress * 100).toStringAsFixed(0)}%',
-                style: tsStrong.copyWith(
-                  color: onSurface.withValues(alpha: 0.5),
-                ),
-              )
-            else if (file.status == UploadStatus.success)
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: success,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(Icons.check, color: onPrimary, size: 14),
-              )
-            else if (file.status == UploadStatus.error)
-              GestureDetector(
-                onTap: () => _retryUpload(file),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
+              Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
+                child: Row(
                   children: [
-                    Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: error.withValues(alpha: 0.1),
-                        shape: BoxShape.circle,
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: LinearProgressIndicator(
+                          value: file.progress,
+                          minHeight: 4,
+                          backgroundColor: Ux4gColors.neutral200,
+                          valueColor: AlwaysStoppedAnimation<Color>(primary),
+                        ),
                       ),
-                      child: Icon(Icons.info_outline, color: error, size: 14),
                     ),
-                    Text('Retry', style: bmDefault.copyWith(color: primary)),
+                    const SizedBox(width: 8),
+                    Text(
+                      '${(file.progress * 100).toStringAsFixed(0)}%',
+                      style: bsDefault.copyWith(color: Ux4gColors.neutral500),
+                    ),
                   ],
                 ),
               ),
-            const SizedBox(width: 8),
 
-            // Close button
-            GestureDetector(
-              onTap: () => _removeFile(file.id),
-              child: Icon(
-                Icons.close,
-                size: 20,
-                color: onSurface.withValues(alpha: 0.4),
+            // Error message + retry
+            if (file.status == UploadStatus.error)
+              Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12, bottom: 10),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.error_outline,
+                      size: 14,
+                      color: Ux4gColors.red600,
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        file.errorMessage ?? 'Upload failed',
+                        style: bsDefault.copyWith(color: Ux4gColors.red600),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    GestureDetector(
+                      onTap: () => _retryUpload(file),
+                      child: Text(
+                        'Retry',
+                        style: bsDefault.copyWith(
+                          color: primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),
@@ -725,37 +636,37 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     Ux4gThemeColors? ux4gColors,
     ThemeData materialTheme,
   ) {
-    final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
-    final error = ux4gColors?.error ?? materialTheme.colorScheme.error;
-    final onSurface =
-        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-
     final extension = fileName.split('.').last.toLowerCase();
     IconData icon;
-    Color color;
+    Color iconColor;
+    Color bgColor;
 
     if (['jpg', 'jpeg', 'png', 'gif', 'bmp'].contains(extension)) {
       icon = Icons.image;
-      color = primary;
+      iconColor = Ux4gColors.blue600;
+      bgColor = Ux4gColors.blue50;
     } else if (['pdf'].contains(extension)) {
       icon = Icons.picture_as_pdf;
-      color = error;
+      iconColor = Ux4gColors.red600;
+      bgColor = Ux4gColors.red50;
     } else if (['doc', 'docx'].contains(extension)) {
       icon = Icons.description;
-      color = primary;
+      iconColor = Ux4gColors.primary600;
+      bgColor = Ux4gColors.primary50;
     } else {
       icon = Icons.insert_drive_file;
-      color = onSurface.withValues(alpha: 0.38);
+      iconColor = Ux4gColors.neutral500;
+      bgColor = Ux4gColors.neutral100;
     }
 
     return Container(
       width: 40,
       height: 40,
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(6),
+        color: bgColor,
+        borderRadius: BorderRadius.circular(8),
       ),
-      child: Icon(icon, color: color, size: 20),
+      child: Icon(icon, color: iconColor, size: 20),
     );
   }
 }

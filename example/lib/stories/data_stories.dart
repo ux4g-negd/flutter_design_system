@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+import 'package:ux4g_flutter_components/src/components/social_links.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
@@ -137,6 +138,24 @@ const _compactStepperProps = [
     description: 'Override color for inactive step capsules.',
   ),
 ];
+
+final stepperIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Stepper',
+          description:
+              'Stepper visually represents a multi-step process, guiding users through a sequence of actions. It enhances usability by breaking down complex workflows into manageable steps.',
+          showPreview: false,
+          child: _StepperVisualShowcase(),
+        );
+      },
+    ),
+  ],
+);
 
 final stepperComponent = WidgetbookComponent(
   name: 'Standard',
@@ -1278,12 +1297,228 @@ final resultListComponent = WidgetbookComponent(
   name: 'Result List',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Result List Row',
+          description:
+              'A Result List Row displays a single item within a list of search results, records, or data entries. It presents key information in a structured format, enabling users to quickly scan, compare, and access relevant details or actions.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Visual Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Demonstration of result list row variants including status tags, metadata pill segments, action triggers, and expanded cards.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Column(
+                  children: [
+                    // Variant 1: Approved Result Row with Details
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Ux4gResultList(
+                        title: 'Application #2024-001',
+                        statusTag: 'Approved',
+                        tagColorScheme: Ux4gTagColor.success,
+                        actionButtonText: 'View Details',
+                        showBottomDivider: false,
+                        onActionPressed: () {},
+                        details: const [
+                          Ux4gResultDetail(label: 'Applicant', value: 'Ravi Kumar'),
+                          Ux4gResultDetail(label: 'Date', value: '12 May 2025'),
+                          Ux4gResultDetail(
+                            label: 'Sanctioned Amount',
+                            value: '₹1,20,000',
+                            isBold: true,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // Variant 2: Card Style with Metadata Pills (Under Review)
+                    Ux4gCard(
+                      cornerRadius: 12,
+                      child: Ux4gResultRow(
+                        title: 'Income Certificate Application',
+                        actionButtonText: 'Track Status',
+                        onActionPressed: () {},
+                        initialExpanded: true,
+                        showBottomDivider: false,
+                        metadataSegments: [
+                          Ux4gPillSegment(
+                            text: '8 days left',
+                            leading: Container(
+                              width: 8,
+                              height: 8,
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFF59E0B),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                          const Ux4gPillSegment(
+                            text: 'Under Review',
+                            textColor: Color(0xFFD97706),
+                          ),
+                        ],
+                        details: const [
+                          Ux4gResultDetail(
+                            label: 'Reference Number',
+                            value: 'INC-2026-MH-04127',
+                          ),
+                          Ux4gResultDetail(
+                            label: 'Last Updated Date',
+                            value: '10 Apr 2026',
+                          ),
+                          Ux4gResultDetail(
+                            label: 'Assigned Officer',
+                            value: 'Rahul Sharma',
+                          ),
+                          Ux4gResultDetail(
+                            label: 'Department',
+                            value: 'Revenue Department',
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // Variant 3: Action Required with Icon Button
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Ux4gResultList(
+                        title: 'Driving License Renewal',
+                        statusTag: 'Action Required',
+                        tagColorScheme: Ux4gTagColor.warning,
+                        actionButtonText: 'Upload Docs',
+                        actionButtonIcon: Icons.upload_file,
+                        showBottomDivider: false,
+                        onActionPressed: () {},
+                        details: const [
+                          Ux4gResultDetail(label: 'Applicant', value: 'Sunita Sharma'),
+                          Ux4gResultDetail(label: 'Application ID', value: 'DL-99201-DL'),
+                          Ux4gResultDetail(label: 'Pending Stage', value: 'Biometrics Verification'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // Variant 4: Rejected State with Custom Expanded Grievance Child
+                    Ux4gCard(
+                      cornerRadius: 12,
+                      child: Ux4gResultRow(
+                        title: 'Ration Card Transfer Request',
+                        statusTag: 'Rejected',
+                        tagColorScheme: Ux4gTagColor.error,
+                        actionButtonText: 'Re-apply',
+                        onActionPressed: () {},
+                        initialExpanded: false,
+                        showBottomDivider: false,
+                        details: const [
+                          Ux4gResultDetail(
+                            label: 'Rejection Reason',
+                            value: 'Address Proof Mismatch',
+                            isBold: true,
+                          ),
+                          Ux4gResultDetail(
+                            label: 'Applied Date',
+                            value: '05 Feb 2026',
+                          ),
+                        ],
+                        expandedChild: Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Need Help?',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Color(0xFF7F1D1D),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              InkWell(
+                                onTap: () {},
+                                child: const Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Register grievance',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Color(0xFF4338CA),
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    SizedBox(width: 4),
+                                    Icon(Icons.arrow_forward, size: 16, color: Color(0xFF4338CA)),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
-        name: 'Ux4gResultList',
+        name: 'Result List',
         description:
-            'An expandable list item that summarises a record with a status tag, '
-            'key-value detail pairs, and an optional action button.',
+            'A Result List Row displays a single item within a list of search results, records, or data entries. It presents key information in a structured format, enabling users to quickly scan, compare, and access relevant details or actions.',
         code: '''Ux4gResultList(
   title: 'Application #2024-001',
   statusTag: 'Approved',
@@ -2663,12 +2898,111 @@ final journeyTimelineComponent = WidgetbookComponent(
   name: 'Journey Timeline',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Journey Timeline',
+          description:
+              'A composite component combining a Stepper (progress indicators) with an Info List (content items) to visualise multi-step processes, application statuses, and service journeys.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Visual Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Demonstration of timeline card variants including step features, helping text, icons, and status badges.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 450),
+                    child: Ux4gJourneyTimeline(
+                      currentStep: 4,
+                      steps: [
+                        const Ux4gJourneyStep(
+                          title: 'Application Submitted',
+                          date: '01 Jan 2025',
+                          tag: 'Completed',
+                          state: Ux4gJourneyStepState.completed,
+                        ),
+                        const Ux4gJourneyStep(
+                          title: 'Document Verification',
+                          date: '03 Jan 2025',
+                          tag: 'Verified',
+                          helpingText: 'All uploaded certificates have been verified by the authority.',
+                          state: Ux4gJourneyStepState.completed,
+                        ),
+                        const Ux4gJourneyStep(
+                          title: 'External Link Attached',
+                          date: '04 Jan 2025',
+                          tag: 'Attachment',
+                          icon: Icons.link,
+                          state: Ux4gJourneyStepState.completed,
+                        ),
+                        Ux4gJourneyStep(
+                          title: 'Approval Pending',
+                          date: '05 Jan 2025',
+                          tag: 'In Progress',
+                          status: Ux4gJourneyStepStatus(
+                            text: '2 days remaining',
+                            dotColor: Ux4gColors.secondary,
+                            badgeText: 'Pending',
+                            badgeColor: Ux4gColors.secondary.withValues(alpha: 0.12),
+                            badgeTextColor: Ux4gColors.secondary,
+                          ),
+                          state: Ux4gJourneyStepState.current,
+                        ),
+                        const Ux4gJourneyStep(
+                          title: 'Final Disbursement',
+                          date: 'Upcoming',
+                          tag: 'Scheduled',
+                          state: Ux4gJourneyStepState.upcoming,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) => ComponentDocs(
         name: 'JourneyTimeline',
         description:
-            'A vertical timeline showing the progress of a multi-stage journey. '
-            'Steps are: completed, current, or upcoming.',
+            'A composite component combining a Stepper (progress indicators) with an Info',
         code: '''Ux4gJourneyTimeline(
   currentStep: 1,
   steps: const [
@@ -3001,14 +3335,237 @@ const _statusPipelineProps = [
 ];
 
 final statusPipelineComponent = WidgetbookComponent(
-  name: 'Standard',
+  name: 'Status Pipeline',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Status Pipeline',
+          description:
+              'A Status Pipeline is a UI component that communicates the progression of a multi-step process. It enables users to easily identify completed, current, and upcoming stages, improving clarity and navigation through sequential workflows. The component is available in horizontal and vertical variants, allowing it to adapt to different layouts and use cases.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Visual Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Demonstration of status pipeline orientations (horizontal, vertical), step subtext, compact dot indicators, and completed states.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Column(
+                  children: [
+                    // 1. Horizontal Pipeline with Labels & Subtext
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Horizontal Pipeline (Labels + Subtext)',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF111827),
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Ux4gStatusPipeline(
+                            orientation: Ux4gPipelineOrientation.horizontal,
+                            currentStep: 2,
+                            steps: [
+                              Ux4gPipelineStep(label: 'Submitted', description: '05 Apr'),
+                              Ux4gPipelineStep(label: 'Verification', description: 'Completed'),
+                              Ux4gPipelineStep(label: 'Inspection', description: 'In Progress'),
+                              Ux4gPipelineStep(label: 'Decision', description: 'Est. 18 Apr'),
+                              Ux4gPipelineStep(label: 'Issued', description: 'Est. 20 Apr'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // 2. Compact Dots Horizontal Pipeline
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Compact Dots Pipeline (No Labels)',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF111827),
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Ux4gStatusPipeline(
+                            orientation: Ux4gPipelineOrientation.horizontal,
+                            currentStep: 3,
+                            showLabels: false,
+                            showDescriptions: false,
+                            steps: [
+                              Ux4gPipelineStep(),
+                              Ux4gPipelineStep(),
+                              Ux4gPipelineStep(),
+                              Ux4gPipelineStep(),
+                              Ux4gPipelineStep(),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // 3. Vertical Workflow Pipeline & 4. Completed Pipeline Side-by-Side
+                    Wrap(
+                      spacing: 20,
+                      runSpacing: 20,
+                      children: [
+                        SizedBox(
+                          width: 360,
+                          child: Container(
+                            padding: const EdgeInsets.all(20.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(color: const Color(0xFFE5E7EB)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.02),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Vertical Workflow Pipeline',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF111827),
+                                  ),
+                                ),
+                                SizedBox(height: 16),
+                                Ux4gStatusPipeline(
+                                  orientation: Ux4gPipelineOrientation.vertical,
+                                  currentStep: 1,
+                                  steps: [
+                                    Ux4gPipelineStep(label: 'Application Created', description: '02 Mar 2026, 10:30 AM'),
+                                    Ux4gPipelineStep(label: 'Document Verification', description: 'Assigned to Officer Rahul'),
+                                    Ux4gPipelineStep(label: 'Field Inspection', description: 'Scheduled for 12 Mar'),
+                                    Ux4gPipelineStep(label: 'Final Approval', description: 'Pending officer sign-off'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 360,
+                          child: Container(
+                            padding: const EdgeInsets.all(20.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(color: const Color(0xFFE5E7EB)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.02),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Fully Completed Pipeline',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF111827),
+                                  ),
+                                ),
+                                SizedBox(height: 16),
+                                Ux4gStatusPipeline(
+                                  orientation: Ux4gPipelineOrientation.vertical,
+                                  currentStep: 4,
+                                  steps: [
+                                    Ux4gPipelineStep(label: 'Submitted', description: 'Done'),
+                                    Ux4gPipelineStep(label: 'Verification', description: 'Done'),
+                                    Ux4gPipelineStep(label: 'Inspection', description: 'Done'),
+                                    Ux4gPipelineStep(label: 'Decision', description: 'Approved'),
+                                    Ux4gPipelineStep(label: 'Issued', description: 'Certificate Sent'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Horizontal — With Labels',
       builder: (context) => ComponentDocs(
-        name: 'StatusPipeline',
+        name: 'Horizontal Status Pipeline',
         description:
-            'A horizontal status pipeline showing discrete stages with text labels.',
+            'A Horizontal Status Pipeline visually represents the stages of a process in a sequential flow, helping users track progress, understand their current position and identify completed, active, or upcoming steps within a journey.',
         code: '''Ux4gStatusPipeline(
   orientation: Ux4gPipelineOrientation.horizontal,
   currentStep: 1,
@@ -3117,9 +3674,9 @@ final statusPipelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Vertical — With Labels',
       builder: (context) => ComponentDocs(
-        name: 'StatusPipeline',
+        name: 'Vertical Status Pipeline',
         description:
-            'A vertical status pipeline stacked with discrete stage titles.',
+            'A Vertical Status Pipeline displays the stages of a process in a top-to-bottom sequence, helping users track progress, understand the current stage and view completed and upcoming steps in a clear, structured format.',
         code: '''Ux4gStatusPipeline(
   orientation: Ux4gPipelineOrientation.vertical,
   currentStep: 1,
@@ -3304,11 +3861,308 @@ final carouselComponent = WidgetbookComponent(
   name: 'Carousel',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Carousel',
+          description:
+              'Carousel is a horizontally scrollable layout that displays a series of items. It shows a collection of carousel items that can be scrolled on and off the screen.\nIt may come with controls (e.g. arrows or buttons) allowing the user to manually scroll through. Carousel UI elements are commonly seen in the following design patterns: Image gallery, Onboarding screens, Product catalogs.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Interactive carousel component displaying featured content, hero slides, and product cards.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Text(
+                  '1. Hero Banner Carousel',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Ux4gCarousel(
+                  height: 240,
+                  viewportFraction: 1.0,
+                  autoPlay: true,
+                  showPagination: true,
+                  items: [
+                    _buildCarouselSlide(
+                      gradientColors: const [
+                        Color(0xFF4F46E5),
+                        Color(0xFF7C3AED),
+                      ],
+                      badgeText: 'FEATURED',
+                      title: 'Digital Services Portal 2.0',
+                      description:
+                          'Seamlessly access government citizen services with single sign-on and instant verification.',
+                      buttonText: 'Explore Services',
+                    ),
+                    _buildCarouselSlide(
+                      gradientColors: const [
+                        Color(0xFF0D9488),
+                        Color(0xFF0284C7),
+                      ],
+                      badgeText: 'NEW UPDATE',
+                      title: 'Biometric Identity Capture',
+                      description:
+                          'Fast, secure face verification integration with real-time liveness checks.',
+                      buttonText: 'View Documentation',
+                    ),
+                    _buildCarouselSlide(
+                      gradientColors: const [
+                        Color(0xFFD97706),
+                        Color(0xFFE11D48),
+                      ],
+                      badgeText: 'POPULAR',
+                      title: 'Unified Design System',
+                      description:
+                          'Production-ready accessible Flutter UI components built for digital infrastructure.',
+                      buttonText: 'Get Started',
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 36),
+                Text(
+                  '2. Image Gallery Carousel',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Ux4gCarousel(
+                  height: 240,
+                  viewportFraction: 1.0,
+                  autoPlay: true,
+                  showPagination: true,
+                  items: [
+                    _buildImageCarouselSlide(
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80',
+                      badgeText: 'DESIGN',
+                      title: 'Modern UI System Architecture',
+                      subtitle:
+                          'Crafted with accessible design tokens & fluid responsive components.',
+                    ),
+                    _buildImageCarouselSlide(
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+                      badgeText: 'NETWORK',
+                      title: 'Global Cloud Infrastructure',
+                      subtitle:
+                          'High availability and low latency cross-region deployment.',
+                    ),
+                    _buildImageCarouselSlide(
+                      imageUrl:
+                          'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+                      badgeText: 'SECURITY',
+                      title: 'Cryptographic Hardware Modules',
+                      subtitle:
+                          'Next-generation secure key storage and identity management.',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
+      name: 'Rich hero carousel',
+      builder: (context) => ComponentDocs(
+        name: 'Carousel — Rich Hero Banner',
+        description:
+            'Create engaging hero banners and featured content slides using gradients, badges, titles, descriptions, and action buttons.',
+        code: '''Ux4gCarousel(
+  height: 240,
+  viewportFraction: 1.0,
+  autoPlay: true,
+  showPagination: true,
+  items: [
+    _buildCarouselSlide(
+      gradientColors: const [Color(0xFF4F46E5), Color(0xFF7C3AED)],
+      badgeText: 'FEATURED',
+      title: 'Digital Services Portal 2.0',
+      description: 'Seamlessly access citizen services with single sign-on and instant verification.',
+      buttonText: 'Explore Services',
+    ),
+    _buildCarouselSlide(
+      gradientColors: const [Color(0xFF0D9488), Color(0xFF0284C7)],
+      badgeText: 'NEW UPDATE',
+      title: 'Biometric Identity Capture',
+      description: 'Fast, secure face verification integration with real-time liveness checks.',
+      buttonText: 'View Documentation',
+    ),
+    _buildCarouselSlide(
+      gradientColors: const [Color(0xFFD97706), Color(0xFFE11D48)],
+      badgeText: 'POPULAR',
+      title: 'Unified Design System',
+      description: 'Production-ready accessible Flutter UI components built for digital infrastructure.',
+      buttonText: 'Get Started',
+    ),
+  ],
+);
+
+// Slide builder helper
+Widget _buildCarouselSlide({
+  required List<Color> gradientColors,
+  required String badgeText,
+  required String title,
+  required String description,
+  required String buttonText,
+}) {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 4.0),
+    padding: const EdgeInsets.all(24.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16.0),
+      gradient: LinearGradient(
+        colors: gradientColors,
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: gradientColors.first.withOpacity(0.3),
+          blurRadius: 12,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.25),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            badgeText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              description,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+                height: 1.3,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: gradientColors.first,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          ),
+          child: Text(
+            buttonText,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          ),
+        ),
+      ],
+    ),
+  );
+}''',
+        child: SizedBox(
+          width: 600,
+          child: Ux4gCarousel(
+            height: 240,
+            viewportFraction: 1.0,
+            autoPlay: true,
+            showPagination: true,
+            items: [
+              _buildCarouselSlide(
+                gradientColors: const [
+                  Color(0xFF4F46E5),
+                  Color(0xFF7C3AED),
+                ],
+                badgeText: 'FEATURED',
+                title: 'Digital Services Portal 2.0',
+                description:
+                    'Seamlessly access government citizen services with single sign-on and instant verification.',
+                buttonText: 'Explore Services',
+              ),
+              _buildCarouselSlide(
+                gradientColors: const [
+                  Color(0xFF0D9488),
+                  Color(0xFF0284C7),
+                ],
+                badgeText: 'NEW UPDATE',
+                title: 'Biometric Identity Capture',
+                description:
+                    'Fast, secure face verification integration with real-time liveness checks.',
+                buttonText: 'View Documentation',
+              ),
+              _buildCarouselSlide(
+                gradientColors: const [
+                  Color(0xFFD97706),
+                  Color(0xFFE11D48),
+                ],
+                badgeText: 'POPULAR',
+                title: 'Unified Design System',
+                description:
+                    'Production-ready accessible Flutter UI components built for digital infrastructure.',
+                buttonText: 'Get Started',
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Image carousel',
       builder: (context) => ComponentDocs(
         name: 'Carousel',
         description:
-            'A horizontal swipe carousel. Pass any list of widgets as items.',
+            'Carousel is a horizontally scrollable layout that displays a series of items. It shows a collection of carousel items that can be scrolled on and off the screen. It may come with controls (e.g. arrows or buttons) allowing the user to manually scroll through. Carousel UI elements are commonly seen in the following design patterns:',
         code: '''Ux4gCarousel(
   items: List.generate(
     4,
@@ -3531,6 +4385,31 @@ final timeSlotComponent = WidgetbookComponent(
   name: 'Time Slot',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Time Slot',
+          description:
+              'A Time Slot represents a specific period available for scheduling, booking, or appointments. It helps users select a convenient date and time, ensuring organized planning and efficient allocation of resources.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(child: Ux4gTimeslotShowcase()),
+            ],
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         final viewMode = context.knobs.list<SlotPickerViewMode>(
@@ -3548,12 +4427,9 @@ final timeSlotComponent = WidgetbookComponent(
             : 'SlotPickerViewMode.compact';
 
         return ComponentDocs(
-          name: 'ux4gTimeslot',
+          name: 'Time Slot',
           description:
-              'A calendar-style date picker that marks dates as available, '
-              'no-slots, public holiday, or weekly-off. '
-              'Optionally opens a time-slot bottom sheet when a date is tapped.\n'
-              'Supports both Expanded and Compact view modes via viewMode property.',
+              'A Time Slot represents a specific period available for scheduling, booking, or appointments. It helps users select a convenient date and time, ensuring organized planning and efficient allocation of resources.',
           code:
               '''class Ux4gTimeslotShowcase extends StatefulWidget {
   final SlotPickerViewMode viewMode;
@@ -3902,3 +4778,394 @@ Ux4gTimeslot(data: data, onDateSelected: (d) {});''',
 );
 
 final slotGridComponent = timeSlotComponent;
+
+Widget _buildCarouselSlide({
+  required List<Color> gradientColors,
+  required String badgeText,
+  required String title,
+  required String description,
+  required String buttonText,
+}) {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 4.0),
+    padding: const EdgeInsets.all(24.0),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16.0),
+      gradient: LinearGradient(
+        colors: gradientColors,
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: gradientColors.first.withOpacity(0.3),
+          blurRadius: 12,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.25),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            badgeText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              description,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+                height: 1.3,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: gradientColors.first,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          ),
+          child: Text(
+            buttonText,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildImageCarouselSlide({
+  required String imageUrl,
+  required String badgeText,
+  required String title,
+  required String subtitle,
+}) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(16.0),
+    child: Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.network(
+          imageUrl,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: Colors.grey.shade300,
+              child: const Icon(Icons.image, size: 48, color: Colors.grey),
+            );
+          },
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.transparent, Colors.black87],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 16,
+          left: 16,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.6),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Text(
+              badgeText,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 20,
+          left: 20,
+          right: 20,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class _StepperVisualShowcase extends StatefulWidget {
+  const _StepperVisualShowcase();
+
+  @override
+  State<_StepperVisualShowcase> createState() => _StepperVisualShowcaseState();
+}
+
+class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
+  int _horizontalStep = 1;
+  int _compactStep = 1;
+  int _verticalStep = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of stepper variants including horizontal step flow, compact step pagination, and vertical process wizard.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Column(
+            children: [
+              // 1. Horizontal Stepper
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: const Color(0xFFE5E7EB)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '1. Horizontal Stepper Flow',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF111827),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Center(
+                      child: SizedBox(
+                        width: 420,
+                        child: Ux4gStepper(
+                          totalSteps: 4,
+                          currentStep: _horizontalStep,
+                          orientation: StepperOrientation.horizontal,
+                          steps: const [
+                            Ux4gStepItem(title: 'Personal'),
+                            Ux4gStepItem(title: 'Address'),
+                            Ux4gStepItem(title: 'Documents'),
+                            Ux4gStepItem(title: 'Review'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Ux4gButton(
+                          onPressed: _horizontalStep > 0
+                              ? () => setState(() => _horizontalStep--)
+                              : null,
+                          text: 'Previous',
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.small,
+                        ),
+                        const SizedBox(width: 12),
+                        Ux4gButton(
+                          onPressed: _horizontalStep < 3
+                              ? () => setState(() => _horizontalStep++)
+                              : null,
+                          text: 'Next Step',
+                          variant: Ux4gButtonVariant.primary,
+                          size: Ux4gButtonSize.small,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // 2. Compact Stepper
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: const Color(0xFFE5E7EB)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '2. Compact Stepper Pagination',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF111827),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Ux4gCompactStepper(
+                      totalSteps: 5,
+                      currentStep: _compactStep,
+                      stepLabel: 'Step ${_compactStep + 1} of 5',
+                      description: 'Upload ID & Address verification proofs',
+                      layout: Ux4gCompactStepperLayout.linear,
+                      onNext: _compactStep < 4
+                          ? () => setState(() => _compactStep++)
+                          : () {},
+                      onPrevious: _compactStep > 0
+                          ? () => setState(() => _compactStep--)
+                          : () {},
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // 3. Vertical Stepper
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: const Color(0xFFE5E7EB)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.02),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '3. Vertical Process Wizard',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF111827),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Ux4gStepper(
+                      totalSteps: 4,
+                      currentStep: _verticalStep,
+                      orientation: StepperOrientation.vertical,
+                      steps: const [
+                        Ux4gStepItem(
+                          title: 'Applicant Details',
+                          description: 'Enter personal & contact info',
+                        ),
+                        Ux4gStepItem(
+                          title: 'Upload Proofs',
+                          description: 'Attach identity and address documents',
+                        ),
+                        Ux4gStepItem(
+                          title: 'Payment Gateway',
+                          description: 'Pay application fee online',
+                        ),
+                        Ux4gStepItem(
+                          title: 'Final Submission',
+                          description: 'Review & submit application',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

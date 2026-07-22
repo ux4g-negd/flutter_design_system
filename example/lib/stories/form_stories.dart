@@ -7,8 +7,62 @@ import '../widgets/component_docs.dart';
 // ── Input Field ──────────────────────────────────────────────────────────────
 
 final inputFieldComponent = WidgetbookComponent(
-  name: 'Standard',
+  name: 'Input',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Input',
+        description:
+            'Input - Text Field allow users to enter, edit and submit information such as names, emails, passwords or search queries. They support user interaction by enabling data input in forms, searches and workflows, ensuring a smooth and efficient user experience.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Default',
+              placeholder: 'Enter text...',
+              value: '',
+              onValueChange: (_) {},
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Error state',
+              placeholder: 'Enter text...',
+              value: 'Invalid input',
+              onValueChange: (_) {},
+              status: Ux4gInputFieldStatus.error,
+              caption: 'Error message here',
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Success state',
+              placeholder: 'Enter text...',
+              value: 'Valid input',
+              onValueChange: (_) {},
+              status: Ux4gInputFieldStatus.success,
+              caption: 'Looks good!',
+            ),
+            const SizedBox(height: 16),
+            Ux4gInputField(
+              label: 'Disabled',
+              placeholder: 'Enter text...',
+              value: '',
+              onValueChange: (_) {},
+              enabled: false,
+            ),
+          ],
+        ),
+      ),
+    ),
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
@@ -80,8 +134,7 @@ class _Ux4gInputFieldDefaultExampleState extends State<Ux4gInputFieldDefaultExam
             return ComponentDocs(
               name: 'InputField',
               description:
-                  'A styled text input with label, placeholder, caption, '
-                  'status colours, and icon slots.',
+                  'Input - Text Field allow users to enter, edit and submit information such as names, emails, passwords or search queries. They support user interaction by enabling data input in forms, searches and workflows, ensuring a smooth and efficient user experience.',
               code: dynamicCode,
               props: const [
                 PropRow(
@@ -775,6 +828,48 @@ final textAreaComponent = WidgetbookComponent(
   name: 'TextArea',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        String value = '';
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'TextArea',
+              description:
+                  'Textareas support longer-form text entry with counters, helper messaging, and validation feedback using the UX4G design system.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Example',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: SizedBox(
+                      width: 400,
+                      child: Ux4gTextArea(
+                        label: 'Description',
+                        placeholder: 'Write something...',
+                        value: value,
+                        onValueChange: (v) => setState(() => value = v),
+                        size: Ux4gTextAreaSize.large,
+                        minHeight: Ux4gTextAreaMinHeight.medium,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
         String value = '';
@@ -1204,6 +1299,25 @@ String _buildSearchFieldCode({
   return buf.toString();
 }
 
+// ── Search Introduction ────────────────────────────────────────────────────────
+
+final searchIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Search',
+          description:
+              'Search component allows users to quickly find relevant information within an application. It enhances navigation, improves content discoverability and supports text based, voice or filter-assisted search functionality.',
+          showPreview: false,
+          child: _SearchVisualShowcase(),
+        );
+      },
+    ),
+  ],
+);
 final searchFieldComponent = WidgetbookComponent(
   name: 'Search',
   useCases: [
@@ -1335,7 +1449,7 @@ final searchFieldComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'SearchField',
               description:
-                  'A search-optimised input field with a built-in search icon.',
+                  'Search component allows users to quickly find relevant information within an application. It enhances navigation, improves content discoverability and supports text based, voice or filter-assisted search functionality.',
               code: code,
               props: const [
                 PropRow(
@@ -1499,6 +1613,80 @@ final checkboxComponent = WidgetbookComponent(
   name: 'Checkbox',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Checkbox',
+        description:
+            'Checkbox present a list of options where users can make multiple selections, a single selection or none at all. They support user interaction by allowing the selection of independent items ensuring that users can easily customize settings, filter search results and submit multi choice forms with clarity.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gCheckbox(value: true, onChanged: (_) {}, label: 'Checked'),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(value: false, onChanged: (_) {}, label: 'Unchecked'),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: null,
+              onChanged: (_) {},
+              label: 'Indeterminate',
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: false,
+              onChanged: (_) {},
+              label: 'Error state',
+              isRequired: true,
+              hasError: true,
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Disabled',
+              enabled: false,
+            ),
+            const SizedBox(height: 32),
+            Text(
+              'Sizes',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Small',
+              size: Ux4gCheckboxSize.small,
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Medium',
+              size: Ux4gCheckboxSize.medium,
+            ),
+            const SizedBox(height: 8),
+            Ux4gCheckbox(
+              value: true,
+              onChanged: (_) {},
+              label: 'Large',
+              size: Ux4gCheckboxSize.large,
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
         bool? value = false;
@@ -1507,7 +1695,7 @@ final checkboxComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Checkbox',
               description:
-                  'A tri-state checkbox (checked / unchecked / indeterminate) with label and description.',
+                  'Checkbox present a list of options where users can make multiple selections, a single selection or none at all. They support user interaction by allowing the selection of independent items ensuring that users can easily customize settings, filter search results and submit multi choice forms with clarity.',
               code: '''class CheckboxExample extends StatefulWidget {
   const CheckboxExample({super.key});
 
@@ -1716,6 +1904,18 @@ final toggleComponent = WidgetbookComponent(
   name: 'Switch',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Switch',
+          description:
+              'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switches provide a quick and intuitive way to modify system or feature preferences with a single action.',
+          showPreview: false,
+          child: _SwitchVisualShowcase(),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
         bool checked = false;
@@ -1724,7 +1924,7 @@ final toggleComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Switch',
               description:
-                  'A switch with label, description, and three size options.',
+                  'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switchs provide a quick and intuitive way to modify system or feature preferences with a single action.',
               code: '''Ux4gSwitch(
   checked: checked,
   onCheckedChange: (v) => setState(() => checked = v),
@@ -1980,9 +2180,21 @@ Ux4gSwitch(
 final sliderComponent = WidgetbookComponent(
   name: 'Slider',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Slider',
+          description:
+              'Slider is an interactive input control that allows users to select a value or a range of values by dragging a handle along a horizontal track. It provides an intuitive, visually appealing way to adjust continuous settings or explore approximate ranges.',
+          showPreview: false,
+          child: _SliderVisualShowcase(),
+        );
+      },
+    ),
     // ── 1. Basic Single Slider (Small) ─────────────────────────────────
     WidgetbookUseCase(
-      name: 'Basic Single Slider (Small)',
+      name: 'Slider',
       builder: (context) {
         double value = 50;
         return StatefulBuilder(
@@ -1990,8 +2202,7 @@ final sliderComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'Slider',
               description:
-                  'A single-thumb slider. Set size to SliderSize.small (default). '
-                  'Pass steps to show tick marks and value labels below the track.',
+                  'Slider is an interactive input control that allows users to select a value or a range of values by dragging a handle along a horizontal track. It provides an intuitive, visually appealing way to adjust continuous settings or explore approximate ranges.',
               code: '''Ux4gSlider(
   value: value,
   min: 0,
@@ -2133,7 +2344,7 @@ final sliderComponent = WidgetbookComponent(
 
     // ── 2. Basic Range Slider (Medium) ─────────────────────────────────
     WidgetbookUseCase(
-      name: 'Basic Range Slider (Medium)',
+      name: 'Range Slider',
       builder: (context) {
         RangeValues range = const RangeValues(20, 90);
         return StatefulBuilder(
@@ -2141,8 +2352,7 @@ final sliderComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'RangeSlider',
               description:
-                  'A dual-thumb range slider. Use size: medium for larger thumbs. '
-                  'showValueLabels shows the current start/end percentages above the track.',
+                  'Range Slider component allows users to select a value or a range within a predefined scale by dragging a handle. It provides a more interactive and visual alternative to numeric input fields, making it ideal for adjustable settings, pricing filters, volume controls and progress tracking.',
               code: '''Ux4gRangeSlider(
   values: RangeValues(20, 90),
   min: 0,
@@ -2493,6 +2703,61 @@ final otpInputComponent = WidgetbookComponent(
   name: 'Input-OTP',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Input-OTP',
+        description:
+            'Input - OTP component consists of multiple input fields designed for entering a one-time password. It automatically advances focus between fields and provides clear feedback for a secure and seamless verification experience.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'States',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '',
+              onChanged: (_) {},
+              label: 'Default',
+              status: Ux4gOtpInputStatus.defaultStatus,
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '123456',
+              onChanged: (_) {},
+              label: 'Error state',
+              status: Ux4gOtpInputStatus.error,
+              captionVariant: Ux4gOtpCaptionVariant.plain,
+              captionText: 'Invalid OTP entered',
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '123456',
+              onChanged: (_) {},
+              label: 'Success state',
+              status: Ux4gOtpInputStatus.success,
+            ),
+            const SizedBox(height: 16),
+            Ux4gOtpInput(
+              length: 6,
+              value: '',
+              onChanged: (_) {},
+              label: 'Disabled',
+              enabled: false,
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         String otpValue = '';
@@ -2518,8 +2783,7 @@ final otpInputComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'OtpInput',
               description:
-                  'A segmented one-time-password input field. '
-                  'Automatically advances focus and calls onCompleted when all digits are filled.',
+                  'Input - OTP component consists of multiple input fields designed for entering a one-time password. It automatically advances focus between fields and provides clear feedback for a secure and seamless verification experience.',
               code: codeStr,
               props: const [
                 PropRow(
@@ -2675,8 +2939,73 @@ final otpInputComponent = WidgetbookComponent(
   ],
 );
 
-// ── Action Dropdown ───────────────────────────────────────────────────────────
+// ── Dropdown Introduction ──────────────────────────────────────────────────────
 
+final dropdownIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        List<String> selectedSelectionIds = [];
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Dropdown',
+              description:
+                  'Dropdown menu is a user interface element that reveals a hidden list of options, links or actions when you click or hover over a trigger button.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'States',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Action Dropdown'),
+                  const SizedBox(height: 8),
+                  Ux4gActionDropdown(
+                    options: const [
+                      Ux4gActionDropdownOption(id: '1', label: 'Action 1'),
+                      Ux4gActionDropdownOption(id: '2', label: 'Action 2'),
+                    ],
+                    onOptionClick: (_) {},
+                    triggerBuilder: (context, toggle) => Ux4gButton(
+                      text: 'Actions',
+                      variant: Ux4gButtonVariant.outline,
+                      onPressed: toggle,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  const Text('Selection Dropdown'),
+                  const SizedBox(height: 8),
+                  Ux4gSelectionDropdown(
+                    label: 'Selection',
+                    placeholder: 'Select option',
+                    options: const [
+                      Ux4gDropdownOption(id: '1', label: 'Option 1'),
+                      Ux4gDropdownOption(id: '2', label: 'Option 2'),
+                    ],
+                    selectedOptionIds: selectedSelectionIds,
+                    onSelectionChange: (ids) =>
+                        setState(() => selectedSelectionIds = ids),
+                    mode: Ux4gDropdownMode.single,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+  ],
+);
+
+// ── Action Dropdown ───────────────────────────────────────────────────────────
 String? _actionDropdownDefaultSelectedId;
 String? _actionDropdownMoreSelectedId;
 List<String> _selectionDropdownSingleSelected = [];
@@ -2709,8 +3038,7 @@ final actionDropdownComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'ActionDropdown',
               description:
-                  'A contextual action menu triggered by a custom trigger widget. '
-                  'Each option can optionally show a trailing arrow.',
+                  'Dropdown menu is a user interface element that reveals a hidden list of options, links or actions when you click a trigger button.',
               code: '''Ux4gActionDropdown(
   options: [
     Ux4gActionDropdownOption(id: '1', label: 'Edit'),
@@ -3075,10 +3403,21 @@ final selectionDropdownComponent = WidgetbookComponent(
 );
 
 // ── Date Picker ───────────────────────────────────────────────────────────────
-
 final datePickerComponent = WidgetbookComponent(
   name: 'Date Picker',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Date Picker',
+          description:
+              'Date Picker component allows users to select a single date or a range of dates using a calendar interface. It ensures accurate and consistent date selection across workflows.',
+          showPreview: false,
+          child: _DatePickerVisualShowcase(),
+        );
+      },
+    ),
     // ── 1. Single Date ───────────────────────────────────────────────────
     WidgetbookUseCase(
       name: 'Single Date',
@@ -3116,8 +3455,7 @@ final datePickerComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'DatePicker — Single',
               description:
-                  'Single date selection. Tapping the field opens a calendar overlay. '
-                  'The calendar icon sits at the right end of the field.',
+                  'Date Picker component allows users to select a single date or a range of dates using a calendar interface. It ensures accurate and consistent date selection across workflows.',
               code:
                   '''Ux4gDatePicker(
   mode: Ux4gDatePickerMode.single,
@@ -3365,10 +3703,21 @@ final datePickerComponent = WidgetbookComponent(
 );
 
 // ── Time Picker ───────────────────────────────────────────────────────────────
-
 final timePickerComponent = WidgetbookComponent(
   name: 'TimePicker',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Time Picker',
+          description:
+              'Time picker allows users to select a specific time or time range. It ensures inputs are formatted correctly and eliminates the need for manual typing. They are frequently used for booking appointments, setting alarms and scheduling calendar events.',
+          showPreview: false,
+          child: _TimePickerVisualShowcase(),
+        );
+      },
+    ),
     // ── 1. Standard ──────────────────────────────────────────────────────
     WidgetbookUseCase(
       name: 'Standard',
@@ -3379,8 +3728,7 @@ final timePickerComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'TimePicker — Standard',
               description:
-                  'Tapping the field opens a time picker overlay in 12-hour AM/PM format. '
-                  'The clock icon sits at the right end of the field.',
+                  'Time picker allows users to select a specific time or time range. It ensures inputs are formatted correctly and eliminates the need for manual typing. They are frequently used for booking appointments, setting alarms and scheduling calendar events.',
               code: '''Ux4gTimePicker(
   placeholder: 'Select time',
   onTimeSelected: (time) {
@@ -3484,6 +3832,49 @@ final fileUploadComponent = WidgetbookComponent(
   name: 'File Upload',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'File Upload',
+        description:
+            'File upload allows users to upload and attach one or more files. It shows the upload progress and status of each file.',
+        showPreview: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Border Styles',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: 360,
+              child: Ux4gFileUpload(
+                maxFiles: 5,
+                maxFileSize: 5 * 1024 * 1024,
+                borderStyle: Ux4gFileUploadBorderStyle.solid,
+                onFilesChanged: (_) {},
+                onUpload: (file) async => true,
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: 360,
+              child: Ux4gFileUpload(
+                maxFiles: 5,
+                maxFileSize: 5 * 1024 * 1024,
+                borderStyle: Ux4gFileUploadBorderStyle.dashed,
+                onFilesChanged: (_) {},
+                onUpload: (file) async => true,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         final borderStyle = context.knobs.object
@@ -3492,12 +3883,6 @@ final fileUploadComponent = WidgetbookComponent(
               options: Ux4gFileUploadBorderStyle.values,
               initialOption: Ux4gFileUploadBorderStyle.solid,
             );
-
-        final variant = context.knobs.object.dropdown<Ux4gFileUploadVariant>(
-          label: 'Variant',
-          options: Ux4gFileUploadVariant.values,
-          initialOption: Ux4gFileUploadVariant.standard,
-        );
 
         final errorTitle = context.knobs.string(
           label: 'Error Title',
@@ -3513,13 +3898,13 @@ final fileUploadComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'FileUpload',
           description:
-              'A file drop zone that allows users to select or drag-and-drop files. '
-              'Shows upload progress per file with idle / uploading / success / error states.',
+              'File upload allows users to upload and attach one or more files. It shows the upload progress and status of each file.',
           code:
               '''Ux4gFileUpload(
   maxFiles: 5,
   maxFileSize: 5 * 1024 * 1024,  // 5 MB
-  borderStyle: Ux4gFileUploadBorderStyle.dashed,
+  allowedExtensions: const ['jpg', 'png', 'pdf'],
+  borderStyle: Ux4gFileUploadBorderStyle.${borderStyle.name},
   errorTitle: '$errorTitle',
   errorText: '$errorText',
   onFilesChanged: (files) {
@@ -3532,37 +3917,48 @@ final fileUploadComponent = WidgetbookComponent(
 );''',
           props: const [
             PropRow(
+              name: 'onFilesChanged',
+              type: 'ValueChanged<List<UploadedFile>>?',
+              description: 'Called whenever the file list changes.',
+              required: true,
+            ),
+            PropRow(
+              name: 'onUpload',
+              type: 'Future<bool> Function(UploadedFile)?',
+              description:
+                  'Handles uploading a single file; return true on success.',
+              required: true,
+            ),
+            PropRow(
               name: 'maxFiles',
-              type: 'int?',
+              type: 'int',
               description: 'Max number of files allowed.',
+              defaultValue: '5',
             ),
             PropRow(
               name: 'maxFileSize',
-              type: 'int?',
-              description: 'Max file size in bytes (defaults to 5MB).',
+              type: 'int',
+              description: 'Max file size in bytes.',
+              defaultValue: '5 MB',
             ),
             PropRow(
               name: 'allowedExtensions',
-              type: 'List<String>?',
-              description:
-                  "List of allowed file extensions (defaults to ['jpg', 'png', 'pdf']).",
+              type: 'List<String>',
+              description: 'List of allowed file extensions.',
+              defaultValue: "['jpg', 'png', 'pdf']",
             ),
             PropRow(
               name: 'borderStyle',
               type: 'Ux4gFileUploadBorderStyle',
               description:
-                  'Border style for the upload area. Options: solid, dashed. Default: solid.',
-            ),
-            PropRow(
-              name: 'variant',
-              type: 'Ux4gFileUploadVariant',
-              description:
-                  'Upload area layout variant. Options: standard (two buttons), dropzone (single upload button with "Or" divider). Default: standard.',
+                  'Border style for the upload area. Options: solid, dashed.',
+              defaultValue: 'solid',
             ),
             PropRow(
               name: 'buttonBorderRadius',
               type: 'double',
-              description: 'Border radius for upload buttons. Default: 8.',
+              description: 'Border radius for upload buttons.',
+              defaultValue: '8',
             ),
             PropRow(
               name: 'buttonColor',
@@ -3580,17 +3976,6 @@ final fileUploadComponent = WidgetbookComponent(
               type: 'ButtonStyle?',
               description:
                   'Fully custom ButtonStyle for the upload button. Overrides other button params when provided.',
-            ),
-            PropRow(
-              name: 'onFilesChanged',
-              type: 'ValueChanged<List<UploadedFile>>?',
-              description: 'Called whenever the file list changes.',
-            ),
-            PropRow(
-              name: 'onUpload',
-              type: 'Future<bool> Function(UploadedFile)?',
-              description:
-                  'Handles uploading a single file; return true on success.',
             ),
             PropRow(
               name: 'errorTitle',
@@ -3619,7 +4004,6 @@ final fileUploadComponent = WidgetbookComponent(
               maxFiles: 5,
               maxFileSize: 5 * 1024 * 1024,
               borderStyle: borderStyle,
-              variant: variant,
               errorTitle: errorTitle,
               errorText: errorText,
               onFilesChanged: (_) {},
@@ -3632,11 +4016,23 @@ final fileUploadComponent = WidgetbookComponent(
   ],
 );
 
-// ── Radio Button ─────────────────────────────────────────────────────────────────
+// ── Radio Introduction ────────────────────────────────────────────────────────
 
 final radioButtonComponent = WidgetbookComponent(
   name: 'Radio',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Radio Button',
+          description:
+              'Radio Button presents a list of mutually exclusive options where users can make exactly one selection from the group. It supports user interaction by allowing the selection of a single choice out of multiple predefined items, ensuring that users can easily define precise preferences, answer single choice binary questions, and submit forms with distinct clarity.',
+          showPreview: false,
+          child: _RadioButtonVisualShowcase(),
+        );
+      },
+    ),
     WidgetbookUseCase(
       name: 'Interactive',
       builder: (context) {
@@ -3724,8 +4120,7 @@ final radioButtonComponent = WidgetbookComponent(
             return ComponentDocs(
               name: 'RadioButton',
               description:
-                  'A single-selection radio button. Use a shared groupValue '
-                  'and onChanged to create a mutually-exclusive group.',
+                  'Radio Button presents a list of mutually exclusive options where users can make exactly one selection from the group. It supports user interaction by allowing the selection of a single choice out of multiple predefined items, ensuring that users can easily define precise preferences, answer single choice binary questions, and submit forms with distinct clarity.',
               code: codeStr,
               props: const [
                 PropRow(
@@ -4158,3 +4553,1034 @@ Ux4gRadioButton(value: 'a', groupValue: 'b', onChanged: (_) {}, label: 'Teal (un
     ),
   ],
 );
+
+class _DatePickerVisualShowcase extends StatefulWidget {
+  const _DatePickerVisualShowcase();
+
+  @override
+  State<_DatePickerVisualShowcase> createState() =>
+      _DatePickerVisualShowcaseState();
+}
+
+class _DatePickerVisualShowcaseState
+    extends State<_DatePickerVisualShowcase> {
+  DateTime? _singleDate;
+  DateTimeRange? _dateRange;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of single date picker and date range picker components with explicit labels.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+          // Single Date Picker Card
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.0),
+              border: Border.all(color: const Color(0xFFE5E7EB)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 6,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Single Date Picker',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF111827),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Ux4gDatePicker(
+                    mode: Ux4gDatePickerMode.single,
+                    label: 'Select Date',
+                    placeholder: 'DD/MM/YYYY',
+                    isRequired: true,
+                    description: 'Select a single date from the calendar.',
+                    initialDate: _singleDate,
+                    onDateSelected: (date) {
+                      setState(() {
+                        _singleDate = date;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          // Date Range Picker Card
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.0),
+              border: Border.all(color: const Color(0xFFE5E7EB)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 6,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Date Range Picker',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF111827),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Ux4gDatePicker(
+                    mode: Ux4gDatePickerMode.range,
+                    label: 'Select Date Range',
+                    placeholder: 'DD/MM/YYYY – DD/MM/YYYY',
+                    isRequired: true,
+                    description: 'Select start and end dates for your trip or reservation.',
+                    initialDateRange: _dateRange,
+                    onDateRangeSelected: (range) {
+                      setState(() {
+                        _dateRange = range;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RadioButtonVisualShowcase extends StatefulWidget {
+  const _RadioButtonVisualShowcase();
+
+  @override
+  State<_RadioButtonVisualShowcase> createState() =>
+      _RadioButtonVisualShowcaseState();
+}
+
+class _RadioButtonVisualShowcaseState
+    extends State<_RadioButtonVisualShowcase> {
+  String _leftSelected = 'success';
+  String _rightSelected = 'opt3';
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of radio button options with helper descriptions, success status, and interactive states.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.0),
+              border: Border.all(color: const Color(0xFFE5E7EB)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 6,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Wrap(
+              spacing: 64,
+              runSpacing: 24,
+              children: [
+                // Left Column
+                SizedBox(
+                  width: 280,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Ux4gRadioButton<String>(
+                        label: 'Helper',
+                        description: 'Helper text',
+                        descriptionVariant:
+                            Ux4gRadioButtonDescriptionVariant.helper,
+                        value: 'helper',
+                        groupValue: _leftSelected,
+                        onChanged: (val) {
+                          if (val != null) setState(() => _leftSelected = val);
+                        },
+                      ),
+                      const SizedBox(height: 24),
+                      Ux4gRadioButton<String>(
+                        label: 'Success',
+                        description: 'Success text',
+                        descriptionVariant:
+                            Ux4gRadioButtonDescriptionVariant.success,
+                        status: Ux4gRadioButtonStatus.success,
+                        value: 'success',
+                        groupValue: _leftSelected,
+                        onChanged: (val) {
+                          if (val != null) setState(() => _leftSelected = val);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Right Column
+                SizedBox(
+                  width: 280,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Ux4gRadioButton<String>(
+                        label: 'Option One',
+                        description: 'First option description',
+                        descriptionVariant:
+                            Ux4gRadioButtonDescriptionVariant.helper,
+                        value: 'opt1',
+                        groupValue: _rightSelected,
+                        onChanged: (val) {
+                          if (val != null) setState(() => _rightSelected = val);
+                        },
+                      ),
+                      const SizedBox(height: 24),
+                      Ux4gRadioButton<String>(
+                        label: 'Option Three',
+                        description: 'Third option description',
+                        descriptionVariant:
+                            Ux4gRadioButtonDescriptionVariant.helper,
+                        value: 'opt3',
+                        groupValue: _rightSelected,
+                        onChanged: (val) {
+                          if (val != null) setState(() => _rightSelected = val);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SearchVisualShowcase extends StatefulWidget {
+  const _SearchVisualShowcase();
+
+  @override
+  State<_SearchVisualShowcase> createState() => _SearchVisualShowcaseState();
+}
+
+class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
+  String _basicQuery = '';
+  String _submitQuery = '';
+  String _submittedText = '';
+  String _autocompleteQuery = '';
+  String _selectedOption = '';
+
+  final List<String> _govServices = const [
+    'Aadhaar Card Update',
+    'PAN Card Application',
+    'Passport Renewal',
+    'Voter ID Registration',
+    'Driving License Renewal',
+    'Ration Card Transfer',
+    'Birth Certificate Download',
+    'Income Certificate Verification',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of search field variants including basic search, search with submit button, autocomplete with live dropdown, and status validation.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+
+          // 1. Basic Instant Search
+          _buildSearchCard(
+            title: '1. Basic Search',
+            description:
+                'Instant live filtering search bar with clear & voice action triggers.',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Ux4gSearchField(
+                  value: _basicQuery,
+                  onValueChange: (v) => setState(() => _basicQuery = v),
+                  placeholder: 'Search government services...',
+                  variant: Ux4gSearchFieldVariant.basicSearch,
+                ),
+                if (_basicQuery.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    'Searching for: "$_basicQuery"',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF4F46E5),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 2. Search with Submit Button
+          _buildSearchCard(
+            title: '2. Search with Submit Button',
+            description:
+                'Search field with an integrated submit CTA button to fire explicit queries.',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Ux4gSearchField(
+                  value: _submitQuery,
+                  onValueChange: (v) => setState(() => _submitQuery = v),
+                  placeholder: 'Enter application reference ID...',
+                  variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                  onSubmitClick: (q) => setState(() => _submittedText = q),
+                ),
+                if (_submittedText.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEEF2FF),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      'Submitted Query: "$_submittedText"',
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF3730A3),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 3. Autocomplete Search
+          _buildSearchCard(
+            title: '3. Autocomplete Dropdown Search',
+            description:
+                'Search field with live dropdown autocomplete suggestions list.',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Ux4gSearchField(
+                  value: _autocompleteQuery,
+                  onValueChange: (v) => setState(() => _autocompleteQuery = v),
+                  placeholder:
+                      'Type to search services (e.g. Aadhaar, Passport)...',
+                  variant: Ux4gSearchFieldVariant.autocomplete,
+                  options: _govServices,
+                  onOptionSelected: (selected) =>
+                      setState(() => _selectedOption = selected),
+                ),
+                if (_selectedOption.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    'Selected Option: "$_selectedOption"',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF166534),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 4. Status Validation Variants
+          _buildSearchCard(
+            title: '4. Status & Validation States',
+            description:
+                'Search fields indicating error, warning, and success validation feedback.',
+            child: Wrap(
+              spacing: 24,
+              runSpacing: 24,
+              children: [
+                SizedBox(
+                  width: 320,
+                  child: Ux4gSearchField(
+                    value: '12345',
+                    onValueChange: (_) {},
+                    placeholder: 'Enter valid ID',
+                    label: 'Error State',
+                    caption: 'Invalid reference number format',
+                    status: Ux4gSearchFieldStatus.error,
+                  ),
+                ),
+                SizedBox(
+                  width: 320,
+                  child: Ux4gSearchField(
+                    value: 'APP-99',
+                    onValueChange: (_) {},
+                    placeholder: 'Search ID',
+                    label: 'Success State',
+                    caption: 'Application found and verified',
+                    status: Ux4gSearchFieldStatus.success,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchCard({
+    required String title,
+    required String description,
+    required Widget child,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF111827),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            description,
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _SliderVisualShowcase extends StatefulWidget {
+  const _SliderVisualShowcase();
+
+  @override
+  State<_SliderVisualShowcase> createState() => _SliderVisualShowcaseState();
+}
+
+class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
+  double _smallVal = 40.0;
+  double _mediumVal = 60.0;
+  RangeValues _rangeVals = const RangeValues(20.0, 80.0);
+  double _inputVal = 45.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of slider size variants, tick marks, range selectors, and editable input fields.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 32),
+
+          // 1. Small Slider (Matching Design Image)
+          _buildSliderCard(
+            title: 'Small',
+            child: Ux4gSlider(
+              value: _smallVal,
+              min: 0,
+              max: 100,
+              steps: 9,
+              size: Ux4gSliderSize.small,
+              label: 'Label',
+              isRequired: true,
+              labelIcon: Icons.info_outline,
+              showMarksAndValues: true,
+              showValueLabels: true,
+              caption: 'Description',
+              onValueChange: (v) => setState(() => _smallVal = v),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 2. Medium Slider
+          _buildSliderCard(
+            title: 'Medium',
+            child: Ux4gSlider(
+              value: _mediumVal,
+              min: 0,
+              max: 100,
+              steps: 9,
+              size: Ux4gSliderSize.medium,
+              label: 'Label',
+              isRequired: true,
+              labelIcon: Icons.info_outline,
+              showMarksAndValues: true,
+              showValueLabels: true,
+              caption: 'Description',
+              onValueChange: (v) => setState(() => _mediumVal = v),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 3. Range Slider
+          _buildSliderCard(
+            title: 'Range Slider',
+            child: Ux4gRangeSlider(
+              values: _rangeVals,
+              min: 0,
+              max: 100,
+              steps: 9,
+              size: Ux4gSliderSize.medium,
+              label: 'Selection Range',
+              showMarksAndValues: true,
+              onValueChange: (v) => setState(() => _rangeVals = v),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 4. Slider with Editable Input Fields
+          _buildSliderCard(
+            title: 'With Editable Input Fields',
+            child: Ux4gSlider(
+              value: _inputVal,
+              min: 0,
+              max: 100,
+              steps: 9,
+              size: Ux4gSliderSize.medium,
+              label: 'Custom Value',
+              showInputFields: true,
+              showMarksAndValues: true,
+              caption: 'Type value directly or drag handle',
+              onValueChange: (v) => setState(() => _inputVal = v),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSliderCard({
+    required String title,
+    required Widget child,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF111827),
+            ),
+          ),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _SwitchVisualShowcase extends StatefulWidget {
+  const _SwitchVisualShowcase();
+
+  @override
+  State<_SwitchVisualShowcase> createState() => _SwitchVisualShowcaseState();
+}
+
+class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
+  bool _rightLabelVal = true;
+  bool _leftLabelVal = true;
+  bool _bothSidesVal = true;
+  bool _noLabelVal = true;
+
+  bool _smallVal = true;
+  bool _mediumVal = true;
+  bool _largeVal = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of switch layout variants (Right, Left, Both Sides, No Label), sizes, and state configurations.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // 1. Layout Variants
+          _buildSwitchCard(
+            title: 'Layout & Label Position Variants',
+            description:
+                'Support for right-aligned label, left-aligned label, dual-sided labels, and standalone icon switch.',
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Right Label',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Ux4gSwitch(
+                      checked: _rightLabelVal,
+                      onCheckedChange: (v) => setState(() => _rightLabelVal = v),
+                      label: 'Push Notifications',
+                      labelPosition: Ux4gSwitchLabelPosition.right,
+                    ),
+                  ],
+                ),
+                const Divider(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Left Label',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Ux4gSwitch(
+                      checked: _leftLabelVal,
+                      onCheckedChange: (v) => setState(() => _leftLabelVal = v),
+                      label: 'Dark Mode Theme',
+                      labelPosition: Ux4gSwitchLabelPosition.left,
+                    ),
+                  ],
+                ),
+                const Divider(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Both Sides Labels',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Ux4gSwitch(
+                      checked: _bothSidesVal,
+                      onCheckedChange: (v) => setState(() => _bothSidesVal = v),
+                      labelPosition: Ux4gSwitchLabelPosition.bothSides,
+                      label: 'Off',
+                      secondaryLabel: 'On',
+                    ),
+                  ],
+                ),
+                const Divider(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('No Label (Standalone)',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Ux4gSwitch(
+                      checked: _noLabelVal,
+                      onCheckedChange: (v) => setState(() => _noLabelVal = v),
+                      labelPosition: Ux4gSwitchLabelPosition.noLabel,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // 2. Sizes & Disabled States
+          Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: [
+              SizedBox(
+                width: 360,
+                child: _buildSwitchCard(
+                  title: 'Size Scale',
+                  description:
+                      'Small (S), Medium (M), and Large (L) switch dimensions.',
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Ux4gSwitch(
+                        checked: _smallVal,
+                        onCheckedChange: (v) => setState(() => _smallVal = v),
+                        label: 'Small Switch',
+                        size: Ux4gSwitchSize.s,
+                      ),
+                      const SizedBox(height: 16),
+                      Ux4gSwitch(
+                        checked: _mediumVal,
+                        onCheckedChange: (v) => setState(() => _mediumVal = v),
+                        label: 'Medium Switch',
+                        size: Ux4gSwitchSize.m,
+                      ),
+                      const SizedBox(height: 16),
+                      Ux4gSwitch(
+                        checked: _largeVal,
+                        onCheckedChange: (v) => setState(() => _largeVal = v),
+                        label: 'Large Switch',
+                        size: Ux4gSwitchSize.l,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 360,
+                child: _buildSwitchCard(
+                  title: 'Disabled States',
+                  description: 'Non-interactive switch states.',
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Ux4gSwitch(
+                        checked: true,
+                        onCheckedChange: null,
+                        label: 'Disabled (On)',
+                        size: Ux4gSwitchSize.m,
+                      ),
+                      SizedBox(height: 16),
+                      Ux4gSwitch(
+                        checked: false,
+                        onCheckedChange: null,
+                        label: 'Disabled (Off)',
+                        size: Ux4gSwitchSize.m,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSwitchCard({
+    required String title,
+    required String description,
+    required Widget child,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF111827),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            description,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 20),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _TimePickerVisualShowcase extends StatefulWidget {
+  const _TimePickerVisualShowcase();
+
+  @override
+  State<_TimePickerVisualShowcase> createState() =>
+      _TimePickerVisualShowcaseState();
+}
+
+class _TimePickerVisualShowcaseState
+    extends State<_TimePickerVisualShowcase> {
+  TimeOfDay? _t1;
+  TimeOfDay? _t2 = const TimeOfDay(hour: 9, minute: 30);
+  TimeOfDay? _t3;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of time picker fields with pre-selected times, custom minute intervals, and interactive selection.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Column(
+            children: [
+              // 1. Default Time Picker
+              _buildTimePickerCard(
+                title: 'Default Time Picker',
+                description: 'Standard interactive time selector field.',
+                child: SizedBox(
+                  width: 340,
+                  child: Ux4gTimePicker(
+                    placeholder: 'Select preferred appointment time...',
+                    onTimeSelected: (t) => setState(() => _t1 = t),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // 2. Pre-Selected Time Field
+              _buildTimePickerCard(
+                title: 'Pre-Selected Time',
+                description: 'Time picker initialized with 09:30 AM.',
+                child: SizedBox(
+                  width: 340,
+                  child: Ux4gTimePicker(
+                    initialTime: _t2,
+                    onTimeSelected: (t) => setState(() => _t2 = t),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // 3. 15-Minute Interval
+              _buildTimePickerCard(
+                title: '15-Minute Interval Slot',
+                description:
+                    'Time selector restricted to 15-minute slot increments.',
+                child: SizedBox(
+                  width: 340,
+                  child: Ux4gTimePicker(
+                    placeholder: 'Select slot time (15-min intervals)...',
+                    minuteInterval: 15,
+                    onTimeSelected: (t) => setState(() => _t3 = t),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTimePickerCard({
+    required String title,
+    required String description,
+    required Widget child,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF111827),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            description,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}

@@ -8,12 +8,23 @@ final tagComponent = WidgetbookComponent(
   name: 'Tags',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return const ComponentDocs(
+          name: 'Tag',
+          description:
+              'Tag is a small, interactive element used to label, categorize or filter content. Tag allow users to quickly identify metadata and make selections.',
+          showPreview: false,
+          child: _TagVisualShowcase(),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Styles',
       builder: (context) => ComponentDocs(
         name: 'Tag',
         description:
-            'A compact label chip with four style variants and six color schemes. '
-            'Optionally dismissible.',
+            'Tag is a small, interactive element used to label, categorize or filter content. Tag allow users to quickly identify metadata and make selections.',
         code: '''// Style variants
 Ux4gTag(text: 'Tonal',   style: Ux4gTagStyle.tonal);
 Ux4gTag(text: 'Filled',  style: Ux4gTagStyle.filled);
@@ -270,12 +281,82 @@ final cardComponent = WidgetbookComponent(
   name: 'Cards',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Card',
+          description:
+              'Card is a flexible, container like component that visually groups related pieces of information and actions about a single subject. It supports images, text and actions in a flexible content container.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Visual demonstration of vertical and horizontal rich card components with media banners, badges, chips, and actions.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 32),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final isDesktop = constraints.maxWidth >= 900;
+                    if (isDesktop) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 400),
+                            child: _buildShowcaseVerticalCard(context),
+                          ),
+                          const SizedBox(width: 24),
+                          Expanded(
+                            child: _buildShowcaseHorizontalCard(
+                              context,
+                              isCompact: false,
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _buildShowcaseVerticalCard(context),
+                        const SizedBox(height: 24),
+                        _buildShowcaseHorizontalCard(
+                          context,
+                          isCompact: constraints.maxWidth < 600,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Basic content',
       builder: (context) => ComponentDocs(
         name: 'Card',
         description:
-            'A surface container with optional title, subtitle, body text, '
-            'media image, and footer action buttons.',
+            'Card is a flexible, container like component that visually groups related pieces of information and actions about a single subject. It supports images, text and actions in a flexible content container.',
         code: '''Ux4gCard(
   title: 'Card Title',
   subtitle: 'Subtitle',
@@ -1392,11 +1473,158 @@ final dividerComponent = WidgetbookComponent(
   name: 'Divider',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Divider',
+          description:
+              'Divider is a thin line that groups content in lists and containers. It helps in  improving content organization by separating content visually, making it easier for users to scan and understand information.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Visual demonstration of horizontal and vertical dividers.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                // 1. Horizontal Divider Section
+                Text(
+                  'Horizontal Divider',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Item 1',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Ux4gDivider(
+                        orientation: Ux4gDividerOrientation.horizontal,
+                      ),
+                      SizedBox(height: 16),
+                      Text(
+                        'Item 2',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                // 2. Vertical Divider Section
+                Text(
+                  'Vertical Divider',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.02),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Item 1',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                      SizedBox(width: 16),
+                      Ux4gDivider(
+                        orientation: Ux4gDividerOrientation.vertical,
+                        height: 20,
+                      ),
+                      SizedBox(width: 16),
+                      Text(
+                        'Item 2',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                      SizedBox(width: 16),
+                      Ux4gDivider(
+                        orientation: Ux4gDividerOrientation.vertical,
+                        height: 20,
+                      ),
+                      SizedBox(width: 16),
+                      Text(
+                        'Item 3',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF374151),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    WidgetbookUseCase(
       name: 'Horizontal',
       builder: (context) => ComponentDocs(
         name: 'Divider',
         description:
-            'A thin separator line. Can be horizontal or vertical, with an optional centre label.',
+            'Divider is a thin line that groups content in lists and containers. It helps in improving content organization by separating content visually, making it easier for users to scan and understand information.',
         code: '''SizedBox(
   width: 300,
   child: Column(
@@ -1583,3 +1811,428 @@ final dividerComponent = WidgetbookComponent(
     ),
   ],
 );
+
+
+
+Widget _buildShowcaseVerticalCard(BuildContext context) {
+  return Ux4gCard(
+    elevation: 2,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // 1. Hero Image / Media Banner with Overlays
+        Stack(
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                gradient: LinearGradient(
+                  colors: [Color(0xFF8B5CF6), Color(0xFFA855F7), Color(0xFFC084FC)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 12,
+              left: 12,
+              child: Ux4gTag(
+                text: 'Label',
+                leadingContent: const Icon(
+                  Icons.category,
+                  size: 12,
+                  color: Colors.black,
+                ),
+                customBackgroundColor: Colors.white,
+                customContentColor: Colors.black,
+              ),
+            ),
+            const Positioned(
+              top: 12,
+              right: 12,
+              child: CircleAvatar(
+                radius: 14,
+                backgroundColor: Colors.white24,
+                child: Icon(
+                  Icons.category,
+                  size: 16,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+        // 2. Content Block
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Wrap(
+                spacing: 8,
+                runSpacing: 4,
+                children: [
+                  _SmallTag(text: 'Label'),
+                  _SmallTag(text: 'Label'),
+                  _SmallTag(text: 'Label'),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  const Ux4gAvatar(
+                    imageUrl:
+                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                    size: Ux4gAvatarSize.m,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Card Title',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          'Card Sub Title',
+                          style: TextStyle(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white70
+                                : Colors.black54,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(
+                    Icons.category_outlined,
+                    color: Theme.of(context).primaryColor,
+                    size: 20,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              const Wrap(
+                spacing: 12,
+                runSpacing: 4,
+                children: [
+                  _IconLabel(text: 'Label'),
+                  _IconLabel(text: 'Label'),
+                  _IconLabel(text: 'Label'),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'Lorem ipsum is a dummy or placeholder text commonly used in graphic design, '
+                'publishing, and web development.',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white.withValues(alpha: 0.87)
+                      : Colors.black87,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 12),
+              const Wrap(
+                spacing: 8,
+                runSpacing: 4,
+                children: [
+                  _SmallTag(text: 'Label'),
+                  _SmallTag(text: 'Label'),
+                  _SmallTag(text: 'Label'),
+                ],
+              ),
+              const SizedBox(height: 20),
+              // 3. Footer Button
+              SizedBox(
+                width: double.infinity,
+                child: Ux4gButton(
+                  onPressed: () {},
+                  text: 'Button',
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildShowcaseHorizontalCard(BuildContext context, {bool isCompact = false}) {
+  final mediaBanner = Stack(
+    children: [
+      Container(
+        height: isCompact ? 180 : 240,
+        width: isCompact ? double.infinity : 200,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          gradient: LinearGradient(
+            colors: [Color(0xFF8B5CF6), Color(0xFFA855F7), Color(0xFFC084FC)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+      ),
+      Positioned(
+        top: 12,
+        left: 12,
+        child: Ux4gTag(
+          text: 'Label',
+          leadingContent: const Icon(
+            Icons.category,
+            size: 12,
+            color: Colors.black,
+          ),
+          customBackgroundColor: Colors.white,
+          customContentColor: Colors.black,
+        ),
+      ),
+      const Positioned(
+        top: 12,
+        right: 12,
+        child: CircleAvatar(
+          radius: 14,
+          backgroundColor: Colors.white24,
+          child: Icon(
+            Icons.category,
+            size: 16,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    ],
+  );
+
+  final contentBlock = Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        children: [
+          const Ux4gAvatar(
+            imageUrl:
+                'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+            size: Ux4gAvatarSize.m,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Card Title',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'Card Sub Title',
+                  style: TextStyle(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white70
+                        : Colors.black54,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Icon(
+            Icons.category_outlined,
+            color: Theme.of(context).primaryColor,
+            size: 20,
+          ),
+        ],
+      ),
+      const SizedBox(height: 12),
+      const Wrap(
+        spacing: 12,
+        runSpacing: 4,
+        children: [
+          _IconLabel(text: 'Label'),
+          _IconLabel(text: 'Label'),
+          _IconLabel(text: 'Label'),
+        ],
+      ),
+      const SizedBox(height: 12),
+      Text(
+        'Lorem ipsum is a dummy or placeholder text commonly used in graphic design, '
+        'publishing, and web development.',
+        style: TextStyle(
+          fontSize: 13,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white.withValues(alpha: 0.87)
+              : Colors.black87,
+          height: 1.4,
+        ),
+      ),
+      const SizedBox(height: 12),
+      const Wrap(
+        spacing: 8,
+        runSpacing: 4,
+        children: [
+          _SmallTag(text: 'Label'),
+          _SmallTag(text: 'Label'),
+          _SmallTag(text: 'Label'),
+        ],
+      ),
+      const SizedBox(height: 20),
+      Row(
+        children: [
+          Expanded(
+            child: Ux4gOutlineButton(
+              onPressed: () {},
+              text: 'Button',
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Ux4gButton(
+              onPressed: () {},
+              text: 'Button',
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+
+  return Ux4gCard(
+    elevation: 2,
+    child: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: isCompact
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                mediaBanner,
+                const SizedBox(height: 16),
+                contentBlock,
+              ],
+            )
+          : Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                mediaBanner,
+                const SizedBox(width: 16),
+                Expanded(child: contentBlock),
+              ],
+            ),
+    ),
+  );
+}
+
+class _TagVisualShowcase extends StatelessWidget {
+  const _TagVisualShowcase();
+
+  @override
+  Widget build(BuildContext context) {
+    const icon = Icon(Icons.hexagon_outlined, size: 14);
+
+    final colors = [
+      (label: 'Neutral', color: Ux4gTagColor.neutral),
+      (label: 'Brand', color: Ux4gTagColor.brand),
+      (label: 'Success', color: Ux4gTagColor.success),
+      (label: 'Warning', color: Ux4gTagColor.warning),
+      (label: 'Error', color: Ux4gTagColor.error),
+      (label: 'Info', color: Ux4gTagColor.info),
+    ];
+
+    final styles = [
+      (title: 'Tonal Tags', style: Ux4gTagStyle.tonal),
+      (title: 'Filled Tags', style: Ux4gTagStyle.filled),
+      (title: 'Outline Tags', style: Ux4gTagStyle.outline),
+      (title: 'Text Tags', style: Ux4gTagStyle.text),
+    ];
+
+    return Container(
+      padding: const EdgeInsets.all(24.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Visual Showcase',
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Demonstration of tag style variants (Tonal, Filled, Outline, Text) across all semantic color schemes.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: styles.map((s) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      s.title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF111827),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24.0,
+                        vertical: 20.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Wrap(
+                        spacing: 24,
+                        runSpacing: 16,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: colors.map((c) {
+                          return Ux4gTag(
+                            text: c.label,
+                            style: s.style,
+                            colorScheme: c.color,
+                            leadingContent: icon,
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}

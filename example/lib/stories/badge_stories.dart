@@ -8,12 +8,127 @@ final badgeComponent = WidgetbookComponent(
   name: 'Badge',
   useCases: [
     WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) => ComponentDocs(
+        name: 'Badge',
+        description:
+            'Badge displays concise contextual information such as counts, statuses or notifications. It is commonly attached to other interface elements to draw attention without interrupting the user experience.',
+        showPreview: false,
+        child: Container(
+          padding: const EdgeInsets.all(24.0),
+          decoration: BoxDecoration(
+            color: const Color(0xFFF9FAFB),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Visual Showcase',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Explore the core styles and animation variants available in the design system.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[700],
+                ),
+              ),
+              const SizedBox(height: 32),
+              // ── Dot Badges ──
+              _buildBadgeSection(
+                title: 'Dot Badges',
+                items: [
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.dot(
+                      containerColor: Color(0xFF6366F1),
+                    ),
+                    label: 'Primary',
+                  ),
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.dot(
+                      containerColor: Color(0xFF10B981),
+                    ),
+                    label: 'Success',
+                  ),
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.dot(
+                      containerColor: Color(0xFFEF4444),
+                    ),
+                    label: 'Danger',
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              // ── Icon Badges ──
+              _buildBadgeSection(
+                title: 'Icon Badges',
+                items: [
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.icon(
+                      Icons.check,
+                      containerColor: Color(0xFF6366F1),
+                    ),
+                    label: 'Check',
+                  ),
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.icon(
+                      Icons.warning_amber_rounded,
+                      containerColor: Color(0xFFF59E0B),
+                    ),
+                    label: 'Warning',
+                  ),
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.icon(
+                      Icons.close,
+                      containerColor: Color(0xFFEF4444),
+                    ),
+                    label: 'Error',
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              // ── Digit Badges ──
+              _buildBadgeSection(
+                title: 'Digit Badges',
+                items: [
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.count(
+                      1,
+                      containerColor: Color(0xFF6366F1),
+                    ),
+                    label: 'Single',
+                  ),
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.count(
+                      11,
+                      containerColor: Color(0xFF06B6D4),
+                    ),
+                    label: 'Double',
+                  ),
+                  _buildBadgeItem(
+                    badge: const Ux4gBadge.count(
+                      150,
+                      limit: Ux4gBadgeLimit.doubleDigit,
+                      containerColor: Color(0xFFEF4444),
+                    ),
+                    label: 'Overflow',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    WidgetbookUseCase(
       name: 'Dot',
       builder: (context) => ComponentDocs(
         name: 'Badge',
         description:
-            'A small indicator overlaid on another widget. '
-            'Use the named constructors: .dot(), .count(), .label(), .icon().',
+            'Badge displays concise contextual information such as counts, statuses or notifications. It is commonly attached to other interface elements to draw attention without interrupting the user experience.',
         code: '''// Dot badge – simple presence indicator
 Ux4gBadge.dot(
   child: Icon(Icons.notifications, size: 32),
@@ -278,3 +393,67 @@ Ux4gBadge.icon(Icons.shield, showBorder: true, containerColor: primaryColor);'''
     ),
   ],
 );
+
+Widget _buildBadgeSection({
+  required String title,
+  required List<Widget> items,
+}) {
+  return Container(
+    width: double.infinity,
+    padding: const EdgeInsets.all(24.0),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(8.0),
+      border: Border.all(color: Colors.grey.shade200),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF1F2937),
+          ),
+        ),
+        const SizedBox(height: 24),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: items
+              .map(
+                (item) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: item,
+                ),
+              )
+              .toList(),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildBadgeItem({
+  required Widget badge,
+  required String label,
+}) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      SizedBox(
+        height: 24,
+        child: Center(child: badge),
+      ),
+      const SizedBox(height: 12),
+      Text(
+        label,
+        style: const TextStyle(
+          fontSize: 13,
+          color: Color(0xFF4B5563),
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    ],
+  );
+}

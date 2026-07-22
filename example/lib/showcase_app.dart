@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+import 'package:ux4g_flutter_components/src/components/social_links.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());

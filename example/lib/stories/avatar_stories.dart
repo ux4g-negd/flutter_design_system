@@ -4,6 +4,217 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
+final avatarIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Avatar',
+          description:
+              'Avatar is a visual representation of a user, business, or entity. It provide quick visual identification in headers, comments, chat messages, and user profiles.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Visual demonstration of the four primary avatar configurations supported by the design system.',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
+                ),
+                const SizedBox(height: 32),
+                // ── Row 1: Base Avatars + Status Avatars ──
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ── Base Avatars ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Base Avatars',
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 20.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: Colors.grey.shade200),
+                            ),
+                            child: Row(
+                              children: [
+                                Ux4gAvatar(
+                                  imageUrl:
+                                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                                  size: Ux4gAvatarSize.l,
+                                ),
+                                const SizedBox(width: 16),
+                                const Ux4gAvatar(
+                                  initials: 'JD',
+                                  size: Ux4gAvatarSize.l,
+                                ),
+                                const SizedBox(width: 16),
+                                const Ux4gAvatar(size: Ux4gAvatarSize.l),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    // ── Status Avatars ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Status Avatars',
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 20.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: Colors.grey.shade200),
+                            ),
+                            child: Row(
+                              children: [
+                                Ux4gStatusAvatar(
+                                  imageUrl:
+                                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                                  variant: Ux4gStatusVariant.online,
+                                  size: Ux4gAvatarSize.l,
+                                ),
+                                const SizedBox(width: 16),
+                                Ux4gStatusAvatar(
+                                  imageUrl:
+                                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                                  variant: Ux4gStatusVariant.warning,
+                                  size: Ux4gAvatarSize.l,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32),
+                // ── Row 2: Avatar Groups + Profile Avatars ──
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ── Avatar Groups ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Avatar Groups',
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 20.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: Colors.grey.shade200),
+                            ),
+                            child: Ux4gAvatarGroup(
+                              items: List.generate(
+                                6,
+                                (i) => Ux4gAvatarGroupItem(
+                                  imageUrl:
+                                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                                ),
+                              ),
+                              size: Ux4gAvatarSize.l,
+                              maxLimit: 4,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    // ── Profile Avatars ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Profile Avatars',
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 20.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: Colors.grey.shade200),
+                            ),
+                            child: Row(
+                              children: [
+                                Ux4gProfileAvatar(
+                                  imageUrl:
+                                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                                  variant: Ux4gProfileBadge.admin,
+                                  size: Ux4gAvatarSize.l,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+  ],
+);
 final avatarComponent = WidgetbookComponent(
   name: 'Standard',
   useCases: [
@@ -12,8 +223,7 @@ final avatarComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Avatar',
         description:
-            'A circular avatar that can display an icon placeholder, initials, or a network image. '
-            'Seven size options from xs to xxxl.',
+            'Mobile App Header serves as the top navigation area of an application, providing users with key contextual information, navigation controls and quick access to important actions while ensuring a consistent and intuitive user experience.',
         code: '''// Icon placeholder (default)
 Ux4gAvatar(size: Ux4gAvatarSize.m);
 
@@ -137,7 +347,8 @@ Ux4gAvatar(imageUrl: 'https://example.com/photo.jpg', size: Ux4gAvatarSize.l);''
         code:
             'Ux4gAvatar(imageUrl: \'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg\', size: Ux4gAvatarSize.l)',
         child: Ux4gAvatar(
-          imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+          imageUrl:
+              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
           size: context.knobs.list(
             label: 'Size',
             options: Ux4gAvatarSize.values,
@@ -221,7 +432,8 @@ Ux4gProfileAvatar(
                 (b) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: Ux4gProfileAvatar(
-                    imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                    imageUrl:
+                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
                     initials: 'AB',
                     variant: b,
                     size: Ux4gAvatarSize.l,
@@ -405,7 +617,8 @@ final avatarGroupComponent = WidgetbookComponent(
           items: List.generate(
             5,
             (i) => Ux4gAvatarGroupItem(
-              imageUrl: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+              imageUrl:
+                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
             ),
           ),
           maxLimit: context.knobs.int.input(

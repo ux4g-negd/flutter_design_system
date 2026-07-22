@@ -4,6 +4,50 @@ import 'package:widgetbook/widgetbook.dart';
 
 import '../widgets/component_docs.dart';
 
+// ── Feedback Introduction ────────────────────────────────────────────────────────
+
+final feedbackIntroductionComponent = WidgetbookComponent(
+  name: 'Introduction',
+  useCases: [
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (ctx, setState) {
+            return ComponentDocs(
+              name: 'Feedback',
+              description:
+                  'Feedback allows users to provide ratings and share opinions about their experience. It supports multiple feedback formats, including thumbs, stars, NPS, and emoji ratings.',
+              showPreview: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Example',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: 320,
+                    child: Ux4gFeedbackFormStar(
+                      improvementOptions: const ['App speed', 'UI design'],
+                      onSubmit: (rating, chip, comment) {},
+                      onSkip: () {},
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    ),
+  ],
+);
+
 // ── Ux4gFeedbackFormStar ───────────────────────────────────────────────────────────────
 
 final feedbackFormStarComponent = WidgetbookComponent(
@@ -14,8 +58,7 @@ final feedbackFormStarComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'Ux4gFeedbackFormStar',
         description:
-            'A star-rating feedback form with improvement chip options and a comment text area. '
-            'Shows a success state after submission.',
+            'Feedback allows users to provide ratings and share opinions about their experience. It supports multiple feedback formats, including Stars, NPS, and emoji ratings.',
         code: '''Ux4gFeedbackFormStar(
   improvementOptions: [
     'App speed',
@@ -194,8 +237,7 @@ final feedbackFormNpsComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'FeedbackFormNps',
         description:
-            'A Net Promoter Score (NPS) feedback form. User selects a score 0–10 '
-            'and optionally provides a comment. Shows success state after submission.',
+            'Feedback allows users to provide ratings and share opinions about their experience. It supports multiple feedback formats, including Stars, NPS, and emoji ratings.',
         code: '''Ux4gFeedbackFormNps(
   onSubmit: (score, comment) {
     print('NPS Score: \$score, Comment: \$comment');
@@ -343,8 +385,7 @@ final feedbackFormCsatComponent = WidgetbookComponent(
       builder: (context) => ComponentDocs(
         name: 'FeedbackFormCsat',
         description:
-            'A Customer Satisfaction (CSAT) feedback form with emoji-based satisfaction levels '
-            'and an optional comment field.',
+            'Feedback allows users to provide ratings and share opinions about their experience. It supports multiple feedback formats, including Stars, NPS, and emoji ratings.',
         code: '''Ux4gFeedbackFormCsat(
   onSubmit: (score, comment) {
     print('CSAT Score: \$score, Comment: \$comment');

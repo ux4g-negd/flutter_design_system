@@ -62,3 +62,4 @@ export 'src/components/slot_grid.dart';
 export 'src/components/timeslot.dart';
 export 'src/components/otp_input.dart';
 export 'src/components/radioButton.dart';
+export 'src/components/link.dart';

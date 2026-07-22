@@ -9,6 +9,103 @@ import '../widgets/component_docs.dart';
 final biometricComponent = WidgetbookComponent(
   name: 'Biometric Verification',
   useCases: [
+    WidgetbookUseCase(
+      name: 'Introduction',
+      builder: (context) {
+        return ComponentDocs(
+          name: 'Biometric Capture',
+          description:
+              'Biometric capture is the process of collecting a user\'s unique physical (e.g., face) characteristics through a digital interface. It acts as a secure, frictionless alternative to passwords by verifying a person\'s identity.',
+          showPreview: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Example',
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 16),
+              const Center(
+                child: SizedBox(
+                  width: 360,
+                  height: 640,
+                  child: _BiometricFlowPreview(mockSuccess: true),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    // ── 0. Default Flow ──────────────────────────────────────────────────
+    WidgetbookUseCase(
+      name: 'Default',
+      builder: (context) => ComponentDocs(
+        name: 'Biometric Verification',
+        description:
+            'Biometric capture is the process of collecting a user\'s unique physical (e.g., face) characteristics through a digital interface. It acts as a secure, frictionless alternative to passwords by verifying a person\'s identity.',
+        code: '''// Wrap in a full-screen Scaffold
+Scaffold(
+  body: BiometricVerificationFlow(
+    // TODO: Add your API verification method here.
+    // The onVerify callback must return a Future<BiometricVerificationResult>.
+    onVerify: (Uint8List imageBytes) async {
+      // Example implementation:
+      // final response = await myApi.verifyFace(imageBytes);
+      // return BiometricVerificationResult(
+      //   maskedName: response.name,
+      //   confidenceScore: response.score,
+      // );
+      return await myApi.verify(imageBytes);
+    },
+    enableBlinkCheck: true,
+    enableLightingCheck: true,
+    enableLiveness: true,
+    maxAttempts: 3,
+    
+    // TODO: Handle success here.
+    // You will receive a BiometricVerificationResult containing data like maskedName.
+    onSuccess: (BiometricVerificationResult result) {
+      // e.g. Navigator.pushReplacementNamed(context, '/home');
+    },
+    
+    // TODO: Handle failure here.
+    // You will receive a VerificationFailureReason and an optional message.
+    onFailure: (VerificationFailureReason reason, String? message) {
+      // e.g. showDialog(...) or Navigator.pop(context);
+    },
+    
+    onDismiss: () => Navigator.of(context).pop(),
+    onAlternateVerify: () {
+      // TODO: Navigate to an alternative flow like OTP if the user chooses to.
+    },
+  ),
+);''',
+        props: const [
+          PropRow(
+            name: 'onVerify',
+            type: 'Future<BiometricVerificationResult> Function(Uint8List)',
+            description: 'Required verification API callback.',
+            required: true,
+          ),
+          PropRow(
+            name: 'onSuccess',
+            type: 'void Function(BiometricVerificationResult)?',
+            description: 'Called when face verification succeeds.',
+          ),
+          PropRow(
+            name: 'onFailure',
+            type: 'void Function(VerificationFailureReason, String?)?',
+            description: 'Called on unrecoverable failure.',
+          ),
+        ],
+        center: false,
+        child: _BiometricFlowPreview(mockSuccess: true),
+      ),
+    ),
     // ── 1. Success Flow ──────────────────────────────────────────────────
     WidgetbookUseCase(
       name: 'Simulate Success Flow',
@@ -39,78 +136,7 @@ Scaffold(
     },
   ),
 );''',
-        props: const [
-          PropRow(
-            name: 'onSuccess',
-            type: 'void Function(BiometricVerificationResult)?',
-            description:
-                'Called when face verification succeeds. Result contains maskedName, maskedPhone, confidenceScore.',
-          ),
-          PropRow(
-            name: 'onFailure',
-            type: 'void Function(VerificationFailureReason, String?)?',
-            description:
-                'Called on unrecoverable failure. Reasons: livenessFailed, faceNotMatched, networkError, etc.',
-          ),
-          PropRow(
-            name: 'onDismiss',
-            type: 'VoidCallback?',
-            description: 'Called when user closes the flow.',
-          ),
-          PropRow(
-            name: 'onAlternateVerify',
-            type: 'VoidCallback?',
-            description: 'Called when user taps "Verify with OTP instead".',
-          ),
-          PropRow(
-            name: 'onVerify',
-            type: 'Future<BiometricVerificationResult> Function(Uint8List)',
-            description: 'Required verification API callback.',
-            required: true,
-          ),
-          PropRow(
-            name: 'enableBlinkCheck',
-            type: 'bool',
-            description: 'Require blink detection for liveness.',
-            defaultValue: 'true',
-          ),
-          PropRow(
-            name: 'enableLightingCheck',
-            type: 'bool',
-            description: 'Check ambient lighting before capture.',
-            defaultValue: 'true',
-          ),
-          PropRow(
-            name: 'enableLiveness',
-            type: 'bool',
-            description: 'Require liveness (blink + head movement).',
-            defaultValue: 'true',
-          ),
-          PropRow(
-            name: 'maxAttempts',
-            type: 'int',
-            description: 'Max verification attempts before lockout.',
-            defaultValue: '2',
-          ),
-          PropRow(
-            name: 'lockoutDuration',
-            type: 'Duration',
-            description: 'Duration of lockout after max attempts.',
-            defaultValue: 'Duration(minutes: 30)',
-          ),
-          PropRow(
-            name: 'verificationTimeout',
-            type: 'Duration',
-            description: 'Timeout for the entire verification process.',
-            defaultValue: 'Duration(seconds: 30)',
-          ),
-          PropRow(
-            name: 'theme',
-            type: 'BiometricThemeData?',
-            description:
-                'Custom colors, typography, radii. Falls back to default purple theme.',
-          ),
-        ],
+
         center: false,
         child: _BiometricFlowPreview(mockSuccess: true),
       ),
@@ -400,9 +426,11 @@ class _LaunchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xFFF8F9FC),
-      padding: const EdgeInsets.all(28),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      alignment: Alignment.center,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             width: 72,
@@ -484,6 +512,7 @@ class _LaunchCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 }
