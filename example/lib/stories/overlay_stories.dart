@@ -65,82 +65,90 @@ final modalComponent = WidgetbookComponent(
           description:
               'Modal component displays important information, confirmations, or actions in a focused overlay above the main interface. It requires user interaction before returning to the underlying content.',
           showPreview: false,
-          child: Container(
-            padding: const EdgeInsets.all(24.0),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Visual Showcase',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: Builder(
+            builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Container(
+                padding: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Demonstration of modal dialogs including standard confirmation and full-bleed hero image header variants.',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                // 1. Standard Confirmation Modal
-                Text(
-                  'Standard Confirmation Modal',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                SizedBox(
-                  width: 360,
-                  child: Ux4gModal(
-                    headerTitle: 'Confirmation',
-                    bodyText: 'This is an inline preview of the modal component.',
-                    alignment: Ux4gModalAlignment.leftAligned,
-                    footerButtons: Ux4gModalFooterButtons.twoButtons,
-                    primaryButtonText: 'Confirm',
-                    secondaryButtonText: 'Cancel',
-                    onDismiss: () {},
-                    onPrimaryClick: () {},
-                    onSecondaryClick: () {},
-                  ),
-                ),
-                const SizedBox(height: 32),
-
-                // 2. Hero Image Variants
-                Text(
-                  'Hero Image Header Variants',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Wrap(
-                  spacing: 24,
-                  runSpacing: 24,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    buildPromoModal(Ux4gModalAlignment.leftAligned, false),
-                    buildPromoModal(
-                      Ux4gModalAlignment.leftAligned,
-                      true,
-                      imageUrl: 'https://picsum.photos/seed/promo1/600/300',
+                    Text(
+                      'Visual Showcase',
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      ),
                     ),
-                    buildPromoModal(
-                      Ux4gModalAlignment.centered,
-                      false,
-                      imageUrl: 'https://picsum.photos/seed/promo2/600/300',
+                    const SizedBox(height: 8),
+                    Text(
+                      'Demonstration of modal dialogs including standard confirmation and full-bleed hero image header variants.',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: isDark ? Colors.white60 : Colors.grey[700],
+                      ),
                     ),
-                    buildPromoModal(Ux4gModalAlignment.centered, true),
+                    const SizedBox(height: 24),
+
+                    // 1. Standard Confirmation Modal
+                    Text(
+                      'Standard Confirmation Modal',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white70 : const Color(0xFF0F172A),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: 360,
+                      child: Ux4gModal(
+                        headerTitle: 'Confirmation',
+                        bodyText: 'This is an inline preview of the modal component.',
+                        alignment: Ux4gModalAlignment.leftAligned,
+                        footerButtons: Ux4gModalFooterButtons.twoButtons,
+                        primaryButtonText: 'Confirm',
+                        secondaryButtonText: 'Cancel',
+                        onDismiss: () {},
+                        onPrimaryClick: () {},
+                        onSecondaryClick: () {},
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+
+                    // 2. Hero Image Variants
+                    Text(
+                      'Hero Image Header Variants',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white70 : const Color(0xFF0F172A),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 24,
+                      runSpacing: 24,
+                      children: [
+                        buildPromoModal(Ux4gModalAlignment.leftAligned, false),
+                        buildPromoModal(
+                          Ux4gModalAlignment.leftAligned,
+                          true,
+                          imageUrl: 'https://picsum.photos/seed/promo1/600/300',
+                        ),
+                        buildPromoModal(
+                          Ux4gModalAlignment.centered,
+                          false,
+                          imageUrl: 'https://picsum.photos/seed/promo2/600/300',
+                        ),
+                        buildPromoModal(Ux4gModalAlignment.centered, true),
+                      ],
+                    ),
                   ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         );
       },
@@ -1649,145 +1657,155 @@ final popoverComponent = WidgetbookComponent(
           description:
               'Popover displays additional information or actions in a lightweight overlay triggered by user interaction. It can contain interactive content such as buttons, links, and form controls.',
           showPreview: false,
-          child: Container(
-            padding: const EdgeInsets.all(24.0),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Visual Showcase',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: Builder(
+            builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Container(
+                padding: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Demonstration of popover placement coverage and rich interactive popover content.',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Wrap(
-                  spacing: 24,
-                  runSpacing: 24,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Card 1: Placement Coverage
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(minWidth: 380, maxWidth: 520),
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF5F3FF),
-                          borderRadius: BorderRadius.circular(12.0),
-                          border: Border.all(color: const Color(0xFFDDD6FE)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.02),
-                              blurRadius: 6,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Placement Coverage',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF111827),
-                              ),
-                            ),
-                            const SizedBox(height: 32),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16.0),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      buildOutlinePopoverButton(
-                                        label: 'Top Start',
-                                        placement: Ux4gTooltipPlacement.top,
-                                      ),
-                                      buildOutlinePopoverButton(
-                                        label: 'Right',
-                                        placement: Ux4gTooltipPlacement.right,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 40),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      buildOutlinePopoverButton(
-                                        label: 'Bottom',
-                                        placement: Ux4gTooltipPlacement.bottom,
-                                      ),
-                                      buildOutlinePopoverButton(
-                                        label: 'Left',
-                                        placement: Ux4gTooltipPlacement.left,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                          ],
-                        ),
+                    Text(
+                      'Visual Showcase',
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
                       ),
                     ),
-
-                    // Card 2: Rich Content
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(minWidth: 380, maxWidth: 520),
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF5F3FF),
-                          borderRadius: BorderRadius.circular(12.0),
-                          border: Border.all(color: const Color(0xFFDDD6FE)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.02),
-                              blurRadius: 6,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Rich Content',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF111827),
-                              ),
-                            ),
-                            const SizedBox(height: 32),
-                            Container(
-                              height: 140,
-                              alignment: Alignment.center,
-                              child: buildComplexPopoverButton(),
-                            ),
-                            const SizedBox(height: 16),
-                          ],
-                        ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Demonstration of popover placement coverage and rich interactive popover content.',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: isDark ? Colors.white60 : Colors.grey[700],
                       ),
+                    ),
+                    const SizedBox(height: 24),
+                    Wrap(
+                      spacing: 24,
+                      runSpacing: 24,
+                      children: [
+                        // Card 1: Placement Coverage
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(minWidth: 380, maxWidth: 520),
+                          child: Container(
+                            padding: const EdgeInsets.all(20.0),
+                            decoration: BoxDecoration(
+                              color: isDark ? const Color(0xFF1E2130) : const Color(0xFFF5F3FF),
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFDDD6FE),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Placement Coverage',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: isDark ? Colors.white : const Color(0xFF111827),
+                                  ),
+                                ),
+                                const SizedBox(height: 32),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          buildOutlinePopoverButton(
+                                            label: 'Top Start',
+                                            placement: Ux4gTooltipPlacement.top,
+                                          ),
+                                          buildOutlinePopoverButton(
+                                            label: 'Right',
+                                            placement: Ux4gTooltipPlacement.right,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 40),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          buildOutlinePopoverButton(
+                                            label: 'Bottom',
+                                            placement: Ux4gTooltipPlacement.bottom,
+                                          ),
+                                          buildOutlinePopoverButton(
+                                            label: 'Left',
+                                            placement: Ux4gTooltipPlacement.left,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // Card 2: Rich Content
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(minWidth: 380, maxWidth: 520),
+                          child: Container(
+                            padding: const EdgeInsets.all(20.0),
+                            decoration: BoxDecoration(
+                              color: isDark ? const Color(0xFF1E2130) : const Color(0xFFF5F3FF),
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFDDD6FE),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Rich Content',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: isDark ? Colors.white : const Color(0xFF111827),
+                                  ),
+                                ),
+                                const SizedBox(height: 32),
+                                Container(
+                                  height: 140,
+                                  alignment: Alignment.center,
+                                  child: buildComplexPopoverButton(),
+                                ),
+                                const SizedBox(height: 16),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         );
       },
@@ -2174,21 +2192,25 @@ class _TooltipVisualShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     Widget buildGroup({
       required String title,
       required String description,
-      required List<(String label, Ux4gTooltipPlacement placement)> items,
+      required List<(String, Ux4gTooltipPlacement)> items,
     }) {
       return Container(
         width: double.infinity,
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isDark ? const Color(0xFF1E2130) : Colors.white,
           borderRadius: BorderRadius.circular(12.0),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          border: Border.all(
+            color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.02),
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -2199,10 +2221,10 @@ class _TooltipVisualShowcase extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF111827),
+                color: isDark ? Colors.white : const Color(0xFF111827),
               ),
             ),
             const SizedBox(height: 4),
@@ -2210,7 +2232,7 @@ class _TooltipVisualShowcase extends StatelessWidget {
               description,
               style: TextStyle(
                 fontSize: 12,
-                color: Colors.grey[600],
+                color: isDark ? Colors.white60 : Colors.grey[600],
               ),
             ),
             const SizedBox(height: 24),
@@ -2227,16 +2249,18 @@ class _TooltipVisualShowcase extends StatelessWidget {
                       vertical: 10,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF3F4F6),
+                      color: isDark ? const Color(0xFF2B3042) : const Color(0xFFF3F4F6),
                       borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: const Color(0xFFD1D5DB)),
+                      border: Border.all(
+                        color: isDark ? const Color(0xFF3F475E) : const Color(0xFFD1D5DB),
+                      ),
                     ),
                     child: Text(
                       item.$1,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF374151),
+                        color: isDark ? Colors.white : const Color(0xFF374151),
                       ),
                     ),
                   ),
@@ -2251,7 +2275,7 @@ class _TooltipVisualShowcase extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -2261,13 +2285,14 @@ class _TooltipVisualShowcase extends StatelessWidget {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of all directional placements and alignments (Top, Bottom, Left, Right).',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),

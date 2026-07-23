@@ -1299,6 +1299,7 @@ final resultListComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return ComponentDocs(
           name: 'Result List Row',
           description:
@@ -1307,7 +1308,7 @@ final resultListComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -1317,13 +1318,14 @@ final resultListComponent = WidgetbookComponent(
                   'Visual Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Demonstration of result list row variants including status tags, metadata pill segments, action triggers, and expanded cards.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
+                    color: isDark ? Colors.white60 : Colors.grey[700],
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -1334,12 +1336,14 @@ final resultListComponent = WidgetbookComponent(
                       width: double.infinity,
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
                         borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.02),
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -1418,12 +1422,14 @@ final resultListComponent = WidgetbookComponent(
                       width: double.infinity,
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
                         borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.02),
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -1473,30 +1479,34 @@ final resultListComponent = WidgetbookComponent(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 'Need Help?',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: Color(0xFF7F1D1D),
+                                  color: isDark ? Colors.white60 : const Color(0xFF7F1D1D),
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               const SizedBox(height: 4),
                               InkWell(
                                 onTap: () {},
-                                child: const Row(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
                                       'Register grievance',
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: Color(0xFF4338CA),
+                                        color: isDark ? const Color(0xFF818CF8) : const Color(0xFF4338CA),
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    SizedBox(width: 4),
-                                    Icon(Icons.arrow_forward, size: 16, color: Color(0xFF4338CA)),
+                                    const SizedBox(width: 4),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      size: 16,
+                                      color: isDark ? const Color(0xFF818CF8) : const Color(0xFF4338CA),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -2900,6 +2910,7 @@ final journeyTimelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return ComponentDocs(
           name: 'Journey Timeline',
           description:
@@ -2908,7 +2919,7 @@ final journeyTimelineComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -2918,13 +2929,14 @@ final journeyTimelineComponent = WidgetbookComponent(
                   'Visual Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Demonstration of timeline card variants including step features, helping text, icons, and status badges.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
+                    color: isDark ? Colors.white60 : Colors.grey[700],
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -2932,12 +2944,14 @@ final journeyTimelineComponent = WidgetbookComponent(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? const Color(0xFF1E2130) : Colors.white,
                     borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    border: Border.all(
+                      color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.02),
+                        color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                       ),
@@ -3340,6 +3354,7 @@ final statusPipelineComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return ComponentDocs(
           name: 'Status Pipeline',
           description:
@@ -3348,7 +3363,7 @@ final statusPipelineComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -3358,13 +3373,14 @@ final statusPipelineComponent = WidgetbookComponent(
                   'Visual Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Demonstration of status pipeline orientations (horizontal, vertical), step subtext, compact dot indicators, and completed states.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
+                    color: isDark ? Colors.white60 : Colors.grey[700],
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -3375,12 +3391,14 @@ final statusPipelineComponent = WidgetbookComponent(
                       width: double.infinity,
                       padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
                         borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.02),
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -3388,13 +3406,13 @@ final statusPipelineComponent = WidgetbookComponent(
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Horizontal Pipeline (Labels + Subtext)',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF111827),
+                              color: isDark ? Colors.white : const Color(0xFF111827),
                             ),
                           ),
                           SizedBox(height: 16),
@@ -3419,12 +3437,14 @@ final statusPipelineComponent = WidgetbookComponent(
                       width: double.infinity,
                       padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
                         borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.02),
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -3432,13 +3452,13 @@ final statusPipelineComponent = WidgetbookComponent(
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Compact Dots Pipeline (No Labels)',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF111827),
+                              color: isDark ? Colors.white : const Color(0xFF111827),
                             ),
                           ),
                           SizedBox(height: 16),
@@ -3470,12 +3490,14 @@ final statusPipelineComponent = WidgetbookComponent(
                           child: Container(
                             padding: const EdgeInsets.all(20.0),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: isDark ? const Color(0xFF1E2130) : Colors.white,
                               borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(color: const Color(0xFFE5E7EB)),
+                              border: Border.all(
+                                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                              ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.02),
+                                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                                   blurRadius: 6,
                                   offset: const Offset(0, 2),
                                 ),
@@ -3483,13 +3505,13 @@ final statusPipelineComponent = WidgetbookComponent(
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   'Vertical Workflow Pipeline',
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xFF111827),
+                                    color: isDark ? Colors.white : const Color(0xFF111827),
                                   ),
                                 ),
                                 SizedBox(height: 16),
@@ -3512,12 +3534,14 @@ final statusPipelineComponent = WidgetbookComponent(
                           child: Container(
                             padding: const EdgeInsets.all(20.0),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: isDark ? const Color(0xFF1E2130) : Colors.white,
                               borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(color: const Color(0xFFE5E7EB)),
+                              border: Border.all(
+                                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                              ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.02),
+                                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                                   blurRadius: 6,
                                   offset: const Offset(0, 2),
                                 ),
@@ -3525,13 +3549,13 @@ final statusPipelineComponent = WidgetbookComponent(
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   'Fully Completed Pipeline',
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xFF111827),
+                                    color: isDark ? Colors.white : const Color(0xFF111827),
                                   ),
                                 ),
                                 SizedBox(height: 16),
@@ -3863,6 +3887,7 @@ final carouselComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return ComponentDocs(
           name: 'Carousel',
           description:
@@ -3871,7 +3896,7 @@ final carouselComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -3881,13 +3906,14 @@ final carouselComponent = WidgetbookComponent(
                   'Implementation Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Interactive carousel component displaying featured content, hero slides, and product cards.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
+                    color: isDark ? Colors.white60 : Colors.grey[700],
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -3895,6 +3921,7 @@ final carouselComponent = WidgetbookComponent(
                   '1. Hero Banner Carousel',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white70 : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -3944,6 +3971,7 @@ final carouselComponent = WidgetbookComponent(
                   '2. Image Gallery Carousel',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white70 : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -4965,10 +4993,11 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -4978,13 +5007,14 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of stepper variants including horizontal step flow, compact step pagination, and vertical process wizard.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -4995,12 +5025,14 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: isDark ? const Color(0xFF1E2130) : Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: const Color(0xFFE5E7EB)),
+                  border: Border.all(
+                    color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.02),
+                      color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -5009,12 +5041,12 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       '1. Horizontal Stepper Flow',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF111827),
+                        color: isDark ? Colors.white : const Color(0xFF111827),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -5067,12 +5099,14 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: isDark ? const Color(0xFF1E2130) : Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: const Color(0xFFE5E7EB)),
+                  border: Border.all(
+                    color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.02),
+                      color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -5081,12 +5115,12 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       '2. Compact Stepper Pagination',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF111827),
+                        color: isDark ? Colors.white : const Color(0xFF111827),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -5113,12 +5147,14 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: isDark ? const Color(0xFF1E2130) : Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: const Color(0xFFE5E7EB)),
+                  border: Border.all(
+                    color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.02),
+                      color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -5127,12 +5163,12 @@ class _StepperVisualShowcaseState extends State<_StepperVisualShowcase> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       '3. Vertical Process Wizard',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF111827),
+                        color: isDark ? Colors.white : const Color(0xFF111827),
                       ),
                     ),
                     const SizedBox(height: 16),

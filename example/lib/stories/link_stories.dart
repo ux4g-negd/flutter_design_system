@@ -114,106 +114,118 @@ final linkIntroductionComponent = WidgetbookComponent(
           description:
               'A link is an interactive, clickable element, usually text or an icon, that directs users to another page, website, or a specific section within the same page, acting as a fundamental tool for navigation and accessing more information.',
           showPreview: false,
-          child: Container(
-            padding: const EdgeInsets.all(24.0),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Visual Showcase',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: Builder(
+            builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Container(
+                padding: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Demonstration of default and neutral link styles with various sizes, icons, and states.',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                // 1. Default Examples
-                Text(
-                  'Default Examples',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.02),
-                        blurRadius: 6,
-                        offset: const Offset(0, 2),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Visual Showcase',
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
                       ),
-                    ],
-                  ),
-                  child: const Wrap(
-                    spacing: 32,
-                    runSpacing: 16,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      _StoryLinkItem(text: 'Medium Link', fontSize: 15, baseColor: defaultColor),
-                      _StoryLinkItem(text: 'Small Link', fontSize: 13, baseColor: defaultColor),
-                      _StoryLinkItem(text: 'Leading Icon', leadingIcon: Icons.open_in_new, fontSize: 15, baseColor: defaultColor),
-                      _StoryLinkItem(text: 'Trailing Icon', trailingIcon: Icons.open_in_new, fontSize: 15, baseColor: defaultColor),
-                      _StoryLinkItem(text: 'Default Link Disabled', enabled: false, fontSize: 15, baseColor: defaultColor),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                // 2. Neutral Examples
-                Text(
-                  'Neutral Examples',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.02),
-                        blurRadius: 6,
-                        offset: const Offset(0, 2),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Demonstration of default and neutral link styles with various sizes, icons, and states.',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: isDark ? Colors.white60 : Colors.grey[700],
                       ),
-                    ],
-                  ),
-                  child: const Wrap(
-                    spacing: 32,
-                    runSpacing: 16,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      _StoryLinkItem(text: 'Neutral Medium', fontSize: 15, baseColor: neutralColor),
-                      _StoryLinkItem(text: 'Neutral Small', fontSize: 13, baseColor: neutralColor),
-                      _StoryLinkItem(text: 'Leading Icon', leadingIcon: Icons.open_in_new, fontSize: 15, baseColor: neutralColor),
-                      _StoryLinkItem(text: 'Trailing Icon', trailingIcon: Icons.open_in_new, fontSize: 15, baseColor: neutralColor),
-                      _StoryLinkItem(text: 'Neutral Link Disabled', enabled: false, fontSize: 15, baseColor: neutralColor),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 24),
+
+                    // 1. Default Examples
+                    Text(
+                      'Default Examples',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white70 : const Color(0xFF0F172A),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+                      decoration: BoxDecoration(
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Wrap(
+                        spacing: 32,
+                        runSpacing: 16,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          _StoryLinkItem(text: 'Medium Link', fontSize: 15, baseColor: defaultColor),
+                          _StoryLinkItem(text: 'Small Link', fontSize: 13, baseColor: defaultColor),
+                          _StoryLinkItem(text: 'Leading Icon', leadingIcon: Icons.open_in_new, fontSize: 15, baseColor: defaultColor),
+                          _StoryLinkItem(text: 'Trailing Icon', trailingIcon: Icons.open_in_new, fontSize: 15, baseColor: defaultColor),
+                          _StoryLinkItem(text: 'Default Link Disabled', enabled: false, fontSize: 15, baseColor: defaultColor),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+
+                    // 2. Neutral Examples
+                    Text(
+                      'Neutral Examples',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white70 : const Color(0xFF0F172A),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+                      decoration: BoxDecoration(
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: const Wrap(
+                        spacing: 32,
+                        runSpacing: 16,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          _StoryLinkItem(text: 'Neutral Medium', fontSize: 15, baseColor: neutralColor),
+                          _StoryLinkItem(text: 'Neutral Small', fontSize: 13, baseColor: neutralColor),
+                          _StoryLinkItem(text: 'Leading Icon', leadingIcon: Icons.open_in_new, fontSize: 15, baseColor: neutralColor),
+                          _StoryLinkItem(text: 'Trailing Icon', trailingIcon: Icons.open_in_new, fontSize: 15, baseColor: neutralColor),
+                          _StoryLinkItem(text: 'Neutral Link Disabled', enabled: false, fontSize: 15, baseColor: neutralColor),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         );
       },

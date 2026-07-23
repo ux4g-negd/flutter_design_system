@@ -21,10 +21,11 @@ class _AccordionShowcaseState extends State<_AccordionShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF3F4F6),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF3F4F6),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -32,29 +33,36 @@ class _AccordionShowcaseState extends State<_AccordionShowcase> {
         children: [
           Text(
             'Simple Accordion Showcase',
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: isDark ? Colors.white : const Color(0xFF0F172A),
+                ),
           ),
           const SizedBox(height: 8),
           Text(
             'Live previews taken directly from the simple Accordion showcase blocks in src/index.html.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[700],
+                  color: isDark ? Colors.white60 : Colors.grey[700],
                 ),
           ),
           const SizedBox(height: 32),
           Text(
             'Title Left, Arrow Right',
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? Colors.white70 : const Color(0xFF334155),
+                ),
           ),
           const SizedBox(height: 16),
           Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+              ),
+            ),
+            clipBehavior: Clip.antiAlias,
             child: Column(
               children: [
                 Ux4gAccordion(
@@ -75,14 +83,21 @@ class _AccordionShowcaseState extends State<_AccordionShowcase> {
           const SizedBox(height: 48),
           Text(
             'Arrow Left + Title',
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? Colors.white70 : const Color(0xFF334155),
+                ),
           ),
           const SizedBox(height: 16),
           Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+              ),
+            ),
+            clipBehavior: Clip.antiAlias,
             child: Column(
               children: [
                 Ux4gAccordion(
@@ -3005,10 +3020,11 @@ class _PaginationDottedVisualShowcaseState
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3018,13 +3034,14 @@ class _PaginationDottedVisualShowcaseState
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of pagination dot indicators, capsule container variants, and chevron alignments.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -3032,6 +3049,7 @@ class _PaginationDottedVisualShowcaseState
           // 1. Standard Dot Pagination (Matching Image Card)
           _buildPaginationSectionCard(
             title: 'Pagination Dots with Chevrons',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3047,6 +3065,7 @@ class _PaginationDottedVisualShowcaseState
           // 2. Capsule Variant (With Arrows)
           _buildPaginationSectionCard(
             title: 'Capsule Variant with Arrows',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3063,6 +3082,7 @@ class _PaginationDottedVisualShowcaseState
           // 3. Capsule Variant (Without Arrows)
           _buildPaginationSectionCard(
             title: 'Capsule Variant without Arrows',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3079,6 +3099,7 @@ class _PaginationDottedVisualShowcaseState
           // 4. Capsule Variant (Right-Aligned Arrows)
           _buildPaginationSectionCard(
             title: 'Capsule Variant with Right-Aligned Arrows',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3099,17 +3120,20 @@ class _PaginationDottedVisualShowcaseState
   Widget _buildPaginationSectionCard({
     required String title,
     required Widget child,
+    bool isDark = false,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -3120,10 +3144,10 @@ class _PaginationDottedVisualShowcaseState
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 16),
@@ -3158,10 +3182,11 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3171,19 +3196,21 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'A compact tour of the chip patterns used across the source-backed stories.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
           // Card 1: Chip Types & Variants
           _buildChipSectionCard(
             title: 'Chip Types & Variants',
+            isDark: isDark,
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -3220,6 +3247,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
           // Card 2: Sizes & Configurations
           _buildChipSectionCard(
             title: 'Sizes & Configurations',
+            isDark: isDark,
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -3267,6 +3295,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
           // Card 3: Interactive Working Live Patterns
           _buildChipSectionCard(
             title: 'Interactive Chip Patterns (Live Working)',
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -3274,7 +3303,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                   'Single-Select Category (Choice Chips)',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey[800],
+                    color: isDark ? Colors.white70 : Colors.grey[800],
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -3295,7 +3324,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                   'Multi-Select Filters (Filter Chips)',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey[800],
+                    color: isDark ? Colors.white70 : Colors.grey[800],
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -3330,7 +3359,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                       'Removable Input Tags (Input Chips)',
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: Colors.grey[800],
+                        color: isDark ? Colors.white70 : Colors.grey[800],
                       ),
                     ),
                     if (_card3Tags.length < 4)
@@ -3360,14 +3389,14 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                     ? Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
+                          color: isDark ? const Color(0xFF1E2130) : Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
                           'All tags dismissed. Click "Reset Tags" above to restore.',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey[700],
+                            color: isDark ? Colors.white60 : Colors.grey[700],
                             fontStyle: FontStyle.italic,
                           ),
                         ),
@@ -3400,10 +3429,11 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3413,13 +3443,14 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of semantic empty state variants including search results, empty data, coming soon, and error states.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -3431,6 +3462,7 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               // 1. No Results
               _buildEmptyStateCard(
                 title: 'No Results Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.noResults,
                   title: 'No results found',
@@ -3443,6 +3475,7 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               // 2. No Data
               _buildEmptyStateCard(
                 title: 'No Data Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.noData,
                   title: 'No active applications',
@@ -3455,6 +3488,7 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               // 3. Coming Soon
               _buildEmptyStateCard(
                 title: 'Coming Soon Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.comingSoon,
                   title: 'Coming soon',
@@ -3465,7 +3499,8 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               ),
               // 4. Error State
               _buildEmptyStateCard(
-                title: 'Error State Preset',
+                title: 'Error Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.error,
                   title: 'Could not load data',
@@ -3481,17 +3516,23 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
     );
   }
 
-  Widget _buildEmptyStateCard({required String title, required Widget child}) {
+  Widget _buildEmptyStateCard({
+    required String title,
+    required Widget child,
+    bool isDark = false,
+  }) {
     return Container(
       width: 340,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -3502,10 +3543,10 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 16),
@@ -3586,7 +3627,7 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3596,13 +3637,14 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
             'Implementation Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Visual demonstration of various Draft Status Bar types and save states.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -3612,6 +3654,7 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
             'General Draft Status',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white70 : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 12),
@@ -3810,10 +3853,11 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3823,18 +3867,20 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Interactive chip group patterns for application status filtering, employment types, and custom badges.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
           _buildChipSectionCard(
             title: 'Application Status Filters with Badges',
+            isDark: isDark,
             child: Ux4gChipGroup(
               arrangement: Ux4gChipGroupArrangement.wrap,
               spacing: 12,
@@ -3875,6 +3921,7 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
           const SizedBox(height: 24),
           _buildChipSectionCard(
             title: 'Employment Type Filters',
+            isDark: isDark,
             child: Ux4gChipGroup(
               arrangement: Ux4gChipGroupArrangement.wrap,
               spacing: 12,
@@ -3936,17 +3983,20 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
 Widget _buildChipSectionCard({
   required String title,
   required Widget child,
+  bool isDark = false,
 }) {
   return Container(
     width: double.infinity,
     padding: const EdgeInsets.all(20.0),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: isDark ? const Color(0xFF1E2130) : Colors.white,
       borderRadius: BorderRadius.circular(12.0),
-      border: Border.all(color: const Color(0xFFE5E7EB)),
+      border: Border.all(
+        color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+      ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.02),
+          color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
           blurRadius: 6,
           offset: const Offset(0, 2),
         ),
@@ -3957,10 +4007,10 @@ Widget _buildChipSectionCard({
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF111827),
+            color: isDark ? Colors.white : const Color(0xFF111827),
           ),
         ),
         const SizedBox(height: 16),

@@ -19,10 +19,11 @@ class _DemoAppHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     Widget appHeader = Ux4gAppHeader(
       horizontalPadding: isPill ? 30.0 : 24.0,
       title: '',
-      titleWidget: const Column(
+      titleWidget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,12 +32,15 @@ class _DemoAppHeader extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 14,
-              color: Colors.black,
+              color: isDark ? Colors.white : Colors.black,
             ),
           ),
           Text(
             'Description',
-            style: TextStyle(fontSize: 12, color: Colors.grey),
+            style: TextStyle(
+              fontSize: 12,
+              color: isDark ? Colors.white60 : Colors.grey,
+            ),
           ),
         ],
       ),
@@ -44,7 +48,7 @@ class _DemoAppHeader extends StatelessWidget {
       showBackButton: false,
       leadingWidgets: [
         SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
-        Container(width: 1, height: 24, color: Colors.grey.shade300),
+        Container(width: 1, height: 24, color: isDark ? Colors.grey.shade700 : Colors.grey.shade300),
         SvgPicture.asset('assets/Union.svg', height: 32),
       ],
       actions: [
@@ -128,10 +132,11 @@ class _AppHeaderShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 32.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -143,7 +148,10 @@ class _AppHeaderShowcase extends StatelessWidget {
               'Implementation Showcase',
               style: Theme.of(
                 context,
-              ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+              ).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                  ),
             ),
           ),
           const SizedBox(height: 8),
@@ -153,7 +161,9 @@ class _AppHeaderShowcase extends StatelessWidget {
               'Visual demonstration of various App Header variants.',
               style: Theme.of(
                 context,
-              ).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
+              ).textTheme.bodyMedium?.copyWith(
+                    color: isDark ? Colors.white60 : Colors.grey[700],
+                  ),
             ),
           ),
           const SizedBox(height: 32),
