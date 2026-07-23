@@ -2769,9 +2769,220 @@ final otpInputComponent = WidgetbookComponent(
               initialValue: 6,
             );
 
-            // ── Build dynamic code string ───────────────────────
-            final codeStr =
-                '''Ux4gOtpInput(
+            final variant = context.knobs.list<String>(
+              label: 'Variant',
+              options: const [
+                'Default',
+                'Error state',
+                'Success state',
+                'Warning state',
+                'Disabled',
+                'Resend timer',
+                'Resend action',
+                'Attempt with timer',
+                'Account locked',
+                'Obscured (Password)',
+                'With separator',
+              ],
+              initialOption: 'Default',
+            );
+
+            Widget childWidget;
+            String codeStr;
+
+            switch (variant) {
+              case 'Error state':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: '12345',
+  status: Ux4gOtpInputStatus.error,
+  captionVariant: Ux4gOtpCaptionVariant.plain,
+  captionText: 'Invalid OTP entered. Please try again.',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '12345',
+                  status: Ux4gOtpInputStatus.error,
+                  captionVariant: Ux4gOtpCaptionVariant.plain,
+                  captionText: 'Invalid OTP entered. Please try again.',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Success state':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: '123456',
+  status: Ux4gOtpInputStatus.success,
+  captionVariant: Ux4gOtpCaptionVariant.success,
+  captionText: 'OTP verified successfully',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '123456',
+                  status: Ux4gOtpInputStatus.success,
+                  captionVariant: Ux4gOtpCaptionVariant.success,
+                  captionText: 'OTP verified successfully',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Warning state':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: '12345',
+  status: Ux4gOtpInputStatus.warning,
+  captionVariant: Ux4gOtpCaptionVariant.warning,
+  captionText: 'Only 1 attempt remaining',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '12345',
+                  status: Ux4gOtpInputStatus.warning,
+                  captionVariant: Ux4gOtpCaptionVariant.warning,
+                  captionText: 'Only 1 attempt remaining',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Disabled':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: '',
+  enabled: false,
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '',
+                  enabled: false,
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Resend timer':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  captionVariant: Ux4gOtpCaptionVariant.resendTimer,
+  captionLeadingText: "Didn't receive OTP?",
+  captionTrailingText: 'Resend in 00:30',
+  autoCountdownSeconds: 30,
+  onChanged: (v) => setState(() => otpValue = v),
+  onCountdownComplete: () {
+    // Timer finished
+  },
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  captionVariant: Ux4gOtpCaptionVariant.resendTimer,
+                  captionLeadingText: "Didn't receive OTP?",
+                  captionTrailingText: 'Resend in 00:30',
+                  autoCountdownSeconds: 30,
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Resend action':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  captionVariant: Ux4gOtpCaptionVariant.resendAction,
+  captionLeadingText: "Didn't receive OTP?",
+  captionTrailingText: 'Resend OTP',
+  onCaptionTrailingTap: () {
+    // Resend OTP logic
+  },
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  captionVariant: Ux4gOtpCaptionVariant.resendAction,
+                  captionLeadingText: "Didn't receive OTP?",
+                  captionTrailingText: 'Resend OTP',
+                  onCaptionTrailingTap: () {},
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Attempt with timer':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: '1234',
+  status: Ux4gOtpInputStatus.error,
+  captionVariant: Ux4gOtpCaptionVariant.attemptWithTimer,
+  captionLeadingText: 'Attempt 2 of 3',
+  captionTrailingText: 'Resend in 00:17',
+  autoCountdownSeconds: 17,
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '1234',
+                  status: Ux4gOtpInputStatus.error,
+                  captionVariant: Ux4gOtpCaptionVariant.attemptWithTimer,
+                  captionLeadingText: 'Attempt 2 of 3',
+                  captionTrailingText: 'Resend in 00:17',
+                  autoCountdownSeconds: 17,
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Account locked':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: '',
+  enabled: false,
+  status: Ux4gOtpInputStatus.locked,
+  captionVariant: Ux4gOtpCaptionVariant.locked,
+  captionLeadingText: 'Locked for 28:43',
+  captionTrailingText: 'Resend OTP',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '',
+                  enabled: false,
+                  status: Ux4gOtpInputStatus.locked,
+                  captionVariant: Ux4gOtpCaptionVariant.locked,
+                  captionLeadingText: 'Locked for 28:43',
+                  captionTrailingText: 'Resend OTP',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Obscured (Password)':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  obscure: true,
+  label: 'Secure PIN',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  obscure: true,
+                  label: 'Secure PIN',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'With separator':
+                codeStr = '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  showSeparator: true,
+  label: 'Verification Code',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  showSeparator: true,
+                  label: 'Verification Code',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Default':
+              default:
+                codeStr = '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   onChanged: (v) => setState(() => otpValue = v),
@@ -2779,6 +2990,14 @@ final otpInputComponent = WidgetbookComponent(
     // verify pin
   },
 )''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  onChanged: (v) => setState(() => otpValue = v),
+                  onCompleted: (_) {},
+                );
+                break;
+            }
 
             return ComponentDocs(
               name: 'OtpInput',
@@ -2923,13 +3142,8 @@ final otpInputComponent = WidgetbookComponent(
                 ),
               ],
               child: SizedBox(
-                width: 320,
-                child: Ux4gOtpInput(
-                  length: length,
-                  value: otpValue,
-                  onChanged: (v) => setState(() => otpValue = v),
-                  onCompleted: (_) {},
-                ),
+                width: 380,
+                child: childWidget,
               ),
             );
           },
