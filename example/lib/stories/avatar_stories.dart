@@ -10,6 +10,11 @@ final avatarIntroductionComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final cardBg = isDark ? const Color(0xFF1E2130) : Colors.white;
+        final cardBorder = isDark ? const Color(0xFF2D3348) : Colors.grey.shade200;
+        final titleColor = isDark ? Colors.white70 : const Color(0xFF334155);
+
         return ComponentDocs(
           name: 'Avatar',
           description:
@@ -18,7 +23,7 @@ final avatarIntroductionComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -28,6 +33,7 @@ final avatarIntroductionComponent = WidgetbookComponent(
                   'Implementation Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -35,7 +41,9 @@ final avatarIntroductionComponent = WidgetbookComponent(
                   'Visual demonstration of the four primary avatar configurations supported by the design system.',
                   style: Theme.of(
                     context,
-                  ).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
+                  ).textTheme.bodyMedium?.copyWith(
+                    color: isDark ? Colors.white60 : Colors.grey[700],
+                  ),
                 ),
                 const SizedBox(height: 32),
                 // ── Row 1: Base Avatars + Status Avatars ──
@@ -50,7 +58,10 @@ final avatarIntroductionComponent = WidgetbookComponent(
                           Text(
                             'Base Avatars',
                             style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600),
+                                ?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: titleColor,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           Container(
@@ -59,9 +70,9 @@ final avatarIntroductionComponent = WidgetbookComponent(
                               vertical: 20.0,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: cardBg,
                               borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(color: Colors.grey.shade200),
+                              border: Border.all(color: cardBorder),
                             ),
                             child: Row(
                               children: [
@@ -92,7 +103,10 @@ final avatarIntroductionComponent = WidgetbookComponent(
                           Text(
                             'Status Avatars',
                             style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600),
+                                ?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: titleColor,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           Container(
@@ -101,9 +115,9 @@ final avatarIntroductionComponent = WidgetbookComponent(
                               vertical: 20.0,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: cardBg,
                               borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(color: Colors.grey.shade200),
+                              border: Border.all(color: cardBorder),
                             ),
                             child: Row(
                               children: [
@@ -141,7 +155,10 @@ final avatarIntroductionComponent = WidgetbookComponent(
                           Text(
                             'Avatar Groups',
                             style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600),
+                                ?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: titleColor,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           Container(
@@ -150,9 +167,9 @@ final avatarIntroductionComponent = WidgetbookComponent(
                               vertical: 20.0,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: cardBg,
                               borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(color: Colors.grey.shade200),
+                              border: Border.all(color: cardBorder),
                             ),
                             child: Ux4gAvatarGroup(
                               items: List.generate(
@@ -178,7 +195,10 @@ final avatarIntroductionComponent = WidgetbookComponent(
                           Text(
                             'Profile Avatars',
                             style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600),
+                                ?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: titleColor,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           Container(
@@ -187,9 +207,9 @@ final avatarIntroductionComponent = WidgetbookComponent(
                               vertical: 20.0,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: cardBg,
                               borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(color: Colors.grey.shade200),
+                              border: Border.all(color: cardBorder),
                             ),
                             child: Row(
                               children: [

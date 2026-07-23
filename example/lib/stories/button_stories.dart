@@ -9,306 +9,318 @@ final buttonComponent = WidgetbookComponent(
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
-      builder: (context) => ComponentDocs(
-        name: 'Button',
-        description:
-            'Button trigger an action or event, such as submitting a form, opening a dialog or performing a specific task. It provide users with a clear Call to Action (CTA), guiding them through a workflow.',
-        showPreview: false,
-        child: Container(
-          padding: const EdgeInsets.all(24.0),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF9FAFB),
-            borderRadius: BorderRadius.circular(8.0),
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final cardBg = isDark ? const Color(0xFF1E2130) : Colors.white;
+        final cardBorder = isDark ? const Color(0xFF2D3348) : Colors.grey.shade200;
+        final titleColor = isDark ? Colors.white70 : const Color(0xFF334155);
+
+        return ComponentDocs(
+          name: 'Button',
+          description:
+              'Button trigger an action or event, such as submitting a form, opening a dialog or performing a specific task. It provide users with a clear Call to Action (CTA), guiding them through a workflow.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Implementation Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                      ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Visual demonstration of various button variants including Primary, Danger, and Icon styles.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: isDark ? Colors.white60 : Colors.grey[700],
+                      ),
+                ),
+                const SizedBox(height: 32),
+                // ── Row 1: Button Variants + Button Sizes ──
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ── Button Variants ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Button Variants',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: titleColor,
+                                ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 24.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: cardBg,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: cardBorder),
+                            ),
+                            child: Wrap(
+                              spacing: 16,
+                              runSpacing: 12,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Ux4gButton(
+                                  text: 'Filled',
+                                  variant: Ux4gButtonVariant.primary,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'Outline',
+                                  variant: Ux4gButtonVariant.outline,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'Tonal',
+                                  variant: Ux4gButtonVariant.primary,
+                                  backgroundColor: isDark
+                                      ? Ux4gColors.primary800
+                                      : Ux4gColors.primary100,
+                                  contentColor: isDark
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'Text',
+                                  variant: Ux4gButtonVariant.ghost,
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 24),
+                    // ── Button Sizes ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Button Sizes',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: titleColor,
+                                ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 24.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: cardBg,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: cardBorder),
+                            ),
+                            child: Wrap(
+                              spacing: 16,
+                              runSpacing: 12,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Ux4gButton(
+                                  text: 'XL',
+                                  size: Ux4gButtonSize.xl,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'L',
+                                  size: Ux4gButtonSize.large,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'MD',
+                                  size: Ux4gButtonSize.medium,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'SM',
+                                  size: Ux4gButtonSize.small,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  text: 'XS',
+                                  size: Ux4gButtonSize.xs,
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32),
+                // ── Row 2: Icon Variants + Icon Sizes ──
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ── Icon Variants ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Icon Variants',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: titleColor,
+                                ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 24.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: cardBg,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: cardBorder),
+                            ),
+                            child: Wrap(
+                              spacing: 16,
+                              runSpacing: 12,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Ux4gIconButton(
+                                  icon: Icons.home_rounded,
+                                  variant: Ux4gButtonVariant.primary,
+                                  onPressed: () {},
+                                ),
+                                Ux4gIconButton(
+                                  icon: Icons.search_rounded,
+                                  variant: Ux4gButtonVariant.outline,
+                                  onPressed: () {},
+                                ),
+                                Ux4gButton(
+                                  leadingIcon: Icons.edit_rounded,
+                                  variant: Ux4gButtonVariant.primary,
+                                  backgroundColor: isDark
+                                      ? Ux4gColors.primary800
+                                      : Ux4gColors.primary100,
+                                  contentColor: isDark
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
+                                  padding: EdgeInsets.zero,
+                                  width: 40,
+                                  height: 40,
+                                  onPressed: () {},
+                                ),
+                                Ux4gIconButton(
+                                  icon: Icons.settings_rounded,
+                                  variant: Ux4gButtonVariant.ghost,
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 24),
+                    // ── Icon Sizes ──
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Icon Sizes',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: titleColor,
+                                ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 24.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: cardBg,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(color: cardBorder),
+                            ),
+                            child: Wrap(
+                              spacing: 16,
+                              runSpacing: 12,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Ux4gIconButton(
+                                  icon: Icons.home_rounded,
+                                  size: 56,
+                                  onPressed: () {},
+                                ),
+                                Ux4gIconButton(
+                                  icon: Icons.home_rounded,
+                                  size: 48,
+                                  onPressed: () {},
+                                ),
+                                Ux4gIconButton(
+                                  icon: Icons.home_rounded,
+                                  size: 40,
+                                  onPressed: () {},
+                                ),
+                                Ux4gIconButton(
+                                  icon: Icons.home_rounded,
+                                  size: 32,
+                                  onPressed: () {},
+                                ),
+                                Ux4gIconButton(
+                                  icon: Icons.home_rounded,
+                                  size: 24,
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Implementation Showcase',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Visual demonstration of various button variants including Primary, Danger, and Icon styles.',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey[700],
-                    ),
-              ),
-              const SizedBox(height: 32),
-              // ── Row 1: Button Variants + Button Sizes ──
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // ── Button Variants ──
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Button Variants',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        const SizedBox(height: 12),
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0,
-                            vertical: 24.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade200),
-                          ),
-                          child: Wrap(
-                            spacing: 16,
-                            runSpacing: 12,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Ux4gButton(
-                                text: 'Filled',
-                                variant: Ux4gButtonVariant.primary,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'Outline',
-                                variant: Ux4gButtonVariant.outline,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'Tonal',
-                                variant: Ux4gButtonVariant.primary,
-                                backgroundColor: Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gColors.primary800
-                                    : Ux4gColors.primary100,
-                                contentColor: Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gColors.primary300
-                                    : Ux4gColors.primary600,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'Text',
-                                variant: Ux4gButtonVariant.ghost,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 24),
-                  // ── Button Sizes ──
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Button Sizes',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        const SizedBox(height: 12),
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0,
-                            vertical: 24.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade200),
-                          ),
-                          child: Wrap(
-                            spacing: 16,
-                            runSpacing: 12,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Ux4gButton(
-                                text: 'XL',
-                                size: Ux4gButtonSize.xl,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'L',
-                                size: Ux4gButtonSize.large,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'MD',
-                                size: Ux4gButtonSize.medium,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'SM',
-                                size: Ux4gButtonSize.small,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                text: 'XS',
-                                size: Ux4gButtonSize.xs,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
-              // ── Row 2: Icon Variants + Icon Sizes ──
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // ── Icon Variants ──
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Icon Variants',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        const SizedBox(height: 12),
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0,
-                            vertical: 24.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade200),
-                          ),
-                          child: Wrap(
-                            spacing: 16,
-                            runSpacing: 12,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Ux4gIconButton(
-                                icon: Icons.home_rounded,
-                                variant: Ux4gButtonVariant.primary,
-                                onPressed: () {},
-                              ),
-                              Ux4gIconButton(
-                                icon: Icons.search_rounded,
-                                variant: Ux4gButtonVariant.outline,
-                                onPressed: () {},
-                              ),
-                              Ux4gButton(
-                                leadingIcon: Icons.edit_rounded,
-                                variant: Ux4gButtonVariant.primary,
-                                backgroundColor: Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gColors.primary800
-                                    : Ux4gColors.primary100,
-                                contentColor: Theme.of(context).brightness == Brightness.dark
-                                    ? Ux4gColors.primary300
-                                    : Ux4gColors.primary600,
-                                padding: EdgeInsets.zero,
-                                width: 40,
-                                height: 40,
-                                onPressed: () {},
-                              ),
-                              Ux4gIconButton(
-                                icon: Icons.settings_rounded,
-                                variant: Ux4gButtonVariant.ghost,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 24),
-                  // ── Icon Sizes ──
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Icon Sizes',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        const SizedBox(height: 12),
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0,
-                            vertical: 24.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade200),
-                          ),
-                          child: Wrap(
-                            spacing: 16,
-                            runSpacing: 12,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Ux4gIconButton(
-                                icon: Icons.home_rounded,
-                                size: 56,
-                                onPressed: () {},
-                              ),
-                              Ux4gIconButton(
-                                icon: Icons.home_rounded,
-                                size: 48,
-                                onPressed: () {},
-                              ),
-                              Ux4gIconButton(
-                                icon: Icons.home_rounded,
-                                size: 40,
-                                onPressed: () {},
-                              ),
-                              Ux4gIconButton(
-                                icon: Icons.home_rounded,
-                                size: 32,
-                                onPressed: () {},
-                              ),
-                              Ux4gIconButton(
-                                icon: Icons.home_rounded,
-                                size: 24,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     ),
     WidgetbookUseCase(
       name: 'Primary',

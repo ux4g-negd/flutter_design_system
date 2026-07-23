@@ -9,119 +9,135 @@ final badgeComponent = WidgetbookComponent(
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
-      builder: (context) => ComponentDocs(
-        name: 'Badge',
-        description:
-            'Badge displays concise contextual information such as counts, statuses or notifications. It is commonly attached to other interface elements to draw attention without interrupting the user experience.',
-        showPreview: false,
-        child: Container(
-          padding: const EdgeInsets.all(24.0),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF9FAFB),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Visual Showcase',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return ComponentDocs(
+          name: 'Badge',
+          description:
+              'Badge displays concise contextual information such as counts, statuses or notifications. It is commonly attached to other interface elements to draw attention without interrupting the user experience.',
+          showPreview: false,
+          child: Container(
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Visual Showcase',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Explore the core styles and animation variants available in the design system.',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[700],
+                const SizedBox(height: 8),
+                Text(
+                  'Explore the core styles and animation variants available in the design system.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: isDark ? Colors.white60 : Colors.grey[700],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 32),
-              // ── Dot Badges ──
-              _buildBadgeSection(
-                title: 'Dot Badges',
-                items: [
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.dot(
-                      containerColor: Color(0xFF6366F1),
+                const SizedBox(height: 32),
+                // ── Dot Badges ──
+                _buildBadgeSection(
+                  title: 'Dot Badges',
+                  isDark: isDark,
+                  items: [
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.dot(
+                        containerColor: Color(0xFF6366F1),
+                      ),
+                      label: 'Primary',
+                      isDark: isDark,
                     ),
-                    label: 'Primary',
-                  ),
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.dot(
-                      containerColor: Color(0xFF10B981),
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.dot(
+                        containerColor: Color(0xFF10B981),
+                      ),
+                      label: 'Success',
+                      isDark: isDark,
                     ),
-                    label: 'Success',
-                  ),
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.dot(
-                      containerColor: Color(0xFFEF4444),
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.dot(
+                        containerColor: Color(0xFFEF4444),
+                      ),
+                      label: 'Danger',
+                      isDark: isDark,
                     ),
-                    label: 'Danger',
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              // ── Icon Badges ──
-              _buildBadgeSection(
-                title: 'Icon Badges',
-                items: [
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.icon(
-                      Icons.check,
-                      containerColor: Color(0xFF6366F1),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                // ── Icon Badges ──
+                _buildBadgeSection(
+                  title: 'Icon Badges',
+                  isDark: isDark,
+                  items: [
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.icon(
+                        Icons.check,
+                        containerColor: Color(0xFF6366F1),
+                      ),
+                      label: 'Check',
+                      isDark: isDark,
                     ),
-                    label: 'Check',
-                  ),
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.icon(
-                      Icons.warning_amber_rounded,
-                      containerColor: Color(0xFFF59E0B),
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.icon(
+                        Icons.warning_amber_rounded,
+                        containerColor: Color(0xFFF59E0B),
+                      ),
+                      label: 'Warning',
+                      isDark: isDark,
                     ),
-                    label: 'Warning',
-                  ),
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.icon(
-                      Icons.close,
-                      containerColor: Color(0xFFEF4444),
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.icon(
+                        Icons.close,
+                        containerColor: Color(0xFFEF4444),
+                      ),
+                      label: 'Error',
+                      isDark: isDark,
                     ),
-                    label: 'Error',
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              // ── Digit Badges ──
-              _buildBadgeSection(
-                title: 'Digit Badges',
-                items: [
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.count(
-                      1,
-                      containerColor: Color(0xFF6366F1),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                // ── Digit Badges ──
+                _buildBadgeSection(
+                  title: 'Digit Badges',
+                  isDark: isDark,
+                  items: [
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.count(
+                        1,
+                        containerColor: Color(0xFF6366F1),
+                      ),
+                      label: 'Single',
+                      isDark: isDark,
                     ),
-                    label: 'Single',
-                  ),
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.count(
-                      11,
-                      containerColor: Color(0xFF06B6D4),
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.count(
+                        11,
+                        containerColor: Color(0xFF06B6D4),
+                      ),
+                      label: 'Double',
+                      isDark: isDark,
                     ),
-                    label: 'Double',
-                  ),
-                  _buildBadgeItem(
-                    badge: const Ux4gBadge.count(
-                      150,
-                      limit: Ux4gBadgeLimit.doubleDigit,
-                      containerColor: Color(0xFFEF4444),
+                    _buildBadgeItem(
+                      badge: const Ux4gBadge.count(
+                        150,
+                        limit: Ux4gBadgeLimit.doubleDigit,
+                        containerColor: Color(0xFFEF4444),
+                      ),
+                      label: 'Overflow',
+                      isDark: isDark,
                     ),
-                    label: 'Overflow',
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     ),
     WidgetbookUseCase(
       name: 'Dot',
@@ -397,24 +413,27 @@ Ux4gBadge.icon(Icons.shield, showBorder: true, containerColor: primaryColor);'''
 Widget _buildBadgeSection({
   required String title,
   required List<Widget> items,
+  bool isDark = false,
 }) {
   return Container(
     width: double.infinity,
     padding: const EdgeInsets.all(24.0),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: isDark ? const Color(0xFF1E2130) : Colors.white,
       borderRadius: BorderRadius.circular(8.0),
-      border: Border.all(color: Colors.grey.shade200),
+      border: Border.all(
+        color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+      ),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF1F2937),
+            color: isDark ? Colors.white70 : const Color(0xFF1F2937),
           ),
         ),
         const SizedBox(height: 24),
@@ -437,6 +456,7 @@ Widget _buildBadgeSection({
 Widget _buildBadgeItem({
   required Widget badge,
   required String label,
+  bool isDark = false,
 }) {
   return Column(
     mainAxisSize: MainAxisSize.min,
@@ -448,9 +468,9 @@ Widget _buildBadgeItem({
       const SizedBox(height: 12),
       Text(
         label,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 13,
-          color: Color(0xFF4B5563),
+          color: isDark ? Colors.white60 : const Color(0xFF4B5563),
           fontWeight: FontWeight.w400,
         ),
       ),

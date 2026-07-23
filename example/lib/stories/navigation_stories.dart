@@ -21,10 +21,11 @@ class _AccordionShowcaseState extends State<_AccordionShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF3F4F6),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF3F4F6),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -32,29 +33,36 @@ class _AccordionShowcaseState extends State<_AccordionShowcase> {
         children: [
           Text(
             'Simple Accordion Showcase',
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             'Live previews taken directly from the simple Accordion showcase blocks in src/index.html.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[700],
-                ),
+              color: isDark ? Colors.white60 : Colors.grey[700],
+            ),
           ),
           const SizedBox(height: 32),
           Text(
             'Title Left, Arrow Right',
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w600,
+              color: isDark ? Colors.white70 : const Color(0xFF334155),
+            ),
           ),
           const SizedBox(height: 16),
           Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+              ),
+            ),
+            clipBehavior: Clip.antiAlias,
             child: Column(
               children: [
                 Ux4gAccordion(
@@ -75,14 +83,21 @@ class _AccordionShowcaseState extends State<_AccordionShowcase> {
           const SizedBox(height: 48),
           Text(
             'Arrow Left + Title',
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w600,
+              color: isDark ? Colors.white70 : const Color(0xFF334155),
+            ),
           ),
           const SizedBox(height: 16),
           Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+              ),
+            ),
+            clipBehavior: Clip.antiAlias,
             child: Column(
               children: [
                 Ux4gAccordion(
@@ -3005,10 +3020,11 @@ class _PaginationDottedVisualShowcaseState
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3018,13 +3034,14 @@ class _PaginationDottedVisualShowcaseState
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of pagination dot indicators, capsule container variants, and chevron alignments.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -3032,6 +3049,7 @@ class _PaginationDottedVisualShowcaseState
           // 1. Standard Dot Pagination (Matching Image Card)
           _buildPaginationSectionCard(
             title: 'Pagination Dots with Chevrons',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3047,6 +3065,7 @@ class _PaginationDottedVisualShowcaseState
           // 2. Capsule Variant (With Arrows)
           _buildPaginationSectionCard(
             title: 'Capsule Variant with Arrows',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3063,6 +3082,7 @@ class _PaginationDottedVisualShowcaseState
           // 3. Capsule Variant (Without Arrows)
           _buildPaginationSectionCard(
             title: 'Capsule Variant without Arrows',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3079,6 +3099,7 @@ class _PaginationDottedVisualShowcaseState
           // 4. Capsule Variant (Right-Aligned Arrows)
           _buildPaginationSectionCard(
             title: 'Capsule Variant with Right-Aligned Arrows',
+            isDark: isDark,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Ux4gPaginationIndicator(
@@ -3099,17 +3120,20 @@ class _PaginationDottedVisualShowcaseState
   Widget _buildPaginationSectionCard({
     required String title,
     required Widget child,
+    bool isDark = false,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -3120,10 +3144,10 @@ class _PaginationDottedVisualShowcaseState
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 16),
@@ -3158,32 +3182,35 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Visual Showcase',
+            'Implementation Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            'A compact tour of the chip patterns used across the source-backed stories.',
+            'Visual demonstration of various chip types, sizes, and states.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
           // Card 1: Chip Types & Variants
           _buildChipSectionCard(
             title: 'Chip Types & Variants',
+            isDark: isDark,
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -3192,15 +3219,23 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                 Ux4gChoiceChip(
                   text: 'Choice Chip',
                   selected: _card1ChoiceSelected,
-                  onClick: () => setState(() => _card1ChoiceSelected = !_card1ChoiceSelected),
+                  onClick: () => setState(
+                    () => _card1ChoiceSelected = !_card1ChoiceSelected,
+                  ),
                 ),
                 Ux4gFilterChip(
                   text: 'Filter Chip',
                   selected: _card1FilterSelected,
                   leadingContent: _card1FilterSelected
-                      ? const Icon(Icons.check, size: 14, color: Color(0xFF4F46E5))
+                      ? const Icon(
+                          Icons.check,
+                          size: 14,
+                          color: Color(0xFF4F46E5),
+                        )
                       : null,
-                  onClick: () => setState(() => _card1FilterSelected = !_card1FilterSelected),
+                  onClick: () => setState(
+                    () => _card1FilterSelected = !_card1FilterSelected,
+                  ),
                 ),
                 Ux4gInputChip(
                   text: 'Deletable Input',
@@ -3220,6 +3255,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
           // Card 2: Sizes & Configurations
           _buildChipSectionCard(
             title: 'Sizes & Configurations',
+            isDark: isDark,
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -3241,7 +3277,8 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                   text: 'With Icon',
                   selected: _card2IconSelected,
                   leadingContent: const Icon(Icons.star_outline, size: 16),
-                  onClick: () => setState(() => _card2IconSelected = !_card2IconSelected),
+                  onClick: () =>
+                      setState(() => _card2IconSelected = !_card2IconSelected),
                 ),
                 Ux4gChoiceChip(
                   text: 'With Avatar',
@@ -3252,7 +3289,9 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                       'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
                     ),
                   ),
-                  onClick: () => setState(() => _card2AvatarSelected = !_card2AvatarSelected),
+                  onClick: () => setState(
+                    () => _card2AvatarSelected = !_card2AvatarSelected,
+                  ),
                 ),
                 Ux4gChoiceChip(
                   text: 'Disabled',
@@ -3267,6 +3306,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
           // Card 3: Interactive Working Live Patterns
           _buildChipSectionCard(
             title: 'Interactive Chip Patterns (Live Working)',
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -3274,7 +3314,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                   'Single-Select Category (Choice Chips)',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey[800],
+                    color: isDark ? Colors.white70 : Colors.grey[800],
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -3282,7 +3322,12 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                   spacing: 8,
                   runSpacing: 8,
                   children: List.generate(4, (index) {
-                    final labels = ['All', 'Components', 'Templates', 'Guidelines'];
+                    final labels = [
+                      'All',
+                      'Components',
+                      'Templates',
+                      'Guidelines',
+                    ];
                     return Ux4gChoiceChip(
                       text: labels[index],
                       selected: _card3ChoiceIndex == index,
@@ -3295,20 +3340,26 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                   'Multi-Select Filters (Filter Chips)',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: Colors.grey[800],
+                    color: isDark ? Colors.white70 : Colors.grey[800],
                   ),
                 ),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
-                  children: ['Design System', 'Flutter', 'Web', 'Mobile'].map((filter) {
+                  children: ['Design System', 'Flutter', 'Web', 'Mobile'].map((
+                    filter,
+                  ) {
                     final isSelected = _card3Filters.contains(filter);
                     return Ux4gFilterChip(
                       text: filter,
                       selected: isSelected,
                       leadingContent: isSelected
-                          ? const Icon(Icons.check, size: 14, color: Color(0xFF4F46E5))
+                          ? const Icon(
+                              Icons.check,
+                              size: 14,
+                              color: Color(0xFF4F46E5),
+                            )
                           : null,
                       onClick: () {
                         setState(() {
@@ -3330,7 +3381,7 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                       'Removable Input Tags (Input Chips)',
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: Colors.grey[800],
+                        color: isDark ? Colors.white70 : Colors.grey[800],
                       ),
                     ),
                     if (_card3Tags.length < 4)
@@ -3338,11 +3389,19 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                         onTap: () {
                           setState(() {
                             _card3Tags.clear();
-                            _card3Tags.addAll(['Flutter', 'Dart', 'UX4G', 'UI Kit']);
+                            _card3Tags.addAll([
+                              'Flutter',
+                              'Dart',
+                              'UX4G',
+                              'UI Kit',
+                            ]);
                           });
                         },
                         child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 4,
+                            vertical: 2,
+                          ),
                           child: Text(
                             'Reset Tags',
                             style: TextStyle(
@@ -3360,14 +3419,16 @@ class _ChipVisualShowcaseState extends State<_ChipVisualShowcase> {
                     ? Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
+                          color: isDark
+                              ? const Color(0xFF1E2130)
+                              : Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
                           'All tags dismissed. Click "Reset Tags" above to restore.',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey[700],
+                            color: isDark ? Colors.white60 : Colors.grey[700],
                             fontStyle: FontStyle.italic,
                           ),
                         ),
@@ -3400,10 +3461,11 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3413,13 +3475,14 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of semantic empty state variants including search results, empty data, coming soon, and error states.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -3431,6 +3494,7 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               // 1. No Results
               _buildEmptyStateCard(
                 title: 'No Results Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.noResults,
                   title: 'No results found',
@@ -3443,6 +3507,7 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               // 2. No Data
               _buildEmptyStateCard(
                 title: 'No Data Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.noData,
                   title: 'No active applications',
@@ -3455,6 +3520,7 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               // 3. Coming Soon
               _buildEmptyStateCard(
                 title: 'Coming Soon Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.comingSoon,
                   title: 'Coming soon',
@@ -3465,7 +3531,8 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
               ),
               // 4. Error State
               _buildEmptyStateCard(
-                title: 'Error State Preset',
+                title: 'Error Preset',
+                isDark: isDark,
                 child: Ux4gEmptyState(
                   variant: Ux4gEmptyStateVariant.error,
                   title: 'Could not load data',
@@ -3481,17 +3548,23 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
     );
   }
 
-  Widget _buildEmptyStateCard({required String title, required Widget child}) {
+  Widget _buildEmptyStateCard({
+    required String title,
+    required Widget child,
+    bool isDark = false,
+  }) {
     return Container(
       width: 340,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -3502,10 +3575,10 @@ class _EmptyStateVisualShowcase extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 16),
@@ -3524,13 +3597,23 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final ux4gTypography = Theme.of(context).extension<Ux4gTypography>();
 
-    final titleColor = isDark ? const Color(0xFFF9FAFB) : const Color(0xFF111827);
-    final warningBg = isDark ? const Color(0xFFAD4E00) : const Color(0xFFFFE7BF);
-    final warningText = isDark ? const Color(0xFFFFC973) : const Color(0xFFAD4E00);
+    final titleColor = isDark
+        ? const Color(0xFFF9FAFB)
+        : const Color(0xFF111827);
+    final warningBg = isDark
+        ? const Color(0xFFAD4E00)
+        : const Color(0xFFFFE7BF);
+    final warningText = isDark
+        ? const Color(0xFFFFC973)
+        : const Color(0xFFAD4E00);
 
     final warningPillStyle =
         ux4gTypography?.lM_default?.copyWith(color: warningText) ??
-        TextStyle(color: warningText, fontSize: 12, fontWeight: FontWeight.w500);
+        TextStyle(
+          color: warningText,
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+        );
 
     final stepBadge = Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -3550,35 +3633,62 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
       child: Text('16 Apr', style: warningPillStyle),
     );
 
-    final solidBannerBg = isDark ? const Color(0xFFFDBA74) : const Color(0xFFEA580C);
-    final solidBannerTextColor = isDark ? const Color(0xFF111827) : const Color(0xFFF9FAFB);
+    final solidBannerBg = isDark
+        ? const Color(0xFFFDBA74)
+        : const Color(0xFFEA580C);
+    final solidBannerTextColor = isDark
+        ? const Color(0xFF111827)
+        : const Color(0xFFF9FAFB);
     final solidBannerTitleStyle =
         ux4gTypography?.bS_strong?.copyWith(color: solidBannerTextColor) ??
         TextStyle(color: solidBannerTextColor, fontWeight: FontWeight.bold);
 
-    final savingBgColor = isDark ? const Color(0xFF873C05) : const Color(0xFFFFF7E6);
-    final savingTextColor = isDark ? const Color(0xFFD9D9D9) : const Color(0xFF737373);
+    final savingBgColor = isDark
+        ? const Color(0xFF873C05)
+        : const Color(0xFFFFF7E6);
+    final savingTextColor = isDark
+        ? const Color(0xFFD9D9D9)
+        : const Color(0xFF737373);
     final savingTextStyle =
         ux4gTypography?.bS_default?.copyWith(color: savingTextColor) ??
         TextStyle(color: savingTextColor, fontSize: 14);
 
-    final successBgColor = isDark ? const Color(0xFF00381F) : const Color(0xFFF2FCEF);
-    final successIconColor = isDark ? const Color(0xFF1AA64A) : const Color(0xFF128937);
+    final successBgColor = isDark
+        ? const Color(0xFF00381F)
+        : const Color(0xFFF2FCEF);
+    final successIconColor = isDark
+        ? const Color(0xFF1AA64A)
+        : const Color(0xFF128937);
     final successTextStyle =
-        ux4gTypography?.bS_default?.copyWith(color: isDark ? Colors.white : const Color(0xFF111827)) ??
-        TextStyle(color: isDark ? Colors.white : const Color(0xFF111827), fontSize: 14);
+        ux4gTypography?.bS_default?.copyWith(
+          color: isDark ? Colors.white : const Color(0xFF111827),
+        ) ??
+        TextStyle(
+          color: isDark ? Colors.white : const Color(0xFF111827),
+          fontSize: 14,
+        );
 
-    final errorBgColor = isDark ? const Color(0xFF60150F) : const Color(0xFFFFF8F8);
-    final errorIconColor = isDark ? const Color(0xFFF55E57) : const Color(0xFFDB372D);
+    final errorBgColor = isDark
+        ? const Color(0xFF60150F)
+        : const Color(0xFFFFF8F8);
+    final errorIconColor = isDark
+        ? const Color(0xFFF55E57)
+        : const Color(0xFFDB372D);
     final errorTextStyle =
-        ux4gTypography?.bS_default?.copyWith(color: isDark ? Colors.white : const Color(0xFF111827)) ??
+        ux4gTypography?.bS_default?.copyWith(
+          color: isDark ? Colors.white : const Color(0xFF111827),
+        ) ??
         const TextStyle(fontSize: 14);
-    final actionTextColor = isDark ? const Color(0xFFFDBA74) : const Color(0xFF9A3412);
+    final actionTextColor = isDark
+        ? const Color(0xFFFDBA74)
+        : const Color(0xFF9A3412);
     final actionTextStyle =
         ux4gTypography?.lXL_default?.copyWith(color: actionTextColor) ??
         TextStyle(color: actionTextColor, fontWeight: FontWeight.bold);
 
-    final successRightTextColor = isDark ? const Color(0xFF80DA88) : const Color(0xFF00522C);
+    final successRightTextColor = isDark
+        ? const Color(0xFF80DA88)
+        : const Color(0xFF00522C);
     final successRightTextStyle =
         ux4gTypography?.bM_default?.copyWith(color: successRightTextColor) ??
         TextStyle(color: successRightTextColor, fontSize: 14);
@@ -3586,7 +3696,7 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3596,13 +3706,14 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
             'Implementation Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Visual demonstration of various Draft Status Bar types and save states.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -3612,6 +3723,7 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
             'General Draft Status',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white70 : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 12),
@@ -3624,7 +3736,11 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
                 color: Color(0xFFFFE7BF),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.inventory_2_outlined, size: 16, color: Color(0xFFAD4E00)),
+              child: const Icon(
+                Icons.inventory_2_outlined,
+                size: 16,
+                color: Color(0xFFAD4E00),
+              ),
             ),
             title: 'Income Certificate Application',
             badge: stepBadge,
@@ -3635,7 +3751,10 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
                 onPressed: () {},
                 child: const Text(
                   'Discard',
-                  style: TextStyle(color: Color(0xFFDB372D), fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                    color: Color(0xFFDB372D),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               Ux4gButton(
@@ -3650,9 +3769,9 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
           // 2. Expiration Warnings
           Text(
             'Expiration Warnings',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
           // 2a. Expiring in 5 days
@@ -3665,7 +3784,11 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
                 color: Color(0xFFFFE7BF),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.inventory_2_outlined, size: 16, color: Color(0xFFAD4E00)),
+              child: const Icon(
+                Icons.inventory_2_outlined,
+                size: 16,
+                color: Color(0xFFAD4E00),
+              ),
             ),
             title: 'Your draft expires in 5 days',
             badge: dateBadge,
@@ -3682,7 +3805,11 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.inventory_2_outlined, size: 16, color: Color(0xFFEA580C)),
+              child: const Icon(
+                Icons.inventory_2_outlined,
+                size: 16,
+                color: Color(0xFFEA580C),
+              ),
             ),
             title: 'Your draft expires tomorrow. Submit today',
             titleStyle: solidBannerTitleStyle,
@@ -3703,9 +3830,9 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
           // 3. Auto-save States
           Text(
             'Auto-save States',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
           // 3a. Saving state
@@ -3737,7 +3864,11 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
             trailingIcon: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.check_circle_outline, size: 18, color: successIconColor),
+                Icon(
+                  Icons.check_circle_outline,
+                  size: 18,
+                  color: successIconColor,
+                ),
                 const SizedBox(width: 4),
                 Text('Saved 3:14 PM', style: successRightTextStyle),
               ],
@@ -3748,9 +3879,9 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
           // 4. Success State
           Text(
             'Success State',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
           Ux4gStatusBanner(
@@ -3759,7 +3890,10 @@ class _DraftStatusVisualShowcase extends StatelessWidget {
             backgroundColor: successBgColor,
             title: 'Draft saved successfully at 3:14 PM',
             titleStyle: successTextStyle,
-            leadingIcon: Icon(Icons.check_circle_outline, color: successIconColor),
+            leadingIcon: Icon(
+              Icons.check_circle_outline,
+              color: successIconColor,
+            ),
           ),
         ],
       ),
@@ -3771,7 +3905,8 @@ class _ChipGroupVisualShowcase extends StatefulWidget {
   const _ChipGroupVisualShowcase();
 
   @override
-  State<_ChipGroupVisualShowcase> createState() => _ChipGroupVisualShowcaseState();
+  State<_ChipGroupVisualShowcase> createState() =>
+      _ChipGroupVisualShowcaseState();
 }
 
 class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
@@ -3783,14 +3918,12 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     final surface = Theme.of(context).colorScheme.surface;
-    final countStyle = typography?.lS_default ??
+    final countStyle =
+        typography?.lS_default ??
         const TextStyle(fontSize: 11, fontWeight: FontWeight.w500);
 
     return Container(
-      constraints: const BoxConstraints(
-        minWidth: 18,
-        minHeight: 18,
-      ),
+      constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
       padding: EdgeInsets.symmetric(horizontal: text.length <= 2 ? 0 : 4),
       decoration: BoxDecoration(
         color: isSelected ? Colors.transparent : primary,
@@ -3800,20 +3933,18 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: countStyle.copyWith(
-          color: surface,
-          height: 1.0,
-        ),
+        style: countStyle.copyWith(color: surface, height: 1.0),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -3823,18 +3954,20 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Interactive chip group patterns for application status filtering, employment types, and custom badges.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
           _buildChipSectionCard(
             title: 'Application Status Filters with Badges',
+            isDark: isDark,
             child: Ux4gChipGroup(
               arrangement: Ux4gChipGroupArrangement.wrap,
               spacing: 12,
@@ -3843,31 +3976,51 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
                   text: 'All',
                   selected: _selectedRow1 == 0,
                   onClick: () => setState(() => _selectedRow1 = 0),
-                  trailingContent: _buildBadge(context, '62', _selectedRow1 == 0),
+                  trailingContent: _buildBadge(
+                    context,
+                    '62',
+                    _selectedRow1 == 0,
+                  ),
                 ),
                 Ux4gChoiceChip(
                   text: 'Pending',
                   selected: _selectedRow1 == 1,
                   onClick: () => setState(() => _selectedRow1 = 1),
-                  trailingContent: _buildBadge(context, '3', _selectedRow1 == 1),
+                  trailingContent: _buildBadge(
+                    context,
+                    '3',
+                    _selectedRow1 == 1,
+                  ),
                 ),
                 Ux4gChoiceChip(
                   text: 'Under Review',
                   selected: _selectedRow1 == 2,
                   onClick: () => setState(() => _selectedRow1 = 2),
-                  trailingContent: _buildBadge(context, '12', _selectedRow1 == 2),
+                  trailingContent: _buildBadge(
+                    context,
+                    '12',
+                    _selectedRow1 == 2,
+                  ),
                 ),
                 Ux4gChoiceChip(
                   text: 'Approved',
                   selected: _selectedRow1 == 3,
                   onClick: () => setState(() => _selectedRow1 = 3),
-                  trailingContent: _buildBadge(context, '41', _selectedRow1 == 3),
+                  trailingContent: _buildBadge(
+                    context,
+                    '41',
+                    _selectedRow1 == 3,
+                  ),
                 ),
                 Ux4gChoiceChip(
                   text: 'Rejected',
                   selected: _selectedRow1 == 4,
                   onClick: () => setState(() => _selectedRow1 = 4),
-                  trailingContent: _buildBadge(context, '6', _selectedRow1 == 4),
+                  trailingContent: _buildBadge(
+                    context,
+                    '6',
+                    _selectedRow1 == 4,
+                  ),
                 ),
               ],
             ),
@@ -3875,6 +4028,7 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
           const SizedBox(height: 24),
           _buildChipSectionCard(
             title: 'Employment Type Filters',
+            isDark: isDark,
             child: Ux4gChipGroup(
               arrangement: Ux4gChipGroupArrangement.wrap,
               spacing: 12,
@@ -3936,17 +4090,20 @@ class _ChipGroupVisualShowcaseState extends State<_ChipGroupVisualShowcase> {
 Widget _buildChipSectionCard({
   required String title,
   required Widget child,
+  bool isDark = false,
 }) {
   return Container(
     width: double.infinity,
     padding: const EdgeInsets.all(20.0),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: isDark ? const Color(0xFF1E2130) : Colors.white,
       borderRadius: BorderRadius.circular(12.0),
-      border: Border.all(color: const Color(0xFFE5E7EB)),
+      border: Border.all(
+        color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+      ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.02),
+          color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
           blurRadius: 6,
           offset: const Offset(0, 2),
         ),
@@ -3957,10 +4114,10 @@ Widget _buildChipSectionCard({
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF111827),
+            color: isDark ? Colors.white : const Color(0xFF111827),
           ),
         ),
         const SizedBox(height: 16),

@@ -33,7 +33,7 @@ class _NavigationTreeNodeState extends State<NavigationTreeNode> {
     // If the selected node's path starts with this node's path,
     // then the selected node is a descendant of this node.
     final nodePath = widget.node.path;
-    return selectedPath.startsWith(nodePath) && selectedPath != nodePath;
+    return selectedPath.startsWith('$nodePath/');
   }
 
   @override

@@ -77,13 +77,23 @@ class Ux4gSwitch extends StatelessWidget {
 
     // Color definitions
     final isDark = materialTheme.brightness == Brightness.dark;
-    final checkedTrackColor = ux4gColors?.primary ?? (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600);
-    final uncheckedTrackColor = isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300;
-    final disabledTrackColor = isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200;
+    final checkedTrackColor =
+        ux4gColors?.primary ??
+        (isDark ? Ux4gColors.primary300 : Ux4gColors.primary600);
+    final uncheckedTrackColor = isDark
+        ? Ux4gColors.neutral700
+        : Ux4gColors.neutral300;
+    final disabledTrackColor = isDark
+        ? Ux4gColors.neutral800
+        : Ux4gColors.neutral200;
 
-    final trackColor = !enabled ? disabledTrackColor : (checked ? checkedTrackColor : uncheckedTrackColor);
+    final trackColor = !enabled
+        ? disabledTrackColor
+        : (checked ? checkedTrackColor : uncheckedTrackColor);
 
-    final thumbColor = isDark && checked && enabled ? Ux4gColors.gray900 : Colors.white;
+    final thumbColor = isDark && checked && enabled
+        ? Ux4gColors.gray900
+        : Colors.white;
 
     final endOffset = size.width - size.thumbSize - size.thumbPadding;
     final startOffset = size.thumbPadding;
@@ -195,24 +205,25 @@ class Ux4gSwitch extends StatelessWidget {
         return Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            labelText,
-            const SizedBox(width: 6),
-            trailingIcon,
-          ],
+          children: [labelText, const SizedBox(width: 6), trailingIcon],
         );
       }
       return labelText;
     }
 
     Widget buildTextsWidget(
-        String? mainLabel, bool required, Widget? trailingIcon, String? desc) {
+      String? mainLabel,
+      bool required,
+      Widget? trailingIcon,
+      String? desc,
+    ) {
       if (mainLabel == null && desc == null) return const SizedBox.shrink();
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (mainLabel != null) buildLabelWidget(mainLabel, required, trailingIcon),
+          if (mainLabel != null)
+            buildLabelWidget(mainLabel, required, trailingIcon),
           if (desc != null) ...[
             const SizedBox(height: 4),
             Text(
@@ -242,8 +253,13 @@ class Ux4gSwitch extends StatelessWidget {
           toggleControl,
           if (secondaryLabel != null) ...[
             const SizedBox(width: 12),
-            buildTextsWidget(secondaryLabel, isSecondaryRequired, secondaryIcon, null),
-          ]
+            buildTextsWidget(
+              secondaryLabel,
+              isSecondaryRequired,
+              secondaryIcon,
+              null,
+            ),
+          ],
         ],
       );
     }

@@ -283,6 +283,7 @@ final cardComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return ComponentDocs(
           name: 'Card',
           description:
@@ -291,7 +292,7 @@ final cardComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -301,13 +302,14 @@ final cardComponent = WidgetbookComponent(
                   'Implementation Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Visual demonstration of vertical and horizontal rich card components with media banners, badges, chips, and actions.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
+                    color: isDark ? Colors.white60 : Colors.grey[700],
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -1475,6 +1477,7 @@ final dividerComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return ComponentDocs(
           name: 'Divider',
           description:
@@ -1483,7 +1486,7 @@ final dividerComponent = WidgetbookComponent(
           child: Container(
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
+              color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -1493,13 +1496,14 @@ final dividerComponent = WidgetbookComponent(
                   'Implementation Showcase',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Visual demonstration of horizontal and vertical dividers.',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
+                    color: isDark ? Colors.white60 : Colors.grey[700],
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -1508,6 +1512,7 @@ final dividerComponent = WidgetbookComponent(
                   'Horizontal Divider',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white70 : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -1515,37 +1520,39 @@ final dividerComponent = WidgetbookComponent(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? const Color(0xFF1E2130) : Colors.white,
                     borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    border: Border.all(
+                      color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.02),
+                        color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                       ),
                     ],
                   ),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Item 1',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF374151),
+                          color: isDark ? Colors.white70 : const Color(0xFF374151),
                         ),
                       ),
-                      SizedBox(height: 16),
-                      Ux4gDivider(
+                      const SizedBox(height: 16),
+                      const Ux4gDivider(
                         orientation: Ux4gDividerOrientation.horizontal,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text(
                         'Item 2',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF374151),
+                          color: isDark ? Colors.white70 : const Color(0xFF374151),
                         ),
                       ),
                     ],
@@ -1557,6 +1564,7 @@ final dividerComponent = WidgetbookComponent(
                   'Vertical Divider',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white70 : const Color(0xFF0F172A),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -1564,50 +1572,39 @@ final dividerComponent = WidgetbookComponent(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? const Color(0xFF1E2130) : Colors.white,
                     borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
+                    border: Border.all(
+                      color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.02),
+                        color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                       ),
                     ],
                   ),
-                  child: const Row(
+                  child: Row(
                     children: [
                       Text(
                         'Item 1',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF374151),
+                          color: isDark ? Colors.white70 : const Color(0xFF374151),
                         ),
                       ),
-                      SizedBox(width: 16),
-                      Ux4gDivider(
+                      const SizedBox(width: 16),
+                      const Ux4gDivider(
                         orientation: Ux4gDividerOrientation.vertical,
                         height: 20,
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       Text(
                         'Item 2',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF374151),
-                        ),
-                      ),
-                      SizedBox(width: 16),
-                      Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        height: 20,
-                      ),
-                      SizedBox(width: 16),
-                      Text(
-                        'Item 3',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF374151),
+                          color: isDark ? Colors.white70 : const Color(0xFF374151),
                         ),
                       ),
                     ],
@@ -2154,10 +2151,11 @@ class _TagVisualShowcase extends StatelessWidget {
       (title: 'Text Tags', style: Ux4gTagStyle.text),
     ];
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -2167,13 +2165,14 @@ class _TagVisualShowcase extends StatelessWidget {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of tag style variants (Tonal, Filled, Outline, Text) across all semantic color schemes.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -2187,10 +2186,10 @@ class _TagVisualShowcase extends StatelessWidget {
                   children: [
                     Text(
                       s.title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF111827),
+                        color: isDark ? Colors.white : const Color(0xFF111827),
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -2201,12 +2200,14 @@ class _TagVisualShowcase extends StatelessWidget {
                         vertical: 20.0,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
                         borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                        ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.02),
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),

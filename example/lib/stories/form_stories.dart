@@ -8,6 +8,7 @@ import '../widgets/component_docs.dart';
 
 final inputFieldComponent = WidgetbookComponent(
   name: 'Input',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
@@ -1901,15 +1902,15 @@ class _CheckboxExampleState extends State<CheckboxExample> {
 // ── Switch ────────────────────────────────────────────────────────────────────
 
 final toggleComponent = WidgetbookComponent(
-  name: 'Switch',
+  name: 'Toggle',
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
         return const ComponentDocs(
-          name: 'Switch',
+          name: 'Toggle',
           description:
-              'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switches provide a quick and intuitive way to modify system or feature preferences with a single action.',
+              'Toggle (Switch) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switches provide a quick and intuitive way to modify system or feature preferences with a single action.',
           showPreview: false,
           child: _SwitchVisualShowcase(),
         );
@@ -1922,9 +1923,9 @@ final toggleComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Switch',
+              name: 'Toggle',
               description:
-                  'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switchs provide a quick and intuitive way to modify system or feature preferences with a single action.',
+                  'Toggle (Switch) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switchs provide a quick and intuitive way to modify system or feature preferences with a single action.',
               code: '''Ux4gSwitch(
   checked: checked,
   onCheckedChange: (v) => setState(() => checked = v),
@@ -2034,7 +2035,7 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'All sizes',
       builder: (context) => ComponentDocs(
-        name: 'Switch — Sizes',
+        name: 'Toggle — Sizes',
         description: 'Small (s), medium (m), and large (l) switches.',
         code:
             'Ux4gSwitch(checked: true, onCheckedChange: (_) {}, label: \'Small\',  size: Ux4gSwitchSize.s);',
@@ -2069,8 +2070,8 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Switch — Disabled',
-        description: 'Switch with onCheckedChange=null renders as disabled.',
+        name: 'Toggle — Disabled',
+        description: 'Toggle with onCheckedChange=null renders as disabled.',
         code:
             'Ux4gSwitch(checked: false, onCheckedChange: null, label: \'Off (disabled)\');',
         child: Column(
@@ -2103,7 +2104,7 @@ final toggleComponent = WidgetbookComponent(
             : Colors.black54;
 
         return ComponentDocs(
-          name: 'Switch — Layout Variants',
+          name: 'Toggle — Layout Variants',
           description:
               'Demonstrates native label compositions using the new built-in properties.',
           code: '''// Native dual-sided labels
@@ -2701,6 +2702,7 @@ final sliderComponent = WidgetbookComponent(
 
 final otpInputComponent = WidgetbookComponent(
   name: 'Input-OTP',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
@@ -2769,9 +2771,231 @@ final otpInputComponent = WidgetbookComponent(
               initialValue: 6,
             );
 
-            // ── Build dynamic code string ───────────────────────
-            final codeStr =
-                '''Ux4gOtpInput(
+            final variant = context.knobs.list<String>(
+              label: 'Variant',
+              options: const [
+                'Default',
+                'Error state',
+                'Success state',
+                'Warning state',
+                'Disabled',
+                'Resend timer',
+                'Resend action',
+                'Attempt with timer',
+                'Account locked',
+                'Obscured (Password)',
+                'With separator',
+              ],
+              initialOption: 'Default',
+            );
+
+            Widget childWidget;
+            String codeStr;
+
+            switch (variant) {
+              case 'Error state':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: '12345',
+  status: Ux4gOtpInputStatus.error,
+  captionVariant: Ux4gOtpCaptionVariant.plain,
+  captionText: 'Invalid OTP entered. Please try again.',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '12345',
+                  status: Ux4gOtpInputStatus.error,
+                  captionVariant: Ux4gOtpCaptionVariant.plain,
+                  captionText: 'Invalid OTP entered. Please try again.',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Success state':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: '123456',
+  status: Ux4gOtpInputStatus.success,
+  captionVariant: Ux4gOtpCaptionVariant.success,
+  captionText: 'OTP verified successfully',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '123456',
+                  status: Ux4gOtpInputStatus.success,
+                  captionVariant: Ux4gOtpCaptionVariant.success,
+                  captionText: 'OTP verified successfully',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Warning state':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: '12345',
+  status: Ux4gOtpInputStatus.warning,
+  captionVariant: Ux4gOtpCaptionVariant.warning,
+  captionText: 'Only 1 attempt remaining',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '12345',
+                  status: Ux4gOtpInputStatus.warning,
+                  captionVariant: Ux4gOtpCaptionVariant.warning,
+                  captionText: 'Only 1 attempt remaining',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Disabled':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: '',
+  enabled: false,
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '',
+                  enabled: false,
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Resend timer':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  captionVariant: Ux4gOtpCaptionVariant.resendTimer,
+  captionLeadingText: "Didn't receive OTP?",
+  captionTrailingText: 'Resend in 00:30',
+  autoCountdownSeconds: 30,
+  onChanged: (v) => setState(() => otpValue = v),
+  onCountdownComplete: () {
+    // Timer finished
+  },
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  captionVariant: Ux4gOtpCaptionVariant.resendTimer,
+                  captionLeadingText: "Didn't receive OTP?",
+                  captionTrailingText: 'Resend in 00:30',
+                  autoCountdownSeconds: 30,
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Resend action':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  captionVariant: Ux4gOtpCaptionVariant.resendAction,
+  captionLeadingText: "Didn't receive OTP?",
+  captionTrailingText: 'Resend OTP',
+  onCaptionTrailingTap: () {
+    // Resend OTP logic
+  },
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  captionVariant: Ux4gOtpCaptionVariant.resendAction,
+                  captionLeadingText: "Didn't receive OTP?",
+                  captionTrailingText: 'Resend OTP',
+                  onCaptionTrailingTap: () {},
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Attempt with timer':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: '1234',
+  status: Ux4gOtpInputStatus.error,
+  captionVariant: Ux4gOtpCaptionVariant.attemptWithTimer,
+  captionLeadingText: 'Attempt 2 of 3',
+  captionTrailingText: 'Resend in 00:17',
+  autoCountdownSeconds: 17,
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '1234',
+                  status: Ux4gOtpInputStatus.error,
+                  captionVariant: Ux4gOtpCaptionVariant.attemptWithTimer,
+                  captionLeadingText: 'Attempt 2 of 3',
+                  captionTrailingText: 'Resend in 00:17',
+                  autoCountdownSeconds: 17,
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Account locked':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: '',
+  enabled: false,
+  status: Ux4gOtpInputStatus.locked,
+  captionVariant: Ux4gOtpCaptionVariant.locked,
+  captionLeadingText: 'Locked for 28:43',
+  captionTrailingText: 'Resend OTP',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: '',
+                  enabled: false,
+                  status: Ux4gOtpInputStatus.locked,
+                  captionVariant: Ux4gOtpCaptionVariant.locked,
+                  captionLeadingText: 'Locked for 28:43',
+                  captionTrailingText: 'Resend OTP',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Obscured (Password)':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  obscure: true,
+  label: 'Secure PIN',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  obscure: true,
+                  label: 'Secure PIN',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'With separator':
+                codeStr =
+                    '''Ux4gOtpInput(
+  length: $length,
+  value: otpValue,
+  showSeparator: true,
+  label: 'Verification Code',
+  onChanged: (v) => setState(() => otpValue = v),
+)''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  showSeparator: true,
+                  label: 'Verification Code',
+                  onChanged: (v) => setState(() => otpValue = v),
+                );
+                break;
+              case 'Default':
+              default:
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   onChanged: (v) => setState(() => otpValue = v),
@@ -2779,6 +3003,14 @@ final otpInputComponent = WidgetbookComponent(
     // verify pin
   },
 )''';
+                childWidget = Ux4gOtpInput(
+                  length: length,
+                  value: otpValue,
+                  onChanged: (v) => setState(() => otpValue = v),
+                  onCompleted: (_) {},
+                );
+                break;
+            }
 
             return ComponentDocs(
               name: 'OtpInput',
@@ -2922,15 +3154,7 @@ final otpInputComponent = WidgetbookComponent(
                   description: 'Called when the auto-countdown reaches zero.',
                 ),
               ],
-              child: SizedBox(
-                width: 320,
-                child: Ux4gOtpInput(
-                  length: length,
-                  value: otpValue,
-                  onChanged: (v) => setState(() => otpValue = v),
-                  onCompleted: (_) {},
-                ),
-              ),
+              child: SizedBox(width: 380, child: childWidget),
             );
           },
         );
@@ -4562,17 +4786,17 @@ class _DatePickerVisualShowcase extends StatefulWidget {
       _DatePickerVisualShowcaseState();
 }
 
-class _DatePickerVisualShowcaseState
-    extends State<_DatePickerVisualShowcase> {
+class _DatePickerVisualShowcaseState extends State<_DatePickerVisualShowcase> {
   DateTime? _singleDate;
   DateTimeRange? _dateRange;
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -4582,13 +4806,14 @@ class _DatePickerVisualShowcaseState
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of single date picker and date range picker components with explicit labels.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -4597,12 +4822,16 @@ class _DatePickerVisualShowcaseState
             width: double.infinity,
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: const Color(0xFFE5E7EB)),
+              border: Border.all(
+                color: isDark
+                    ? const Color(0xFF2D3348)
+                    : const Color(0xFFE5E7EB),
+              ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.02),
+                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -4611,12 +4840,12 @@ class _DatePickerVisualShowcaseState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Single Date Picker',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF111827),
+                    color: isDark ? Colors.white : const Color(0xFF111827),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -4645,12 +4874,16 @@ class _DatePickerVisualShowcaseState
             width: double.infinity,
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: const Color(0xFFE5E7EB)),
+              border: Border.all(
+                color: isDark
+                    ? const Color(0xFF2D3348)
+                    : const Color(0xFFE5E7EB),
+              ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.02),
+                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -4659,12 +4892,12 @@ class _DatePickerVisualShowcaseState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Date Range Picker',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF111827),
+                    color: isDark ? Colors.white : const Color(0xFF111827),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -4675,7 +4908,8 @@ class _DatePickerVisualShowcaseState
                     label: 'Select Date Range',
                     placeholder: 'DD/MM/YYYY – DD/MM/YYYY',
                     isRequired: true,
-                    description: 'Select start and end dates for your trip or reservation.',
+                    description:
+                        'Select start and end dates for your trip or reservation.',
                     initialDateRange: _dateRange,
                     onDateRangeSelected: (range) {
                       setState(() {
@@ -4708,10 +4942,11 @@ class _RadioButtonVisualShowcaseState
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -4721,13 +4956,14 @@ class _RadioButtonVisualShowcaseState
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of radio button options with helper descriptions, success status, and interactive states.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -4735,12 +4971,16 @@ class _RadioButtonVisualShowcaseState
             width: double.infinity,
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: const Color(0xFFE5E7EB)),
+              border: Border.all(
+                color: isDark
+                    ? const Color(0xFF2D3348)
+                    : const Color(0xFFE5E7EB),
+              ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.02),
+                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -4852,10 +5092,11 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -4865,13 +5106,14 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of search field variants including basic search, search with submit button, autocomplete with live dropdown, and status validation.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -4881,6 +5123,7 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
             title: '1. Basic Search',
             description:
                 'Instant live filtering search bar with clear & voice action triggers.',
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -4911,6 +5154,7 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
             title: '2. Search with Submit Button',
             description:
                 'Search field with an integrated submit CTA button to fire explicit queries.',
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -4952,6 +5196,7 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
             title: '3. Autocomplete Dropdown Search',
             description:
                 'Search field with live dropdown autocomplete suggestions list.',
+            isDark: isDark,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -4986,6 +5231,7 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
             title: '4. Status & Validation States',
             description:
                 'Search fields indicating error, warning, and success validation feedback.',
+            isDark: isDark,
             child: Wrap(
               spacing: 24,
               runSpacing: 24,
@@ -5024,17 +5270,20 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
     required String title,
     required String description,
     required Widget child,
+    bool isDark = false,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -5045,10 +5294,10 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 4),
@@ -5056,7 +5305,7 @@ class _SearchVisualShowcaseState extends State<_SearchVisualShowcase> {
             description,
             style: TextStyle(
               fontSize: 13,
-              color: Colors.grey[600],
+              color: isDark ? Colors.white60 : Colors.grey[600],
             ),
           ),
           const SizedBox(height: 16),
@@ -5082,10 +5331,11 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -5095,13 +5345,14 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of slider size variants, tick marks, range selectors, and editable input fields.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 32),
@@ -5109,6 +5360,7 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
           // 1. Small Slider (Matching Design Image)
           _buildSliderCard(
             title: 'Small',
+            isDark: isDark,
             child: Ux4gSlider(
               value: _smallVal,
               min: 0,
@@ -5129,6 +5381,7 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
           // 2. Medium Slider
           _buildSliderCard(
             title: 'Medium',
+            isDark: isDark,
             child: Ux4gSlider(
               value: _mediumVal,
               min: 0,
@@ -5149,6 +5402,7 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
           // 3. Range Slider
           _buildSliderCard(
             title: 'Range Slider',
+            isDark: isDark,
             child: Ux4gRangeSlider(
               values: _rangeVals,
               min: 0,
@@ -5165,6 +5419,7 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
           // 4. Slider with Editable Input Fields
           _buildSliderCard(
             title: 'With Editable Input Fields',
+            isDark: isDark,
             child: Ux4gSlider(
               value: _inputVal,
               min: 0,
@@ -5186,17 +5441,20 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
   Widget _buildSliderCard({
     required String title,
     required Widget child,
+    bool isDark = false,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -5207,10 +5465,10 @@ class _SliderVisualShowcaseState extends State<_SliderVisualShowcase> {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 16),
@@ -5240,10 +5498,11 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -5253,13 +5512,14 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of switch layout variants (Right, Left, Both Sides, No Label), sizes, and state configurations.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -5269,16 +5529,23 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
             title: 'Layout & Label Position Variants',
             description:
                 'Support for right-aligned label, left-aligned label, dual-sided labels, and standalone icon switch.',
+            isDark: isDark,
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Right Label',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Text(
+                      'Right Label',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _rightLabelVal,
-                      onCheckedChange: (v) => setState(() => _rightLabelVal = v),
+                      onCheckedChange: (v) =>
+                          setState(() => _rightLabelVal = v),
                       label: 'Push Notifications',
                       labelPosition: Ux4gSwitchLabelPosition.right,
                     ),
@@ -5288,8 +5555,13 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Left Label',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Text(
+                      'Left Label',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _leftLabelVal,
                       onCheckedChange: (v) => setState(() => _leftLabelVal = v),
@@ -5302,8 +5574,13 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Both Sides Labels',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Text(
+                      'Both Sides Labels',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _bothSidesVal,
                       onCheckedChange: (v) => setState(() => _bothSidesVal = v),
@@ -5317,8 +5594,13 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('No Label (Standalone)',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Text(
+                      'No Label (Standalone)',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _noLabelVal,
                       onCheckedChange: (v) => setState(() => _noLabelVal = v),
@@ -5342,6 +5624,7 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                   title: 'Size Scale',
                   description:
                       'Small (S), Medium (M), and Large (L) switch dimensions.',
+                  isDark: isDark,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -5374,6 +5657,7 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 child: _buildSwitchCard(
                   title: 'Disabled States',
                   description: 'Non-interactive switch states.',
+                  isDark: isDark,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
@@ -5405,17 +5689,20 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
     required String title,
     required String description,
     required Widget child,
+    bool isDark = false,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -5426,10 +5713,10 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 4),
@@ -5437,7 +5724,7 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
             description,
             style: TextStyle(
               fontSize: 12,
-              color: Colors.grey[600],
+              color: isDark ? Colors.white60 : Colors.grey[600],
             ),
           ),
           const SizedBox(height: 20),
@@ -5456,18 +5743,18 @@ class _TimePickerVisualShowcase extends StatefulWidget {
       _TimePickerVisualShowcaseState();
 }
 
-class _TimePickerVisualShowcaseState
-    extends State<_TimePickerVisualShowcase> {
+class _TimePickerVisualShowcaseState extends State<_TimePickerVisualShowcase> {
   TimeOfDay? _t1;
   TimeOfDay? _t2 = const TimeOfDay(hour: 9, minute: 30);
   TimeOfDay? _t3;
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -5477,13 +5764,14 @@ class _TimePickerVisualShowcaseState
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of time picker fields with pre-selected times, custom minute intervals, and interactive selection.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -5493,6 +5781,7 @@ class _TimePickerVisualShowcaseState
               _buildTimePickerCard(
                 title: 'Default Time Picker',
                 description: 'Standard interactive time selector field.',
+                isDark: isDark,
                 child: SizedBox(
                   width: 340,
                   child: Ux4gTimePicker(
@@ -5507,6 +5796,7 @@ class _TimePickerVisualShowcaseState
               _buildTimePickerCard(
                 title: 'Pre-Selected Time',
                 description: 'Time picker initialized with 09:30 AM.',
+                isDark: isDark,
                 child: SizedBox(
                   width: 340,
                   child: Ux4gTimePicker(
@@ -5522,6 +5812,7 @@ class _TimePickerVisualShowcaseState
                 title: '15-Minute Interval Slot',
                 description:
                     'Time selector restricted to 15-minute slot increments.',
+                isDark: isDark,
                 child: SizedBox(
                   width: 340,
                   child: Ux4gTimePicker(
@@ -5542,17 +5833,20 @@ class _TimePickerVisualShowcaseState
     required String title,
     required String description,
     required Widget child,
+    bool isDark = false,
   }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? const Color(0xFF1E2130) : Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(
+          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -5563,10 +5857,10 @@ class _TimePickerVisualShowcaseState
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF111827),
+              color: isDark ? Colors.white : const Color(0xFF111827),
             ),
           ),
           const SizedBox(height: 4),
@@ -5574,7 +5868,7 @@ class _TimePickerVisualShowcaseState
             description,
             style: TextStyle(
               fontSize: 12,
-              color: Colors.grey[600],
+              color: isDark ? Colors.white60 : Colors.grey[600],
             ),
           ),
           const SizedBox(height: 16),

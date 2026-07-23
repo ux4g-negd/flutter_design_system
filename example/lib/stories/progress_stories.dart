@@ -1488,119 +1488,125 @@ final progressSlaIndicatorComponent = WidgetbookComponent(
           description:
               'An SLA progress indicator visually tracks the time remaining to fulfill a guaranteed service or task. It communicates progress and status through color and supporting information.',
           showPreview: false,
-          child: Container(
-            padding: const EdgeInsets.all(24.0),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF9FAFB),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Visual Showcase',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: Builder(
+            builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Container(
+                padding: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  'Demonstration of circular and linear SLA progress indicators with status colors, badges, sharp, and rounded bars.',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(24.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.02),
-                        blurRadius: 6,
-                        offset: const Offset(0, 2),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Visual Showcase',
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
                       ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Section 1: SLA Circular Progress
-                      const Text(
-                        'SLA Circular Progress',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF111827),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Demonstration of circular and linear SLA progress indicators with status colors, badges, sharp, and rounded bars.',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: isDark ? Colors.white60 : Colors.grey[700],
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(24.0),
+                      decoration: BoxDecoration(
+                        color: isDark ? const Color(0xFF1E2130) : Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(
+                          color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 24),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            _circularSlaVariant(
-                              typography: typography,
-                              progressColor: const Color(0xFF6A4EFF),
-                              gradient: const SweepGradient(
-                                transform: GradientRotation(-math.pi / 2),
-                                colors: [Color(0xFFDCD4FF), Color(0xFF6A4EFF)],
-                              ),
-                              footerColor: const Color(0xFFEFEAFF),
-                              footerTextColor: const Color(0xFF6A4EFF),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Section 1: SLA Circular Progress
+                          Text(
+                            'SLA Circular Progress',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isDark ? Colors.white : const Color(0xFF111827),
                             ),
-                            const SizedBox(width: 48),
-                            _circularSlaVariant(
-                              typography: typography,
-                              progressColor: const Color(0xFFFFA827),
-                              gradient: const SweepGradient(
-                                transform: GradientRotation(-math.pi / 2),
-                                colors: [Color(0xFFFFF2D9), Color(0xFFFFA827)],
-                              ),
-                              footerColor: const Color(0xFFFFF7E6),
-                              footerTextColor: const Color(0xFFFFA827),
+                          ),
+                          const SizedBox(height: 24),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                _circularSlaVariant(
+                                  typography: typography,
+                                  progressColor: const Color(0xFF6A4EFF),
+                                  gradient: const SweepGradient(
+                                    transform: GradientRotation(-math.pi / 2),
+                                    colors: [Color(0xFFDCD4FF), Color(0xFF6A4EFF)],
+                                  ),
+                                  footerColor: const Color(0xFFEFEAFF),
+                                  footerTextColor: const Color(0xFF6A4EFF),
+                                ),
+                                const SizedBox(width: 48),
+                                _circularSlaVariant(
+                                  typography: typography,
+                                  progressColor: const Color(0xFFFFA827),
+                                  gradient: const SweepGradient(
+                                    transform: GradientRotation(-math.pi / 2),
+                                    colors: [Color(0xFFFFF2D9), Color(0xFFFFA827)],
+                                  ),
+                                  footerColor: const Color(0xFFFFF7E6),
+                                  footerTextColor: const Color(0xFFFFA827),
+                                ),
+                                const SizedBox(width: 48),
+                                _circularSlaVariant(
+                                  typography: typography,
+                                  progressColor: const Color(0xFFF55E57),
+                                  descriptionColor: const Color(0xFFB3251E),
+                                  gradient: const SweepGradient(
+                                    transform: GradientRotation(-math.pi / 2),
+                                    colors: [Color(0xFFFFECEE), Color(0xFFF55E57)],
+                                  ),
+                                  footerColor: const Color(0xFFFFF0F0),
+                                  footerTextColor: const Color(0xFFF55E57),
+                                ),
+                                const SizedBox(width: 48),
+                                _circularSlaVariant(
+                                  typography: typography,
+                                  progressColor: const Color(0xFF1AA64A),
+                                  gradient: const SweepGradient(
+                                    transform: GradientRotation(-math.pi / 2),
+                                    colors: [Color(0xFFDFF9E8), Color(0xFF1AA64A)],
+                                  ),
+                                  footerColor: const Color(0xFFF2FCEF),
+                                  footerTextColor: const Color(0xFF1AA64A),
+                                ),
+                              ],
                             ),
-                            const SizedBox(width: 48),
-                            _circularSlaVariant(
-                              typography: typography,
-                              progressColor: const Color(0xFFF55E57),
-                              descriptionColor: const Color(0xFFB3251E),
-                              gradient: const SweepGradient(
-                                transform: GradientRotation(-math.pi / 2),
-                                colors: [Color(0xFFFFECEE), Color(0xFFF55E57)],
-                              ),
-                              footerColor: const Color(0xFFFFF0F0),
-                              footerTextColor: const Color(0xFFF55E57),
-                            ),
-                            const SizedBox(width: 48),
-                            _circularSlaVariant(
-                              typography: typography,
-                              progressColor: const Color(0xFF1AA64A),
-                              gradient: const SweepGradient(
-                                transform: GradientRotation(-math.pi / 2),
-                                colors: [Color(0xFFDFF9E8), Color(0xFF1AA64A)],
-                              ),
-                              footerColor: const Color(0xFFF2FCEF),
-                              footerTextColor: const Color(0xFF1AA64A),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 48),
+                          ),
+                          const SizedBox(height: 48),
 
-                      // Section 2: Linear Progress
-                      const Text(
-                        'Linear Progress',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF111827),
-                        ),
-                      ),
+                          // Section 2: Linear Progress
+                          Text(
+                            'Linear Progress',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isDark ? Colors.white : const Color(0xFF111827),
+                            ),
+                          ),
                       const SizedBox(height: 24),
                       LayoutBuilder(
                         builder: (context, constraints) {
@@ -1679,8 +1685,10 @@ final progressSlaIndicatorComponent = WidgetbookComponent(
                 ),
               ],
             ),
-          ),
-        );
+          );
+        },
+      ),
+    );
       },
     ),
     WidgetbookUseCase(
@@ -2267,6 +2275,7 @@ class _SpinnerVisualShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final sizes = [
       (size: 48.0, stroke: 4.5),
       (size: 36.0, stroke: 3.5),
@@ -2284,7 +2293,7 @@ class _SpinnerVisualShowcase extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -2294,13 +2303,14 @@ class _SpinnerVisualShowcase extends StatelessWidget {
             'Visual Showcase',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Demonstration of spinner arc fill variations (Full, Split, Partial) across 5 standardized size scale steps.',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[700],
+              color: isDark ? Colors.white60 : Colors.grey[700],
             ),
           ),
           const SizedBox(height: 24),
@@ -2308,12 +2318,14 @@ class _SpinnerVisualShowcase extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: const Color(0xFFE5E7EB)),
+              border: Border.all(
+                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+              ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.02),
+                  color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -2332,7 +2344,7 @@ class _SpinnerVisualShowcase extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
-                            color: Colors.grey[700],
+                            color: isDark ? Colors.white70 : Colors.grey[700],
                           ),
                         ),
                       ),

@@ -11,6 +11,7 @@ String _panStoryValue = '';
 
 final aadhaarInputFieldComponent = WidgetbookComponent(
   name: 'Input Aadhaar',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
@@ -201,6 +202,7 @@ final aadhaarInputFieldComponent = WidgetbookComponent(
 
 final panInputFieldComponent = WidgetbookComponent(
   name: 'Input Pan-Card',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
