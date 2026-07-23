@@ -8,6 +8,7 @@ import '../widgets/component_docs.dart';
 
 final inputFieldComponent = WidgetbookComponent(
   name: 'Input',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
@@ -2701,6 +2702,7 @@ final sliderComponent = WidgetbookComponent(
 
 final otpInputComponent = WidgetbookComponent(
   name: 'Input-OTP',
+  isInitiallyExpanded: false,
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
