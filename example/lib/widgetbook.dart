@@ -264,11 +264,11 @@ class UX4GWidgetbook extends StatelessWidget {
                     compactStepperComponent,
                   ],
                 ),
-                toggleComponent, // Switch
                 tagComponent,
                 textAreaComponent,
                 timePickerComponent,
                 toastComponent,
+                toggleComponent, // Toggle
                 timeSlotComponent, // TimeSlot
                 tooltipComponent,
               ],

@@ -1902,15 +1902,15 @@ class _CheckboxExampleState extends State<CheckboxExample> {
 // ── Switch ────────────────────────────────────────────────────────────────────
 
 final toggleComponent = WidgetbookComponent(
-  name: 'Switch',
+  name: 'Toggle',
   useCases: [
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
         return const ComponentDocs(
-          name: 'Switch',
+          name: 'Toggle',
           description:
-              'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switches provide a quick and intuitive way to modify system or feature preferences with a single action.',
+              'Toggle (Switch) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switches provide a quick and intuitive way to modify system or feature preferences with a single action.',
           showPreview: false,
           child: _SwitchVisualShowcase(),
         );
@@ -1923,9 +1923,9 @@ final toggleComponent = WidgetbookComponent(
         return StatefulBuilder(
           builder: (ctx, setState) {
             return ComponentDocs(
-              name: 'Switch',
+              name: 'Toggle',
               description:
-                  'Switch (Toggle) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switchs provide a quick and intuitive way to modify system or feature preferences with a single action.',
+                  'Toggle (Switch) component allows users to switch between two states typically representing on/off, enabled/disabled, or active/inactive settings. Switchs provide a quick and intuitive way to modify system or feature preferences with a single action.',
               code: '''Ux4gSwitch(
   checked: checked,
   onCheckedChange: (v) => setState(() => checked = v),
@@ -2035,7 +2035,7 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'All sizes',
       builder: (context) => ComponentDocs(
-        name: 'Switch — Sizes',
+        name: 'Toggle — Sizes',
         description: 'Small (s), medium (m), and large (l) switches.',
         code:
             'Ux4gSwitch(checked: true, onCheckedChange: (_) {}, label: \'Small\',  size: Ux4gSwitchSize.s);',
@@ -2070,8 +2070,8 @@ final toggleComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Disabled',
       builder: (context) => ComponentDocs(
-        name: 'Switch — Disabled',
-        description: 'Switch with onCheckedChange=null renders as disabled.',
+        name: 'Toggle — Disabled',
+        description: 'Toggle with onCheckedChange=null renders as disabled.',
         code:
             'Ux4gSwitch(checked: false, onCheckedChange: null, label: \'Off (disabled)\');',
         child: Column(
@@ -2104,7 +2104,7 @@ final toggleComponent = WidgetbookComponent(
             : Colors.black54;
 
         return ComponentDocs(
-          name: 'Switch — Layout Variants',
+          name: 'Toggle — Layout Variants',
           description:
               'Demonstrates native label compositions using the new built-in properties.',
           code: '''// Native dual-sided labels
@@ -2794,7 +2794,8 @@ final otpInputComponent = WidgetbookComponent(
 
             switch (variant) {
               case 'Error state':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: '12345',
   status: Ux4gOtpInputStatus.error,
@@ -2812,7 +2813,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Success state':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: '123456',
   status: Ux4gOtpInputStatus.success,
@@ -2830,7 +2832,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Warning state':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: '12345',
   status: Ux4gOtpInputStatus.warning,
@@ -2848,7 +2851,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Disabled':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: '',
   enabled: false,
@@ -2862,7 +2866,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Resend timer':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   captionVariant: Ux4gOtpCaptionVariant.resendTimer,
@@ -2885,7 +2890,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Resend action':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   captionVariant: Ux4gOtpCaptionVariant.resendAction,
@@ -2907,7 +2913,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Attempt with timer':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: '1234',
   status: Ux4gOtpInputStatus.error,
@@ -2929,7 +2936,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Account locked':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: '',
   enabled: false,
@@ -2951,7 +2959,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'Obscured (Password)':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   obscure: true,
@@ -2967,7 +2976,8 @@ final otpInputComponent = WidgetbookComponent(
                 );
                 break;
               case 'With separator':
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   showSeparator: true,
@@ -2984,7 +2994,8 @@ final otpInputComponent = WidgetbookComponent(
                 break;
               case 'Default':
               default:
-                codeStr = '''Ux4gOtpInput(
+                codeStr =
+                    '''Ux4gOtpInput(
   length: $length,
   value: otpValue,
   onChanged: (v) => setState(() => otpValue = v),
@@ -3143,10 +3154,7 @@ final otpInputComponent = WidgetbookComponent(
                   description: 'Called when the auto-countdown reaches zero.',
                 ),
               ],
-              child: SizedBox(
-                width: 380,
-                child: childWidget,
-              ),
+              child: SizedBox(width: 380, child: childWidget),
             );
           },
         );
@@ -4778,8 +4786,7 @@ class _DatePickerVisualShowcase extends StatefulWidget {
       _DatePickerVisualShowcaseState();
 }
 
-class _DatePickerVisualShowcaseState
-    extends State<_DatePickerVisualShowcase> {
+class _DatePickerVisualShowcaseState extends State<_DatePickerVisualShowcase> {
   DateTime? _singleDate;
   DateTimeRange? _dateRange;
 
@@ -4818,7 +4825,9 @@ class _DatePickerVisualShowcaseState
               color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
-                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                color: isDark
+                    ? const Color(0xFF2D3348)
+                    : const Color(0xFFE5E7EB),
               ),
               boxShadow: [
                 BoxShadow(
@@ -4868,7 +4877,9 @@ class _DatePickerVisualShowcaseState
               color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
-                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                color: isDark
+                    ? const Color(0xFF2D3348)
+                    : const Color(0xFFE5E7EB),
               ),
               boxShadow: [
                 BoxShadow(
@@ -4897,7 +4908,8 @@ class _DatePickerVisualShowcaseState
                     label: 'Select Date Range',
                     placeholder: 'DD/MM/YYYY – DD/MM/YYYY',
                     isRequired: true,
-                    description: 'Select start and end dates for your trip or reservation.',
+                    description:
+                        'Select start and end dates for your trip or reservation.',
                     initialDateRange: _dateRange,
                     onDateRangeSelected: (range) {
                       setState(() {
@@ -4962,7 +4974,9 @@ class _RadioButtonVisualShowcaseState
               color: isDark ? const Color(0xFF1E2130) : Colors.white,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
-                color: isDark ? const Color(0xFF2D3348) : const Color(0xFFE5E7EB),
+                color: isDark
+                    ? const Color(0xFF2D3348)
+                    : const Color(0xFFE5E7EB),
               ),
               boxShadow: [
                 BoxShadow(
@@ -5521,11 +5535,17 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Right Label',
-                        style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : const Color(0xFF111827))),
+                    Text(
+                      'Right Label',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _rightLabelVal,
-                      onCheckedChange: (v) => setState(() => _rightLabelVal = v),
+                      onCheckedChange: (v) =>
+                          setState(() => _rightLabelVal = v),
                       label: 'Push Notifications',
                       labelPosition: Ux4gSwitchLabelPosition.right,
                     ),
@@ -5535,8 +5555,13 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Left Label',
-                        style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : const Color(0xFF111827))),
+                    Text(
+                      'Left Label',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _leftLabelVal,
                       onCheckedChange: (v) => setState(() => _leftLabelVal = v),
@@ -5549,8 +5574,13 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Both Sides Labels',
-                        style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : const Color(0xFF111827))),
+                    Text(
+                      'Both Sides Labels',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _bothSidesVal,
                       onCheckedChange: (v) => setState(() => _bothSidesVal = v),
@@ -5564,8 +5594,13 @@ class _SwitchVisualShowcaseState extends State<_SwitchVisualShowcase> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('No Label (Standalone)',
-                        style: TextStyle(fontWeight: FontWeight.w600, color: isDark ? Colors.white : const Color(0xFF111827))),
+                    Text(
+                      'No Label (Standalone)',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     Ux4gSwitch(
                       checked: _noLabelVal,
                       onCheckedChange: (v) => setState(() => _noLabelVal = v),
@@ -5708,8 +5743,7 @@ class _TimePickerVisualShowcase extends StatefulWidget {
       _TimePickerVisualShowcaseState();
 }
 
-class _TimePickerVisualShowcaseState
-    extends State<_TimePickerVisualShowcase> {
+class _TimePickerVisualShowcaseState extends State<_TimePickerVisualShowcase> {
   TimeOfDay? _t1;
   TimeOfDay? _t2 = const TimeOfDay(hour: 9, minute: 30);
   TimeOfDay? _t3;
