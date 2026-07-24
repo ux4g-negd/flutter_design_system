@@ -45,27 +45,12 @@ final badgeComponent = WidgetbookComponent(
                   title: 'Dot Badges',
                   isDark: isDark,
                   items: [
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.dot(
-                        containerColor: Color(0xFF6366F1),
-                      ),
-                      label: 'Primary',
-                      isDark: isDark,
-                    ),
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.dot(
-                        containerColor: Color(0xFF10B981),
-                      ),
-                      label: 'Success',
-                      isDark: isDark,
-                    ),
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.dot(
-                        containerColor: Color(0xFFEF4444),
-                      ),
-                      label: 'Danger',
-                      isDark: isDark,
-                    ),
+                    _buildBadgeItem(badge: Ux4gBadge.dot(containerColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600), label: 'Primary', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.dot(containerColor: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300), label: 'Neutral', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.dot(containerColor: isDark ? Ux4gColors.cyan500 : Ux4gColors.cyan600), label: 'Info', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.dot(containerColor: isDark ? Ux4gColors.green500 : Ux4gColors.green600), label: 'Success', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.dot(containerColor: isDark ? Ux4gColors.red300 : Ux4gColors.red600), label: 'Error', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.dot(containerColor: isDark ? Ux4gColors.orange500 : Ux4gColors.orange600), label: 'Warning', isDark: isDark),
                   ],
                 ),
                 const SizedBox(height: 24),
@@ -74,30 +59,12 @@ final badgeComponent = WidgetbookComponent(
                   title: 'Icon Badges',
                   isDark: isDark,
                   items: [
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.icon(
-                        Icons.check,
-                        containerColor: Color(0xFF6366F1),
-                      ),
-                      label: 'Check',
-                      isDark: isDark,
-                    ),
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.icon(
-                        Icons.warning_amber_rounded,
-                        containerColor: Color(0xFFF59E0B),
-                      ),
-                      label: 'Warning',
-                      isDark: isDark,
-                    ),
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.icon(
-                        Icons.close,
-                        containerColor: Color(0xFFEF4444),
-                      ),
-                      label: 'Error',
-                      isDark: isDark,
-                    ),
+                    _buildBadgeItem(badge: Ux4gBadge.icon(Icons.check, containerColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600), label: 'Check', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.icon(Icons.notifications, containerColor: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600), label: 'Bell', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.icon(Icons.star, containerColor: isDark ? Ux4gColors.green500 : Ux4gColors.green600), label: 'Star', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.icon(Icons.warning_amber_rounded, containerColor: isDark ? Ux4gColors.orange500 : Ux4gColors.orange600), label: 'Warning', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.icon(Icons.close, containerColor: isDark ? Ux4gColors.red300 : Ux4gColors.red600), label: 'Error', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.icon(Icons.info_outline, containerColor: isDark ? Ux4gColors.cyan500 : Ux4gColors.cyan600), label: 'Info', isDark: isDark),
                   ],
                 ),
                 const SizedBox(height: 24),
@@ -106,31 +73,12 @@ final badgeComponent = WidgetbookComponent(
                   title: 'Digit Badges',
                   isDark: isDark,
                   items: [
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.count(
-                        1,
-                        containerColor: Color(0xFF6366F1),
-                      ),
-                      label: 'Single',
-                      isDark: isDark,
-                    ),
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.count(
-                        11,
-                        containerColor: Color(0xFF06B6D4),
-                      ),
-                      label: 'Double',
-                      isDark: isDark,
-                    ),
-                    _buildBadgeItem(
-                      badge: const Ux4gBadge.count(
-                        150,
-                        limit: Ux4gBadgeLimit.doubleDigit,
-                        containerColor: Color(0xFFEF4444),
-                      ),
-                      label: 'Overflow',
-                      isDark: isDark,
-                    ),
+                    _buildBadgeItem(badge: Ux4gBadge.count(1, containerColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600), label: 'One', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.count(3, containerColor: isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300), label: 'Three', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.count(11, limit: Ux4gBadgeLimit.doubleDigit, containerColor: isDark ? Ux4gColors.cyan500 : Ux4gColors.cyan600), label: 'Eleven', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.count(22, limit: Ux4gBadgeLimit.doubleDigit, containerColor: isDark ? Ux4gColors.green500 : Ux4gColors.green600), label: 'Twenty', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.count(150, limit: Ux4gBadgeLimit.doubleDigit, containerColor: isDark ? Ux4gColors.red300 : Ux4gColors.red600), label: 'Max', isDark: isDark),
+                    _buildBadgeItem(badge: Ux4gBadge.label('100', containerColor: isDark ? Ux4gColors.orange500 : Ux4gColors.orange600), label: 'Exact', isDark: isDark),
                   ],
                 ),
               ],
@@ -298,7 +246,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
       ),
     ),
     WidgetbookUseCase(
-      name: 'Semantic Colors & Border',
+      name: 'Semantic Colors and Border',
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final semanticColors = isDark
@@ -320,7 +268,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
               ];
 
         return ComponentDocs(
-          name: 'Badge — Semantic Colors & Border',
+          name: 'Badge — Semantic Colors and Border',
           description:
               'Showcasing the border stroke property across semantic colors.',
           code:

@@ -1280,78 +1280,81 @@ final statusBannerComponent = WidgetbookComponent(
     ),
     WidgetbookUseCase(
       name: 'Custom styling',
-      builder: (context) => ComponentDocs(
-        name: 'StatusBanner — Custom Styling',
-        description:
-            'You can override the title and subtitle styles, including size, weight, and color.',
-        code: () {
-          final buf = StringBuffer();
-          buf.writeln("// ── Get the typography object from theme ──");
-          buf.writeln(
-            "final typography = Theme.of(context).extension<Ux4gTypography>();",
-          );
-          buf.writeln();
-          buf.writeln("// Option A: Use theme-aware typography styles");
-          buf.writeln("Ux4gStatusBanner(");
-          buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
-          buf.writeln("  title: 'Info Message',");
-          buf.writeln("  titleStyle: typography?.bM_strong,");
-          buf.writeln("  subtitle: 'Subtitle with theme-aware style.',");
-          buf.writeln("  subtitleStyle: typography?.bS_default?.copyWith(");
-          buf.writeln("    color: Colors.black54,");
-          buf.writeln("  ),");
-          buf.writeln(");");
-          buf.writeln();
-          buf.writeln("// Option B: Use a completely custom TextStyle");
-          buf.writeln("Ux4gStatusBanner(");
-          buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
-          buf.writeln("  title: 'Custom Title',");
-          buf.writeln("  titleStyle: TextStyle(");
-          buf.writeln(
-            "    fontSize: 18, fontWeight: FontWeight.w900, color: Colors.blue.shade900,",
-          );
-          buf.writeln("  ),");
-          buf.writeln("  subtitle: 'Custom subtitle styling example.',");
-          buf.writeln("  subtitleStyle: TextStyle(");
-          buf.writeln(
-            "    fontSize: 12, fontStyle: FontStyle.italic, color: Colors.black54,",
-          );
-          buf.writeln("  ),");
-          buf.writeln(");");
-          return buf.toString();
-        }(),
-        child: SizedBox(
-          width: 380,
-          child: Ux4gStatusBanner(
-            variant: Ux4gBannerVariant.infoLight,
-            title: 'Custom Styled Banner',
-            titleStyle: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
-              color: Colors.blue.shade900,
-              letterSpacing: 1.1,
-            ),
-            subtitle: 'This subtitle has custom styling applied directly.',
-            subtitleStyle: const TextStyle(
-              fontSize: 12,
-              fontStyle: FontStyle.italic,
-              color: Colors.black54,
-            ),
-            leadingIcon: const Icon(Icons.info_outline, color: Colors.blue),
-            trailingIcon: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              decoration: BoxDecoration(
-                color: Colors.blue.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(4),
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return ComponentDocs(
+          name: 'StatusBanner — Custom Styling',
+          description:
+              'You can override the title and subtitle styles, including size, weight, and color.',
+          code: () {
+            final buf = StringBuffer();
+            buf.writeln("// ── Get the typography object from theme ──");
+            buf.writeln(
+              "final typography = Theme.of(context).extension<Ux4gTypography>();",
+            );
+            buf.writeln();
+            buf.writeln("// Option A: Use theme-aware typography styles");
+            buf.writeln("Ux4gStatusBanner(");
+            buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
+            buf.writeln("  title: 'Info Message',");
+            buf.writeln("  titleStyle: typography?.bM_strong,");
+            buf.writeln("  subtitle: 'Subtitle with theme-aware style.',");
+            buf.writeln("  subtitleStyle: typography?.bS_default?.copyWith(");
+            buf.writeln("    color: Colors.black54, // Better to use Theme colors here");
+            buf.writeln("  ),");
+            buf.writeln(");");
+            buf.writeln();
+            buf.writeln("// Option B: Use a completely custom TextStyle");
+            buf.writeln("Ux4gStatusBanner(");
+            buf.writeln("  variant: Ux4gBannerVariant.infoLight,");
+            buf.writeln("  title: 'Custom Title',");
+            buf.writeln("  titleStyle: TextStyle(");
+            buf.writeln(
+              "    fontSize: 18, fontWeight: FontWeight.w900, color: isDark ? Colors.blue.shade300 : Colors.blue.shade900,",
+            );
+            buf.writeln("  ),");
+            buf.writeln("  subtitle: 'Custom subtitle styling example.',");
+            buf.writeln("  subtitleStyle: TextStyle(");
+            buf.writeln(
+              "    fontSize: 12, fontStyle: FontStyle.italic, color: isDark ? Colors.white70 : Colors.black54,",
+            );
+            buf.writeln("  ),");
+            buf.writeln(");");
+            return buf.toString();
+          }(),
+          child: SizedBox(
+            width: 380,
+            child: Ux4gStatusBanner(
+              variant: Ux4gBannerVariant.infoLight,
+              title: 'Custom Styled Banner',
+              titleStyle: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w900,
+                color: isDark ? Colors.blue.shade300 : Colors.blue.shade900,
+                letterSpacing: 1.1,
               ),
-              child: const Text(
-                'New',
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+              subtitle: 'This subtitle has custom styling applied directly.',
+              subtitleStyle: TextStyle(
+                fontSize: 12,
+                fontStyle: FontStyle.italic,
+                color: isDark ? Colors.white70 : Colors.black54,
+              ),
+              leadingIcon: Icon(Icons.info_outline, color: isDark ? Colors.blue.shade300 : Colors.blue),
+              trailingIcon: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                decoration: BoxDecoration(
+                  color: (isDark ? Colors.blue.shade300 : Colors.blue).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  'New',
+                  style: TextStyle(fontSize: 12, color: isDark ? Colors.blue.shade300 : Colors.blue),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     ),
   ],
 );

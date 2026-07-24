@@ -1369,8 +1369,8 @@ final dimensionsBorderComponent = WidgetbookComponent(
   ],
 );
 
-final dimensionsElevationComponent = WidgetbookComponent(
-  name: 'Elevation',
+final dimensionsShadowComponent = WidgetbookComponent(
+  name: 'Shadow',
   useCases: [
     WidgetbookUseCase(
       name: 'Scale',
@@ -1387,7 +1387,7 @@ final dimensionsElevationComponent = WidgetbookComponent(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Elevation',
+                'Shadow',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w800,
@@ -1397,7 +1397,7 @@ final dimensionsElevationComponent = WidgetbookComponent(
               ),
               const SizedBox(height: 8),
               Text(
-                'Five reusable elevation styles. Each combines a key and an ambient shadow to express depth. Apply the matching effect style from UX4G Design System — never hand-set shadow values.',
+                'Five reusable shadow styles. Each combines a key and an ambient shadow to express depth. Apply the matching effect style from UX4G Design System — never hand-set shadow values.',
                 style: TextStyle(fontSize: 14.5, color: subColor, height: 1.5),
               ),
               const SizedBox(height: 36),
@@ -1405,71 +1405,71 @@ final dimensionsElevationComponent = WidgetbookComponent(
                 spacing: 24,
                 runSpacing: 32,
                 children: const [
-                  _ElevationCardPreview(
+                  _ShadowCardPreview(
                     level: 0,
                     title: 'Flat Surfaces',
                     details: 'No shadow',
-                    tokenName: 'elevation0',
+                    tokenName: 'shadow0',
                   ),
-                  _ElevationCardPreview(
+                  _ShadowCardPreview(
                     level: 1,
                     title: 'Subtle Lift',
                     details: 'Key 0,1 · blur 2\nAmbient 0,1 · blur 2',
-                    tokenName: 'elevation1',
+                    tokenName: 'shadow1',
                   ),
-                  _ElevationCardPreview(
+                  _ShadowCardPreview(
                     level: 2,
                     title: 'Floating Content',
                     details: 'Key 0,1 · blur 2\nAmbient 0,4 · blur 8',
-                    tokenName: 'elevation2',
+                    tokenName: 'shadow2',
                   ),
-                  _ElevationCardPreview(
+                  _ShadowCardPreview(
                     level: 3,
                     title: 'Prominent overlay',
                     details: 'Key 0,4 · blur 8\nAmbient 0,0 · blur 16',
-                    tokenName: 'elevation3',
+                    tokenName: 'shadow3',
                   ),
-                  _ElevationCardPreview(
+                  _ShadowCardPreview(
                     level: 4,
                     title: 'Highest emphasis',
                     details: 'Key 0,8 · blur 16\nAmbient 0,16 · blur 32',
-                    tokenName: 'elevation4',
+                    tokenName: 'shadow4',
                   ),
                 ],
               ),
               const SizedBox(height: 48),
               _SectionHeader(
-                'Elevation Tokens & Code Snippets',
-                'Ux4gElevation.*',
+                'Shadow Tokens & Code Snippets',
+                'Ux4gShadow.*',
               ),
               const SizedBox(height: 20),
-              const _ElevationCodeRow(
+              const _ShadowCodeRow(
                 level: 0,
-                tokenName: 'elevation0',
+                tokenName: 'shadow0',
                 label: 'Flat Surfaces',
                 description: 'No shadow',
               ),
-              const _ElevationCodeRow(
+              const _ShadowCodeRow(
                 level: 1,
-                tokenName: 'elevation1',
+                tokenName: 'shadow1',
                 label: 'Subtle Lift',
                 description: 'Key 0,1 · blur 2\nAmbient 0,1 · blur 2',
               ),
-              const _ElevationCodeRow(
+              const _ShadowCodeRow(
                 level: 2,
-                tokenName: 'elevation2',
+                tokenName: 'shadow2',
                 label: 'Floating Content',
                 description: 'Key 0,1 · blur 2\nAmbient 0,4 · blur 8',
               ),
-              const _ElevationCodeRow(
+              const _ShadowCodeRow(
                 level: 3,
-                tokenName: 'elevation3',
+                tokenName: 'shadow3',
                 label: 'Prominent overlay',
                 description: 'Key 0,4 · blur 8\nAmbient 0,0 · blur 16',
               ),
-              const _ElevationCodeRow(
+              const _ShadowCodeRow(
                 level: 4,
-                tokenName: 'elevation4',
+                tokenName: 'shadow4',
                 label: 'Highest emphasis',
                 description: 'Key 0,8 · blur 16\nAmbient 0,16 · blur 32',
               ),
@@ -1481,69 +1481,69 @@ final dimensionsElevationComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'How to use',
       builder: (context) => const _DocPage(
-        title: 'Using UX4G Elevation Tokens',
+        title: 'Using UX4G Shadow Tokens',
         sections: [
           _DocSection(
-            heading: '1. Elevation Levels  —  Ux4gElevation.*',
+            heading: '1. Shadow Levels  —  Ux4gShadow.*',
             body:
-                'Ux4gElevation provides 5 BoxShadow lists expressing depth hierarchy. '
-                'Using standard elevation tokens ensures consistent lighting angles, opacity, and blur.\n\n'
+                'Ux4gShadow provides 5 BoxShadow lists expressing depth hierarchy. '
+                'Using standard shadow tokens ensures consistent lighting angles, opacity, and blur.\n\n'
                 'Available tokens:\n'
-                '• Ux4gElevation.elevation0 / flat — Flat surfaces without shadows\n'
-                '• Ux4gElevation.elevation1 / subtle — Subtle lift (cards, buttons)\n'
-                '• Ux4gElevation.elevation2 / floating — Floating content (dropdowns, snackbars)\n'
-                '• Ux4gElevation.elevation3 / prominent — Prominent overlays (modals, dialogs)\n'
-                '• Ux4gElevation.elevation4 / highest — Highest emphasis (bottom sheets, popups)',
+                '• Ux4gShadow.shadow0 / flat — Flat surfaces without shadows\n'
+                '• Ux4gShadow.shadow1 / subtle — Subtle lift (cards, buttons)\n'
+                '• Ux4gShadow.shadow2 / floating — Floating content (dropdowns, snackbars)\n'
+                '• Ux4gShadow.shadow3 / prominent — Prominent overlays (modals, dialogs)\n'
+                '• Ux4gShadow.shadow4 / highest — Highest emphasis (bottom sheets, popups)',
           ),
           _DocSection(
-            heading: '2. Theme Adaptation  —  Ux4gElevation.get()',
+            heading: '2. Theme Adaptation  —  Ux4gShadow.get()',
             body:
                 'In dark mode, shadows on dark surfaces need slightly higher alpha opacity to maintain visual separation. '
-                'Use `Ux4gElevation.get(level, isDark: isDark)` when you need dynamically adjusted shadows for both light and dark themes.',
+                'Use `Ux4gShadow.get(level, isDark: isDark)` when you need dynamically adjusted shadows for both light and dark themes.',
           ),
         ],
         codeBlocks: [
           _CodeBlock(
-            label: 'Dart — Ux4gElevation in BoxDecoration',
+            label: 'Dart — Ux4gShadow in BoxDecoration',
             code:
                 '''import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
-// 1. Card with Subtle Lift (Elevation 1)
+// 1. Card with Subtle Lift (Shadow 1)
 Container(
   decoration: BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(Ux4gRadius.radius12),
-    boxShadow: Ux4gElevation.elevation1,
+    boxShadow: Ux4gShadow.shadow1,
   ),
   child: Text('Card Content'),
 );
 
-// 2. Floating Dropdown Menu (Elevation 2)
+// 2. Floating Dropdown Menu (Shadow 2)
 Container(
   decoration: BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
-    boxShadow: Ux4gElevation.elevation2,
+    boxShadow: Ux4gShadow.shadow2,
   ),
   child: DropdownMenu(...),
 );
 
-// 3. Dialog or Modal Overlay (Elevation 3)
+// 3. Dialog or Modal Overlay (Shadow 3)
 Container(
   decoration: BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(Ux4gRadius.radius16),
-    boxShadow: Ux4gElevation.elevation3,
+    boxShadow: Ux4gShadow.shadow3,
   ),
   child: ModalDialog(...),
 );
 
-// 4. Dynamic Theme-aware Elevation
+// 4. Dynamic Theme-aware Shadow
 Container(
   decoration: BoxDecoration(
     color: Theme.of(context).cardColor,
     borderRadius: BorderRadius.circular(16),
-    boxShadow: Ux4gElevation.get(
+    boxShadow: Ux4gShadow.get(
       2,
       isDark: Theme.of(context).brightness == Brightness.dark,
     ),
@@ -1557,7 +1557,7 @@ Container(
   ],
 );
 
-final themeElevationComponent = dimensionsElevationComponent;
+final themeShadowComponent = dimensionsShadowComponent;
 
 // ── Private widgets ───────────────────────────────────────────────────────────
 
@@ -2451,13 +2451,13 @@ class _SectionHeader extends StatelessWidget {
   }
 }
 
-class _ElevationCardPreview extends StatelessWidget {
+class _ShadowCardPreview extends StatelessWidget {
   final int level;
   final String title;
   final String details;
   final String tokenName;
 
-  const _ElevationCardPreview({
+  const _ShadowCardPreview({
     required this.level,
     required this.title,
     required this.details,
@@ -2470,7 +2470,7 @@ class _ElevationCardPreview extends StatelessWidget {
     final cardBg = isDark ? const Color(0xFF1E1E2E) : Colors.white;
     final textColor = isDark ? Colors.white : const Color(0xFF111827);
     final subColor = isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
-    final activeShadows = Ux4gElevation.get(level, isDark: isDark);
+    final activeShadows = Ux4gShadow.get(level, isDark: isDark);
 
     return SizedBox(
       width: 175,
@@ -2496,7 +2496,7 @@ class _ElevationCardPreview extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              'Elevation $level',
+              'Shadow $level',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
@@ -2526,13 +2526,13 @@ class _ElevationCardPreview extends StatelessWidget {
   }
 }
 
-class _ElevationCodeRow extends StatelessWidget {
+class _ShadowCodeRow extends StatelessWidget {
   final int level;
   final String tokenName;
   final String label;
   final String description;
 
-  const _ElevationCodeRow({
+  const _ShadowCodeRow({
     required this.level,
     required this.tokenName,
     required this.label,
@@ -2550,7 +2550,7 @@ class _ElevationCodeRow extends StatelessWidget {
     final codeColor = isDark
         ? const Color(0xFFCDD6F4)
         : const Color(0xFF374151);
-    final codeSnippet = 'Ux4gElevation.$tokenName';
+    final codeSnippet = 'Ux4gShadow.$tokenName';
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -2572,7 +2572,7 @@ class _ElevationCodeRow extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
-                  'Elevation $level',
+                  'Shadow $level',
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,

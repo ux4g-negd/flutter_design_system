@@ -867,7 +867,7 @@ Ux4gButton(
     WidgetbookUseCase(
       name: 'Convenience buttons',
       builder: (context) => ComponentDocs(
-        name: 'OutlineButton & TextButton',
+        name: 'OutlineButton and TextButton',
         description:
             'Shorthand constructors: OutlineButton wraps variant=outline, '
             'Ux4gTextButton wraps variant=ghost.',

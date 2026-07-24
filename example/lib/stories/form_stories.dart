@@ -624,7 +624,7 @@ class _Ux4gInputFieldIconsExampleState extends State<Ux4gInputFieldIconsExample>
       },
     ),
     WidgetbookUseCase(
-      name: 'Prefix & Postfix',
+      name: 'Prefix and Postfix',
       builder: (context) {
         String value = '';
         return StatefulBuilder(
@@ -702,9 +702,9 @@ class _Ux4gInputFieldPrefixPostfixExampleState extends State<Ux4gInputFieldPrefi
       },
     ),
     WidgetbookUseCase(
-      name: 'Read-only & Required',
+      name: 'Read-only and Required',
       builder: (context) => ComponentDocs(
-        name: 'InputField — Read-only & Required',
+        name: 'InputField — Read-only and Required',
         description:
             'readOnly and enabled=false disable editing so user can only read the value; required shows an asterisk on the label.',
         code: '''import 'package:flutter/material.dart';
@@ -1064,7 +1064,7 @@ final textAreaComponent = WidgetbookComponent(
       },
     ),
     WidgetbookUseCase(
-      name: 'Sizes & Heights',
+      name: 'Sizes and Heights',
       builder: (context) => ComponentDocs(
         name: 'TextArea — Sizes',
         description: 'Small and Large sizes with different minimum heights.',
@@ -3422,11 +3422,25 @@ final selectionDropdownComponent = WidgetbookComponent(
               label: 'Search enabled',
               initialValue: false,
             );
+            final isRequired = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
             final size = context.knobs.list(
               label: 'Size',
               options: Ux4gDropdownSize.values,
               initialOption: Ux4gDropdownSize.m,
               labelBuilder: (v) => v.name,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gDropdownStatus.values,
+              initialOption: Ux4gDropdownStatus.defaultStatus,
+              labelBuilder: (v) => v.name,
+            );
+            final description = context.knobs.string(
+              label: 'Description',
+              initialValue: '',
             );
 
             return ComponentDocs(
@@ -3462,8 +3476,17 @@ final selectionDropdownComponent = WidgetbookComponent(
                 );
                 buf.writeln("  mode: Ux4gDropdownMode.single,");
                 buf.writeln("  searchEnabled: $searchEnabled,");
+                if (isRequired) {
+                  buf.writeln("  isRequired: true,");
+                }
                 if (size != Ux4gDropdownSize.m) {
                   buf.writeln("  size: Ux4gDropdownSize.${size.name},");
+                }
+                if (status != Ux4gDropdownStatus.defaultStatus) {
+                  buf.writeln("  status: Ux4gDropdownStatus.${status.name},");
+                }
+                if (description.isNotEmpty) {
+                  buf.writeln("  description: '$description',");
                 }
                 buf.writeln(");");
                 return buf.toString();
@@ -3493,6 +3516,12 @@ final selectionDropdownComponent = WidgetbookComponent(
                   description: 'Label above dropdown.',
                 ),
                 PropRow(
+                  name: 'isRequired',
+                  type: 'bool',
+                  description: 'Shows a required asterisk if true.',
+                  defaultValue: 'false',
+                ),
+                PropRow(
                   name: 'description',
                   type: 'String?',
                   description: 'Supporting text below the dropdown.',
@@ -3518,7 +3547,7 @@ final selectionDropdownComponent = WidgetbookComponent(
                 PropRow(
                   name: 'status',
                   type: 'Ux4gDropdownStatus',
-                  description: 'defaultStatus / error / disabled.',
+                  description: 'defaultStatus / error / disabled / warning / success.',
                   defaultValue: 'defaultStatus',
                 ),
                 PropRow(
@@ -3567,7 +3596,10 @@ final selectionDropdownComponent = WidgetbookComponent(
                       setState(() => _selectionDropdownSingleSelected = ids),
                   mode: Ux4gDropdownMode.single,
                   searchEnabled: searchEnabled,
+                  isRequired: isRequired,
                   size: size,
+                  status: status,
+                  description: description.isEmpty ? null : description,
                 ),
               ),
             );
@@ -3580,25 +3612,53 @@ final selectionDropdownComponent = WidgetbookComponent(
       builder: (context) {
         return StatefulBuilder(
           builder: (ctx, setState) {
+            final isRequired = context.knobs.boolean(
+              label: 'Required',
+              initialValue: false,
+            );
+            final status = context.knobs.list(
+              label: 'Status',
+              options: Ux4gDropdownStatus.values,
+              initialOption: Ux4gDropdownStatus.defaultStatus,
+              labelBuilder: (v) => v.name,
+            );
+            final description = context.knobs.string(
+              label: 'Description',
+              initialValue: '',
+            );
+
             return ComponentDocs(
               name: 'SelectionDropdown — Multi',
               description:
                   'Multi-select mode shows chips for each selected option.',
-              code: '''Ux4gSelectionDropdown(
-  label: 'Tags',
-  placeholder: 'Select tags',
-  options: const [
-    Ux4gDropdownOption(id: 'flutter', label: 'Flutter'),
-    Ux4gDropdownOption(id: 'dart', label: 'Dart'),
-    Ux4gDropdownOption(id: 'design', label: 'Design System'),
-    Ux4gDropdownOption(id: 'mobile', label: 'Mobile'),
-    Ux4gDropdownOption(id: 'web', label: 'Web'),
-  ],
-  selectedOptionIds: selectedIds,
-  onSelectionChange: (ids) => setState(() => selectedIds = ids),
-  mode: Ux4gDropdownMode.multi,
-  searchEnabled: true,
-);''',
+              code: () {
+                final buf = StringBuffer();
+                buf.writeln("Ux4gSelectionDropdown(");
+                buf.writeln("  label: 'Tags',");
+                buf.writeln("  placeholder: 'Select tags',");
+                buf.writeln("  options: const [");
+                buf.writeln("    Ux4gDropdownOption(id: 'flutter', label: 'Flutter'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'dart', label: 'Dart'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'design', label: 'Design System'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'mobile', label: 'Mobile'),");
+                buf.writeln("    Ux4gDropdownOption(id: 'web', label: 'Web'),");
+                buf.writeln("  ],");
+                buf.writeln("  selectedOptionIds: selectedIds,");
+                buf.writeln("  onSelectionChange: (ids) => setState(() => selectedIds = ids),");
+                buf.writeln("  mode: Ux4gDropdownMode.multi,");
+                buf.writeln("  searchEnabled: true,");
+                if (isRequired) {
+                  buf.writeln("  isRequired: true,");
+                }
+                if (status != Ux4gDropdownStatus.defaultStatus) {
+                  buf.writeln("  status: Ux4gDropdownStatus.${status.name},");
+                }
+                if (description.isNotEmpty) {
+                  buf.writeln("  description: '$description',");
+                }
+                buf.writeln(");");
+                return buf.toString();
+              }(),
               child: SizedBox(
                 width: 300,
                 child: Ux4gSelectionDropdown(
@@ -3616,6 +3676,9 @@ final selectionDropdownComponent = WidgetbookComponent(
                       setState(() => _selectionDropdownMultiSelected = ids),
                   mode: Ux4gDropdownMode.multi,
                   searchEnabled: true,
+                  isRequired: isRequired,
+                  status: status,
+                  description: description.isEmpty ? null : description,
                 ),
               ),
             );

@@ -6,14 +6,14 @@ import '../../../widgets/component_docs.dart';
 const Color _primaryColor = Ux4gColors.primary600;
 
 final searchAndBrowseComponent = WidgetbookComponent(
-  name: 'Search & Browse Services',
+  name: 'Search and Browse Services',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
         return ComponentDocs(
           mobileMockup: true,
-          name: 'Search & Browse Services',
+          name: 'Search and Browse Services',
           description:
               'A discovery pattern for finding government services. Includes '
               'search bar, category grid, featured scheme, popular services list, '

@@ -407,7 +407,7 @@ Ux4gCard(
           PropRow(
             name: 'elevation',
             type: 'double',
-            description: 'Elevation.',
+            description: 'Shadow.',
             defaultValue: '0',
           ),
           PropRow(
@@ -1773,7 +1773,7 @@ final dividerComponent = WidgetbookComponent(
       ),
     ),
     WidgetbookUseCase(
-      name: 'Dashed & Dotted',
+      name: 'Dashed and Dotted',
       builder: (context) => ComponentDocs(
         name: 'Divider — Styled',
         description: 'Dividers can be rendered as dashed or dotted lines.',

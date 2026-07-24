@@ -120,7 +120,7 @@ class UX4GWidgetbook extends StatelessWidget {
               children: [
                 themeColorComponent,
                 themeTypographyComponent,
-                themeElevationComponent,
+                themeShadowComponent,
                 WidgetbookFolder(
                   name: 'Dimensions',
                   isInitiallyExpanded: false,
@@ -316,7 +316,7 @@ class UX4GWidgetbook extends StatelessWidget {
                       children: [sessionExpiringDialogComponent],
                     ),
                     WidgetbookFolder(
-                      name: 'Auth errors & lockout',
+                      name: 'Auth errors and lockout',
                       isInitiallyExpanded: false,
                       children: [
                         authIncorrectOtpComponent,
@@ -352,7 +352,7 @@ class UX4GWidgetbook extends StatelessWidget {
                       ],
                     ),
                     WidgetbookFolder(
-                      name: 'Forgot Password & Account Recovery',
+                      name: 'Forgot Password and Account Recovery',
                       children: [
                         fpStep1Component,
                         fpStep2Component,
@@ -473,7 +473,7 @@ class UX4GWidgetbook extends StatelessWidget {
                       ],
                     ),
                     WidgetbookFolder(
-                      name: 'Document scan & upload',
+                      name: 'Document scan and upload',
                       isInitiallyExpanded: false,
                       children: [
                         documentScanUploadComponent,

@@ -53,15 +53,14 @@ class Ux4gPaginationDotted extends StatelessWidget {
     final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
     final materialTheme = Theme.of(context);
 
+    final isDark = materialTheme.brightness == Brightness.dark;
+
     final effectiveActiveColor =
         activeColor ?? uxColors?.primary ?? materialTheme.colorScheme.primary;
     final effectiveInactiveColor =
-        inactiveColor ?? uxColors?.surface ?? materialTheme.colorScheme.surface;
+        inactiveColor ?? (isDark ? Ux4gColors.primary800 : Ux4gColors.primary100);
     final effectiveInactiveBorderColor =
-        inactiveBorderColor ??
-        (uxColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(
-          alpha: 0.3,
-        );
+        inactiveBorderColor ?? Colors.transparent;
 
     Widget dotsRow = Row(
       mainAxisSize: MainAxisSize.min,
@@ -106,6 +105,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
             enabled && currentPageIndex > 0,
             () => onPageChange(currentPageIndex - 1),
             effectiveActiveColor,
+            effectiveInactiveColor,
           ),
           SizedBox(width: size.spacing * 1.2),
           _buildArrow(
@@ -114,6 +114,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
             enabled && currentPageIndex < totalPageCount - 1,
             () => onPageChange(currentPageIndex + 1),
             effectiveActiveColor,
+            effectiveInactiveColor,
           ),
         ],
       );
@@ -136,6 +137,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
               enabled && currentPageIndex > 0,
               () => onPageChange(currentPageIndex - 1),
               effectiveActiveColor,
+              effectiveInactiveColor,
             ),
             SizedBox(width: size.spacing),
           ],
@@ -148,6 +150,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
               enabled && currentPageIndex < totalPageCount - 1,
               () => onPageChange(currentPageIndex + 1),
               effectiveActiveColor,
+              effectiveInactiveColor,
             ),
           ],
         ],
@@ -205,7 +208,9 @@ class Ux4gPaginationDotted extends StatelessWidget {
                 ? (enabled ? activeColor : activeColor.withValues(alpha: 0.38))
                 : inactiveColor,
             borderRadius: BorderRadius.circular(999),
-            border: isSelected ? null : Border.all(color: inactiveBorderColor),
+            border: (isSelected || inactiveBorderColor == Colors.transparent)
+                ? null
+                : Border.all(color: inactiveBorderColor),
           ),
         ),
       ),
@@ -218,6 +223,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
     bool canClick,
     VoidCallback onClick,
     Color activeColor,
+    Color inactiveColor,
   ) {
     return MouseRegion(
       cursor: canClick ? SystemMouseCursors.click : SystemMouseCursors.basic,
@@ -227,7 +233,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
           width: size.arrowSize,
           height: size.arrowSize,
           decoration: BoxDecoration(
-            color: activeColor.withValues(alpha: 0.12),
+            color: inactiveColor,
             shape: BoxShape.circle,
           ),
           alignment: Alignment.center,

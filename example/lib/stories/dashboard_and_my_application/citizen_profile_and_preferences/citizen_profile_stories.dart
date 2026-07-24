@@ -35,7 +35,7 @@ final citizenProfileComponent = WidgetbookComponent(
       builder: (context) {
         return ComponentDocs(
           mobileMockup: true,
-          name: 'Citizen Profile & Preferences',
+          name: 'Citizen Profile and Preferences',
           description:
               'A comprehensive profile pattern showing user identity, Aadhaar-linked info, '
               'personal details, linked accounts, notification preferences, and account deletion.',

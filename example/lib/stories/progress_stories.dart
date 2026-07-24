@@ -2285,7 +2285,7 @@ class _SpinnerVisualShowcase extends StatelessWidget {
     ];
 
     final rows = [
-      (label: 'Full', percentage: 90.0),
+      (label: 'Full', percentage: 100.0),
       (label: 'Split', percentage: 50.0),
       (label: 'Partial', percentage: 20.0),
     ];
@@ -2361,7 +2361,9 @@ class _SpinnerVisualShowcase extends StatelessWidget {
                                   size: s.size,
                                   strokeWidth: s.stroke,
                                   percentage: r.percentage,
-                                  color: Ux4gColors.primary,
+                                  gradientColors: isDark
+                                      ? [Ux4gColors.primary300, Ux4gColors.primary800]
+                                      : [Ux4gColors.primary600, Ux4gColors.primary100],
                                 ),
                               ),
                             );
