@@ -3,14 +3,14 @@ import '../foundation/dimensions.dart';
 import '../foundation/colors.dart';
 import '../foundation/typography.dart';
 import 'chips.dart';
-
+import 'checkbox.dart';
 enum Ux4gDropdownFilterType { contains, startsWith, startsWithPerTerm }
 
 enum Ux4gDropdownSize { s, m, l }
 
 enum Ux4gDropdownMode { single, multi }
 
-enum Ux4gDropdownStatus { defaultStatus, error, disabled }
+enum Ux4gDropdownStatus { defaultStatus, error, disabled, warning, success }
 
 class Ux4gDropdownOption {
   final String id;
@@ -145,7 +145,7 @@ class _Ux4gActionDropdownState extends State<Ux4gActionDropdown> {
                           selectedTileColor: (uxColors?.primary ?? materialTheme.colorScheme.primary).withValues(alpha: 0.08),
                           title: Text(
                             option.label,
-                            style: (typography?.lL_default ?? Theme.of(context).textTheme.labelLarge)?.copyWith(
+                            style: (typography?.bS_default ?? Theme.of(context).textTheme.bodySmall)?.copyWith(
                               color: isSelected ? (uxColors?.primary ?? materialTheme.colorScheme.primary) : null,
                               fontWeight: isSelected ? FontWeight.w600 : null,
                             ),
@@ -196,6 +196,7 @@ class Ux4gSelectionDropdown extends StatefulWidget {
   final List<String> selectedOptionIds;
   final ValueChanged<List<String>> onSelectionChange;
   final String? label;
+  final bool isRequired;
   final String? description;
   final String placeholder;
   final Ux4gDropdownSize size;
@@ -213,6 +214,7 @@ class Ux4gSelectionDropdown extends StatefulWidget {
     required this.selectedOptionIds,
     required this.onSelectionChange,
     this.label,
+    this.isRequired = false,
     this.description,
     this.placeholder = "Please select..",
     this.size = Ux4gDropdownSize.m,
@@ -318,6 +320,11 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
   }
 
   Widget _buildDropdownList() {
+    final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
+    final uxTypography = Theme.of(context).extension<Ux4gTypography>();
+    final materialTheme = Theme.of(context);
+    final isDark = materialTheme.brightness == Brightness.dark;
+
     final filteredOptions = widget.options.where((option) {
       if (!widget.searchEnabled || _searchQuery.isEmpty) return true;
       final query = _searchQuery.trim().toLowerCase();
@@ -346,16 +353,43 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               autofocus: true,
+              style: (uxTypography?.bM_default ?? materialTheme.textTheme.bodyMedium)?.copyWith(
+                color: isDark ? Ux4gColors.neutral0 : Ux4gColors.neutral900,
+              ),
               decoration: InputDecoration(
                 hintText: "Start typing..",
-                prefixIcon: const Icon(Icons.search, size: 20),
+                hintStyle: (uxTypography?.bM_default ?? materialTheme.textTheme.bodyMedium)?.copyWith(
+                  color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 20,
+                  color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
+                ),
                 isDense: true,
+                filled: true,
+                fillColor: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral0,
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 12,
-                  vertical: 8,
+                  vertical: 10,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: uxColors?.primary ?? materialTheme.colorScheme.primary,
+                  ),
                 ),
               ),
               onChanged: (val) {
@@ -372,69 +406,61 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
             itemBuilder: (context, index) {
               final option = filteredOptions[index];
               final isSelected = widget.selectedOptionIds.contains(option.id);
-              final uxColors = Theme.of(context).extension<Ux4gThemeColors>();
-              final uxTypography = Theme.of(
-                context,
-              ).extension<Ux4gTypography>();
-              final materialTheme = Theme.of(context);
+              final selectedBgColor = isDark ? Ux4gColors.primary900 : Ux4gColors.primary50;
+              final activeColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
 
-              return InkWell(
-                onTap: () => _handleSelection(option.id),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  child: Row(
-                    children: [
-                      if (widget.mode == Ux4gDropdownMode.multi) ...[
-                        IgnorePointer(
-                          child: SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: Checkbox(
-                              value: isSelected,
-                              onChanged: (_) {},
-                              activeColor:
-                                  uxColors?.primary ??
-                                  materialTheme.colorScheme.primary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
+              return Ink(
+                color: isSelected ? selectedBgColor : Colors.transparent,
+                child: InkWell(
+                  onTap: () => _handleSelection(option.id),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      children: [
+                        if (widget.mode == Ux4gDropdownMode.multi) ...[
+                          IgnorePointer(
+                            child: SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: Ux4gCheckbox(
+                                value: isSelected,
+                                onChanged: (_) {},
+                                size: Ux4gCheckboxSize.medium,
                               ),
                             ),
                           ),
+                          const SizedBox(width: 12),
+                        ] else if (option.leadingIcon != null) ...[
+                          Icon(option.leadingIcon, size: 20, color: isSelected ? activeColor : null),
+                          const SizedBox(width: 12),
+                        ],
+                        Expanded(
+                          child: Text(
+                            option.label,
+                            style:
+                                (uxTypography?.bS_default ??
+                                        materialTheme.textTheme.bodySmall)
+                                    ?.copyWith(
+                                      color: isSelected
+                                          ? activeColor
+                                          : null,
+                                      fontWeight: isSelected
+                                          ? FontWeight.w600
+                                          : null,
+                                    ),
+                          ),
                         ),
-                        const SizedBox(width: 12),
-                      ] else if (option.leadingIcon != null) ...[
-                        Icon(option.leadingIcon, size: 20),
-                        const SizedBox(width: 12),
+                        if (widget.mode == Ux4gDropdownMode.single && isSelected)
+                          Icon(
+                            Icons.check,
+                            color: activeColor,
+                            size: 20,
+                          ),
                       ],
-                      Expanded(
-                        child: Text(
-                          option.label,
-                          style:
-                              (uxTypography?.lL_default ??
-                                      materialTheme.textTheme.labelLarge)
-                                  ?.copyWith(
-                                    color: isSelected
-                                        ? (uxColors?.primary ??
-                                              materialTheme.colorScheme.primary)
-                                        : null,
-                                    fontWeight: isSelected
-                                        ? FontWeight.w600
-                                        : null,
-                                  ),
-                        ),
-                      ),
-                      if (widget.mode == Ux4gDropdownMode.single && isSelected)
-                        Icon(
-                          Icons.check,
-                          color:
-                              uxColors?.primary ??
-                              materialTheme.colorScheme.primary,
-                          size: 20,
-                        ),
-                    ],
+                    ),
                   ),
                 ),
               );
@@ -492,35 +518,59 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
         ),
       Ux4gDropdownStatus.error =>
         uxColors?.error ?? materialTheme.colorScheme.error,
+      Ux4gDropdownStatus.warning =>
+        uxColors?.warning ?? Colors.orange,
+      Ux4gDropdownStatus.success =>
+        uxColors?.success ?? Colors.green,
       Ux4gDropdownStatus.defaultStatus =>
         _isExpanded
             ? (uxColors?.primary ?? materialTheme.colorScheme.primary)
             : defaultBorderColor,
     };
 
-    final descriptionColor = widget.status == Ux4gDropdownStatus.error
-        ? (uxColors?.error ?? materialTheme.colorScheme.error)
-        : (uxColors?.onSurface ?? materialTheme.colorScheme.onSurface)
-              .withValues(alpha: 0.7);
+    final descriptionColor = switch (widget.status) {
+      Ux4gDropdownStatus.error => uxColors?.error ?? materialTheme.colorScheme.error,
+      Ux4gDropdownStatus.warning => uxColors?.warning ?? Colors.orange,
+      Ux4gDropdownStatus.success => uxColors?.success ?? Colors.green,
+      _ => (uxColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.7),
+    };
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null) ...[
-          Text(
-            widget.label!,
-            style:
-                widget.labelTextStyle ??
-                (uxTypography?.lL_default ??
-                        materialTheme.textTheme.labelLarge)
-                    ?.copyWith(
-                      color: widget.status == Ux4gDropdownStatus.disabled
-                          ? (uxColors?.onSurface ??
-                                    materialTheme.colorScheme.onSurface)
-                                .withValues(alpha: 0.38)
-                          : (uxColors?.onSurface ??
-                                materialTheme.colorScheme.onSurface),
-                    ),
+          Row(
+            children: [
+              Text(
+                widget.label!,
+                style:
+                    widget.labelTextStyle ??
+                    (uxTypography?.lL_default ??
+                            materialTheme.textTheme.labelLarge)
+                        ?.copyWith(
+                          color: widget.status == Ux4gDropdownStatus.disabled
+                              ? (uxColors?.onSurface ??
+                                        materialTheme.colorScheme.onSurface)
+                                    .withValues(alpha: 0.38)
+                              : (uxColors?.onSurface ??
+                                    materialTheme.colorScheme.onSurface),
+                        ),
+              ),
+              if (widget.isRequired) ...[
+                const SizedBox(width: 4),
+                Text(
+                  "*",
+                  style: (uxTypography?.bS_strong ??
+                          materialTheme.textTheme.bodySmall?.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ) ??
+                          const TextStyle(fontWeight: FontWeight.w700))
+                      .copyWith(
+                        color: uxColors?.error ?? materialTheme.colorScheme.error,
+                      ),
+                ),
+              ],
+            ],
           ),
           const SizedBox(height: Ux4gSpace.space4),
         ],
@@ -618,9 +668,12 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
           Row(
             children: [
               Icon(
-                widget.status == Ux4gDropdownStatus.error
-                    ? Icons.error_outline
-                    : Icons.info_outline,
+                switch (widget.status) {
+                  Ux4gDropdownStatus.error => Icons.error,
+                  Ux4gDropdownStatus.warning => Icons.warning,
+                  Ux4gDropdownStatus.success => Icons.check_circle,
+                  _ => Icons.info_outline,
+                },
                 size: 16,
                 color: descriptionColor,
               ),
