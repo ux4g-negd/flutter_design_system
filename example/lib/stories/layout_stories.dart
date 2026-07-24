@@ -47,9 +47,20 @@ class _DemoAppHeader extends StatelessWidget {
       variant: variant,
       showBackButton: false,
       leadingWidgets: [
-        SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
+        SvgPicture.asset(
+          'assets/national_amblam_logo.svg',
+          height: 32,
+          colorFilter: ColorFilter.mode(
+            isDark ? Colors.white : Ux4gColors.neutral900,
+            BlendMode.srcIn,
+          ),
+        ),
         Container(width: 1, height: 24, color: isDark ? Colors.grey.shade700 : Colors.grey.shade300),
-        SvgPicture.asset('assets/Union.svg', height: 32),
+        SvgPicture.asset(
+          'assets/Union.svg',
+          height: 32,
+          colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+        ),
       ],
       actions: [
         Ux4gAppHeaderAction(
@@ -177,9 +188,24 @@ class _AppHeaderShowcase extends StatelessWidget {
                 variant: Ux4gAppHeaderVariant.outlined,
                 useSafeArea: false,
                 leadingWidgets: [
-                  SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
-                  Container(width: 1, height: 24, color: Colors.grey.shade300),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(
+                    'assets/national_amblam_logo.svg',
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Colors.white : Ux4gColors.neutral900,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: 24,
+                    color: isDark ? Colors.grey.shade700 : Colors.grey.shade300,
+                  ),
+                  SvgPicture.asset(
+                    'assets/Union.svg',
+                    height: 32,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                  ),
                 ],
                 actions: [
                   Ux4gAppHeaderAction(
@@ -204,9 +230,24 @@ class _AppHeaderShowcase extends StatelessWidget {
                 variant: Ux4gAppHeaderVariant.outlined,
                 useSafeArea: false,
                 leadingWidgets: [
-                  SvgPicture.asset('assets/national_amblam_logo.svg', height: 32),
-                  Container(width: 1, height: 24, color: Colors.grey.shade300),
-                  SvgPicture.asset('assets/Union.svg', height: 32),
+                  SvgPicture.asset(
+                    'assets/national_amblam_logo.svg',
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Colors.white : Ux4gColors.neutral900,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: 24,
+                    color: isDark ? Colors.grey.shade700 : Colors.grey.shade300,
+                  ),
+                  SvgPicture.asset(
+                    'assets/Union.svg',
+                    height: 32,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                  ),
                 ],
                 actions: [
                   Ux4gAppHeaderAction(
@@ -479,16 +520,18 @@ final appHeaderComponent = WidgetbookComponent(
     ),
     WidgetbookUseCase(
       name: 'Centered Title',
-      builder: (context) => ComponentDocs(
+      builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return ComponentDocs(
         name: 'AppHeader — Centered Title',
         description: 'Header with a centered title.',
         code: '''Ux4gAppHeader(
   showBackButton: true,
   variant: Ux4gAppHeaderVariant.filled,
-  titleWidget: const Center(
+  titleWidget: Center(
     child: Text(
       'Page Title',
-      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
+      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white),
     ),
   ),
   actions: [
@@ -502,19 +545,20 @@ final appHeaderComponent = WidgetbookComponent(
           showBackButton: true,
           variant: Ux4gAppHeaderVariant.filled,
           useSafeArea: false,
-          titleWidget: const Center(
+          titleWidget: Center(
             child: Text(
               'Page Title',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: isDark ? Ux4gColors.neutral900 : Colors.white,
               ),
             ),
           ),
           actions: [Ux4gAppHeaderAction(icon: Icons.search, onPressed: () {})],
         ),
-      ),
+      );
+      }
     ),
     WidgetbookUseCase(
       name: 'Avatar Header',

@@ -48,8 +48,9 @@ class Ux4gAvatar extends StatelessWidget {
 
     final resolvedPrimary =
         ux4gColors?.primary ?? materialTheme.colorScheme.primary;
+    final isDark = materialTheme.brightness == Brightness.dark;
     final finalContainerColor =
-        containerColor ?? resolvedPrimary.withValues(alpha: 0.1);
+        containerColor ?? (isDark ? Ux4gColors.primary900 : resolvedPrimary.withValues(alpha: 0.1));
     final finalContentColor = contentColor ?? resolvedPrimary;
     final finalIconColor = iconColor ?? resolvedPrimary;
 
