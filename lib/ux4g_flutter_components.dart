@@ -4,6 +4,7 @@ export 'src/foundation/colors.dart';
 export 'src/foundation/typography.dart';
 export 'src/foundation/dimensions.dart';
 export 'src/foundation/elevation.dart';
+export 'src/foundation/shadow.dart';
 export 'src/foundation/icons.dart';
 export 'src/foundation/custom_icons.dart';
 export 'src/theme/theme.dart';

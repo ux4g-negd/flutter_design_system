@@ -120,7 +120,7 @@ class UX4GWidgetbook extends StatelessWidget {
               children: [
                 themeColorComponent,
                 themeTypographyComponent,
-                themeElevationComponent,
+                themeShadowComponent,
                 WidgetbookFolder(
                   name: 'Dimensions',
                   isInitiallyExpanded: false,

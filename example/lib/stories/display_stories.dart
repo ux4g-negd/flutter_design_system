@@ -407,7 +407,7 @@ Ux4gCard(
           PropRow(
             name: 'elevation',
             type: 'double',
-            description: 'Elevation.',
+            description: 'Shadow.',
             defaultValue: '0',
           ),
           PropRow(
