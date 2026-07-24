@@ -88,14 +88,16 @@ class Ux4gButton extends StatelessWidget {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
+    final isDark = materialTheme.brightness == Brightness.dark;
+
     final effectiveDisabledBgColor =
         disabledBackgroundColor ??
         (variant == Ux4gButtonVariant.primary ||
                 variant == Ux4gButtonVariant.secondary
-            ? onSurface.withValues(alpha: 0.12)
+            ? (isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)
             : Colors.transparent);
     final effectiveDisabledContentColor =
-        disabledContentColor ?? onSurface.withValues(alpha: 0.38);
+        disabledContentColor ?? (isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral400);
     final effectiveBorderColor = borderColor ?? style.borderColor;
     final effectiveBorderWidth =
         borderWidth ?? (variant == Ux4gButtonVariant.outline ? 1.0 : 0.0);
@@ -120,6 +122,8 @@ class Ux4gButton extends StatelessWidget {
     final effectiveTextStyle = textStyle ?? defaultTextStyle;
     final effectiveHeight = height ?? size.defaultHeight;
 
+    final currentContentColor = enabled ? effectiveContentColor : effectiveDisabledContentColor;
+
     return SizedBox(
       width: width,
       height: effectiveHeight,
@@ -138,14 +142,17 @@ class Ux4gButton extends StatelessWidget {
                   horizontal: size.horizontalPadding,
                   vertical: size.verticalPadding,
                 ),
-            side: effectiveBorderColor != Colors.transparent
+            side: !enabled && variant != Ux4gButtonVariant.ghost
                 ? BorderSide(
-                    color: enabled
-                        ? effectiveBorderColor
-                        : onSurface.withValues(alpha: 0.12),
-                    width: effectiveBorderWidth,
+                    color: isDark ? Colors.transparent : Ux4gColors.neutral300,
+                    width: 1.0,
                   )
-                : BorderSide.none,
+                : (effectiveBorderColor != Colors.transparent
+                    ? BorderSide(
+                        color: effectiveBorderColor,
+                        width: effectiveBorderWidth,
+                      )
+                    : BorderSide.none),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 borderRadius ?? Ux4gRadius.radius8,
@@ -158,7 +165,7 @@ class Ux4gButton extends StatelessWidget {
               if (isLoading) ...[
                 Ux4gSpinner(
                   size: 16,
-                  color: effectiveContentColor,
+                  color: currentContentColor,
                   strokeWidth: 2,
                 ),
                 const SizedBox(width: 8),
@@ -167,14 +174,14 @@ class Ux4gButton extends StatelessWidget {
                 Icon(
                   leadingIcon,
                   size: iconSize ?? 18,
-                  color: effectiveContentColor,
+                  color: currentContentColor,
                 ),
                 if (text != null || child != null) const SizedBox(width: 8),
               ],
               Flexible(
                 child: DefaultTextStyle(
                   style: effectiveTextStyle.copyWith(
-                    color: effectiveContentColor,
+                    color: currentContentColor,
                   ),
                   child:
                       child ??
@@ -189,7 +196,7 @@ class Ux4gButton extends StatelessWidget {
                 Icon(
                   trailingIcon,
                   size: iconSize ?? 18,
-                  color: effectiveContentColor,
+                  color: currentContentColor,
                 ),
               ],
             ],
@@ -314,6 +321,13 @@ class Ux4gIconButton extends StatelessWidget {
       Ux4gButtonVariant.outline => primary,
       Ux4gButtonVariant.ghost => primary,
     };
+    
+    final isDark = materialTheme.brightness == Brightness.dark;
+    
+    final disabledBgColor = variant == Ux4gButtonVariant.primary || variant == Ux4gButtonVariant.secondary
+        ? (isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200)
+        : Colors.transparent;
+    final disabledFgColor = isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral400;
 
     return IconButton(
       onPressed: enabled ? onPressed : null,
@@ -321,10 +335,20 @@ class Ux4gIconButton extends StatelessWidget {
       style: IconButton.styleFrom(
         backgroundColor: bgColor,
         foregroundColor: contentColor,
+        disabledBackgroundColor: disabledBgColor,
+        disabledForegroundColor: disabledFgColor,
         fixedSize: Size(size, size),
-        side: variant == Ux4gButtonVariant.outline
-            ? BorderSide(color: primary)
-            : null,
+        side: !enabled && variant != Ux4gButtonVariant.ghost
+            ? BorderSide(
+                color: isDark ? Colors.transparent : Ux4gColors.neutral300,
+                width: 1.0,
+              )
+            : (variant == Ux4gButtonVariant.outline
+                ? BorderSide(
+                    color: primary,
+                    width: 1.0,
+                  )
+                : null),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
         ),
