@@ -624,7 +624,7 @@ class _Ux4gInputFieldIconsExampleState extends State<Ux4gInputFieldIconsExample>
       },
     ),
     WidgetbookUseCase(
-      name: 'Prefix & Postfix',
+      name: 'Prefix and Postfix',
       builder: (context) {
         String value = '';
         return StatefulBuilder(
@@ -702,9 +702,9 @@ class _Ux4gInputFieldPrefixPostfixExampleState extends State<Ux4gInputFieldPrefi
       },
     ),
     WidgetbookUseCase(
-      name: 'Read-only & Required',
+      name: 'Read-only and Required',
       builder: (context) => ComponentDocs(
-        name: 'InputField — Read-only & Required',
+        name: 'InputField — Read-only and Required',
         description:
             'readOnly and enabled=false disable editing so user can only read the value; required shows an asterisk on the label.',
         code: '''import 'package:flutter/material.dart';
@@ -1064,7 +1064,7 @@ final textAreaComponent = WidgetbookComponent(
       },
     ),
     WidgetbookUseCase(
-      name: 'Sizes & Heights',
+      name: 'Sizes and Heights',
       builder: (context) => ComponentDocs(
         name: 'TextArea — Sizes',
         description: 'Small and Large sizes with different minimum heights.',

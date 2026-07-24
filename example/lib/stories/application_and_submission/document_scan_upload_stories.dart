@@ -13,7 +13,7 @@ const String _unionLogoPath = Ux4gIcons.union;
 const String _digitalIndiaLogoPath = Ux4gIcons.digitalIndiaLogoPng;
 
 final documentScanUploadComponent = WidgetbookComponent(
-  name: 'Document scan & upload',
+  name: 'Document scan and upload',
   useCases: [
     WidgetbookUseCase(
       name: 'Interactive Preview',
@@ -31,7 +31,7 @@ final documentScanUploadComponent = WidgetbookComponent(
 
         return ComponentDocs(
           mobileMockup: true,
-          name: 'Document scan & upload',
+          name: 'Document scan and upload',
           description:
               'A pattern for scanning and uploading multiple documents with status indicators and DigiLocker integration.',
           code: code,

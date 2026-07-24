@@ -246,7 +246,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
       ),
     ),
     WidgetbookUseCase(
-      name: 'Semantic Colors & Border',
+      name: 'Semantic Colors and Border',
       builder: (context) {
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final semanticColors = isDark
@@ -268,7 +268,7 @@ Ux4gBadge.icon(Icons.check, child: Icon(Icons.person, size: 32));''',
               ];
 
         return ComponentDocs(
-          name: 'Badge — Semantic Colors & Border',
+          name: 'Badge — Semantic Colors and Border',
           description:
               'Showcasing the border stroke property across semantic colors.',
           code:

@@ -3807,7 +3807,7 @@ final statusPipelineComponent = WidgetbookComponent(
       ),
     ),
     WidgetbookUseCase(
-      name: 'Error & Warning States',
+      name: 'Error and Warning States',
       builder: (context) => ComponentDocs(
         name: 'StatusPipeline',
         description:
@@ -4699,7 +4699,7 @@ class _Ux4gTimeslotShowcaseState extends State<Ux4gTimeslotShowcase> {
       },
     ),
     WidgetbookUseCase(
-      name: 'With holidays & no-slots',
+      name: 'With holidays and no-slots',
       builder: (context) {
         DateTime? selected;
         return StatefulBuilder(
