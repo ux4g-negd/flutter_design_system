@@ -106,8 +106,6 @@ final linkIntroductionComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Introduction',
       builder: (context) {
-        const defaultColor = Color(0xFF7C3AED); // Purple
-        const neutralColor = Color(0xFF4B5563); // Dark neutral grey
 
         return ComponentDocs(
           name: 'Link',
@@ -117,6 +115,9 @@ final linkIntroductionComponent = WidgetbookComponent(
           child: Builder(
             builder: (context) {
               final isDark = Theme.of(context).brightness == Brightness.dark;
+              final defaultColor = isDark ? Ux4gColors.primary100 : Ux4gColors.primary600;
+              final neutralColor = isDark ? Ux4gColors.neutral100 : Ux4gColors.neutral600;
+              
               return Container(
                 padding: const EdgeInsets.all(24.0),
                 decoration: BoxDecoration(
@@ -168,7 +169,7 @@ final linkIntroductionComponent = WidgetbookComponent(
                           ),
                         ],
                       ),
-                      child: const Wrap(
+                      child: Wrap(
                         spacing: 32,
                         runSpacing: 16,
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -209,7 +210,7 @@ final linkIntroductionComponent = WidgetbookComponent(
                           ),
                         ],
                       ),
-                      child: const Wrap(
+                      child: Wrap(
                         spacing: 32,
                         runSpacing: 16,
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -254,6 +255,9 @@ final linkDefaultComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final defaultColor = isDark ? Ux4gColors.primary100 : Ux4gColors.primary600;
+        
         return ComponentDocs(
           name: 'Link',
           description: 'A basic link wrapping text, which opens a URL when clicked.',
@@ -262,15 +266,15 @@ final linkDefaultComponent = WidgetbookComponent(
   child: Text(
     'Visit UX4G',
     style: TextStyle(
-      color: Color(0xFF4F46E5),
+      color: Ux4gColors.primary600, // or primary100 for dark mode
       decoration: TextDecoration.underline,
     ),
   ),
 );''',
           props: _linkProps,
-          child: const _StoryLinkItem(
+          child: _StoryLinkItem(
             text: 'Visit UX4G',
-            baseColor: Color(0xFF4F46E5),
+            baseColor: defaultColor,
           ),
         );
       },
@@ -284,6 +288,11 @@ final linkVariantsComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Variants',
       builder: (context) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final defaultColor = isDark ? Ux4gColors.primary100 : Ux4gColors.primary600;
+        final neutralColor = isDark ? Ux4gColors.neutral100 : Ux4gColors.neutral600;
+        final visitedColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary800;
+
         return ComponentDocs(
           name: 'Link Variants',
           description: 'Link states with various colors (Default, Neutral, Visited) and icon configurations.',
@@ -293,9 +302,9 @@ Ux4gLink(
   child: Row(
     mainAxisSize: MainAxisSize.min,
     children: [
-      Text('Link', style: TextStyle(color: Color(0xFF4F46E5))),
+      Text('Link', style: TextStyle(color: Ux4gColors.primary600)),
       SizedBox(width: 4),
-      Icon(Icons.open_in_new, color: Color(0xFF4F46E5), size: 16),
+      Icon(Icons.open_in_new, color: Ux4gColors.primary600, size: 16),
     ],
   ),
 );
@@ -306,9 +315,9 @@ Ux4gLink(
   child: Row(
     mainAxisSize: MainAxisSize.min,
     children: [
-      Icon(Icons.open_in_new, color: Color(0xFF4B5563), size: 16),
+      Icon(Icons.open_in_new, color: Ux4gColors.neutral600, size: 16),
       SizedBox(width: 4),
-      Text('Link', style: TextStyle(color: Color(0xFF4B5563))),
+      Text('Link', style: TextStyle(color: Ux4gColors.neutral600)),
     ],
   ),
 );''',
@@ -317,9 +326,9 @@ Ux4gLink(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             children: [
               _buildHeaderRow(),
-              _buildVariantRows('Default', const Color(0xFF4F46E5)),
-              _buildVariantRows('Neutral', const Color(0xFF4B5563)),
-              _buildVariantRows('Visited', const Color(0xFF7C3AED)),
+              _buildVariantRows('Default', defaultColor),
+              _buildVariantRows('Neutral', neutralColor),
+              _buildVariantRows('Visited', visitedColor),
             ],
           ),
         );
