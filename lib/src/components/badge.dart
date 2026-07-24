@@ -129,7 +129,27 @@ class Ux4gBadge extends StatelessWidget {
     final resolvedBg =
         containerColor ??
         (ux4gColors?.primary ?? materialTheme.colorScheme.primary);
-    final resolvedContent = contentColor ?? Colors.white;
+        
+    Color getDefaultContentColor() {
+      if (ux4gColors != null) {
+        // Specific overrides for exact match with design
+        if (resolvedBg == Ux4gColors.neutral600) return Ux4gColors.white;
+        if (resolvedBg == Ux4gColors.neutral300) return Ux4gColors.neutral900;
+        if (resolvedBg == Ux4gColors.orange600) return Ux4gColors.white;
+
+        if (resolvedBg == ux4gColors.primary) return ux4gColors.onPrimary;
+        if (resolvedBg == ux4gColors.secondary) return ux4gColors.onSecondary;
+        if (resolvedBg == ux4gColors.success) return ux4gColors.onSuccess;
+        if (resolvedBg == ux4gColors.error) return ux4gColors.onError;
+        if (resolvedBg == ux4gColors.warning) return ux4gColors.onWarning;
+        if (resolvedBg == ux4gColors.info) return ux4gColors.onInfo;
+      }
+      return ThemeData.estimateBrightnessForColor(resolvedBg) == Brightness.dark
+          ? Ux4gColors.white
+          : Ux4gColors.neutral900;
+    }
+    
+    final resolvedContent = contentColor ?? getDefaultContentColor();
     final resolvedBorderColor = borderColor ?? materialTheme.colorScheme.surface;
     final border = showBorder ? Border.all(color: resolvedBorderColor, width: 1.5) : null;
 
