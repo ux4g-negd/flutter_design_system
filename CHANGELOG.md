@@ -1,3 +1,13 @@
+## 1.4.0
+* **Foundation Updates**:
+  * **Shadow**: Renamed the elevation foundation class to `Ux4gShadow` for better clarity and added comprehensive test cases.
+* **Component Updates & Fixes**:
+  * **Journey Progress Indicator**: Integrated the proper `Ux4gPanInputField` to ensure accurate PAN card formatting and validation.
+  * **Selection Dropdown**: Added missing label and description states.
+  * **OTP Input**: Added new variant options in the Widgetbook side panel with updated code sections.
+  * **Switch / Toggle**: Updated the Widgetbook naming to properly display as "Toggle".
+  * **Bug Fixes**: Addressed various bugs in the **Button**, **Badge**, and **App Header** components.
+
 ## 1.3.0
 
 * **Component Refactoring & Naming Standardization (100% Backward Compatible via Deprecated Aliases)**:

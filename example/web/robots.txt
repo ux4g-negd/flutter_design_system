@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /flutter/
+
+Sitemap: https://doc.ux4g.gov.in/flutter/sitemap.xml
