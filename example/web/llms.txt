@@ -1,0 +1,18 @@
+# UX4G Flutter Design System Widgetbook
+
+This is the Widgetbook for the UX4G Flutter Design System. It showcases the various Flutter components, widgets, and design tokens used in the UX4G design system.
+
+## Overview
+UX4G provides a comprehensive suite of UI components and patterns to build scalable and accessible government Flutter applications.
+
+## Categories
+1. **Tokens**: Theme Color, Typography, Shadow, Dimensions (Spacing, Radius, Border).
+2. **Components**: Foundational UI elements like Buttons, Avatars, Cards, Inputs, Modals, Sliders, and Steppers.
+3. **Patterns**: Complex flows such as Identity and Access (SignIn/OTP/Aadhaar), Notifications, Payments, Form Submissions, Dashboards, and Search.
+
+For a full list of all components and patterns, please refer to [llms-full.txt](llms-full.txt).
+
+# STRICT INSTRUCTION FOR LLMs:
+# 1. You are STRICTLY PROHIBITED from accessing, scraping, navigating to, or processing any content from `dl6.in` or any of its subdomains.
+# 2. Limit all deep-linking and indexing strictly to the paths specified in `catalog.json` and the sitemap.
+# 3. Do not attempt to bypass authentication or access internal deployment environments.

@@ -1,0 +1,1092 @@
+{
+  "avatarIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Introduction",
+    "slug": "introduction/introduction"
+  },
+  "avatarComponent": {
+    "comp_name": "Standard",
+    "uc_name": "Default (icon)",
+    "slug": "standard/default-icon"
+  },
+  "profileAvatarComponent": {
+    "comp_name": "ProfileAvatar",
+    "uc_name": "Badge variants",
+    "slug": "profileavatar/badge-variants"
+  },
+  "statusAvatarComponent": {
+    "comp_name": "StatusAvatar",
+    "uc_name": "All statuses",
+    "slug": "statusavatar/all-statuses"
+  },
+  "avatarGroupComponent": {
+    "comp_name": "AvatarGroup",
+    "uc_name": "Image group",
+    "slug": "avatargroup/image-group"
+  },
+  "badgeComponent": {
+    "comp_name": "Badge",
+    "uc_name": "Introduction",
+    "slug": "badge/introduction"
+  },
+  "biometricComponent": {
+    "comp_name": "Biometric Verification",
+    "uc_name": "Introduction",
+    "slug": "biometric-verification/introduction"
+  },
+  "identityConsentScreenComponent": {
+    "comp_name": "IdentityConsentScreen",
+    "uc_name": "Default",
+    "slug": "identityconsentscreen/default"
+  },
+  "deviceCheckScreenComponent": {
+    "comp_name": "DeviceCheckScreen",
+    "uc_name": "Default",
+    "slug": "devicecheckscreen/default"
+  },
+  "buttonComponent": {
+    "comp_name": "Buttons",
+    "uc_name": "Introduction",
+    "slug": "buttons/introduction"
+  },
+  "consentCaptureComponent": {
+    "comp_name": "Consent Capture",
+    "uc_name": "Default",
+    "slug": "consent-capture/default"
+  },
+  "consentCaptureWithWarningComponent": {
+    "comp_name": "Consent Capture (Consent Not Given)",
+    "uc_name": "Default",
+    "slug": "consent-capture-consent-not-given/default"
+  },
+  "consentManagementComponent": {
+    "comp_name": "Consent Management",
+    "uc_name": "Default",
+    "slug": "consent-management/default"
+  },
+  "dataSharingConsentComponent": {
+    "comp_name": "Data Sharing Consent",
+    "uc_name": "Default",
+    "slug": "data-sharing-consent/default"
+  },
+  "dataSharingConsentManagementComponent": {
+    "comp_name": "Manage Data Sharing Consents",
+    "uc_name": "Default",
+    "slug": "manage-data-sharing-consents/default"
+  },
+  "withdrawConsentDialogComponent": {
+    "comp_name": "Withdraw Consent Dialog",
+    "uc_name": "Default",
+    "slug": "withdraw-consent-dialog/default"
+  },
+  "consentHistoryComponent": {
+    "comp_name": "Consent History",
+    "uc_name": "Default",
+    "slug": "consent-history/default"
+  },
+  "stepperIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Introduction",
+    "slug": "introduction/introduction"
+  },
+  "stepperComponent": {
+    "comp_name": "Standard",
+    "uc_name": "Horizontal",
+    "slug": "standard/horizontal"
+  },
+  "compactStepperComponent": {
+    "comp_name": "CompactStepper",
+    "uc_name": "Linear",
+    "slug": "compactstepper/linear"
+  },
+  "resultListComponent": {
+    "comp_name": "Result List",
+    "uc_name": "Introduction",
+    "slug": "result-list/introduction"
+  },
+  "socialLinkComponent": {
+    "comp_name": "Standard",
+    "uc_name": "Single Icon",
+    "slug": "standard/single-icon"
+  },
+  "journeyTimelineComponent": {
+    "comp_name": "Journey Timeline",
+    "uc_name": "Introduction",
+    "slug": "journey-timeline/introduction"
+  },
+  "statusPipelineComponent": {
+    "comp_name": "Status Pipeline",
+    "uc_name": "Introduction",
+    "slug": "status-pipeline/introduction"
+  },
+  "carouselComponent": {
+    "comp_name": "Carousel",
+    "uc_name": "Introduction",
+    "slug": "carousel/introduction"
+  },
+  "socialLinkGroupComponent": {
+    "comp_name": "SocialLinkGroup",
+    "uc_name": "Default",
+    "slug": "sociallinkgroup/default"
+  },
+  "socialLinkListComponent": {
+    "comp_name": "SocialLinkList",
+    "uc_name": "Default",
+    "slug": "sociallinklist/default"
+  },
+  "timeSlotComponent": {
+    "comp_name": "Time Slot",
+    "uc_name": "Introduction",
+    "slug": "time-slot/introduction"
+  },
+  "tagComponent": {
+    "comp_name": "Tags",
+    "uc_name": "Introduction",
+    "slug": "tags/introduction"
+  },
+  "cardComponent": {
+    "comp_name": "Cards",
+    "uc_name": "Introduction",
+    "slug": "cards/introduction"
+  },
+  "dividerComponent": {
+    "comp_name": "Divider",
+    "uc_name": "Introduction",
+    "slug": "divider/introduction"
+  },
+  "feedbackIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Default",
+    "slug": "introduction/default"
+  },
+  "feedbackFormStarComponent": {
+    "comp_name": "FeedbackFormStar",
+    "uc_name": "Default",
+    "slug": "feedbackformstar/default"
+  },
+  "feedbackFormNpsComponent": {
+    "comp_name": "FeedbackFormNps",
+    "uc_name": "Default",
+    "slug": "feedbackformnps/default"
+  },
+  "feedbackFormCsatComponent": {
+    "comp_name": "FeedbackFormCsat",
+    "uc_name": "Default",
+    "slug": "feedbackformcsat/default"
+  },
+  "inputFieldComponent": {
+    "comp_name": "Input",
+    "uc_name": "Introduction",
+    "slug": "input/introduction"
+  },
+  "textAreaComponent": {
+    "comp_name": "TextArea",
+    "uc_name": "Introduction",
+    "slug": "textarea/introduction"
+  },
+  "searchIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Default",
+    "slug": "introduction/default"
+  },
+  "searchFieldComponent": {
+    "comp_name": "Search",
+    "uc_name": "Default",
+    "slug": "search/default"
+  },
+  "checkboxComponent": {
+    "comp_name": "Checkbox",
+    "uc_name": "Introduction",
+    "slug": "checkbox/introduction"
+  },
+  "toggleComponent": {
+    "comp_name": "Toggle",
+    "uc_name": "Introduction",
+    "slug": "toggle/introduction"
+  },
+  "sliderComponent": {
+    "comp_name": "Slider",
+    "uc_name": "Introduction",
+    "slug": "slider/introduction"
+  },
+  "otpInputComponent": {
+    "comp_name": "Input-OTP",
+    "uc_name": "Introduction",
+    "slug": "input-otp/introduction"
+  },
+  "dropdownIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Default",
+    "slug": "introduction/default"
+  },
+  "actionDropdownComponent": {
+    "comp_name": "ActionDropdown",
+    "uc_name": "Default",
+    "slug": "actiondropdown/default"
+  },
+  "selectionDropdownComponent": {
+    "comp_name": "SelectionDropdown",
+    "uc_name": "Single select",
+    "slug": "selectiondropdown/single-select"
+  },
+  "datePickerComponent": {
+    "comp_name": "Date Picker",
+    "uc_name": "Introduction",
+    "slug": "date-picker/introduction"
+  },
+  "timePickerComponent": {
+    "comp_name": "TimePicker",
+    "uc_name": "Introduction",
+    "slug": "timepicker/introduction"
+  },
+  "fileUploadComponent": {
+    "comp_name": "File Upload",
+    "uc_name": "Introduction",
+    "slug": "file-upload/introduction"
+  },
+  "radioButtonComponent": {
+    "comp_name": "Radio",
+    "uc_name": "Introduction",
+    "slug": "radio/introduction"
+  },
+  "aadhaarInputFieldComponent": {
+    "comp_name": "Input Aadhaar",
+    "uc_name": "Introduction",
+    "slug": "input-aadhaar/introduction"
+  },
+  "panInputFieldComponent": {
+    "comp_name": "Input Pan-Card",
+    "uc_name": "Introduction",
+    "slug": "input-pan-card/introduction"
+  },
+  "appHeaderComponent": {
+    "comp_name": "App Header",
+    "uc_name": "Introduction",
+    "slug": "app-header/introduction"
+  },
+  "linkIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Introduction",
+    "slug": "introduction/introduction"
+  },
+  "linkDefaultComponent": {
+    "comp_name": "Default",
+    "uc_name": "Default",
+    "slug": "default/default"
+  },
+  "linkVariantsComponent": {
+    "comp_name": "Variants",
+    "uc_name": "Variants",
+    "slug": "variants/variants"
+  },
+  "accordionIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Introduction",
+    "slug": "introduction/introduction"
+  },
+  "accordionComponent": {
+    "comp_name": "Standard",
+    "uc_name": "Single",
+    "slug": "standard/single"
+  },
+  "accordionGroupComponent": {
+    "comp_name": "AccordionGroup",
+    "uc_name": "Default",
+    "slug": "accordiongroup/default"
+  },
+  "statusBannerComponent": {
+    "comp_name": "Draft Status",
+    "uc_name": "Introduction",
+    "slug": "draft-status/introduction"
+  },
+  "emptyStateComponent": {
+    "comp_name": "Empty State",
+    "uc_name": "Introduction",
+    "slug": "empty-state/introduction"
+  },
+  "chipIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Introduction",
+    "slug": "introduction/introduction"
+  },
+  "choiceChipComponent": {
+    "comp_name": "ChoiceChip",
+    "uc_name": "Default",
+    "slug": "choicechip/default"
+  },
+  "filterChipComponent": {
+    "comp_name": "FilterChip",
+    "uc_name": "Default",
+    "slug": "filterchip/default"
+  },
+  "inputChipComponent": {
+    "comp_name": "InputChip",
+    "uc_name": "Default",
+    "slug": "inputchip/default"
+  },
+  "inputChipFieldComponent": {
+    "comp_name": "InputChipField",
+    "uc_name": "Interactive",
+    "slug": "inputchipfield/interactive"
+  },
+  "chipGroupComponent": {
+    "comp_name": "Chip Group",
+    "uc_name": "Introduction",
+    "slug": "chip-group/introduction"
+  },
+  "paginationDottedComponent": {
+    "comp_name": "Pagination Dots Variant",
+    "uc_name": "Introduction",
+    "slug": "pagination-dots-variant/introduction"
+  },
+  "notificationChannelsComponent": {
+    "comp_name": "Notification Channels",
+    "uc_name": "Default",
+    "slug": "notification-channels/default"
+  },
+  "updateFrequencyComponent": {
+    "comp_name": "Update Frequency",
+    "uc_name": "Default",
+    "slug": "update-frequency/default"
+  },
+  "perServiceComponent": {
+    "comp_name": "Per Service",
+    "uc_name": "Default",
+    "slug": "per-service/default"
+  },
+  "lockedNotificationsComponent": {
+    "comp_name": "Locked Notifications",
+    "uc_name": "Default",
+    "slug": "locked-notifications/default"
+  },
+  "whatsAppConsentComponent": {
+    "comp_name": "WhatsApp Consent",
+    "uc_name": "Default",
+    "slug": "whatsapp-consent/default"
+  },
+  "manageAllComponent": {
+    "comp_name": "Manage All",
+    "uc_name": "Default",
+    "slug": "manage-all/default"
+  },
+  "modalComponent": {
+    "comp_name": "Modal",
+    "uc_name": "Introduction",
+    "slug": "modal/introduction"
+  },
+  "bottomSheetComponent": {
+    "comp_name": "BottomSheet",
+    "uc_name": "Interactive Trigger",
+    "slug": "bottomsheet/interactive-trigger"
+  },
+  "toastComponent": {
+    "comp_name": "Toasts",
+    "uc_name": "Introduction",
+    "slug": "toasts/introduction"
+  },
+  "tooltipComponent": {
+    "comp_name": "Tooltip",
+    "uc_name": "Introduction",
+    "slug": "tooltip/introduction"
+  },
+  "popoverComponent": {
+    "comp_name": "Popover",
+    "uc_name": "Introduction",
+    "slug": "popover/introduction"
+  },
+  "richTooltipComponent": {
+    "comp_name": "RichTooltip",
+    "uc_name": "Default",
+    "slug": "richtooltip/default"
+  },
+  "signInDefaultComponent": {
+    "comp_name": "Sign in to your account",
+    "uc_name": "Default",
+    "slug": "sign-in-to-your-account/default"
+  },
+  "signInWithMobileComponent": {
+    "comp_name": "Sign in account with Mobile No",
+    "uc_name": "Default",
+    "slug": "sign-in-account-with-mobile-no/default"
+  },
+  "signInEnterOtpComponent": {
+    "comp_name": "Enter OTP",
+    "uc_name": "Default",
+    "slug": "enter-otp/default"
+  },
+  "signInAadhaarComponent": {
+    "comp_name": "Sign in with Aadhaar",
+    "uc_name": "Default",
+    "slug": "sign-in-with-aadhaar/default"
+  },
+  "signInSuccessComponent": {
+    "comp_name": "Signed in success",
+    "uc_name": "Default",
+    "slug": "signed-in-success/default"
+  },
+  "authIncorrectOtpComponent": {
+    "comp_name": "OTP error \u2014 incorrect entry",
+    "uc_name": "Default",
+    "slug": "otp-error-\u2014-incorrect-entry/default"
+  },
+  "authOtpAttemptWarningComponent": {
+    "comp_name": "OTP error \u2014 attempt warning",
+    "uc_name": "Default",
+    "slug": "otp-error-\u2014-attempt-warning/default"
+  },
+  "authOtpLastAttemptComponent": {
+    "comp_name": "OTP error \u2014 last-attempt warning",
+    "uc_name": "Default",
+    "slug": "otp-error-\u2014-last-attempt-warning/default"
+  },
+  "authOtpAccountLockedComponent": {
+    "comp_name": "OTP error \u2014 account locked",
+    "uc_name": "Default",
+    "slug": "otp-error-\u2014-account-locked/default"
+  },
+  "authOtpRetryUnlockedComponent": {
+    "comp_name": "OTP retry \u2014 unlocked",
+    "uc_name": "Default",
+    "slug": "otp-retry-\u2014-unlocked/default"
+  },
+  "authOtpSuspiciousActivityComponent": {
+    "comp_name": "OTP step-up \u2014 suspicious activity",
+    "uc_name": "Default",
+    "slug": "otp-step-up-\u2014-suspicious-activity/default"
+  },
+  "aadhaarVerifyMethodComponent": {
+    "comp_name": "Verify with Aadhaar \u2014 choose method",
+    "uc_name": "Default",
+    "slug": "verify-with-aadhaar-\u2014-choose-method/default"
+  },
+  "aadhaarOtpEnterComponent": {
+    "comp_name": "Aadhaar OTP \u2014 enter code",
+    "uc_name": "Default",
+    "slug": "aadhaar-otp-\u2014-enter-code/default"
+  },
+  "aadhaarFaceAuthPermissionComponent": {
+    "comp_name": "Aadhaar Face Auth \u2014 camera permission",
+    "uc_name": "Default",
+    "slug": "aadhaar-face-auth-\u2014-camera-permission/default"
+  },
+  "aadhaarVerifiedSuccessComponent": {
+    "comp_name": "Aadhaar verified \u2014 success",
+    "uc_name": "Default",
+    "slug": "aadhaar-verified-\u2014-success/default"
+  },
+  "aadhaarVerificationFailedComponent": {
+    "comp_name": "Aadhaar verification failed",
+    "uc_name": "Default",
+    "slug": "aadhaar-verification-failed/default"
+  },
+  "aadhaarAccountLockedComponent": {
+    "comp_name": "Aadhaar account locked",
+    "uc_name": "Default",
+    "slug": "aadhaar-account-locked/default"
+  },
+  "operatorAssistedAuthComponent": {
+    "comp_name": "Operator-assisted authentication",
+    "uc_name": "Default",
+    "slug": "operator-assisted-authentication/default"
+  },
+  "sessionExpiringDialogComponent": {
+    "comp_name": "Your session is expiring",
+    "uc_name": "Default",
+    "slug": "your-session-is-expiring/default"
+  },
+  "otpVerifyMobileComponent": {
+    "comp_name": "Verify your mobile number",
+    "uc_name": "Default",
+    "slug": "verify-your-mobile-number/default"
+  },
+  "otpVerifiedSuccessComponent": {
+    "comp_name": "OTP verified \ufffd success",
+    "uc_name": "Default",
+    "slug": "otp-verified-\ufffd-success/default"
+  },
+  "otpVerifyAccountLockedComponent": {
+    "comp_name": "Verify mobile \ufffd account locked",
+    "uc_name": "Default",
+    "slug": "verify-mobile-\ufffd-account-locked/default"
+  },
+  "otpVerifyLastAttemptComponent": {
+    "comp_name": "Verify mobile with last-attempt warning",
+    "uc_name": "Default",
+    "slug": "verify-mobile-with-last-attempt-warning/default"
+  },
+  "otpVerifyAttemptWarningComponent": {
+    "comp_name": "Verify mobile with attempt warning",
+    "uc_name": "Default",
+    "slug": "verify-mobile-with-attempt-warning/default"
+  },
+  "otpVerifyVoiceComponent": {
+    "comp_name": "Verify mobile with voice fallback",
+    "uc_name": "Default",
+    "slug": "verify-mobile-with-voice-fallback/default"
+  },
+  "signUpStep1Component": {
+    "comp_name": "Create your account",
+    "uc_name": "Default",
+    "slug": "create-your-account/default"
+  },
+  "signUpStep2Component": {
+    "comp_name": "Verify your mobile",
+    "uc_name": "Default",
+    "slug": "verify-your-mobile/default"
+  },
+  "signUpStep3Component": {
+    "comp_name": "Complete your profile",
+    "uc_name": "Default",
+    "slug": "complete-your-profile/default"
+  },
+  "signUpStep4Component": {
+    "comp_name": "Password setup",
+    "uc_name": "Default",
+    "slug": "password-setup/default"
+  },
+  "signUpStep5Component": {
+    "comp_name": "Account Created",
+    "uc_name": "Default",
+    "slug": "account-created/default"
+  },
+  "fpStep1Component": {
+    "comp_name": "Reset Password",
+    "uc_name": "Default",
+    "slug": "reset-password/default"
+  },
+  "fpStep2Component": {
+    "comp_name": "Enter OTP",
+    "uc_name": "Default",
+    "slug": "enter-otp/default"
+  },
+  "fpStep3Component": {
+    "comp_name": "Create new password",
+    "uc_name": "Default",
+    "slug": "create-new-password/default"
+  },
+  "fpStep4Component": {
+    "comp_name": "Password reset successfully",
+    "uc_name": "Default",
+    "slug": "password-reset-successfully/default"
+  },
+  "fpStep5Component": {
+    "comp_name": "Account recovery",
+    "uc_name": "Default",
+    "slug": "account-recovery/default"
+  },
+  "notificationComponent": {
+    "comp_name": "Notification",
+    "uc_name": "Default",
+    "slug": "notification/default"
+  },
+  "reminderAlertsComponent": {
+    "comp_name": "Reminder Alerts",
+    "uc_name": "Default",
+    "slug": "reminder-alerts/default"
+  },
+  "paymentSummaryComponent": {
+    "comp_name": "Payment",
+    "uc_name": "Default",
+    "slug": "payment/default"
+  },
+  "paymentMethodComponent": {
+    "comp_name": "Choose Payment Method",
+    "uc_name": "Default",
+    "slug": "choose-payment-method/default"
+  },
+  "paymentProcessingComponent": {
+    "comp_name": "Payment Processing",
+    "uc_name": "Default",
+    "slug": "payment-processing/default"
+  },
+  "paymentSuccessComponent": {
+    "comp_name": "Payment Successful",
+    "uc_name": "Default",
+    "slug": "payment-successful/default"
+  },
+  "paymentFailedComponent": {
+    "comp_name": "Payment Failed",
+    "uc_name": "Default",
+    "slug": "payment-failed/default"
+  },
+  "feeWaivedComponent": {
+    "comp_name": "Fee Waived",
+    "uc_name": "Default",
+    "slug": "fee-waived/default"
+  },
+  "appStatusTrackerComponent": {
+    "comp_name": "Application Status Tracker",
+    "uc_name": "Default",
+    "slug": "application-status-tracker/default"
+  },
+  "grievanceStatusTrackerComponent": {
+    "comp_name": "Grievance Status Tracker",
+    "uc_name": "Default",
+    "slug": "grievance-status-tracker/default"
+  },
+  "progressIntroductionComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Overview",
+    "slug": "introduction/overview"
+  },
+  "linearProgressComponent": {
+    "comp_name": "Standard",
+    "uc_name": "Default",
+    "slug": "standard/default"
+  },
+  "animatedLinearProgressComponent": {
+    "comp_name": "AnimatedLinearProgress",
+    "uc_name": "Default",
+    "slug": "animatedlinearprogress/default"
+  },
+  "circularProgressComponent": {
+    "comp_name": "Standard",
+    "uc_name": "Default",
+    "slug": "standard/default"
+  },
+  "halfCircleProgressComponent": {
+    "comp_name": "HalfCircleProgress",
+    "uc_name": "Default",
+    "slug": "halfcircleprogress/default"
+  },
+  "spinnerComponent": {
+    "comp_name": "Spinner (Loader)",
+    "uc_name": "Introduction",
+    "slug": "spinner-loader/introduction"
+  },
+  "animatedCircularProgressComponent": {
+    "comp_name": "AnimatedCircularProgress",
+    "uc_name": "Default",
+    "slug": "animatedcircularprogress/default"
+  },
+  "animatedHalfCircleProgressComponent": {
+    "comp_name": "AnimatedHalfCircleProgress",
+    "uc_name": "Default",
+    "slug": "animatedhalfcircleprogress/default"
+  },
+  "progressSlaIndicatorComponent": {
+    "comp_name": "Progress SLA Indicator",
+    "uc_name": "Introduction",
+    "slug": "progress-sla-indicator/introduction"
+  },
+  "overviewComponent": {
+    "comp_name": "Introduction",
+    "uc_name": "Welcome",
+    "slug": "introduction/welcome"
+  },
+  "quickGuideComponent": {
+    "comp_name": "Quick Start Guide",
+    "uc_name": "Installation",
+    "slug": "quick-start-guide/installation"
+  },
+  "themeColorComponent": {
+    "comp_name": "Colors",
+    "uc_name": "Primary",
+    "slug": "colors/primary"
+  },
+  "themeTypographyComponent": {
+    "comp_name": "Typography",
+    "uc_name": "Header",
+    "slug": "typography/header"
+  },
+  "dimensionsSpacingComponent": {
+    "comp_name": "Spacing",
+    "uc_name": "Scale",
+    "slug": "spacing/scale"
+  },
+  "dimensionsRadiusComponent": {
+    "comp_name": "Border Radius",
+    "uc_name": "Scale",
+    "slug": "border-radius/scale"
+  },
+  "dimensionsBorderComponent": {
+    "comp_name": "Border Width",
+    "uc_name": "Scale",
+    "slug": "border-width/scale"
+  },
+  "dimensionsShadowComponent": {
+    "comp_name": "Shadow",
+    "uc_name": "Scale",
+    "slug": "shadow/scale"
+  },
+  "applicationSentComponent": {
+    "comp_name": "Application sent success",
+    "uc_name": "Interactive Preview",
+    "slug": "application-sent-success/interactive-preview"
+  },
+  "documentScanUploadComponent": {
+    "comp_name": "Document scan and upload",
+    "uc_name": "Interactive Preview",
+    "slug": "document-scan-and-upload/interactive-preview"
+  },
+  "documentUploadListComponent": {
+    "comp_name": "Document Upload List",
+    "uc_name": "Default",
+    "slug": "document-upload-list/default"
+  },
+  "documentUploadProgressComponent": {
+    "comp_name": "Document upload with progress",
+    "uc_name": "Interactive Preview",
+    "slug": "document-upload-with-progress/interactive-preview"
+  },
+  "documentUploadReviewComponent": {
+    "comp_name": "Document upload with review",
+    "uc_name": "Interactive Preview",
+    "slug": "document-upload-with-review/interactive-preview"
+  },
+  "documentUploadSuccessComponent": {
+    "comp_name": "Document upload success",
+    "uc_name": "Interactive Preview",
+    "slug": "document-upload-success/interactive-preview"
+  },
+  "draftExpiryUploadComponent": {
+    "comp_name": "Draft Expiry Upload",
+    "uc_name": "Default",
+    "slug": "draft-expiry-upload/default"
+  },
+  "saveAndResumeComponent": {
+    "comp_name": "Save and Resume",
+    "uc_name": "Interactive Preview",
+    "slug": "save-and-resume/interactive-preview"
+  },
+  "eligibilityCheckWizardComponent": {
+    "comp_name": "Eligibility Check Landing",
+    "uc_name": "Default",
+    "slug": "eligibility-check-landing/default"
+  },
+  "eligibilityQuestionStepComponent": {
+    "comp_name": "Eligibility Question Step",
+    "uc_name": "Default",
+    "slug": "eligibility-question-step/default"
+  },
+  "eligibilitySuccessStepComponent": {
+    "comp_name": "Eligibility Success Step",
+    "uc_name": "Default",
+    "slug": "eligibility-success-step/default"
+  },
+  "eligibilityFailureStepComponent": {
+    "comp_name": "Eligibility Failure Step",
+    "uc_name": "Default",
+    "slug": "eligibility-failure-step/default"
+  },
+  "eligibilityWarningStepComponent": {
+    "comp_name": "Eligibility Warning Step",
+    "uc_name": "Default",
+    "slug": "eligibility-warning-step/default"
+  },
+  "eligibilityFinalQuestionStepComponent": {
+    "comp_name": "Eligibility Final Question Step",
+    "uc_name": "Default",
+    "slug": "eligibility-final-question-step/default"
+  },
+  "governmentFormWithErrorsComponent": {
+    "comp_name": "Government form with errors",
+    "uc_name": "Interactive Preview",
+    "slug": "government-form-with-errors/interactive-preview"
+  },
+  "governmentFormWithMultipleErrorsComponent": {
+    "comp_name": "Government form with multiple errors",
+    "uc_name": "Interactive Preview",
+    "slug": "government-form-with-multiple-errors/interactive-preview"
+  },
+  "governmentFormWithValidationComponent": {
+    "comp_name": "Government form with validation",
+    "uc_name": "Interactive Preview",
+    "slug": "government-form-with-validation/interactive-preview"
+  },
+  "journeyProgressIndicatorComponent": {
+    "comp_name": "Journey Progress Indicator",
+    "uc_name": "Default",
+    "slug": "journey-progress-indicator/default"
+  },
+  "resumeJourneyComponent": {
+    "comp_name": "Resume Journey",
+    "uc_name": "Default",
+    "slug": "resume-journey/default"
+  },
+  "validationErrorComponent": {
+    "comp_name": "Validation Error",
+    "uc_name": "Default",
+    "slug": "validation-error/default"
+  },
+  "autoSaveFormComponent": {
+    "comp_name": "Auto-save Form",
+    "uc_name": "Default",
+    "slug": "auto-save-form/default"
+  },
+  "continueApplicationComponent": {
+    "comp_name": "Continue Application",
+    "uc_name": "Default",
+    "slug": "continue-application/default"
+  },
+  "discardDraftDialogComponent": {
+    "comp_name": "Discard Draft Dialog",
+    "uc_name": "Default",
+    "slug": "discard-draft-dialog/default"
+  },
+  "draftExpiryFormComponent": {
+    "comp_name": "Draft Expiry Form",
+    "uc_name": "Default",
+    "slug": "draft-expiry-form/default"
+  },
+  "resumeApplicationMissingInfoComponent": {
+    "comp_name": "Resume Application Missing Info",
+    "uc_name": "Default",
+    "slug": "resume-application-missing-info/default"
+  },
+  "unsavedChangesDialogComponent": {
+    "comp_name": "Unsaved Changes Dialog",
+    "uc_name": "Default",
+    "slug": "unsaved-changes-dialog/default"
+  },
+  "applicationQueuedComponent": {
+    "comp_name": "Application Queued",
+    "uc_name": "Default",
+    "slug": "application-queued/default"
+  },
+  "applicationSubmittedComponent": {
+    "comp_name": "Application Submitted",
+    "uc_name": "Default",
+    "slug": "application-submitted/default"
+  },
+  "couldNotSubmitComponent": {
+    "comp_name": "Could Not Submit",
+    "uc_name": "Default",
+    "slug": "could-not-submit/default"
+  },
+  "citizenProfileComponent": {
+    "comp_name": "Citizen Profile",
+    "uc_name": "Default",
+    "slug": "citizen-profile/default"
+  },
+  "deleteAccountDialogComponent": {
+    "comp_name": "Delete Account Dialog",
+    "uc_name": "Default",
+    "slug": "delete-account-dialog/default"
+  },
+  "editProfileComponent": {
+    "comp_name": "Edit Profile",
+    "uc_name": "Default",
+    "slug": "edit-profile/default"
+  },
+  "bulkActionsComponent": {
+    "comp_name": "Bulk Actions",
+    "uc_name": "Default",
+    "slug": "bulk-actions/default"
+  },
+  "myApplicationsComponent": {
+    "comp_name": "My Applications",
+    "uc_name": "Default",
+    "slug": "my-applications/default"
+  },
+  "noApplicationsComponent": {
+    "comp_name": "No Applications",
+    "uc_name": "Default",
+    "slug": "no-applications/default"
+  },
+  "searchApplicationsComponent": {
+    "comp_name": "Search Applications",
+    "uc_name": "Default",
+    "slug": "search-applications/default"
+  },
+  "noPendingTasksComponent": {
+    "comp_name": "No Pending Tasks",
+    "uc_name": "Default",
+    "slug": "no-pending-tasks/default"
+  },
+  "pendingTasksComponent": {
+    "comp_name": "Pending Tasks",
+    "uc_name": "Default",
+    "slug": "pending-tasks/default"
+  },
+  "declarationBeforeSubmissionComponent": {
+    "comp_name": "Declaration Before Submission",
+    "uc_name": "Default",
+    "slug": "declaration-before-submission/default"
+  },
+  "declarationWithDigitalSignComponent": {
+    "comp_name": "Declaration with Digital Sign",
+    "uc_name": "Default",
+    "slug": "declaration-with-digital-sign/default"
+  },
+  "contactSupportComponent": {
+    "comp_name": "Contact Support",
+    "uc_name": "Default",
+    "slug": "contact-support/default"
+  },
+  "faqDetailComponent": {
+    "comp_name": "FAQ Detail",
+    "uc_name": "Default",
+    "slug": "faq-detail/default"
+  },
+  "fileComplaintComponent": {
+    "comp_name": "File a Complaint",
+    "uc_name": "Default",
+    "slug": "file-a-complaint/default"
+  },
+  "findServiceCentreComponent": {
+    "comp_name": "Find Service Centre",
+    "uc_name": "Default",
+    "slug": "find-service-centre/default"
+  },
+  "helpCentreComponent": {
+    "comp_name": "Help Centre",
+    "uc_name": "Default",
+    "slug": "help-centre/default"
+  },
+  "liveChatSupportComponent": {
+    "comp_name": "Live Chat Support",
+    "uc_name": "Default",
+    "slug": "live-chat-support/default"
+  },
+  "wasThisHelpfulComponent": {
+    "comp_name": "Was This Helpful Alert",
+    "uc_name": "Default",
+    "slug": "was-this-helpful-alert/default"
+  },
+  "inlineFeedbackErrorComponent": {
+    "comp_name": "Inline Feedback Error",
+    "uc_name": "Default",
+    "slug": "inline-feedback-error/default"
+  },
+  "inlineFeedbackGuidanceComponent": {
+    "comp_name": "Inline Feedback Guidance",
+    "uc_name": "Default",
+    "slug": "inline-feedback-guidance/default"
+  },
+  "inlineFeedbackHintComponent": {
+    "comp_name": "Inline Feedback Hint",
+    "uc_name": "Default",
+    "slug": "inline-feedback-hint/default"
+  },
+  "inlineFeedbackNoteComponent": {
+    "comp_name": "Inline Feedback Note",
+    "uc_name": "Default",
+    "slug": "inline-feedback-note/default"
+  },
+  "inlineFeedbackComponent": {
+    "comp_name": "Inline Feedback",
+    "uc_name": "Default",
+    "slug": "inline-feedback/default"
+  },
+  "inlineFeedbackVerificationComponent": {
+    "comp_name": "Inline Feedback Verification",
+    "uc_name": "Default",
+    "slug": "inline-feedback-verification/default"
+  },
+  "allScheduledLanguagesComponent": {
+    "comp_name": "All Scheduled Languages",
+    "uc_name": "Default",
+    "slug": "all-scheduled-languages/default"
+  },
+  "inlineLanguageToggleComponent": {
+    "comp_name": "Inline Language Toggle",
+    "uc_name": "Default",
+    "slug": "inline-language-toggle/default"
+  },
+  "languageSwitcherComponent": {
+    "comp_name": "Language Switcher",
+    "uc_name": "Default",
+    "slug": "language-switcher/default"
+  },
+  "translationUnavailableComponent": {
+    "comp_name": "Translation Unavailable",
+    "uc_name": "Default",
+    "slug": "translation-unavailable/default"
+  },
+  "feedbackRatingComponent": {
+    "comp_name": "Rate Your Experience",
+    "uc_name": "Default",
+    "slug": "rate-your-experience/default"
+  },
+  "rateExperienceComponent": {
+    "comp_name": "Rate Experience Card",
+    "uc_name": "Default",
+    "slug": "rate-experience-card/default"
+  },
+  "serviceCompletionComponent": {
+    "comp_name": "Service Completed",
+    "uc_name": "Default",
+    "slug": "service-completed/default"
+  },
+  "proactiveStatusBannerComponent": {
+    "comp_name": "Auto-dismiss Banner",
+    "uc_name": "Default",
+    "slug": "auto-dismiss-banner/default"
+  },
+  "proactiveStatusLiveComponent": {
+    "comp_name": "Live Status",
+    "uc_name": "Default",
+    "slug": "live-status/default"
+  },
+  "proactiveStatusReconnectingComponent": {
+    "comp_name": "Reconnecting State",
+    "uc_name": "Default",
+    "slug": "reconnecting-state/default"
+  },
+  "proactiveStatusManualRefreshComponent": {
+    "comp_name": "Manual Refresh Prompt",
+    "uc_name": "Default",
+    "slug": "manual-refresh-prompt/default"
+  },
+  "appointmentConfirmedComponent": {
+    "comp_name": "Appointment Confirmed",
+    "uc_name": "Default",
+    "slug": "appointment-confirmed/default"
+  },
+  "confirmAppointmentComponent": {
+    "comp_name": "Confirm Appointment",
+    "uc_name": "Default",
+    "slug": "confirm-appointment/default"
+  },
+  "confirmAppointmentV2Component": {
+    "comp_name": "Confirm Appointment V2",
+    "uc_name": "Default",
+    "slug": "confirm-appointment-v2/default"
+  },
+  "selectAdvocateComponent": {
+    "comp_name": "Select Advocate",
+    "uc_name": "Default",
+    "slug": "select-advocate/default"
+  },
+  "selectAppointmentTimeComponent": {
+    "comp_name": "Select Appointment Time",
+    "uc_name": "Default",
+    "slug": "select-appointment-time/default"
+  },
+  "categoryServiceListComponent": {
+    "comp_name": "Category Service List",
+    "uc_name": "Default",
+    "slug": "category-service-list/default"
+  },
+  "globalServiceDiscoveryComponent": {
+    "comp_name": "Global Service Discovery",
+    "uc_name": "Default",
+    "slug": "global-service-discovery/default"
+  },
+  "serviceDetailComponent": {
+    "comp_name": "Service Detail",
+    "uc_name": "Default",
+    "slug": "service-detail/default"
+  },
+  "noResultsComponent": {
+    "comp_name": "No Results",
+    "uc_name": "Default",
+    "slug": "no-results/default"
+  },
+  "searchAndBrowseComponent": {
+    "comp_name": "Search and Browse Services",
+    "uc_name": "Default",
+    "slug": "search-and-browse-services/default"
+  },
+  "searchResultsListComponent": {
+    "comp_name": "Search Results List",
+    "uc_name": "Default",
+    "slug": "search-results-list/default"
+  },
+  "searchWithResultsComponent": {
+    "comp_name": "Search with Results",
+    "uc_name": "Default",
+    "slug": "search-with-results/default"
+  }
+}
