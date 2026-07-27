@@ -136,7 +136,7 @@ class _JourneyProgressIndicatorScreenState extends State<JourneyProgressIndicato
                     ),
                     SizedBox(height: 24),
 
-                    Ux4gInputField(
+                    Ux4gPanInputField(
                       label: 'PAN number',
                       value: _panNumber,
                       onValueChange: (val) => setState(() => _panNumber = val),
@@ -313,7 +313,7 @@ class _JourneyProgressIndicatorCardScreenState extends State<JourneyProgressIndi
                           ),
                           SizedBox(height: 24),
 
-                          Ux4gInputField(
+                          Ux4gPanInputField(
                             label: 'PAN number',
                             value: _panNumber,
                             onValueChange: (val) => setState(() => _panNumber = val),
@@ -522,7 +522,7 @@ class _JourneyProgressIndicatorMockupState
                     ),
                     SizedBox(height: 24),
 
-                    Ux4gInputField(
+                    Ux4gPanInputField(
                       label: 'PAN number',
                       value: _panNumber,
                       onValueChange: (val) => setState(() => _panNumber = val),
@@ -777,7 +777,7 @@ class _JourneyProgressIndicatorCardMockupState
                           ),
                           SizedBox(height: 24),
 
-                          Ux4gInputField(
+                          Ux4gPanInputField(
                             label: 'PAN number',
                             value: _panNumber,
                             onValueChange: (val) =>
