@@ -50,7 +50,7 @@ final quickGuideComponent = WidgetbookComponent(
             label:
                 "This will add a line like this to your package's pubspec.yaml\n"
                 "(and run an implicit flutter pub get):",
-            code: 'dependencies:\n  ux4g_flutter_components: ^1.3.0',
+            code: 'dependencies:\n  ux4g_flutter_components: ^1.4.0',
           ),
         ],
         trailingSections: const [
@@ -1438,10 +1438,7 @@ final dimensionsShadowComponent = WidgetbookComponent(
                 ],
               ),
               const SizedBox(height: 48),
-              _SectionHeader(
-                'Shadow Tokens & Code Snippets',
-                'Ux4gShadow.*',
-              ),
+              _SectionHeader('Shadow Tokens & Code Snippets', 'Ux4gShadow.*'),
               const SizedBox(height: 20),
               const _ShadowCodeRow(
                 level: 0,
