@@ -201,11 +201,7 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 fileUploadComponent,
-                WidgetbookFolder(
-                  name: 'Input',
-                  isInitiallyExpanded: false,
-                  children: [inputFieldComponent],
-                ),
+                inputFieldComponent,
                 aadhaarInputFieldComponent,
                 panInputFieldComponent,
                 otpInputComponent,
