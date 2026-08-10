@@ -6,1002 +6,1002 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=/introduction/welcome</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=introduction/welcome</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=/quick-start-guide/installation</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=quick-start-guide/installation</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=token/colors/primary</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=token/colors/primary</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=token/typography/header</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=token/typography/header</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=token/dimensions/spacing/scale</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=token/dimensions/spacing/scale</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=token/shadow/scale</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=token/shadow/scale</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=token/dimensions/border-radius/scale</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=token/dimensions/border-radius/scale</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=token/dimensions/border-width/scale</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=token/dimensions/border-width/scale</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/accordion/introduction/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/accordion/introduction/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/accordion/accordiongroup/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/accordion/accordiongroup/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/app-header/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/app-header/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/avatar/introduction/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/avatar/introduction/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/avatar/avatargroup/image-group</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/avatar/avatargroup/image-group</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/avatar/profileavatar/badge-variants</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/avatar/profileavatar/badge-variants</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/avatar/statusavatar/all-statuses</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/avatar/statusavatar/all-statuses</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/badge/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/badge/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/biometric-verification/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/biometric-verification/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/buttons/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/buttons/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/cards/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/cards/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/carousel/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/carousel/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/checkbox/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/checkbox/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/chips/introduction/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/chips/introduction/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/chips/choicechip/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/chips/choicechip/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/chips/filterchip/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/chips/filterchip/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/chips/inputchip/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/chips/inputchip/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/chips/inputchipfield/interactive</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/chips/inputchipfield/interactive</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/chip-group/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/chip-group/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/date-picker/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/date-picker/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/divider/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/divider/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/draft-status/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/draft-status/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/dropdown/introduction/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/dropdown/introduction/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/dropdown/actiondropdown/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/dropdown/actiondropdown/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/dropdown/selectiondropdown/single-select</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/dropdown/selectiondropdown/single-select</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/empty-state/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/empty-state/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/feedback/introduction/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/feedback/introduction/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/feedback/feedbackformstar/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/feedback/feedbackformstar/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/feedback/feedbackformcsat/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/feedback/feedbackformcsat/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/feedback/feedbackformnps/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/feedback/feedbackformnps/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/file-upload/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/file-upload/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/input/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/input/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/input-aadhaar/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/input-aadhaar/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/input-pan-card/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/input-pan-card/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/input-otp/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/input-otp/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/journey-timeline/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/journey-timeline/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/link/introduction/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/link/introduction/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/link/default/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/link/default/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/link/variants/variants</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/link/variants/variants</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/modal/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/modal/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/pagination-dots-variant/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/pagination-dots-variant/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/popover/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/popover/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/introduction/overview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/progress-indicator/introduction/overview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/standard/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/progress-indicator/circular-progress/standard/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/animatedcircularprogress/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/progress-indicator/circular-progress/animatedcircularprogress/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/halfcircleprogress/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/progress-indicator/circular-progress/halfcircleprogress/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/animatedhalfcircleprogress/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/progress-indicator/circular-progress/animatedhalfcircleprogress/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/progress-sla-indicator/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/progress-sla-indicator/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/radio/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/radio/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/result-list/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/result-list/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/slider/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/slider/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/spinner-loader/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/spinner-loader/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/status-pipeline/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/status-pipeline/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/stepper/introduction/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/stepper/introduction/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/stepper/compactstepper/linear</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/stepper/compactstepper/linear</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/tags/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/tags/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/textarea/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/textarea/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/timepicker/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/timepicker/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/toasts/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/toasts/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/toggle/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/toggle/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/time-slot/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/time-slot/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=components/tooltip/introduction</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=components/tooltip/introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/sign-in-to-your-account/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signin/sign-in-to-your-account/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/sign-in-account-with-mobile-no/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signin/sign-in-account-with-mobile-no/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/enter-otp/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signin/enter-otp/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/sign-in-with-aadhaar/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signin/sign-in-with-aadhaar/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/signed-in-success/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signin/signed-in-success/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-your-mobile-number/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/otp-verification/verify-your-mobile-number/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-voice-fallback/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-voice-fallback/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-attempt-warning/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-attempt-warning/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-last-attempt-warning/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-last-attempt-warning/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-�-account-locked/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/otp-verification/verify-mobile-�-account-locked/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/otp-verified-�-success/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/otp-verification/otp-verified-�-success/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-incorrect-entry/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-incorrect-entry/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-attempt-warning/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-attempt-warning/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-last-attempt-warning/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-last-attempt-warning/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-account-locked/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-—-account-locked/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-retry-—-unlocked/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-retry-—-unlocked/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-step-up-—-suspicious-activity/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-step-up-—-suspicious-activity/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/verify-with-aadhaar-—-choose-method/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/verify-with-aadhaar-—-choose-method/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-otp-—-enter-code/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-otp-—-enter-code/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-face-auth-—-camera-permission/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-face-auth-—-camera-permission/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verified-—-success/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verified-—-success/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verification-failed/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verification-failed/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-account-locked/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-account-locked/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/operator-assisted-authentication/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/aadhaar-authentication-gate/operator-assisted-authentication/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/create-your-account/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signup/create-your-account/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/verify-your-mobile/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signup/verify-your-mobile/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/complete-your-profile/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signup/complete-your-profile/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/password-setup/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signup/password-setup/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/account-created/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/signup/account-created/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/reset-password/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/forgot-password-and-account-recovery/reset-password/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/enter-otp/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/forgot-password-and-account-recovery/enter-otp/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/create-new-password/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/forgot-password-and-account-recovery/create-new-password/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/password-reset-successfully/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/forgot-password-and-account-recovery/password-reset-successfully/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/account-recovery/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/identity-and-access/forgot-password-and-account-recovery/account-recovery/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/reminder-alerts/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/reminder-alerts/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/notification-channels/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification-preferences/notification-channels/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/update-frequency/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification-preferences/update-frequency/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/per-service/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification-preferences/per-service/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/locked-notifications/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification-preferences/locked-notifications/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/whatsapp-consent/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification-preferences/whatsapp-consent/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/manage-all/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/notification-preferences/manage-all/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/auto-dismiss-banner/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/proactive-status-update/auto-dismiss-banner/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/live-status/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/proactive-status-update/live-status/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/reconnecting-state/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/proactive-status-update/reconnecting-state/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/manual-refresh-prompt/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/notification/proactive-status-update/manual-refresh-prompt/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/payment-and-confirmation/payment/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/choose-payment-method/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/payment-and-confirmation/choose-payment-method/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment-processing/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/payment-and-confirmation/payment-processing/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment-successful/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/payment-and-confirmation/payment-successful/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment-failed/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/payment-and-confirmation/payment-failed/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/fee-waived/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/payment-and-confirmation/fee-waived/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/status-and-tracking/application-status-tracker/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/status-and-tracking/application-status-tracker/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/status-and-tracking/grievance-status-tracker/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/status-and-tracking/grievance-status-tracker/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/consent-capture/consent-capture/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/consent-capture/consent-capture/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/consent-capture/consent-capture-consent-not-given/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/consent-capture/consent-capture-consent-not-given/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/consent-capture/consent-management/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/consent-capture/consent-management/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/data-sharing-consent/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/data-sharing-consent/data-sharing-consent/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/manage-data-sharing-consents/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/data-sharing-consent/manage-data-sharing-consents/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/withdraw-consent-dialog/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/data-sharing-consent/withdraw-consent-dialog/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/consent-history/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/data-sharing-consent/consent-history/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-before-submission/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-before-submission/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-with-digital-sign/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-with-digital-sign/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/save-and-resume/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/save-and-resume/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/continue-application/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/continue-application/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/resume-application-missing-info/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/resume-application-missing-info/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/auto-save-form/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/auto-save-form/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/draft-expiry-form/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/draft-expiry-form/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/unsaved-changes-dialog/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/unsaved-changes-dialog/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/discard-draft-dialog/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/save-and-resume/discard-draft-dialog/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/submission-acknowledgement/application-submitted/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/submission-acknowledgement/application-submitted/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/submission-acknowledgement/application-queued/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/submission-acknowledgement/application-queued/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/submission-acknowledgement/could-not-submit/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/submission-acknowledgement/could-not-submit/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-scan-and-upload/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/document-scan-and-upload/document-scan-and-upload/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-progress/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-progress/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-review/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-review/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-success/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-success/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-check-landing/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-check-landing/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-question-step/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-question-step/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-final-question-step/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-final-question-step/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-success-step/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-success-step/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-failure-step/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-failure-step/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-warning-step/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-warning-step/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/journey-progress-indicator/journey-progress-indicator/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/journey-progress-indicator/journey-progress-indicator/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/journey-progress-indicator/resume-journey/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/journey-progress-indicator/resume-journey/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/journey-progress-indicator/validation-error/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/journey-progress-indicator/validation-error/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-validation/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-validation/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-errors/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-errors/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-multiple-errors/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-multiple-errors/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/application-sent-success/interactive-preview</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/application-and-submission/government-form-with-validation/application-sent-success/interactive-preview</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/my-applications/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/my-applications/my-applications/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/no-applications/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/my-applications/no-applications/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/search-applications/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/my-applications/search-applications/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/bulk-actions/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/my-applications/bulk-actions/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/pending-tasks/pending-tasks/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/pending-tasks/pending-tasks/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/pending-tasks/no-pending-tasks/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/pending-tasks/no-pending-tasks/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/citizen-profile/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/citizen-profile/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/edit-profile/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/edit-profile/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/delete-account-dialog/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/delete-account-dialog/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/search-and-browse-services/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/search-and-browse/search-and-browse-services/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/search-with-results/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/search-and-browse/search-with-results/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/search-results-list/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/search-and-browse/search-results-list/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/no-results/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/search-and-browse/no-results/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/global-service-discovery/global-service-discovery/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/global-service-discovery/global-service-discovery/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/global-service-discovery/category-service-list/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/global-service-discovery/category-service-list/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/global-service-discovery/service-detail/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/global-service-discovery/service-detail/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/select-advocate/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/consultation-slot-booking/select-advocate/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/select-appointment-time/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/consultation-slot-booking/select-appointment-time/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/confirm-appointment-v2/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/consultation-slot-booking/confirm-appointment-v2/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/appointment-confirmed/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/search-and-discovery/consultation-slot-booking/appointment-confirmed/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-error/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-error/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-hint/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-hint/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-guidance/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-guidance/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-verification/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-verification/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-note/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-note/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/service-completion-and-feedback/service-completed/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/service-completion-and-feedback/service-completed/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-your-experience/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-your-experience/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-experience-card/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-experience-card/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/help-centre/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/help-centre/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/faq-detail/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/faq-detail/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/contact-support/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/contact-support/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/live-chat-support/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/live-chat-support/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/file-a-complaint/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/file-a-complaint/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/find-service-centre/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/find-service-centre/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/was-this-helpful-alert/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/contact-and-support/was-this-helpful-alert/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/language-switcher/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/language-switcher/language-switcher/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/inline-language-toggle/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/language-switcher/inline-language-toggle/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/translation-unavailable/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/language-switcher/translation-unavailable/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/all-scheduled-languages/default</loc>
+    <loc>https://doc.ux4g.gov.in/flutter/#/?path=patterns/feedback-and-communication/language-switcher/all-scheduled-languages/default</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
