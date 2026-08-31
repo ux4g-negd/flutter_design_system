@@ -4,18 +4,18 @@
 # --- Site Information ---
 Site-Name: UX4G Flutter Design System
 Description: Comprehensive Widgetbook documentation detailing all components, tokens, and patterns for the UX4G Flutter Design System.
-Base-URL: https://doc.ux4g.gov.in/flutter/
+Base-URL: https://flutter.ux4g.gov.in/
 
 # --- Structured AI Documentation ---
 # We provide machine-readable documentation specifically optimized for LLMs:
-LLM-Summary: https://doc.ux4g.gov.in/flutter/llms.txt
-LLM-Full-Reference: https://doc.ux4g.gov.in/flutter/llms-full.txt
-Component-Catalog: https://doc.ux4g.gov.in/flutter/catalog.json
-Sitemap: https://doc.ux4g.gov.in/flutter/sitemap.xml
+LLM-Summary: https://flutter.ux4g.gov.in/llms.txt
+LLM-Full-Reference: https://flutter.ux4g.gov.in/llms-full.txt
+Component-Catalog: https://flutter.ux4g.gov.in/catalog.json
+Sitemap: https://flutter.ux4g.gov.in/sitemap.xml
 
 # --- Crawler Permissions ---
 User-agent: *
-Allow: /flutter/
+Allow: /
 Disallow: /private/
 Disallow: /api/
 

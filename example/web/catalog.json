@@ -2,18 +2,18 @@
   "name": "UX4G Flutter Design System Widgetbook",
   "description": "Comprehensive Widgetbook catalog detailing all components, tokens, and patterns for the UX4G Flutter Design System.",
   "version": "1.0.0",
-  "base_url": "https://doc.ux4g.gov.in/flutter/",
+  "base_url": "https://flutter.ux4g.gov.in/",
   "categories": [
     {
       "name": "Overview",
       "items": [
         {
           "name": "Introduction",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=/introduction/welcome"
+          "url": "https://flutter.ux4g.gov.in/?path=/introduction/welcome"
         },
         {
           "name": "Quick Start Guide",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=/quick-start-guide/installation"
+          "url": "https://flutter.ux4g.gov.in/?path=/quick-start-guide/installation"
         }
       ]
     },
@@ -22,27 +22,27 @@
       "items": [
         {
           "name": "Colors",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=token/colors/primary"
+          "url": "https://flutter.ux4g.gov.in/?path=token/colors/primary"
         },
         {
           "name": "Typography",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=token/typography/header"
+          "url": "https://flutter.ux4g.gov.in/?path=token/typography/header"
         },
         {
           "name": "Spacing",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=token/dimensions/spacing/scale"
+          "url": "https://flutter.ux4g.gov.in/?path=token/dimensions/spacing/scale"
         },
         {
           "name": "Shadow",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=token/shadow/scale"
+          "url": "https://flutter.ux4g.gov.in/?path=token/shadow/scale"
         },
         {
           "name": "Border Radius",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=token/dimensions/border-radius/scale"
+          "url": "https://flutter.ux4g.gov.in/?path=token/dimensions/border-radius/scale"
         },
         {
           "name": "Border Width",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=token/dimensions/border-width/scale"
+          "url": "https://flutter.ux4g.gov.in/?path=token/dimensions/border-width/scale"
         }
       ]
     },
@@ -51,251 +51,251 @@
       "items": [
         {
           "name": "Accordion",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/accordion/introduction/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/accordion/introduction/introduction"
         },
         {
           "name": "AccordionGroup",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/accordion/accordiongroup/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/accordion/accordiongroup/default"
         },
         {
           "name": "AppHeader",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/app-header/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/app-header/introduction"
         },
         {
           "name": "Avatar",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/avatar/introduction/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/avatar/introduction/introduction"
         },
         {
           "name": "AvatarGroup",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/avatar/avatargroup/image-group"
+          "url": "https://flutter.ux4g.gov.in/?path=components/avatar/avatargroup/image-group"
         },
         {
           "name": "ProfileAvatar",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/avatar/profileavatar/badge-variants"
+          "url": "https://flutter.ux4g.gov.in/?path=components/avatar/profileavatar/badge-variants"
         },
         {
           "name": "StatusAvatar",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/avatar/statusavatar/all-statuses"
+          "url": "https://flutter.ux4g.gov.in/?path=components/avatar/statusavatar/all-statuses"
         },
         {
           "name": "Badge",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/badge/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/badge/introduction"
         },
         {
           "name": "Biometric",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/biometric-verification/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/biometric-verification/introduction"
         },
         {
           "name": "Button",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/buttons/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/buttons/introduction"
         },
         {
           "name": "Card",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/cards/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/cards/introduction"
         },
         {
           "name": "Carousel",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/carousel/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/carousel/introduction"
         },
         {
           "name": "Checkbox",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/checkbox/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/checkbox/introduction"
         },
         {
           "name": "Chip",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/chips/introduction/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/chips/introduction/introduction"
         },
         {
           "name": "ChoiceChip",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/chips/choicechip/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/chips/choicechip/default"
         },
         {
           "name": "FilterChip",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/chips/filterchip/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/chips/filterchip/default"
         },
         {
           "name": "InputChip",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/chips/inputchip/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/chips/inputchip/default"
         },
         {
           "name": "InputChipField",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/chips/inputchipfield/interactive"
+          "url": "https://flutter.ux4g.gov.in/?path=components/chips/inputchipfield/interactive"
         },
         {
           "name": "ChipGroup",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/chip-group/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/chip-group/introduction"
         },
         {
           "name": "DatePicker",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/date-picker/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/date-picker/introduction"
         },
         {
           "name": "Divider",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/divider/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/divider/introduction"
         },
         {
           "name": "StatusBanner",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/draft-status/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/draft-status/introduction"
         },
         {
           "name": "Dropdown",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/dropdown/introduction/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/dropdown/introduction/default"
         },
         {
           "name": "ActionDropdown",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/dropdown/actiondropdown/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/dropdown/actiondropdown/default"
         },
         {
           "name": "SelectionDropdown",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/dropdown/selectiondropdown/single-select"
+          "url": "https://flutter.ux4g.gov.in/?path=components/dropdown/selectiondropdown/single-select"
         },
         {
           "name": "EmptyState",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/empty-state/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/empty-state/introduction"
         },
         {
           "name": "Feedback",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/feedback/introduction/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/feedback/introduction/default"
         },
         {
           "name": "FeedbackFormStar",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/feedback/feedbackformstar/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/feedback/feedbackformstar/default"
         },
         {
           "name": "FeedbackFormCsat",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/feedback/feedbackformcsat/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/feedback/feedbackformcsat/default"
         },
         {
           "name": "FeedbackFormNps",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/feedback/feedbackformnps/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/feedback/feedbackformnps/default"
         },
         {
           "name": "FileUpload",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/file-upload/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/file-upload/introduction"
         },
         {
           "name": "InputField",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/input/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/input/introduction"
         },
         {
           "name": "AadhaarInputField",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/input-aadhaar/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/input-aadhaar/introduction"
         },
         {
           "name": "PanInputField",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/input-pan-card/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/input-pan-card/introduction"
         },
         {
           "name": "OtpInput",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/input-otp/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/input-otp/introduction"
         },
         {
           "name": "JourneyTimeline",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/journey-timeline/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/journey-timeline/introduction"
         },
         {
           "name": "Link",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/link/introduction/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/link/introduction/introduction"
         },
         {
           "name": "LinkDefault",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/link/default/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/link/default/default"
         },
         {
           "name": "LinkVariants",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/link/variants/variants"
+          "url": "https://flutter.ux4g.gov.in/?path=components/link/variants/variants"
         },
         {
           "name": "Modal",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/modal/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/modal/introduction"
         },
         {
           "name": "PaginationDotted",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/pagination-dots-variant/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/pagination-dots-variant/introduction"
         },
         {
           "name": "Popover",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/popover/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/popover/introduction"
         },
         {
           "name": "Progress",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/introduction/overview"
+          "url": "https://flutter.ux4g.gov.in/?path=components/progress-indicator/introduction/overview"
         },
         {
           "name": "CircularProgress",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/standard/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/progress-indicator/circular-progress/standard/default"
         },
         {
           "name": "AnimatedCircularProgress",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/animatedcircularprogress/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/progress-indicator/circular-progress/animatedcircularprogress/default"
         },
         {
           "name": "HalfCircleProgress",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/halfcircleprogress/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/progress-indicator/circular-progress/halfcircleprogress/default"
         },
         {
           "name": "AnimatedHalfCircleProgress",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/progress-indicator/circular-progress/animatedhalfcircleprogress/default"
+          "url": "https://flutter.ux4g.gov.in/?path=components/progress-indicator/circular-progress/animatedhalfcircleprogress/default"
         },
         {
           "name": "ProgressSlaIndicator",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/progress-sla-indicator/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/progress-sla-indicator/introduction"
         },
         {
           "name": "RadioButton",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/radio/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/radio/introduction"
         },
         {
           "name": "ResultList",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/result-list/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/result-list/introduction"
         },
         {
           "name": "Slider",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/slider/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/slider/introduction"
         },
         {
           "name": "Spinner",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/spinner-loader/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/spinner-loader/introduction"
         },
         {
           "name": "StatusPipeline",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/status-pipeline/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/status-pipeline/introduction"
         },
         {
           "name": "Stepper",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/stepper/introduction/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/stepper/introduction/introduction"
         },
         {
           "name": "CompactStepper",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/stepper/compactstepper/linear"
+          "url": "https://flutter.ux4g.gov.in/?path=components/stepper/compactstepper/linear"
         },
         {
           "name": "Tag",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/tags/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/tags/introduction"
         },
         {
           "name": "TextArea",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/textarea/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/textarea/introduction"
         },
         {
           "name": "TimePicker",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/timepicker/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/timepicker/introduction"
         },
         {
           "name": "Toast",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/toasts/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/toasts/introduction"
         },
         {
           "name": "Toggle",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/toggle/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/toggle/introduction"
         },
         {
           "name": "TimeSlot",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/time-slot/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/time-slot/introduction"
         },
         {
           "name": "Tooltip",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=components/tooltip/introduction"
+          "url": "https://flutter.ux4g.gov.in/?path=components/tooltip/introduction"
         }
       ]
     },
@@ -304,523 +304,523 @@
       "items": [
         {
           "name": "Sign in to your account",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/sign-in-to-your-account/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signin/sign-in-to-your-account/default"
         },
         {
           "name": "Sign in account with Mobile No",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/sign-in-account-with-mobile-no/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signin/sign-in-account-with-mobile-no/default"
         },
         {
           "name": "Enter OTP",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/enter-otp/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signin/enter-otp/default"
         },
         {
           "name": "Sign in with Aadhaar",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/sign-in-with-aadhaar/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signin/sign-in-with-aadhaar/default"
         },
         {
           "name": "Signed in success",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signin/signed-in-success/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signin/signed-in-success/default"
         },
         {
           "name": "Verify your mobile number",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-your-mobile-number/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/otp-verification/verify-your-mobile-number/default"
         },
         {
           "name": "Verify mobile with voice fallback",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-voice-fallback/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-voice-fallback/default"
         },
         {
           "name": "Verify mobile with attempt warning",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-attempt-warning/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-attempt-warning/default"
         },
         {
           "name": "Verify mobile with last-attempt warning",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-last-attempt-warning/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/otp-verification/verify-mobile-with-last-attempt-warning/default"
         },
         {
           "name": "Verify mobile \ufffd account locked",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/verify-mobile-\ufffd-account-locked/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/otp-verification/verify-mobile-\ufffd-account-locked/default"
         },
         {
           "name": "OTP verified \ufffd success",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/otp-verification/otp-verified-\ufffd-success/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/otp-verification/otp-verified-\ufffd-success/default"
         },
         {
           "name": "OTP error \u2014 incorrect entry",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-incorrect-entry/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-incorrect-entry/default"
         },
         {
           "name": "OTP error \u2014 attempt warning",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-attempt-warning/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-attempt-warning/default"
         },
         {
           "name": "OTP error \u2014 last-attempt warning",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-last-attempt-warning/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-last-attempt-warning/default"
         },
         {
           "name": "OTP error \u2014 account locked",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-account-locked/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-error-\u2014-account-locked/default"
         },
         {
           "name": "OTP retry \u2014 unlocked",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-retry-\u2014-unlocked/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-retry-\u2014-unlocked/default"
         },
         {
           "name": "OTP step-up \u2014 suspicious activity",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-step-up-\u2014-suspicious-activity/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/auth-errors-and-lockout/otp-step-up-\u2014-suspicious-activity/default"
         },
         {
           "name": "Verify with Aadhaar \u2014 choose method",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/verify-with-aadhaar-\u2014-choose-method/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/verify-with-aadhaar-\u2014-choose-method/default"
         },
         {
           "name": "Aadhaar OTP \u2014 enter code",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-otp-\u2014-enter-code/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-otp-\u2014-enter-code/default"
         },
         {
           "name": "Aadhaar Face Auth \u2014 camera permission",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-face-auth-\u2014-camera-permission/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-face-auth-\u2014-camera-permission/default"
         },
         {
           "name": "Aadhaar verified \u2014 success",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verified-\u2014-success/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verified-\u2014-success/default"
         },
         {
           "name": "Aadhaar verification failed",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verification-failed/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-verification-failed/default"
         },
         {
           "name": "Aadhaar account locked",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-account-locked/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/aadhaar-account-locked/default"
         },
         {
           "name": "Operator-assisted authentication",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/aadhaar-authentication-gate/operator-assisted-authentication/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/aadhaar-authentication-gate/operator-assisted-authentication/default"
         },
         {
           "name": "Create your account",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/create-your-account/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signup/create-your-account/default"
         },
         {
           "name": "Verify your mobile",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/verify-your-mobile/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signup/verify-your-mobile/default"
         },
         {
           "name": "Complete your profile",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/complete-your-profile/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signup/complete-your-profile/default"
         },
         {
           "name": "Password setup",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/password-setup/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signup/password-setup/default"
         },
         {
           "name": "Account Created",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/signup/account-created/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/signup/account-created/default"
         },
         {
           "name": "Reset Password",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/reset-password/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/forgot-password-and-account-recovery/reset-password/default"
         },
         {
           "name": "Enter OTP",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/enter-otp/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/forgot-password-and-account-recovery/enter-otp/default"
         },
         {
           "name": "Create new password",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/create-new-password/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/forgot-password-and-account-recovery/create-new-password/default"
         },
         {
           "name": "Password reset successfully",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/password-reset-successfully/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/forgot-password-and-account-recovery/password-reset-successfully/default"
         },
         {
           "name": "Account recovery",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/identity-and-access/forgot-password-and-account-recovery/account-recovery/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/identity-and-access/forgot-password-and-account-recovery/account-recovery/default"
         },
         {
           "name": "Notification",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification/default"
         },
         {
           "name": "Reminder Alerts",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/reminder-alerts/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/reminder-alerts/default"
         },
         {
           "name": "Notification Channels",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/notification-channels/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification-preferences/notification-channels/default"
         },
         {
           "name": "Update Frequency",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/update-frequency/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification-preferences/update-frequency/default"
         },
         {
           "name": "Per Service",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/per-service/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification-preferences/per-service/default"
         },
         {
           "name": "Locked Notifications",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/locked-notifications/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification-preferences/locked-notifications/default"
         },
         {
           "name": "WhatsApp Consent",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/whatsapp-consent/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification-preferences/whatsapp-consent/default"
         },
         {
           "name": "Manage All",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/notification-preferences/manage-all/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/notification-preferences/manage-all/default"
         },
         {
           "name": "Auto-dismiss Banner",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/auto-dismiss-banner/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/proactive-status-update/auto-dismiss-banner/default"
         },
         {
           "name": "Live Status",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/live-status/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/proactive-status-update/live-status/default"
         },
         {
           "name": "Reconnecting State",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/reconnecting-state/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/proactive-status-update/reconnecting-state/default"
         },
         {
           "name": "Manual Refresh Prompt",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/notification/proactive-status-update/manual-refresh-prompt/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/notification/proactive-status-update/manual-refresh-prompt/default"
         },
         {
           "name": "Payment",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/payment-and-confirmation/payment/default"
         },
         {
           "name": "Choose Payment Method",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/choose-payment-method/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/payment-and-confirmation/choose-payment-method/default"
         },
         {
           "name": "Payment Processing",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment-processing/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/payment-and-confirmation/payment-processing/default"
         },
         {
           "name": "Payment Successful",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment-successful/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/payment-and-confirmation/payment-successful/default"
         },
         {
           "name": "Payment Failed",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/payment-failed/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/payment-and-confirmation/payment-failed/default"
         },
         {
           "name": "Fee Waived",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/payment-and-confirmation/fee-waived/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/payment-and-confirmation/fee-waived/default"
         },
         {
           "name": "Application Status Tracker",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/status-and-tracking/application-status-tracker/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/status-and-tracking/application-status-tracker/default"
         },
         {
           "name": "Grievance Status Tracker",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/status-and-tracking/grievance-status-tracker/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/status-and-tracking/grievance-status-tracker/default"
         },
         {
           "name": "Consent Capture",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/consent-capture/consent-capture/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/consent-capture/consent-capture/default"
         },
         {
           "name": "Consent Capture (Consent Not Given)",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/consent-capture/consent-capture-consent-not-given/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/consent-capture/consent-capture-consent-not-given/default"
         },
         {
           "name": "Consent Management",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/consent-capture/consent-management/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/consent-capture/consent-management/default"
         },
         {
           "name": "Data Sharing Consent",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/data-sharing-consent/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/data-sharing-consent/data-sharing-consent/default"
         },
         {
           "name": "Manage Data Sharing Consents",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/manage-data-sharing-consents/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/data-sharing-consent/manage-data-sharing-consents/default"
         },
         {
           "name": "Withdraw Consent Dialog",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/withdraw-consent-dialog/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/data-sharing-consent/withdraw-consent-dialog/default"
         },
         {
           "name": "Consent History",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/data-sharing-consent/consent-history/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/data-sharing-consent/consent-history/default"
         },
         {
           "name": "Declaration Before Submission",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-before-submission/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-before-submission/default"
         },
         {
           "name": "Declaration with Digital Sign",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-with-digital-sign/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/consent-and-declaration/declaration-before-submission/declaration-with-digital-sign/default"
         },
         {
           "name": "Save and Resume",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/save-and-resume/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/save-and-resume/interactive-preview"
         },
         {
           "name": "Continue Application",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/continue-application/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/continue-application/default"
         },
         {
           "name": "Resume Application Missing Info",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/resume-application-missing-info/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/resume-application-missing-info/default"
         },
         {
           "name": "Auto-save Form",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/auto-save-form/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/auto-save-form/default"
         },
         {
           "name": "Draft Expiry Form",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/draft-expiry-form/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/draft-expiry-form/default"
         },
         {
           "name": "Unsaved Changes Dialog",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/unsaved-changes-dialog/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/unsaved-changes-dialog/default"
         },
         {
           "name": "Discard Draft Dialog",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/save-and-resume/discard-draft-dialog/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/save-and-resume/discard-draft-dialog/default"
         },
         {
           "name": "Application Submitted",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/submission-acknowledgement/application-submitted/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/submission-acknowledgement/application-submitted/default"
         },
         {
           "name": "Application Queued",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/submission-acknowledgement/application-queued/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/submission-acknowledgement/application-queued/default"
         },
         {
           "name": "Could Not Submit",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/submission-acknowledgement/could-not-submit/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/submission-acknowledgement/could-not-submit/default"
         },
         {
           "name": "Document scan and upload",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-scan-and-upload/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/document-scan-and-upload/document-scan-and-upload/interactive-preview"
         },
         {
           "name": "Document upload with progress",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-progress/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-progress/interactive-preview"
         },
         {
           "name": "Document upload with review",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-review/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-with-review/interactive-preview"
         },
         {
           "name": "Document upload success",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-success/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/document-scan-and-upload/document-upload-success/interactive-preview"
         },
         {
           "name": "Eligibility Check Landing",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-check-landing/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-check-landing/default"
         },
         {
           "name": "Eligibility Question Step",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-question-step/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-question-step/default"
         },
         {
           "name": "Eligibility Final Question Step",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-final-question-step/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-final-question-step/default"
         },
         {
           "name": "Eligibility Success Step",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-success-step/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-success-step/default"
         },
         {
           "name": "Eligibility Failure Step",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-failure-step/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-failure-step/default"
         },
         {
           "name": "Eligibility Warning Step",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-warning-step/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/eligibility-check-wizard/eligibility-warning-step/default"
         },
         {
           "name": "Journey Progress Indicator",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/journey-progress-indicator/journey-progress-indicator/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/journey-progress-indicator/journey-progress-indicator/default"
         },
         {
           "name": "Resume Journey",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/journey-progress-indicator/resume-journey/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/journey-progress-indicator/resume-journey/default"
         },
         {
           "name": "Validation Error",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/journey-progress-indicator/validation-error/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/journey-progress-indicator/validation-error/default"
         },
         {
           "name": "Government form with validation",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-validation/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-validation/interactive-preview"
         },
         {
           "name": "Government form with errors",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-errors/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-errors/interactive-preview"
         },
         {
           "name": "Government form with multiple errors",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-multiple-errors/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/government-form-with-validation/government-form-with-multiple-errors/interactive-preview"
         },
         {
           "name": "Application sent success",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/application-and-submission/government-form-with-validation/application-sent-success/interactive-preview"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/application-and-submission/government-form-with-validation/application-sent-success/interactive-preview"
         },
         {
           "name": "My Applications",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/my-applications/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/my-applications/my-applications/default"
         },
         {
           "name": "No Applications",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/no-applications/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/my-applications/no-applications/default"
         },
         {
           "name": "Search Applications",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/search-applications/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/my-applications/search-applications/default"
         },
         {
           "name": "Bulk Actions",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/my-applications/bulk-actions/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/my-applications/bulk-actions/default"
         },
         {
           "name": "Pending Tasks",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/pending-tasks/pending-tasks/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/pending-tasks/pending-tasks/default"
         },
         {
           "name": "No Pending Tasks",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/pending-tasks/no-pending-tasks/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/pending-tasks/no-pending-tasks/default"
         },
         {
           "name": "Citizen Profile",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/citizen-profile/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/citizen-profile/default"
         },
         {
           "name": "Edit Profile",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/edit-profile/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/edit-profile/default"
         },
         {
           "name": "Delete Account Dialog",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/delete-account-dialog/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/dashboard-and-my-application/citizen-profile-and-preferences/delete-account-dialog/default"
         },
         {
           "name": "Search and Browse Services",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/search-and-browse-services/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/search-and-browse/search-and-browse-services/default"
         },
         {
           "name": "Search with Results",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/search-with-results/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/search-and-browse/search-with-results/default"
         },
         {
           "name": "Search Results List",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/search-results-list/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/search-and-browse/search-results-list/default"
         },
         {
           "name": "No Results",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/search-and-browse/no-results/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/search-and-browse/no-results/default"
         },
         {
           "name": "Global Service Discovery",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/global-service-discovery/global-service-discovery/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/global-service-discovery/global-service-discovery/default"
         },
         {
           "name": "Category Service List",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/global-service-discovery/category-service-list/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/global-service-discovery/category-service-list/default"
         },
         {
           "name": "Service Detail",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/global-service-discovery/service-detail/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/global-service-discovery/service-detail/default"
         },
         {
           "name": "Select Advocate",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/select-advocate/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/consultation-slot-booking/select-advocate/default"
         },
         {
           "name": "Select Appointment Time",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/select-appointment-time/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/consultation-slot-booking/select-appointment-time/default"
         },
         {
           "name": "Confirm Appointment V2",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/confirm-appointment-v2/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/consultation-slot-booking/confirm-appointment-v2/default"
         },
         {
           "name": "Appointment Confirmed",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/search-and-discovery/consultation-slot-booking/appointment-confirmed/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/search-and-discovery/consultation-slot-booking/appointment-confirmed/default"
         },
         {
           "name": "Inline Feedback",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback/default"
         },
         {
           "name": "Inline Feedback Error",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-error/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-error/default"
         },
         {
           "name": "Inline Feedback Hint",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-hint/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-hint/default"
         },
         {
           "name": "Inline Feedback Guidance",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-guidance/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-guidance/default"
         },
         {
           "name": "Inline Feedback Verification",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-verification/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-verification/default"
         },
         {
           "name": "Inline Feedback Note",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-note/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/inline-feedback-and-status-communication/inline-feedback-note/default"
         },
         {
           "name": "Service Completed",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/service-completion-and-feedback/service-completed/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/service-completion-and-feedback/service-completed/default"
         },
         {
           "name": "Rate Your Experience",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-your-experience/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-your-experience/default"
         },
         {
           "name": "Rate Experience Card",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-experience-card/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/service-completion-and-feedback/rate-experience-card/default"
         },
         {
           "name": "Help Centre",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/help-centre/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/help-centre/default"
         },
         {
           "name": "FAQ Detail",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/faq-detail/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/faq-detail/default"
         },
         {
           "name": "Contact Support",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/contact-support/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/contact-support/default"
         },
         {
           "name": "Live Chat Support",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/live-chat-support/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/live-chat-support/default"
         },
         {
           "name": "File a Complaint",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/file-a-complaint/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/file-a-complaint/default"
         },
         {
           "name": "Find Service Centre",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/find-service-centre/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/find-service-centre/default"
         },
         {
           "name": "Was This Helpful Alert",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/contact-and-support/was-this-helpful-alert/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/contact-and-support/was-this-helpful-alert/default"
         },
         {
           "name": "Language Switcher",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/language-switcher/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/language-switcher/language-switcher/default"
         },
         {
           "name": "Inline Language Toggle",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/inline-language-toggle/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/language-switcher/inline-language-toggle/default"
         },
         {
           "name": "Translation Unavailable",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/translation-unavailable/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/language-switcher/translation-unavailable/default"
         },
         {
           "name": "All Scheduled Languages",
-          "url": "https://doc.ux4g.gov.in/flutter/?path=patterns/feedback-and-communication/language-switcher/all-scheduled-languages/default"
+          "url": "https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/language-switcher/all-scheduled-languages/default"
         }
       ]
     }
