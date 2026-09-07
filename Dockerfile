@@ -6,8 +6,9 @@ COPY . .
 
 WORKDIR /app/example
 RUN flutter clean && flutter pub get
+ARG BASE_HREF=/
 ARG CACHEBUST=1
-RUN flutter build web -t lib/widgetbook.dart --base-href=/ --no-tree-shake-icons --pwa-strategy=none --release
+RUN flutter build web -t lib/widgetbook.dart --base-href=${BASE_HREF} --no-tree-shake-icons --pwa-strategy=none --release
 
 FROM nginx:alpine AS runtime
 
