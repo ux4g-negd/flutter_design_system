@@ -9,6 +9,7 @@ import 'stories/badge_stories.dart';
 import 'stories/button_stories.dart';
 import 'stories/utils_stories.dart';
 import 'stories/welcome_page.dart';
+import 'stories/migration_stories.dart';
 import 'stories/data_stories.dart';
 import 'stories/link_stories.dart';
 import 'stories/display_stories.dart';
@@ -112,6 +113,7 @@ class UX4GWidgetbook extends StatelessWidget {
           directories: [
             overviewComponent,
             quickGuideComponent,
+            migrationComponent,
 
             // ── Token ─────────────────────────────────────────────────────────────
             WidgetbookCategory(
