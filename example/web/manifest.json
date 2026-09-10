@@ -1,13 +1,14 @@
 {
-    "name": "example",
-    "short_name": "example",
+    "name": "UX4G Flutter Design System",
+    "short_name": "UX4G Flutter",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0F172A",
+    "theme_color": "#5B3AE6",
+    "description": "The official Government of India Design System for Flutter (ux4g_flutter_components). Interactive Widgetbook catalog, UI components, and digital governance modules.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "categories": ["developer-tools", "productivity", "design", "utilities"],
     "icons": [
         {
             "src": "icons/Icon-192.png",
