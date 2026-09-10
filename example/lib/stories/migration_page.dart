@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../data/flutter_migration_markdown.dart';
+import '../data/flutter_migration_prompt_markdown.dart';
 import '../utils/file_downloader.dart';
 import '../theme_notifier.dart';
 
@@ -1090,12 +1092,14 @@ class Ux4gMigrationPage extends StatefulWidget {
 }
 
 class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
-  int _activeTab = 0; // 0: Components, 1: Props, 2: Tokens, 3: Gov-Exclusive
+  int _activeTab = 0; // 0: Components, 1: Props, 2: Tokens, 3: Gov-Exclusive, 4: AI Migration Prompt
   String _compSearch = '';
   String _compFilter = 'all';
   String _propSearch = '';
   String _selectedPropComp = 'all';
   bool _downloadSuccess = false;
+  bool _downloadPromptSuccess = false;
+  bool _copiedPromptSuccess = false;
 
   void _handleDownloadMigrationDoc() {
     try {
@@ -1108,6 +1112,30 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
       }
     } catch (err) {
       debugPrint('Failed to download MIGRATION.md: $err');
+    }
+  }
+
+  void _handleDownloadPromptDoc() {
+    try {
+      downloadMarkdownFile('migration-prompt.md', kFlutterMigrationPromptMarkdownContent);
+      if (mounted) {
+        setState(() => _downloadPromptSuccess = true);
+        Future.delayed(const Duration(seconds: 3), () {
+          if (mounted) setState(() => _downloadPromptSuccess = false);
+        });
+      }
+    } catch (err) {
+      debugPrint('Failed to download migration-prompt.md: $err');
+    }
+  }
+
+  void _handleCopyPromptText() {
+    Clipboard.setData(const ClipboardData(text: kFlutterMigrationPromptMarkdownContent));
+    if (mounted) {
+      setState(() => _copiedPromptSuccess = true);
+      Future.delayed(const Duration(seconds: 3), () {
+        if (mounted) setState(() => _copiedPromptSuccess = false);
+      });
     }
   }
 
@@ -1167,6 +1195,74 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
     );
   }
 
+  Widget _buildDownloadPromptButton(bool isDark, Color borderColor, Color onSurface) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: _handleDownloadPromptDoc,
+        borderRadius: BorderRadius.circular(10),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          decoration: BoxDecoration(
+            color: _downloadPromptSuccess
+                ? (isDark ? const Color(0xFF166534).withValues(alpha: 0.3) : const Color(0xFFF0FDF4))
+                : (isDark ? const Color(0xFF1E293B) : Colors.white),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: _downloadPromptSuccess
+                  ? const Color(0xFF86EFAC)
+                  : (isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0)),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.04),
+                blurRadius: 3,
+                offset: const Offset(0, 1),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                _downloadPromptSuccess ? Icons.check_rounded : Icons.terminal_rounded,
+                size: 17,
+                color: _downloadPromptSuccess
+                    ? const Color(0xFF15803D)
+                    : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569)),
+              ),
+              const SizedBox(width: 7),
+              Text(
+                'migration-prompt.md',
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.1,
+                  color: _downloadPromptSuccess
+                      ? const Color(0xFF15803D)
+                      : (isDark ? const Color(0xFFE2E8F0) : const Color(0xFF334155)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDownloadButtonsGroup(bool isDark, Color borderColor, Color onSurface) {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        _buildDownloadButton(isDark, borderColor, onSurface),
+        _buildDownloadPromptButton(isDark, borderColor, onSurface),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<ThemeMode>(
@@ -1197,7 +1293,7 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // ── 1. Hero Header (Edge-to-edge, 0 outer padding) ──
-                    _buildHeroHeader(isDark, onSurface, subColor, primary, isDesktop, hPadding),
+                    _buildHeroHeader(isDark, borderColor, onSurface, subColor, primary, isDesktop, hPadding),
 
                     // ── 2. Sticky Tab Bar ───────────────────────────────
                     _buildTabBar(isDark, borderColor, primary, hPadding),
@@ -1238,6 +1334,7 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
 
   Widget _buildHeroHeader(
     bool isDark,
+    Color borderColor,
     Color onSurface,
     Color subColor,
     Color primary,
@@ -1353,6 +1450,8 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 18),
+                _buildDownloadButtonsGroup(isDark, borderColor, onSurface),
               ],
             ),
           ),
@@ -1615,104 +1714,43 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Section Header
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final isNarrow = constraints.maxWidth < 640;
-            if (isNarrow) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Component Mapping',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: onSurface),
-                      ),
-                      const SizedBox(width: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                        decoration: BoxDecoration(
-                          color: isDark ? const Color(0xFF1E3A8A).withValues(alpha: 0.5) : const Color(0xFFEFF6FF),
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(
-                            color: isDark ? const Color(0xFF3B82F6).withValues(alpha: 0.4) : const Color(0xFFBFDBFE),
-                          ),
-                        ),
-                        child: Text(
-                          '${filtered.length} of ${kFlutterComponentsData.length} components',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: isDark ? const Color(0xFF93C5FD) : const Color(0xFF2563EB),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Side-by-side component availability across UX4G Flutter, Flutter Material 3 (M3), and Cupertino.',
-                    style: TextStyle(fontSize: 14, color: subColor),
-                  ),
-                  const SizedBox(height: 12),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: _buildDownloadButton(isDark, borderColor, onSurface),
-                  ),
-                ],
-              );
-            }
-
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Component Mapping',
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: onSurface),
-                          ),
-                          const SizedBox(width: 12),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: isDark ? const Color(0xFF1E3A8A).withValues(alpha: 0.5) : const Color(0xFFEFF6FF),
-                              borderRadius: BorderRadius.circular(100),
-                              border: Border.all(
-                                color: isDark ? const Color(0xFF3B82F6).withValues(alpha: 0.4) : const Color(0xFFBFDBFE),
-                              ),
-                            ),
-                            child: Text(
-                              '${filtered.length} of ${kFlutterComponentsData.length} components',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: isDark ? const Color(0xFF93C5FD) : const Color(0xFF2563EB),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'Side-by-side component availability across UX4G Flutter, Flutter Material 3 (M3), and Cupertino.',
-                        style: TextStyle(fontSize: 14, color: subColor),
-                      ),
-                    ],
+                Text(
+                  'Component Mapping',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: onSurface),
+                ),
+                const SizedBox(width: 12),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF1E3A8A).withValues(alpha: 0.5) : const Color(0xFFEFF6FF),
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(
+                      color: isDark ? const Color(0xFF3B82F6).withValues(alpha: 0.4) : const Color(0xFFBFDBFE),
+                    ),
+                  ),
+                  child: Text(
+                    '${filtered.length} of ${kFlutterComponentsData.length} components',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: isDark ? const Color(0xFF93C5FD) : const Color(0xFF2563EB),
+                    ),
                   ),
                 ),
-                const SizedBox(width: 20),
-                _buildDownloadButton(isDark, borderColor, onSurface),
               ],
-            );
-          },
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Side-by-side component availability across UX4G Flutter, Flutter Material 3 (M3), and Cupertino.',
+              style: TextStyle(fontSize: 14, color: subColor),
+            ),
+          ],
         ),
         const SizedBox(height: 20),
 
