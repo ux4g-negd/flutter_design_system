@@ -1321,8 +1321,10 @@ class _BrandFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Powered by -',
@@ -1332,7 +1334,7 @@ class _BrandFooter extends StatelessWidget {
                     .lS_default
                     .copyWith(color: _getMutedText(context)),
           ),
-          const SizedBox(height: 6),
+          const SizedBox(width: 8),
           Image.asset(
             _digitalIndiaLogoPath,
             height: 22,
@@ -2149,12 +2151,14 @@ height: 48,
         // Powered by - Digital India footer pinned to the bottom.
         Padding(
           padding: EdgeInsets.only(bottom: 20, top: 8),
-          child: Column(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('Powered by -',
                 style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lS_default.copyWith(color: Ux4gColors.neutral400)),
-              SizedBox(height: 6),
+              SizedBox(width: 8),
               Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
             ],
           ),
@@ -2232,12 +2236,14 @@ height: 48,
     // Powered by - Digital India footer pinned to the bottom.
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
@@ -2349,12 +2355,14 @@ height: 48,
     // Powered by - Digital India footer pinned to the bottom.
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
@@ -2424,12 +2432,14 @@ Column(
     // Powered by - Digital India footer pinned to the bottom.
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
@@ -2764,12 +2774,14 @@ Column(
     // Powered by - Digital India footer pinned to the bottom.
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Powered by -',
             style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
         ],
       ),
@@ -3198,12 +3210,14 @@ Column(
             // "Powered by - Digital India" pinned to the bottom.
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -3612,12 +3626,14 @@ Column(
             // "Powered by - Digital India" pinned to the bottom.
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -3858,12 +3874,14 @@ height: 48,
 
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -4192,12 +4210,14 @@ height: 48,
 
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -4474,12 +4494,14 @@ Column(
 
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
