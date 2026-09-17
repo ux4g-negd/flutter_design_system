@@ -167,8 +167,10 @@ class _ConsentFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Powered by -',
@@ -180,7 +182,7 @@ class _ConsentFooter extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 6),
+          const SizedBox(width: 8),
           Image.asset(
             _digitalIndiaLogoPath,
             height: 22,
@@ -231,12 +233,8 @@ Widget _buildDataCard({
               text: 'Required',
               customBackgroundColor: _isDark(context)
                   ? Ux4gColors.red900
-                  : _isDark(context)
-                  ? Ux4gColors.red900
                   : const Color(0xFFFFF0F0),
               customContentColor: _isDark(context)
-                  ? Ux4gColors.red300
-                  : _isDark(context)
                   ? Ux4gColors.red300
                   : const Color(0xFF8A1A16),
               shape: Ux4gTagShape.rectangular,
@@ -244,28 +242,24 @@ Widget _buildDataCard({
             ),
           ],
         ),
-        SizedBox(height: 6),
+        const SizedBox(height: 8),
         Text(
           'Purpose · $purpose',
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
                 ? Ux4gColors.neutral400
-                : Ux4gColors.neutral500),
-            fontWeight: FontWeight.w400,
-            height: 1.25,
+                : Ux4gColors.neutral600),
           ),
         ),
-        SizedBox(height: 2),
+        const SizedBox(height: 4),
         Text(
           'Retention · $retention',
           style: TextStyle(
             fontSize: 13,
             color: (_isDark(context)
                 ? Ux4gColors.neutral400
-                : Ux4gColors.neutral500),
-            fontWeight: FontWeight.w400,
-            height: 1.25,
+                : Ux4gColors.neutral600),
           ),
         ),
       ],
@@ -273,20 +267,440 @@ Widget _buildDataCard({
   );
 }
 
-// ───────────────────────────────────────────────────────────────────────
-// Flat Layout Mockup
-// ───────────────────────────────────────────────────────────────────────
-class _ConsentCaptureMobileMockup extends StatefulWidget {
-  const _ConsentCaptureMobileMockup();
+class _ConsentCaptureItemsList extends StatefulWidget {
+  const _ConsentCaptureItemsList();
+
   @override
-  State<_ConsentCaptureMobileMockup> createState() =>
-      _ConsentCaptureMobileMockupState();
+  State<_ConsentCaptureItemsList> createState() =>
+      _ConsentCaptureItemsListState();
 }
 
-class _ConsentCaptureMobileMockupState
-    extends State<_ConsentCaptureMobileMockup> {
-  bool _isInfoConsentGiven = true;
-  bool _isEmailUpdatesConsentGiven = false;
+class _ConsentCaptureItemsListState extends State<_ConsentCaptureItemsList> {
+  bool _docsExpanded = true;
+  bool _aadhaar = true;
+  bool _pan = false;
+  bool _drivingLicense = false;
+  bool _profileInfo = true;
+  bool _email = true;
+  bool _profilePicture = false;
+  bool _location = false;
+
+  bool? get _selectAllValue {
+    if (_aadhaar && _pan && _drivingLicense) return true;
+    if (_aadhaar || _pan || _drivingLicense) return null;
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+    final titleColor = isDark ? Ux4gColors.neutral50 : Ux4gColors.gray900;
+    final subtitleColor =
+        isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600;
+    final dividerColor =
+        isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200;
+    final primary = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Headline
+        Text(
+          'Please provide your consent to share the following information',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: titleColor,
+            height: 1.3,
+          ),
+        ),
+        const SizedBox(height: 16),
+
+        // Options Card
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isDark ? Ux4gColors.gray900 : Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.04),
+                blurRadius: 10,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 1. Documents dropdown
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => setState(() => _docsExpanded = !_docsExpanded),
+                    child: Icon(
+                      _docsExpanded
+                          ? Icons.keyboard_arrow_down
+                          : Icons.keyboard_arrow_right,
+                      size: 20,
+                      color: titleColor,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    'Documents',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: titleColor,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    'Select all',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: subtitleColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Ux4gCheckbox(
+                    value: _selectAllValue,
+                    onChanged: (val) {
+                      setState(() {
+                        final all = _aadhaar && _pan && _drivingLicense;
+                        _aadhaar = !all;
+                        _pan = !all;
+                        _drivingLicense = !all;
+                      });
+                    },
+                    size: Ux4gCheckboxSize.small,
+                  ),
+                ],
+              ),
+              if (_docsExpanded) ...[
+                const SizedBox(height: 12),
+                // Aadhaar Card
+                Padding(
+                  padding: const EdgeInsets.only(left: 26),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Aadhaar Card',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: isDark
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral800,
+                        ),
+                      ),
+                      Ux4gCheckbox(
+                        value: _aadhaar,
+                        onChanged: (val) =>
+                            setState(() => _aadhaar = val ?? false),
+                        size: Ux4gCheckboxSize.small,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                // PAN
+                Padding(
+                  padding: const EdgeInsets.only(left: 26),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'PAN',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: isDark
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral800,
+                        ),
+                      ),
+                      Ux4gCheckbox(
+                        value: _pan,
+                        onChanged: (val) => setState(() => _pan = val ?? false),
+                        size: Ux4gCheckboxSize.small,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                // Driving License
+                Padding(
+                  padding: const EdgeInsets.only(left: 26),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Driving License',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: isDark
+                              ? Ux4gColors.neutral200
+                              : Ux4gColors.neutral800,
+                        ),
+                      ),
+                      Ux4gCheckbox(
+                        value: _drivingLicense,
+                        onChanged: (val) =>
+                            setState(() => _drivingLicense = val ?? false),
+                        size: Ux4gCheckboxSize.small,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                // View all link
+                Padding(
+                  padding: const EdgeInsets.only(left: 26),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      'View all',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: primary,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              Divider(height: 28, thickness: 1, color: dividerColor),
+
+              // 2. Profile information
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.account_circle_outlined,
+                    size: 22,
+                    color: titleColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Profile information',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: titleColor,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          'Name, Date of Birth, Gender',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: subtitleColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Ux4gCheckbox(
+                    value: _profileInfo,
+                    onChanged: (val) =>
+                        setState(() => _profileInfo = val ?? false),
+                    size: Ux4gCheckboxSize.small,
+                  ),
+                ],
+              ),
+              Divider(height: 28, thickness: 1, color: dividerColor),
+
+              // 3. Get your email
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.mail_outline,
+                    size: 22,
+                    color: titleColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'Get your email',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: titleColor,
+                      ),
+                    ),
+                  ),
+                  Ux4gCheckbox(
+                    value: _email,
+                    onChanged: (val) => setState(() => _email = val ?? false),
+                    size: Ux4gCheckboxSize.small,
+                  ),
+                ],
+              ),
+              Divider(height: 28, thickness: 1, color: dividerColor),
+
+              // 4. Get your profile picture
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.account_circle,
+                    size: 22,
+                    color: titleColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'Get your profile picture',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: titleColor,
+                      ),
+                    ),
+                  ),
+                  Ux4gCheckbox(
+                    value: _profilePicture,
+                    onChanged: (val) =>
+                        setState(() => _profilePicture = val ?? false),
+                    size: Ux4gCheckboxSize.small,
+                  ),
+                ],
+              ),
+              Divider(height: 28, thickness: 1, color: dividerColor),
+
+              // 5. Location
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    size: 22,
+                    color: titleColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'Location',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: titleColor,
+                      ),
+                    ),
+                  ),
+                  Ux4gCheckbox(
+                    value: _location,
+                    onChanged: (val) =>
+                        setState(() => _location = val ?? false),
+                    size: Ux4gCheckboxSize.small,
+                  ),
+                ],
+              ),
+              Divider(height: 28, thickness: 1, color: dividerColor),
+
+              // 6. Consent validity date
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.calendar_today_outlined,
+                    size: 22,
+                    color: titleColor,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Consent validity date',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: titleColor,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          '(Today + 30 days)\n08-Oct-2026',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: subtitleColor,
+                            height: 1.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      'Edit',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: primary,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Legal Text
+        Text(
+          'Consent validity is subject to applicable laws.\nBy selecting Allow, you are giving consent to share the items above.',
+          style: TextStyle(
+            fontSize: 12,
+            color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+            height: 1.4,
+          ),
+        ),
+        const SizedBox(height: 16),
+
+        // Allow & Deny Buttons
+        Ux4gButton(
+          text: 'Allow',
+          onPressed: () {},
+          height: 48,
+          size: Ux4gButtonSize.large,
+          width: double.infinity,
+          variant: Ux4gButtonVariant.primary,
+        ),
+        const SizedBox(height: 10),
+        Ux4gButton(
+          text: 'Deny',
+          onPressed: () {},
+          height: 48,
+          size: Ux4gButtonSize.large,
+          width: double.infinity,
+          variant: Ux4gButtonVariant.outline,
+        ),
+        const SizedBox(height: 16),
+      ],
+    );
+  }
+}
+
+class _ConsentCaptureMobileMockup extends StatelessWidget {
+  const _ConsentCaptureMobileMockup();
+
   @override
   Widget build(BuildContext context) {
     return _PhoneFrame(
@@ -295,130 +709,8 @@ class _ConsentCaptureMobileMockupState
           _ConsentHeader(),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Shield icon indicator
-                  Container(
-                    width: 56,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      color: _isDark(context)
-                          ? Ux4gColors.gray800
-                          : _isDark(context)
-                          ? Ux4gColors.gray800
-                          : const Color(0xFFEEF2F6),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Icon(
-                        Icons.shield_outlined,
-                        color: Theme.of(context).colorScheme.primary,
-                        size: 28,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  // Headline
-                  Text(
-                    'Your Data, Your Control',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .extension<Ux4gTypography>()!
-                        .hM_default
-                        .copyWith(
-                          color: _isDark(context)
-                              ? Ux4gColors.neutral50
-                              : Ux4gColors.gray900,
-                        ),
-                  ),
-                  SizedBox(height: 8),
-                  // Description
-                  Text(
-                    'To process your Income Certificate application, the Revenue Department will use the following data:',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: (_isDark(context)
-                          ? Ux4gColors.neutral400
-                          : Ux4gColors.neutral500),
-                      height: 1.4,
-                    ),
-                  ),
-                  SizedBox(height: 24),
-                  // Data cards
-                  _buildDataCard(
-                    context: context,
-                    title: 'Aadhaar Number',
-                    purpose: 'Identity verification',
-                    retention: '7 years',
-                  ),
-                  SizedBox(height: 12),
-                  _buildDataCard(
-                    context: context,
-                    title: 'Address',
-                    purpose: 'Record keeping',
-                    retention: '7 years',
-                  ),
-                  SizedBox(height: 12),
-                  _buildDataCard(
-                    context: context,
-                    title: 'Email',
-                    purpose: 'Status updates',
-                    retention: '1 year',
-                  ),
-                  SizedBox(height: 24),
-                  Divider(
-                    height: 1,
-                    color: (_isDark(context)
-                        ? Ux4gColors.neutral800
-                        : Ux4gColors.neutral200),
-                  ),
-                  SizedBox(height: 20),
-                  // Checkboxes
-                  Ux4gCheckbox(
-                    value: _isInfoConsentGiven,
-                    onChanged: (val) =>
-                        setState(() => _isInfoConsentGiven = val ?? false),
-                    label:
-                        'I consent to sharing the required information listed above',
-                    isRequired: true,
-                  ),
-                  SizedBox(height: 8),
-                  Ux4gCheckbox(
-                    value: _isEmailUpdatesConsentGiven,
-                    onChanged: (val) => setState(
-                      () => _isEmailUpdatesConsentGiven = val ?? false,
-                    ),
-                    label:
-                        'I also consent to receiving email updates regarding my application',
-                    isRequired: false,
-                  ),
-                  SizedBox(height: 24),
-                  // Actions
-                  Ux4gButton(
-                    text: 'Proceed',
-                    onPressed: _isInfoConsentGiven == true ? () {} : null,
-                    height: 48,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                  ),
-                  SizedBox(height: 4),
-                  Ux4gButton(
-                    text: 'Decline and exit',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context)
-                        ? Ux4gColors.neutral50
-                        : Ux4gColors.neutral900,
-                    height: 48,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                  ),
-                  SizedBox(height: 16),
-                ],
-              ),
+              padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+              child: const _ConsentCaptureItemsList(),
             ),
           ),
           const _ConsentFooter(),
@@ -431,44 +723,34 @@ class _ConsentCaptureMobileMockupState
 // ───────────────────────────────────────────────────────────────────────
 // Card Style Layout Mockup
 // ───────────────────────────────────────────────────────────────────────
-class _ConsentCaptureCardMockup extends StatefulWidget {
+class _ConsentCaptureCardMockup extends StatelessWidget {
   const _ConsentCaptureCardMockup();
-  @override
-  State<_ConsentCaptureCardMockup> createState() =>
-      _ConsentCaptureCardMockupState();
-}
 
-class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
-  bool _isInfoConsentGiven = true;
-  bool _isEmailUpdatesConsentGiven = false;
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
     return _PhoneFrame(
       child: Column(
         children: [
           _ConsentHeader(),
           Expanded(
             child: Container(
-              color: _isDark(context)
-                  ? Ux4gColors.primary900
-                  : _isDark(context)
-                  ? Ux4gColors.primary900
-                  : (_isDark(context)
-                        ? Ux4gColors.primary900
-                        : Ux4gColors
-                              .primary100), // Soft purple/blue card style bg
+              color: isDark ? Ux4gColors.primary900 : Ux4gColors.primary100,
               child: Column(
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.all(16),
                       child: Container(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: _isDark(context)
-                              ? Ux4gColors.gray900
-                              : Colors.white,
+                          color: isDark ? Ux4gColors.gray900 : Colors.white,
                           borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: isDark
+                                ? Ux4gColors.neutral800
+                                : Ux4gColors.neutral200,
+                          ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withValues(alpha: 0.04),
@@ -477,132 +759,7 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
                             ),
                           ],
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            // Shield icon indicator
-                            Container(
-                              width: 56,
-                              height: 56,
-                              decoration: BoxDecoration(
-                                color: _isDark(context)
-                                    ? Ux4gColors.gray800
-                                    : _isDark(context)
-                                    ? Ux4gColors.gray800
-                                    : const Color(0xFFEEF2F6),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.shield_outlined,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  size: 28,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 16),
-                            // Headline
-                            Text(
-                              'Your Data, Your Control',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .extension<Ux4gTypography>()!
-                                  .hM_default
-                                  .copyWith(
-                                    color: _isDark(context)
-                                        ? Ux4gColors.neutral50
-                                        : Ux4gColors.gray900,
-                                  ),
-                            ),
-                            SizedBox(height: 8),
-                            // Description
-                            Text(
-                              'To process your Income Certificate application, the Revenue Department will use the following data:',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: (_isDark(context)
-                                    ? Ux4gColors.neutral400
-                                    : Ux4gColors.neutral500),
-                                height: 1.45,
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            // Data cards
-                            _buildDataCard(
-                              context: context,
-                              title: 'Aadhaar Number',
-                              purpose: 'Identity verification',
-                              retention: '7 years',
-                            ),
-                            SizedBox(height: 12),
-                            _buildDataCard(
-                              context: context,
-                              title: 'Address',
-                              purpose: 'Record keeping',
-                              retention: '7 years',
-                            ),
-                            SizedBox(height: 12),
-                            _buildDataCard(
-                              context: context,
-                              title: 'Email',
-                              purpose: 'Status updates',
-                              retention: '1 year',
-                            ),
-                            SizedBox(height: 20),
-                            Divider(
-                              height: 1,
-                              color: (_isDark(context)
-                                  ? Ux4gColors.neutral800
-                                  : Ux4gColors.neutral200),
-                            ),
-                            SizedBox(height: 16),
-                            // Checkboxes
-                            Ux4gCheckbox(
-                              value: _isInfoConsentGiven,
-                              onChanged: (val) => setState(
-                                () => _isInfoConsentGiven = val ?? false,
-                              ),
-                              label:
-                                  'I consent to sharing the required information listed above',
-                              isRequired: true,
-                            ),
-                            SizedBox(height: 8),
-                            Ux4gCheckbox(
-                              value: _isEmailUpdatesConsentGiven,
-                              onChanged: (val) => setState(
-                                () =>
-                                    _isEmailUpdatesConsentGiven = val ?? false,
-                              ),
-                              label:
-                                  'I also consent to receiving email updates regarding my application',
-                              isRequired: false,
-                            ),
-                            SizedBox(height: 20),
-                            // Actions
-                            Ux4gButton(
-                              text: 'Proceed',
-                              onPressed: _isInfoConsentGiven == true
-                                  ? () {}
-                                  : null,
-                              height: 48,
-                              size: Ux4gButtonSize.large,
-                              width: double.infinity,
-                            ),
-                            SizedBox(height: 4),
-                            Ux4gButton(
-                              text: 'Decline and exit',
-                              onPressed: () {},
-                              variant: Ux4gButtonVariant.ghost,
-                              contentColor: _isDark(context)
-                                  ? Ux4gColors.neutral50
-                                  : Ux4gColors.neutral900,
-                              height: 48,
-                              size: Ux4gButtonSize.large,
-                              width: double.infinity,
-                            ),
-                          ],
-                        ),
+                        child: const _ConsentCaptureItemsList(),
                       ),
                     ),
                   ),
@@ -620,492 +777,848 @@ class _ConsentCaptureCardMockupState extends State<_ConsentCaptureCardMockup> {
 // ───────────────────────────────────────────────────────────────────────
 // Source Code Snippets
 // ───────────────────────────────────────────────────────────────────────
-const _consentCaptureCode = r'''// Consent Capture – Flat Layout
-Column(
-  children: [
-    // Header
-    Ux4gAppHeader(
-      variant: Ux4gAppHeaderVariant.light,
-      title: '',
-      leadingWidgets: [
-        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
-        SvgPicture.asset(Ux4gIcons.union,  height: 32),
-      ],
-      actions: [
-        Ux4gAppHeaderAction(
-          customWidget: Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Icon(Icons.menu, color: Theme.of(context).colorScheme.primary, size: 20),
-            ),
-          ),
-        ),
-      ],
-      horizontalPadding: 16,
-      leadingSpacing: 8,
-    ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-    Expanded(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(20, 24, 20, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Shield icon indicator
-            Container(
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
-                shape: BoxShape.circle,
-              ),
-              child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
-            ),
-            SizedBox(height: 16),
-            // Headline
-            Text(
-              'Your Data, Your Control',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-            ),
-            SizedBox(height: 8),
-            // Description
-            Text(
-              'To process your Income Certificate application, the Revenue Department will use the following data:',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
-                height: 1.4,
-              ),
-            ),
-            SizedBox(height: 24),
-            // 1. Aadhaar Number Card
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Aadhaar Number',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                      ),
-                      Ux4gTag(
-                        text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
-                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
-                        shape: Ux4gTagShape.rectangular,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 6),
-                  Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                  SizedBox(height: 2),
-                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                ],
-              ),
-            ),
-            SizedBox(height: 12),
-            // 2. Address Card
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Address',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                      ),
-                      Ux4gTag(
-                        text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
-                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
-                        shape: Ux4gTagShape.rectangular,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 6),
-                  Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                  SizedBox(height: 2),
-                  Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                ],
-              ),
-            ),
-            SizedBox(height: 12),
-            // 3. Email Card
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Email',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                      ),
-                      Ux4gTag(
-                        text: 'Required',
-                        customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
-                        customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
-                        shape: Ux4gTagShape.rectangular,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 6),
-                  Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                  SizedBox(height: 2),
-                  Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                ],
-              ),
-            ),
-            SizedBox(height: 24),
-            Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-            SizedBox(height: 20),
-            // Checkboxes
-            Ux4gCheckbox(
-              value: _isInfoConsentGiven,
-              onChanged: (val) => setState(() => _isInfoConsentGiven = val ?? false),
-              label: 'I consent to sharing the required information listed above',
-              isRequired: true,
-            ),
-            SizedBox(height: 8),
-            Ux4gCheckbox(
-              value: _isEmailUpdatesConsentGiven,
-              onChanged: (val) => setState(() => _isEmailUpdatesConsentGiven = val ?? false),
-              label: 'I also consent to receiving email updates regarding my application',
-              isRequired: false,
-            ),
-            SizedBox(height: 24),
-            // Actions
-            Ux4gButton(
-              text: 'Proceed',
-              onPressed: _isInfoConsentGiven ? () {} : null,
-              height: 48,
-              size: Ux4gButtonSize.large,
-              width: double.infinity,
-            ),
-            SizedBox(height: 4),
-            Ux4gButton(
-              text: 'Decline and exit',
-              onPressed: () {},
-              variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
-              height: 48,
-              size: Ux4gButtonSize.large,
-              width: double.infinity,
-            ),
-            SizedBox(height: 16),
-          ],
-        ),
-      ),
-    ),
-    // Footer
-    Padding(
-      padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+const _consentCaptureCode = r'''class ConsentCapturePage extends StatefulWidget {
+  const ConsentCapturePage({super.key});
+
+  @override
+  State<ConsentCapturePage> createState() => _ConsentCapturePageState();
+}
+
+class _ConsentCapturePageState extends State<ConsentCapturePage> {
+  bool _docsExpanded = true;
+  bool _aadhaar = true;
+  bool _pan = false;
+  bool _drivingLicense = false;
+  bool _profileInfo = true;
+  bool _email = true;
+  bool _profilePicture = false;
+  bool _location = false;
+
+  bool get _isDark => Theme.of(context).brightness == Brightness.dark;
+
+  bool? get _selectAllValue {
+    if (_aadhaar && _pan && _drivingLicense) return true;
+    if (_aadhaar || _pan || _drivingLicense) return null;
+    return false;
+  }
+
+  void _onToggleSelectAll(bool? val) {
+    setState(() {
+      final all = _aadhaar && _pan && _drivingLicense;
+      _aadhaar = !all;
+      _pan = !all;
+      _drivingLicense = !all;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final titleColor = _isDark ? Ux4gColors.neutral50 : Ux4gColors.gray900;
+    final subtitleColor = _isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600;
+    final dividerColor = _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200;
+    final primary = _isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+
+    return Scaffold(
+      body: Column(
         children: [
-          Text(
-            'Powered by -',
-            style: TextStyle(
-              fontSize: 11,
-              color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(height: 6),
-          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
-        ],
-      ),
-    ),
-  ],
-)''';
-const _consentCaptureCardCode = r'''// Consent Capture – Card Style Layout
-Column(
-  children: [
-    // Header
-    Ux4gAppHeader(
-      variant: Ux4gAppHeaderVariant.light,
-      title: '',
-      leadingWidgets: [
-        SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-        Container(width: 1, height: 28, color: _isDark(context) ? Ux4gColors.neutral600 : _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral300),
-        SvgPicture.asset(Ux4gIcons.union,  height: 32),
-      ],
-      actions: [
-        Ux4gAppHeaderAction(
-          customWidget: Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Icon(Icons.menu, color: Theme.of(context).colorScheme.primary, size: 20),
-            ),
-          ),
-        ),
-      ],
-      horizontalPadding: 16,
-      leadingSpacing: 8,
-    ),
-    Divider(height: 1, thickness: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-    Expanded(
-      child: Container(
-        color: _isDark(context) ? Ux4gColors.primary900 : _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100, // Soft purple/blue card style bg
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.all(16),
-                child: Container(
-                  padding: EdgeInsets.all(20),
+          // Header
+          Ux4gAppHeader(
+            variant: Ux4gAppHeaderVariant.light,
+            title: '',
+            leadingWidgets: [
+              SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 32),
+              Container(width: 1, height: 28, color: _isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
+              SvgPicture.asset(Ux4gIcons.union, height: 32),
+            ],
+            actions: [
+              Ux4gAppHeaderAction(
+                customWidget: Container(
+                  width: 36,
+                  height: 36,
                   decoration: BoxDecoration(
-                    color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.04),
-                        blurRadius: 16,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
+                    border: Border.all(color: _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // Shield icon indicator
-                      Container(
-                        width: 56,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gColors.gray800 : _isDark(context) ? Ux4gColors.gray800 : Ux4gColors.gray100,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(Icons.shield_outlined, color: Theme.of(context).colorScheme.primary, size: 28),
-                      ),
-                      SizedBox(height: 16),
-                      // Headline
-                      Text(
-                        'Your Data, Your Control',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).extension<Ux4gTypography>()!.hM_default.copyWith(color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                      ),
-                      SizedBox(height: 8),
-                      // Description
-                      Text(
-                        'To process your Income Certificate application, the Revenue Department will use the following data:',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
-                          height: 1.45,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      // 1. Aadhaar Number Card
-                      Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Aadhaar Number',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                                ),
-                                Ux4gTag(
-                                  text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
-                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
-                                  shape: Ux4gTagShape.rectangular,
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 6),
-                            Text('Purpose · Identity verification', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                            SizedBox(height: 2),
-                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 12),
-                      // 2. Address Card
-                      Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Address',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                                ),
-                                Ux4gTag(
-                                  text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
-                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
-                                  shape: Ux4gTagShape.rectangular,
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 6),
-                            Text('Purpose · Record keeping', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                            SizedBox(height: 2),
-                            Text('Retention · 7 years', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 12),
-                      // 3. Email Card
-                      Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Email',
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                                ),
-                                Ux4gTag(
-                                  text: 'Required',
-                                  customBackgroundColor: _isDark(context) ? Ux4gColors.red900 : _isDark(context) ? Ux4gColors.red900 : Ux4gColors.red50,
-                                  customContentColor: _isDark(context) ? Ux4gColors.red300 : _isDark(context) ? Ux4gColors.red300 : Ux4gColors.red800,
-                                  shape: Ux4gTagShape.rectangular,
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 6),
-                            Text('Purpose · Status updates', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                            SizedBox(height: 2),
-                            Text('Retention · 1 year', style: TextStyle(color: _isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.25)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Divider(height: 1, color: _isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-                      SizedBox(height: 16),
-                      // Checkboxes
-                      Ux4gCheckbox(
-                        value: _isInfoConsentGiven,
-                        onChanged: (val) => setState(() => _isInfoConsentGiven = val ?? false),
-                        label: 'I consent to sharing the required information listed above',
-                        isRequired: true,
-                      ),
-                      SizedBox(height: 8),
-                      Ux4gCheckbox(
-                        value: _isEmailUpdatesConsentGiven,
-                        onChanged: (val) => setState(() => _isEmailUpdatesConsentGiven = val ?? false),
-                        label: 'I also consent to receiving email updates regarding my application',
-                        isRequired: false,
-                      ),
-                      SizedBox(height: 20),
-                      // Actions
-                      Ux4gButton(
-                        text: 'Proceed',
-                        onPressed: _isInfoConsentGiven ? () {} : null,
-                        height: 48,
-                        size: Ux4gButtonSize.large,
-                        width: double.infinity,
-                      ),
-                      SizedBox(height: 4),
-                      Ux4gButton(
-                        text: 'Decline and exit',
-                        onPressed: () {},
-                        variant: Ux4gButtonVariant.ghost,
-                    contentColor: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
-                        height: 48,
-                        size: Ux4gButtonSize.large,
-                        width: double.infinity,
-                      ),
-                    ],
+                  child: Center(
+                    child: Icon(Icons.menu, color: Theme.of(context).colorScheme.primary, size: 20),
                   ),
                 ),
               ),
-            ),
-            // Footer
-            Padding(
-              padding: EdgeInsets.only(bottom: 20, top: 8),
+            ],
+            horizontalPadding: 16,
+            leadingSpacing: 8,
+          ),
+          Divider(height: 1, thickness: 1, color: _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Headline
                   Text(
-                    'Powered by -',
+                    'Please provide your consent to share the following information',
                     style: TextStyle(
-                      fontSize: 11,
-                      color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400),
-                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: titleColor,
+                      height: 1.3,
                     ),
                   ),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
+                  const SizedBox(height: 16),
+
+                  // Options Card
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: _isDark ? Ux4gColors.gray900 : Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.04),
+                          blurRadius: 10,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 1. Documents dropdown
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () => setState(() => _docsExpanded = !_docsExpanded),
+                              child: Icon(
+                                _docsExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_right,
+                                size: 20,
+                                color: titleColor,
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              'Documents',
+                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                            ),
+                            const Spacer(),
+                            Text(
+                              'Select all',
+                              style: TextStyle(fontSize: 12, color: subtitleColor, fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(width: 8),
+                            Ux4gCheckbox(
+                              value: _selectAllValue,
+                              onChanged: _onToggleSelectAll,
+                              size: Ux4gCheckboxSize.small,
+                            ),
+                          ],
+                        ),
+                        if (_docsExpanded) ...[
+                          const SizedBox(height: 12),
+                          // Aadhaar Card
+                          Padding(
+                            padding: const EdgeInsets.only(left: 26),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Aadhaar Card',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: _isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800,
+                                  ),
+                                ),
+                                Ux4gCheckbox(
+                                  value: _aadhaar,
+                                  onChanged: (val) => setState(() => _aadhaar = val ?? false),
+                                  size: Ux4gCheckboxSize.small,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          // PAN
+                          Padding(
+                            padding: const EdgeInsets.only(left: 26),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'PAN',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: _isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800,
+                                  ),
+                                ),
+                                Ux4gCheckbox(
+                                  value: _pan,
+                                  onChanged: (val) => setState(() => _pan = val ?? false),
+                                  size: Ux4gCheckboxSize.small,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          // Driving License
+                          Padding(
+                            padding: const EdgeInsets.only(left: 26),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Driving License',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: _isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800,
+                                  ),
+                                ),
+                                Ux4gCheckbox(
+                                  value: _drivingLicense,
+                                  onChanged: (val) => setState(() => _drivingLicense = val ?? false),
+                                  size: Ux4gCheckboxSize.small,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          // View all link
+                          Padding(
+                            padding: const EdgeInsets.only(left: 26),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                'View all',
+                                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: primary),
+                              ),
+                            ),
+                          ),
+                        ],
+                        Divider(height: 28, thickness: 1, color: dividerColor),
+
+                        // 2. Profile information
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.account_circle_outlined, size: 22, color: titleColor),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Profile information',
+                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    'Name, Date of Birth, Gender',
+                                    style: TextStyle(fontSize: 12, color: subtitleColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Ux4gCheckbox(
+                              value: _profileInfo,
+                              onChanged: (val) => setState(() => _profileInfo = val ?? false),
+                              size: Ux4gCheckboxSize.small,
+                            ),
+                          ],
+                        ),
+                        Divider(height: 28, thickness: 1, color: dividerColor),
+
+                        // 3. Get your email
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.mail_outline, size: 22, color: titleColor),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Get your email',
+                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                              ),
+                            ),
+                            Ux4gCheckbox(
+                              value: _email,
+                              onChanged: (val) => setState(() => _email = val ?? false),
+                              size: Ux4gCheckboxSize.small,
+                            ),
+                          ],
+                        ),
+                        Divider(height: 28, thickness: 1, color: dividerColor),
+
+                        // 4. Get your profile picture
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.account_circle, size: 22, color: titleColor),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Get your profile picture',
+                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                              ),
+                            ),
+                            Ux4gCheckbox(
+                              value: _profilePicture,
+                              onChanged: (val) => setState(() => _profilePicture = val ?? false),
+                              size: Ux4gCheckboxSize.small,
+                            ),
+                          ],
+                        ),
+                        Divider(height: 28, thickness: 1, color: dividerColor),
+
+                        // 5. Location
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.location_on_outlined, size: 22, color: titleColor),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Location',
+                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                              ),
+                            ),
+                            Ux4gCheckbox(
+                              value: _location,
+                              onChanged: (val) => setState(() => _location = val ?? false),
+                              size: Ux4gCheckboxSize.small,
+                            ),
+                          ],
+                        ),
+                        Divider(height: 28, thickness: 1, color: dividerColor),
+
+                        // 6. Consent validity date
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.calendar_today_outlined, size: 22, color: titleColor),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Consent validity date',
+                                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    '(Today + 30 days)\n08-Oct-2026',
+                                    style: TextStyle(fontSize: 12, color: subtitleColor, height: 1.3),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                'Edit',
+                                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: primary),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+
+                  // Legal Text
+                  Text(
+                    'Consent validity is subject to applicable laws.\nBy selecting Allow, you are giving consent to share the items above.',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: _isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+                      height: 1.4,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Allow & Deny Buttons
+                  Ux4gButton(
+                    text: 'Allow',
+                    onPressed: () {},
+                    height: 48,
+                    size: Ux4gButtonSize.large,
+                    width: double.infinity,
+                    variant: Ux4gButtonVariant.primary,
+                  ),
+                  const SizedBox(height: 10),
+                  Ux4gButton(
+                    text: 'Deny',
+                    onPressed: () {},
+                    height: 48,
+                    size: Ux4gButtonSize.large,
+                    width: double.infinity,
+                    variant: Ux4gButtonVariant.outline,
+                  ),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          // Footer
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20, top: 8),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Powered by -',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: _isDark ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22),
+              ],
+            ),
+          ),
+        ],
       ),
-    ),
-  ],
-)''';
+    );
+  }
+}''';
+const _consentCaptureCardCode = r'''class ConsentCaptureCardPage extends StatefulWidget {
+  const ConsentCaptureCardPage({super.key});
+
+  @override
+  State<ConsentCaptureCardPage> createState() => _ConsentCaptureCardPageState();
+}
+
+class _ConsentCaptureCardPageState extends State<ConsentCaptureCardPage> {
+  bool _docsExpanded = true;
+  bool _aadhaar = true;
+  bool _pan = false;
+  bool _drivingLicense = false;
+  bool _profileInfo = true;
+  bool _email = true;
+  bool _profilePicture = false;
+  bool _location = false;
+
+  bool get _isDark => Theme.of(context).brightness == Brightness.dark;
+
+  bool? get _selectAllValue {
+    if (_aadhaar && _pan && _drivingLicense) return true;
+    if (_aadhaar || _pan || _drivingLicense) return null;
+    return false;
+  }
+
+  void _onToggleSelectAll(bool? val) {
+    setState(() {
+      final all = _aadhaar && _pan && _drivingLicense;
+      _aadhaar = !all;
+      _pan = !all;
+      _drivingLicense = !all;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final titleColor = _isDark ? Ux4gColors.neutral50 : Ux4gColors.gray900;
+    final subtitleColor = _isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600;
+    final dividerColor = _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200;
+    final primary = _isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+
+    return Scaffold(
+      body: Column(
+        children: [
+          // Header
+          Ux4gAppHeader(
+            variant: Ux4gAppHeaderVariant.light,
+            title: '',
+            leadingWidgets: [
+              SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 32),
+              Container(width: 1, height: 28, color: _isDark ? Ux4gColors.neutral600 : Ux4gColors.neutral300),
+              SvgPicture.asset(Ux4gIcons.union, height: 32),
+            ],
+            actions: [
+              Ux4gAppHeaderAction(
+                customWidget: Container(
+                  width: 36,
+                  height: 36,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Icon(Icons.menu, color: Theme.of(context).colorScheme.primary, size: 20),
+                  ),
+                ),
+              ),
+            ],
+            horizontalPadding: 16,
+            leadingSpacing: 8,
+          ),
+          Expanded(
+            child: Container(
+              color: _isDark ? Ux4gColors.primary900 : Ux4gColors.primary100, // Soft purple background
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: _isDark ? Ux4gColors.gray900 : Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.04),
+                              blurRadius: 16,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Headline
+                            Text(
+                              'Please provide your consent to share the following information',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: titleColor,
+                                height: 1.3,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+
+                            // Options Card
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: _isDark ? Ux4gColors.gray800 : Ux4gColors.gray50,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: _isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
+                                ),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // 1. Documents dropdown
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () => setState(() => _docsExpanded = !_docsExpanded),
+                                        child: Icon(
+                                          _docsExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_right,
+                                          size: 20,
+                                          color: titleColor,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 6),
+                                      Text(
+                                        'Documents',
+                                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                      ),
+                                      const Spacer(),
+                                      Text(
+                                        'Select all',
+                                        style: TextStyle(fontSize: 12, color: subtitleColor, fontWeight: FontWeight.w500),
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Ux4gCheckbox(
+                                        value: _selectAllValue,
+                                        onChanged: _onToggleSelectAll,
+                                        size: Ux4gCheckboxSize.small,
+                                      ),
+                                    ],
+                                  ),
+                                  if (_docsExpanded) ...[
+                                    const SizedBox(height: 12),
+                                    // Aadhaar Card
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 26),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Aadhaar Card',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              color: _isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800,
+                                            ),
+                                          ),
+                                          Ux4gCheckbox(
+                                            value: _aadhaar,
+                                            onChanged: (val) => setState(() => _aadhaar = val ?? false),
+                                            size: Ux4gCheckboxSize.small,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    // PAN
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 26),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'PAN',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              color: _isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800,
+                                            ),
+                                          ),
+                                          Ux4gCheckbox(
+                                            value: _pan,
+                                            onChanged: (val) => setState(() => _pan = val ?? false),
+                                            size: Ux4gCheckboxSize.small,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    // Driving License
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 26),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Driving License',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              color: _isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral800,
+                                            ),
+                                          ),
+                                          Ux4gCheckbox(
+                                            value: _drivingLicense,
+                                            onChanged: (val) => setState(() => _drivingLicense = val ?? false),
+                                            size: Ux4gCheckboxSize.small,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    // View all link
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 26),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          'View all',
+                                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: primary),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                  Divider(height: 28, thickness: 1, color: dividerColor),
+
+                                  // 2. Profile information
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.account_circle_outlined, size: 22, color: titleColor),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Profile information',
+                                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                            ),
+                                            const SizedBox(height: 2),
+                                            Text(
+                                              'Name, Date of Birth, Gender',
+                                              style: TextStyle(fontSize: 12, color: subtitleColor),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Ux4gCheckbox(
+                                        value: _profileInfo,
+                                        onChanged: (val) => setState(() => _profileInfo = val ?? false),
+                                        size: Ux4gCheckboxSize.small,
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(height: 28, thickness: 1, color: dividerColor),
+
+                                  // 3. Get your email
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.mail_outline, size: 22, color: titleColor),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Text(
+                                          'Get your email',
+                                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                        ),
+                                      ),
+                                      Ux4gCheckbox(
+                                        value: _email,
+                                        onChanged: (val) => setState(() => _email = val ?? false),
+                                        size: Ux4gCheckboxSize.small,
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(height: 28, thickness: 1, color: dividerColor),
+
+                                  // 4. Get your profile picture
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.account_circle, size: 22, color: titleColor),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Text(
+                                          'Get your profile picture',
+                                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                        ),
+                                      ),
+                                      Ux4gCheckbox(
+                                        value: _profilePicture,
+                                        onChanged: (val) => setState(() => _profilePicture = val ?? false),
+                                        size: Ux4gCheckboxSize.small,
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(height: 28, thickness: 1, color: dividerColor),
+
+                                  // 5. Location
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.location_on_outlined, size: 22, color: titleColor),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Text(
+                                          'Location',
+                                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                        ),
+                                      ),
+                                      Ux4gCheckbox(
+                                        value: _location,
+                                        onChanged: (val) => setState(() => _location = val ?? false),
+                                        size: Ux4gCheckboxSize.small,
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(height: 28, thickness: 1, color: dividerColor),
+
+                                  // 6. Consent validity date
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(Icons.calendar_today_outlined, size: 22, color: titleColor),
+                                      const SizedBox(width: 10),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Consent validity date',
+                                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: titleColor),
+                                            ),
+                                            const SizedBox(height: 2),
+                                            Text(
+                                              '(Today + 30 days)\n08-Oct-2026',
+                                              style: TextStyle(fontSize: 12, color: subtitleColor, height: 1.3),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          'Edit',
+                                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: primary),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+
+                            // Legal Text
+                            Text(
+                              'Consent validity is subject to applicable laws.\nBy selecting Allow, you are giving consent to share the items above.',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: _isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+                                height: 1.4,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+
+                            // Allow & Deny Buttons
+                            Ux4gButton(
+                              text: 'Allow',
+                              onPressed: () {},
+                              height: 48,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              variant: Ux4gButtonVariant.primary,
+                            ),
+                            const SizedBox(height: 10),
+                            Ux4gButton(
+                              text: 'Deny',
+                              onPressed: () {},
+                              height: 48,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              variant: Ux4gButtonVariant.outline,
+                            ),
+                            const SizedBox(height: 16),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Footer
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Powered by -',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: _isDark ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}''';
 // ───────────────────────────────────────────────────────────────────────
 // Consent Capture (Consent Not Given) pattern
 // ───────────────────────────────────────────────────────────────────────

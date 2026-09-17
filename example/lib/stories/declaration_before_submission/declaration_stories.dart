@@ -350,9 +350,11 @@ class _DeclarationBeforeSubmissionMockupState
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 20, top: 8),
-            child: Column(
+            padding: const EdgeInsets.only(bottom: 20, top: 8),
+            child: Row(
               mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Powered by -',
@@ -364,7 +366,7 @@ class _DeclarationBeforeSubmissionMockupState
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: 6),
+                const SizedBox(width: 8),
                 Image.asset(
                   _digitalIndiaLogoPath,
                   height: 22,
@@ -669,9 +671,11 @@ class _DeclarationBeforeSubmissionCardMockupState
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 20, top: 8),
-                    child: Column(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Powered by -',
@@ -683,7 +687,7 @@ class _DeclarationBeforeSubmissionCardMockupState
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: 6),
+                        const SizedBox(width: 8),
                         Image.asset(
                           _digitalIndiaLogoPath,
                           height: 22,
@@ -1109,9 +1113,11 @@ class _DeclarationWithDigitalSignMockupState
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 20, top: 8),
-            child: Column(
+            padding: const EdgeInsets.only(bottom: 20, top: 8),
+            child: Row(
               mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Powered by -',
@@ -1123,7 +1129,7 @@ class _DeclarationWithDigitalSignMockupState
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: 6),
+                const SizedBox(width: 8),
                 Image.asset(
                   _digitalIndiaLogoPath,
                   height: 22,
@@ -1463,9 +1469,11 @@ class _DeclarationWithDigitalSignCardMockupState
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 20, top: 8),
-                    child: Column(
+                    padding: const EdgeInsets.only(bottom: 20, top: 8),
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Powered by -',
@@ -1477,7 +1485,7 @@ class _DeclarationWithDigitalSignCardMockupState
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: 6),
+                        const SizedBox(width: 8),
                         Image.asset(
                           _digitalIndiaLogoPath,
                           height: 22,
@@ -1655,11 +1663,13 @@ size: Ux4gButtonSize.large,
     // Footer Logo
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Powered by -', style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400), fontWeight: FontWeight.w500)),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
@@ -1843,11 +1853,13 @@ size: Ux4gButtonSize.large,
             // Powered by
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400), fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
@@ -2046,14 +2058,16 @@ size: Ux4gButtonSize.large,
     // Footer Logo
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Powered by -',
             style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400), fontWeight: FontWeight.w500),
           ),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
@@ -2217,11 +2231,13 @@ size: Ux4gButtonSize.large,
             // Powered by
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: (_isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400), fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
