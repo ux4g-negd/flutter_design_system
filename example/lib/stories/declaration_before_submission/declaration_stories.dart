@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
@@ -236,61 +235,17 @@ class _DeclarationBeforeSubmissionMockupState
                     ),
                   ),
                   SizedBox(height: 24),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 24,
-                        width: 24,
-                        child: Checkbox(
-                          value: _agreed,
-                          activeColor: (_isDark(context)
-                              ? Ux4gColors.primary400
-                              : Ux4gColors.primary600),
-                          onChanged: _reachedEnd
-                              ? (val) {
-                                  setState(() {
-                                    _agreed = val ?? false;
-                                  });
-                                }
-                              : null,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text:
-                                    'I have read and agree to the above declaration.',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: (_isDark(context)
-                                      ? Ux4gColors.neutral50
-                                      : Ux4gColors.gray900),
-                                  height: 1.4,
-                                ),
-                              ),
-                              TextSpan(
-                                text: ' *',
-                                style: TextStyle(
-                                  color: (_isDark(context)
-                                      ? Ux4gColors.red400
-                                      : Ux4gColors.red700),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                  Ux4gCheckbox(
+                    value: _agreed,
+                    enabled: _reachedEnd,
+                    isRequired: true,
+                    size: Ux4gCheckboxSize.large,
+                    label: 'I have read and agree to the above declaration.',
+                    onChanged: (val) {
+                      setState(() {
+                        _agreed = val ?? false;
+                      });
+                    },
                   ),
                   SizedBox(height: 24),
                   Container(
@@ -342,6 +297,10 @@ class _DeclarationBeforeSubmissionMockupState
                     onPressed: _agreed ? () {} : null,
                     width: double.infinity,
                     variant: Ux4gButtonVariant.primary,
+                    disabledBackgroundColor: _isDark(context)
+                        ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                        : const Color(0xFFB0A2E8),
+                    disabledContentColor: Colors.white,
                     height: 48,
                     size: Ux4gButtonSize.large,
                   ),
@@ -556,61 +515,18 @@ class _DeclarationBeforeSubmissionCardMockupState
                               ),
                             ),
                             SizedBox(height: 24),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 24,
-                                  width: 24,
-                                  child: Checkbox(
-                                    value: _agreed,
-                                    activeColor: (_isDark(context)
-                                        ? Ux4gColors.primary400
-                                        : Ux4gColors.primary600),
-                                    onChanged: _reachedEnd
-                                        ? (val) {
-                                            setState(() {
-                                              _agreed = val ?? false;
-                                            });
-                                          }
-                                        : null,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 12),
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              'I have read and agree to the above declaration.',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: (_isDark(context)
-                                                ? Ux4gColors.neutral50
-                                                : Ux4gColors.gray900),
-                                            height: 1.4,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: ' *',
-                                          style: TextStyle(
-                                            color: (_isDark(context)
-                                                ? Ux4gColors.red400
-                                                : Ux4gColors.red700),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            Ux4gCheckbox(
+                              value: _agreed,
+                              enabled: _reachedEnd,
+                              isRequired: true,
+                              size: Ux4gCheckboxSize.large,
+                              label:
+                                  'I have read and agree to the above declaration.',
+                              onChanged: (val) {
+                                setState(() {
+                                  _agreed = val ?? false;
+                                });
+                              },
                             ),
                             SizedBox(height: 24),
                             Container(
@@ -662,6 +578,10 @@ class _DeclarationBeforeSubmissionCardMockupState
                               onPressed: _agreed ? () {} : null,
                               width: double.infinity,
                               variant: Ux4gButtonVariant.primary,
+                              disabledBackgroundColor: _isDark(context)
+                                  ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                                  : const Color(0xFFB0A2E8),
+                              disabledContentColor: Colors.white,
                               height: 48,
                               size: Ux4gButtonSize.large,
                             ),
@@ -738,7 +658,7 @@ class _PhoneFrame extends StatelessWidget {
 }
 
 class _ConsentHeader extends StatelessWidget {
-  _ConsentHeader();
+  const _ConsentHeader();
 
   @override
   Widget build(BuildContext context) {
@@ -925,59 +845,16 @@ class _DeclarationWithDigitalSignMockupState
                     ),
                   ),
                   SizedBox(height: 24),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 24,
-                        width: 24,
-                        child: Checkbox(
-                          value: _agreed,
-                          activeColor: (_isDark(context)
-                              ? Ux4gColors.primary200
-                              : Ux4gColors.primary800),
-                          onChanged: (val) {
-                            setState(() {
-                              _agreed = val ?? false;
-                            });
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text:
-                                    'I have read and agree to the above declaration.',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: (_isDark(context)
-                                      ? Ux4gColors.neutral50
-                                      : Ux4gColors.gray900),
-                                  height: 1.4,
-                                ),
-                              ),
-                              TextSpan(
-                                text: ' *',
-                                style: TextStyle(
-                                  color: (_isDark(context)
-                                      ? Ux4gColors.red400
-                                      : Ux4gColors.red700),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                  Ux4gCheckbox(
+                    value: _agreed,
+                    isRequired: true,
+                    size: Ux4gCheckboxSize.large,
+                    label: 'I have read and agree to the above declaration.',
+                    onChanged: (val) {
+                      setState(() {
+                        _agreed = val ?? false;
+                      });
+                    },
                   ),
                   SizedBox(height: 24),
                   Text(
@@ -998,15 +875,25 @@ class _DeclarationWithDigitalSignMockupState
                           : Colors.white,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: (_isDark(context)
-                            ? Ux4gColors.neutral600
-                            : Ux4gColors.neutral300),
+                        color: _isSigned
+                            ? (_isDark(context)
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600)
+                            : (_isDark(context)
+                                ? Ux4gColors.neutral600
+                                : Ux4gColors.neutral300),
                       ),
                     ),
                     height: 48,
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       controller: _nameController,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: _isDark(context)
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.gray900,
+                      ),
                       onChanged: (val) {
                         setState(() {
                           _isSigned = val.trim().split(' ').length >= 2;
@@ -1024,8 +911,8 @@ class _DeclarationWithDigitalSignMockupState
                             ? Icon(
                                 Icons.check_circle,
                                 color: (_isDark(context)
-                                    ? Ux4gColors.green300
-                                    : Ux4gColors.green700),
+                                    ? Ux4gColors.green400
+                                    : Ux4gColors.green600),
                                 size: 20,
                               )
                             : null,
@@ -1036,11 +923,15 @@ class _DeclarationWithDigitalSignMockupState
                   Row(
                     children: [
                       Icon(
-                        Icons.info_outline,
+                        _isSigned ? Icons.check_circle : Icons.info_outline,
                         size: 16,
-                        color: (_isDark(context)
-                            ? Ux4gColors.neutral400
-                            : Ux4gColors.neutral500),
+                        color: _isSigned
+                            ? (_isDark(context)
+                                ? Ux4gColors.green400
+                                : Ux4gColors.green600)
+                            : (_isDark(context)
+                                ? Ux4gColors.neutral400
+                                : Ux4gColors.neutral500),
                       ),
                       SizedBox(width: 8),
                       Expanded(
@@ -1048,9 +939,13 @@ class _DeclarationWithDigitalSignMockupState
                           'Your name will be matched against your aadhaar records.',
                           style: TextStyle(
                             fontSize: 13,
-                            color: (_isDark(context)
-                                ? Ux4gColors.neutral400
-                                : Ux4gColors.neutral500),
+                            color: _isSigned
+                                ? (_isDark(context)
+                                    ? Ux4gColors.green400
+                                    : Ux4gColors.green600)
+                                : (_isDark(context)
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral500),
                           ),
                         ),
                       ),
@@ -1106,6 +1001,10 @@ class _DeclarationWithDigitalSignMockupState
                     onPressed: (_agreed && _isSigned) ? () {} : null,
                     width: double.infinity,
                     variant: Ux4gButtonVariant.primary,
+                    disabledBackgroundColor: _isDark(context)
+                        ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                        : const Color(0xFFB0A2E8),
+                    disabledContentColor: Colors.white,
                     height: 48,
                     size: Ux4gButtonSize.large,
                   ),
@@ -1279,59 +1178,17 @@ class _DeclarationWithDigitalSignCardMockupState
                               ),
                             ),
                             SizedBox(height: 24),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 24,
-                                  width: 24,
-                                  child: Checkbox(
-                                    value: _agreed,
-                                    activeColor: (_isDark(context)
-                                        ? Ux4gColors.primary200
-                                        : Ux4gColors.primary800),
-                                    onChanged: (val) {
-                                      setState(() {
-                                        _agreed = val ?? false;
-                                      });
-                                    },
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 12),
-                                Expanded(
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              'I have read and agree to the above declaration.',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: (_isDark(context)
-                                                ? Ux4gColors.neutral50
-                                                : Ux4gColors.gray900),
-                                            height: 1.4,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: ' *',
-                                          style: TextStyle(
-                                            color: (_isDark(context)
-                                                ? Ux4gColors.red400
-                                                : Ux4gColors.red700),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            Ux4gCheckbox(
+                              value: _agreed,
+                              isRequired: true,
+                              size: Ux4gCheckboxSize.large,
+                              label:
+                                  'I have read and agree to the above declaration.',
+                              onChanged: (val) {
+                                setState(() {
+                                  _agreed = val ?? false;
+                                });
+                              },
                             ),
                             SizedBox(height: 24),
                             Text(
@@ -1352,15 +1209,25 @@ class _DeclarationWithDigitalSignCardMockupState
                                     : Colors.white,
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
-                                  color: (_isDark(context)
-                                      ? Ux4gColors.neutral600
-                                      : Ux4gColors.neutral300),
+                                  color: _isSigned
+                                      ? (_isDark(context)
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600)
+                                      : (_isDark(context)
+                                          ? Ux4gColors.neutral600
+                                          : Ux4gColors.neutral300),
                                 ),
                               ),
                               height: 48,
                               padding: EdgeInsets.symmetric(horizontal: 16),
                               child: TextField(
                                 controller: _nameController,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: _isDark(context)
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.gray900,
+                                ),
                                 onChanged: (val) {
                                   setState(() {
                                     _isSigned =
@@ -1379,8 +1246,8 @@ class _DeclarationWithDigitalSignCardMockupState
                                       ? Icon(
                                           Icons.check_circle,
                                           color: (_isDark(context)
-                                              ? Ux4gColors.green300
-                                              : Ux4gColors.green700),
+                                              ? Ux4gColors.green400
+                                              : Ux4gColors.green600),
                                           size: 20,
                                         )
                                       : null,
@@ -1391,11 +1258,17 @@ class _DeclarationWithDigitalSignCardMockupState
                             Row(
                               children: [
                                 Icon(
-                                  Icons.info_outline,
+                                  _isSigned
+                                      ? Icons.check_circle
+                                      : Icons.info_outline,
                                   size: 16,
-                                  color: (_isDark(context)
-                                      ? Ux4gColors.neutral400
-                                      : Ux4gColors.neutral500),
+                                  color: _isSigned
+                                      ? (_isDark(context)
+                                          ? Ux4gColors.green400
+                                          : Ux4gColors.green600)
+                                      : (_isDark(context)
+                                          ? Ux4gColors.neutral400
+                                          : Ux4gColors.neutral500),
                                 ),
                                 SizedBox(width: 8),
                                 Expanded(
@@ -1403,9 +1276,13 @@ class _DeclarationWithDigitalSignCardMockupState
                                     'Your name will be matched against your aadhaar records.',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: (_isDark(context)
-                                          ? Ux4gColors.neutral400
-                                          : Ux4gColors.neutral500),
+                                      color: _isSigned
+                                          ? (_isDark(context)
+                                              ? Ux4gColors.green400
+                                              : Ux4gColors.green600)
+                                          : (_isDark(context)
+                                              ? Ux4gColors.neutral400
+                                              : Ux4gColors.neutral500),
                                     ),
                                   ),
                                 ),
@@ -1461,6 +1338,10 @@ class _DeclarationWithDigitalSignCardMockupState
                               onPressed: (_agreed && _isSigned) ? () {} : null,
                               width: double.infinity,
                               variant: Ux4gButtonVariant.primary,
+                              disabledBackgroundColor: _isDark(context)
+                                  ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                                  : const Color(0xFFB0A2E8),
+                              disabledContentColor: Colors.white,
                               height: 48,
                               size: Ux4gButtonSize.large,
                             ),
@@ -1578,22 +1459,12 @@ Column(
             SizedBox(height: 24),
 
             // Agreement Checkbox
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Checkbox(value: true, onChanged: (val) {}, activeColor: (_isDark(context) ? Ux4gColors.primary200 : Ux4gColors.primary800)),
-                SizedBox(width: 12),
-                Expanded(
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: 'I have read and agree to the above declaration.', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: (_isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900))),
-                        TextSpan(text: ' *', style: TextStyle(color: (_isDark(context) ? Ux4gColors.red400 : Ux4gColors.red700), fontSize: 16, fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            Ux4gCheckbox(
+              value: true,
+              isRequired: true,
+              size: Ux4gCheckboxSize.large,
+              label: 'I have read and agree to the above declaration.',
+              onChanged: (val) {},
             ),
             SizedBox(height: 24),
 
@@ -1601,24 +1472,24 @@ Column(
             Text('Enter your full name to attest this declaration', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: (_isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral700))),
             SizedBox(height: 8),
             Container(
-              decoration: BoxDecoration(color: _isDark(context) ? Ux4gColors.gray800 : Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: (_isDark(context) ? Ux4gColors.neutral600 : Ux4gColors.neutral300))),
+              decoration: BoxDecoration(color: _isDark(context) ? Ux4gColors.gray800 : Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600))),
               height: 48,
-padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: TextEditingController(text: 'Ramesh Kumar'),
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Enter your full name',
                   border: InputBorder.none,
-                  suffixIcon: Icon(Icons.check_circle, color: (_isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700), size: 20),
+                  suffixIcon: Icon(Icons.check_circle, color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600), size: 20),
                 ),
               ),
             ),
             SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.info_outline, size: 16, color: (_isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
+                Icon(Icons.check_circle, size: 16, color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600)),
                 SizedBox(width: 8),
-                Text('Your name will be matched against your aadhaar records.', style: TextStyle(fontSize: 13, color: (_isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500))),
+                Text('Your name will be matched against your aadhaar records.', style: TextStyle(fontSize: 13, color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600))),
               ],
             ),
             SizedBox(height: 24),
@@ -1648,13 +1519,17 @@ padding: EdgeInsets.symmetric(horizontal: 16),
             SizedBox(height: 32),
 
             // Submit Button
-            const Ux4gButton(
+            Ux4gButton(
               text: 'Submit application',
               onPressed: null, // Enable when agreed and signed
               width: double.infinity,
               variant: Ux4gButtonVariant.primary,
-height: 48,
-size: Ux4gButtonSize.large,
+              disabledBackgroundColor: _isDark(context)
+                  ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                  : const Color(0xFFB0A2E8),
+              disabledContentColor: Colors.white,
+              height: 48,
+              size: Ux4gButtonSize.large,
             ),
           ],
         ),
@@ -1768,22 +1643,12 @@ Column(
                       SizedBox(height: 24),
 
                       // Agreement Checkbox
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Checkbox(value: true, onChanged: (val) {}, activeColor: (_isDark(context) ? Ux4gColors.primary200 : Ux4gColors.primary800)),
-                          SizedBox(width: 12),
-                          Expanded(
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(text: 'I have read and agree to the above declaration.', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: (_isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900))),
-                                  TextSpan(text: ' *', style: TextStyle(color: (_isDark(context) ? Ux4gColors.red400 : Ux4gColors.red700), fontSize: 16, fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                      Ux4gCheckbox(
+                        value: true,
+                        isRequired: true,
+                        size: Ux4gCheckboxSize.large,
+                        label: 'I have read and agree to the above declaration.',
+                        onChanged: (val) {},
                       ),
                       SizedBox(height: 24),
 
@@ -1791,24 +1656,24 @@ Column(
                       Text('Enter your full name to attest this declaration', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: (_isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral700))),
                       SizedBox(height: 8),
                       Container(
-                        decoration: BoxDecoration(color: _isDark(context) ? Ux4gColors.gray800 : Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: (_isDark(context) ? Ux4gColors.neutral600 : Ux4gColors.neutral300))),
+                        decoration: BoxDecoration(color: _isDark(context) ? Ux4gColors.gray800 : Colors.white, borderRadius: BorderRadius.circular(8), border: Border.all(color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600))),
                         height: 48,
-padding: EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 16),
                         child: TextField(
                           controller: TextEditingController(text: 'Ramesh Kumar'),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'Enter your full name',
                             border: InputBorder.none,
-                            suffixIcon: Icon(Icons.check_circle, color: (_isDark(context) ? Ux4gColors.green300 : Ux4gColors.green700), size: 20),
+                            suffixIcon: Icon(Icons.check_circle, color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600), size: 20),
                           ),
                         ),
                       ),
                       SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(Icons.info_outline, size: 16, color: (_isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
+                          Icon(Icons.check_circle, size: 16, color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600)),
                           SizedBox(width: 8),
-                          Text('Your name will be matched against your aadhaar records.', style: TextStyle(fontSize: 13, color: (_isDark(context) ? Ux4gColors.neutral400 : Ux4gColors.neutral500))),
+                          Text('Your name will be matched against your aadhaar records.', style: TextStyle(fontSize: 13, color: (_isDark(context) ? Ux4gColors.green400 : Ux4gColors.green600))),
                         ],
                       ),
                       SizedBox(height: 24),
@@ -1843,8 +1708,12 @@ padding: EdgeInsets.symmetric(horizontal: 16),
                         onPressed: null, // Enable when agreed and signed
                         width: double.infinity,
                         variant: Ux4gButtonVariant.primary,
-height: 48,
-size: Ux4gButtonSize.large,
+                        disabledBackgroundColor: _isDark(context)
+                            ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                            : const Color(0xFFB0A2E8),
+                        disabledContentColor: Colors.white,
+                        height: 48,
+                        size: Ux4gButtonSize.large,
                       ),
                     ],
                   ),
@@ -1967,46 +1836,12 @@ Column(
             SizedBox(height: 24),
 
             // Agreement Checkbox
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Checkbox(
-                    value: false,
-                    activeColor: (_isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600),
-                    onChanged: (val) {},
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-                  ),
-                ),
-                SizedBox(width: 12),
-                Expanded(
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'I have read and agree to the above declaration.',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: (_isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900),
-                            height: 1.4,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' *',
-                          style: TextStyle(
-                            color: (_isDark(context) ? Ux4gColors.red400 : Ux4gColors.red700),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            Ux4gCheckbox(
+              value: false,
+              isRequired: true,
+              size: Ux4gCheckboxSize.large,
+              label: 'I have read and agree to the above declaration.',
+              onChanged: (val) {},
             ),
             SizedBox(height: 24),
 
@@ -2048,8 +1883,12 @@ Column(
               onPressed: null, // Disabled until agreed
               width: double.infinity,
               variant: Ux4gButtonVariant.primary,
-height: 48,
-size: Ux4gButtonSize.large,
+              disabledBackgroundColor: _isDark(context)
+                  ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                  : const Color(0xFFB0A2E8),
+              disabledContentColor: Colors.white,
+              height: 48,
+              size: Ux4gButtonSize.large,
             ),
           ],
         ),
@@ -2172,22 +2011,12 @@ Column(
                       SizedBox(height: 24),
 
                       // Agreement Checkbox
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Checkbox(value: false, onChanged: (val) {}, activeColor: (_isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600)),
-                          SizedBox(width: 8),
-                          Expanded(
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(text: 'I have read and agree to the above declaration.', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: (_isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.gray900))),
-                                  TextSpan(text: ' *', style: TextStyle(color: (_isDark(context) ? Ux4gColors.red400 : Ux4gColors.red700), fontSize: 16, fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                      Ux4gCheckbox(
+                        value: false,
+                        isRequired: true,
+                        size: Ux4gCheckboxSize.large,
+                        label: 'I have read and agree to the above declaration.',
+                        onChanged: (val) {},
                       ),
                       SizedBox(height: 24),
 
@@ -2221,8 +2050,12 @@ Column(
                         onPressed: null, // Disabled until agreed
                         width: double.infinity,
                         variant: Ux4gButtonVariant.primary,
-height: 48,
-size: Ux4gButtonSize.large,
+                        disabledBackgroundColor: _isDark(context)
+                            ? Ux4gColors.primary800.withValues(alpha: 0.6)
+                            : const Color(0xFFB0A2E8),
+                        disabledContentColor: Colors.white,
+                        height: 48,
+                        size: Ux4gButtonSize.large,
                       ),
                     ],
                   ),
