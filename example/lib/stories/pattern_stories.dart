@@ -20501,15 +20501,17 @@ final reminderAlertsComponent = WidgetbookComponent(
 // Shared helpers
 // -----------------------------------------------------------------------
 
-/// Horizontal 5-step progress bar — circles with no labels except the last
-/// step which shows "Payment". Lines have small gaps and don't touch circles.
+/// Horizontal 4-step progress bar — circles with labels for every step:
+/// "Personal info", "Documents", "Review", "Payment".
 class _PmtStepBar extends StatelessWidget {
   const _PmtStepBar({
     this.currentStep = 4,
-    this.padding = const EdgeInsets.fromLTRB(16, 24, 28, 6),
+    this.padding = const EdgeInsets.fromLTRB(16, 16, 16, 6),
   });
   final int currentStep;
   final EdgeInsetsGeometry padding;
+
+  static const _labels = ['Personal info', 'Documents', 'Review', 'Payment'];
 
   @override
   Widget build(BuildContext context) {
@@ -20553,12 +20555,12 @@ class _PmtStepBar extends StatelessWidget {
                   isActive: currentStep == i + 1,
                   primary: primary,
                   onPrimary: onPrimary,
-                  label: i == 3 ? 'Payment' : null,
+                  label: _labels[i],
                 ),
               ],
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 12),
         ],
       ),
     );
@@ -20619,21 +20621,19 @@ class _PmtCircle extends StatelessWidget {
             ),
     );
     if (label == null) return circle;
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.topCenter,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         circle,
-        Positioned(
-          top: 27,
-          child: Text(
-            label!,
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: _getTitleColor(context),
-            ),
+        const SizedBox(height: 4),
+        Text(
+          label!,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: _getTitleColor(context),
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );
@@ -22846,7 +22846,6 @@ class _PaymentSuccessMockup extends StatelessWidget {
       child: Column(
         children: [
           const _BrandHeader(),
-          const _PmtStepBar(),
           Expanded(
             child: Container(
               color: isDark ? Ux4gColors.neutral950 : _bg,
@@ -23020,9 +23019,6 @@ class _PaymentSuccessCardMockup extends StatelessWidget {
                             decoration: _suCardDeco(context),
                             child: Column(
                               children: [
-                                const _PmtStepBar(
-                                  padding: EdgeInsets.fromLTRB(0, 8, 12, 20),
-                                ),
                                 Container(
                                   width: 64,
                                   height: 64,
@@ -23179,17 +23175,6 @@ Scaffold(
         ],
         horizontalPadding: 16,
         leadingSpacing: 8,
-      ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 4, currentStep: 4,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
       ),
       Expanded(
         child: Container(
@@ -23356,17 +23341,6 @@ Scaffold(
                         ),
                         child: Column(
                           children: [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 8, 0, 20),
-                              child: Ux4gStepper(
-                                totalSteps: 4, currentStep: 4,
-                                orientation: StepperOrientation.horizontal,
-                                steps: [
-                                  Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-                                  Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
-                                ],
-                              ),
-                            ),
                             Container(
                               width: 64, height: 64,
                               decoration: BoxDecoration(
@@ -23465,8 +23439,6 @@ class _PaymentFailedMockup extends StatelessWidget {
       child: Column(
         children: [
           const _BrandHeader(),
-          const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: isDark ? Ux4gColors.neutral950 : _bg,
@@ -23631,9 +23603,6 @@ class _PaymentFailedCardMockup extends StatelessWidget {
                             decoration: _suCardDeco(context),
                             child: Column(
                               children: [
-                                const _PmtStepBar(
-                                  padding: EdgeInsets.fromLTRB(0, 8, 12, 20),
-                                ),
                                 Container(
                                   width: 64,
                                   height: 64,
@@ -23782,17 +23751,6 @@ Scaffold(
         horizontalPadding: 16,
         leadingSpacing: 8,
       ),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 4, currentStep: 4,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
       Expanded(
         child: Container(
           color: Ux4gColors.neutral50,
@@ -23939,17 +23897,6 @@ Scaffold(
                         ),
                         child: Column(
                           children: [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 8, 12, 20),
-                              child: Ux4gStepper(
-                                totalSteps: 4, currentStep: 4,
-                                orientation: StepperOrientation.horizontal,
-                                steps: [
-                                  Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-                                  Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Payment'),
-                                ],
-                              ),
-                            ),
                             Container(
                               width: 64, height: 64,
                               decoration: BoxDecoration(
@@ -24042,8 +23989,6 @@ class _FeeWaivedMockup extends StatelessWidget {
       child: Column(
         children: [
           const _BrandHeader(),
-          const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: isDark ? Ux4gColors.neutral950 : _bg,
@@ -24196,8 +24141,6 @@ class _FeeWaivedCardMockup extends StatelessWidget {
       child: Column(
         children: [
           const _BrandHeader(),
-          const _PmtStepBar(),
-          const Divider(height: 1, thickness: 1, color: _border),
           Expanded(
             child: Container(
               color: _getSuCardBg(context),
@@ -24362,20 +24305,6 @@ Scaffold(
         horizontalPadding: 16,
         leadingSpacing: 8,
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gColors.neutral200),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 5, currentStep: 5,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gColors.neutral200),
       Expanded(
         child: Container(
           color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral950 : Ux4gColors.neutral50,
@@ -24497,20 +24426,6 @@ Scaffold(
         horizontalPadding: 16,
         leadingSpacing: 8,
       ),
-      Divider(height: 1, thickness: 1, color: Ux4gColors.neutral200),
-      Padding(
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        child: Ux4gStepper(
-          totalSteps: 5, currentStep: 5,
-          orientation: StepperOrientation.horizontal,
-          steps: [
-            Ux4gStepItem(title: 'Review'), Ux4gStepItem(title: 'Details'),
-            Ux4gStepItem(title: 'Documents'), Ux4gStepItem(title: 'Preview'),
-            Ux4gStepItem(title: 'Payment'),
-          ],
-        ),
-      ),
-      Divider(height: 1, thickness: 1, color: Ux4gColors.neutral200),
       Expanded(
         child: Container(
           color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary800 : Ux4gColors.primary100,
