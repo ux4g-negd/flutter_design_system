@@ -26072,6 +26072,41 @@ BoxDecoration _gstCardDeco(BuildContext context) {
   );
 }
 
+BoxDecoration _gstInfoCardDeco(BuildContext context, [String? status]) {
+  final isDark = _isDark(context);
+  final isResolved = status == 'Resolved';
+  if (isResolved) {
+    return BoxDecoration(
+      color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
+      border: Border.all(
+        color: isDark ? Ux4gColors.green600 : Ux4gColors.green300,
+      ),
+      borderRadius: BorderRadius.circular(10),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.04),
+          blurRadius: 14,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    );
+  }
+  return BoxDecoration(
+    color: isDark ? Ux4gColors.secondary900 : Ux4gColors.secondary50,
+    border: Border.all(
+      color: isDark ? Ux4gColors.secondary700 : Ux4gColors.secondary300,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withValues(alpha: 0.04),
+        blurRadius: 14,
+        offset: const Offset(0, 4),
+      ),
+    ],
+  );
+}
+
 Color _gstTitle(BuildContext context) =>
     _isDark(context) ? Colors.white : _titleColor;
 Color _gstSubtle(BuildContext context) =>
@@ -26082,7 +26117,7 @@ Color _gstMuted(BuildContext context) =>
 // Status → Ux4gTag colour mapping
 Ux4gTagColor _gstTagColor(String status) => switch (status) {
   'Resolved' => Ux4gTagColor.success,
-  'Assigned' => Ux4gTagColor.brand,
+  'Assigned' => Ux4gTagColor.warning,
   'Escalated' => Ux4gTagColor.warning,
   'Reopened' => Ux4gTagColor.warning,
   _ => Ux4gTagColor.warning, // In Progress
@@ -26094,11 +26129,6 @@ Ux4gTagColor _gstTagColor(String status) => switch (status) {
       isDark ? Ux4gColors.green500 : Ux4gColors.green600,
       isDark ? Ux4gColors.green300 : Ux4gColors.green800,
       isDark ? Ux4gColors.green800 : Ux4gColors.green100,
-    ),
-    'Assigned' => (
-      isDark ? Ux4gColors.primary300 : Ux4gColors.primary800,
-      isDark ? Ux4gColors.primary300 : Ux4gColors.primary800,
-      isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
     ),
     _ => (
       isDark ? Ux4gColors.orange500 : Ux4gColors.orange600,
@@ -26153,6 +26183,7 @@ class _GstInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = _isDark(context);
+    final isResolved = status == 'Resolved';
     final displayStatus = status.startsWith('In Progress')
         ? 'In Progress'
         : status;
@@ -26160,7 +26191,7 @@ class _GstInfoCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       padding: const EdgeInsets.all(14),
-      decoration: _gstCardDeco(context),
+      decoration: _gstInfoCardDeco(context, status),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26195,27 +26226,29 @@ class _GstInfoCard extends StatelessWidget {
             'Grievance ID · GRV-2026-MH-04127',
             style: TextStyle(fontSize: 12, color: _gstSubtle(context)),
           ),
-          const SizedBox(height: 10),
-          Text(
-            '8 days left',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              color: _gstTitle(context),
+          if (!isResolved) ...[
+            const SizedBox(height: 10),
+            Text(
+              '8 days left',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: _gstTitle(context),
+              ),
             ),
-          ),
-          const SizedBox(height: 6),
-          Ux4gLinearProgress(
-            value: 0.55,
-            gradientColors: isDark
-                ? const [Ux4gColors.secondary700, Ux4gColors.secondary300]
-                : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
-            trackColor: isDark
-                ? Ux4gColors.neutral700
-                : const Color(0xFFEEEEEE),
-            shape: Ux4gProgressShape.rounded,
-            height: 8,
-          ),
+            const SizedBox(height: 6),
+            Ux4gLinearProgress(
+              value: 0.55,
+              gradientColors: isDark
+                  ? const [Ux4gColors.secondary700, Ux4gColors.secondary300]
+                  : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
+              trackColor: isDark
+                  ? Ux4gColors.neutral700
+                  : const Color(0xFFEEEEEE),
+              shape: Ux4gProgressShape.rounded,
+              height: 8,
+            ),
+          ],
         ],
       ),
     );
@@ -26525,9 +26558,9 @@ class _GstEscalationLevel extends StatelessWidget {
   }
 }
 
-// ── Resolution + satisfaction survey (Resolved state) ───────────────────
-class _GstResolutionSection extends StatelessWidget {
-  const _GstResolutionSection();
+// ── Resolution banner (Resolved state - top) ───────────────────────────
+class _GstResolutionBanner extends StatelessWidget {
+  const _GstResolutionBanner();
 
   @override
   Widget build(BuildContext context) {
@@ -26536,91 +26569,96 @@ class _GstResolutionSection extends StatelessWidget {
     final baseStyle =
         typography?.bS_default ??
         const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-          decoration: BoxDecoration(
-            color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
-            border: Border.all(
-              color: isDark ? Ux4gColors.green600 : Ux4gColors.green300,
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      decoration: BoxDecoration(
+        color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
+        border: Border.all(
+          color: isDark ? Ux4gColors.green600 : Ux4gColors.green300,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 14,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.check_circle,
+            color: isDark ? Ux4gColors.green500 : Ux4gColors.green600,
+            size: 20,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              'Grievance resolved on 14 Apr 2026 - certificate issued',
+              style: baseStyle.copyWith(
+                color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
+              ),
             ),
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.06),
-                blurRadius: 14,
-                offset: const Offset(0, 4),
-              ),
-            ],
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(
-                Icons.check_circle,
-                color: isDark ? Ux4gColors.green500 : Ux4gColors.green600,
-                size: 20,
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Text(
-                  'Grievance resolved on 14 Apr 2026 – certificate issued',
-                  style: baseStyle.copyWith(
-                    color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
-                  ),
-                ),
-              ),
-            ],
+        ],
+      ),
+    );
+  }
+}
+
+// ── Resolution satisfaction survey (Resolved state) ──────────────────────
+class _GstResolutionSurvey extends StatelessWidget {
+  const _GstResolutionSurvey();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      padding: const EdgeInsets.all(14),
+      decoration: _gstCardDeco(context),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Are you satisfied with the resolution?',
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: _gstTitle(context),
+            ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-          padding: const EdgeInsets.all(14),
-          decoration: _gstCardDeco(context),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Are you satisfied with the resolution?',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: _gstTitle(context),
-                ),
-              ),
-              const SizedBox(height: 12),
-              Ux4gButton(
-                height: 48,
-                text: 'Yes, satisfied',
-                onPressed: () {},
-                variant: Ux4gButtonVariant.outline,
-                size: Ux4gButtonSize.medium,
-                width: double.infinity,
-              ),
-              const SizedBox(height: 8),
-              Ux4gButton(
-                height: 48,
-                text: 'No, reopen',
-                onPressed: () {},
-                variant: Ux4gButtonVariant.outline,
-                size: Ux4gButtonSize.medium,
-                width: double.infinity,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'You have 30 days from the resolution date to reopen this complaint.',
-                style: TextStyle(
-                  fontSize: 11,
-                  color: _gstMuted(context),
-                  height: 1.4,
-                ),
-              ),
-            ],
+          const SizedBox(height: 12),
+          Ux4gButton(
+            height: 48,
+            text: 'Yes, satisfied',
+            onPressed: () {},
+            variant: Ux4gButtonVariant.outline,
+            size: Ux4gButtonSize.medium,
+            width: double.infinity,
           ),
-        ),
-      ],
+          const SizedBox(height: 8),
+          Ux4gButton(
+            height: 48,
+            text: 'No, reopen',
+            onPressed: () {},
+            variant: Ux4gButtonVariant.outline,
+            size: Ux4gButtonSize.medium,
+            width: double.infinity,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'You have 30 days from the resolution date to reopen this complaint.',
+            style: TextStyle(
+              fontSize: 11,
+              color: _gstMuted(context),
+              height: 1.4,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -26750,17 +26788,15 @@ class _GstTimelineCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final is2ndVariant = status == 'In Progress (2nd Variant)';
     final assignedOrLater =
         status == 'Assigned' ||
         status == 'In Progress' ||
-        status == 'In Progress (2nd Variant)' ||
         status == 'Under Review' ||
         status == 'Escalated' ||
         status == 'Resolved' ||
         status == 'Reopened';
     final underReviewOrLater =
-        status == 'In Progress' ||
-        status == 'In Progress (2nd Variant)' ||
         status == 'Under Review' ||
         status == 'Escalated' ||
         status == 'Resolved' ||
@@ -26770,19 +26806,25 @@ class _GstTimelineCard extends StatelessWidget {
     final isResolved = status == 'Resolved' || status == 'Reopened';
 
     final step1State = Ux4gJourneyStepState.completed;
-    final step2State = assignedOrLater
-        ? Ux4gJourneyStepState.completed
-        : Ux4gJourneyStepState.current;
-    final step3State = underReviewOrLater
-        ? Ux4gJourneyStepState.completed
+    final step2State = is2ndVariant
+        ? Ux4gJourneyStepState.current
         : (assignedOrLater
-              ? Ux4gJourneyStepState.current
-              : Ux4gJourneyStepState.upcoming);
-    final step4State = isResolved
-        ? Ux4gJourneyStepState.completed
-        : (escalatedOrLater
-              ? Ux4gJourneyStepState.current
-              : Ux4gJourneyStepState.upcoming);
+            ? Ux4gJourneyStepState.completed
+            : Ux4gJourneyStepState.current);
+    final step3State = is2ndVariant
+        ? Ux4gJourneyStepState.upcoming
+        : (underReviewOrLater
+            ? Ux4gJourneyStepState.completed
+            : (assignedOrLater
+                ? Ux4gJourneyStepState.current
+                : Ux4gJourneyStepState.upcoming));
+    final step4State = is2ndVariant
+        ? Ux4gJourneyStepState.upcoming
+        : (isResolved
+            ? Ux4gJourneyStepState.completed
+            : (escalatedOrLater
+                ? Ux4gJourneyStepState.current
+                : Ux4gJourneyStepState.upcoming));
     final step5State = isResolved
         ? Ux4gJourneyStepState.completed
         : Ux4gJourneyStepState.upcoming;
@@ -26792,7 +26834,9 @@ class _GstTimelineCard extends StatelessWidget {
         ? (isDark ? Ux4gColors.primary950 : Ux4gColors.primary50)
         : null;
     Color? activeBorderColor(Ux4gJourneyStepState s) =>
-        s == Ux4gJourneyStepState.current ? primary : null;
+        s == Ux4gJourneyStepState.current
+        ? (isDark ? Ux4gColors.primary600 : Ux4gColors.primary300)
+        : null;
 
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
@@ -26801,8 +26845,8 @@ class _GstTimelineCard extends StatelessWidget {
       child: Ux4gJourneyTimeline(
         activeColor: primary,
         header: const Ux4gJourneyHeader(
-          title: 'Grievance Journey',
-          description: 'Tracking stages of resolution',
+          title: 'Grievance journey',
+          description: 'Every update from lodging to resolution',
         ),
         steps: [
           Ux4gJourneyStep(
@@ -26821,7 +26865,9 @@ class _GstTimelineCard extends StatelessWidget {
           ),
           Ux4gJourneyStep(
             state: step3State,
-            date: assignedOrLater ? '08 Apr 2026' : 'Est. 08 Apr 2026',
+            date: (!is2ndVariant && assignedOrLater)
+                ? '08 Apr 2026'
+                : 'Est. 08 Apr 2026',
             title: 'Under review by officer',
             cardColor: activeCardColor(step3State),
             cardBorderColor: activeBorderColor(step3State),
@@ -26875,6 +26921,8 @@ class _GstMockup extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          if (status == 'Resolved')
+                            const _GstResolutionBanner(),
                           _GstInfoCard(
                             status: status,
                             tagColor: tagColor,
@@ -26884,7 +26932,7 @@ class _GstMockup extends StatelessWidget {
                           if (status == 'Assigned') const _GstAssignedOfficer(),
                           if (status == 'Escalated') const _GstEscalationPath(),
                           if (status == 'Resolved')
-                            const _GstResolutionSection(),
+                            const _GstResolutionSurvey(),
                           if (isReopened) _GstReopenForm(primary: primary),
                           if (!isReopened && status != 'In Progress')
                             _GstTimelineCard(status: status, primary: primary),
@@ -26922,31 +26970,57 @@ Column(children: [
     child: SingleChildScrollView(child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // ── Top banner (Resolved state) ──────────────────────────────
+        if (status == 'Resolved')
+          Container(
+            margin: EdgeInsets.fromLTRB(16, 12, 16, 0),
+            padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            decoration: BoxDecoration(
+              color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
+              border: Border.all(color: isDark ? Ux4gColors.green600 : Ux4gColors.green300),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(children: [
+              Icon(Icons.check_circle, color: isDark ? Ux4gColors.green500 : Ux4gColors.green600, size: 20),
+              SizedBox(width: 10),
+              Expanded(child: Text('Grievance resolved on 14 Apr 2026 – certificate issued',
+                style: TextStyle(color: isDark ? Ux4gColors.green300 : Ux4gColors.green800))),
+            ]),
+          ),
+
         // ── Info card ────────────────────────────────────────────────
         Container(
           margin: EdgeInsets.fromLTRB(16, 12, 16, 0),
           padding: EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Ux4gColors.neutral200),
+            color: status == 'Resolved'
+                ? (isDark ? Ux4gColors.green900 : Ux4gColors.green50)
+                : (isDark ? Ux4gColors.secondary900 : Ux4gColors.secondary50),
+            border: Border.all(
+              color: status == 'Resolved'
+                  ? (isDark ? Ux4gColors.green600 : Ux4gColors.green300)
+                  : (isDark ? Ux4gColors.secondary700 : Ux4gColors.secondary300),
+            ),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Expanded(child: Text('Delay in certificate issuance',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700))),
-              Ux4gTag(text: status, colorScheme: Ux4gTagColor.warning,
+              Ux4gTag(text: status, colorScheme: status == 'Resolved' ? Ux4gTagColor.success : Ux4gTagColor.warning,
                 style: Ux4gTagStyle.tonal, size: Ux4gTagSize.m),
             ]),
             SizedBox(height: 4),
             Text('Grievance ID · GRV-2026-MH-04127',
               style: TextStyle(fontSize: 12, color: Ux4gColors.neutral500)),
-            SizedBox(height: 10),
-            Ux4gLinearProgress(value: 0.55, label: '8 days left',
-              gradientColors: isDark
-                  ? [Ux4gColors.secondary700, Ux4gColors.secondary300]
-                  : [Ux4gColors.secondary200, Ux4gColors.secondary600],
-              shape: Ux4gProgressShape.rounded, height: 6),
+            if (status != 'Resolved') ...[
+              SizedBox(height: 10),
+              Ux4gLinearProgress(value: 0.55, label: '8 days left',
+                gradientColors: isDark
+                    ? [Ux4gColors.secondary700, Ux4gColors.secondary300]
+                    : [Ux4gColors.secondary200, Ux4gColors.secondary600],
+                shape: Ux4gProgressShape.rounded, height: 6),
+            ],
           ]),
         ),
 
