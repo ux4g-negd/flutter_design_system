@@ -1243,9 +1243,7 @@ class _PhoneFrame extends StatelessWidget {
       height: 760,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: _isDark(context)
-            ? Ux4gColors.neutral950
-            : Ux4gColors.neutral50,
+        color: _isDark(context) ? Ux4gColors.neutral950 : Ux4gColors.neutral50,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: _getBorder(context)),
         boxShadow: [
@@ -1305,6 +1303,7 @@ class _BrandHeader extends StatelessWidget {
             ),
           ],
           horizontalPadding: 16,
+          verticalPadding: 16,
           leadingSpacing: 8,
         ),
         Ux4gDivider(color: _getBorder(context)),
@@ -1487,13 +1486,17 @@ class _SignInMobileMockupState extends State<_SignInMobileMockup> {
                           ),
                           child: Text(
                             'Attempt 1 of 5',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: _isDark(context)
-                                  ? Ux4gColors.red300
-                                  : Ux4gColors.red800,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style:
+                                (Theme.of(
+                                          context,
+                                        ).extension<Ux4gTypography>() ??
+                                        defaultUx4gTypography)
+                                    .lM_default
+                                    .copyWith(
+                                      color: _isDark(context)
+                                          ? Ux4gColors.red300
+                                          : Ux4gColors.red800,
+                                    ),
                           ),
                         ),
                       ],
@@ -2074,13 +2077,13 @@ Container(
                     ),
                     child: Text(
                       'Attempt 1 of 5',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.red300
-                            : Ux4gColors.red800,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography)
+                          .lM_default
+                          .copyWith(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.red300
+                                : Ux4gColors.red800,
+                          ),
                     ),
                   ),
                 ],
@@ -2544,13 +2547,17 @@ class _SignInWithMobileMockupState extends State<_SignInWithMobileMockup> {
                           ),
                           child: Text(
                             'Attempt 1 of 5',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: _isDark(context)
-                                  ? Ux4gColors.red300
-                                  : Ux4gColors.red800,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style:
+                                (Theme.of(
+                                          context,
+                                        ).extension<Ux4gTypography>() ??
+                                        defaultUx4gTypography)
+                                    .lM_default
+                                    .copyWith(
+                                      color: _isDark(context)
+                                          ? Ux4gColors.red300
+                                          : Ux4gColors.red800,
+                                    ),
                           ),
                         ),
                       ],
@@ -2701,13 +2708,13 @@ Column(
                   ),
                   child: Text(
                     'Attempt 1 of 5',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gColors.red300
-                          : Ux4gColors.red800,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography)
+                        .lM_default
+                        .copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.red300
+                              : Ux4gColors.red800,
+                        ),
                   ),
                 ),
               ],
@@ -2937,13 +2944,18 @@ class _SignInCardMockupState extends State<_SignInCardMockup> {
                                     ),
                                     child: Text(
                                       'Attempt 1 of 5',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: _isDark(context)
-                                            ? Ux4gColors.red300
-                                            : Ux4gColors.red800,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                      style:
+                                          (Theme.of(context)
+                                                      .extension<
+                                                        Ux4gTypography
+                                                      >() ??
+                                                  defaultUx4gTypography)
+                                              .lM_default
+                                              .copyWith(
+                                                color: _isDark(context)
+                                                    ? Ux4gColors.red300
+                                                    : Ux4gColors.red800,
+                                              ),
                                     ),
                                   ),
                                 ],
@@ -3133,15 +3145,15 @@ Column(
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: Text(
-                                'Attempt 1 of 5',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Theme.of(context).brightness == Brightness.dark
-                                      ? Ux4gColors.red300
-                                      : Ux4gColors.red800,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+  'Attempt 1 of 5',
+  style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography)
+      .lM_default
+      .copyWith(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gColors.red300
+            : Ux4gColors.red800,
+      ),
+),
                             ),
                           ],
                         ),
@@ -3358,13 +3370,18 @@ class _SignInWithMobileCardMockupState
                                     ),
                                     child: Text(
                                       'Attempt 1 of 5',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: _isDark(context)
-                                            ? Ux4gColors.red300
-                                            : Ux4gColors.red800,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                      style:
+                                          (Theme.of(context)
+                                                      .extension<
+                                                        Ux4gTypography
+                                                      >() ??
+                                                  defaultUx4gTypography)
+                                              .lM_default
+                                              .copyWith(
+                                                color: _isDark(context)
+                                                    ? Ux4gColors.red300
+                                                    : Ux4gColors.red800,
+                                              ),
                                     ),
                                   ),
                                 ],
@@ -3549,15 +3566,15 @@ Column(
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: Text(
-                                'Attempt 1 of 5',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Theme.of(context).brightness == Brightness.dark
-                                      ? Ux4gColors.red300
-                                      : Ux4gColors.red800,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+  'Attempt 1 of 5',
+  style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography)
+      .lM_default
+      .copyWith(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Ux4gColors.red300
+            : Ux4gColors.red800,
+      ),
+),
                             ),
                           ],
                         ),
@@ -7600,12 +7617,8 @@ class _SessionExpiringDialogMockupState
         iconColor = isDark ? Ux4gColors.orange500 : Ux4gColors.orange600;
         countColor = isDark ? Ux4gColors.orange300 : Ux4gColors.orange800;
         progressColor = isDark ? Ux4gColors.orange300 : Ux4gColors.orange600;
-        buttonBgColor = isDark
-            ? Ux4gColors.primary300
-            : Ux4gColors.primary600;
-        buttonTextColor = isDark
-            ? Ux4gColors.primary900
-            : Ux4gColors.primary50;
+        buttonBgColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+        buttonTextColor = isDark ? Ux4gColors.primary900 : Ux4gColors.primary50;
 
         badgeWidget = SvgPicture.asset(
           Ux4gIcons.warningFill,
@@ -7622,12 +7635,8 @@ class _SessionExpiringDialogMockupState
         iconColor = isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
         countColor = iconColor;
         progressColor = iconColor;
-        buttonBgColor = isDark
-            ? Ux4gColors.primary300
-            : Ux4gColors.primary600;
-        buttonTextColor = isDark
-            ? Ux4gColors.neutral900
-            : Ux4gColors.neutral50;
+        buttonBgColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
+        buttonTextColor = isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral50;
 
         badgeWidget = Icon(Icons.access_time, color: iconColor, size: 28);
         title = 'Session ended';
@@ -7642,9 +7651,7 @@ class _SessionExpiringDialogMockupState
         countColor = iconColor;
         progressColor = iconColor;
         buttonBgColor = iconColor;
-        buttonTextColor = isDark
-            ? Ux4gColors.primary900
-            : Ux4gColors.primary50;
+        buttonTextColor = isDark ? Ux4gColors.primary900 : Ux4gColors.primary50;
 
         badgeWidget = SvgPicture.asset(
           Ux4gIcons.lockFill,
@@ -11134,16 +11141,39 @@ class _AadhaarVerifyMethodCardMockupState
                             subtitle:
                                 'Use the time-based code from your mAadhaar app.',
                           ),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Ux4gButton(
+                                textStyle: Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.lXL_default,
+                                height: 48,
+                                text: 'Cancel',
+                                onPressed: () {},
+                                variant: Ux4gButtonVariant.ghost,
+                                size: Ux4gButtonSize.medium,
+                              ),
+                              Ux4gButton(
+                                textStyle: Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.lXL_default,
+                                height: 40,
+                                text: 'Continue',
+                                onPressed: () {},
+                                size: Ux4gButtonSize.medium,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  // Cancel + Continue footer + brand footer (both sit
-                  // on the soft-purple area, outside the white card).
-                  _AadhaarVerifyFooterRow(onCancel: () {}, onContinue: () {}),
                   const _BrandFooter(),
                 ],
               ),
@@ -11203,6 +11233,7 @@ class _BrandHeaderWithMenu extends StatelessWidget {
             ),
           ],
           horizontalPadding: 16,
+          verticalPadding: 16,
           leadingSpacing: 8,
           actions: [
             Ux4gAppHeaderAction(
@@ -11282,11 +11313,9 @@ class _AadhaarMethodCard extends StatelessWidget {
       onPressed: () => onChanged(value),
       backgroundColor: isSelected
           ? (_isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary50)
-          : (_isDark(context) ? Ux4gColors.neutral800 : Ux4gColors.gray100),
-      // No border — selected state communicated by the tinted
-      // background + radio + tinted text only.
-      borderColor: Colors.transparent,
-      borderWidth: 0,
+          : (_isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.gray100),
+      borderColor: isSelected ? primary : Colors.transparent,
+      borderWidth: 1,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 14, 16, 14),
         child: Row(
@@ -11360,10 +11389,8 @@ class _AadhaarVerifyFooterRow extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Divider(height: 1, thickness: 1, color: _getBorder(context)),
-          // Halved the gap between the divider and the action row —
-          // matches the tighter spacing in the reference image.
-          const SizedBox(height: 6),
+          Ux4gDivider(color: _getBorder(context)),
+          const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -11381,7 +11408,7 @@ class _AadhaarVerifyFooterRow extends StatelessWidget {
                 textStyle: Theme.of(
                   context,
                 ).extension<Ux4gTypography>()?.lXL_default,
-                height: 48,
+                height: 40,
                 text: continueLabel,
                 onPressed: onContinue,
                 size: Ux4gButtonSize.medium,
@@ -11408,6 +11435,8 @@ Column(
       actions: [
         Ux4gAppHeaderAction(icon: Icons.menu, onPressed: () {}),
       ],
+      horizontalPadding: 16,
+      verticalPadding: 16,
     ),
     Ux4gDivider(color: Ux4gColors.neutral200),
 
@@ -11474,7 +11503,7 @@ height: 48,
         mainAxisSize: MainAxisSize.min,
         children: [
           Ux4gDivider(color: Ux4gColors.neutral200),
-          SizedBox(height: 12),
+          SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -11530,6 +11559,8 @@ Column(
       actions: [
         Ux4gAppHeaderAction(icon: Icons.menu, onPressed: () {}),
       ],
+      horizontalPadding: 16,
+      verticalPadding: 16,
     ),
     Ux4gDivider(color: Ux4gColors.neutral200),
 
@@ -11580,47 +11611,43 @@ height: 48,
 
                     // 3 option cards via _AadhaarMethodCard — see flat
                     // variant snippet for the full implementation.
+                    SizedBox(height: 20),
+                    Ux4gDivider(color: Ux4gColors.neutral200),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                          height: 48,
+                          text: 'Cancel',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.medium,
+                        ),
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                          height: 48,
+                          text: 'Continue',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.medium,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
 
             Spacer(),
-
-            // Cancel + Continue + brand footer sit on the soft-purple area.
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                    text: 'Cancel',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.ghost,
-                    size: Ux4gButtonSize.medium,
-                  ),
-                  Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                    text: 'Continue',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.medium,
-                  ),
-                ],
-              ),
-            ),
-
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Powered by -',
+                  Text('Powered by - ',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SvgPicture.asset('assets/Digital_India_logo.svg', height: 24),
                 ],
               ),
             ),
@@ -11856,19 +11883,39 @@ class _AadhaarOtpEnterCardMockupState
                               });
                             },
                           ),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Ux4gButton(
+                                textStyle: Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.lXL_default,
+                                height: 48,
+                                text: 'Back',
+                                onPressed: () {},
+                                variant: Ux4gButtonVariant.ghost,
+                                size: Ux4gButtonSize.medium,
+                              ),
+                              Ux4gButton(
+                                textStyle: Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.lXL_default,
+                                height: 48,
+                                text: 'Verify OTP',
+                                onPressed: () {},
+                                size: Ux4gButtonSize.medium,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  _AadhaarVerifyFooterRow(
-                    onCancel: () {},
-                    onContinue: () {},
-                    cancelLabel: 'Back',
-                    continueLabel: 'Verify OTP',
-                  ),
                   const _BrandFooter(),
                 ],
               ),
@@ -11970,7 +12017,7 @@ height: 48,
         mainAxisSize: MainAxisSize.min,
         children: [
           Ux4gDivider(color: Ux4gColors.neutral200),
-          SizedBox(height: 6),
+          SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -12111,55 +12158,43 @@ height: 48,
                         });
                       },
                     ),
+                    SizedBox(height: 20),
+                    Ux4gDivider(color: Ux4gColors.neutral200),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                          height: 48,
+                          text: 'Back',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.medium,
+                        ),
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                          height: 48,
+                          text: 'Verify OTP',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.medium,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
 
             Spacer(),
-
-            // Back + Verify OTP action footer.
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Ux4gDivider(color: Ux4gColors.neutral200),
-                  SizedBox(height: 6),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                        text: 'Back',
-                        onPressed: () {},
-                        variant: Ux4gButtonVariant.ghost,
-                        size: Ux4gButtonSize.medium,
-                      ),
-                      Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                        text: 'Verify OTP',
-                        onPressed: () {},
-                        size: Ux4gButtonSize.medium,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            // Powered by - Digital India footer pinned to the bottom.
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Powered by -',
+                  Text('Powered by - ',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SvgPicture.asset('assets/Digital_India_logo.svg', height: 24),
                 ],
               ),
             ),
@@ -12337,19 +12372,39 @@ class _AadhaarFaceAuthPermissionCardMockup extends StatelessWidget {
                           const SizedBox(height: 20),
 
                           const _CameraPrivacyInfoCard(),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Ux4gButton(
+                                textStyle: Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.lXL_default,
+                                height: 48,
+                                text: 'Cancel',
+                                onPressed: () {},
+                                variant: Ux4gButtonVariant.ghost,
+                                size: Ux4gButtonSize.medium,
+                              ),
+                              Ux4gButton(
+                                textStyle: Theme.of(
+                                  context,
+                                ).extension<Ux4gTypography>()?.lXL_default,
+                                height: 48,
+                                text: 'Allow Camera',
+                                onPressed: () {},
+                                size: Ux4gButtonSize.medium,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  _AadhaarVerifyFooterRow(
-                    onCancel: () {},
-                    onContinue: () {},
-                    cancelLabel: 'Cancel',
-                    continueLabel: 'Allow Camera',
-                  ),
                   const _BrandFooter(),
                 ],
               ),
@@ -12369,43 +12424,39 @@ class _CameraPrivacyInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Ux4gCard(
-      cornerRadius: 12,
+    return Ux4gStatusBanner(
+      variant: Ux4gBannerVariant.infoLight,
       backgroundColor: _isDark(context)
-          ? Ux4gColors.secondary900
-          : Ux4gColors.secondary50,
-      borderColor: Colors.transparent,
-      borderWidth: 0,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 18, 16, 18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Camera Access Required',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w800,
-                color: _getTitleColor(context),
-                height: 1.3,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Your face scan data is processed locally and never '
-              'stored on our servers.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                color: _getSubtleText(context),
-                height: 1.4,
-              ),
-            ),
-          ],
-        ),
+          ? Ux4gColors.cyan900
+          : Ux4gColors.cyan50,
+      borderColor: _isDark(context)
+          ? Ux4gColors.cyan600
+          : Ux4gColors.cyan300,
+      leadingIcon: Icon(
+        Icons.info,
+        color: _isDark(context)
+            ? Ux4gColors.cyan500
+            : Ux4gColors.cyan600,
+        size: 24,
       ),
+      title: 'Camera Access Required',
+      subtitle: 'Your face scan data is processed locally and never stored on our servers.',
+      titleStyle: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: _isDark(context)
+            ? Ux4gColors.cyan300
+            : Ux4gColors.cyan800,
+      ),
+      subtitleStyle: TextStyle(
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        color: _isDark(context)
+            ? Ux4gColors.cyan300
+            : Ux4gColors.cyan800,
+      ),
+      margin: EdgeInsets.zero,
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
     );
   }
 }
@@ -12453,28 +12504,30 @@ height: 48,
             style: TextStyle(fontSize: 14, color: Ux4gColors.neutral500)),
           SizedBox(height: 20),
 
-          // Privacy info card — design-system Ux4gCard with a cream
-          // (Ux4gColors.secondary50) surface and centered body.
-          Ux4gCard(
-            cornerRadius: 12,
-            backgroundColor: _isDark(context) ? Ux4gColors.secondary900 : Ux4gColors.secondary50,
-            borderColor: Colors.transparent,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(16, 18, 16, 18),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Camera Access Required',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
-                  SizedBox(height: 8),
-                  Text('Your face scan data is processed locally and '
-                    'never stored on our servers.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, color: Ux4gColors.neutral500)),
-                ],
-              ),
+          // Privacy info banner
+          Ux4gStatusBanner(
+            variant: Ux4gBannerVariant.infoLight,
+            backgroundColor: _isDark(context) ? Ux4gColors.cyan900 : Ux4gColors.cyan50,
+            borderColor: _isDark(context) ? Ux4gColors.cyan600 : Ux4gColors.cyan300,
+            leadingIcon: Icon(
+              Icons.info,
+              color: _isDark(context) ? Ux4gColors.cyan500 : Ux4gColors.cyan600,
+              size: 24,
             ),
+            title: 'Camera Access Required',
+            subtitle: 'Your face scan data is processed locally and never stored on our servers.',
+            titleStyle: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: _isDark(context) ? Ux4gColors.cyan300 : Ux4gColors.cyan800,
+            ),
+            subtitleStyle: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              color: _isDark(context) ? Ux4gColors.cyan300 : Ux4gColors.cyan800,
+            ),
+            margin: EdgeInsets.zero,
+            padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
           ),
         ],
       ),
@@ -12487,7 +12540,7 @@ height: 48,
         mainAxisSize: MainAxisSize.min,
         children: [
           Ux4gDivider(color: Ux4gColors.neutral200),
-          SizedBox(height: 6),
+          SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -12591,27 +12644,30 @@ height: 48,
                       style: TextStyle(fontSize: 14, color: Ux4gColors.neutral500)),
                     SizedBox(height: 20),
 
-                    Ux4gCard(
-                      cornerRadius: 12,
-                      backgroundColor: _isDark(context) ? Ux4gColors.secondary900 : Ux4gColors.secondary50,
-                      borderColor: Colors.transparent,
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(16, 18, 16, 18),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('Camera Access Required',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w800)),
-                            SizedBox(height: 8),
-                            Text('Your face scan data is processed locally '
-                              'and never stored on our servers.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 14, color: Ux4gColors.neutral500)),
-                          ],
+                    // Privacy info banner — see flat snippet for full implementation.
+                    _CameraPrivacyInfoCard(),
+                    SizedBox(height: 20),
+                    Ux4gDivider(color: Ux4gColors.neutral200),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                          height: 48,
+                          text: 'Cancel',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.medium,
                         ),
-                      ),
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                          height: 48,
+                          text: 'Allow Camera',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.medium,
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -12619,48 +12675,14 @@ height: 48,
             ),
 
             Spacer(),
-
-            // Cancel + Allow Camera action footer.
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Ux4gDivider(color: Ux4gColors.neutral200),
-                  SizedBox(height: 6),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                        text: 'Cancel',
-                        onPressed: () {},
-                        variant: Ux4gButtonVariant.ghost,
-                        size: Ux4gButtonSize.medium,
-                      ),
-                      Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                        text: 'Allow Camera',
-                        onPressed: () {},
-                        size: Ux4gButtonSize.medium,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Powered by -',
+                  Text('Powered by - ',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SvgPicture.asset('assets/Digital_India_logo.svg', height: 24),
                 ],
               ),
             ),
@@ -12693,7 +12715,6 @@ class _AadhaarVerifiedSuccessMockup extends StatelessWidget {
                 children: [
                   // Inline success banner — Ux4gStatusBanner.successLight.
                   Ux4gStatusBanner(
-                    height: 44,
                     variant: Ux4gBannerVariant.successLight,
                     title: 'Aadhaar identity verified successfully',
                     margin: EdgeInsets.zero,
@@ -12822,7 +12843,6 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Ux4gStatusBanner(
-                            height: 44,
                             variant: Ux4gBannerVariant.successLight,
                             title: 'Aadhaar identity verified successfully',
                             margin: EdgeInsets.zero,
@@ -12871,26 +12891,27 @@ class _AadhaarVerifiedSuccessCardMockup extends StatelessWidget {
                             label: 'Transaction ID',
                             value: 'TXN-2024-AAD-78432',
                           ),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Ux4gButton(
+                              textStyle: Theme.of(
+                                context,
+                              ).extension<Ux4gTypography>()?.lXL_default,
+                              text: 'Continue to Service',
+                              onPressed: () {},
+                              size: Ux4gButtonSize.large,
+                              height: 48,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-                    child: Ux4gButton(
-                      textStyle: Theme.of(
-                        context,
-                      ).extension<Ux4gTypography>()?.lXL_default,
-                      text: 'Continue to Service',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      height: 48,
-                      width: 326,
-                    ),
-                  ),
                   const _BrandFooter(),
                 ],
               ),
@@ -12965,7 +12986,6 @@ Column(
         children: [
           // Green inline confirmation banner.
           Ux4gStatusBanner(
-height: 44,
             variant: Ux4gBannerVariant.successLight,
             title: 'Aadhaar identity verified successfully',
             margin: EdgeInsets.zero,
@@ -13082,7 +13102,6 @@ Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Ux4gStatusBanner(
-height: 44,
                       variant: Ux4gBannerVariant.successLight,
                       title: 'Aadhaar identity verified successfully',
                       margin: EdgeInsets.zero,
@@ -13123,34 +13142,33 @@ height: 44,
                         ),
                       ),
                     ),
+                    SizedBox(height: 20),
+                    Ux4gDivider(color: Ux4gColors.neutral200),
+                    SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Ux4gButton(
+                        textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                        text: 'Continue to Service',
+                        onPressed: () {},
+                        size: Ux4gButtonSize.large,
+                        height: 48,
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
 
             Spacer(),
-
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-              child: Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-                text: 'Continue to Service',
-                onPressed: () {},
-                size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-              ),
-            ),
-
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Powered by -',
+                  Text('Powered by - ',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SvgPicture.asset('assets/Digital_India_logo.svg', height: 24),
                 ],
               ),
             ),
@@ -13445,19 +13463,37 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Ux4gButton(
+                                textStyle: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lL_default,
+                                height: 44,
+                                text: 'Try Different Method',
+                                onPressed: () {},
+                                variant: Ux4gButtonVariant.ghost,
+                                size: Ux4gButtonSize.small,
+                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                              ),
+                              Ux4gButton(
+                                textStyle: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lL_default,
+                                height: 44,
+                                text: 'Try Again',
+                                onPressed: () {},
+                                size: Ux4gButtonSize.small,
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  _AadhaarVerifyFooterRow(
-                    onCancel: () {},
-                    onContinue: () {},
-                    cancelLabel: 'Try Different Method',
-                    continueLabel: 'Try Again',
-                  ),
                   const _BrandFooter(),
                 ],
               ),
@@ -13675,47 +13711,45 @@ Column(
                             fontWeight: FontWeight.w500)),
                       ),
                     ),
+                    SizedBox(height: 20),
+                    Ux4gDivider(color: Ux4gColors.neutral200),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lL_default,
+                          height: 44,
+                          text: 'Try Different Method',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.ghost,
+                          size: Ux4gButtonSize.small,
+                          padding: EdgeInsets.symmetric(horizontal: 4),
+                        ),
+                        Ux4gButton(
+                          textStyle: Theme.of(context).extension<Ux4gTypography>()?.lL_default,
+                          height: 44,
+                          text: 'Try Again',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.small,
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
 
             Spacer(),
-
-            // Try Different Method + Try Again action footer.
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                    text: 'Try Different Method',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.ghost,
-                    size: Ux4gButtonSize.medium,
-                  ),
-                  Ux4gButton(
-textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
-height: 48,
-                    text: 'Try Again',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.medium,
-                  ),
-                ],
-              ),
-            ),
-
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Powered by -',
+                  Text('Powered by - ',
                     style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SvgPicture.asset('assets/Digital_India_logo.svg', height: 24),
                 ],
               ),
             ),
@@ -17092,25 +17126,6 @@ class _NavLink extends StatelessWidget {
   }
 }
 
-/// Warning banner for "Most services use OTP login..." note.
-Widget _fpWarningBanner() => Ux4gStatusBanner(
-  variant: Ux4gBannerVariant.warningLight,
-  title: 'Most services use OTP login so you may not need a password.',
-  margin: EdgeInsets.zero,
-  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-  titleStyle: const TextStyle(
-    fontSize: 13,
-    fontWeight: FontWeight.w400,
-    color: Color(0xFF92400E),
-    height: 1.4,
-  ),
-  leadingIcon: SvgPicture.asset(
-    Ux4gIcons.fillRevInfo,
-    colorFilter: const ColorFilter.mode(Color(0xFFD97706), BlendMode.srcIn),
-    height: 18,
-  ),
-);
-
 /// Password strength row (Ux4gLinearProgress + checklist).
 Widget _passwordStrength(BuildContext context) {
   final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -17203,7 +17218,7 @@ Widget _passwordStrength(BuildContext context) {
 }
 
 // -----------------------------------------------------------------------
-// STEP 1 � Reset Password
+// STEP 1  Reset Password
 // -----------------------------------------------------------------------
 
 final fpStep1Component = WidgetbookComponent(
@@ -17314,7 +17329,7 @@ class _FpStep1MockupState extends State<_FpStep1Mockup> {
                         ),
                       ),
                       child: Text(
-                        'Recover account using Aadhaar Number  ?',
+                        'Recover account using Aadhaar Number \u2192',
                         style: TextStyle(
                           fontSize: 13,
                           color: Theme.of(context).colorScheme.primary,
@@ -17323,38 +17338,26 @@ class _FpStep1MockupState extends State<_FpStep1Mockup> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: _getBorder(context),
-                          thickness: 1,
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 24),
+                    child: Ux4gDivider(
+                      color: _getBorder(context),
+                      label: Text(
+                        'OR',
+                        style:
+                            (Theme.of(context).extension<Ux4gTypography>() ??
+                                    defaultUx4gTypography)
+                                .lM_default
+                                .copyWith(
+                                  color: _getMutedText(context),
+                                  letterSpacing: 0.5,
+                                ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          'OR',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: _getMutedText(context),
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: _getBorder(context),
-                          thickness: 1,
-                        ),
-                      ),
-                    ],
+                      labelSpacing: 16,
+                    ),
                   ),
-                  const SizedBox(height: 8),
                   Ux4gButton(
-                    text: 'Sign in with OTP instead',
+                    text: 'Sign in with Email instead',
                     onPressed: () {},
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.large,
@@ -17362,7 +17365,6 @@ class _FpStep1MockupState extends State<_FpStep1Mockup> {
                     width: 326,
                   ),
                   const SizedBox(height: 16),
-                  _fpWarningBanner(),
                 ],
               ),
             ),
@@ -17467,7 +17469,7 @@ class _FpStep1CardMockupState extends State<_FpStep1CardMockup> {
                                       ),
                                     ),
                                     child: Text(
-                                      'Recover account using Aadhaar Number  ?',
+                                      'Recover account using Aadhaar Number \u2192',
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Theme.of(
@@ -17478,47 +17480,37 @@ class _FpStep1CardMockupState extends State<_FpStep1CardMockup> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 6),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Divider(
-                                        color: _getBorder(context),
-                                        thickness: 1,
-                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 24,
+                                  ),
+                                  child: Ux4gDivider(
+                                    color: _getBorder(context),
+                                    label: Text(
+                                      'OR',
+                                      style:
+                                          (Theme.of(context)
+                                                      .extension<
+                                                        Ux4gTypography
+                                                      >() ??
+                                                  defaultUx4gTypography)
+                                              .lM_default
+                                              .copyWith(
+                                                color: _getMutedText(context),
+                                                letterSpacing: 0.5,
+                                              ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 12,
-                                      ),
-                                      child: Text(
-                                        'OR',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: _getMutedText(context),
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Divider(
-                                        color: _getBorder(context),
-                                        thickness: 1,
-                                      ),
-                                    ),
-                                  ],
+                                    labelSpacing: 16,
+                                  ),
                                 ),
-                                const SizedBox(height: 6),
                                 Ux4gButton(
-                                  text: 'Sign in with OTP instead',
+                                  text: 'Sign in with Email instead',
                                   onPressed: () {},
                                   variant: Ux4gButtonVariant.outline,
                                   size: Ux4gButtonSize.large,
                                   height: 48,
                                   width: 326,
                                 ),
-                                const SizedBox(height: 14),
-                                _fpWarningBanner(),
                               ],
                             ),
                           ),
@@ -17589,33 +17581,25 @@ height: 48,
             Center(
               child: TextButton(
                 onPressed: () {},
-                child: Text('Recover account using Aadhaar Number ?',
+                child: Text('Recover account using Aadhaar Number \u2192',
                   style: TextStyle(fontSize: 13)),
               ),
             ),
-            SizedBox(height: 12),
-            Row(children: [
-              Expanded(child: Divider(color: Ux4gColors.neutral200)),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: Text('OR', style: TextStyle(fontSize: 12,
-                  color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 24),
+              child: Ux4gDivider(
+                color: Ux4gColors.neutral200,
+                label: Text('OR',
+                  style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lM_default.copyWith(color: Ux4gColors.neutral400, letterSpacing: 0.5)),
+                labelSpacing: 16,
               ),
-              Expanded(child: Divider(color: Ux4gColors.neutral200)),
-            ]),
-            SizedBox(height: 12),
+            ),
             Ux4gButton(
-              text: 'Sign in with OTP instead', onPressed: () {},
+              text: 'Sign in with Email instead', onPressed: () {},
               variant: Ux4gButtonVariant.outline,
               size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
-            ),
-            SizedBox(height: 16),
-            Ux4gStatusBanner(
-              variant: Ux4gBannerVariant.warningLight,
-              title: 'Most services use OTP login so you may not need a password.',
-              margin: EdgeInsets.zero,
             ),
           ],
         ),
@@ -17699,33 +17683,25 @@ height: 48,
                     Center(
                       child: TextButton(
                         onPressed: () {},
-                        child: Text('Recover account using Aadhaar Number ?',
+                        child: Text('Recover account using Aadhaar Number \u2192',
                           style: TextStyle(fontSize: 13)),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    Row(children: [
-                      Expanded(child: Divider(color: Ux4gColors.neutral200)),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        child: Text('OR', style: TextStyle(fontSize: 12,
-                          color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 24),
+                      child: Ux4gDivider(
+                        color: Ux4gColors.neutral200,
+                        label: Text('OR',
+                          style: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lM_default.copyWith(color: Ux4gColors.neutral400, letterSpacing: 0.5)),
+                        labelSpacing: 16,
                       ),
-                      Expanded(child: Divider(color: Ux4gColors.neutral200)),
-                    ]),
-                    SizedBox(height: 10),
+                    ),
                     Ux4gButton(
-                      text: 'Sign in with OTP instead', onPressed: () {},
+                      text: 'Sign in with Email instead', onPressed: () {},
                       variant: Ux4gButtonVariant.outline,
                       size: Ux4gButtonSize.large,
               height: 48,
               width: 326,
-                    ),
-                    SizedBox(height: 14),
-                    Ux4gStatusBanner(
-                      variant: Ux4gBannerVariant.warningLight,
-                      title: 'Most services use OTP login so you may not need a password.',
-                      margin: EdgeInsets.zero,
                     ),
                   ],
                 ),
@@ -20710,9 +20686,7 @@ class _FeeRow extends StatelessWidget {
     final labelColor = (bold || totalRow)
         ? _getTitleColor(context)
         : _getSubtleText(context);
-    final amountColor = redAmount
-        ? Ux4gColors.red600
-        : _getTitleColor(context);
+    final amountColor = redAmount ? Ux4gColors.red600 : _getTitleColor(context);
     final fontSize = totalRow ? 15.0 : 13.0;
     final amountFontSize = totalRow ? 17.0 : 13.0;
 
@@ -25382,15 +25356,13 @@ class _AstInfoCard extends StatelessWidget {
     final isApproved = status == 'Approved';
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final Color? customBg = switch (status) {
-      'Action Required' =>
-        isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
+      'Action Required' => isDark ? Ux4gColors.orange800 : Ux4gColors.orange100,
       'Rejected' => isDark ? Ux4gColors.red800 : Ux4gColors.red100,
       'Delayed' => isDark ? Ux4gColors.cyan800 : Ux4gColors.cyan100,
       _ => null,
     };
     final Color? customText = switch (status) {
-      'Action Required' =>
-        isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
+      'Action Required' => isDark ? Ux4gColors.orange300 : Ux4gColors.orange800,
       'Rejected' => isDark ? Ux4gColors.red300 : Ux4gColors.red800,
       'Delayed' => isDark ? Ux4gColors.cyan300 : Ux4gColors.cyan800,
       _ => null,
@@ -26635,9 +26607,7 @@ class _GstEscalationLevel extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                     color: isActive
-                        ? (isDark
-                              ? Ux4gColors.orange300
-                              : Ux4gColors.orange700)
+                        ? (isDark ? Ux4gColors.orange300 : Ux4gColors.orange700)
                         : _gstSubtle(context),
                   ),
                 ),
@@ -26647,9 +26617,7 @@ class _GstEscalationLevel extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     color: isActive
-                        ? (isDark
-                              ? Ux4gColors.orange400
-                              : Ux4gColors.orange500)
+                        ? (isDark ? Ux4gColors.orange400 : Ux4gColors.orange500)
                         : _gstMuted(context),
                     height: 1.4,
                   ),

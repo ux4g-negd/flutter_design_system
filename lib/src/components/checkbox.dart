@@ -23,6 +23,7 @@ class Ux4gCheckbox extends StatelessWidget {
   final bool hasError;
   final Ux4gCheckboxDescriptionVariant descriptionVariant;
   final bool enabled;
+  final CrossAxisAlignment crossAxisAlignment;
 
   const Ux4gCheckbox({
     super.key,
@@ -35,6 +36,7 @@ class Ux4gCheckbox extends StatelessWidget {
     this.hasError = false,
     this.descriptionVariant = Ux4gCheckboxDescriptionVariant.helper,
     this.enabled = true,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
   });
 
   @override
@@ -78,10 +80,14 @@ class Ux4gCheckbox extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
         child: Row(
-          crossAxisAlignment: hasDescription ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+          crossAxisAlignment: crossAxisAlignment,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: hasDescription ? 2 : 0),
+              padding: EdgeInsets.only(
+                top: crossAxisAlignment == CrossAxisAlignment.start
+                    ? (hasDescription ? 2 : 1)
+                    : 0,
+              ),
               child: SizedBox(
                 width: size.size,
                 height: size.size,
@@ -119,7 +125,6 @@ class Ux4gCheckbox extends StatelessWidget {
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (hasLabel)

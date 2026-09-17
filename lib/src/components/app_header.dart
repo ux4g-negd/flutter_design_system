@@ -115,6 +115,9 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   /// Horizontal padding.
   final double horizontalPadding;
 
+  /// Vertical padding.
+  final double verticalPadding;
+
   /// Spacing between leading widgets.
   final double leadingSpacing;
 
@@ -148,6 +151,7 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
     this.borderColor,
     this.height,
     this.horizontalPadding = Ux4gSpace.space12,
+    this.verticalPadding = Ux4gSpace.spaceNone,
     this.leadingSpacing = Ux4gSpace.space8,
     this.actionSpacing = Ux4gSpace.space4,
     this.elevation = 0,
@@ -183,7 +187,8 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height ?? 56.0);
+  Size get preferredSize =>
+      Size.fromHeight(height ?? (56.0 + verticalPadding * 2));
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +198,8 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
 
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 600;
-    final resolvedHeight = height ?? (isSmallScreen ? 48.0 : 56.0);
+    final resolvedHeight = height ??
+        (verticalPadding > 0 ? null : (isSmallScreen ? 48.0 : 56.0));
 
     final bg = _resolveBackgroundColor(ux4gColors, materialTheme);
     final fg = _resolveForegroundColor(ux4gColors, materialTheme);
@@ -281,11 +287,13 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
           )
         : null;
 
-    final content = SizedBox(
+    final content = Container(
       height: resolvedHeight,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        child: Row(
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontalPadding,
+        vertical: verticalPadding,
+      ),
+      child: Row(
           children: [
             // Leading
             if (leadingSection != null) ...[
@@ -312,7 +320,6 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
             ],
           ],
         ),
-      ),
     );
 
     return Container(
