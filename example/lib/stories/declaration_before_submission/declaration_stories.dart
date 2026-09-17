@@ -748,6 +748,7 @@ class _ConsentHeader extends StatelessWidget {
         Ux4gAppHeader(
           variant: Ux4gAppHeaderVariant.light,
           title: '',
+          verticalPadding: 16,
           leadingWidgets: [
             SvgPicture.asset(
               _nationalEmblemPath,
