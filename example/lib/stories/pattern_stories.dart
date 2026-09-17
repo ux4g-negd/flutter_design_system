@@ -25315,8 +25315,8 @@ class _AstInfoCard extends StatelessWidget {
               value: 0.6,
               label: '8 days left',
               gradientColors: isDark
-                  ? const [Ux4gColors.primary700, Ux4gColors.primary300]
-                  : const [Ux4gColors.primary200, Ux4gColors.primary600],
+                  ? const [Ux4gColors.secondary700, Ux4gColors.secondary300]
+                  : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
               shape: Ux4gProgressShape.rounded,
               height: 6,
             ),
@@ -25520,13 +25520,7 @@ class _AppStatusTrackerCardMockup extends StatelessWidget {
                           ),
                           if (hasActions) ...[
                             const SizedBox(height: 16),
-                            status == 'Delayed'
-                                ? _astActions(status, primary)
-                                : Container(
-                                    decoration: _suCardDeco(context),
-                                    padding: const EdgeInsets.all(16),
-                                    child: _astActions(status, primary),
-                                  ),
+                            _astActions(status, primary),
                           ],
                         ],
                       ),
@@ -25683,8 +25677,8 @@ class ApplicationStatusTrackerDefault extends StatelessWidget {
                                     value: 0.6,
                                     label: '8 days left',
                                     gradientColors: isDark
-                                        ? const [Ux4gColors.primary700, Ux4gColors.primary300]
-                                        : const [Ux4gColors.primary200, Ux4gColors.primary600],
+                                        ? const [Ux4gColors.secondary700, Ux4gColors.secondary300]
+                                        : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
                                     shape: Ux4gProgressShape.rounded,
                                     height: 6,
                                   ),
@@ -25918,8 +25912,8 @@ class ApplicationStatusTrackerCardStyle extends StatelessWidget {
                                   value: 0.6,
                                   label: '8 days left',
                                   gradientColors: isDark
-                                      ? const [Ux4gColors.primary700, Ux4gColors.primary300]
-                                      : const [Ux4gColors.primary200, Ux4gColors.primary600],
+                                      ? const [Ux4gColors.secondary700, Ux4gColors.secondary300]
+                                      : const [Ux4gColors.secondary200, Ux4gColors.secondary600],
                                   shape: Ux4gProgressShape.rounded,
                                   height: 6,
                                 ),
