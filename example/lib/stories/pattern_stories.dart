@@ -1262,7 +1262,9 @@ class _PhoneFrame extends StatelessWidget {
 /// Government-style header used by every screen � national emblem, a thin
 /// vertical divider, and the brand union logo.
 class _BrandHeader extends StatelessWidget {
-  const _BrandHeader();
+  const _BrandHeader({this.onMenuPressed});
+
+  final VoidCallback? onMenuPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -1305,6 +1307,47 @@ class _BrandHeader extends StatelessWidget {
           horizontalPadding: 16,
           verticalPadding: 16,
           leadingSpacing: 8,
+          actions: [
+            Ux4gAppHeaderAction(
+              customWidget: SizedBox(
+                width: 40,
+                height: 40,
+                child: Material(
+                  color: _isDark(context)
+                      ? Ux4gColors.neutral800
+                      : Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: onMenuPressed ?? () {},
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        color: _isDark(context)
+                            ? Ux4gColors.neutral800
+                            : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: _isDark(context)
+                              ? Ux4gColors.primary600
+                              : Ux4gColors.primary300,
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          size: 20,
+                          color: _isDark(context)
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         Ux4gDivider(color: _getBorder(context)),
       ],
@@ -12429,31 +12472,24 @@ class _CameraPrivacyInfoCard extends StatelessWidget {
       backgroundColor: _isDark(context)
           ? Ux4gColors.cyan900
           : Ux4gColors.cyan50,
-      borderColor: _isDark(context)
-          ? Ux4gColors.cyan600
-          : Ux4gColors.cyan300,
+      borderColor: _isDark(context) ? Ux4gColors.cyan600 : Ux4gColors.cyan300,
       leadingIcon: Icon(
         Icons.info,
-        color: _isDark(context)
-            ? Ux4gColors.cyan500
-            : Ux4gColors.cyan600,
+        color: _isDark(context) ? Ux4gColors.cyan500 : Ux4gColors.cyan600,
         size: 24,
       ),
       title: 'Camera Access Required',
-      subtitle: 'Your face scan data is processed locally and never stored on our servers.',
+      subtitle:
+          'Your face scan data is processed locally and never stored on our servers.',
       titleStyle: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w600,
-        color: _isDark(context)
-            ? Ux4gColors.cyan300
-            : Ux4gColors.cyan800,
+        color: _isDark(context) ? Ux4gColors.cyan300 : Ux4gColors.cyan800,
       ),
       subtitleStyle: TextStyle(
         fontSize: 13,
         fontWeight: FontWeight.w500,
-        color: _isDark(context)
-            ? Ux4gColors.cyan300
-            : Ux4gColors.cyan800,
+        color: _isDark(context) ? Ux4gColors.cyan300 : Ux4gColors.cyan800,
       ),
       margin: EdgeInsets.zero,
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
@@ -13470,21 +13506,35 @@ class _AadhaarVerificationFailedCardMockup extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Ux4gButton(
-                                textStyle: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lL_default,
+                                textStyle:
+                                    (Theme.of(
+                                              context,
+                                            ).extension<Ux4gTypography>() ??
+                                            defaultUx4gTypography)
+                                        .lL_default,
                                 height: 44,
                                 text: 'Try Different Method',
                                 onPressed: () {},
                                 variant: Ux4gButtonVariant.ghost,
                                 size: Ux4gButtonSize.small,
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                ),
                               ),
                               Ux4gButton(
-                                textStyle: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lL_default,
+                                textStyle:
+                                    (Theme.of(
+                                              context,
+                                            ).extension<Ux4gTypography>() ??
+                                            defaultUx4gTypography)
+                                        .lL_default,
                                 height: 44,
                                 text: 'Try Again',
                                 onPressed: () {},
                                 size: Ux4gButtonSize.small,
-                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                ),
                               ),
                             ],
                           ),
@@ -14037,8 +14087,8 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                                   '23:45:00',
                                   style: Theme.of(context)
                                       .extension<Ux4gTypography>()
-                                      ?.dM_strong
-                                      ?.copyWith(
+                                      ?.hXL_default
+                                      .copyWith(
                                         color: _isDark(context)
                                             ? Ux4gColors.orange300
                                             : Ux4gColors.orange800,
@@ -14060,38 +14110,29 @@ class _AadhaarAccountLockedCardMockup extends StatelessWidget {
                               ],
                             ),
                           ),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Ux4gButton(
+                              textStyle: Theme.of(
+                                context,
+                              ).extension<Ux4gTypography>()?.lXL_default,
+                              text: 'Contact UIDAI Support',
+                              onPressed: () {},
+                              variant: Ux4gButtonVariant.outline,
+                              size: Ux4gButtonSize.large,
+                              height: 48,
+                              leadingIcon: Icons.support,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Divider(
-                          height: 1,
-                          thickness: 1,
-                          color: _getBorder(context),
-                        ),
-                        const SizedBox(height: 12),
-                        Ux4gButton(
-                          textStyle: Theme.of(
-                            context,
-                          ).extension<Ux4gTypography>()?.lXL_default,
-                          text: 'Contact UIDAI Support',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.outline,
-                          size: Ux4gButtonSize.large,
-                          height: 48,
-                          leadingIcon: Icons.support,
-                        ),
-                      ],
-                    ),
-                  ),
                   const _BrandFooter(),
                 ],
               ),
@@ -14386,44 +14427,45 @@ Container(
                           ],
                         ),
                       ),
+                        SizedBox(height: 20),
+                        Ux4gDivider(color: Ux4gColors.neutral200),
+                        SizedBox(height: 20),
+                        SizedBox(
+                          width: double.infinity,
+                          child: Ux4gButton(
+                            textStyle: Theme.of(context).extension<Ux4gTypography>()?.lXL_default,
+                            text: 'Contact UIDAI Support',
+                            onPressed: () {},
+                            variant: Ux4gButtonVariant.outline,
+                            size: Ux4gButtonSize.large,
+                            height: 48,
+                            leadingIcon: Icons.support,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Spacer(),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20, top: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Powered by - ',
+                        style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
+                      SvgPicture.asset('assets/Digital_India_logo.svg', height: 24),
                     ],
                   ),
                 ),
-              ),
-
-              Spacer(),
-
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 12, 20, 8),
-                child: Ux4gButton(
-                  text: 'Contact UIDAI Support',
-                  onPressed: () {},
-                  variant: Ux4gButtonVariant.outline,
-                  size: Ux4gButtonSize.large,
-              height: 48,
-              width: 326,
-                  leadingIcon: Icons.support,
-                ),
-              ),
-              
-              // Brand Footer
-              Padding(
-                padding: EdgeInsets.only(bottom: 20, top: 8),
-                child: Column(
-                  children: [
-                    Text('Powered by -', style: TextStyle(fontSize: 11, color: Ux4gColors.neutral400)),
-                    SizedBox(height: 6),
-                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    ],
-  ),
-)''';
+      ],
+    ),
+  )''';
 
 // ───────────────────────────────────────────────────────────────────────
 // Operator-assisted authentication (mobile mockup)
@@ -14665,18 +14707,37 @@ class _OperatorAssistedAuthCardMockupState
                             label:
                                 'I consent to operator-assisted Aadhaar authentication. My identity documents have been verified by the VLE.',
                           ),
+                          const SizedBox(height: 20),
+                          Ux4gDivider(color: _getBorder(context)),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Ux4gButton(
+                                textStyle: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lL_default,
+                                height: 44,
+                                text: 'Cancel',
+                                onPressed: () {},
+                                variant: Ux4gButtonVariant.ghost,
+                                size: Ux4gButtonSize.small,
+                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                              ),
+                              Ux4gButton(
+                                textStyle: (Theme.of(context).extension<Ux4gTypography>() ?? defaultUx4gTypography).lL_default,
+                                height: 44,
+                                text: 'Proceed with Consent',
+                                onPressed: () {},
+                                size: Ux4gButtonSize.small,
+                                padding: const EdgeInsets.symmetric(horizontal: 14),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                   ),
 
                   const Spacer(),
-
-                  _AadhaarVerifyFooterRow(
-                    onCancel: () {},
-                    onContinue: () {},
-                    continueLabel: 'Proceed with Consent',
-                  ),
                   const _BrandFooter(),
                 ],
               ),
@@ -14690,16 +14751,6 @@ class _OperatorAssistedAuthCardMockupState
 
 const _operatorAssistedAuthCode =
     r'''// Mobile-sized Operator-assisted authentication (360 x 760)
-Container(
-  width: 360,
-  height: 760,
-  clipBehavior: Clip.antiAlias,
-  decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(20),
-    border: Border.all(color: Ux4gColors.neutral200),
-    boxShadow: [
-      BoxShadow(
         color: Colors.black.withOpacity(0.08),
         blurRadius: 24,
         offset: Offset(0, 6),
@@ -14707,78 +14758,6 @@ Container(
     ],
   ),
   child: Column(
-    children: [
-      Ux4gAppHeader(
-        variant: Ux4gAppHeaderVariant.light,
-        title: '',
-        leadingWidgets: [
-          SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 32),
-          SizedBox(height: 28, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Ux4gColors.neutral300)),
-          SvgPicture.asset(Ux4gIcons.union,  height: 32),
-        ],
-        actions: [
-          Ux4gAppHeaderAction(
-            customWidget: Container(
-              width: 40, height: 40,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Ux4gColors.primary100, width: 1.5),
-              ),
-              child: Icon(Icons.menu, size: 20, color: Color(0xFF4F46E5)),
-            ),
-          ),
-        ],
-      ),
-      Ux4gDivider(color: Ux4gColors.neutral200),
-
-      Expanded(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Ux4gButton(
-height: 48,
-                text: 'Back',
-                onPressed: () {},
-                variant: Ux4gButtonVariant.ghost,
-                size: Ux4gButtonSize.small,
-                leadingIcon: Icons.arrow_back,
-              ),
-              SizedBox(height: 16),
-
-              Text('Operator-Assisted Authentication',
-                style: TextStyle(
-                  fontSize: 26, 
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xFF111827),
-                  height: 1.2,
-                  letterSpacing: -0.3,
-                )),
-              SizedBox(height: 8),
-              Text('A certified VLE operator will conduct this Aadhaar verification on your behalf with your consent.',
-                style: TextStyle(fontSize: 14, color: Ux4gColors.neutral500, height: 1.35)),
-              SizedBox(height: 24),
-
-              // Operator Info Card
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Color(0xFFF5F3FF),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('VLE Operator', style: TextStyle(fontSize: 13, color: Ux4gColors.neutral500)),
-                    SizedBox(height: 4),
-                    Text('Ramesh Kumar', 
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Color(0xFF111827))),
-                    SizedBox(height: 8),
-                    Text('ID: VLE-MH-2024-00387 · Certified by MeitY',
-                      style: TextStyle(fontSize: 12, color: Ux4gColors.neutral400)),
                   ],
                 ),
               ),
