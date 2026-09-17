@@ -131,7 +131,7 @@ class _ProactiveStatusMockup extends StatelessWidget {
                             const Ux4gLinearProgress(
                               value: 0.38,
                               label: '8 days left',
-                              gradientColors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+                              gradientColors: [Color(0xFFF8D1A2), Color(0xFFA66A03)],
                               shape: Ux4gProgressShape.rounded,
                               height: 6,
                             ),
@@ -181,10 +181,10 @@ class _ProactiveStatusMockup extends StatelessWidget {
                               title: 'Decision',
                               status: Ux4gJourneyStepStatus(
                                 text: '2 days remaining',
-                                dotColor: isDark ? const Color(0xFFFDE68A) : const Color(0xFFD97706),
+                                dotColor: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600,
                                 badgeText: 'Pending',
-                                badgeColor: isDark ? const Color(0xFF3B0A0A) : const Color(0xFFFEF2F2),
-                                badgeTextColor: isDark ? const Color(0xFFF87171) : const Color(0xFFDC2626),
+                                badgeColor: isDark ? Ux4gColors.secondary900 : Ux4gColors.secondary50,
+                                badgeTextColor: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600,
                               ),
                             ),
                           ],
@@ -357,7 +357,7 @@ class ProactiveStatusTrackerScreen extends StatelessWidget {
                               const Ux4gLinearProgress(
                                 value: 0.38,
                                 label: '8 days left',
-                                gradientColors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+                                gradientColors: [Color(0xFFF8D1A2), Color(0xFFA66A03)],
                                 shape: Ux4gProgressShape.rounded,
                               ),
                             ],
@@ -404,8 +404,10 @@ class ProactiveStatusTrackerScreen extends StatelessWidget {
                                 title: 'Decision',
                                 status: Ux4gJourneyStepStatus(
                                   text: '2 days remaining',
-                                  dotColor: Colors.amber,
+                                  dotColor: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600,
                                   badgeText: 'Pending',
+                                  badgeColor: isDark ? Ux4gColors.secondary900 : Ux4gColors.secondary50,
+                                  badgeTextColor: isDark ? Ux4gColors.secondary300 : Ux4gColors.secondary600,
                                 ),
                               ),
                             ],
