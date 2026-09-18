@@ -93,51 +93,107 @@ class _EligibilityHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Ux4gAppHeader(
-          variant: Ux4gAppHeaderVariant.light,
+          variant:
+              isDark ? Ux4gAppHeaderVariant.light : Ux4gAppHeaderVariant.light,
           title: '',
           leadingWidgets: [
             SvgPicture.asset(
               _nationalEmblemPath,
-              height: 32,
-              colorFilter: Theme.of(context).brightness == Brightness.dark
-                  ? ColorFilter.mode(Colors.white, BlendMode.srcIn)
+              height: 40,
+              colorFilter: isDark
+                  ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
                   : null,
             ),
-            SizedBox(
-              height: 20,
-              child: Ux4gDivider(
-                orientation: Ux4gDividerOrientation.vertical,
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gColors.neutral700
-                    : Ux4gColors.neutral200,
-              ),
+            Container(
+              height: 32,
+              width: 1,
+              color: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
             ),
             SvgPicture.asset(
               _unionLogoPath,
               height: 32,
               colorFilter: ColorFilter.mode(
-                Theme.of(context).brightness == Brightness.dark
-                    ? Ux4gColors.primary300
-                    : Ux4gColors.primary600,
+                isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                 BlendMode.srcIn,
               ),
             ),
           ],
-          actions: const [],
+          actions: [
+            Ux4gAppHeaderAction(
+              customWidget: Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: isDark
+                        ? Ux4gColors.neutral800
+                        : const Color(0xFFE5E7EB),
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.menu,
+                    color: isDark
+                        ? Ux4gColors.primary400
+                        : Ux4gColors.primary600,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
+          ],
+          verticalPadding: 16,
           horizontalPadding: 16,
           leadingSpacing: 8,
         ),
-        Ux4gDivider(
-          thickness: 1,
-          color: Theme.of(context).brightness == Brightness.dark
+        Divider(
+          height: 1,
+          color: isDark
               ? Ux4gColors.neutral800
-              : Color(0xFFE5E7EB),
+              : const Color(0xFFE5E7EB),
         ),
       ],
+    );
+  }
+}
+
+class _EligibilityFooter extends StatelessWidget {
+  const _EligibilityFooter();
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 24),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'Powered by -',
+            style: TextStyle(
+              fontSize: 11,
+              color: isDark
+                  ? Ux4gColors.neutral500
+                  : Ux4gColors.neutral400,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Image.asset(
+            _digitalIndiaLogoPath,
+            height: 22,
+            color: isDark ? Colors.white : null,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -343,14 +399,17 @@ class _EligibilityCheckMockup extends StatelessWidget {
                       : Ux4gColors.primary600,
                 ),
                 const SizedBox(height: 16),
-                Text(
-                  'Already applied? Track your application →',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral200
-                        : Ux4gColors.neutral700,
-                    fontWeight: FontWeight.w500,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    'Already applied? Track your application →',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gColors.neutral200
+                          : Ux4gColors.neutral700,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
@@ -358,32 +417,7 @@ class _EligibilityCheckMockup extends StatelessWidget {
           ),
 
           // Footer
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Powered by -',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral500
-                        : Ux4gColors.neutral400,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Image.asset(
-                  _digitalIndiaLogoPath,
-                  height: 22,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : null,
-                ),
-              ],
-            ),
-          ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -627,45 +661,19 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
                               : Ux4gColors.primary600,
                         ),
                         const SizedBox(height: 16),
-                        Text(
-                          'Already applied? Track your application →',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral200
-                                : Ux4gColors.neutral700,
-                            fontWeight: FontWeight.w500,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Text(
+                            'Already applied? Track your application →',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral200
+                                  : Ux4gColors.neutral700,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 16),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Powered by -',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral500
-                                : Ux4gColors.neutral400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Image.asset(
-                          _digitalIndiaLogoPath,
-                          height: 22,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : null,
                         ),
                       ],
                     ),
@@ -674,6 +682,7 @@ class _EligibilityCheckCardMockup extends StatelessWidget {
               ),
             ),
           ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -814,9 +823,12 @@ class EligibilityWizardScreen extends StatelessWidget {
                           contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                   ),
                   SizedBox(height: 16),
-                  Text(
-                    'Already applied? Track your application →',
-                    style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, fontWeight: FontWeight.w500),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      'Already applied? Track your application →',
+                      style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ],
               ),
@@ -824,13 +836,13 @@ class EligibilityWizardScreen extends StatelessWidget {
 
             // Footer
             Padding(
-              padding: EdgeInsets.only(bottom: 20, top: 16),
-              child: Column(
+              padding: const EdgeInsets.only(bottom: 24),
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -983,34 +995,34 @@ class EligibilityWizardScreen extends StatelessWidget {
                           contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                               ),
                               SizedBox(height: 16),
-                              Text(
-                                'Already applied? Track your application →',
-                                style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, fontWeight: FontWeight.w500),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: Text(
+                                  'Already applied? Track your application →',
+                                  style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, fontWeight: FontWeight.w500),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                                                    ),
-                            ),
-                          ],
-                        ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 20, top: 8),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                          SizedBox(height: 6),
-                          Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                    const SizedBox(width: 8),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -1338,33 +1350,7 @@ class _EligibilityQuestionMockupState
             ),
           ),
 
-          // Footer
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 12),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Powered by -',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral500
-                        : Ux4gColors.neutral400,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Image.asset(
-                  _digitalIndiaLogoPath,
-                  height: 22,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : null,
-                ),
-              ],
-            ),
-          ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -1704,39 +1690,11 @@ class _EligibilityQuestionCardMockupState
                       ],
                     ),
                   ),
-
-                  // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 12),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Powered by -',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral500
-                                : Ux4gColors.neutral400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Image.asset(
-                          _digitalIndiaLogoPath,
-                          height: 22,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : null,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
           ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -2389,33 +2347,7 @@ class _EligibilitySuccessMockup extends StatelessWidget {
             ),
           ),
 
-          // Footer
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Powered by -',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral500
-                        : Ux4gColors.neutral400,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Image.asset(
-                  _digitalIndiaLogoPath,
-                  height: 22,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : null,
-                ),
-              ],
-            ),
-          ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -2787,39 +2719,11 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                       width: double.infinity,
                     ),
                   ),
-
-                  // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 12),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Powered by -',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral500
-                                : Ux4gColors.neutral400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Image.asset(
-                          _digitalIndiaLogoPath,
-                          height: 22,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : null,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
           ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -3488,33 +3392,7 @@ class _EligibilityFailureMockup extends StatelessWidget {
             ),
           ),
 
-          // Footer
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Powered by -',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral500
-                        : Ux4gColors.neutral400,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Image.asset(
-                  _digitalIndiaLogoPath,
-                  height: 22,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : null,
-                ),
-              ],
-            ),
-          ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -3898,39 +3776,11 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                       width: double.infinity,
                     ),
                   ),
-
-                  // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 12),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Powered by -',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral500
-                                : Ux4gColors.neutral400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Image.asset(
-                          _digitalIndiaLogoPath,
-                          height: 22,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : null,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
           ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -4580,33 +4430,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
             ),
           ),
 
-          // Footer
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Powered by -',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral500
-                        : Ux4gColors.neutral400,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Image.asset(
-                  _digitalIndiaLogoPath,
-                  height: 22,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : null,
-                ),
-              ],
-            ),
-          ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -4993,39 +4817,11 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                       width: double.infinity,
                     ),
                   ),
-
-                  // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 12),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Powered by -',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral500
-                                : Ux4gColors.neutral400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Image.asset(
-                          _digitalIndiaLogoPath,
-                          height: 22,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : null,
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
           ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -5683,33 +5479,7 @@ class _EligibilityFinalQuestionMockupState
             ),
           ),
 
-          // Footer
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, top: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Powered by -',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral500
-                        : Ux4gColors.neutral400,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Image.asset(
-                  _digitalIndiaLogoPath,
-                  height: 22,
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : null,
-                ),
-              ],
-            ),
-          ),
+          const _EligibilityFooter(),
         ],
       ),
     );
@@ -6110,47 +5880,19 @@ class _EligibilityFinalQuestionCardMockupState
                           ],
                         ),
                       ),
-                                                ),
-                          ),
-                        ],
-                      ),
-                  ),
-
-                                    // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 24, top: 4),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Powered by -',
-                          style: TextStyle(
-                            fontSize: 11,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral500
-                                : Ux4gColors.neutral400,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Image.asset(
-                          _digitalIndiaLogoPath,
-                          height: 22,
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : null,
-                        ),
-                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    );
+    ),
+    const _EligibilityFooter(),
+  ],
+),
+);
   }
 }
 
