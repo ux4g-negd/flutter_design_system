@@ -2007,11 +2007,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     // Footer
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                        SizedBox(height: 6),
-                        Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                      ]),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                          const SizedBox(width: 8),
+                          Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -3095,11 +3100,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     // Footer
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                        SizedBox(height: 6),
-                        Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                      ]),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                          const SizedBox(width: 8),
+                          Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -4178,11 +4188,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     // Footer
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                        SizedBox(height: 6),
-                        Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                      ]),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                          const SizedBox(width: 8),
+                          Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -5268,11 +5283,16 @@ class EligibilityWizardScreen extends StatelessWidget {
                     // Footer
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 12),
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                        SizedBox(height: 6),
-                        Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                      ]),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                          const SizedBox(width: 8),
+                          Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                        ],
+                      ),
                     ),
                   ],
                 ),

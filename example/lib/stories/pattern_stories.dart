@@ -23406,12 +23406,17 @@ Scaffold(
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 20, top: 8),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11,
-                      color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                ]),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('Powered by -', style: TextStyle(fontSize: 11,
+                        color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                    const SizedBox(width: 8),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  ],
+                ),
               ),
             ],
           ),
@@ -23957,12 +23962,17 @@ Scaffold(
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 20, top: 8),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11,
-                      color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                ]),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('Powered by -', style: TextStyle(fontSize: 11,
+                        color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                    const SizedBox(width: 8),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  ],
+                ),
               ),
             ],
           ),
@@ -24506,12 +24516,17 @@ Scaffold(
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 20, top: 8),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11,
-                      color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
-                ]),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('Powered by -', style: TextStyle(fontSize: 11,
+                        color: Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                    const SizedBox(width: 8),
+                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  ],
+                ),
               ),
             ],
           ),

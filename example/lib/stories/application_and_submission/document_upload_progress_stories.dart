@@ -144,6 +144,34 @@ class DocumentUploadProgressScreen extends StatelessWidget {
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
 
@@ -161,7 +189,7 @@ class DocumentUploadProgressScreen extends StatelessWidget {
                         Ux4gStepItem(title: 'Eligibility', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
                         Ux4gStepItem(title: 'Personal', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
                         Ux4gStepItem(title: 'Documents', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                        Ux4gStepItem(title: ''),
+                        Ux4gStepItem(title: 'Submit', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
                       ],
                     ),
                     SizedBox(height: 32),
@@ -169,10 +197,22 @@ class DocumentUploadProgressScreen extends StatelessWidget {
                     Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                     SizedBox(height: 4),
                     Text('PDF or JPG, max 5 MB each. Self-attested.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
-                    SizedBox(height: 24),
+                    SizedBox(height: 20),
 
-                    Text('Required documents — uploading 2 of 4', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
-                    SizedBox(height: 24),
+                    Text('Required documents — 2 of 4 uploaded', style: Theme.of(context).extension<Ux4gTypography>()?.lL_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                    const SizedBox(height: 12),
+                    Ux4gLinearProgressBar(
+                      value: 0.5,
+                      height: 6,
+                      shape: Ux4gProgressShape.rounded,
+                      gradientColors: Theme.of(context).brightness == Brightness.dark
+                          ? const [Ux4gColors.primary400, Ux4gColors.primary200]
+                          : const [Ux4gColors.primary300, Ux4gColors.primary600],
+                      trackColor: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gColors.neutral800
+                          : const Color(0xFFE5E7EB),
+                    ),
+                    const SizedBox(height: 24),
 
                     // Aadhaar Card (Uploaded)
                     Container(
@@ -323,12 +363,14 @@ class DocumentUploadProgressScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -440,6 +482,34 @@ class DocumentUploadProgressCardScreen extends StatelessWidget {
                   ),
                 ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
                 ],
@@ -469,7 +539,7 @@ class DocumentUploadProgressCardScreen extends StatelessWidget {
                           Ux4gStepItem(title: 'Eligibility', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
                           Ux4gStepItem(title: 'Personal', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
                           Ux4gStepItem(title: 'Documents', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
-                          Ux4gStepItem(title: ''),
+                          Ux4gStepItem(title: 'Submit', titleStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
                         ],
                       ),
                       SizedBox(height: 32),
@@ -477,10 +547,22 @@ class DocumentUploadProgressCardScreen extends StatelessWidget {
                       Text('Upload documents', style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2)),
                       SizedBox(height: 4),
                       Text('PDF or JPG, max 5 MB each. Self-attested.', style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500, height: 1.4)),
-                      SizedBox(height: 24),
+                      SizedBox(height: 20),
 
-                      Text('Required documents — uploading 2 of 4', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
-                      SizedBox(height: 24),
+                      Text('Required documents — 2 of 4 uploaded', style: Theme.of(context).extension<Ux4gTypography>()?.lL_strong?.copyWith( color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                      const SizedBox(height: 12),
+                      Ux4gLinearProgressBar(
+                        value: 0.5,
+                        height: 6,
+                        shape: Ux4gProgressShape.rounded,
+                        gradientColors: Theme.of(context).brightness == Brightness.dark
+                            ? const [Ux4gColors.primary400, Ux4gColors.primary200]
+                            : const [Ux4gColors.primary300, Ux4gColors.primary600],
+                        trackColor: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      const SizedBox(height: 24),
 
                       // Aadhaar Card (Uploaded)
                       Container(
@@ -613,12 +695,14 @@ class DocumentUploadProgressCardScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -741,6 +825,34 @@ class _DocumentUploadProgressMockup extends StatelessWidget {
                     ),
                   ),
                 ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral800
+                              : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary400
+                              : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                verticalPadding: 16,
+                horizontalPadding: 16,
+                leadingSpacing: 8,
               ),
               Divider(
                 height: 1,
@@ -783,39 +895,62 @@ class _DocumentUploadProgressMockup extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Ux4gStepItem(title: ''),
+                          Ux4gStepItem(
+                            title: 'Submit',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 32),
                       Text(
-  'Upload documents',
-  style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith(
-    color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.neutral50
-                              : Ux4gColors.neutral900,
-  ),
-),
-SizedBox(height: 4),
-                      Text(
-  'PDF or JPG, max 5 MB each. Self-attested.',
-  style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
-    color: Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.neutral400
-                              : Ux4gColors.neutral500,
-  ),
-),
-                      SizedBox(height: 24),
-                      Text(
-                        'Required documents — uploading 2 of 4',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
+                        'Upload documents',
+                        style: Theme.of(context).extension<Ux4gTypography>()?.hM_strong?.copyWith(
                           color: Theme.of(context).brightness == Brightness.dark
                               ? Ux4gColors.neutral50
                               : Ux4gColors.neutral900,
                         ),
                       ),
-                      SizedBox(height: 24),
+                      SizedBox(height: 4),
+                      Text(
+                        'PDF or JPG, max 5 MB each. Self-attested.',
+                        style: Theme.of(context).extension<Ux4gTypography>()?.bS_default?.copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral500,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Required documents — 2 of 4 uploaded',
+                        style: (Theme.of(context)
+                                    .extension<Ux4gTypography>()
+                                    ?.lL_strong ??
+                                defaultUx4gTypography.lL_strong)
+                            .copyWith(
+                          color:
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Ux4gLinearProgressBar(
+                        value: 0.5,
+                        height: 6,
+                        shape: Ux4gProgressShape.rounded,
+                        gradientColors:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? const [Ux4gColors.primary400, Ux4gColors.primary200]
+                                : const [Ux4gColors.primary300, Ux4gColors.primary600],
+                        trackColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral800
+                                : const Color(0xFFE5E7EB),
+                      ),
+                      const SizedBox(height: 24),
 
                       // Aadhaar Card (Uploaded)
                       Container(
@@ -1073,8 +1208,10 @@ SizedBox(height: 4),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -1083,12 +1220,13 @@ SizedBox(height: 4),
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Ux4gColors.neutral500
                             : Ux4gColors.neutral400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       _digitalIndiaLogoPath,
-                      height: 24,
+                      height: 22,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
                           : null,
@@ -1158,6 +1296,34 @@ class _DocumentUploadProgressCardMockup extends StatelessWidget {
                           ),
                         ),
                       ],
+                      actions: [
+                        Ux4gAppHeaderAction(
+                          customWidget: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.neutral800
+                                    : const Color(0xFFE5E7EB),
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.menu,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary400
+                                    : Ux4gColors.primary600,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      verticalPadding: 16,
+                      horizontalPadding: 16,
+                      leadingSpacing: 8,
                     ),
                     Divider(
                       height: 1,
@@ -1218,7 +1384,13 @@ class _DocumentUploadProgressCardMockup extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Ux4gStepItem(title: ''),
+                            Ux4gStepItem(
+                              title: 'Submit',
+                              titleStyle: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(height: 32),
@@ -1239,20 +1411,36 @@ SizedBox(height: 4),
                                 : Ux4gColors.neutral500,
   ),
 ),
-                        SizedBox(height: 24),
+                        SizedBox(height: 20),
 
                         Text(
-                          'Required documents — uploading 2 of 4',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
+                          'Required documents — 2 of 4 uploaded',
+                          style: (Theme.of(context)
+                                      .extension<Ux4gTypography>()
+                                      ?.lL_strong ??
+                                  defaultUx4gTypography.lL_strong)
+                              .copyWith(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral50
-                                : Ux4gColors.neutral900,
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
                           ),
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 12),
+                        Ux4gLinearProgressBar(
+                          value: 0.5,
+                          height: 6,
+                          shape: Ux4gProgressShape.rounded,
+                          gradientColors:
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? const [Ux4gColors.primary400, Ux4gColors.primary200]
+                                  : const [Ux4gColors.primary300, Ux4gColors.primary600],
+                          trackColor:
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                        ),
+                        const SizedBox(height: 24),
 
                         // Aadhaar Card (Uploaded)
                         Container(
