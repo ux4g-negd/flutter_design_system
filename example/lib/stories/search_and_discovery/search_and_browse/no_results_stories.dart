@@ -60,15 +60,15 @@ class _NoResultsScreenState extends State<NoResultsScreen> {
               showBackButton: true,
               onBackPressed: () => Navigator.pop(context),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             // Search bar
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Ux4gSearchField(
                 value: _searchValue,
                 onValueChange: (v) => setState(() => _searchValue = v),
                 variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                size: Ux4gSearchFieldSize.medium,
                 placeholder: 'Search services...',
                 showVoiceIcon: true,
                 showClearIcon: true,
@@ -218,20 +218,16 @@ class _NoResultsMockupState extends State<_NoResultsMockup> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
 
               // Search bar area
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                color: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral0,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Ux4gSearchField(
                   value: _searchValue,
                   onValueChange: (v) => setState(() => _searchValue = v),
                   variant: Ux4gSearchFieldVariant.searchWithSubmit,
-                  size: Ux4gSearchFieldSize.large,
+                  size: Ux4gSearchFieldSize.medium,
                   placeholder: 'Search services...',
                   showVoiceIcon: true,
                   showClearIcon: true,

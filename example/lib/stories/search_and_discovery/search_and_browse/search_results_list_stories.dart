@@ -73,11 +73,10 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
               showBackButton: true,
               onBackPressed: () => Navigator.pop(context),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             // Search bar
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              color: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral0,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Builder(
                 builder: (context) {
                   final filtered = _options
@@ -87,7 +86,7 @@ class _SearchResultsListScreenState extends State<SearchResultsListScreen> {
                     value: _searchValue,
                     onValueChange: (v) => setState(() => _searchValue = v),
                     variant: Ux4gSearchFieldVariant.autocomplete,
-                    size: Ux4gSearchFieldSize.large,
+                    size: Ux4gSearchFieldSize.medium,
                     placeholder: 'Search services...',
                     showVoiceIcon: true,
                     showClearIcon: true,
@@ -334,15 +333,11 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
 
               // Search bar area
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                color: isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral0,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Builder(
                   builder: (context) {
                     final filtered = _options
@@ -356,7 +351,7 @@ class _SearchResultsListMockupState extends State<_SearchResultsListMockup> {
                       value: _searchValue,
                       onValueChange: (v) => setState(() => _searchValue = v),
                       variant: Ux4gSearchFieldVariant.autocomplete,
-                      size: Ux4gSearchFieldSize.large,
+                      size: Ux4gSearchFieldSize.medium,
                       placeholder: 'Search services...',
                       showVoiceIcon: true,
                       showClearIcon: true,
