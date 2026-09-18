@@ -62,6 +62,13 @@ class MyApplicationsScreen extends StatefulWidget {
 
 class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
   int _selectedTab = 2;
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +159,10 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
                         Ux4gChoiceChip(text: 'Rejected', selected: _selectedTab == 4, onClick: () => setState(() => _selectedTab = 4), borderRadius: 4, trailingContent: _countBadge('6', _selectedTab == 4)),
                       ],
                     ),
+                    SizedBox(height: 20),
+
+                    // Search field
+                    _buildSearchField(),
                     SizedBox(height: 20),
 
                     // Application Card 1 - Escalation available
@@ -256,6 +267,84 @@ class _MyApplicationsScreenState extends State<MyApplicationsScreen> {
       ),
     );
   }
+
+  Widget _buildSearchField() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 42,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(6),
+                bottomLeft: Radius.circular(6),
+              ),
+              border: Border.all(
+                color: Color(0xFFE5E7EB),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _searchController,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF111827),
+                    ),
+                    decoration: InputDecoration(
+                      hintText: 'Search for...',
+                      hintStyle: TextStyle(
+                        fontSize: 14,
+                        color: Color(0xFF9CA3AF),
+                      ),
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
+                      isDense: true,
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.mic_none,
+                  size: 20,
+                  color: Color(0xFF374151),
+                ),
+                const SizedBox(width: 8),
+                Icon(
+                  Icons.close,
+                  size: 18,
+                  color: Color(0xFF374151),
+                ),
+                const SizedBox(width: 12),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          width: 44,
+          height: 42,
+          decoration: const BoxDecoration(
+            color: Ux4gColors.primary600,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(6),
+              bottomRight: Radius.circular(6),
+            ),
+          ),
+          child: const Center(
+            child: Icon(
+              Icons.search,
+              color: Colors.white,
+              size: 22,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class _StatCard extends StatelessWidget {
@@ -344,7 +433,17 @@ class _MyApplicationsMockup extends StatefulWidget {
 }
 
 class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
-  int _selectedTab = 2; // Under Review selected by default
+  int? _selectedTab;
+  int get selectedTab => _selectedTab ?? 2;
+  TextEditingController? _searchController;
+  TextEditingController get searchController =>
+      _searchController ??= TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -460,6 +559,10 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
 
                     // Tab filters
                     _buildTabFilters(),
+                    SizedBox(height: 20),
+
+                    // Search field
+                    _buildSearchField(),
                     SizedBox(height: 20),
 
                     // Application cards
@@ -601,7 +704,7 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
       spacing: 8,
       runSpacing: 8,
       children: List.generate(tabs.length, (index) {
-        final isSelected = index == _selectedTab;
+        final isSelected = index == selectedTab;
         return InkWell(
           onTap: () => setState(() => _selectedTab = index),
           borderRadius: BorderRadius.circular(4),
@@ -659,6 +762,96 @@ class _MyApplicationsMockupState extends State<_MyApplicationsMockup> {
           ),
         );
       }),
+    );
+  }
+
+  Widget _buildSearchField() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 42,
+            decoration: BoxDecoration(
+              color: _getCardBg(context),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(6),
+                bottomLeft: Radius.circular(6),
+              ),
+              border: Border.all(color: _getBorderColor(context)),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: searchController,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: _getTitleColor(context),
+                    ),
+                    decoration: InputDecoration(
+                      hintText: 'Search for...',
+                      hintStyle: TextStyle(
+                        fontSize: 14,
+                        color: _getSubtleText(context),
+                      ),
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
+                      isDense: true,
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Icon(
+                    Icons.mic_none,
+                    size: 20,
+                    color: _getTitleColor(context),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                InkWell(
+                  onTap: () {
+                    searchController.clear();
+                  },
+                  child: Icon(
+                    Icons.close,
+                    size: 18,
+                    color: _getTitleColor(context),
+                  ),
+                ),
+                const SizedBox(width: 12),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          width: 44,
+          height: 42,
+          decoration: const BoxDecoration(
+            color: _primaryColor,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(6),
+              bottomRight: Radius.circular(6),
+            ),
+          ),
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(6),
+                bottomRight: Radius.circular(6),
+              ),
+              onTap: () {},
+              child: const Center(
+                child: Icon(Icons.search, color: Colors.white, size: 22),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

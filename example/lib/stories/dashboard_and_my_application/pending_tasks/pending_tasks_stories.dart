@@ -134,7 +134,8 @@ class _PendingTasksMockup extends StatefulWidget {
 }
 
 class _PendingTasksMockupState extends State<_PendingTasksMockup> {
-  int _selectedTab = 2;
+  int? _selectedTab;
+  int get selectedTab => _selectedTab ?? 2;
 
   @override
   Widget build(BuildContext context) {
@@ -320,7 +321,7 @@ class _PendingTasksMockupState extends State<_PendingTasksMockup> {
       spacing: 8,
       runSpacing: 8,
       children: List.generate(tabs.length, (index) {
-        final isSelected = index == _selectedTab;
+        final isSelected = index == selectedTab;
         return InkWell(
           onTap: () => setState(() => _selectedTab = index),
           borderRadius: BorderRadius.circular(4),

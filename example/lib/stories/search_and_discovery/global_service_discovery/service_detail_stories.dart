@@ -255,7 +255,8 @@ class _ServiceDetailMockup extends StatefulWidget {
 }
 
 class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
-  int _selectedTab = 0;
+  int? _selectedTab;
+  int get selectedTab => _selectedTab ?? 0;
 
   @override
   Widget build(BuildContext context) {
@@ -566,7 +567,7 @@ class _ServiceDetailMockupState extends State<_ServiceDetailMockup> {
   }
 
   Widget _buildTab(String text, int index) {
-    final isSelected = _selectedTab == index;
+    final isSelected = selectedTab == index;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final typography = Ux4gTheme.typography(context);
     return Expanded(

@@ -103,7 +103,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
     if (!mounted) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      final shouldShow = _isFocused &&
+      final shouldShow =
+          _isFocused &&
           widget.value.trim().isNotEmpty &&
           (widget.options.isNotEmpty ||
               widget.variant == Ux4gSearchFieldVariant.autocomplete);
@@ -167,7 +168,8 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
         final width = renderBox?.size.width ?? 0;
 
         // Show dropdown only when focused, has typed text, and has options or variant is autocomplete
-        final isVisible = _isFocused &&
+        final isVisible =
+            _isFocused &&
             widget.value.trim().isNotEmpty &&
             (widget.options.isNotEmpty ||
                 widget.variant == Ux4gSearchFieldVariant.autocomplete);
@@ -235,10 +237,7 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
             )
           else if (widget.options.isEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 14,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               child: Text(
                 "No results found",
                 style: bmDefault.copyWith(
@@ -262,22 +261,24 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                       : widget.options.where((option) {
                           final lowerOpt = option.toLowerCase();
                           return switch (widget.filterType) {
-                            Ux4gSearchFilterType.contains =>
-                              lowerOpt.contains(query),
+                            Ux4gSearchFilterType.contains => lowerOpt.contains(
+                              query,
+                            ),
                             Ux4gSearchFilterType.startsWith =>
                               lowerOpt.startsWith(query),
                             Ux4gSearchFilterType.startsWithPerTerm => () {
-                                final queryTerms = query
-                                    .split(' ')
-                                    .where((t) => t.isNotEmpty);
-                                final labelTerms = lowerOpt
-                                    .split(' ')
-                                    .where((t) => t.isNotEmpty);
-                                return queryTerms.every(
-                                  (qTerm) => labelTerms
-                                      .any((lTerm) => lTerm.startsWith(qTerm)),
-                                );
-                              }(),
+                              final queryTerms = query
+                                  .split(' ')
+                                  .where((t) => t.isNotEmpty);
+                              final labelTerms = lowerOpt
+                                  .split(' ')
+                                  .where((t) => t.isNotEmpty);
+                              return queryTerms.every(
+                                (qTerm) => labelTerms.any(
+                                  (lTerm) => lTerm.startsWith(qTerm),
+                                ),
+                              );
+                            }(),
                           };
                         }).toList();
 
@@ -494,10 +495,15 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
                           ),
                           decoration: InputDecoration(
                             hintText: widget.placeholder,
-                            hintStyle: (widget.placeholderStyle ?? bmDefault).copyWith(
-                              color: widget.placeholderStyle?.color ?? onSurface.withValues(alpha: 0.4),
-                              fontWeight: widget.placeholderStyle?.fontWeight ?? FontWeight.w400,
-                            ),
+                            hintStyle: (widget.placeholderStyle ?? bmDefault)
+                                .copyWith(
+                                  color:
+                                      widget.placeholderStyle?.color ??
+                                      onSurface.withValues(alpha: 0.4),
+                                  fontWeight:
+                                      widget.placeholderStyle?.fontWeight ??
+                                      FontWeight.w400,
+                                ),
                             isDense: true,
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.zero,
