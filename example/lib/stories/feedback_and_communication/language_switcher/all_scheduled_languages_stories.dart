@@ -5,11 +5,27 @@ import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import '../../../widgets/component_docs.dart';
 
 // ── Design tokens ────────────────────────────────────────────────────────
+
+// ignore: unused_element
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
-Color _getTitleColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
-Color _getSubtleText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral400 : const Color(0xFF4B5563);
-Color _getMutedText(BuildContext context) => _isDark(context) ? Ux4gColors.neutral500 : const Color(0xFF6B7280);
-Color _getPrimaryColor(BuildContext context) => _isDark(context) ? Ux4gColors.primary300 : const Color(0xFF432CBB);
+
+// ignore: unused_element
+Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
+
+// ignore: unused_element
+Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
+
+// ignore: unused_element
+Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
+
+// ignore: unused_element
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
+
+// ignore: unused_element
+Color _getCardBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral800 : Colors.white;
+
+// ignore: unused_element
+Color _getMutedText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -34,9 +50,9 @@ final allScheduledLanguagesComponent = WidgetbookComponent(
           mobileMockup: true,
           name: 'All Scheduled Languages ($variant)',
           description: isCard
-              ? 'Full language list with search and selected state inside a '
+              ? 'Full language list with dropdown inside a '
                     'card container with light purple background.'
-              : 'Full language list with search and selected state on white background.',
+              : 'Full language list with dropdown interface on white background.',
           code: isCard
               ? _allScheduledLanguagesCardCode
               : _allScheduledLanguagesDefaultCode,
@@ -52,10 +68,16 @@ final allScheduledLanguagesComponent = WidgetbookComponent(
 // Source Code String — Default
 // ───────────────────────────────────────────────────────────────────────
 
-const _allScheduledLanguagesDefaultCode =
-    r"""import 'package:flutter/material.dart';
+const _allScheduledLanguagesDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+
+class ScheduledLanguage {
+  final String name;
+  final String sub;
+
+  const ScheduledLanguage({required this.name, required this.sub});
+}
 
 class AllScheduledLanguagesScreen extends StatefulWidget {
   const AllScheduledLanguagesScreen({super.key});
@@ -65,162 +87,324 @@ class AllScheduledLanguagesScreen extends StatefulWidget {
 }
 
 class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScreen> {
-  int _selectedIndex = -1;
-  String _searchValue = '';
-  bool _isDropdownOpen = false;
+  int _selectedIndex = 0;
+  bool _isDropdownOpen = true;
 
-  final _languages = [
-    {'name': 'English', 'sub': 'United States'},
-    {'name': 'हिंदी', 'sub': 'Hindi'},
-    {'name': 'मराठी', 'sub': 'Marathi'},
-    {'name': 'தமிழ்', 'sub': 'Tamil'},
-    {'name': 'తెలుగు', 'sub': 'Telegu'},
-    {'name': 'বাংলা', 'sub': 'Bengali'},
+  static const List<ScheduledLanguage> _languages = [
+    ScheduledLanguage(name: 'English', sub: 'United States'),
+    ScheduledLanguage(name: 'हिंदी', sub: 'Hindi'),
+    ScheduledLanguage(name: 'मराठी', sub: 'Marathi'),
+    ScheduledLanguage(name: 'தமிழ்', sub: 'Tamil'),
+    ScheduledLanguage(name: 'తెలుగు', sub: 'Telugu'),
+    ScheduledLanguage(name: 'বাংলা', sub: 'Bengali'),
+    ScheduledLanguage(name: 'ગુજરાતી', sub: 'Gujarati'),
+    ScheduledLanguage(name: 'ಕನ್ನಡ', sub: 'Kannada'),
+    ScheduledLanguage(name: 'മലയാളം', sub: 'Malayalam'),
+    ScheduledLanguage(name: 'ଓଡ଼ିଆ', sub: 'Odia'),
+    ScheduledLanguage(name: 'ਪੰਜਾਬੀ', sub: 'Punjabi'),
+    ScheduledLanguage(name: 'অসমীয়া', sub: 'Assamese'),
+    ScheduledLanguage(name: 'संस्कृतम्', sub: 'Sanskrit'),
+    ScheduledLanguage(name: 'اردو', sub: 'Urdu'),
+    ScheduledLanguage(name: 'नेपाली', sub: 'Nepali'),
+    ScheduledLanguage(name: 'मैथिली', sub: 'Maithili'),
+    ScheduledLanguage(name: 'संथाली', sub: 'Santali'),
+    ScheduledLanguage(name: 'डोगरी', sub: 'Dogri'),
+    ScheduledLanguage(name: 'कोंकणी', sub: 'Konkani'),
+    ScheduledLanguage(name: 'बोडो', sub: 'Bodo'),
+    ScheduledLanguage(name: 'सिन्धी', sub: 'Sindhi'),
+    ScheduledLanguage(name: 'कश्मीरी', sub: 'Kashmiri'),
+    ScheduledLanguage(name: 'मणिपुरी', sub: 'Manipuri'),
   ];
 
   @override
   Widget build(BuildContext context) {
-    // Filter languages
-    final query = _searchValue.toLowerCase();
-    final isExactSelection = _languages.any((l) => l['name']!.toLowerCase() == query);
-    final filteredLanguages = (isExactSelection || query.isEmpty)
-        ? _languages
-        : _languages.where((l) =>
-            l['name']!.toLowerCase().contains(query) ||
-            l['sub']!.toLowerCase().contains(query)).toList();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final safeIndex = (_selectedIndex >= 0 && _selectedIndex < _languages.length) ? _selectedIndex : 0;
+    final selectedLang = _languages[safeIndex];
 
-    return GestureDetector(
-      onTap: () {
-        if (_isDropdownOpen) {
-          setState(() {
-            _isDropdownOpen = false;
-            if (_selectedIndex >= 0) _searchValue = _languages[_selectedIndex]['name']!;
-          });
-        }
-      },
-      behavior: HitTestBehavior.translucent,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Column(
-            children: [
-              // App Header
-              Ux4gAppHeader(
-                variant: Ux4gAppHeaderVariant.light,
-                elevation: 4,
-                title: '',
-                leadingSpacing: 8,
-                leadingWidgets: [
-                  SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                  SizedBox(
-                    height: 32,
-                    child: Ux4gDivider(
-                      orientation: Ux4gDividerOrientation.vertical,
-                      color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFD1D5DB),
-                    ),
-                  ),
-                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
-                ],
-              ),
-              // Content
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('All scheduled languages',
-                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-                      const SizedBox(height: 8),
-                      Text('India\'s 22 scheduled languages plus English. Tap any tile to switch — "Coming soon" tiles mean translation is in progress.',
-                          style: TextStyle(fontSize: 14, color: _getSubtleText(context))),
-                      const SizedBox(height: 20),
-                      // Search field
-                      Ux4gSearchField(
-                        value: _searchValue,
-                        onValueChange: (v) {
-                          setState(() { _searchValue = v; _isDropdownOpen = true; });
-                        },
-                        variant: Ux4gSearchFieldVariant.searchWithSubmit,
-                        size: Ux4gSearchFieldSize.medium,
-                        placeholder: 'Search for Language',
-                        showVoiceIcon: true,
-                        showClearIcon: false,
-                        onClearClick: () {
-                          setState(() { _searchValue = ''; _selectedIndex = -1; _isDropdownOpen = false; });
-                        },
-                        onSubmitClick: (_) {},
-                      ),
-                      // Dropdown list
-                      if (_isDropdownOpen)
-                        Container(
-                          margin: const EdgeInsets.only(top: 4),
-                          decoration: BoxDecoration(
-                            color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFE5E7EB)),
-                            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))],
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: List.generate(filteredLanguages.length, (i) {
-                              final lang = filteredLanguages[i];
-                              final originalIndex = _languages.indexOf(lang);
-                              final isSelected = _selectedIndex == originalIndex;
-                              return InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    _selectedIndex = originalIndex;
-                                    _searchValue = lang['name']!;
-                                    _isDropdownOpen = false;
-                                  });
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                                  decoration: BoxDecoration(
-                                    color: isSelected ? (_isDark(context) ? Ux4gColors.primary800 : Color(0xFFF2EFFF)) : null,
-                                    border: i < filteredLanguages.length - 1
-                                        ? Border(bottom: BorderSide(color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFE5E7EB), width: 1))
-                                        : null,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(lang['name']!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: isSelected ? _getPrimaryColor(context) : _getTitleColor(context))),
-                                            const SizedBox(height: 2),
-                                            Text(lang['sub']!, style: TextStyle(fontSize: 12, color: isSelected ? _getPrimaryColor(context) : _getMutedText(context))),
-                                          ],
-                                        ),
-                                      ),
-                                      if (isSelected) Icon(Icons.check, color: _getPrimaryColor(context), size: 20),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                        ),
-                    ],
+    return Scaffold(
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // App Header
+            Ux4gAppHeader(
+              elevation: 2,
+              verticalPadding: 16,
+              leadingSpacing: 8,
+              variant: Ux4gAppHeaderVariant.light,
+              title: '',
+              leadingWidgets: [
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                const SizedBox(width: 8),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
                   ),
                 ),
-              ),
-              // Powered by Digital India
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // Content
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Powered by -', style: TextStyle(fontSize: 11, color: _getMutedText(context))),
-                    const SizedBox(width: 4),
-                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                    Text(
+                      'All scheduled languages',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      "India's 22 scheduled languages plus English.\nTap any tile to switch.",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Interface Language',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Ux4gColors.neutral200 : const Color(0xFF374151),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    // Dropdown Trigger Field
+                    InkWell(
+                      onTap: () => setState(() => _isDropdownOpen = !_isDropdownOpen),
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: const Color(0xFF432CBB),
+                            width: 1.8,
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.language,
+                              size: 20,
+                              color: isDark ? Ux4gColors.neutral300 : const Color(0xFF111827),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                selectedLang.name,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: isDark ? Colors.white : const Color(0xFF111827),
+                                ),
+                              ),
+                            ),
+                            Icon(
+                              _isDropdownOpen
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.keyboard_arrow_down,
+                              size: 20,
+                              color: isDark ? Ux4gColors.neutral400 : const Color(0xFF4B5563),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    // Dropdown List Container
+                    if (_isDropdownOpen)
+                      Container(
+                        constraints: const BoxConstraints(maxHeight: 320),
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.04),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Scrollbar(
+                            thumbVisibility: true,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: _languages.length,
+                              itemBuilder: (context, i) {
+                                final lang = _languages[i];
+                                final isSelected = safeIndex == i;
+
+                                return InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      _selectedIndex = i;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? (isDark
+                                              ? Ux4gColors.primary800.withValues(alpha: 0.4)
+                                              : const Color(0xFFF3F0FF))
+                                          : Colors.transparent,
+                                      border: i < _languages.length - 1
+                                          ? Border(
+                                              bottom: BorderSide(
+                                                color: isDark
+                                                    ? Ux4gColors.neutral800
+                                                    : const Color(0xFFF3F4F6),
+                                                width: 0.8,
+                                              ),
+                                            )
+                                          : null,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          lang.name,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: isSelected
+                                                ? (isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB))
+                                                : (isDark ? Colors.white : const Color(0xFF111827)),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 2),
+                                        Text(
+                                          lang.sub,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: isSelected
+                                                ? (isDark ? Ux4gColors.primary200 : const Color(0xFF6352D0))
+                                                : (isDark ? Ux4gColors.neutral400 : const Color(0xFF6B7280)),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+            // Powered by Digital India
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
+                  const SizedBox(width: 4),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -232,10 +416,16 @@ class _AllScheduledLanguagesScreenState extends State<AllScheduledLanguagesScree
 // Source Code String — Card Style
 // ───────────────────────────────────────────────────────────────────────
 
-const _allScheduledLanguagesCardCode =
-    r"""import 'package:flutter/material.dart';
+const _allScheduledLanguagesCardCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+
+class ScheduledLanguage {
+  final String name;
+  final String sub;
+
+  const ScheduledLanguage({required this.name, required this.sub});
+}
 
 /// Card Style variant — all scheduled languages inside a white card on purple background.
 class AllScheduledLanguagesCardScreen extends StatefulWidget {
@@ -246,168 +436,331 @@ class AllScheduledLanguagesCardScreen extends StatefulWidget {
 }
 
 class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesCardScreen> {
-  int _selectedIndex = -1;
-  String _searchValue = '';
-  bool _isDropdownOpen = false;
+  int _selectedIndex = 0;
+  bool _isDropdownOpen = true;
 
-  final _languages = [
-    {'name': 'English', 'sub': 'United States'},
-    {'name': 'हिंदी', 'sub': 'Hindi'},
-    {'name': 'मराठी', 'sub': 'Marathi'},
-    {'name': 'தமிழ்', 'sub': 'Tamil'},
-    {'name': 'తెలుగు', 'sub': 'Telegu'},
-    {'name': 'বাংলা', 'sub': 'Bengali'},
+  static const List<ScheduledLanguage> _languages = [
+    ScheduledLanguage(name: 'English', sub: 'United States'),
+    ScheduledLanguage(name: 'हिंदी', sub: 'Hindi'),
+    ScheduledLanguage(name: 'मराठी', sub: 'Marathi'),
+    ScheduledLanguage(name: 'தமிழ்', sub: 'Tamil'),
+    ScheduledLanguage(name: 'తెలుగు', sub: 'Telugu'),
+    ScheduledLanguage(name: 'বাংলা', sub: 'Bengali'),
+    ScheduledLanguage(name: 'ગુજરાતી', sub: 'Gujarati'),
+    ScheduledLanguage(name: 'ಕನ್ನಡ', sub: 'Kannada'),
+    ScheduledLanguage(name: 'മലയാളം', sub: 'Malayalam'),
+    ScheduledLanguage(name: 'ଓଡ଼ିଆ', sub: 'Odia'),
+    ScheduledLanguage(name: 'ਪੰਜਾਬੀ', sub: 'Punjabi'),
+    ScheduledLanguage(name: 'অসমীয়া', sub: 'Assamese'),
+    ScheduledLanguage(name: 'संस्कृतम्', sub: 'Sanskrit'),
+    ScheduledLanguage(name: 'اردو', sub: 'Urdu'),
+    ScheduledLanguage(name: 'नेपाली', sub: 'Nepali'),
+    ScheduledLanguage(name: 'मैथिली', sub: 'Maithili'),
+    ScheduledLanguage(name: 'संथाली', sub: 'Santali'),
+    ScheduledLanguage(name: 'डोगरी', sub: 'Dogri'),
+    ScheduledLanguage(name: 'कोंकणी', sub: 'Konkani'),
+    ScheduledLanguage(name: 'बोडो', sub: 'Bodo'),
+    ScheduledLanguage(name: 'सिन्धी', sub: 'Sindhi'),
+    ScheduledLanguage(name: 'कश्मीरी', sub: 'Kashmiri'),
+    ScheduledLanguage(name: 'मणिपुरी', sub: 'Manipuri'),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final query = _searchValue.toLowerCase();
-    final isExactSelection = _languages.any((l) => l['name']!.toLowerCase() == query);
-    final filteredLanguages = (isExactSelection || query.isEmpty)
-        ? _languages
-        : _languages.where((l) =>
-            l['name']!.toLowerCase().contains(query) ||
-            l['sub']!.toLowerCase().contains(query)).toList();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final safeIndex = (_selectedIndex >= 0 && _selectedIndex < _languages.length) ? _selectedIndex : 0;
+    final selectedLang = _languages[safeIndex];
 
-    return GestureDetector(
-      onTap: () {
-        if (_isDropdownOpen) {
-          setState(() {
-            _isDropdownOpen = false;
-            if (_selectedIndex >= 0) _searchValue = _languages[_selectedIndex]['name']!;
-          });
-        }
-      },
-      behavior: HitTestBehavior.translucent,
-      child: Scaffold(
-        backgroundColor: Color(0xFFF2EFFF),
-        body: SafeArea(
-          child: Column(
-            children: [
-              // App Header
-              Ux4gAppHeader(
-                variant: Ux4gAppHeaderVariant.light,
-                elevation: 4,
-                title: '',
-                leadingSpacing: 8,
-                leadingWidgets: [
-                  SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                  SizedBox(
-                    height: 32,
-                    child: Ux4gDivider(
-                      orientation: Ux4gDividerOrientation.vertical,
-                      color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFD1D5DB),
-                    ),
+    return Scaffold(
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFE2DCFF),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // App Header
+            Ux4gAppHeader(
+              elevation: 2,
+              verticalPadding: 16,
+              leadingSpacing: 8,
+              variant: Ux4gAppHeaderVariant.light,
+              title: '',
+              leadingWidgets: [
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
+                const SizedBox(width: 8),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: const Color(0xFFD1D5DB),
                   ),
-                  SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
-                ],
-              ),
-              // White card content
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: Ux4gCard(
-                    backgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                    cornerRadius: 16,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('All scheduled languages',
-                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-                          const SizedBox(height: 8),
-                          Text('India\'s 22 scheduled languages plus English. Tap any tile to switch — "Coming soon" tiles mean translation is in progress.',
-                              style: TextStyle(fontSize: 14, color: _getSubtleText(context))),
-                          const SizedBox(height: 20),
-                          // Search field
-                          Ux4gSearchField(
-                            value: _searchValue,
-                            onValueChange: (v) {
-                              setState(() { _searchValue = v; _isDropdownOpen = true; });
-                            },
-                            variant: Ux4gSearchFieldVariant.searchWithSubmit,
-                            size: Ux4gSearchFieldSize.medium,
-                            placeholder: 'Search for Language',
-                            showVoiceIcon: true,
-                            showClearIcon: false,
-                            onClearClick: () {
-                              setState(() { _searchValue = ''; _selectedIndex = -1; _isDropdownOpen = false; });
-                            },
-                            onSubmitClick: (_) {},
-                          ),
-                          // Dropdown list
-                          if (_isDropdownOpen)
+                ),
+                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
                             Container(
-                              margin: const EdgeInsets.only(top: 4),
+                              width: 16,
+                              height: 2.2,
                               decoration: BoxDecoration(
-                            color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFE5E7EB)),
-                                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))],
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: List.generate(filteredLanguages.length, (i) {
-                                  final lang = filteredLanguages[i];
-                                  final originalIndex = _languages.indexOf(lang);
-                                  final isSelected = _selectedIndex == originalIndex;
-                                  return InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        _selectedIndex = originalIndex;
-                                        _searchValue = lang['name']!;
-                                        _isDropdownOpen = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                                      decoration: BoxDecoration(
-                                        color: isSelected ? (_isDark(context) ? Ux4gColors.primary800 : Color(0xFFF2EFFF)) : null,
-                                        border: i < filteredLanguages.length - 1
-                                            ? Border(bottom: BorderSide(color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFE5E7EB), width: 1))
-                                            : null,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(lang['name']!, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: isSelected ? _getPrimaryColor(context) : _getTitleColor(context))),
-                                                const SizedBox(height: 2),
-                                                Text(lang['sub']!, style: TextStyle(fontSize: 12, color: isSelected ? _getPrimaryColor(context) : _getMutedText(context))),
-                                              ],
-                                            ),
-                                          ),
-                                          if (isSelected) Icon(Icons.check, color: _getPrimaryColor(context), size: 20),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                }),
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
                               ),
                             ),
-                        ],
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              // Powered by Digital India
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Powered by -', style: TextStyle(fontSize: 11, color: _getMutedText(context))),
-                    const SizedBox(width: 4),
-                    Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
-                  ],
+              ],
+            ),
+            // White card content
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Ux4gCard(
+                  backgroundColor: isDark ? Ux4gColors.neutral800 : Colors.white,
+                  cornerRadius: 16,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'All scheduled languages',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w800,
+                            color: isDark ? Colors.white : const Color(0xFF111827),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "India's 22 scheduled languages plus English.\nTap any tile to switch.",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Interface Language',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: isDark ? Ux4gColors.neutral200 : const Color(0xFF374151),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        // Dropdown Trigger Field
+                        InkWell(
+                          onTap: () => setState(() => _isDropdownOpen = !_isDropdownOpen),
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                            decoration: BoxDecoration(
+                              color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: const Color(0xFF432CBB),
+                                width: 1.8,
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.language,
+                                  size: 20,
+                                  color: isDark ? Ux4gColors.neutral300 : const Color(0xFF111827),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    selectedLang.name,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: isDark ? Colors.white : const Color(0xFF111827),
+                                    ),
+                                  ),
+                                ),
+                                Icon(
+                                  _isDropdownOpen
+                                      ? Icons.keyboard_arrow_up
+                                      : Icons.keyboard_arrow_down,
+                                  size: 20,
+                                  color: isDark ? Ux4gColors.neutral400 : const Color(0xFF4B5563),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        // Dropdown List Container
+                        if (_isDropdownOpen)
+                          Container(
+                            constraints: const BoxConstraints(maxHeight: 320),
+                            decoration: BoxDecoration(
+                              color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.04),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Scrollbar(
+                                thumbVisibility: true,
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: _languages.length,
+                                  itemBuilder: (context, i) {
+                                    final lang = _languages[i];
+                                    final isSelected = safeIndex == i;
+
+                                    return InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          _selectedIndex = i;
+                                        });
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 16,
+                                          vertical: 10,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: isSelected
+                                              ? (isDark
+                                                  ? Ux4gColors.primary800.withValues(alpha: 0.4)
+                                                  : const Color(0xFFF3F0FF))
+                                              : Colors.transparent,
+                                          border: i < _languages.length - 1
+                                              ? Border(
+                                                  bottom: BorderSide(
+                                                    color: isDark
+                                                        ? Ux4gColors.neutral800
+                                                        : const Color(0xFFF3F4F6),
+                                                    width: 0.8,
+                                                  ),
+                                                )
+                                              : null,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              lang.name,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600,
+                                                color: isSelected
+                                                    ? (isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB))
+                                                    : (isDark ? Colors.white : const Color(0xFF111827)),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 2),
+                                            Text(
+                                              lang.sub,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: isSelected
+                                                    ? (isDark ? Ux4gColors.primary200 : const Color(0xFF6352D0))
+                                                    : (isDark ? Ux4gColors.neutral400 : const Color(0xFF6B7280)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+            // Powered by Digital India
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
+                  const SizedBox(width: 4),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -418,6 +771,13 @@ class _AllScheduledLanguagesCardScreenState extends State<AllScheduledLanguagesC
 // ───────────────────────────────────────────────────────────────────────
 // Mockup Widget
 // ───────────────────────────────────────────────────────────────────────
+
+class _ScheduledLanguage {
+  final String name;
+  final String sub;
+
+  const _ScheduledLanguage({required this.name, required this.sub});
+}
 
 class _AllScheduledLanguagesMockup extends StatefulWidget {
   final bool isCard;
@@ -431,126 +791,194 @@ class _AllScheduledLanguagesMockup extends StatefulWidget {
 
 class _AllScheduledLanguagesMockupState
     extends State<_AllScheduledLanguagesMockup> {
-  int _selectedIndex = -1;
-  String _searchValue = '';
-  bool _isDropdownOpen = false;
+  int _selectedIndex = 0;
+  bool _isDropdownOpen = true;
 
-  final _languages = const [
-    {'name': 'English', 'sub': 'United States'},
-    {'name': 'हिंदी', 'sub': 'Hindi'},
-    {'name': 'मराठी', 'sub': 'Marathi'},
-    {'name': 'தமிழ்', 'sub': 'Tamil'},
-    {'name': 'తెలుగు', 'sub': 'Telegu'},
-    {'name': 'বাংলা', 'sub': 'Bengali'},
+  static const List<_ScheduledLanguage> _languages = [
+    _ScheduledLanguage(name: 'English', sub: 'United States'),
+    _ScheduledLanguage(name: 'हिंदी', sub: 'Hindi'),
+    _ScheduledLanguage(name: 'मराठी', sub: 'Marathi'),
+    _ScheduledLanguage(name: 'தமிழ்', sub: 'Tamil'),
+    _ScheduledLanguage(name: 'తెలుగు', sub: 'Telugu'),
+    _ScheduledLanguage(name: 'বাংলা', sub: 'Bengali'),
+    _ScheduledLanguage(name: 'ગુજરાતી', sub: 'Gujarati'),
+    _ScheduledLanguage(name: 'ಕನ್ನಡ', sub: 'Kannada'),
+    _ScheduledLanguage(name: 'മലയാളം', sub: 'Malayalam'),
+    _ScheduledLanguage(name: 'ଓଡ଼ିଆ', sub: 'Odia'),
+    _ScheduledLanguage(name: 'ਪੰਜਾਬੀ', sub: 'Punjabi'),
+    _ScheduledLanguage(name: 'অসমীয়া', sub: 'Assamese'),
+    _ScheduledLanguage(name: 'संस्कृतम्', sub: 'Sanskrit'),
+    _ScheduledLanguage(name: 'اردو', sub: 'Urdu'),
+    _ScheduledLanguage(name: 'नेपाली', sub: 'Nepali'),
+    _ScheduledLanguage(name: 'मैथिली', sub: 'Maithili'),
+    _ScheduledLanguage(name: 'संथाली', sub: 'Santali'),
+    _ScheduledLanguage(name: 'डोगरी', sub: 'Dogri'),
+    _ScheduledLanguage(name: 'कोंकणी', sub: 'Konkani'),
+    _ScheduledLanguage(name: 'बोडो', sub: 'Bodo'),
+    _ScheduledLanguage(name: 'सिन्धी', sub: 'Sindhi'),
+    _ScheduledLanguage(name: 'कश्मीरी', sub: 'Kashmiri'),
+    _ScheduledLanguage(name: 'मणिपुरी', sub: 'Manipuri'),
   ];
 
   @override
   Widget build(BuildContext context) {
     final isDark = _isDark(context);
-    return GestureDetector(
-        onTap: () {
-          // Close dropdown on outside tap and restore selected value
-          if (_isDropdownOpen) {
-            setState(() {
-              _isDropdownOpen = false;
-              // Restore selected item name in field if user didn't use clear
-              if (_selectedIndex >= 0) {
-                _searchValue = _languages[_selectedIndex]['name']!;
-              }
-            });
-          }
-        },
-        behavior: HitTestBehavior.translucent,
-        child: Scaffold(
-          backgroundColor: widget.isCard ? (isDark ? Ux4gColors.primary800 : Color(0xFFF2EFFF)) : (isDark ? Ux4gColors.neutral950 : Colors.white),
-          body: SafeArea(
-            child: Column(
-              children: [
-                // App Header
-                Ux4gAppHeader(
-                  variant: Ux4gAppHeaderVariant.light,
-                elevation: 4,
-                  title: '',
-                  leadingSpacing: 8,
-                  leadingWidgets: [
-                    SvgPicture.asset(
-                      Ux4gIcons.nationalEmblem, 
-                      height: 40, colorFilter: _isDark(context) ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                    SizedBox(
-                      height: 32,
-                      child: Ux4gDivider(
-                        orientation: Ux4gDividerOrientation.vertical,
-                        color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFD1D5DB),
-                      ),
-                    ),
-                    SvgPicture.asset(Ux4gIcons.union, height: 32, colorFilter: ColorFilter.mode(_isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn)),
-                  ],
-                ),
 
-                // Content
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    child: widget.isCard
-                        ? Ux4gCard(
-                            backgroundColor: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                            cornerRadius: 16,
-                            child: Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: _buildContent(context),
-                            ),
-                          )
-                        : _buildContent(context),
+    return Theme(
+      data: Ux4gTheme.themeData(isDark: isDark),
+      child: Scaffold(
+        backgroundColor: widget.isCard
+            ? (isDark ? Ux4gColors.primary800 : const Color(0xFFE2DCFF))
+            : _getScaffoldBg(context),
+        body: SafeArea(
+          child: Column(
+            children: [
+              // App Header
+              Ux4gAppHeader(
+                elevation: 2,
+                verticalPadding: 16,
+                variant: Ux4gAppHeaderVariant.light,
+                title: '',
+                leadingSpacing: 8,
+                leadingWidgets: [
+                  SvgPicture.asset(
+                    Ux4gIcons.nationalEmblem,
+                    height: 40,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
-                ),
-
-                // Powered by
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Powered by -',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: _getMutedText(context),
+                  const SizedBox(width: 8),
+                  SizedBox(
+                    height: 32,
+                    child: Ux4gDivider(
+                      orientation: Ux4gDividerOrientation.vertical,
+                      color: const Color(0xFFD1D5DB),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  SvgPicture.asset(
+                    Ux4gIcons.union,
+                    height: 32,
+                    colorFilter: ColorFilter.mode(
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark
+                                ? Ux4gColors.primary600
+                                : const Color(0xFFC7D2FE),
+                            width: 1.5,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 4),
-                      Image.asset(
-                        Ux4gIcons.digitalIndiaLogoPng, 
-                        height: 20,
-                        errorBuilder: (_, __, ___) => Text(
-                          'Digital India',
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: _getPrimaryColor(context),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
+                ],
+              ),
+
+              // Content
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(16),
+                  child: widget.isCard
+                      ? Ux4gCard(
+                          backgroundColor: _getCardBg(context),
+                          cornerRadius: 16,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: _buildContent(context, isDark),
+                          ),
+                        )
+                      : _buildContent(context, isDark),
                 ),
-              ],
-            ),
+              ),
+
+              // Powered by
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Powered by -',
+                      style: TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
+                    ),
+                    const SizedBox(width: 4),
+                    Image.asset(
+                      Ux4gIcons.digitalIndiaLogoPng,
+                      height: 20,
+                      errorBuilder: (context, error, stackTrace) => Text(
+                        'Digital India',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Color(0xFF432CBB),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
+      ),
     );
   }
 
-  Widget _buildContent(BuildContext context) {
-    // Filter languages based on search
-    final query = _searchValue.toLowerCase();
-    final isExactSelection = _languages.any(
-      (lang) => lang['name']!.toLowerCase() == query,
-    );
-    final filteredLanguages = (isExactSelection || query.isEmpty)
-        ? _languages
-        : _languages.where((lang) {
-            return lang['name']!.toLowerCase().contains(query) ||
-                lang['sub']!.toLowerCase().contains(query);
-          }).toList();
+  Widget _buildContent(BuildContext context, bool isDark) {
+    final safeIndex = (_selectedIndex >= 0 && _selectedIndex < _languages.length) ? _selectedIndex : 0;
+    final selectedLang = _languages[safeIndex];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -565,121 +993,156 @@ class _AllScheduledLanguagesMockupState
         ),
         const SizedBox(height: 8),
         Text(
-          'India\'s 22 scheduled languages plus English. Tap any tile to switch — "Coming soon" tiles mean translation is in progress.',
-          style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
+          "India's 22 scheduled languages plus English.\nTap any tile to switch.",
+          style: TextStyle(
+            fontSize: 14,
+            color: _getSubtleText(context),
+          ),
         ),
         const SizedBox(height: 20),
 
-        // Search field — tap opens dropdown, shows selected value
-        Ux4gSearchField(
-          value: _searchValue,
-          onValueChange: (v) {
-            setState(() {
-              _searchValue = v;
-              _isDropdownOpen = true;
-            });
-          },
-          variant: Ux4gSearchFieldVariant.searchWithSubmit,
-          size: Ux4gSearchFieldSize.medium,
-          placeholder: 'Search for Language',
-          showVoiceIcon: true,
-          showClearIcon: false,
-          onClearClick: () {
-            setState(() {
-              _searchValue = '';
-              _selectedIndex = -1;
-              _isDropdownOpen = false;
-            });
-          },
-          onSubmitClick: (_) {},
+        Text(
+          'Interface Language',
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: isDark ? Ux4gColors.neutral200 : const Color(0xFF374151),
+          ),
         ),
+        const SizedBox(height: 8),
 
-        // Dropdown list — only visible when open
-        if (_isDropdownOpen)
-          Container(
-            margin: const EdgeInsets.only(top: 4),
+        // Dropdown Trigger Field
+        InkWell(
+          onTap: () => setState(() => _isDropdownOpen = !_isDropdownOpen),
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-                            color: _isDark(context) ? Ux4gColors.gray900 : Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: _isDark(context) ? Ux4gColors.neutral700 : Color(0xFFE5E7EB)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.08),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
+              color: isDark ? Ux4gColors.neutral900 : Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: const Color(0xFF432CBB),
+                width: 1.8,
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.language,
+                  size: 20,
+                  color: isDark ? Ux4gColors.neutral300 : const Color(0xFF111827),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    selectedLang.name,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: isDark ? Colors.white : const Color(0xFF111827),
+                    ),
+                  ),
+                ),
+                Icon(
+                  _isDropdownOpen
+                      ? Icons.keyboard_arrow_up
+                      : Icons.keyboard_arrow_down,
+                  size: 20,
+                  color: isDark ? Ux4gColors.neutral400 : const Color(0xFF4B5563),
                 ),
               ],
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: List.generate(filteredLanguages.length, (i) {
-                final lang = filteredLanguages[i];
-                final originalIndex = _languages.indexOf(lang);
-                final isSelected = _selectedIndex == originalIndex;
-                return InkWell(
-                  onTap: () {
-                    setState(() {
-                      _selectedIndex = originalIndex;
-                      _searchValue = lang['name']!;
-                      _isDropdownOpen = false;
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: isSelected ? (_isDark(context) ? Ux4gColors.primary800 : Color(0xFFF2EFFF)) : null,
-                      border: i < filteredLanguages.length - 1
-                          ? Border(
-                              bottom: BorderSide(
-                                color: Color(0xFFE5E7EB),
-                                width: 1,
-                              ),
-                            )
-                          : null,
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                lang['name']!,
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: isSelected
-                                      ? _getPrimaryColor(context)
-                                      : _getTitleColor(context),
-                                ),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                lang['sub']!,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: isSelected
-                                      ? _getPrimaryColor(context)
-                                      : _getMutedText(context),
-                                ),
-                              ),
-                            ],
-                          ),
+          ),
+        ),
+        const SizedBox(height: 12),
+
+        // Dropdown List Container
+        if (_isDropdownOpen)
+          Container(
+            constraints: const BoxConstraints(maxHeight: 320),
+            decoration: BoxDecoration(
+              color: isDark ? Ux4gColors.neutral900 : Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.04),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Scrollbar(
+                thumbVisibility: true,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _languages.length,
+                  itemBuilder: (context, i) {
+                    final lang = _languages[i];
+                    final isSelected = safeIndex == i;
+
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = i;
+                        });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
                         ),
-                        if (isSelected)
-                          Icon(
-                            Icons.check,
-                            color: _getPrimaryColor(context),
-                            size: 20,
-                          ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? (isDark
+                                  ? Ux4gColors.primary800.withValues(alpha: 0.4)
+                                  : const Color(0xFFF3F0FF))
+                              : Colors.transparent,
+                          border: i < _languages.length - 1
+                              ? Border(
+                                  bottom: BorderSide(
+                                    color: isDark
+                                        ? Ux4gColors.neutral800
+                                        : const Color(0xFFF3F4F6),
+                                    width: 0.8,
+                                  ),
+                                )
+                              : null,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              lang.name,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: isSelected
+                                    ? (isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB))
+                                    : (isDark ? Colors.white : const Color(0xFF111827)),
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              lang.sub,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: isSelected
+                                    ? (isDark ? Ux4gColors.primary200 : const Color(0xFF6352D0))
+                                    : (isDark ? Ux4gColors.neutral400 : const Color(0xFF6B7280)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
       ],
