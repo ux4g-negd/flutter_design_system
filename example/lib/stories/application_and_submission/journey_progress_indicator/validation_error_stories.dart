@@ -59,440 +59,10 @@ class ValidationErrorScreen extends StatefulWidget {
 }
 
 class _ValidationErrorScreenState extends State<ValidationErrorScreen> {
-  bool _acceptTerms = false;
-  String _fullName = '';
-  String _panNumber = 'ABCDE12345';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Header
-            Ux4gAppHeader(
-              variant: Ux4gAppHeaderVariant.light,
-              title: '',
-              leadingWidgets: [
-                SvgPicture.asset(
-                  Ux4gIcons.nationalEmblem,  
-                  height: 40,
-                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
-                  errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
-                ),
-                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
-                SvgPicture.asset(
-                  Ux4gIcons.union, 
-                  height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
-                  errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
-                ),
-              ],
-              actions: [
-                Ux4gAppHeaderAction(
-                  customWidget: Container(
-                    width: 36,
-                    height: 36,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral800
-                            : const Color(0xFFE5E7EB),
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: Icon(
-                        Icons.menu,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.primary400
-                            : Ux4gColors.primary600,
-                        size: 20,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-              verticalPadding: 16,
-              horizontalPadding: 16,
-              leadingSpacing: 8,
-            ),
-            Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-
-            // Main Content
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Ux4gStepper(
-                      totalSteps: 4,
-                      currentStep: 3,
-                      stepSize: 20,
-                      steps: [Ux4gStepItem(title: ''),
-                        Ux4gStepItem(title: ''),
-                        Ux4gStepItem(
-                          title: 'Documents', 
-                          isError: true,
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600),
-                        ),
-                        Ux4gStepItem(title: ''),],
-                    ),
-                    SizedBox(height: 32),
-
-                    // Global Error Banner
-                    Ux4gStatusBanner(
-                      variant: Ux4gBannerVariant.errorLight,
-                      title: 'Documents — 1 error found. Tap to jump.',
-                      margin: EdgeInsets.zero,
-                      leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red500, size: 20),
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50, // red50
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red800 : Ux4gColors.red200,     // red200
-                      titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, fontWeight: FontWeight.w500),
-                      subtitleWidget: GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          'Jump to error',
-                          style: TextStyle(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, // red800
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 40),
-
-                    // Title & Subtitle
-                    Text(
-                      'Verify your details',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Confirm the information below to proceed.',
-                      style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600, height: 1.4),
-                    ),
-                    SizedBox(height: 32),
-
-                    // Form Fields
-                    Ux4gInputField(
-                      label: 'Full name (as per Aadhaar)',
-                      value: _fullName,
-                      onValueChange: (val) => setState(() => _fullName = val),
-                      placeholder: '',
-                      size: Ux4gInputFieldSize.medium,
-                    ),
-                    SizedBox(height: 24),
-
-                    Ux4gPanInputField(
-                      label: 'PAN number',
-                      value: _panNumber,
-                      onValueChange: (val) => setState(() => _panNumber = val),
-                      placeholder: '',
-                      size: Ux4gInputFieldSize.medium,
-                      status: Ux4gInputFieldStatus.error,
-                      caption: 'Enter a valid 10-character PAN.',
-                    ),
-                    SizedBox(height: 32),
-
-                    // Checkbox
-                    Ux4gCheckbox(
-                      label: 'Accept terms and conditions',
-                      isRequired: true,
-                      value: _acceptTerms,
-                      onChanged: (val) => setState(() => _acceptTerms = val ?? false),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            // Actions
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(
-height: 48, text: 'Continue',
-                    onPressed: () {}, // Active but would re-validate
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                  ),
-                  SizedBox(height: 12),
-                  Ux4gButton(
-height: 48, text: 'Back',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.outline,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
-                  ),
-                ],
-              ),
-            ),
-
-            // Footer
-            Padding(
-              padding: EdgeInsets.only(bottom: 24),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                  SizedBox(width: 8),
-                  Image.asset(
-                    Ux4gIcons.digitalIndiaLogoPng,  
-                    height: 22,
-                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
-                    errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-""";
-
-const _validationErrorCardCode = r"""import 'package:flutter/material.dart';
-import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-class ValidationErrorCardScreen extends StatefulWidget {
-  const ValidationErrorCardScreen({super.key});
-
-  @override
-  State<ValidationErrorCardScreen> createState() => _ValidationErrorCardScreenState();
-}
-
-class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
-  bool _acceptTerms = false;
-  String _fullName = '';
-  String _panNumber = 'ABCDE12345';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Header with white background
-            Container(
-              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
-              child: Column(
-                children: [
-                  Ux4gAppHeader(
-                    variant: Ux4gAppHeaderVariant.light,
-                    title: '',
-                    leadingWidgets: [
-                      SvgPicture.asset(
-                        Ux4gIcons.nationalEmblem,  
-                        height: 40,
-                        colorFilter: Theme.of(context).brightness == Brightness.dark ? ColorFilter.mode(Colors.white, BlendMode.srcIn) : null, 
-                        errorBuilder: (c, e, s) => Icon(Icons.account_balance, size: 32, color: Colors.grey)
-                      ),
-                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
-                      SvgPicture.asset(
-                        Ux4gIcons.union, 
-                        height: 32,
-                        colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
-                        errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
-                      ),
-                    ],
-                    actions: [
-                      Ux4gAppHeaderAction(
-                        customWidget: Container(
-                          width: 36,
-                          height: 36,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.neutral800
-                                  : const Color(0xFFE5E7EB),
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.menu,
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary400
-                                  : Ux4gColors.primary600,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                    verticalPadding: 16,
-                    horizontalPadding: 16,
-                    leadingSpacing: 8,
-                  ),
-                  Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
-                ],
-              ),
-            ),
-
-            // Main Content
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Ux4gStepper(
-                      totalSteps: 4,
-                      currentStep: 3,
-                      stepSize: 20,
-                      steps: [Ux4gStepItem(title: ''),
-                        Ux4gStepItem(title: ''),
-                        Ux4gStepItem(
-                          title: 'Documents', 
-                          isError: true,
-                          titleStyle: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600),
-                        ),
-                        Ux4gStepItem(title: ''),],
-                    ),
-                    SizedBox(height: 32),
-
-                    // White Card
-                    Container(
-                      padding: EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Global Error Banner
-                          Ux4gStatusBanner(
-                            variant: Ux4gBannerVariant.errorLight,
-                            title: 'Documents — 1 error found. Tap to jump.',
-                            margin: EdgeInsets.zero,
-                            leadingIcon: Icon(Icons.error, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red500, size: 20),
-                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                            backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50, // red50
-                            borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red800 : Ux4gColors.red200,     // red200
-                            titleStyle: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, fontWeight: FontWeight.w500),
-                            subtitleWidget: GestureDetector(
-                              onTap: () {},
-                              child: Text(
-                                'Jump to error',
-                                style: TextStyle(
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800, // red800
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 32),
-
-                          // Title & Subtitle
-                          Text(
-                            'Verify your details',
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900, height: 1.2),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Confirm the information below to proceed.',
-                            style: TextStyle(fontSize: 15, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral300 : Ux4gColors.neutral600, height: 1.4),
-                          ),
-                          SizedBox(height: 32),
-
-                          // Form Fields
-                          Ux4gInputField(
-                            label: 'Full name (as per Aadhaar)',
-                            value: _fullName,
-                            onValueChange: (val) => setState(() => _fullName = val),
-                            placeholder: '',
-                            size: Ux4gInputFieldSize.medium,
-                          ),
-                          SizedBox(height: 24),
-
-                          Ux4gPanInputField(
-                            label: 'PAN number',
-                            value: _panNumber,
-                            onValueChange: (val) => setState(() => _panNumber = val),
-                            placeholder: '',
-                            size: Ux4gInputFieldSize.medium,
-                            status: Ux4gInputFieldStatus.error,
-                            caption: 'Enter a valid 10-character PAN.',
-                          ),
-                          SizedBox(height: 32),
-
-                          // Checkbox
-                          Ux4gCheckbox(
-                            label: 'Accept terms and conditions',
-                            isRequired: true,
-                            value: _acceptTerms,
-                            onChanged: (val) => setState(() => _acceptTerms = val ?? false),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-
-
-            // Footer
-            Padding(
-              padding: EdgeInsets.only(bottom: 24),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                  SizedBox(width: 8),
-                  Image.asset(
-                    Ux4gIcons.digitalIndiaLogoPng,  
-                    height: 22,
-                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
-                    errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-""";
-
-// ───────────────────────────────────────────────────────────────────────
-// Mockups
-// ───────────────────────────────────────────────────────────────────────
-
-class _ValidationErrorMockup extends StatefulWidget {
-  const _ValidationErrorMockup();
-
-  @override
-  State<_ValidationErrorMockup> createState() => _ValidationErrorMockupState();
-}
-
-class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
-  bool _acceptTerms = false;
-  String _fullName = '';
-  String _panNumber = 'ABCDE12345';
+  bool _confirmDetails = false;
+  String _fullName = 'Ramesh Kumar';
+  String? _selectedDomain;
+  String _panNumber = 'ABCDE1234F';
 
   @override
   Widget build(BuildContext context) {
@@ -510,13 +80,11 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
               title: '',
               leadingWidgets: [
                 SvgPicture.asset(
-                  _nationalEmblemLogoPath,
+                  Ux4gIcons.nationalEmblem,
                   height: 40,
                   colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                      ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
                       : null,
-                  errorBuilder: (c, e, s) =>
-                      Icon(Icons.account_balance, size: 32, color: Colors.grey),
                 ),
                 SizedBox(
                   height: 32,
@@ -528,7 +96,7 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                   ),
                 ),
                 SvgPicture.asset(
-                  _unionLogoPath,
+                  Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
                     Theme.of(context).brightness == Brightness.dark
@@ -536,8 +104,6 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                         : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
-                  errorBuilder: (c, e, s) =>
-                      Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
               actions: [
@@ -572,39 +138,54 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
             Ux4gDivider(
               color: Theme.of(context).brightness == Brightness.dark
                   ? Ux4gColors.neutral800
-                  : Ux4gColors.neutral200,
+                  : const Color(0xFFE5E7EB),
             ),
 
             // Main Content
             Expanded(
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Stepper with labels (Documents in error state)
                     Ux4gStepper(
                       totalSteps: 4,
                       currentStep: 3,
                       stepSize: 20,
-                      steps: [
-                        Ux4gStepItem(title: ''),
-                        Ux4gStepItem(title: ''),
+                      steps: const [
+                        Ux4gStepItem(
+                          title: 'Eligibility',
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Ux4gStepItem(
+                          title: 'Personal',
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                         Ux4gStepItem(
                           title: 'Documents',
                           isError: true,
                           titleStyle: TextStyle(
-                            fontSize: 11,
+                            fontSize: 10,
                             fontWeight: FontWeight.w600,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral300
-                                : Ux4gColors.neutral600,
                           ),
                         ),
-                        Ux4gStepItem(title: ''),
+                        Ux4gStepItem(
+                          title: 'Submit',
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ],
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 20),
 
                     // Global Error Banner
                     Ux4gStatusBanner(
@@ -618,46 +199,50 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                             : Ux4gColors.red500,
                         size: 20,
                       ),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 10,
                       ),
                       backgroundColor:
                           Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gColors.red900
-                          : Ux4gColors.red50, // red50
+                              ? Ux4gColors.red900
+                              : Ux4gColors.red50,
                       borderColor:
                           Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gColors.red800
-                          : Ux4gColors.red200, // red200
+                              ? Ux4gColors.red800
+                              : Ux4gColors.red200,
                       titleStyle: TextStyle(
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Ux4gColors.red200
                             : Ux4gColors.red800,
                         fontWeight: FontWeight.w500,
+                        fontSize: 13,
                       ),
                       subtitleWidget: GestureDetector(
                         onTap: () {},
-                        child: Text(
-                          'Jump to error',
-                          style: TextStyle(
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.red200
-                                : Ux4gColors.red800, // red800
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(
+                            'Jump to error',
+                            style: TextStyle(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gColors.red300
+                                  : Ux4gColors.red800,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 13,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 24),
 
                     // Title & Subtitle
                     Text(
                       'Verify your details',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: FontWeight.w800,
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Ux4gColors.neutral50
@@ -665,88 +250,102 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                         height: 1.2,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     Text(
                       'Confirm the information below to proceed.',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 13,
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Ux4gColors.neutral400
-                            : Ux4gColors.neutral500,
+                            : Ux4gColors.neutral600,
                         height: 1.4,
                       ),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 20),
 
                     // Form Fields
                     Ux4gInputField(
                       label: 'Full name (as per Aadhaar)',
                       value: _fullName,
                       onValueChange: (val) => setState(() => _fullName = val),
-                      placeholder: '',
+                      placeholder: 'Placeholder',
                       size: Ux4gInputFieldSize.medium,
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 16),
+
+                    Ux4gSelectionDropdown(
+                      label: 'Select domain',
+                      placeholder: 'Please select..',
+                      options: const [
+                        Ux4gDropdownOption(id: 'agriculture', label: 'Agriculture'),
+                        Ux4gDropdownOption(id: 'education', label: 'Education'),
+                        Ux4gDropdownOption(id: 'finance', label: 'Finance'),
+                        Ux4gDropdownOption(id: 'healthcare', label: 'Healthcare'),
+                      ],
+                      selectedOptionIds: _selectedDomain != null ? [_selectedDomain!] : [],
+                      onSelectionChange: (selected) {
+                        setState(() {
+                          _selectedDomain = selected.isNotEmpty ? selected.first : null;
+                        });
+                      },
+                      size: Ux4gDropdownSize.m,
+                    ),
+                    const SizedBox(height: 16),
 
                     Ux4gPanInputField(
                       label: 'PAN number',
                       value: _panNumber,
                       onValueChange: (val) => setState(() => _panNumber = val),
-                      placeholder: '',
+                      placeholder: 'ABCDE1234F',
                       size: Ux4gInputFieldSize.medium,
                       status: Ux4gInputFieldStatus.error,
-                      caption: 'Enter a valid 10-character PAN.',
+                      caption: 'Enter a valid 10-character PAN (e.g. ABCDE1234F).',
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 20),
 
                     // Checkbox
                     Ux4gCheckbox(
-                      label: 'Accept terms and conditions',
+                      label: 'I confirm these details match my official documents.',
                       isRequired: true,
-                      value: _acceptTerms,
+                      value: _confirmDetails,
                       onChanged: (val) =>
-                          setState(() => _acceptTerms = val ?? false),
+                          setState(() => _confirmDetails = val ?? false),
+                    ),
+                    const SizedBox(height: 28),
+
+                    // Actions
+                    Ux4gButton(
+                      height: 48,
+                      text: 'Continue',
+                      onPressed: () {},
+                      size: Ux4gButtonSize.large,
+                      width: double.infinity,
+                    ),
+                    const SizedBox(height: 12),
+                    Ux4gButton(
+                      height: 48,
+                      text: 'Back',
+                      onPressed: () {},
+                      variant: Ux4gButtonVariant.outline,
+                      size: Ux4gButtonSize.large,
+                      width: double.infinity,
+                      contentColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral700,
+                      borderColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral700
+                              : const Color(0xFFE5E7EB),
                     ),
                   ],
                 ),
               ),
             ),
 
-            // Actions
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(
-                    height: 48,
-                    text: 'Continue',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                  ),
-                  SizedBox(height: 12),
-                  Ux4gButton(
-                    height: 48,
-                    text: 'Back',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.outline,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                    contentColor:
-                        Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral400
-                        : Ux4gColors.neutral500,
-                    borderColor: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral700
-                        : Ux4gColors.neutral300,
-                  ),
-                ],
-              ),
-            ),
-
             // Footer
             Padding(
-              padding: EdgeInsets.only(bottom: 24),
+              padding: const EdgeInsets.only(bottom: 20, top: 12),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -759,6 +358,718 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Ux4gColors.neutral500
                           : Ux4gColors.neutral400,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Image.asset(
+                    Ux4gIcons.digitalIndiaLogoPng,
+                    height: 22,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : null,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+""";
+
+const _validationErrorCardCode = r"""import 'package:flutter/material.dart';
+import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class ValidationErrorCardScreen extends StatefulWidget {
+  const ValidationErrorCardScreen({super.key});
+
+  @override
+  State<ValidationErrorCardScreen> createState() =>
+      _ValidationErrorCardScreenState();
+}
+
+class _ValidationErrorCardScreenState extends State<ValidationErrorCardScreen> {
+  bool _confirmDetails = false;
+  String _fullName = 'Ramesh Kumar';
+  String? _selectedDomain;
+  String _panNumber = 'ABCDE1234F';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gColors.primary900
+          : Ux4gColors.primary50,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header with white background
+            Container(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gColors.neutral900
+                  : Ux4gColors.neutral0,
+              child: Column(
+                children: [
+                  Ux4gAppHeader(
+                    variant: Ux4gAppHeaderVariant.light,
+                    title: '',
+                    leadingWidgets: [
+                      SvgPicture.asset(
+                        Ux4gIcons.nationalEmblem,
+                        height: 40,
+                        colorFilter:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? const ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  )
+                                : null,
+                      ),
+                      Container(
+                        height: 32,
+                        width: 1,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral700
+                            : Ux4gColors.neutral300,
+                      ),
+                      SvgPicture.asset(
+                        Ux4gIcons.union,
+                        height: 32,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gColors.neutral800
+                                      : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gColors.primary400
+                                      : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
+                  ),
+                  Ux4gDivider(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral800
+                        : const Color(0xFFE5E7EB),
+                  ),
+                ],
+              ),
+            ),
+
+            // Main Content Card
+            Expanded(
+              child: SingleChildScrollView(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral900
+                        : Ux4gColors.neutral0,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.04),
+                        blurRadius: 16,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Stepper with labels inside card (Documents in error state)
+                      Ux4gStepper(
+                        totalSteps: 4,
+                        currentStep: 3,
+                        stepSize: 20,
+                        steps: const [
+                          Ux4gStepItem(
+                            title: 'Eligibility',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Ux4gStepItem(
+                            title: 'Personal',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Ux4gStepItem(
+                            title: 'Documents',
+                            isError: true,
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Ux4gStepItem(
+                            title: 'Submit',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Global Error Banner inside card
+                      Ux4gStatusBanner(
+                        variant: Ux4gBannerVariant.errorLight,
+                        title: 'Documents — 1 error found. Tap to jump.',
+                        margin: EdgeInsets.zero,
+                        leadingIcon: Icon(
+                          Icons.error,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.red400
+                              : Ux4gColors.red500,
+                          size: 20,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 10,
+                        ),
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.red900
+                                : Ux4gColors.red50,
+                        borderColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.red800
+                                : Ux4gColors.red200,
+                        titleStyle: TextStyle(
+                          color: Theme.of(context).brightness ==
+                                  Brightness.dark
+                              ? Ux4gColors.red200
+                              : Ux4gColors.red800,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
+                        ),
+                        subtitleWidget: GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 4),
+                            child: Text(
+                              'Jump to error',
+                              style: TextStyle(
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gColors.red300
+                                    : Ux4gColors.red800,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+
+                      // Title & Subtitle
+                      Text(
+                        'Verify your details',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
+                          height: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Confirm the information below to proceed.',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral600,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Form Fields
+                      Ux4gInputField(
+                        label: 'Full name (as per Aadhaar)',
+                        value: _fullName,
+                        onValueChange: (val) =>
+                            setState(() => _fullName = val),
+                        placeholder: 'Placeholder',
+                        size: Ux4gInputFieldSize.medium,
+                      ),
+                      const SizedBox(height: 16),
+
+                      Ux4gSelectionDropdown(
+                        label: 'Select domain',
+                        placeholder: 'Please select..',
+                        options: const [
+                          Ux4gDropdownOption(
+                              id: 'agriculture', label: 'Agriculture'),
+                          Ux4gDropdownOption(
+                              id: 'education', label: 'Education'),
+                          Ux4gDropdownOption(
+                              id: 'finance', label: 'Finance'),
+                          Ux4gDropdownOption(
+                              id: 'healthcare', label: 'Healthcare'),
+                        ],
+                        selectedOptionIds: _selectedDomain != null
+                            ? [_selectedDomain!]
+                            : [],
+                        onSelectionChange: (selected) {
+                          setState(() {
+                            _selectedDomain =
+                                selected.isNotEmpty ? selected.first : null;
+                          });
+                        },
+                        size: Ux4gDropdownSize.m,
+                      ),
+                      const SizedBox(height: 16),
+
+                      Ux4gPanInputField(
+                        label: 'PAN number',
+                        value: _panNumber,
+                        onValueChange: (val) =>
+                            setState(() => _panNumber = val),
+                        placeholder: 'ABCDE1234F',
+                        size: Ux4gInputFieldSize.medium,
+                        status: Ux4gInputFieldStatus.error,
+                        caption:
+                            'Enter a valid 10-character PAN (e.g. ABCDE1234F).',
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Checkbox
+                      Ux4gCheckbox(
+                        label:
+                            'I confirm these details match my official documents.',
+                        isRequired: true,
+                        value: _confirmDetails,
+                        onChanged: (val) =>
+                            setState(() => _confirmDetails = val ?? false),
+                      ),
+                      const SizedBox(height: 24),
+
+                      // Actions
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Continue',
+                        onPressed: () {},
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                      ),
+                      const SizedBox(height: 12),
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Back',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.ghost,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        contentColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral300
+                                : Ux4gColors.neutral800,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            // Footer
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20, top: 12),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Powered by -',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gColors.neutral500
+                          : Ux4gColors.neutral400,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Image.asset(
+                    Ux4gIcons.digitalIndiaLogoPng,
+                    height: 22,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : null,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+""";
+
+// ───────────────────────────────────────────────────────────────────────
+// Mockups
+// ───────────────────────────────────────────────────────────────────────
+
+class _ValidationErrorMockup extends StatefulWidget {
+  const _ValidationErrorMockup();
+
+  @override
+  State<_ValidationErrorMockup> createState() => _ValidationErrorMockupState();
+}
+
+class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
+  bool _confirmDetails = false;
+  String _fullName = 'Ramesh Kumar';
+  String? _selectedDomain;
+  String _panNumber = 'ABCDE1234F';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Ux4gColors.neutral900
+          : Ux4gColors.neutral50,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header
+            Ux4gAppHeader(
+              variant: Ux4gAppHeaderVariant.light,
+              title: '',
+              leadingWidgets: [
+                SvgPicture.asset(
+                  _nationalEmblemLogoPath,
+                  height: 40,
+                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                      ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                      : null,
+                  errorBuilder: (c, e, s) =>
+                      const Icon(Icons.account_balance, size: 32, color: Colors.grey),
+                ),
+                SizedBox(
+                  height: 32,
+                  child: Ux4gDivider(
+                    orientation: Ux4gDividerOrientation.vertical,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral700
+                        : Ux4gColors.neutral300,
+                  ),
+                ),
+                SvgPicture.asset(
+                  _unionLogoPath,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.primary300
+                        : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                  errorBuilder: (c, e, s) =>
+                      const Icon(Icons.blur_on, size: 32, color: Colors.blue),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
+            ),
+            Ux4gDivider(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Ux4gColors.neutral800
+                  : const Color(0xFFE5E7EB),
+            ),
+
+            // Main Content
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Stepper with labels (Documents in error state)
+                    Ux4gStepper(
+                      totalSteps: 4,
+                      currentStep: 3,
+                      stepSize: 20,
+                      steps: const [
+                        Ux4gStepItem(
+                          title: 'Eligibility',
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Ux4gStepItem(
+                          title: 'Personal',
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Ux4gStepItem(
+                          title: 'Documents',
+                          isError: true,
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Ux4gStepItem(
+                          title: 'Submit',
+                          titleStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Global Error Banner
+                    Ux4gStatusBanner(
+                      variant: Ux4gBannerVariant.errorLight,
+                      title: 'Documents — 1 error found. Tap to jump.',
+                      margin: EdgeInsets.zero,
+                      leadingIcon: Icon(
+                        Icons.error,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.red400
+                            : Ux4gColors.red500,
+                        size: 20,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 10,
+                      ),
+                      backgroundColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.red900
+                              : Ux4gColors.red50,
+                      borderColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.red800
+                              : Ux4gColors.red200,
+                      titleStyle: TextStyle(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.red200
+                            : Ux4gColors.red800,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 13,
+                      ),
+                      subtitleWidget: GestureDetector(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(
+                            'Jump to error',
+                            style: TextStyle(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gColors.red300
+                                  : Ux4gColors.red800,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Title & Subtitle
+                    Text(
+                      'Verify your details',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
+                        height: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      'Confirm the information below to proceed.',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral400
+                            : Ux4gColors.neutral600,
+                        height: 1.4,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Form Fields
+                    Ux4gInputField(
+                      label: 'Full name (as per Aadhaar)',
+                      value: _fullName,
+                      onValueChange: (val) => setState(() => _fullName = val),
+                      placeholder: 'Placeholder',
+                      size: Ux4gInputFieldSize.medium,
+                    ),
+                    const SizedBox(height: 16),
+
+                    Ux4gSelectionDropdown(
+                      label: 'Select domain',
+                      placeholder: 'Please select..',
+                      options: const [
+                        Ux4gDropdownOption(id: 'agriculture', label: 'Agriculture'),
+                        Ux4gDropdownOption(id: 'education', label: 'Education'),
+                        Ux4gDropdownOption(id: 'finance', label: 'Finance'),
+                        Ux4gDropdownOption(id: 'healthcare', label: 'Healthcare'),
+                      ],
+                      selectedOptionIds: _selectedDomain != null ? [_selectedDomain!] : [],
+                      onSelectionChange: (selected) {
+                        setState(() {
+                          _selectedDomain = selected.isNotEmpty ? selected.first : null;
+                        });
+                      },
+                      size: Ux4gDropdownSize.m,
+                    ),
+                    const SizedBox(height: 16),
+
+                    Ux4gPanInputField(
+                      label: 'PAN number',
+                      value: _panNumber,
+                      onValueChange: (val) => setState(() => _panNumber = val),
+                      placeholder: 'ABCDE1234F',
+                      size: Ux4gInputFieldSize.medium,
+                      status: Ux4gInputFieldStatus.error,
+                      caption: 'Enter a valid 10-character PAN (e.g. ABCDE1234F).',
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Checkbox
+                    Ux4gCheckbox(
+                      label: 'I confirm these details match my official documents.',
+                      isRequired: true,
+                      value: _confirmDetails,
+                      onChanged: (val) =>
+                          setState(() => _confirmDetails = val ?? false),
+                    ),
+                    const SizedBox(height: 28),
+
+                    // Actions
+                    Ux4gButton(
+                      height: 48,
+                      text: 'Continue',
+                      onPressed: () {},
+                      size: Ux4gButtonSize.large,
+                      width: double.infinity,
+                    ),
+                    const SizedBox(height: 12),
+                    Ux4gButton(
+                      height: 48,
+                      text: 'Back',
+                      onPressed: () {},
+                      variant: Ux4gButtonVariant.outline,
+                      size: Ux4gButtonSize.large,
+                      width: double.infinity,
+                      contentColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral700,
+                      borderColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral700
+                              : const Color(0xFFE5E7EB),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Footer
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20, top: 12),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Powered by -',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gColors.neutral500
+                          : Ux4gColors.neutral400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -768,13 +1079,6 @@ class _ValidationErrorMockupState extends State<_ValidationErrorMockup> {
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : null,
-                    errorBuilder: (c, e, s) => Text(
-                      'Digital India',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -796,9 +1100,10 @@ class _ValidationErrorCardMockup extends StatefulWidget {
 
 class _ValidationErrorCardMockupState
     extends State<_ValidationErrorCardMockup> {
-  bool _acceptTerms = false;
-  String _fullName = '';
-  String _panNumber = 'ABCDE12345';
+  bool _confirmDetails = false;
+  String _fullName = 'Ramesh Kumar';
+  String? _selectedDomain;
+  String _panNumber = 'ABCDE1234F';
 
   @override
   Widget build(BuildContext context) {
@@ -826,9 +1131,12 @@ class _ValidationErrorCardMockupState
                         height: 40,
                         colorFilter:
                             Theme.of(context).brightness == Brightness.dark
-                            ? ColorFilter.mode(Colors.white, BlendMode.srcIn)
-                            : null,
-                        errorBuilder: (c, e, s) => Icon(
+                                ? const ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  )
+                                : null,
+                        errorBuilder: (c, e, s) => const Icon(
                           Icons.account_balance,
                           size: 32,
                           color: Colors.grey,
@@ -851,7 +1159,7 @@ class _ValidationErrorCardMockupState
                           BlendMode.srcIn,
                         ),
                         errorBuilder: (c, e, s) =>
-                            Icon(Icons.blur_on, size: 32, color: Colors.blue),
+                            const Icon(Icons.blur_on, size: 32, color: Colors.blue),
                       ),
                     ],
                     actions: [
@@ -861,18 +1169,22 @@ class _ValidationErrorCardMockupState
                           height: 36,
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.neutral800
-                                  : const Color(0xFFE5E7EB),
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gColors.neutral800
+                                      : const Color(0xFFE5E7EB),
                             ),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Center(
                             child: Icon(
                               Icons.menu,
-                              color: Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary400
-                                  : Ux4gColors.primary600,
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Ux4gColors.primary400
+                                      : Ux4gColors.primary600,
                               size: 20,
                             ),
                           ),
@@ -886,222 +1198,242 @@ class _ValidationErrorCardMockupState
                   Ux4gDivider(
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Ux4gColors.neutral800
-                        : Ux4gColors.neutral200,
+                        : const Color(0xFFE5E7EB),
                   ),
                 ],
               ),
             ),
 
-            // Main Content
+            // Main Content Card
             Expanded(
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Ux4gStepper(
-                      totalSteps: 4,
-                      currentStep: 3,
-                      stepSize: 20,
-                      steps: [
-                        Ux4gStepItem(title: ''),
-                        Ux4gStepItem(title: ''),
-                        Ux4gStepItem(
-                          title: 'Documents',
-                          isError: true,
-                          titleStyle: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral300
-                                : Ux4gColors.neutral600,
-                          ),
-                        ),
-                        Ux4gStepItem(title: ''),
-                      ],
-                    ),
-                    SizedBox(height: 32),
-
-                    // White Card
-                    Container(
-                      padding: EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral900
-                            : Ux4gColors.neutral0,
-                        borderRadius: BorderRadius.circular(16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral900
+                        : Ux4gColors.neutral0,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.04),
+                        blurRadius: 16,
+                        offset: const Offset(0, 4),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Global Error Banner
-                          Ux4gStatusBanner(
-                            variant: Ux4gBannerVariant.errorLight,
-                            title: 'Documents — 1 error found. Tap to jump.',
-                            margin: EdgeInsets.zero,
-                            leadingIcon: Icon(
-                              Icons.error,
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.red400
-                                  : Ux4gColors.red500,
-                              size: 20,
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 12,
-                            ),
-                            backgroundColor:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.red900
-                                : Ux4gColors.red50, // red50
-                            borderColor:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.red800
-                                : Ux4gColors.red200, // red200
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Stepper with labels inside card (Documents in error state)
+                      Ux4gStepper(
+                        totalSteps: 4,
+                        currentStep: 3,
+                        stepSize: 20,
+                        steps: const [
+                          Ux4gStepItem(
+                            title: 'Eligibility',
                             titleStyle: TextStyle(
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.red200
-                                  : Ux4gColors.red800,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            subtitleWidget: GestureDetector(
-                              onTap: () {},
-                              child: Text(
-                                'Jump to error',
-                                style: TextStyle(
-                                  color:
-                                      Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Ux4gColors.red200
-                                      : Ux4gColors.red800, // red800
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14,
-                                ),
-                              ),
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(height: 32),
-
-                          // Title & Subtitle
-                          Text(
-                            'Verify your details',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w800,
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.neutral50
-                                  : Ux4gColors.neutral900,
-                              height: 1.2,
+                          Ux4gStepItem(
+                            title: 'Personal',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Confirm the information below to proceed.',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.neutral400
-                                  : Ux4gColors.neutral500,
-                              height: 1.4,
+                          Ux4gStepItem(
+                            title: 'Documents',
+                            isError: true,
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          SizedBox(height: 32),
-
-                          // Form Fields
-                          Ux4gInputField(
-                            label: 'Full name (as per Aadhaar)',
-                            value: _fullName,
-                            onValueChange: (val) =>
-                                setState(() => _fullName = val),
-                            placeholder: '',
-                            size: Ux4gInputFieldSize.medium,
-                          ),
-                          SizedBox(height: 24),
-
-                          Ux4gPanInputField(
-                            label: 'PAN number',
-                            value: _panNumber,
-                            onValueChange: (val) =>
-                                setState(() => _panNumber = val),
-                            placeholder: '',
-                            size: Ux4gInputFieldSize.medium,
-                            status: Ux4gInputFieldStatus.error,
-                            caption: 'Enter a valid 10-character PAN.',
-                          ),
-                          SizedBox(height: 32),
-
-                          // Checkbox
-                          Ux4gCheckbox(
-                            label: 'Accept terms and conditions',
-                            isRequired: true,
-                            value: _acceptTerms,
-                            onChanged: (val) =>
-                                setState(() => _acceptTerms = val ?? false),
-                          ),
-                          const SizedBox(height: 24),
-                          Ux4gButton(
-                            height: 48,
-                            text: 'Continue',
-                            onPressed: () {},
-                            size: Ux4gButtonSize.large,
-                            width: double.infinity,
-                          ),
-                          const SizedBox(height: 12),
-                          Ux4gButton(
-                            height: 48,
-                            text: 'Back',
-                            onPressed: () {},
-                            variant: Ux4gButtonVariant.ghost,
-                            size: Ux4gButtonSize.large,
-                            width: double.infinity,
-                            contentColor:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral400
-                                : Ux4gColors.neutral500,
-                          ),
-                          const SizedBox(height: 24),
-                          Ux4gButton(
-                            height: 48,
-                            text: 'Continue',
-                            onPressed: () {},
-                            size: Ux4gButtonSize.large,
-                            width: double.infinity,
-                          ),
-                          const SizedBox(height: 12),
-                          Ux4gButton(
-                            height: 48,
-                            text: 'Back',
-                            onPressed: () {},
-                            variant: Ux4gButtonVariant.ghost,
-                            size: Ux4gButtonSize.large,
-                            width: double.infinity,
-                            contentColor:
-                                Theme.of(context).brightness == Brightness.dark
-                                ? Ux4gColors.neutral400
-                                : Ux4gColors.neutral500,
+                          Ux4gStepItem(
+                            title: 'Submit',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+
+                      // Global Error Banner inside card
+                      Ux4gStatusBanner(
+                        variant: Ux4gBannerVariant.errorLight,
+                        title: 'Documents — 1 error found. Tap to jump.',
+                        margin: EdgeInsets.zero,
+                        leadingIcon: Icon(
+                          Icons.error,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.red400
+                              : Ux4gColors.red500,
+                          size: 20,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 10,
+                        ),
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.red900
+                                : Ux4gColors.red50,
+                        borderColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.red800
+                                : Ux4gColors.red200,
+                        titleStyle: TextStyle(
+                          color: Theme.of(context).brightness ==
+                                  Brightness.dark
+                              ? Ux4gColors.red200
+                              : Ux4gColors.red800,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
+                        ),
+                        subtitleWidget: GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 4),
+                            child: Text(
+                              'Jump to error',
+                              style: TextStyle(
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Ux4gColors.red300
+                                    : Ux4gColors.red800,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+
+                      // Title & Subtitle
+                      Text(
+                        'Verify your details',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
+                          height: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Confirm the information below to proceed.',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral400
+                              : Ux4gColors.neutral600,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Form Fields
+                      Ux4gInputField(
+                        label: 'Full name (as per Aadhaar)',
+                        value: _fullName,
+                        onValueChange: (val) =>
+                            setState(() => _fullName = val),
+                        placeholder: 'Placeholder',
+                        size: Ux4gInputFieldSize.medium,
+                      ),
+                      const SizedBox(height: 16),
+
+                      Ux4gSelectionDropdown(
+                        label: 'Select domain',
+                        placeholder: 'Please select..',
+                        options: const [
+                          Ux4gDropdownOption(
+                              id: 'agriculture', label: 'Agriculture'),
+                          Ux4gDropdownOption(
+                              id: 'education', label: 'Education'),
+                          Ux4gDropdownOption(
+                              id: 'finance', label: 'Finance'),
+                          Ux4gDropdownOption(
+                              id: 'healthcare', label: 'Healthcare'),
+                        ],
+                        selectedOptionIds: _selectedDomain != null
+                            ? [_selectedDomain!]
+                            : [],
+                        onSelectionChange: (selected) {
+                          setState(() {
+                            _selectedDomain =
+                                selected.isNotEmpty ? selected.first : null;
+                          });
+                        },
+                        size: Ux4gDropdownSize.m,
+                      ),
+                      const SizedBox(height: 16),
+
+                      Ux4gPanInputField(
+                        label: 'PAN number',
+                        value: _panNumber,
+                        onValueChange: (val) =>
+                            setState(() => _panNumber = val),
+                        placeholder: 'ABCDE1234F',
+                        size: Ux4gInputFieldSize.medium,
+                        status: Ux4gInputFieldStatus.error,
+                        caption:
+                            'Enter a valid 10-character PAN (e.g. ABCDE1234F).',
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Checkbox
+                      Ux4gCheckbox(
+                        label:
+                            'I confirm these details match my official documents.',
+                        isRequired: true,
+                        value: _confirmDetails,
+                        onChanged: (val) =>
+                            setState(() => _confirmDetails = val ?? false),
+                      ),
+                      const SizedBox(height: 24),
+
+                      // Actions
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Continue',
+                        onPressed: () {},
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                      ),
+                      const SizedBox(height: 12),
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Back',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.ghost,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        contentColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral300
+                                : Ux4gColors.neutral800,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
 
-
-
             // Footer
             Padding(
-              padding: EdgeInsets.only(bottom: 24),
+              padding: const EdgeInsets.only(bottom: 20, top: 12),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1114,6 +1446,7 @@ class _ValidationErrorCardMockupState
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Ux4gColors.neutral500
                           : Ux4gColors.neutral400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -1123,13 +1456,6 @@ class _ValidationErrorCardMockupState
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : null,
-                    errorBuilder: (c, e, s) => Text(
-                      'Digital India',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
                   ),
                 ],
               ),
