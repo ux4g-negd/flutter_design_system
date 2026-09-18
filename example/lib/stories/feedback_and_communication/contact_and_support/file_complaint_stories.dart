@@ -19,23 +19,14 @@ Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : 
 Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 
 // ignore: unused_element
-
 Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
-
 // ignore: unused_element
-
 Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
-
 // ignore: unused_element
-
 Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
-
 // ignore: unused_element
-
 Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
-
 // ignore: unused_element
-
 const _primaryColor = Color(0xFF432CBB);
 
 
@@ -96,11 +87,12 @@ class FileComplaintScreen extends StatelessWidget {
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 40),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -111,13 +103,74 @@ class FileComplaintScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // Content
@@ -240,11 +293,12 @@ class FileComplaintCardScreen extends StatelessWidget {
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 40),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -255,13 +309,74 @@ class FileComplaintCardScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // White card content
@@ -390,6 +505,7 @@ class _FileComplaintMockup extends StatelessWidget {
               // App Header
               Ux4gAppHeader(
                 elevation: 2,
+                verticalPadding: 16,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingSpacing: 8,
@@ -412,6 +528,67 @@ class _FileComplaintMockup extends StatelessWidget {
                     colorFilter: ColorFilter.mode(
                       _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: _isDark(context) ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: _isDark(context)
+                                ? Ux4gColors.primary600
+                                : const Color(0xFFC7D2FE),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: _isDark(context)
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: _isDark(context)
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: _isDark(context)
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],

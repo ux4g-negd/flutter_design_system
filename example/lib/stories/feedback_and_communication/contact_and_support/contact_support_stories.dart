@@ -7,38 +7,28 @@ import '../../../widgets/component_docs.dart';
 // ── Design tokens ────────────────────────────────────────────────────────
 
 // ignore: unused_element
-
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
 
 // ignore: unused_element
-
 Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
 
 // ignore: unused_element
-
 Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 
 // ignore: unused_element
-
 Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
-
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
-
-// ignore: unused_element
-
-Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral900 : Colors.white;
 
 // ignore: unused_element
+Color _getCardBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral800 : Colors.white;
 
+// ignore: unused_element
 Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
 
 // ignore: unused_element
-
 const _primaryColor = Color(0xFF432CBB);
-
-
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -88,20 +78,28 @@ class ContactSupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -109,15 +107,75 @@ class ContactSupportScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // Content
@@ -127,11 +185,22 @@ class ContactSupportScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Still need help?',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                    Text(
+                      'Still need help?',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     const SizedBox(height: 8),
-                    Text('Contact our support team — we are here to help.',
-                        style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                    Text(
+                      'Contact our support team — we are here to help.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      ),
+                    ),
                     const SizedBox(height: 24),
                     // Phone Support
                     SupportCard(
@@ -144,7 +213,7 @@ class ContactSupportScreen extends StatelessWidget {
                     const SizedBox(height: 12),
                     // Live Chat
                     SupportCard(
-                      icon: Ux4gIcons.liveChat,
+                      icon: Icons.chat_bubble_outline,
                       title: 'Live Chat',
                       subtitle: 'Available now · Estimated wait 1-2 minutes',
                       buttonText: 'Start Chat',
@@ -153,8 +222,8 @@ class ContactSupportScreen extends StatelessWidget {
                     const SizedBox(height: 12),
                     // Email Support
                     SupportCard(
-                      icon: Icons.email_outlined,
-                      title: 'Email Support',
+                      icon: Icons.mail_outline,
+                      title: 'Emai Support',
                       subtitle: 'Response within 2 working days',
                       buttonText: 'Send Email',
                       onPressed: () {},
@@ -162,35 +231,42 @@ class ContactSupportScreen extends StatelessWidget {
                     const SizedBox(height: 12),
                     // Walk-in Centre
                     SupportCard(
-                      icon: Icons.person_pin_circle_outlined,
+                      icon: Icons.directions_walk,
                       title: 'Walk-in Centre',
                       subtitle: 'Visit your nearest Common Service Centre',
                       buttonText: 'Find CSC',
+                      isOutline: true,
                       onPressed: () {},
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 28),
                     // File complaint link
                     Center(
-                      child: Ux4gButton(
-                        onPressed: () {},
-                        text: 'File a complaint about this portal',
-                        variant: Ux4gButtonVariant.ghost,
-                        contentColor: const Color(0xFF432CBB),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'File a complaint about this portal',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                          ),
+                        ),
                       ),
                     ),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -222,11 +298,21 @@ class SupportCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Ux4gCard(
-      backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
-      cornerRadius: 12,
-      borderColor: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
-      borderWidth: 1,
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? Ux4gColors.neutral800 : Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Row(
@@ -236,14 +322,14 @@ class SupportCard extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
-                borderRadius: BorderRadius.circular(20),
+                color: isDark ? Ux4gColors.primary800 : const Color(0xFFEDE9FE),
+                shape: BoxShape.circle,
               ),
               child: icon is IconData
                   ? Icon(
                       icon as IconData,
                       size: 20,
-                      color: isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
+                      color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                     )
                   : Center(
                       child: SvgPicture.asset(
@@ -251,7 +337,7 @@ class SupportCard extends StatelessWidget {
                         width: 20,
                         height: 20,
                         colorFilter: ColorFilter.mode(
-                          isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
+                          isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -268,7 +354,7 @@ class SupportCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+                      color: isDark ? Colors.white : const Color(0xFF111827),
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -276,7 +362,7 @@ class SupportCard extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 12,
-                      color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
+                      color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
                     ),
                   ),
                 ],
@@ -290,8 +376,8 @@ class SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.small,
-                    borderColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    borderColor: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+                    contentColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                     borderRadius: 8,
                   )
                 : Ux4gButton(
@@ -299,7 +385,7 @@ class SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.small,
-                    backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                     contentColor: isDark ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),
@@ -325,20 +411,28 @@ class ContactSupportCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -346,15 +440,75 @@ class ContactSupportCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // White card content
@@ -362,20 +516,31 @@ class ContactSupportCardScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Ux4gCard(
-                  backgroundColor: Colors.white,
+                  backgroundColor: isDark ? Ux4gColors.neutral800 : Colors.white,
                   cornerRadius: 16,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Still need help?',
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                        Text(
+                          'Still need help?',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w800,
+                            color: isDark ? Colors.white : const Color(0xFF111827),
+                          ),
+                        ),
                         const SizedBox(height: 8),
-                        Text('Contact our support team — we are here to help.',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                        Text(
+                          'Contact our support team — we are here to help.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
                         const SizedBox(height: 24),
-                        // Support cards
+                        // Phone Support
                         SupportCard(
                           icon: Icons.phone,
                           title: 'Phone Support',
@@ -384,39 +549,49 @@ class ContactSupportCardScreen extends StatelessWidget {
                           onPressed: () {},
                         ),
                         const SizedBox(height: 12),
+                        // Live Chat
                         SupportCard(
-                          icon: Ux4gIcons.liveChat,
+                          icon: Icons.chat_bubble_outline,
                           title: 'Live Chat',
                           subtitle: 'Available now · Estimated wait 1-2 minutes',
                           buttonText: 'Start Chat',
                           onPressed: () {},
                         ),
                         const SizedBox(height: 12),
+                        // Email Support
                         SupportCard(
-                          icon: Icons.email_outlined,
-                          title: 'Email Support',
+                          icon: Icons.mail_outline,
+                          title: 'Emai Support',
                           subtitle: 'Response within 2 working days',
                           buttonText: 'Send Email',
                           onPressed: () {},
                         ),
                         const SizedBox(height: 12),
+                        // Walk-in Centre
                         SupportCard(
-                          icon: Icons.person_pin_circle_outlined,
+                          icon: Icons.directions_walk,
                           title: 'Walk-in Centre',
                           subtitle: 'Visit your nearest Common Service Centre',
                           buttonText: 'Find CSC',
+                          isOutline: true,
                           onPressed: () {},
                         ),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 28),
                         // File complaint link
                         Center(
-                          child: Ux4gButton(
-                            onPressed: () {},
-                            text: 'File a complaint about this portal',
-                            variant: Ux4gButtonVariant.ghost,
-                            contentColor: const Color(0xFF432CBB),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              'File a complaint about this portal',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                              ),
+                            ),
                           ),
                         ),
+                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
@@ -425,125 +600,16 @@ class ContactSupportCardScreen extends StatelessWidget {
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SupportCard extends StatelessWidget {
-  final dynamic icon;
-  final String title;
-  final String subtitle;
-  final String buttonText;
-  final VoidCallback onPressed;
-  final bool isOutline;
-
-  const SupportCard({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    required this.buttonText,
-    required this.onPressed,
-    this.isOutline = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Ux4gCard(
-      backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral0,
-      cornerRadius: 12,
-      borderColor: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
-      borderWidth: 1,
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Row(
-          children: [
-            // Icon
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: isDark ? Ux4gColors.primary800 : Ux4gColors.primary100,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: icon is IconData
-                  ? Icon(
-                      icon as IconData,
-                      size: 20,
-                      color: isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
-                    )
-                  : Center(
-                      child: SvgPicture.asset(
-                        icon as String,
-                        width: 20,
-                        height: 20,
-                        colorFilter: ColorFilter.mode(
-                          isDark ? Ux4gColors.primary500 : Ux4gColors.primary600,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-            ),
-            const SizedBox(width: 12),
-            // Text
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 8),
-            // Button
-            isOutline
-                ? Ux4gButton(
-                    onPressed: onPressed,
-                    text: buttonText,
-                    variant: Ux4gButtonVariant.outline,
-                    size: Ux4gButtonSize.small,
-                    borderColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    contentColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    borderRadius: 8,
-                  )
-                : Ux4gButton(
-                    onPressed: onPressed,
-                    text: buttonText,
-                    variant: Ux4gButtonVariant.primary,
-                    size: Ux4gButtonSize.small,
-                    backgroundColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    contentColor: isDark ? Colors.black : Colors.white,
-                    borderRadius: 8,
-                  ),
           ],
         ),
       ),
@@ -563,16 +629,19 @@ class _ContactSupportMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: _isDark(context)),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF)) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
                 elevation: 2,
+                verticalPadding: 16,
                 leadingSpacing: 8,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
@@ -580,7 +649,7 @@ class _ContactSupportMockup extends StatelessWidget {
                   SvgPicture.asset(
                     Ux4gIcons.nationalEmblem,
                     height: 40,
-                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
                   SizedBox(
                     height: 32,
@@ -593,8 +662,69 @@ class _ContactSupportMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark
+                                ? Ux4gColors.primary600
+                                : const Color(0xFFC7D2FE),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -610,16 +740,16 @@ class _ContactSupportMockup extends StatelessWidget {
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(context),
+                            child: _buildContent(context, isDark),
                           ),
                         )
-                      : _buildContent(context),
+                      : _buildContent(context, isDark),
                 ),
               ),
 
               // Powered by
               Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -631,7 +761,7 @@ class _ContactSupportMockup extends StatelessWidget {
                     Image.asset(
                       Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => Text(
+                      errorBuilder: (context, error, stackTrace) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -649,7 +779,7 @@ class _ContactSupportMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -680,7 +810,7 @@ class _ContactSupportMockup extends StatelessWidget {
 
         // Live Chat
         _SupportCard(
-          icon: Ux4gIcons.liveChat,
+          icon: Icons.chat_bubble_outline,
           title: 'Live Chat',
           subtitle: 'Available now · Estimated wait 1-2 minutes',
           buttonText: 'Start Chat',
@@ -690,7 +820,7 @@ class _ContactSupportMockup extends StatelessWidget {
 
         // Email Support
         _SupportCard(
-          icon: Icons.email_outlined,
+          icon: Icons.mail_outline,
           title: 'Emai Support',
           subtitle: 'Response within 2 working days',
           buttonText: 'Send Email',
@@ -700,24 +830,30 @@ class _ContactSupportMockup extends StatelessWidget {
 
         // Walk-in Centre
         _SupportCard(
-          icon: Icons.person_pin_circle_outlined,
+          icon: Icons.directions_walk,
           title: 'Walk-in Centre',
           subtitle: 'Visit your nearest Common Service Centre',
           buttonText: 'Find CSC',
           isOutline: true,
           onPressed: () {},
         ),
-        SizedBox(height: 24),
+        SizedBox(height: 28),
 
         // File complaint link
         Center(
-          child: Ux4gButton(
-            onPressed: () {},
-            text: 'File a complaint about this portal',
-            variant: Ux4gButtonVariant.ghost,
-            contentColor: _primaryColor,
+          child: GestureDetector(
+            onTap: () {},
+            child: Text(
+              'File a complaint about this portal',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+              ),
+            ),
           ),
         ),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -744,11 +880,23 @@ class _SupportCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Ux4gCard(
-      backgroundColor: _isDark(context) ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
-      cornerRadius: 12,
-      borderColor: _isDark(context) ? Ux4gColors.neutral700 : Ux4gColors.neutral200,
-      borderWidth: 1,
+    final isDark = _isDark(context);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? Ux4gColors.neutral800 : Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Row(
@@ -758,14 +906,14 @@ class _SupportCard extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100,
-                borderRadius: BorderRadius.circular(20),
+                color: isDark ? Ux4gColors.primary800 : const Color(0xFFEDE9FE),
+                shape: BoxShape.circle,
               ),
               child: icon is IconData
                   ? Icon(
                       icon as IconData,
                       size: 20,
-                      color: _isDark(context) ? Ux4gColors.primary500 : Ux4gColors.primary600,
+                      color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                     )
                   : Center(
                       child: SvgPicture.asset(
@@ -773,7 +921,7 @@ class _SupportCard extends StatelessWidget {
                         width: 20,
                         height: 20,
                         colorFilter: ColorFilter.mode(
-                          _isDark(context) ? Ux4gColors.primary500 : Ux4gColors.primary600,
+                          isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                           BlendMode.srcIn,
                         ),
                       ),
@@ -790,7 +938,7 @@ class _SupportCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+                      color: _getTitleColor(context),
                     ),
                   ),
                   SizedBox(height: 2),
@@ -798,7 +946,7 @@ class _SupportCard extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 12,
-                      color: _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
+                      color: _getSubtleText(context),
                     ),
                   ),
                 ],
@@ -812,8 +960,8 @@ class _SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.outline,
                     size: Ux4gButtonSize.small,
-                    borderColor: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    contentColor: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    borderColor: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+                    contentColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
                     borderRadius: 8,
                   )
                 : Ux4gButton(
@@ -821,8 +969,8 @@ class _SupportCard extends StatelessWidget {
                     text: buttonText,
                     variant: Ux4gButtonVariant.primary,
                     size: Ux4gButtonSize.small,
-                    backgroundColor: _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    contentColor: _isDark(context) ? Colors.black : Colors.white,
+                    backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                    contentColor: isDark ? Colors.black : Colors.white,
                     borderRadius: 8,
                   ),
           ],

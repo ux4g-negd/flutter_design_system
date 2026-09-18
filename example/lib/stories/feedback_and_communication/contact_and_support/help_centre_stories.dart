@@ -7,38 +7,28 @@ import '../../../widgets/component_docs.dart';
 // ── Design tokens ────────────────────────────────────────────────────────
 
 // ignore: unused_element
-
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
 
 // ignore: unused_element
-
 Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
 
 // ignore: unused_element
-
 Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 
 // ignore: unused_element
-
 Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
-
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
-
-// ignore: unused_element
-
-Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral900 : Colors.white;
 
 // ignore: unused_element
+Color _getCardBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral800 : Colors.white;
 
+// ignore: unused_element
 Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
 
 // ignore: unused_element
-
 const _primaryColor = Color(0xFF432CBB);
-
-
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -86,22 +76,38 @@ import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 class HelpCentreScreen extends StatelessWidget {
   const HelpCentreScreen({super.key});
 
+  static const _categories = [
+    'Application Issues',
+    'Documents and Uploads',
+    'Payments and Fees',
+    'Account and Profile',
+    'Technical Issues',
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -109,15 +115,75 @@ class HelpCentreScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // Content
@@ -127,54 +193,111 @@ class HelpCentreScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Help Centre',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                    Text(
+                      'Help Centre',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     const SizedBox(height: 8),
-                    Text('Find answers to common questions or contact our support team.',
-                        style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                    Text(
+                      'Find answers to common questions or contact our support team.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      ),
+                    ),
                     const SizedBox(height: 20),
                     // Search field
                     Ux4gSearchField(
                       value: '',
                       onValueChange: (v) {},
                       placeholder: 'Search for...',
+                      variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                      showVoiceIcon: true,
+                      buttonStyle: Ux4gSearchFieldButtonStyle.filled,
+                      onSubmitClick: (v) {},
                     ),
-                    const SizedBox(height: 20),
-                    Text('Browse by category',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Browse by category',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     const SizedBox(height: 12),
-                    // Category list
-                    ...[
-                      'Application Issues',
-                      'Documents and Uploads',
-                      'Payments and Fees',
-                      'Account and Profile',
-                      'Technical Issues',
-                    ].map((category) => Column(
-                      children: [
-                        ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(category,
-                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-                          trailing: Icon(Icons.chevron_right, color: Color(0xFF9CA3AF)),
-                          onTap: () {},
+                    // Category list card
+                    Container(
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral800 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
                         ),
-                        Ux4gDivider(color: Color(0xFFE5E7EB)),
-                      ],
-                    )),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.04),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Column(
+                          children: [
+                            for (int i = 0; i < _categories.length; i++) ...[
+                              InkWell(
+                                onTap: () {},
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          _categories[i],
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                            color: isDark ? Colors.white : const Color(0xFF111827),
+                                          ),
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.chevron_right,
+                                        size: 20,
+                                        color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF374151),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              if (i < _categories.length - 1)
+                                Ux4gDivider(
+                                  color: isDark ? Ux4gColors.neutral700 : const Color(0xFFF3F4F6),
+                                ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -198,22 +321,38 @@ import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 class HelpCentreCardScreen extends StatelessWidget {
   const HelpCentreCardScreen({super.key});
 
+  static const _categories = [
+    'Application Issues',
+    'Documents and Uploads',
+    'Payments and Fees',
+    'Account and Profile',
+    'Technical Issues',
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -221,15 +360,75 @@ class HelpCentreCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // White card content
@@ -237,48 +436,98 @@ class HelpCentreCardScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Ux4gCard(
-                  backgroundColor: Colors.white,
+                  backgroundColor: isDark ? Ux4gColors.neutral800 : Colors.white,
                   cornerRadius: 16,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Help Centre',
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                        Text(
+                          'Help Centre',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w800,
+                            color: isDark ? Colors.white : const Color(0xFF111827),
+                          ),
+                        ),
                         const SizedBox(height: 8),
-                        Text('Find answers to common questions or contact our support team.',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                        Text(
+                          'Find answers to common questions or contact our support team.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
                         const SizedBox(height: 20),
                         // Search field
                         Ux4gSearchField(
                           value: '',
                           onValueChange: (v) {},
                           placeholder: 'Search for...',
+                          variant: Ux4gSearchFieldVariant.searchWithSubmit,
+                          showVoiceIcon: true,
+                          buttonStyle: Ux4gSearchFieldButtonStyle.filled,
+                          onSubmitClick: (v) {},
                         ),
-                        const SizedBox(height: 20),
-                        Text('Browse by category',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                        const SizedBox(height: 24),
+                        Text(
+                          'Browse by category',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Colors.white : const Color(0xFF111827),
+                          ),
+                        ),
                         const SizedBox(height: 12),
-                        // Category list
-                        ...[
-                          'Application Issues',
-                          'Documents and Uploads',
-                          'Payments and Fees',
-                          'Account and Profile',
-                          'Technical Issues',
-                        ].map((category) => Column(
-                          children: [
-                            ListTile(
-                              contentPadding: EdgeInsets.zero,
-                              title: Text(category,
-                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-                              trailing: Icon(Icons.chevron_right, color: Color(0xFF9CA3AF)),
-                              onTap: () {},
+                        // Category list card
+                        Container(
+                          decoration: BoxDecoration(
+                            color: isDark ? Ux4gColors.neutral800 : Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
                             ),
-                            Ux4gDivider(color: Color(0xFFE5E7EB)),
-                          ],
-                        )),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Column(
+                              children: [
+                                for (int i = 0; i < _categories.length; i++) ...[
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              _categories[i],
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w700,
+                                                color: isDark ? Colors.white : const Color(0xFF111827),
+                                              ),
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.chevron_right,
+                                            size: 20,
+                                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF374151),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  if (i < _categories.length - 1)
+                                    Ux4gDivider(
+                                      color: isDark ? Ux4gColors.neutral700 : const Color(0xFFF3F4F6),
+                                    ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -287,13 +536,13 @@ class HelpCentreCardScreen extends StatelessWidget {
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -324,16 +573,19 @@ class _HelpCentreMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: _isDark(context)),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF)) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
                 elevation: 2,
+                verticalPadding: 16,
                 leadingSpacing: 8,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
@@ -341,7 +593,7 @@ class _HelpCentreMockup extends StatelessWidget {
                   SvgPicture.asset(
                     Ux4gIcons.nationalEmblem,
                     height: 40,
-                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
                   SizedBox(
                     height: 32,
@@ -354,8 +606,69 @@ class _HelpCentreMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark
+                                ? Ux4gColors.primary600
+                                : const Color(0xFFC7D2FE),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -380,7 +693,7 @@ class _HelpCentreMockup extends StatelessWidget {
 
               // Powered by
               Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -392,7 +705,7 @@ class _HelpCentreMockup extends StatelessWidget {
                     Image.asset(
                       Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => Text(
+                      errorBuilder: (context, error, stackTrace) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -411,6 +724,8 @@ class _HelpCentreMockup extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    final isDark = _isDark(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -439,40 +754,71 @@ class _HelpCentreMockup extends StatelessWidget {
           buttonStyle: Ux4gSearchFieldButtonStyle.filled,
           onSubmitClick: (v) {},
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 24),
 
         Text(
           'Browse by category',
           style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
+            fontSize: 15,
+            fontWeight: FontWeight.w700,
             color: _getTitleColor(context),
           ),
         ),
         SizedBox(height: 12),
 
-        // Category list
-        ..._categories.map(
-          (category) => Column(
-            children: [
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(
-                  category,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: _getTitleColor(context),
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.chevron_right,
-                  color: Color(0xFF9CA3AF),
-                ),
-                onTap: () {},
+        // Category list card
+        Container(
+          decoration: BoxDecoration(
+            color: isDark ? Ux4gColors.neutral800 : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: isDark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.04),
+                blurRadius: 6,
+                offset: const Offset(0, 2),
               ),
-              Ux4gDivider(color: _getBorderColor(context)),
             ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Column(
+              children: [
+                for (int i = 0; i < _categories.length; i++) ...[
+                  InkWell(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _categories[i],
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: _getTitleColor(context),
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            size: 20,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF374151),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (i < _categories.length - 1)
+                    Ux4gDivider(
+                      color: isDark ? Ux4gColors.neutral700 : const Color(0xFFF3F4F6),
+                    ),
+                ],
+              ],
+            ),
           ),
         ),
       ],

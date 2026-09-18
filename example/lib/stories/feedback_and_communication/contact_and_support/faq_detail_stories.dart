@@ -7,48 +7,65 @@ import '../../../widgets/component_docs.dart';
 // ── Design tokens ────────────────────────────────────────────────────────
 
 // ignore: unused_element
-
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
 
 // ignore: unused_element
-
 Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
 
 // ignore: unused_element
-
 Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 
 // ignore: unused_element
-
 Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
 
 // ignore: unused_element
-
-Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
-
-// ignore: unused_element
-
-Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral900 : Colors.white;
 
 // ignore: unused_element
-
-Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+Color _getCardBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral800 : Colors.white;
 
 // ignore: unused_element
-
 const _primaryColor = Color(0xFF432CBB);
 
+class _FaqItem {
+  final String question;
+  final String answer;
 
+  const _FaqItem({required this.question, required this.answer});
+}
 
-const _faqAnswers = [
-  'If your application was rejected, you can review the rejection reason in your application details. '
-      'You may reapply after addressing the issues mentioned, or file a grievance if you believe the decision was incorrect.',
-  'Go to My Applications, select the application, and tap "Upload Documents". '
-      'You can upload scanned copies or photos of the required documents. Supported formats: PDF, JPG, PNG (max 5MB each).',
-  'Certificate issuance typically takes 7-15 working days after approval. '
-      'You will receive an SMS and email notification once your certificate is ready for download.',
-  'You can contact the Revenue officer through the Help section in the app, '
-      'or visit your nearest Tehsil office during working hours (10 AM - 5 PM, Mon-Fri).',
+const _faqItems = [
+  _FaqItem(
+    question: 'How do I track my application ?',
+    answer:
+        'Sign in to the portal, open My Applications, and tap your active application. '
+        'The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. '
+        'SLA timer shows expected completion date.',
+  ),
+  _FaqItem(
+    question: 'My application was rejected — what next?',
+    answer:
+        'If your application was rejected, you can review the rejection reason in your application details. '
+        'You may reapply after addressing the issues mentioned, or file a grievance if you believe the decision was incorrect.',
+  ),
+  _FaqItem(
+    question: 'How do I upload missing documents?',
+    answer:
+        'Go to My Applications, select the application, and tap "Upload Documents". '
+        'You can upload scanned copies or photos of the required documents. Supported formats: PDF, JPG, PNG (max 5MB each).',
+  ),
+  _FaqItem(
+    question: 'When will I receive my certificate?',
+    answer:
+        'Certificate issuance typically takes 7-15 working days after approval. '
+        'You will receive an SMS and email notification once your certificate is ready for download.',
+  ),
+  _FaqItem(
+    question: 'How do I contact a Revenue officer?',
+    answer:
+        'You can contact the Revenue officer through the Help section in the app, '
+        'or visit your nearest Tehsil office during working hours (10 AM - 5 PM, Mon-Fri).',
+  ),
 ];
 
 // ── Component ────────────────────────────────────────────────────────────
@@ -95,25 +112,63 @@ const _faqDetailDefaultCode = r"""import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
-class FaqDetailScreen extends StatelessWidget {
+class FaqDetailScreen extends StatefulWidget {
   const FaqDetailScreen({super.key});
 
   @override
+  State<FaqDetailScreen> createState() => _FaqDetailScreenState();
+}
+
+class _FaqDetailScreenState extends State<FaqDetailScreen> {
+  int? _expandedIndex = 0;
+
+  static const _faqList = [
+    (
+      'How do I track my application ?',
+      'Sign in to the portal, open My Applications, and tap your active application. The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. SLA timer shows expected completion date.',
+    ),
+    (
+      'My application was rejected — what next?',
+      'If your application was rejected, you can review the rejection reason in your application details. You may reapply after addressing the issues mentioned, or file a grievance if you believe the decision was incorrect.',
+    ),
+    (
+      'How do I upload missing documents?',
+      'Go to My Applications, select the application, and tap "Upload Documents". You can upload scanned copies or photos of the required documents. Supported formats: PDF, JPG, PNG (max 5MB each).',
+    ),
+    (
+      'When will I receive my certificate?',
+      'Certificate issuance typically takes 7-15 working days after approval. You will receive an SMS and email notification once your certificate is ready for download.',
+    ),
+    (
+      'How do I contact a Revenue officer?',
+      'You can contact the Revenue officer through the Help section in the app, or visit your nearest Tehsil office during working hours (10 AM - 5 PM, Mon-Fri).',
+    ),
+  ];
+
+  @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -121,15 +176,75 @@ class FaqDetailScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // Content
@@ -142,93 +257,120 @@ class FaqDetailScreen extends StatelessWidget {
                     // Breadcrumb
                     Row(
                       children: [
-                        Icon(Icons.home, size: 14, color: Color(0xFF6B7280)),
+                        Icon(
+                          Icons.home_outlined,
+                          size: 16,
+                          color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                        ),
                         const SizedBox(width: 4),
-                        Text('Home', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                        Text('  >  ', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                        Text('Help', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                        Text('  >  ', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                        Text('Application Issues',
-                            style: TextStyle(fontSize: 13, color: Color(0xFF432CBB), fontWeight: FontWeight.w500)),
+                        Text(
+                          'Home',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 6),
+                          child: Icon(
+                            Icons.chevron_right,
+                            size: 16,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
+                          ),
+                        ),
+                        Text(
+                          'Help',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 6),
+                          child: Icon(
+                            Icons.chevron_right,
+                            size: 16,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
+                          ),
+                        ),
+                        Text(
+                          'Application Issues',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    Text('How do I track my application?',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Sign in to the portal, open My Applications, and tap your active application. '
-                      'The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. '
-                      'SLA timer shows expected completion date.',
-                      style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.5),
-                    ),
                     const SizedBox(height: 24),
-                    // Related questions accordion
-                    Ux4gDivider(color: Color(0xFFE5E7EB)),
-                    Ux4gAccordion(
-                      title: 'My application was rejected — what next?',
-                      collapsedBorderColor: Colors.transparent,
-                      expandedBorderColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      contentBackgroundColor: Colors.transparent,
-                      child: Text(
-                        'If your application was rejected, you can review the rejection reason in your application details. '
-                        'You may reapply after addressing the issues mentioned, or file a grievance.',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.5),
+
+                    // FAQ Accordion List
+                    for (int i = 0; i < _faqList.length; i++) ...[
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            _expandedIndex = _expandedIndex == i ? null : i;
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  _faqList[i].$1,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: isDark ? Colors.white : const Color(0xFF1F2937),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Icon(
+                                _expandedIndex == i
+                                    ? Icons.keyboard_arrow_up
+                                    : Icons.keyboard_arrow_down,
+                                size: 22,
+                                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF374151),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                    Ux4gDivider(color: Color(0xFFE5E7EB)),
-                    Ux4gAccordion(
-                      title: 'How do I upload missing documents?',
-                      collapsedBorderColor: Colors.transparent,
-                      expandedBorderColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      contentBackgroundColor: Colors.transparent,
-                      child: Text(
-                        'Go to My Applications, select the application, and tap "Upload Documents". '
-                        'Supported formats: PDF, JPG, PNG (max 5MB each).',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.5),
+                      if (_expandedIndex == i)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: Text(
+                            _faqList[i].$2,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                              height: 1.5,
+                            ),
+                          ),
+                        ),
+                      Ux4gDivider(
+                        color: isDark ? Ux4gColors.neutral700 : const Color(0xFFF3F4F6),
                       ),
-                    ),
-                    Ux4gDivider(color: Color(0xFFE5E7EB)),
-                    Ux4gAccordion(
-                      title: 'When will I receive my certificate?',
-                      collapsedBorderColor: Colors.transparent,
-                      expandedBorderColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      contentBackgroundColor: Colors.transparent,
-                      child: Text(
-                        'Certificate issuance typically takes 7-15 working days after approval. '
-                        'You will receive an SMS and email notification once ready.',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.5),
-                      ),
-                    ),
-                    Ux4gDivider(color: Color(0xFFE5E7EB)),
-                    Ux4gAccordion(
-                      title: 'How do I contact a Revenue officer?',
-                      collapsedBorderColor: Colors.transparent,
-                      expandedBorderColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      contentBackgroundColor: Colors.transparent,
-                      child: Text(
-                        'You can contact the Revenue officer through the Help section, '
-                        'or visit your nearest Tehsil office (10 AM - 5 PM, Mon-Fri).',
-                        style: TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.5),
-                      ),
-                    ),
+                    ],
                   ],
                 ),
               ),
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -249,25 +391,63 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 
 /// Card Style variant — FAQ detail inside a white card on purple background.
-class FaqDetailCardScreen extends StatelessWidget {
+class FaqDetailCardScreen extends StatefulWidget {
   const FaqDetailCardScreen({super.key});
 
   @override
+  State<FaqDetailCardScreen> createState() => _FaqDetailCardScreenState();
+}
+
+class _FaqDetailCardScreenState extends State<FaqDetailCardScreen> {
+  int? _expandedIndex = 0;
+
+  static const _faqList = [
+    (
+      'How do I track my application ?',
+      'Sign in to the portal, open My Applications, and tap your active application. The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. SLA timer shows expected completion date.',
+    ),
+    (
+      'My application was rejected — what next?',
+      'If your application was rejected, you can review the rejection reason in your application details. You may reapply after addressing the issues mentioned, or file a grievance if you believe the decision was incorrect.',
+    ),
+    (
+      'How do I upload missing documents?',
+      'Go to My Applications, select the application, and tap "Upload Documents". You can upload scanned copies or photos of the required documents. Supported formats: PDF, JPG, PNG (max 5MB each).',
+    ),
+    (
+      'When will I receive my certificate?',
+      'Certificate issuance typically takes 7-15 working days after approval. You will receive an SMS and email notification once your certificate is ready for download.',
+    ),
+    (
+      'How do I contact a Revenue officer?',
+      'You can contact the Revenue officer through the Help section in the app, or visit your nearest Tehsil office during working hours (10 AM - 5 PM, Mon-Fri).',
+    ),
+  ];
+
+  @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
       body: SafeArea(
         child: Column(
           children: [
             // App Header
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               leadingSpacing: 8,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
-                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 SizedBox(
                   height: 32,
                   child: Ux4gDivider(
@@ -275,15 +455,75 @@ class FaqDetailCardScreen extends StatelessWidget {
                     color: const Color(0xFFD1D5DB),
                   ),
                 ),
-                const SizedBox(width: 8),
                 SvgPicture.asset(
-                    Ux4gIcons.union,
-                    height: 32,
-                    colorFilter: ColorFilter.mode(
-                      Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                      BlendMode.srcIn,
+                  Ux4gIcons.union,
+                  height: 32,
+                  colorFilter: ColorFilter.mode(
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? Ux4gColors.primary600
+                              : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? Ux4gColors.primary300
+                                    : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
+                ),
               ],
             ),
             // White card content
@@ -291,7 +531,7 @@ class FaqDetailCardScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Ux4gCard(
-                  backgroundColor: Colors.white,
+                  backgroundColor: isDark ? Ux4gColors.neutral800 : Colors.white,
                   cornerRadius: 16,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -301,97 +541,107 @@ class FaqDetailCardScreen extends StatelessWidget {
                         // Breadcrumb
                         Row(
                           children: [
-                            Icon(Icons.home, size: 14, color: Color(0xFF6B7280)),
+                            Icon(
+                              Icons.home_outlined,
+                              size: 16,
+                              color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                            ),
                             const SizedBox(width: 4),
-                            Text('Home', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                            Text('  >  ', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                            Text('Help', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                            Text('  >  ', style: TextStyle(fontSize: 13, color: Color(0xFF6B7280))),
-                            Text('Application Issues',
-                                style: TextStyle(fontSize: 13, color: Color(0xFF432CBB), fontWeight: FontWeight.w500)),
+                            Text(
+                              'Home',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 6),
+                              child: Icon(
+                                Icons.chevron_right,
+                                size: 16,
+                                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
+                              ),
+                            ),
+                            Text(
+                              'Help',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 6),
+                              child: Icon(
+                                Icons.chevron_right,
+                                size: 16,
+                                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
+                              ),
+                            ),
+                            Text(
+                              'Application Issues',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                           ],
                         ),
-                        const SizedBox(height: 20),
-                        Text('How do I track my application?',
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-                        const SizedBox(height: 12),
-                        Text(
-                          'Sign in to the portal, open My Applications, and tap your active application. '
-                          'The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. '
-                          'SLA timer shows expected completion date.',
-                          style: TextStyle(fontSize: 14, color: Color(0xFF4B5563), height: 1.5),
-                        ),
                         const SizedBox(height: 24),
-                        // Related questions accordion
-                        // Related questions accordion
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
-                        Ux4gAccordion(
-                          title: 'My application was rejected — what next?',
-                          collapsedBorderColor: Colors.transparent,
-                          expandedBorderColor: Colors.transparent,
-                          backgroundColor: Colors.transparent,
-                          contentBackgroundColor: Colors.transparent,
-                          child: Text(
-                            'If your application was rejected, you can review the rejection reason in your application details. '
-                            'You may reapply after addressing the issues mentioned, or file a grievance.',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
-                              height: 1.5,
+
+                        // FAQ Accordion List
+                        for (int i = 0; i < _faqList.length; i++) ...[
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _expandedIndex = _expandedIndex == i ? null : i;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      _faqList[i].$1,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700,
+                                        color: isDark ? Colors.white : const Color(0xFF1F2937),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Icon(
+                                    _expandedIndex == i
+                                        ? Icons.keyboard_arrow_up
+                                        : Icons.keyboard_arrow_down,
+                                    size: 22,
+                                    color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF374151),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
-                        Ux4gAccordion(
-                          title: 'How do I upload missing documents?',
-                          collapsedBorderColor: Colors.transparent,
-                          expandedBorderColor: Colors.transparent,
-                          backgroundColor: Colors.transparent,
-                          contentBackgroundColor: Colors.transparent,
-                          child: Text(
-                            'Go to My Applications, select the application, and tap "Upload Documents". '
-                            'Supported formats: PDF, JPG, PNG (max 5MB each).',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
-                              height: 1.5,
+                          if (_expandedIndex == i)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: Text(
+                                _faqList[i].$2,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                                  height: 1.5,
+                                ),
+                              ),
                             ),
+                          Ux4gDivider(
+                            color: isDark ? Ux4gColors.neutral700 : const Color(0xFFF3F4F6),
                           ),
-                        ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
-                        Ux4gAccordion(
-                          title: 'When will I receive my certificate?',
-                          collapsedBorderColor: Colors.transparent,
-                          expandedBorderColor: Colors.transparent,
-                          backgroundColor: Colors.transparent,
-                          contentBackgroundColor: Colors.transparent,
-                          child: Text(
-                            'Certificate issuance typically takes 7-15 working days after approval. '
-                            'You will receive an SMS and email notification once ready.',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
-                              height: 1.5,
-                            ),
-                          ),
-                        ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
-                        Ux4gAccordion(
-                          title: 'How do I contact a Revenue officer?',
-                          collapsedBorderColor: Colors.transparent,
-                          expandedBorderColor: Colors.transparent,
-                          backgroundColor: Colors.transparent,
-                          contentBackgroundColor: Colors.transparent,
-                          child: Text(
-                            'You can find contact details of your local Revenue officer under the help center directory, or search by PIN code.',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : const Color(0xFF4B5563),
-                              height: 1.5,
-                            ),
-                          ),
-                        ),
-                        Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
+                        ],
                       ],
                     ),
                   ),
@@ -400,13 +650,13 @@ class FaqDetailCardScreen extends StatelessWidget {
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -429,16 +679,19 @@ class _FaqDetailMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: _isDark(context)),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF)) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
               // App Header
               Ux4gAppHeader(
                 elevation: 2,
+                verticalPadding: 16,
                 leadingSpacing: 8,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
@@ -446,7 +699,7 @@ class _FaqDetailMockup extends StatelessWidget {
                   SvgPicture.asset(
                     Ux4gIcons.nationalEmblem,
                     height: 40,
-                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
                   SizedBox(
                     height: 32,
@@ -459,8 +712,69 @@ class _FaqDetailMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark
+                                ? Ux4gColors.primary600
+                                : const Color(0xFFC7D2FE),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -476,16 +790,16 @@ class _FaqDetailMockup extends StatelessWidget {
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(context),
+                            child: _buildContent(context, isDark),
                           ),
                         )
-                      : _buildContent(context),
+                      : _buildContent(context, isDark),
                 ),
               ),
 
               // Powered by
               Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -497,7 +811,7 @@ class _FaqDetailMockup extends StatelessWidget {
                     Image.asset(
                       Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => Text(
+                      errorBuilder: (context, error, stackTrace) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -515,65 +829,65 @@ class _FaqDetailMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Breadcrumb
         Row(
           children: [
-            Icon(Icons.home, size: 14, color: _getBreadcrumbColor(context)),
-            SizedBox(width: 4),
+            Icon(
+              Icons.home_outlined,
+              size: 16,
+              color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+            ),
+            const SizedBox(width: 4),
             Text(
               'Home',
-              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+              ),
             ),
-            Text(
-              '  >  ',
-              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6),
+              child: Icon(
+                Icons.chevron_right,
+                size: 16,
+                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
+              ),
             ),
             Text(
               'Help',
-              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+              ),
             ),
-            Text(
-              '  >  ',
-              style: TextStyle(fontSize: 13, color: _getBreadcrumbColor(context)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6),
+              child: Icon(
+                Icons.chevron_right,
+                size: 16,
+                color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280),
+              ),
             ),
             Text(
               'Application Issues',
               style: TextStyle(
-                fontSize: 13,
-                color: _primaryColor,
-                fontWeight: FontWeight.w500,
+                fontSize: 14,
+                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                fontWeight: FontWeight.w700,
               ),
             ),
           ],
         ),
-        SizedBox(height: 20),
-
-        // Title
-        Text(
-          'How do I track my application?',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-            color: _getTitleColor(context),
-          ),
-        ),
-        SizedBox(height: 12),
-
-        // Answer
-        Text(
-          'Sign in to the portal, open My Applications, and tap your active application. '
-          'The Status Tracker shows every milestone — Submitted, Documents Verified, Under Review, Decision. '
-          'SLA timer shows expected completion date.',
-          style: TextStyle(fontSize: 14, color: _getSubtleText(context), height: 1.5),
-        ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
 
         // Related questions - Accordion
-        _FaqAccordionList(),
+        _FaqAccordionList(isDark: isDark),
       ],
     );
   }
@@ -581,51 +895,70 @@ class _FaqDetailMockup extends StatelessWidget {
 
 // ── FAQ Accordion with divider-only style ────────────────────────────────
 
-const _faqTitles = [
-  'My application was rejected — what next?',
-  'How do I upload missing documents?',
-  'When will I receive my certificate?',
-  'How do I contact a Revenue officer?',
-];
-
 class _FaqAccordionList extends StatefulWidget {
+  final bool isDark;
+
+  const _FaqAccordionList({required this.isDark});
+
   @override
   State<_FaqAccordionList> createState() => _FaqAccordionListState();
 }
 
 class _FaqAccordionListState extends State<_FaqAccordionList> {
-  int? _expandedIndex;
+  int? _expandedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: List.generate(_faqTitles.length, (index) {
+      children: List.generate(_faqItems.length, (index) {
+        final isExpanded = _expandedIndex == index;
         return Column(
           children: [
-            Ux4gDivider(color: _getBorderColor(context)),
-            Ux4gAccordion(
-              title: _faqTitles[index],
-              expanded: _expandedIndex == index,
-              onExpandedChange: (isExpanded) {
+            InkWell(
+              onTap: () {
                 setState(() {
-                  _expandedIndex = isExpanded ? index : null;
+                  _expandedIndex = isExpanded ? null : index;
                 });
               },
-              collapsedBorderColor: Colors.transparent,
-              expandedBorderColor: Colors.transparent,
-              backgroundColor: Colors.transparent,
-              contentBackgroundColor: Colors.transparent,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        _faqItems[index].question,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: widget.isDark ? Colors.white : const Color(0xFF1F2937),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Icon(
+                      isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                      size: 22,
+                      color: widget.isDark ? const Color(0xFF9CA3AF) : const Color(0xFF374151),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (isExpanded)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Text(
-                  _faqAnswers[index],
+                  _faqItems[index].answer,
                   style: TextStyle(
-                    fontSize: 13,
-                    color: _getSubtleText(context),
+                    fontSize: 14,
+                    color: widget.isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
                     height: 1.5,
                   ),
                 ),
               ),
+            Ux4gDivider(
+              color: widget.isDark ? Ux4gColors.neutral700 : const Color(0xFFF3F4F6),
             ),
           ],
         );
