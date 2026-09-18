@@ -414,7 +414,7 @@ class ContactSupportCardScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFE2DCFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -634,7 +634,7 @@ class _ContactSupportMockup extends StatelessWidget {
     return Theme(
       data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? (isDark ? Ux4gColors.primary800 : const Color(0xFFF2EFFF)) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (isDark ? Ux4gColors.primary800 : const Color(0xFFE2DCFF)) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [

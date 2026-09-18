@@ -7,29 +7,28 @@ import '../../../widgets/component_docs.dart';
 // ── Design tokens ────────────────────────────────────────────────────────
 
 // ignore: unused_element
-
 bool _isDark(BuildContext context) => Theme.of(context).brightness == Brightness.dark;
 
 // ignore: unused_element
-
 Color _getTitleColor(BuildContext context) => _isDark(context) ? Colors.white : const Color(0xFF111827);
 
 // ignore: unused_element
-
 Color _getSubtleText(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563);
 
 // ignore: unused_element
 Color _getBorderColor(BuildContext context) => _isDark(context) ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB);
+
 // ignore: unused_element
 Color _getScaffoldBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral950 : Colors.white;
+
 // ignore: unused_element
-Color _getCardBg(BuildContext context) => _isDark(context) ? const Color(0xFF1A1A1A) : Colors.white;
+Color _getCardBg(BuildContext context) => _isDark(context) ? Ux4gColors.neutral800 : Colors.white;
+
 // ignore: unused_element
 Color _getBreadcrumbColor(BuildContext context) => _isDark(context) ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+
 // ignore: unused_element
 const _primaryColor = Color(0xFF432CBB);
-
-
 
 // ── Component ────────────────────────────────────────────────────────────
 
@@ -54,12 +53,13 @@ final liveChatSupportComponent = WidgetbookComponent(
           mobileMockup: true,
           name: 'Live Chat Support ($variant)',
           description: isCard
-              ? 'Live chat support page with agent availability status inside a '
-                    'card container with light purple background.'
-              : 'Live chat support page with agent availability status on white background.',
-          code: isCard ? _liveChatCardCode : _liveChatDefaultCode,
+              ? 'Live chat support inside a card container with light purple background.'
+              : 'Live chat support interface with queue status and action buttons.',
+          code: isCard
+              ? _liveChatCardCode
+              : _liveChatDefaultCode,
           center: true,
-          child: _LiveChatSupportMockup(isCard: isCard),
+          child: _LiveChatMockup(isCard: isCard),
         );
       },
     ),
@@ -79,8 +79,10 @@ class LiveChatSupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? Ux4gColors.neutral900 : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -92,7 +94,13 @@ class LiveChatSupportScreen extends StatelessWidget {
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 40),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -106,7 +114,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -120,10 +128,10 @@ class LiveChatSupportScreen extends StatelessWidget {
                       width: 38,
                       height: 38,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Theme.of(context).brightness == Brightness.dark
+                          color: isDark
                               ? Ux4gColors.primary600
                               : const Color(0xFFC7D2FE),
                           width: 1.5,
@@ -137,7 +145,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                               width: 16,
                               height: 2.2,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color: isDark
                                     ? Ux4gColors.primary300
                                     : const Color(0xFF432CBB),
                                 borderRadius: BorderRadius.circular(2),
@@ -148,7 +156,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                               width: 16,
                               height: 2.2,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color: isDark
                                     ? Ux4gColors.primary300
                                     : const Color(0xFF432CBB),
                                 borderRadius: BorderRadius.circular(2),
@@ -159,7 +167,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                               width: 16,
                               height: 2.2,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color: isDark
                                     ? Ux4gColors.primary300
                                     : const Color(0xFF432CBB),
                                 borderRadius: BorderRadius.circular(2),
@@ -180,21 +188,32 @@ class LiveChatSupportScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Live Chat Support',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                    Text(
+                      'Live Chat Support',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF111827),
+                      ),
+                    ),
                     const SizedBox(height: 8),
-                    Text('Chat with a support agent for real-time help with your application.',
-                        style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                    Text(
+                      'Chat with a support agent for real-time help with your application.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      ),
+                    ),
                     const SizedBox(height: 24),
                     // Status card
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green50,
+                        color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green600 : Ux4gColors.green300,
+                          color: isDark ? Ux4gColors.green600 : Ux4gColors.green300,
                         ),
                       ),
                       child: Row(
@@ -202,7 +221,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.check_circle,
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green500 : Ux4gColors.green600,
+                            color: isDark ? Ux4gColors.green400 : Ux4gColors.green600,
                             size: 22,
                           ),
                           const SizedBox(width: 10),
@@ -214,7 +233,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green300 : Ux4gColors.green800,
+                                  color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                                 ),
                               ),
                               const SizedBox(height: 2),
@@ -222,7 +241,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                                 'Estimated wait time: 1-2 mins',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green300 : Ux4gColors.green800,
+                                  color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                                 ),
                               ),
                             ],
@@ -231,47 +250,55 @@ class LiveChatSupportScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    Text('Connect now to discuss your application with our support team. Average response time under 2 minutes.',
-                        style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                    Text(
+                      'Connect now to discuss your application with our support team. Average response time under 2 minutes.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                      ),
+                    ),
                     const SizedBox(height: 32),
                     // Start Chat button
                     SizedBox(
                       width: double.infinity,
+                      height: 48,
                       child: Ux4gButton(
                         onPressed: () {},
                         text: 'Start Chat Session',
                         variant: Ux4gButtonVariant.primary,
-                        size: Ux4gButtonSize.large,
-                        height: 48,
+                        backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                        contentColor: isDark ? Colors.black : Colors.white,
+                        borderRadius: 10,
                       ),
                     ),
                     const SizedBox(height: 12),
                     // Email support button
                     SizedBox(
                       width: double.infinity,
+                      height: 48,
                       child: Ux4gButton(
                         onPressed: () {},
                         text: 'Email support instead',
                         variant: Ux4gButtonVariant.outline,
-                        size: Ux4gButtonSize.large,
-                        height: 48,
-                        borderColor: const Color(0xFF432CBB),
-                        contentColor: const Color(0xFF432CBB),
+                        borderColor: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+                        contentColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                        borderRadius: 10,
                       ),
                     ),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ),
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -297,8 +324,10 @@ class LiveChatSupportCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF2EFFF),
+      backgroundColor: isDark ? Ux4gColors.primary800 : const Color(0xFFE2DCFF),
       body: SafeArea(
         child: Column(
           children: [
@@ -310,7 +339,13 @@ class LiveChatSupportCardScreen extends StatelessWidget {
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 40),
+                SvgPicture.asset(
+                  Ux4gIcons.nationalEmblem,
+                  height: 40,
+                  colorFilter: isDark
+                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                      : null,
+                ),
                 const SizedBox(width: 8),
                 SizedBox(
                   height: 32,
@@ -324,7 +359,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                   Ux4gIcons.union,
                   height: 32,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -338,10 +373,10 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                       width: 38,
                       height: 38,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Theme.of(context).brightness == Brightness.dark
+                          color: isDark
                               ? Ux4gColors.primary600
                               : const Color(0xFFC7D2FE),
                           width: 1.5,
@@ -355,7 +390,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                               width: 16,
                               height: 2.2,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color: isDark
                                     ? Ux4gColors.primary300
                                     : const Color(0xFF432CBB),
                                 borderRadius: BorderRadius.circular(2),
@@ -366,7 +401,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                               width: 16,
                               height: 2.2,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color: isDark
                                     ? Ux4gColors.primary300
                                     : const Color(0xFF432CBB),
                                 borderRadius: BorderRadius.circular(2),
@@ -377,7 +412,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                               width: 16,
                               height: 2.2,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color: isDark
                                     ? Ux4gColors.primary300
                                     : const Color(0xFF432CBB),
                                 borderRadius: BorderRadius.circular(2),
@@ -396,28 +431,39 @@ class LiveChatSupportCardScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
                 child: Ux4gCard(
-                  backgroundColor: Colors.white,
+                  backgroundColor: isDark ? Ux4gColors.neutral800 : Colors.white,
                   cornerRadius: 16,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Live Chat Support',
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+                        Text(
+                          'Live Chat Support',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w800,
+                            color: isDark ? Colors.white : const Color(0xFF111827),
+                          ),
+                        ),
                         const SizedBox(height: 8),
-                        Text('Chat with a support agent for real-time help with your application.',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                        Text(
+                          'Chat with a support agent for real-time help with your application.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
                         const SizedBox(height: 24),
                         // Status card
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : Ux4gColors.green50,
+                            color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green600 : Ux4gColors.green300,
+                              color: isDark ? Ux4gColors.green600 : Ux4gColors.green300,
                             ),
                           ),
                           child: Row(
@@ -425,7 +471,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.check_circle,
-                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green500 : Ux4gColors.green600,
+                                color: isDark ? Ux4gColors.green400 : Ux4gColors.green600,
                                 size: 22,
                               ),
                               const SizedBox(width: 10),
@@ -437,7 +483,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green300 : Ux4gColors.green800,
+                                      color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                                     ),
                                   ),
                                   const SizedBox(height: 2),
@@ -445,7 +491,7 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                                     'Estimated wait time: 1-2 mins',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green300 : Ux4gColors.green800,
+                                      color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                                     ),
                                   ),
                                 ],
@@ -454,34 +500,42 @@ class LiveChatSupportCardScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 24),
-                        Text('Connect now to discuss your application with our support team. Average response time under 2 minutes.',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF4B5563))),
+                        Text(
+                          'Connect now to discuss your application with our support team. Average response time under 2 minutes.',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? const Color(0xFF9CA3AF) : const Color(0xFF4B5563),
+                          ),
+                        ),
                         const SizedBox(height: 32),
                         // Start Chat button
                         SizedBox(
                           width: double.infinity,
+                          height: 48,
                           child: Ux4gButton(
                             onPressed: () {},
                             text: 'Start Chat Session',
                             variant: Ux4gButtonVariant.primary,
-                            size: Ux4gButtonSize.large,
-                            height: 48,
+                            backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                            contentColor: isDark ? Colors.black : Colors.white,
+                            borderRadius: 10,
                           ),
                         ),
                         const SizedBox(height: 12),
                         // Email support button
                         SizedBox(
                           width: double.infinity,
+                          height: 48,
                           child: Ux4gButton(
                             onPressed: () {},
                             text: 'Email support instead',
                             variant: Ux4gButtonVariant.outline,
-                            size: Ux4gButtonSize.large,
-                            height: 48,
-                            borderColor: const Color(0xFF432CBB),
-                            contentColor: const Color(0xFF432CBB),
+                            borderColor: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+                            contentColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                            borderRadius: 10,
                           ),
                         ),
+                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
@@ -490,13 +544,13 @@ class LiveChatSupportCardScreen extends StatelessWidget {
             ),
             // Powered by Digital India
             Padding(
-              padding: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF6B7280))),
                   const SizedBox(width: 4),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 20),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 20),
                 ],
               ),
             ),
@@ -512,17 +566,19 @@ class LiveChatSupportCardScreen extends StatelessWidget {
 // Mockup Widget
 // ───────────────────────────────────────────────────────────────────────
 
-class _LiveChatSupportMockup extends StatelessWidget {
+class _LiveChatMockup extends StatelessWidget {
   final bool isCard;
 
-  const _LiveChatSupportMockup({this.isCard = false});
+  const _LiveChatMockup({this.isCard = false});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = _isDark(context);
+
     return Theme(
-      data: Ux4gTheme.themeData(isDark: _isDark(context)),
+      data: Ux4gTheme.themeData(isDark: isDark),
       child: Scaffold(
-        backgroundColor: isCard ? (_isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100) : _getScaffoldBg(context),
+        backgroundColor: isCard ? (isDark ? Ux4gColors.primary800 : const Color(0xFFE2DCFF)) : _getScaffoldBg(context),
         body: SafeArea(
           child: Column(
             children: [
@@ -537,7 +593,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                   SvgPicture.asset(
                     Ux4gIcons.nationalEmblem,
                     height: 40,
-                    colorFilter: _isDark(context) ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
+                    colorFilter: isDark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null,
                   ),
                   SizedBox(
                     height: 32,
@@ -550,7 +606,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                     Ux4gIcons.union,
                     height: 32,
                     colorFilter: ColorFilter.mode(
-                      _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -564,10 +620,10 @@ class _LiveChatSupportMockup extends StatelessWidget {
                         width: 38,
                         height: 38,
                         decoration: BoxDecoration(
-                          color: _isDark(context) ? Ux4gColors.neutral900 : Colors.white,
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: _isDark(context)
+                            color: isDark
                                 ? Ux4gColors.primary600
                                 : const Color(0xFFC7D2FE),
                             width: 1.5,
@@ -581,7 +637,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                                 width: 16,
                                 height: 2.2,
                                 decoration: BoxDecoration(
-                                  color: _isDark(context)
+                                  color: isDark
                                       ? Ux4gColors.primary300
                                       : const Color(0xFF432CBB),
                                   borderRadius: BorderRadius.circular(2),
@@ -592,7 +648,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                                 width: 16,
                                 height: 2.2,
                                 decoration: BoxDecoration(
-                                  color: _isDark(context)
+                                  color: isDark
                                       ? Ux4gColors.primary300
                                       : const Color(0xFF432CBB),
                                   borderRadius: BorderRadius.circular(2),
@@ -603,7 +659,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                                 width: 16,
                                 height: 2.2,
                                 decoration: BoxDecoration(
-                                  color: _isDark(context)
+                                  color: isDark
                                       ? Ux4gColors.primary300
                                       : const Color(0xFF432CBB),
                                   borderRadius: BorderRadius.circular(2),
@@ -628,49 +684,16 @@ class _LiveChatSupportMockup extends StatelessWidget {
                           cornerRadius: 16,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
-                            child: _buildContent(context),
+                            child: _buildContent(context, isDark),
                           ),
                         )
-                      : _buildContent(context),
+                      : _buildContent(context, isDark),
                 ),
               ),
-
-              // Buttons at bottom
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: Ux4gButton(
-                        onPressed: () {},
-                        text: 'Start Chat Session',
-                        variant: Ux4gButtonVariant.primary,
-                        size: Ux4gButtonSize.large,
-                        height: 48,
-                      ),
-                    ),
-                    SizedBox(height: 12),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Ux4gButton(
-                        onPressed: () {},
-                        text: 'Email support instead',
-                        variant: Ux4gButtonVariant.outline,
-                        size: Ux4gButtonSize.large,
-                        height: 48,
-                        borderColor: _primaryColor,
-                        contentColor: _primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 12),
 
               // Powered by
               Padding(
-                padding: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.only(bottom: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -682,7 +705,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                     Image.asset(
                       Ux4gIcons.digitalIndiaLogoPng, 
                       height: 20,
-                      errorBuilder: (_, __, ___) => Text(
+                      errorBuilder: (context, error, stackTrace) => Text(
                         'Digital India',
                         style: TextStyle(
                           fontSize: 10,
@@ -700,7 +723,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -724,10 +747,10 @@ class _LiveChatSupportMockup extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: _isDark(context) ? Ux4gColors.green900 : Ux4gColors.green50,
+            color: isDark ? Ux4gColors.green900 : Ux4gColors.green50,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: _isDark(context) ? Ux4gColors.green600 : Ux4gColors.green300,
+              color: isDark ? Ux4gColors.green600 : Ux4gColors.green300,
             ),
           ),
           child: Row(
@@ -735,7 +758,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
             children: [
               Icon(
                 Icons.check_circle,
-                color: _isDark(context) ? Ux4gColors.green500 : Ux4gColors.green600,
+                color: isDark ? Ux4gColors.green400 : Ux4gColors.green600,
                 size: 22,
               ),
               SizedBox(width: 10),
@@ -747,7 +770,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green800,
+                      color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                     ),
                   ),
                   SizedBox(height: 2),
@@ -755,7 +778,7 @@ class _LiveChatSupportMockup extends StatelessWidget {
                     'Estimated wait time: 1-2 mins',
                     style: TextStyle(
                       fontSize: 12,
-                      color: _isDark(context) ? Ux4gColors.green300 : Ux4gColors.green800,
+                      color: isDark ? Ux4gColors.green300 : Ux4gColors.green800,
                     ),
                   ),
                 ],
@@ -764,12 +787,41 @@ class _LiveChatSupportMockup extends StatelessWidget {
           ),
         ),
         SizedBox(height: 24),
-
         Text(
           'Connect now to discuss your application with our support team. Average response time under 2 minutes.',
           style: TextStyle(fontSize: 14, color: _getSubtleText(context)),
         ),
         SizedBox(height: 32),
+
+        // Start Chat button
+        SizedBox(
+          width: double.infinity,
+          height: 48,
+          child: Ux4gButton(
+            onPressed: () {},
+            text: 'Start Chat Session',
+            variant: Ux4gButtonVariant.primary,
+            backgroundColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+            contentColor: isDark ? Colors.black : Colors.white,
+            borderRadius: 10,
+          ),
+        ),
+        SizedBox(height: 12),
+
+        // Email support button
+        SizedBox(
+          width: double.infinity,
+          height: 48,
+          child: Ux4gButton(
+            onPressed: () {},
+            text: 'Email support instead',
+            variant: Ux4gButtonVariant.outline,
+            borderColor: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+            contentColor: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+            borderRadius: 10,
+          ),
+        ),
+        SizedBox(height: 16),
       ],
     );
   }
