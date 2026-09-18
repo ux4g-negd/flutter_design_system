@@ -102,6 +102,18 @@ class AppointmentConfirmedScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
+                    // Get directions
+                    SizedBox(
+                      width: double.infinity,
+                      child: Ux4gButton(
+                        text: 'Get directions',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.primary,
+                        size: Ux4gButtonSize.large,
+                        leadingIcon: Icons.directions,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
                     // Add to calendar
                     SizedBox(
                       width: double.infinity,
@@ -112,21 +124,7 @@ class AppointmentConfirmedScreen extends StatelessWidget {
                         size: Ux4gButtonSize.large,
                         contentColor: Color(0xFF432CBB),
                         borderColor: Color(0xFFA391FF),
-                        leadingIcon: Icons.calendar_today,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    // Get directions
-                    SizedBox(
-                      width: double.infinity,
-                      child: Ux4gButton(
-                        text: 'Get directions',
-                        onPressed: () {},
-                        variant: Ux4gButtonVariant.outline,
-                        size: Ux4gButtonSize.large,
-                        contentColor: Color(0xFF432CBB),
-                        borderColor: Color(0xFFA391FF),
-                        leadingIcon: Icons.explore_outlined,
+                        leadingIcon: Icons.calendar_today_outlined,
                       ),
                     ),
                   ],
@@ -316,6 +314,26 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
 
+                      // Get directions button
+                      SizedBox(
+                        width: double.infinity,
+                        child: Ux4gButton(
+                          text: 'Get directions',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.primary,
+                          size: Ux4gButtonSize.large,
+                          height: 48,
+                          backgroundColor: isDark
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
+                          contentColor: isDark
+                              ? Ux4gColors.primary950
+                              : Colors.white,
+                          leadingIcon: Icons.directions,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+
                       // Add to calendar button
                       SizedBox(
                         width: double.infinity,
@@ -324,36 +342,14 @@ class _AppointmentConfirmedMockup extends StatelessWidget {
                           onPressed: () {},
                           variant: Ux4gButtonVariant.outline,
                           size: Ux4gButtonSize.large,
-                          height: 44,
+                          height: 48,
                           contentColor: isDark
-                              ? Ux4gColors.neutral50
+                              ? Ux4gColors.primary300
                               : Ux4gColors.primary600,
                           borderColor: isDark
-                              ? Ux4gColors.neutral600
+                              ? Ux4gColors.primary400
                               : Ux4gColors.primary300,
-                          leadingIcon: Icons.calendar_today,
-                          textStyle: typography.lL_default,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-
-                      // Get directions button
-                      SizedBox(
-                        width: double.infinity,
-                        child: Ux4gButton(
-                          text: 'Get directions',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.outline,
-                          size: Ux4gButtonSize.large,
-                          height: 44,
-                          contentColor: isDark
-                              ? Ux4gColors.neutral50
-                              : Ux4gColors.primary600,
-                          borderColor: isDark
-                              ? Ux4gColors.neutral600
-                              : Ux4gColors.primary300,
-                          leadingIcon: Icons.explore_outlined,
-                          textStyle: typography.lL_default,
+                          leadingIcon: Icons.calendar_today_outlined,
                         ),
                       ),
                     ],
