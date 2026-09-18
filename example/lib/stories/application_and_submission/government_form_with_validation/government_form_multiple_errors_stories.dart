@@ -223,7 +223,13 @@ class GovernmentFormMultipleErrorsScreenState
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Ux4gStepItem(title: ''),
+                          Ux4gStepItem(
+                            title: 'Submit',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 32),
@@ -669,7 +675,13 @@ class _GovernmentFormMultipleErrorsMockupState
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Ux4gStepItem(title: ''),
+                          Ux4gStepItem(
+                            title: 'Submit',
+                            titleStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 32),
@@ -1130,7 +1142,13 @@ class _GovernmentFormMultipleErrorsCardMockupState
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                Ux4gStepItem(title: ''),
+                                Ux4gStepItem(
+                                  title: 'Submit',
+                                  titleStyle: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(height: 32),

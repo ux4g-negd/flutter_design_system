@@ -117,8 +117,8 @@ class ApplicationSentScreen extends StatelessWidget {
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                 SvgPicture.asset(
                   Ux4gIcons.union, 
                   height: 32,
@@ -130,8 +130,36 @@ class ApplicationSentScreen extends StatelessWidget {
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gColors.primary400
+                          : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
-            Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
+            Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
 
             // Content
             Expanded(
@@ -190,8 +218,8 @@ class ApplicationSentScreen extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                    contentColor: primaryColor,
+                    borderColor: primaryColor,
                   ),
                 ],
               ),
@@ -200,12 +228,14 @@ class ApplicationSentScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400)),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -235,28 +265,56 @@ class ApplicationSentCardScreen extends StatelessWidget {
           children: [
             // Header
             Container(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     title: '',
                     leadingWidgets: [
-                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                      Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
+                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                      SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                       SvgPicture.asset(
-                  Ux4gIcons.union, 
-                  height: 32,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.primary300
-                        : Ux4gColors.primary600,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                        Ux4gIcons.union, 
+                        height: 32,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.primary400
+                                : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
-                  Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
+                  Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                 ],
               ),
             ),
@@ -267,10 +325,9 @@ class ApplicationSentCardScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(24),
                 child: Container(
                   width: double.infinity,
-                  height: 48,
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4)),
@@ -330,8 +387,8 @@ class ApplicationSentCardScreen extends StatelessWidget {
                     size: Ux4gButtonSize.large,
                     width: double.infinity,
                     height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                    contentColor: primaryColor,
+                    borderColor: primaryColor,
                   ),
                 ],
               ),
@@ -339,12 +396,14 @@ class ApplicationSentCardScreen extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400)),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -377,12 +436,8 @@ class _ApplicationSentMockup extends StatelessWidget {
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingWidgets: [
-                  SvgPicture.asset(_nationalEmblemLogoPath, height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                  Container(
-                    height: 32,
-                    width: 1,
-                    color: const Color(0xFFD1D5DB),
-                  ),
+                  SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
+                  SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                   SvgPicture.asset(
                     _unionLogoPath,
                     height: 32,
@@ -394,8 +449,36 @@ class _ApplicationSentMockup extends StatelessWidget {
                     ),
                   ),
                 ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral800
+                              : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                verticalPadding: 16,
+                horizontalPadding: 16,
+                leadingSpacing: 8,
               ),
-              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
+              Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -462,23 +545,25 @@ class _ApplicationSentMockup extends StatelessWidget {
                       size: Ux4gButtonSize.large,
                       width: double.infinity,
                       height: 48,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
-                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                      contentColor: primaryColor,
+                      borderColor: primaryColor,
                     ),
                   ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : const Color(0xFF9CA3AF)),
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
-                    const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    const SizedBox(width: 8),
+                    Image.asset(_digitalIndiaLogoPath, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -511,12 +596,8 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                       variant: Ux4gAppHeaderVariant.light,
                       title: '',
                       leadingWidgets: [
-                        SvgPicture.asset(_nationalEmblemLogoPath, height: 40, colorFilter: Theme.of(context).brightness == Brightness.dark ? const ColorFilter.mode(Colors.white, BlendMode.srcIn) : null),
-                        Container(
-                          height: 32,
-                          width: 1,
-                          color: const Color(0xFFD1D5DB),
-                        ),
+                        SvgPicture.asset(_nationalEmblemLogoPath, height: 40),
+                        SizedBox(height: 32, child: Ux4gDivider(orientation: Ux4gDividerOrientation.vertical, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral300)),
                         SvgPicture.asset(
                           _unionLogoPath,
                           height: 32,
@@ -528,8 +609,36 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                           ),
                         ),
                       ],
+                      actions: [
+                        Ux4gAppHeaderAction(
+                          customWidget: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.neutral800
+                                    : const Color(0xFFE5E7EB),
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.menu,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      verticalPadding: 16,
+                      horizontalPadding: 16,
+                      leadingSpacing: 8,
                     ),
-                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB)),
+                    Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                   ],
                 ),
               ),
@@ -538,10 +647,9 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                   padding: const EdgeInsets.all(24),
                   child: Container(
                     width: double.infinity,
-                    height: 48,
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -607,8 +715,8 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                           size: Ux4gButtonSize.large,
                           width: double.infinity,
                           height: 48,
-                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
-                          borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary600 : Ux4gColors.primary300,
+                          contentColor: primaryColor,
+                          borderColor: primaryColor,
                         ),
                       ],
                     ),
@@ -616,7 +724,7 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                padding: const EdgeInsets.only(bottom: 24),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -626,8 +734,7 @@ class _ApplicationSentCardMockup extends StatelessWidget {
                       'Powered by -',
                       style: TextStyle(
                         fontSize: 11,
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
-                        fontWeight: FontWeight.w500,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400,
                       ),
                     ),
                     const SizedBox(width: 8),
