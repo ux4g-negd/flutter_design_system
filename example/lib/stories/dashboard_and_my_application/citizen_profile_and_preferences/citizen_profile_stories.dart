@@ -279,20 +279,6 @@ class _CitizenProfileScreenState extends State<CitizenProfileScreen> {
                           _ToggleRow(title: 'App push', subtitle: 'In-app alerts', value: _appPushEnabled, onChanged: (v) => setState(() => _appPushEnabled = v)),
                           SizedBox(height: 16),
                           _ToggleRow(title: 'WhatsApp', subtitle: 'WhatsApp updates', value: _whatsAppEnabled, onChanged: (v) => setState(() => _whatsAppEnabled = v)),
-                          SizedBox(height: 16),
-                          Text('Notification frequency', style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
-                          SizedBox(height: 6),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                            decoration: BoxDecoration(border: Border.all(color: Color(0xFFE5E7EB)), borderRadius: BorderRadius.circular(8)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Immediately', style: TextStyle(fontSize: 14, color: Color(0xFF111827))),
-                                Icon(Icons.keyboard_arrow_down, size: 20, color: Color(0xFF4B5563)),
-                              ],
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -353,7 +339,7 @@ class _ToggleRow extends StatelessWidget {
             Text(subtitle, style: TextStyle(fontSize: 12, color: Color(0xFF4B5563))),
           ],
         ),
-        Ux4gToggle(checked: value, onCheckedChange: onChanged),
+        Ux4gSwitch(checked: value, onCheckedChange: onChanged, size: Ux4gSwitchSize.s),
       ],
     );
   }
@@ -376,7 +362,6 @@ class _CitizenProfileMockupState extends State<_CitizenProfileMockup> {
   bool _emailEnabled = true;
   bool _appPushEnabled = true;
   bool _whatsAppEnabled = false;
-  List<String> _selectedFrequency = ['immediately'];
 
   @override
   Widget build(BuildContext context) {
@@ -977,29 +962,6 @@ class _CitizenProfileMockupState extends State<_CitizenProfileMockup> {
               _whatsAppEnabled,
               (v) => setState(() => _whatsAppEnabled = v),
             ),
-            SizedBox(height: 16),
-
-            Ux4gSelectionDropdown(
-              options: const [
-                Ux4gDropdownOption(id: 'immediately', label: 'Immediately'),
-                Ux4gDropdownOption(id: 'daily', label: 'Daily'),
-                Ux4gDropdownOption(id: 'weekly', label: 'Weekly'),
-              ],
-              selectedOptionIds: _selectedFrequency,
-              onSelectionChange: (v) => setState(() => _selectedFrequency = v),
-              label: 'Notification frequency',
-              mode: Ux4gDropdownMode.single,
-              labelTextStyle: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w400,
-                color: _getSubtleText(context),
-              ),
-              valueTextStyle: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: _getTitleColor(context),
-              ),
-            ),
           ],
         ),
       ),
@@ -1079,10 +1041,10 @@ class _CitizenProfileMockupState extends State<_CitizenProfileMockup> {
             ],
           ),
         ),
-        Ux4gToggle(
+        Ux4gSwitch(
           checked: value,
           onCheckedChange: onChanged,
-          size: Ux4gToggleSize.s,
+          size: Ux4gSwitchSize.s,
         ),
       ],
     );

@@ -261,20 +261,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           _buildNotifToggleRow('App push', 'In-app alerts', _appPushEnabled, (v) => setState(() => _appPushEnabled = v)),
                           SizedBox(height: 16),
                           _buildNotifToggleRow('WhatsApp', 'WhatsApp updates', _whatsAppEnabled, (v) => setState(() => _whatsAppEnabled = v)),
-                          SizedBox(height: 16),
-                          Ux4gSelectionDropdown(
-                            options: const [
-                              Ux4gDropdownOption(id: 'immediately', label: 'Immediately'),
-                              Ux4gDropdownOption(id: 'daily', label: 'Daily'),
-                              Ux4gDropdownOption(id: 'weekly', label: 'Weekly'),
-                            ],
-                            selectedOptionIds: _selectedFrequency,
-                            onSelectionChange: (v) => setState(() => _selectedFrequency = v),
-                            label: 'Notification frequency',
-                            mode: Ux4gDropdownMode.single,
-                            labelTextStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Color(0xFF4B5563)),
-                            valueTextStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xFF111827)),
-                          ),
                         ],
                       ),
                     ),
@@ -349,7 +335,6 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
   bool _emailEnabled = true;
   bool _appPushEnabled = true;
   bool _whatsAppEnabled = false;
-  List<String> _selectedFrequency = ['immediately'];
 
   @override
   Widget build(BuildContext context) {
@@ -959,29 +944,6 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
               _whatsAppEnabled,
               (v) => setState(() => _whatsAppEnabled = v),
             ),
-            SizedBox(height: 16),
-
-            Ux4gSelectionDropdown(
-              options: const [
-                Ux4gDropdownOption(id: 'immediately', label: 'Immediately'),
-                Ux4gDropdownOption(id: 'daily', label: 'Daily'),
-                Ux4gDropdownOption(id: 'weekly', label: 'Weekly'),
-              ],
-              selectedOptionIds: _selectedFrequency,
-              onSelectionChange: (v) => setState(() => _selectedFrequency = v),
-              label: 'Notification frequency',
-              mode: Ux4gDropdownMode.single,
-              labelTextStyle: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w400,
-                color: _getSubtleText(context),
-              ),
-              valueTextStyle: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: _getTitleColor(context),
-              ),
-            ),
           ],
         ),
       ),
@@ -1061,10 +1023,10 @@ class _EditProfileMockupState extends State<_EditProfileMockup> {
             ],
           ),
         ),
-        Ux4gToggle(
+        Ux4gSwitch(
           checked: value,
           onCheckedChange: onChanged,
-          size: Ux4gToggleSize.s,
+          size: Ux4gSwitchSize.s,
         ),
       ],
     );
