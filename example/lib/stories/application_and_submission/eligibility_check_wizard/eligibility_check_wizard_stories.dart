@@ -170,7 +170,7 @@ class _EligibilityFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 24),
+      padding: const EdgeInsets.fromLTRB(0, 16, 0, 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -1151,11 +1151,21 @@ class _EligibilityQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'yes'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary900
-                                  : Ux4gColors.primary50
+                                ? Ux4gColors.primary900
+                                : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral800
-                            : Ux4gColors.neutral100,
+                                ? Ux4gColors.neutral900
+                                : Ux4gColors.neutral0,
+                        border: Border.all(
+                          color: _selected == 'yes'
+                              ? Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary200
+                              : Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral700
+                                  : const Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -1236,11 +1246,21 @@ class _EligibilityQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'no'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary900
-                                  : Ux4gColors.primary50
+                                ? Ux4gColors.primary900
+                                : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral800
-                            : Ux4gColors.neutral100,
+                                ? Ux4gColors.neutral900
+                                : Ux4gColors.neutral0,
+                        border: Border.all(
+                          color: _selected == 'no'
+                              ? Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary200
+                              : Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral700
+                                  : const Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -1474,8 +1494,20 @@ class _EligibilityQuestionCardMockupState
                                             : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gColors.neutral800
-                                      : Ux4gColors.neutral100,
+                                      ? Ux4gColors.neutral900
+                                      : Ux4gColors.neutral0,
+                                  border: Border.all(
+                                    color: _selected == 'yes'
+                                        ? Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Ux4gColors.primary400
+                                              : Ux4gColors.primary200
+                                        : Theme.of(context).brightness ==
+                                              Brightness.dark
+                                        ? Ux4gColors.neutral700
+                                        : const Color(0xFFE5E7EB),
+                                    width: 1.5,
+                                  ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -1568,8 +1600,20 @@ class _EligibilityQuestionCardMockupState
                                             : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gColors.neutral800
-                                      : Ux4gColors.neutral100,
+                                      ? Ux4gColors.neutral900
+                                      : Ux4gColors.neutral0,
+                                  border: Border.all(
+                                    color: _selected == 'no'
+                                        ? Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Ux4gColors.primary400
+                                              : Ux4gColors.primary200
+                                        : Theme.of(context).brightness ==
+                                              Brightness.dark
+                                        ? Ux4gColors.neutral700
+                                        : const Color(0xFFE5E7EB),
+                                    width: 1.5,
+                                  ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -1646,58 +1690,43 @@ class _EligibilityQuestionCardMockupState
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 24),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Continue',
+                              onPressed: _selected != null ? () {} : null,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                            ),
+                            const SizedBox(height: 4),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Back',
+                              onPressed: () {},
+                              variant: Ux4gButtonVariant.ghost,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              contentColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
+                            ),
                           ],
                         ),
                       ),
-                                                ),
-                          ),
-                        ],
-                      ),
-                  ),
-
-                  // Actions (outside card, in purple area)
-                  Ux4gDivider(
-                    thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral800
-                        : Color(0xFFE5E7EB),
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-                    child: Column(
-                      children: [
-                        Ux4gButton(
-                          height: 48,
-                          text: 'Continue',
-                          onPressed: _selected != null ? () {} : null,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                        ),
-                        const SizedBox(height: 4),
-                        Ux4gButton(
-                          height: 48,
-                          text: 'Back',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.ghost,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          contentColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary300
-                              : Ux4gColors.primary600,
-                        ),
-                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-          const _EligibilityFooter(),
-        ],
+            const _EligibilityFooter(),
+          ],
+        ),
       ),
-    );
+    ),
+  ],
+),
+);
   }
 }
 
@@ -1779,6 +1808,10 @@ class EligibilityWizardScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
+                          border: Border.all(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary400 : Ux4gColors.primary200,
+                            width: 1.5,
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -1811,7 +1844,11 @@ class EligibilityWizardScreen extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                          border: Border.all(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB),
+                            width: 1.5,
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -1941,25 +1978,15 @@ class EligibilityWizardScreen extends StatelessWidget {
 
                               // Radio options (same as flat layout)
                               // ... Yes / No cards
+
+                              SizedBox(height: 24),
+                              Ux4gButton(height: 48, text: 'Continue', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                              SizedBox(height: 4),
+                              Ux4gButton(height: 48, text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.ghost, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600),
                             ],
                           ),
                         ),
-                                                    ),
-                            ),
-                          ],
-                        ),
-                    ),
-
-                    // Continue / Back buttons (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(24, 8, 24, 0),
-                      child: Column(children: [
-                        Ux4gButton(height: 48, text: 'Continue', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
-                        SizedBox(height: 4),
-                        Ux4gButton(height: 48, text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.ghost, size: Ux4gButtonSize.large, width: double.infinity),
-                      ]),
+                      ),
                     ),
 
                     // Footer
@@ -2375,14 +2402,10 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverPadding(
-                          padding: const EdgeInsets.all(16),
-                          sliver: SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Container(
-                        padding: const EdgeInsets.all(20),
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
                               ? Ux4gColors.neutral900
@@ -2402,48 +2425,48 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                             Container(
                               width: 64,
                               height: 64,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFFBBF7D0),
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.check_circle,
                                 color: Color(0xFF15803D),
-                                size: 32,
+                                size: 34,
                               ),
                             ),
-                            const SizedBox(height: 16),
-                            Text(
-                              'You\'re Eligible!',
+                            const SizedBox(height: 14),
+                            const Text(
+                              "You're Eligible!",
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w800,
                                 color: Color(0xFF065F46),
                               ),
                             ),
-                            const SizedBox(height: 12),
+                            const SizedBox(height: 10),
                             Text(
                               'All criteria have been met. You can now proceed to apply for this service.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 13,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.neutral200
-                                    : Ux4gColors.neutral700,
-                                height: 1.5,
+                                            Brightness.dark
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
+                                height: 1.4,
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 18),
                             Ux4gDivider(
                               color:
                                   Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.neutral800
-                                  : Color(0xFFE5E7EB),
+                                          Brightness.dark
+                                      ? Ux4gColors.neutral800
+                                      : const Color(0xFFE5E7EB),
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 16),
 
                             // Criteria list
                             Align(
@@ -2455,275 +2478,97 @@ class _EligibilitySuccessCardMockup extends StatelessWidget {
                                   fontWeight: FontWeight.w700,
                                   color:
                                       Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Ux4gColors.neutral50
-                                      : Ux4gColors.neutral900,
+                                              Brightness.dark
+                                          ? Ux4gColors.neutral50
+                                          : Ux4gColors.neutral900,
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Age requirement met (18 years or above)',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            const SizedBox(height: 14),
+                            _buildSuccessCriteriaRow(
+                              context,
+                              'Age requirement met (18 years or above)',
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Valid government-issued ID submitted',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildSuccessCriteriaRow(
+                              context,
+                              'Valid government-issued ID submitted',
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Residential address confirmed',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildSuccessCriteriaRow(
+                              context,
+                              'Residential address confirmed',
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Income within eligible range',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildSuccessCriteriaRow(
+                              context,
+                              'Income within eligible range',
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'No outstanding dues or penalties',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildSuccessCriteriaRow(
+                              context,
+                              'No outstanding dues or penalties',
+                            ),
+                            const SizedBox(height: 20),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Apply Now',
+                              onPressed: () {},
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
                             ),
                           ],
                         ),
                       ),
-                                                ),
-                          ),
-                        ],
-                      ),
-                  ),
-
-                  // Bottom actions (outside card)
-                  Ux4gDivider(
-                    thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral800
-                        : Color(0xFFE5E7EB),
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                    child: Ux4gButton(
-                      height: 48,
-                      text: 'Apply Now',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
                     ),
                   ),
+                  const _EligibilityFooter(),
                 ],
               ),
             ),
           ),
-          const _EligibilityFooter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSuccessCriteriaRow(BuildContext context, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral200
+                        : Ux4gColors.neutral700,
+                height: 1.3,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Container(
+            width: 20,
+            height: 20,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color:
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.green900
+                      : Ux4gColors.green100,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Icon(
+              Icons.check,
+              size: 14,
+              color:
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.green400
+                      : Ux4gColors.green600,
+            ),
+          ),
         ],
       ),
     );
@@ -2943,14 +2788,10 @@ class EligibilityWizardScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: CustomScrollView(
-                        slivers: [
-                          SliverPadding(
-                            padding: EdgeInsets.all(16),
-                            sliver: SliverFillRemaining(
-                              hasScrollBody: false,
-                              child: Container(
-                          padding: EdgeInsets.all(20),
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.all(16),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 24, 20, 20),
                           decoration: BoxDecoration(
                             color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
@@ -2963,42 +2804,39 @@ class EligibilityWizardScreen extends StatelessWidget {
                               Container(
                                 width: 64, height: 64,
                                 decoration: BoxDecoration(color: Color(0xFFBBF7D0), shape: BoxShape.circle),
-                                child: Icon(Icons.check_circle, color: Color(0xFF15803D), size: 32),
+                                child: Icon(Icons.check_circle, color: Color(0xFF15803D), size: 34),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 14),
                       
                               // Title
-                              Text("You're Eligible!", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Color(0xFF065F46))),
-                              SizedBox(height: 12),
+                              Text("You're Eligible!", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Color(0xFF065F46))),
+                              SizedBox(height: 10),
                       
                               // Subtitle
-                              Text('All criteria have been met. You can now proceed...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
-                              SizedBox(height: 24),
+                              Text('All criteria have been met. You can now proceed to apply for this service.', textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4)),
+                              SizedBox(height: 18),
                               Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                              SizedBox(height: 20),
+                              SizedBox(height: 16),
                       
                               // Criteria list
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                               ),
-                              SizedBox(height: 16),
-                              // ... Criteria items
+                              SizedBox(height: 14),
+                              _buildCriteriaRow('Age requirement met (18 years or above)'),
+                              _buildCriteriaRow('Valid government-issued ID submitted'),
+                              _buildCriteriaRow('Residential address confirmed'),
+                              _buildCriteriaRow('Income within eligible range'),
+                              _buildCriteriaRow('No outstanding dues or penalties'),
+                              SizedBox(height: 20),
+
+                              // Apply Now button (inside card)
+                              Ux4gButton(height: 48, text: 'Apply Now', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
                             ],
                           ),
                         ),
-                                                    ),
-                            ),
-                          ],
-                        ),
-                    ),
-
-                    // Apply Now button (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
-                      child: Ux4gButton(height: 48, text: 'Apply Now', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                      ),
                     ),
 
                     // Footer
@@ -3420,14 +3258,10 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverPadding(
-                          padding: const EdgeInsets.all(16),
-                          sliver: SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Container(
-                        padding: const EdgeInsets.all(20),
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
                               ? Ux4gColors.neutral900
@@ -3450,57 +3284,57 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.red900
-                                    : Ux4gColors.red100,
+                                            Brightness.dark
+                                        ? Ux4gColors.red900
+                                        : Ux4gColors.red100,
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
-                                Icons.close,
+                                Icons.cancel,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.red400
-                                    : Ux4gColors.red600,
-                                size: 32,
+                                            Brightness.dark
+                                        ? Ux4gColors.red400
+                                        : Ux4gColors.red600,
+                                size: 34,
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 14),
                             Text(
                               'Not Eligible',
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w800,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.red200
-                                    : Ux4gColors.red800,
+                                            Brightness.dark
+                                        ? Ux4gColors.red200
+                                        : Ux4gColors.red800,
                               ),
                             ),
-                            const SizedBox(height: 12),
+                            const SizedBox(height: 10),
                             Text(
                               'Unfortunately, you do not meet all the required criteria for this service at this time.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 13,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.neutral200
-                                    : Ux4gColors.neutral700,
-                                height: 1.5,
+                                            Brightness.dark
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
+                                height: 1.4,
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 18),
                             Ux4gDivider(
                               color:
                                   Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.neutral800
-                                  : Color(0xFFE5E7EB),
+                                          Brightness.dark
+                                      ? Ux4gColors.neutral800
+                                      : const Color(0xFFE5E7EB),
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 16),
 
                             // Criteria list
                             Align(
@@ -3512,275 +3346,108 @@ class _EligibilityFailureCardMockup extends StatelessWidget {
                                   fontWeight: FontWeight.w700,
                                   color:
                                       Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Ux4gColors.neutral50
-                                      : Ux4gColors.neutral900,
+                                              Brightness.dark
+                                          ? Ux4gColors.neutral50
+                                          : Ux4gColors.neutral900,
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Age requirement met (18 years or above)',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            const SizedBox(height: 14),
+                            _buildFailureCriteriaRow(
+                              context,
+                              'Age requirement met (18 years or above)',
+                              true,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Valid government-issued ID submitted',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildFailureCriteriaRow(
+                              context,
+                              'Valid government-issued ID submitted',
+                              true,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Residential address confirmed',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildFailureCriteriaRow(
+                              context,
+                              'Residential address confirmed',
+                              true,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Income within eligible range',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.red900
-                                          : Ux4gColors.red100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.close,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.red400
-                                          : Ux4gColors.red600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildFailureCriteriaRow(
+                              context,
+                              'Income within eligible range',
+                              false,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'No outstanding dues or penalties',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildFailureCriteriaRow(
+                              context,
+                              'No outstanding dues or penalties',
+                              true,
+                            ),
+                            const SizedBox(height: 20),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Explore Alternatives',
+                              onPressed: () {},
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
                             ),
                           ],
                         ),
                       ),
-                                                ),
-                          ),
-                        ],
-                      ),
-                  ),
-
-                  // Bottom actions (outside card)
-                  Ux4gDivider(
-                    thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral800
-                        : Color(0xFFE5E7EB),
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                    child: Ux4gButton(
-                      height: 48,
-                      text: 'Explore Alternatives',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
                     ),
                   ),
+                  const _EligibilityFooter(),
                 ],
               ),
             ),
           ),
-          const _EligibilityFooter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFailureCriteriaRow(BuildContext context, String text, bool isMet) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral200
+                        : Ux4gColors.neutral700,
+                height: 1.3,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Container(
+            width: 20,
+            height: 20,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isMet
+                  ? (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.green900
+                      : Ux4gColors.green100)
+                  : (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.red900
+                      : Ux4gColors.red100),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Icon(
+              isMet ? Icons.check : Icons.close,
+              size: 14,
+              color: isMet
+                  ? (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.green400
+                      : Ux4gColors.green600)
+                  : (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.red400
+                      : Ux4gColors.red600),
+            ),
+          ),
         ],
       ),
     );
@@ -3977,14 +3644,10 @@ class EligibilityWizardScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: CustomScrollView(
-                        slivers: [
-                          SliverPadding(
-                            padding: EdgeInsets.all(16),
-                            sliver: SliverFillRemaining(
-                              hasScrollBody: false,
-                              child: Container(
-                          padding: EdgeInsets.all(20),
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.all(16),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 24, 20, 20),
                           decoration: BoxDecoration(
                             color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
@@ -3997,42 +3660,39 @@ class EligibilityWizardScreen extends StatelessWidget {
                               Container(
                                 width: 64, height: 64,
                                 decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red100, shape: BoxShape.circle),
-                                child: Icon(Icons.close, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red600, size: 32),
+                                child: Icon(Icons.cancel, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red400 : Ux4gColors.red600, size: 34),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 14),
                       
                               // Title
-                              Text("Not Eligible", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800)),
-                              SizedBox(height: 12),
+                              Text("Not Eligible", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red200 : Ux4gColors.red800)),
+                              SizedBox(height: 10),
                       
                               // Subtitle
-                              Text('Unfortunately, you do not meet all the required...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
-                              SizedBox(height: 24),
+                              Text('Unfortunately, you do not meet all the required criteria for this service at this time.', textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4)),
+                              SizedBox(height: 18),
                               Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                              SizedBox(height: 20),
+                              SizedBox(height: 16),
                       
                               // Criteria list
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                               ),
-                              SizedBox(height: 16),
-                              // ... Criteria items with isMet: false for failed ones
+                              SizedBox(height: 14),
+                              _buildCriteriaRow('Age requirement met (18 years or above)', true),
+                              _buildCriteriaRow('Valid government-issued ID submitted', true),
+                              _buildCriteriaRow('Residential address confirmed', true),
+                              _buildCriteriaRow('Income within eligible range', false),
+                              _buildCriteriaRow('No outstanding dues or penalties', true),
+                              SizedBox(height: 20),
+
+                              // Explore Alternatives button (inside card)
+                              Ux4gButton(height: 48, text: 'Explore Alternatives', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
                             ],
                           ),
                         ),
-                                                    ),
-                            ),
-                          ],
-                        ),
-                    ),
-
-                    // Explore Alternatives button (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
-                      child: Ux4gButton(height: 48, text: 'Explore Alternatives', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                      ),
                     ),
 
                     // Footer
@@ -4315,7 +3975,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 14),
+                    padding: const EdgeInsets.only(bottom: 14),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -4334,7 +3994,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Container(
                           width: 20,
                           height: 20,
@@ -4363,7 +4023,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 14),
+                    padding: const EdgeInsets.only(bottom: 14),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -4382,7 +4042,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Container(
                           width: 20,
                           height: 20,
@@ -4416,7 +4076,7 @@ class _EligibilityWarningMockup extends StatelessWidget {
             thickness: 1,
             color: Theme.of(context).brightness == Brightness.dark
                 ? Ux4gColors.neutral800
-                : Color(0xFFE5E7EB),
+                : const Color(0xFFE5E7EB),
           ),
           const SizedBox(height: 16),
           Padding(
@@ -4458,14 +4118,10 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverPadding(
-                          padding: const EdgeInsets.all(16),
-                          sliver: SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Container(
-                        padding: const EdgeInsets.all(20),
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
                         decoration: BoxDecoration(
                           color: Theme.of(context).brightness == Brightness.dark
                               ? Ux4gColors.neutral900
@@ -4488,57 +4144,57 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.orange900
-                                    : Ux4gColors.orange100,
+                                            Brightness.dark
+                                        ? Ux4gColors.orange900
+                                        : Ux4gColors.orange100,
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
                                 Icons.warning,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.orange400
-                                    : Ux4gColors.orange600,
-                                size: 32,
+                                            Brightness.dark
+                                        ? Ux4gColors.orange400
+                                        : Ux4gColors.orange600,
+                                size: 34,
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 14),
                             Text(
                               'You May Be Eligible',
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w800,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.orange200
-                                    : Ux4gColors.orange800,
+                                            Brightness.dark
+                                        ? Ux4gColors.orange200
+                                        : Ux4gColors.orange800,
                               ),
                             ),
-                            const SizedBox(height: 12),
+                            const SizedBox(height: 10),
                             Text(
                               'One or more criteria could not be confirmed automatically. An officer will review and verify your eligibility.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 13,
                                 color:
                                     Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.neutral200
-                                    : Ux4gColors.neutral700,
-                                height: 1.5,
+                                            Brightness.dark
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
+                                height: 1.4,
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 18),
                             Ux4gDivider(
                               color:
                                   Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.neutral800
-                                  : Color(0xFFE5E7EB),
+                                          Brightness.dark
+                                      ? Ux4gColors.neutral800
+                                      : const Color(0xFFE5E7EB),
                             ),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 16),
 
                             // Criteria list
                             Align(
@@ -4550,278 +4206,115 @@ class _EligibilityWarningCardMockup extends StatelessWidget {
                                   fontWeight: FontWeight.w700,
                                   color:
                                       Theme.of(context).brightness ==
-                                          Brightness.dark
-                                      ? Ux4gColors.neutral50
-                                      : Ux4gColors.neutral900,
+                                              Brightness.dark
+                                          ? Ux4gColors.neutral50
+                                          : Ux4gColors.neutral900,
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 16),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Age requirement met (18 years or above)',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            const SizedBox(height: 14),
+                            _buildWarningCriteriaRow(
+                              context,
+                              'Age requirement met (18 years or above)',
+                              true,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Valid government-issued ID submitted',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildWarningCriteriaRow(
+                              context,
+                              'Valid government-issued ID submitted',
+                              true,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Residential address confirmed',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildWarningCriteriaRow(
+                              context,
+                              'Residential address confirmed',
+                              true,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Income within eligible range',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.orange900
-                                          : Ux4gColors.orange100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Text(
-                                      '?',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.orange400
-                                            : Ux4gColors.orange600,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildWarningCriteriaRow(
+                              context,
+                              'Income within eligible range',
+                              null,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 14),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'No outstanding dues or penalties',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral200
-                                            : Ux4gColors.neutral700,
-                                        height: 1.4,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12),
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green900
-                                          : Ux4gColors.green100,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    child: Icon(
-                                      Icons.check,
-                                      size: 14,
-                                      color:
-                                          Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.green400
-                                          : Ux4gColors.green600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _buildWarningCriteriaRow(
+                              context,
+                              'No outstanding dues or penalties',
+                              true,
+                            ),
+                            const SizedBox(height: 20),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Proceed to Apply',
+                              onPressed: () {},
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
                             ),
                           ],
                         ),
                       ),
-                                                ),
-                          ),
-                        ],
-                      ),
-                  ),
-
-                  // Bottom actions (outside card)
-                  Ux4gDivider(
-                    thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral800
-                        : Color(0xFFE5E7EB),
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                    child: Ux4gButton(
-                      height: 48,
-                      text: 'Proceed to Apply',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
                     ),
                   ),
+                  const _EligibilityFooter(),
                 ],
               ),
             ),
           ),
-          const _EligibilityFooter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWarningCriteriaRow(BuildContext context, String text, bool? isMet) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.neutral200
+                        : Ux4gColors.neutral700,
+                height: 1.3,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Container(
+            width: 20,
+            height: 20,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isMet == true
+                  ? (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.green900
+                      : Ux4gColors.green100)
+                  : (Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.orange900
+                      : Ux4gColors.orange100),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: isMet == true
+                ? Icon(
+                    Icons.check,
+                    size: 14,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Ux4gColors.green400
+                        : Ux4gColors.green600,
+                  )
+                : Text(
+                    '?',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Ux4gColors.orange400
+                          : Ux4gColors.orange600,
+                    ),
+                  ),
+          ),
         ],
       ),
     );
@@ -4977,11 +4470,13 @@ class EligibilityWizardScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 16),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -5018,14 +4513,10 @@ class EligibilityWizardScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: CustomScrollView(
-                        slivers: [
-                          SliverPadding(
-                            padding: EdgeInsets.all(16),
-                            sliver: SliverFillRemaining(
-                              hasScrollBody: false,
-                              child: Container(
-                          padding: EdgeInsets.all(20),
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.all(16),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(20, 24, 20, 20),
                           decoration: BoxDecoration(
                             color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
                             borderRadius: BorderRadius.circular(16),
@@ -5038,42 +4529,39 @@ class EligibilityWizardScreen extends StatelessWidget {
                               Container(
                                 width: 64, height: 64,
                                 decoration: BoxDecoration(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange900 : Ux4gColors.orange100, shape: BoxShape.circle),
-                                child: Icon(Icons.warning, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange600, size: 32),
+                                child: Icon(Icons.warning, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange400 : Ux4gColors.orange600, size: 34),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 14),
                       
                               // Title
-                              Text("You May Be Eligible", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800)),
-                              SizedBox(height: 12),
+                              Text("You May Be Eligible", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange200 : Ux4gColors.orange800)),
+                              SizedBox(height: 10),
                       
                               // Subtitle
-                              Text('One or more criteria could not be confirmed...', textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
-                              SizedBox(height: 24),
+                              Text('One or more criteria could not be confirmed automatically. An officer will review and verify your eligibility.', textAlign: TextAlign.center, style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4)),
+                              SizedBox(height: 18),
                               Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                              SizedBox(height: 20),
+                              SizedBox(height: 16),
                       
                               // Criteria list
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text('Eligibility Criteria', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
                               ),
-                              SizedBox(height: 16),
-                              // ... Criteria items with isMet: null for warnings
+                              SizedBox(height: 14),
+                              _buildCriteriaRow('Age requirement met (18 years or above)', true),
+                              _buildCriteriaRow('Valid government-issued ID submitted', true),
+                              _buildCriteriaRow('Residential address confirmed', true),
+                              _buildCriteriaRow('Income within eligible range', null),
+                              _buildCriteriaRow('No outstanding dues or penalties', true),
+                              SizedBox(height: 20),
+
+                              // Proceed to Apply button (inside card)
+                              Ux4gButton(height: 48, text: 'Proceed to Apply', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
                             ],
                           ),
                         ),
-                                                    ),
-                            ),
-                          ],
-                        ),
-                    ),
-
-                    // Proceed to Apply button (outside card)
-                    Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
-                      child: Ux4gButton(height: 48, text: 'Proceed to Apply', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                      ),
                     ),
 
                     // Footer
@@ -5182,7 +4670,7 @@ class _EligibilityFinalQuestionMockupState
                     ),
                   ),
                   const SizedBox(height: 8),
-                  _buildGradientProgress(context, 0.9),
+                  _buildGradientProgress(context, 1.0),
                   const SizedBox(height: 20),
 
                   // Question
@@ -5202,91 +4690,6 @@ class _EligibilityFinalQuestionMockupState
 
                   // Radio options
                   GestureDetector(
-                    onTap: () => setState(() => _selected = 'first_time'),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 14,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _selected == 'first_time'
-                            ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary900
-                                  : Ux4gColors.primary50
-                            : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral800
-                            : Ux4gColors.neutral100,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 22,
-                            height: 22,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: _selected == 'first_time'
-                                    ? Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Ux4gColors.primary300
-                                          : Ux4gColors.primary600
-                                    : Theme.of(context).brightness ==
-                                          Brightness.dark
-                                    ? Ux4gColors.neutral700
-                                    : Ux4gColors.neutral200,
-                                width: _selected == 'first_time' ? 6 : 2,
-                              ),
-                              color:
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Ux4gColors.neutral900
-                                  : Ux4gColors.neutral0,
-                            ),
-                          ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "No, I haven't applied before",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: _selected == 'first_time'
-                                        ? Theme.of(context).brightness ==
-                                                  Brightness.dark
-                                              ? Ux4gColors.primary300
-                                              : Ux4gColors.primary600
-                                        : Theme.of(context).brightness ==
-                                              Brightness.dark
-                                        ? Ux4gColors.neutral50
-                                        : Ux4gColors.neutral900,
-                                  ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  'First-time applicant for this certificate',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color:
-                                        Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Ux4gColors.neutral200
-                                        : Ux4gColors.neutral700,
-                                    height: 1.3,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  GestureDetector(
                     onTap: () => setState(() => _selected = 'expired_rejected'),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -5296,11 +4699,21 @@ class _EligibilityFinalQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'expired_rejected'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary900
-                                  : Ux4gColors.primary50
+                                ? Ux4gColors.primary900
+                                : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral800
-                            : Ux4gColors.neutral100,
+                                ? Ux4gColors.neutral900
+                                : Ux4gColors.neutral0,
+                        border: Border.all(
+                          color: _selected == 'expired_rejected'
+                              ? Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary200
+                              : Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral700
+                                  : const Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -5381,11 +4794,21 @@ class _EligibilityFinalQuestionMockupState
                       decoration: BoxDecoration(
                         color: _selected == 'currently_valid'
                             ? Theme.of(context).brightness == Brightness.dark
-                                  ? Ux4gColors.primary900
-                                  : Ux4gColors.primary50
+                                ? Ux4gColors.primary900
+                                : Ux4gColors.primary50
                             : Theme.of(context).brightness == Brightness.dark
-                            ? Ux4gColors.neutral800
-                            : Ux4gColors.neutral100,
+                                ? Ux4gColors.neutral900
+                                : Ux4gColors.neutral0,
+                        border: Border.all(
+                          color: _selected == 'currently_valid'
+                              ? Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary200
+                              : Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral700
+                                  : const Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -5455,6 +4878,101 @@ class _EligibilityFinalQuestionMockupState
                       ),
                     ),
                   ),
+                  const SizedBox(height: 12),
+                  GestureDetector(
+                    onTap: () => setState(() => _selected = 'first_time'),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 14,
+                      ),
+                      decoration: BoxDecoration(
+                        color: _selected == 'first_time'
+                            ? Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.primary900
+                                : Ux4gColors.primary50
+                            : Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral900
+                                : Ux4gColors.neutral0,
+                        border: Border.all(
+                          color: _selected == 'first_time'
+                              ? Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary200
+                              : Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral700
+                                  : const Color(0xFFE5E7EB),
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 22,
+                            height: 22,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: _selected == 'first_time'
+                                    ? Theme.of(context).brightness ==
+                                              Brightness.dark
+                                          ? Ux4gColors.primary300
+                                          : Ux4gColors.primary600
+                                    : Theme.of(context).brightness ==
+                                          Brightness.dark
+                                    ? Ux4gColors.neutral700
+                                    : Ux4gColors.neutral200,
+                                width: _selected == 'first_time' ? 6 : 2,
+                              ),
+                              color:
+                                  Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral0,
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "No, I haven't applied before",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: _selected == 'first_time'
+                                        ? Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Ux4gColors.primary300
+                                              : Ux4gColors.primary600
+                                        : Theme.of(context).brightness ==
+                                              Brightness.dark
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  'First-time applicant for this certificate',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Ux4gColors.neutral200
+                                        : Ux4gColors.neutral700,
+                                    height: 1.3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -5469,13 +4987,30 @@ class _EligibilityFinalQuestionMockupState
           ),
           const SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
-            child: Ux4gButton(
-              height: 48,
-              text: 'Check Eligibility',
-              onPressed: _selected != null ? () {} : null,
-              size: Ux4gButtonSize.large,
-              width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+            child: Column(
+              children: [
+                Ux4gButton(
+                  height: 48,
+                  text: 'Continue',
+                  onPressed: _selected != null ? () {} : null,
+                  size: Ux4gButtonSize.large,
+                  width: double.infinity,
+                ),
+                const SizedBox(height: 4),
+                Ux4gButton(
+                  height: 48,
+                  text: 'Back',
+                  onPressed: () {},
+                  variant: Ux4gButtonVariant.ghost,
+                  size: Ux4gButtonSize.large,
+                  width: double.infinity,
+                  contentColor:
+                      Theme.of(context).brightness == Brightness.dark
+                      ? Ux4gColors.primary300
+                      : Ux4gColors.primary600,
+                ),
+              ],
             ),
           ),
 
@@ -5554,7 +5089,7 @@ class _EligibilityFinalQuestionCardMockupState
                               ),
                             ),
                             const SizedBox(height: 8),
-                            _buildGradientProgress(context, 0.9),
+                            _buildGradientProgress(context, 1.0),
                             const SizedBox(height: 20),
 
                             // Question
@@ -5576,103 +5111,6 @@ class _EligibilityFinalQuestionCardMockupState
 
                             // Radio options
                             GestureDetector(
-                              onTap: () =>
-                                  setState(() => _selected = 'first_time'),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 14,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: _selected == 'first_time'
-                                      ? Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.primary900
-                                            : Ux4gColors.primary50
-                                      : Theme.of(context).brightness ==
-                                            Brightness.dark
-                                      ? Ux4gColors.neutral800
-                                      : Ux4gColors.neutral100,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 22,
-                                      height: 22,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: _selected == 'first_time'
-                                              ? Theme.of(context).brightness ==
-                                                        Brightness.dark
-                                                    ? Ux4gColors.primary300
-                                                    : Ux4gColors.primary600
-                                              : Theme.of(context).brightness ==
-                                                    Brightness.dark
-                                              ? Ux4gColors.neutral700
-                                              : Ux4gColors.neutral200,
-                                          width: _selected == 'first_time'
-                                              ? 6
-                                              : 2,
-                                        ),
-                                        color:
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Ux4gColors.neutral900
-                                            : Ux4gColors.neutral0,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 14),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "No, I haven't applied before",
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w700,
-                                              color: _selected == 'first_time'
-                                                  ? Theme.of(
-                                                              context,
-                                                            ).brightness ==
-                                                            Brightness.dark
-                                                        ? Ux4gColors.primary300
-                                                        : Ux4gColors.primary600
-                                                  : Theme.of(
-                                                          context,
-                                                        ).brightness ==
-                                                        Brightness.dark
-                                                  ? Ux4gColors.neutral50
-                                                  : Ux4gColors.neutral900,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2),
-                                          Text(
-                                            'First-time applicant for this certificate',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              color:
-                                                  Theme.of(
-                                                        context,
-                                                      ).brightness ==
-                                                      Brightness.dark
-                                                  ? Ux4gColors.neutral200
-                                                  : Ux4gColors.neutral700,
-                                              height: 1.3,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            GestureDetector(
                               onTap: () => setState(
                                 () => _selected = 'expired_rejected',
                               ),
@@ -5689,8 +5127,20 @@ class _EligibilityFinalQuestionCardMockupState
                                             : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gColors.neutral800
-                                      : Ux4gColors.neutral100,
+                                      ? Ux4gColors.neutral900
+                                      : Ux4gColors.neutral0,
+                                  border: Border.all(
+                                    color: _selected == 'expired_rejected'
+                                        ? Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Ux4gColors.primary400
+                                              : Ux4gColors.primary200
+                                        : Theme.of(context).brightness ==
+                                              Brightness.dark
+                                        ? Ux4gColors.neutral700
+                                        : const Color(0xFFE5E7EB),
+                                    width: 1.5,
+                                  ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -5788,8 +5238,20 @@ class _EligibilityFinalQuestionCardMockupState
                                             : Ux4gColors.primary50
                                       : Theme.of(context).brightness ==
                                             Brightness.dark
-                                      ? Ux4gColors.neutral800
-                                      : Ux4gColors.neutral100,
+                                      ? Ux4gColors.neutral900
+                                      : Ux4gColors.neutral0,
+                                  border: Border.all(
+                                    color: _selected == 'currently_valid'
+                                        ? Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Ux4gColors.primary400
+                                              : Ux4gColors.primary200
+                                        : Theme.of(context).brightness ==
+                                              Brightness.dark
+                                        ? Ux4gColors.neutral700
+                                        : const Color(0xFFE5E7EB),
+                                    width: 1.5,
+                                  ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
@@ -5869,6 +5331,115 @@ class _EligibilityFinalQuestionCardMockupState
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 12),
+                            GestureDetector(
+                              onTap: () =>
+                                  setState(() => _selected = 'first_time'),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 14,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: _selected == 'first_time'
+                                      ? Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Ux4gColors.primary900
+                                            : Ux4gColors.primary50
+                                      : Theme.of(context).brightness ==
+                                            Brightness.dark
+                                      ? Ux4gColors.neutral900
+                                      : Ux4gColors.neutral0,
+                                  border: Border.all(
+                                    color: _selected == 'first_time'
+                                        ? Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Ux4gColors.primary400
+                                              : Ux4gColors.primary200
+                                        : Theme.of(context).brightness ==
+                                              Brightness.dark
+                                        ? Ux4gColors.neutral700
+                                        : const Color(0xFFE5E7EB),
+                                    width: 1.5,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 22,
+                                      height: 22,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: _selected == 'first_time'
+                                              ? Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? Ux4gColors.primary300
+                                                    : Ux4gColors.primary600
+                                              : Theme.of(context).brightness ==
+                                                    Brightness.dark
+                                              ? Ux4gColors.neutral700
+                                              : Ux4gColors.neutral200,
+                                          width: _selected == 'first_time'
+                                              ? 6
+                                              : 2,
+                                        ),
+                                        color:
+                                            Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Ux4gColors.neutral900
+                                            : Ux4gColors.neutral0,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 14),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "No, I haven't applied before",
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                              color: _selected == 'first_time'
+                                                  ? Theme.of(
+                                                              context,
+                                                            ).brightness ==
+                                                            Brightness.dark
+                                                        ? Ux4gColors.primary300
+                                                        : Ux4gColors.primary600
+                                                  : Theme.of(
+                                                          context,
+                                                        ).brightness ==
+                                                        Brightness.dark
+                                                  ? Ux4gColors.neutral50
+                                                  : Ux4gColors.neutral900,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 2),
+                                          Text(
+                                            'First-time applicant for this certificate',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color:
+                                                  Theme.of(
+                                                        context,
+                                                      ).brightness ==
+                                                      Brightness.dark
+                                                  ? Ux4gColors.neutral200
+                                                  : Ux4gColors.neutral700,
+                                              height: 1.3,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                             const SizedBox(height: 24),
                             Ux4gButton(
                               height: 48,
@@ -5876,6 +5447,19 @@ class _EligibilityFinalQuestionCardMockupState
                               onPressed: _selected != null ? () {} : null,
                               size: Ux4gButtonSize.large,
                               width: double.infinity,
+                            ),
+                            const SizedBox(height: 4),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Back',
+                              onPressed: () {},
+                              variant: Ux4gButtonVariant.ghost,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              contentColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
                             ),
                           ],
                         ),
@@ -5885,11 +5469,11 @@ class _EligibilityFinalQuestionCardMockupState
                 ],
               ),
             ),
+            const _EligibilityFooter(),
           ],
         ),
       ),
     ),
-    const _EligibilityFooter(),
   ],
 ),
 );
@@ -5955,7 +5539,7 @@ class EligibilityWizardScreen extends StatelessWidget {
                         Text('Question 5 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
                         SizedBox(height: 8),
                         Ux4gLinearProgress(
-                          value: 0.9,
+                          value: 1.0,
                           height: 6,
                           gradientColors: Theme.of(context).brightness == Brightness.dark ? const [Ux4gColors.primary200A, Ux4gColors.primary300] : const [Ux4gColors.primary200A, Ux4gColors.primary600],
                           trackColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB),
@@ -5971,45 +5555,15 @@ class EligibilityWizardScreen extends StatelessWidget {
 
                         // Radio Options
                         GestureDetector(
-                          onTap: () => setState(() => _selected = 'first_time'),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                            decoration: BoxDecoration(
-                              color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 22, height: 22,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200, width: _selected == 'first_time' ? 6 : 2),
-                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
-                                  ),
-                                ),
-                                SizedBox(width: 14),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("No, I haven't applied before", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
-                                      SizedBox(height: 2),
-                                      Text('First-time applicant for this certificate', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 12),
-                        GestureDetector(
                           onTap: () => setState(() => _selected = 'expired_rejected'),
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                             decoration: BoxDecoration(
-                              color: _selected == 'expired_rejected' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
+                              color: _selected == 'expired_rejected' ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0),
+                              border: Border.all(
+                                color: _selected == 'expired_rejected' ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary400 : Ux4gColors.primary200) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
+                                width: 1.5,
+                              ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -6043,7 +5597,11 @@ class EligibilityWizardScreen extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                             decoration: BoxDecoration(
-                              color: _selected == 'currently_valid' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
+                              color: _selected == 'currently_valid' ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0),
+                              border: Border.all(
+                                color: _selected == 'currently_valid' ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary400 : Ux4gColors.primary200) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
+                                width: 1.5,
+                              ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -6071,6 +5629,44 @@ class EligibilityWizardScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        SizedBox(height: 12),
+                        GestureDetector(
+                          onTap: () => setState(() => _selected = 'first_time'),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                            decoration: BoxDecoration(
+                              color: _selected == 'first_time' ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0),
+                              border: Border.all(
+                                color: _selected == 'first_time' ? (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary400 : Ux4gColors.primary200) : (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : const Color(0xFFE5E7EB)),
+                                width: 1.5,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 22, height: 22,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral700 : Ux4gColors.neutral200, width: _selected == 'first_time' ? 6 : 2),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                                  ),
+                                ),
+                                SizedBox(width: 14),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("No, I haven't applied before", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: _selected == 'first_time' ? Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600 : Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                                      SizedBox(height: 2),
+                                      Text('First-time applicant for this certificate', style: TextStyle(fontSize: 13, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -6080,32 +5676,47 @@ class EligibilityWizardScreen extends StatelessWidget {
                 Ux4gDivider(thickness: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Color(0xFFE5E7EB)),
                 SizedBox(height: 16),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(24, 16, 24, 0),
-                  child: Ux4gButton(height: 48, 
-                    text: 'Check Eligibility',
-                    onPressed: _selected != null ? () {} : null,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
+                  padding: EdgeInsets.fromLTRB(24, 8, 24, 0),
+                  child: Column(
+                    children: [
+                      Ux4gButton(
+                        height: 48, 
+                        text: 'Continue',
+                        onPressed: _selected != null ? () {} : null,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                      ),
+                      SizedBox(height: 4),
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Back',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.ghost,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      ),
+                    ],
                   ),
                 ),
 
                 // Footer
                 Padding(
                   padding: EdgeInsets.only(bottom: 20, top: 16),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
-                      SizedBox(height: 6),
-                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                      SizedBox(width: 8),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
               ],
             );
           }
-
-          // Define _buildRadioOption similar to previous examples
         },
       ),
     );
@@ -6114,9 +5725,6 @@ class EligibilityWizardScreen extends StatelessWidget {
 
 const _eligibilityFinalQuestionCardCode =
     r'''// Eligibility Final Question Step – Card Style Layout
-// Code similar to Flat Layout but wrapped in a Card inside a Purple Container
-// Follow the structure of EligibilityQuestionCardMockup
-
 import 'package:flutter/material.dart';
 import 'package:ux4g_flutter_components/ux4g_flutter_components.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6129,7 +5737,76 @@ class EligibilityWizardScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral50,
       body: SafeArea(
-        child: ,
+        child: Column(
+          children: [
+            // Header ...
+
+            Expanded(
+              child: Container(
+                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary900 : Ux4gColors.primary50,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: CustomScrollView(
+                        slivers: [
+                          SliverPadding(
+                            padding: EdgeInsets.all(16),
+                            sliver: SliverFillRemaining(
+                              hasScrollBody: false,
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(20, 24, 20, 24),
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 16, offset: Offset(0, 4))],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Progress indicator
+                                    Text('Question 5 of 5', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
+                                    SizedBox(height: 8),
+                                    Ux4gLinearProgressBar(value: 1.0, height: 6, gradientColors: [Ux4gColors.primary300, Ux4gColors.primary600]),
+                                    SizedBox(height: 20),
+
+                                    // Question
+                                    Text('Have you applied for this certificate before in the last 1 year?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral50 : Ux4gColors.neutral900)),
+                                    SizedBox(height: 24),
+
+                                    // Radio options ...
+                                    // 1. Yes, but it expired or was rejected
+                                    // 2. Yes, I currently have a valid certificate
+                                    // 3. No, I haven't applied before
+
+                                    SizedBox(height: 24),
+                                    Ux4gButton(height: 48, text: 'Check Eligibility', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity),
+                                    SizedBox(height: 4),
+                                    Ux4gButton(height: 48, text: 'Back', onPressed: () {}, variant: Ux4gButtonVariant.ghost, size: Ux4gButtonSize.large, width: double.infinity),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 20, top: 16),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500)),
+                          SizedBox(width: 8),
+                          Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
