@@ -126,6 +126,34 @@ class GovernmentFormMultipleErrorsScreenState
                     ),
                   ),
                 ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral800
+                              : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                verticalPadding: 16,
+                horizontalPadding: 16,
+                leadingSpacing: 8,
               ),
               Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Ux4gStatusBanner(
@@ -436,48 +464,42 @@ Text(
                         onChanged: (val) =>
                             setState(() => _acceptTerms = val ?? false),
                       ),
-  
+                      const SizedBox(height: 24),
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Continue',
+                        onPressed: () {},
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                      ),
+                      const SizedBox(height: 12),
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Back',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.outline,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        contentColor: primaryColor,
+                        borderColor: primaryColor,
+                      ),
                     ],
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-height: 48, text: 'Continue',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                    ),
-                    SizedBox(height: 12),
-                    Ux4gButton(
-height: 48, text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
                 padding: EdgeInsets.only(bottom: 24),
-                child: Column(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
                       style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
-                    SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    SizedBox(width: 8),
+                    Image.asset(_digitalIndiaLogoPath, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -550,6 +572,34 @@ class _GovernmentFormMultipleErrorsMockupState
                     ),
                   ),
                 ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral800
+                              : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                verticalPadding: 16,
+                horizontalPadding: 16,
+                leadingSpacing: 8,
               ),
               Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
               Ux4gStatusBanner(
@@ -893,15 +943,17 @@ height: 48, text: 'Back',
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 24),
-                child: Column(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
                       style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
-                    SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    SizedBox(width: 8),
+                    Image.asset(_digitalIndiaLogoPath, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),
@@ -965,6 +1017,34 @@ class _GovernmentFormMultipleErrorsCardMockupState
                           ),
                         ),
                       ],
+                      actions: [
+                        Ux4gAppHeaderAction(
+                          customWidget: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.neutral800
+                                    : const Color(0xFFE5E7EB),
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.menu,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      verticalPadding: 16,
+                      horizontalPadding: 16,
+                      leadingSpacing: 8,
                     ),
                     Divider(height: 1, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                   ],
@@ -1290,7 +1370,25 @@ class _GovernmentFormMultipleErrorsCardMockupState
                               onChanged: (val) =>
                                   setState(() => _acceptTerms = val ?? false),
                             ),
-        
+                            SizedBox(height: 24),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Continue',
+                              onPressed: () {},
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                            ),
+                            SizedBox(height: 12),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Back',
+                              onPressed: () {},
+                              variant: Ux4gButtonVariant.outline,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              contentColor: primaryColor,
+                              borderColor: primaryColor,
+                            ),
                           ],
                         ),
                       ),
@@ -1299,42 +1397,18 @@ class _GovernmentFormMultipleErrorsCardMockupState
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-height: 48, text: 'Continue',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                    ),
-                    SizedBox(height: 12),
-                    Ux4gButton(
-height: 48, text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
                 padding: EdgeInsets.only(bottom: 24),
-                child: Column(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
                       style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral600 : Ux4gColors.neutral400),
                     ),
-                    SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24),
+                    SizedBox(width: 8),
+                    Image.asset(_digitalIndiaLogoPath, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                   ],
                 ),
               ),

@@ -6079,6 +6079,14 @@ class _EligibilityFinalQuestionCardMockupState
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 24),
+                            Ux4gButton(
+                              height: 48,
+                              text: 'Check Eligibility',
+                              onPressed: _selected != null ? () {} : null,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                            ),
                           ],
                         ),
                       ),
@@ -6088,29 +6096,10 @@ class _EligibilityFinalQuestionCardMockupState
                       ),
                   ),
 
-                  // Actions (outside card)
-                  Ux4gDivider(
-                    thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral800
-                        : Color(0xFFE5E7EB),
-                  ),
-                  const SizedBox(height: 16),
+                                    // Footer
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-                    child: Ux4gButton(
-                      height: 48,
-                      text: 'Check Eligibility',
-                      onPressed: _selected != null ? () {} : null,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                    ),
-                  ),
-
-                  // Footer
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 12),
-                    child: Column(
+                    padding: const EdgeInsets.only(bottom: 24, top: 4),
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
@@ -6124,7 +6113,7 @@ class _EligibilityFinalQuestionCardMockupState
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const SizedBox(height: 6),
+                        const SizedBox(width: 8),
                         Image.asset(
                           _digitalIndiaLogoPath,
                           height: 22,

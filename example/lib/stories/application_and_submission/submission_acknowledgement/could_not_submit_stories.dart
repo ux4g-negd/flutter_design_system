@@ -77,6 +77,111 @@ class _ErrorIcon extends StatelessWidget {
   }
 }
 
+class _ApplicationProgressTimeline extends StatelessWidget {
+  const _ApplicationProgressTimeline();
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'What happens next',
+          style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+              .copyWith(
+            color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+            border: Border.all(
+              color: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Application Progress',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Submission failed due to a network error. Your data is saved — retry when ready',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Ux4gJourneyTimeline(
+                activeColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                indicatorSize: 20,
+                lineWidth: 3,
+                indicatorCardSpacing: 12,
+                stepSpacing: 12,
+                cardColor: isDark ? Ux4gColors.neutral900 : Colors.white,
+                cardBorderColor: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                cardBorderRadius: 8,
+                steps: [
+                  Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.completed,
+                    date: '02 Sep 2026',
+                    title: 'Draft Saved',
+                    status: Ux4gJourneyStepStatus(
+                      text: '',
+                      badgeText: 'Saved',
+                      badgeColor: isDark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                      badgeTextColor: isDark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                    ),
+                  ),
+                  Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.current,
+                    date: '02 Sep 2026',
+                    title: 'Submission Failed',
+                    status: Ux4gJourneyStepStatus(
+                      text: '',
+                      badgeText: 'Failed',
+                      badgeColor: isDark ? const Color(0xFF7F1D1D) : const Color(0xFFFEE2E2),
+                      badgeTextColor: isDark ? const Color(0xFFF87171) : const Color(0xFFDC2626),
+                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                    ),
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.upcoming,
+                    date: 'Pending',
+                    title: 'Document Verification',
+                    tag: 'Blocked',
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.upcoming,
+                    date: 'Pending',
+                    title: 'Certificate Issued',
+                    tag: 'Blocked',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _ErrorToastCard extends StatelessWidget {
   final VoidCallback? onClose;
   const _ErrorToastCard({this.onClose});
@@ -92,7 +197,7 @@ class _ErrorToastCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 16,
             offset: const Offset(0, -4),
           ),
@@ -201,6 +306,24 @@ class CouldNotSubmitScreen extends StatelessWidget {
                   ),
                 ),
                         ],
+                        actions: [
+                          Ux4gAppHeaderAction(
+                            customWidget: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color(0xFFE5E7EB)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Center(
+                                child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                        verticalPadding: 16,
+                        horizontalPadding: 16,
+                        leadingSpacing: 8,
                       ),
                       const Divider(height: 1, color: Color(0xFFE5E7EB)),
                     ],
@@ -267,31 +390,101 @@ class CouldNotSubmitScreen extends StatelessWidget {
                         const SizedBox(height: 32),
 
                         // What happens next - Journey Timeline
-                        Ux4gJourneyTimeline(
-                          header: const Ux4gJourneyHeader(title: 'What happens next'),
-                          steps: const [
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '1',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
+                        Text(
+                          'What happens next',
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                              .copyWith(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral50
+                                : Ux4gColors.neutral900,
+                          ),
+                        ),
+                        SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
                             ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '2',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '3',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                          ],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Application Progress',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                'Submission failed due to a network error. Your data is saved — retry when ready',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? Ux4gColors.neutral400
+                                      : Ux4gColors.neutral600,
+                                  height: 1.4,
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Ux4gJourneyTimeline(
+                                activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                                indicatorSize: 20,
+                                lineWidth: 3,
+                                indicatorCardSpacing: 12,
+                                stepSpacing: 12,
+                                cardColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                                cardBorderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                                cardBorderRadius: 8,
+                                steps: [
+                                  Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.completed,
+                                    date: '02 Sep 2026',
+                                    title: 'Draft Saved',
+                                    status: Ux4gJourneyStepStatus(
+                                      text: '',
+                                      badgeText: 'Saved',
+                                      badgeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                                      badgeTextColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                    ),
+                                  ),
+                                  Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.current,
+                                    date: '02 Sep 2026',
+                                    title: 'Submission Failed',
+                                    status: Ux4gJourneyStepStatus(
+                                      text: '',
+                                      badgeText: 'Failed',
+                                      badgeColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF7F1D1D) : const Color(0xFFFEE2E2),
+                                      badgeTextColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFFF87171) : const Color(0xFFDC2626),
+                                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                    ),
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.upcoming,
+                                    date: 'Pending',
+                                    title: 'Document Verification',
+                                    tag: 'Blocked',
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.upcoming,
+                                    date: 'Pending',
+                                    title: 'Certificate Issued',
+                                    tag: 'Blocked',
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -320,12 +513,14 @@ class CouldNotSubmitScreen extends StatelessWidget {
                 // Footer
                 Padding(
                   padding: const EdgeInsets.only(bottom: 24),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                      const SizedBox(height: 6),
-                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                      const SizedBox(width: 8),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
@@ -420,6 +615,24 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                   ),
                 ),
                         ],
+                        actions: [
+                          Ux4gAppHeaderAction(
+                            customWidget: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color(0xFFE5E7EB)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Center(
+                                child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                        verticalPadding: 16,
+                        horizontalPadding: 16,
+                        leadingSpacing: 8,
                       ),
                       const Divider(height: 1, color: Color(0xFFE5E7EB)),
                     ],
@@ -487,31 +700,100 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                           const SizedBox(height: 32),
 
                           // Journey Timeline
-                          Ux4gJourneyTimeline(
-                            header: const Ux4gJourneyHeader(title: 'What happens next'),
-                            steps: const [
-                              Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.completed,
-                                stepNumber: '1',
-                                date: 'Date',
-                                title: 'Title',
-                                helpingText: 'Helping Text',
+                          Text(
+                            'What happens next',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                                .copyWith(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
+                            ),
+                          ),
+                          SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
                               ),
-                              Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.completed,
-                                stepNumber: '2',
-                                date: 'Date',
-                                title: 'Title',
-                                helpingText: 'Helping Text',
-                              ),
-                              Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.completed,
-                                stepNumber: '3',
-                                date: 'Date',
-                                title: 'Title',
-                                helpingText: 'Helping Text',
-                              ),
-                            ],
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Application Progress',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
+                                  ),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'Submission failed due to a network error. Your data is saved — retry when ready',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.neutral400
+                                        : Ux4gColors.neutral600,
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Ux4gJourneyTimeline(
+                                  activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                                  indicatorSize: 20,
+                                  lineWidth: 3,
+                                  indicatorCardSpacing: 12,
+                                  stepSpacing: 12,
+                                  cardColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                                  cardBorderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                                  cardBorderRadius: 8,
+                                  steps: [
+                                    Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.completed,
+                                      date: '02 Sep 2026',
+                                      title: 'Draft Saved',
+                                      status: Ux4gJourneyStepStatus(
+                                        text: '',
+                                        badgeText: 'Saved',
+                                        badgeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                                        badgeTextColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                                        badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                      ),
+                                    ),
+                                    Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.current,
+                                      date: '02 Sep 2026',
+                                      title: 'Submission Failed',
+                                      status: Ux4gJourneyStepStatus(
+                                        text: '',
+                                        badgeText: 'Failed',
+                                        badgeColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF7F1D1D) : const Color(0xFFFEE2E2),
+                                        badgeTextColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFFF87171) : const Color(0xFFDC2626),
+                                        badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                      ),
+                                    ),
+                                    const Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.upcoming,
+                                      date: 'Pending',
+                                      title: 'Document Verification',
+                                      tag: 'Blocked',
+                                    ),
+                                    const Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.upcoming,
+                                      date: 'Pending',
+                                      title: 'Certificate Issued',
+                                      tag: 'Blocked',
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -541,12 +823,14 @@ class CouldNotSubmitCardScreen extends StatelessWidget {
                 // Footer
                 Padding(
                   padding: const EdgeInsets.only(bottom: 24),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                      const SizedBox(height: 6),
-                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                      const SizedBox(width: 8),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
@@ -614,8 +898,9 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.dark
+      backgroundColor: isDark
           ? Ux4gColors.neutral900
           : Colors.white,
       body: SafeArea(
@@ -670,6 +955,30 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                             ),
                           ),
                         ],
+                        actions: [
+                          Ux4gAppHeaderAction(
+                            customWidget: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.menu,
+                                  color: isDark ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                        verticalPadding: 16,
+                        horizontalPadding: 16,
+                        leadingSpacing: 8,
                       ),
                       const Divider(height: 1, color: Color(0xFFE5E7EB)),
                     ],
@@ -749,34 +1058,7 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                         const SizedBox(height: 32),
 
                         // What happens next - Journey Timeline
-                        Ux4gJourneyTimeline(
-                          header: const Ux4gJourneyHeader(
-                            title: 'What happens next',
-                          ),
-                          steps: const [
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '1',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '2',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '3',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                          ],
-                        ),
+                        const _ApplicationProgressTimeline(),
                       ],
                     ),
                   ),
@@ -847,8 +1129,10 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                 // Footer
                 Padding(
                   padding: const EdgeInsets.only(bottom: 24),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text(
                         'Powered by -',
@@ -857,10 +1141,10 @@ class _CouldNotSubmitMockupState extends State<_CouldNotSubmitMockup> {
                           color: Color(0xFF9CA3AF),
                         ),
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(width: 8),
                       Image.asset(
                         _digitalIndiaLogoPath,
-                        height: 24,
+                        height: 22,
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Colors.white
                             : null,
@@ -908,15 +1192,16 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark
+        color: isDark
             ? Ux4gColors.primary900
             : Ux4gColors.primary50,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 24,
             offset: const Offset(0, 6),
           ),
@@ -924,7 +1209,7 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
       ),
       clipBehavior: Clip.antiAlias,
       child: Scaffold(
-        backgroundColor: Theme.of(context).brightness == Brightness.dark
+        backgroundColor: isDark
             ? Ux4gColors.primary900
             : Ux4gColors.primary50,
         body: SafeArea(
@@ -980,6 +1265,30 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                               ),
                             ),
                           ],
+                          actions: [
+                            Ux4gAppHeaderAction(
+                              customWidget: Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.menu,
+                                    color: isDark ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                          verticalPadding: 16,
+                          horizontalPadding: 16,
+                          leadingSpacing: 8,
                         ),
                         const Divider(height: 1, color: Color(0xFFE5E7EB)),
                       ],
@@ -1002,7 +1311,7 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.06),
+                              color: Colors.black.withValues(alpha: 0.06),
                               blurRadius: 20,
                               spreadRadius: 2,
                               offset: const Offset(0, 4),
@@ -1075,33 +1384,57 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                             const SizedBox(height: 32),
 
                             // What happens next - Journey Timeline
-                            Ux4gJourneyTimeline(
-                              header: const Ux4gJourneyHeader(
-                                title: 'What happens next',
+                            const _ApplicationProgressTimeline(),
+                            const SizedBox(height: 24),
+                            Ux4gButton(
+                              text: 'Retry submission',
+                              onPressed: () => setState(() => _showToast = true),
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              height: 48,
+                              backgroundColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
+                              contentColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral50,
+                            ),
+                            const SizedBox(height: 12),
+                            Ux4gButton(
+                              text: 'Save draft',
+                              onPressed: () {},
+                              variant: Ux4gButtonVariant.outline,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              height: 48,
+                              contentColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
+                              borderColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary600
+                                  : Ux4gColors.primary300,
+                            ),
+                            const SizedBox(height: 12),
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Text(
+                                  'Contact support',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
+                                  ),
+                                ),
                               ),
-                              steps: const [
-                                Ux4gJourneyStep(
-                                  state: Ux4gJourneyStepState.completed,
-                                  stepNumber: '1',
-                                  date: 'Date',
-                                  title: 'Title',
-                                  helpingText: 'Helping Text',
-                                ),
-                                Ux4gJourneyStep(
-                                  state: Ux4gJourneyStepState.completed,
-                                  stepNumber: '2',
-                                  date: 'Date',
-                                  title: 'Title',
-                                  helpingText: 'Helping Text',
-                                ),
-                                Ux4gJourneyStep(
-                                  state: Ux4gJourneyStepState.completed,
-                                  stepNumber: '3',
-                                  date: 'Date',
-                                  title: 'Title',
-                                  helpingText: 'Helping Text',
-                                ),
-                              ],
                             ),
                           ],
                         ),
@@ -1109,73 +1442,13 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                     ),
                   ),
 
-                  // Actions
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 16,
-                    ),
-                    child: Column(
-                      children: [
-                        Ux4gButton(
-                          text: 'Retry submission',
-                          onPressed: () => setState(() => _showToast = true),
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          height: 48,
-                          backgroundColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary300
-                              : Ux4gColors.primary600,
-                          contentColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.neutral900
-                              : Ux4gColors.neutral50,
-                        ),
-                        const SizedBox(height: 12),
-                        Ux4gButton(
-                          text: 'Save draft',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.outline,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          height: 48,
-                          contentColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary300
-                              : Ux4gColors.primary600,
-                          borderColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary600
-                              : Ux4gColors.primary300,
-                        ),
-                        const SizedBox(height: 12),
-                        Center(
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              'Contact support',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color:
-                                    Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Ux4gColors.neutral50
-                                    : Ux4gColors.neutral900,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
                   // Footer
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    child: Column(
+                    padding: const EdgeInsets.only(bottom: 24, top: 4),
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
                           'Powered by -',
@@ -1184,10 +1457,10 @@ class _CouldNotSubmitCardMockupState extends State<_CouldNotSubmitCardMockup> {
                             color: Color(0xFF9CA3AF),
                           ),
                         ),
-                        const SizedBox(height: 6),
+                        const SizedBox(width: 8),
                         Image.asset(
                           _digitalIndiaLogoPath,
-                          height: 24,
+                          height: 22,
                           color: Theme.of(context).brightness == Brightness.dark
                               ? Colors.white
                               : null,

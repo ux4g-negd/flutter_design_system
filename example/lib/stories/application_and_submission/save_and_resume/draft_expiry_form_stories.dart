@@ -19,7 +19,7 @@ Color _border(BuildContext context) =>
 Color _primary(BuildContext context) =>
     _isDark(context) ? Ux4gColors.primary300 : Ux4gColors.primary600;
 Color _cardBackground(BuildContext context) =>
-    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : const Color(0xFFDCD4FF);
 
 final draftExpiryFormComponent = WidgetbookComponent(
   name: 'Draft Expiry Form',
@@ -103,8 +103,8 @@ class DraftExpiryFormScreen extends StatelessWidget {
               child: Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
-                height: 62,
-                horizontalPadding: 14,
+                horizontalPadding: 16,
+                verticalPadding: 16,
                 leadingSpacing: 8,
                 elevation: 0,
                 leadingWidgets: [
@@ -133,6 +133,27 @@ class DraftExpiryFormScreen extends StatelessWidget {
                           ? Ux4gColors.primary300
                           : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: dark ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -302,13 +323,16 @@ class DraftExpiryFormScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16, bottom: 7),
-              child: Column(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
                     style: TextStyle(fontSize: 10, color: _body(context)),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,
                     height: 22,
@@ -397,8 +421,8 @@ class _DraftExpiryFormMockup extends StatelessWidget {
               child: Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
-                height: 62,
-                horizontalPadding: 14,
+                horizontalPadding: 16,
+                verticalPadding: 16,
                 leadingSpacing: 8,
                 elevation: 0,
                 leadingWidgets: [
@@ -424,6 +448,27 @@ class _DraftExpiryFormMockup extends StatelessWidget {
                           ? Ux4gColors.primary300
                           : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: _isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -465,49 +510,49 @@ class _DraftExpiryFormMockup extends StatelessWidget {
                     ),
                     SizedBox(height: 12),
                     _FormField(label: 'Date of birth'),
-                    SizedBox(height: 12),
-                    _FormField(
+                    const _FormField(
                       label: 'Mobile number',
                       type: Ux4gInputFieldType.number,
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Actions
+                    Ux4gButton(
+                      text: 'Continue',
+                      onPressed: () {},
+                      width: double.infinity,
+                      height: 48,
+                      size: Ux4gButtonSize.large,
+                    ),
+                    const SizedBox(height: 12),
+                    Ux4gButton(
+                      text: 'Save draft',
+                      onPressed: () {},
+                      width: double.infinity,
+                      height: 48,
+                      size: Ux4gButtonSize.large,
+                      variant: Ux4gButtonVariant.outline,
+                      contentColor: _primary(context),
+                      borderColor: _primary(context),
                     ),
                   ],
                 ),
               ),
             ),
+
+            // Footer
             Padding(
-              padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
-              child: Column(
-                children: [
-                  Ux4gButton(
-                    text: 'Continue',
-                    onPressed: () {},
-                    width: double.infinity,
-                    height: 40,
-                    borderRadius: 6,
-                  ),
-                  SizedBox(height: 7),
-                  Ux4gButton(
-                    text: 'Save draft',
-                    onPressed: () {},
-                    width: double.infinity,
-                    height: 40,
-                    borderRadius: 6,
-                    variant: Ux4gButtonVariant.outline,
-                    contentColor: _primary(context),
-                    borderColor: _primary(context),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 7),
-              child: Column(
+              padding: const EdgeInsets.only(top: 16, bottom: 24),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
                     style: TextStyle(fontSize: 10, color: _body(context)),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,
                     height: 22,
@@ -550,8 +595,8 @@ class _DraftExpiryFormCardMockup extends StatelessWidget {
               child: Ux4gAppHeader(
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
-                height: 62,
-                horizontalPadding: 14,
+                horizontalPadding: 16,
+                verticalPadding: 16,
                 leadingSpacing: 8,
                 elevation: 0,
                 leadingWidgets: [
@@ -575,6 +620,27 @@ class _DraftExpiryFormCardMockup extends StatelessWidget {
                     colorFilter: ColorFilter.mode(
                       dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.menu,
+                          color: dark ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                          size: 20,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -631,45 +697,44 @@ class _DraftExpiryFormCardMockup extends StatelessWidget {
                         label: 'Mobile number',
                         type: Ux4gInputFieldType.number,
                       ),
+                      const SizedBox(height: 20),
+
+                      // Actions
+                      Ux4gButton(
+                        text: 'Continue',
+                        onPressed: () {},
+                        width: double.infinity,
+                        height: 48,
+                        size: Ux4gButtonSize.large,
+                      ),
+                      const SizedBox(height: 12),
+                      Ux4gButton(
+                        text: 'Save draft',
+                        onPressed: () {},
+                        width: double.infinity,
+                        height: 48,
+                        size: Ux4gButtonSize.large,
+                        variant: Ux4gButtonVariant.outline,
+                        contentColor: _primary(context),
+                        borderColor: _primary(context),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
-              child: Column(
-                children: [
-                  Ux4gButton(
-                    text: 'Continue',
-                    onPressed: () {},
-                    width: double.infinity,
-                    height: 40,
-                    borderRadius: 6,
-                  ),
-                  const SizedBox(height: 7),
-                  Ux4gButton(
-                    text: 'Save draft',
-                    onPressed: () {},
-                    width: double.infinity,
-                    height: 40,
-                    borderRadius: 6,
-                    variant: Ux4gButtonVariant.outline,
-                    contentColor: _primary(context),
-                    borderColor: _primary(context),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 7),
-              child: Column(
+              padding: const EdgeInsets.only(top: 16, bottom: 24),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
                     style: TextStyle(fontSize: 10, color: _body(context)),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,
                     height: 22,

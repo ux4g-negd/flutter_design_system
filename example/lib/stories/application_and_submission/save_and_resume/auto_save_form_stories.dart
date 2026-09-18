@@ -94,6 +94,30 @@ class _AutoSaveFormMockup extends StatelessWidget {
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: _isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Ux4gDivider(color: _getBorderColor(context)),
 
@@ -265,8 +289,10 @@ class _AutoSaveFormMockup extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -275,10 +301,10 @@ class _AutoSaveFormMockup extends StatelessWidget {
                       color: _getSubtleText(context),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng, 
-                    height: 24,
+                    height: 22,
                     color: _isDark(context) ? Colors.white : null,
                   ),
                 ],
@@ -350,6 +376,30 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: _isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Ux4gDivider(color: _getBorderColor(context)),
                 ],
@@ -507,44 +557,40 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Ux4gInputField(value: '', onValueChange: (_) {}),
+                    const SizedBox(height: 24),
+
+                    // Actions
+                    Ux4gButton(
+                      text: 'Continue',
+                      onPressed: () {},
+                      size: Ux4gButtonSize.large,
+                      width: double.infinity,
+                      height: 48,
+                    ),
+                    const SizedBox(height: 12),
+                    Ux4gButton(
+                      text: 'Back',
+                      onPressed: () {},
+                      variant: Ux4gButtonVariant.outline,
+                      size: Ux4gButtonSize.large,
+                      width: double.infinity,
+                      height: 48,
+                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                      borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                    ),
                   ],
                 ),
               ),
             ),
-            ),
+          ),
 
-            // Actions
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(
-                    text: 'Continue',
-                    onPressed: () {},
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                    height: 48,
-                  ),
-                  const SizedBox(height: 12),
-                  Ux4gButton(
-                    text: 'Back',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.outline,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                    height: 48,
-                    contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                  ),
-                ],
-              ),
-            ),
-
-            // Footer
-            Padding(
-              padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+          // Footer
+          Padding(
+            padding: const EdgeInsets.only(bottom: 24, top: 4),
+            child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -553,10 +599,10 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                       color: _getSubtleText(context),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng, 
-                    height: 24,
+                    height: 22,
                     color: _isDark(context) ? Colors.white : null,
                   ),
                 ],
@@ -611,6 +657,30 @@ class _AutoSaveFormMockup extends StatelessWidget {
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: _isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Ux4gDivider(color: _getBorderColor(context)),
 
@@ -782,8 +852,10 @@ class _AutoSaveFormMockup extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -792,10 +864,10 @@ class _AutoSaveFormMockup extends StatelessWidget {
                       color: _getSubtleText(context),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng, 
-                    height: 24,
+                    height: 22,
                     color: _isDark(context) ? Colors.white : null,
                   ),
                 ],
@@ -868,6 +940,30 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                           ),
                         ),
                       ],
+                      actions: [
+                        Ux4gAppHeaderAction(
+                          customWidget: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: _isDark(context) ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.menu,
+                                color: _isDark(context) ? Ux4gColors.primary400 : Ux4gColors.primary600,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      verticalPadding: 16,
+                      horizontalPadding: 16,
+                      leadingSpacing: 8,
                     ),
                     Ux4gDivider(color: _getBorderColor(context)),
                   ],
@@ -1025,47 +1121,40 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Ux4gInputField(value: '', onValueChange: (_) {}),
+                        const SizedBox(height: 24),
+
+                        // Actions
+                        Ux4gButton(
+                          text: 'Continue',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          height: 48,
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                          text: 'Back',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          height: 48,
+                          contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                          borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
 
-              // Actions
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      text: 'Continue',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      height: 48,
-                    ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      height: 48,
-                      contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
-                    ),
-                  ],
-                ),
-              ),
-
               // Footer
               Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -1074,10 +1163,10 @@ class _AutoSaveFormCardMockup extends StatelessWidget {
                         color: _getSubtleText(context),
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       Ux4gIcons.digitalIndiaLogoPng, 
-                      height: 24,
+                      height: 22,
                       color: _isDark(context) ? Colors.white : null,
                     ),
                   ],

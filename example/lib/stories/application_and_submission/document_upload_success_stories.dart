@@ -886,48 +886,56 @@ SizedBox(height: 4),
                           fileName: 'electricity_bill.jpg',
                           size: '920 KB',
                         ),
+                        const SizedBox(height: 24),
+                        Ux4gButton(
+                          text: 'Proceed to review',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.medium,
+                          width: double.infinity,
+                          height: 48,
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                          text: 'Back',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.medium,
+                          width: double.infinity,
+                          height: 48,
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      text: 'Proceed to review',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.medium,
-                      width: double.infinity,
-                      height: 48,
-                    ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.medium,
-                      width: double.infinity,
-                      height: 48,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Powered by -',
-                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF)),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    const SizedBox(height: 6),
-                    Image.asset(_digitalIndiaLogoPath, height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                    const SizedBox(width: 8),
+                    Image.asset(
+                      _digitalIndiaLogoPath,
+                      height: 22,
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null,
+                      errorBuilder: (c, e, s) => const Text(
+                        'Digital India',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

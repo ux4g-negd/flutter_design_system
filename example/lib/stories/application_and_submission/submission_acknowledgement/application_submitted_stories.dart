@@ -122,6 +122,105 @@ class _ReferenceCard extends StatelessWidget {
   }
 }
 
+class _ApplicationProgressTimeline extends StatelessWidget {
+  const _ApplicationProgressTimeline();
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'What happens next',
+          style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+              .copyWith(
+            color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+            border: Border.all(
+              color: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Application Progress',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Track the status of your Income Certificate application',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Ux4gJourneyTimeline(
+                activeColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                indicatorSize: 20,
+                lineWidth: 3,
+                indicatorCardSpacing: 12,
+                stepSpacing: 12,
+                cardColor: isDark ? Ux4gColors.neutral900 : Colors.white,
+                cardBorderColor: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                cardBorderRadius: 8,
+                steps: [
+                  Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.completed,
+                    date: '02 Sep 2026',
+                    title: 'Application Submitted',
+                    status: Ux4gJourneyStepStatus(
+                      text: '',
+                      badgeText: 'Completed',
+                      badgeColor: isDark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                      badgeTextColor: isDark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                    ),
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.current,
+                    date: '03 Sep 2026',
+                    title: 'Document Verification',
+                    tag: 'Upcoming',
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.upcoming,
+                    date: '06 Sep 2026',
+                    title: 'Field Enquiry',
+                    tag: 'Upcoming',
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.upcoming,
+                    date: '10 Sep 2026',
+                    title: 'Certificate Issued',
+                    tag: 'Upcoming',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _NotificationRow extends StatelessWidget {
   const _NotificationRow();
 
@@ -131,25 +230,31 @@ class _NotificationRow extends StatelessWidget {
     final iconColor = isDark ? Ux4gColors.primary300 : Ux4gColors.primary600;
     final textColor = isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700;
 
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(Icons.phone_iphone, size: 20, color: iconColor),
-        SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            'SMS sent to +91\n98765 •••••',
-            style: TextStyle(fontSize: 12, color: textColor, height: 1.4),
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.phone_iphone, size: 20, color: iconColor),
+            const SizedBox(width: 8),
+            Text(
+              'SMS sent to +91 98765 •••••',
+              style: TextStyle(fontSize: 12, color: textColor),
+            ),
+          ],
         ),
-        SizedBox(width: 16),
-        Icon(Icons.email_outlined, size: 20, color: iconColor),
-        SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            'Email sent to\nr••••@gmail.com',
-            style: TextStyle(fontSize: 12, color: textColor, height: 1.4),
-          ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.email_outlined, size: 20, color: iconColor),
+            const SizedBox(width: 8),
+            Text(
+              'Email sent to r••••@gmail.com',
+              style: TextStyle(fontSize: 12, color: textColor),
+            ),
+          ],
         ),
       ],
     );
@@ -248,6 +353,24 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFFE5E7EB)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Center(
+                      child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Divider(height: 1, color: Color(0xFFE5E7EB)),
 
@@ -326,47 +449,119 @@ class ApplicationSubmittedScreen extends StatelessWidget {
                     SizedBox(height: 20),
 
                     // What happens next - Journey Timeline
-                    Ux4gJourneyTimeline(
-                      header: const Ux4gJourneyHeader(title: 'What happens next'),
-                      indicatorCardSpacing: 16,
-                      indicatorSize: 24,
-                      steps: [
-                        Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.completed,
-                          stepNumber: '1',
-                          date: 'Date',
-                          title: 'Title',
-                          helpingText: 'Helping Text',
+                    Text(
+                      'What happens next',
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                              const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                          .copyWith(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral50
+                            : Ux4gColors.neutral900,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                        border: Border.all(
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
                         ),
-                        Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.completed,
-                          stepNumber: '2',
-                          date: 'Date',
-                          title: 'Title',
-                          helpingText: 'Helping Text',
-                        ),
-                        Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.completed,
-                          stepNumber: '3',
-                          date: 'Date',
-                          title: 'Title',
-                          helpingText: 'Helping Text',
-                        ),
-                      ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Application Progress',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Track the status of your Income Certificate application',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral400
+                                  : Ux4gColors.neutral600,
+                              height: 1.4,
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Ux4gJourneyTimeline(
+                            activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                            indicatorSize: 20,
+                            lineWidth: 3,
+                            indicatorCardSpacing: 12,
+                            stepSpacing: 12,
+                            cardColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                            cardBorderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                            cardBorderRadius: 8,
+                            steps: [
+                              Ux4gJourneyStep(
+                                state: Ux4gJourneyStepState.completed,
+                                date: '02 Sep 2026',
+                                title: 'Application Submitted',
+                                status: Ux4gJourneyStepStatus(
+                                  text: '',
+                                  badgeText: 'Completed',
+                                  badgeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                                  badgeTextColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                                  badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                ),
+                              ),
+                              const Ux4gJourneyStep(
+                                state: Ux4gJourneyStepState.current,
+                                date: '03 Sep 2026',
+                                title: 'Document Verification',
+                                tag: 'Upcoming',
+                              ),
+                              const Ux4gJourneyStep(
+                                state: Ux4gJourneyStepState.upcoming,
+                                date: '06 Sep 2026',
+                                title: 'Field Enquiry',
+                                tag: 'Upcoming',
+                              ),
+                              const Ux4gJourneyStep(
+                                state: Ux4gJourneyStepState.upcoming,
+                                date: '10 Sep 2026',
+                                title: 'Certificate Issued',
+                                tag: 'Upcoming',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 24),
 
-                    // Notification row
-                    Row(
+                    // Notifications
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
-                        SizedBox(width: 8),
-                        Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
-                        SizedBox(width: 16),
-                        Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
-                        SizedBox(width: 8),
-                        Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                            SizedBox(width: 8),
+                            Text('SMS sent to +91 98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
+                          ],
+                        ),
+                        SizedBox(height: 8),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                            SizedBox(width: 8),
+                            Text('Email sent to r••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
+                          ],
+                        ),
                       ],
                     ),
                   ],
@@ -391,12 +586,14 @@ class ApplicationSubmittedScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400))),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -445,6 +642,24 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                   ),
                 ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0xFFE5E7EB)),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Center(
+                            child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   Divider(height: 1, color: Color(0xFFE5E7EB)),
                 ],
@@ -533,47 +748,119 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
                       SizedBox(height: 20),
 
                       // What happens next - Journey Timeline
-                      Ux4gJourneyTimeline(
-                        header: const Ux4gJourneyHeader(title: 'What happens next'),
-                        indicatorCardSpacing: 16,
-                        indicatorSize: 24,
-                        steps: [
-                          Ux4gJourneyStep(
-                            state: Ux4gJourneyStepState.completed,
-                            stepNumber: '1',
-                            date: 'Date',
-                            title: 'Title',
-                            helpingText: 'Helping Text',
+                      Text(
+                        'What happens next',
+                        style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                                const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                            .copyWith(
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.neutral50
+                              : Ux4gColors.neutral900,
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                          border: Border.all(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
                           ),
-                          Ux4gJourneyStep(
-                            state: Ux4gJourneyStepState.completed,
-                            stepNumber: '2',
-                            date: 'Date',
-                            title: 'Title',
-                            helpingText: 'Helping Text',
-                          ),
-                          Ux4gJourneyStep(
-                            state: Ux4gJourneyStepState.completed,
-                            stepNumber: '3',
-                            date: 'Date',
-                            title: 'Title',
-                            helpingText: 'Helping Text',
-                          ),
-                        ],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Application Progress',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.neutral50
+                                    : Ux4gColors.neutral900,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              'Track the status of your Income Certificate application',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.neutral400
+                                    : Ux4gColors.neutral600,
+                                height: 1.4,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Ux4gJourneyTimeline(
+                              activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                              indicatorSize: 20,
+                              lineWidth: 3,
+                              indicatorCardSpacing: 12,
+                              stepSpacing: 12,
+                              cardColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                              cardBorderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                              cardBorderRadius: 8,
+                              steps: [
+                                Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.completed,
+                                  date: '02 Sep 2026',
+                                  title: 'Application Submitted',
+                                  status: Ux4gJourneyStepStatus(
+                                    text: '',
+                                    badgeText: 'Completed',
+                                    badgeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                                    badgeTextColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                                    badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                  ),
+                                ),
+                                const Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.current,
+                                  date: '03 Sep 2026',
+                                  title: 'Document Verification',
+                                  tag: 'Upcoming',
+                                ),
+                                const Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.upcoming,
+                                  date: '06 Sep 2026',
+                                  title: 'Field Enquiry',
+                                  tag: 'Upcoming',
+                                ),
+                                const Ux4gJourneyStep(
+                                  state: Ux4gJourneyStepState.upcoming,
+                                  date: '10 Sep 2026',
+                                  title: 'Certificate Issued',
+                                  tag: 'Upcoming',
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(height: 24),
 
-                      // Notification row
-                      Row(
+                      // Notifications
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
-                          SizedBox(width: 8),
-                          Expanded(child: Text('SMS sent to +91\n98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
-                          SizedBox(width: 16),
-                          Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
-                          SizedBox(width: 8),
-                          Expanded(child: Text('Email sent to\nr••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700, height: 1.4))),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.phone_iphone, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                              SizedBox(width: 8),
+                              Text('SMS sent to +91 98765 •••••', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
+                            ],
+                          ),
+                          SizedBox(height: 8),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.email_outlined, size: 20, color: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600),
+                              SizedBox(width: 8),
+                              Text('Email sent to r••••@gmail.com', style: TextStyle(fontSize: 12, color: isDark ? Ux4gColors.neutral200 : Ux4gColors.neutral700)),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -599,12 +886,14 @@ class ApplicationSubmittedCardScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400))),
-                  SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                  SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
             ),
@@ -668,6 +957,34 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                       Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Divider(height: 1, color: Color(0xFFE5E7EB)),
 
@@ -742,36 +1059,7 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                     SizedBox(height: 20),
 
                     // Next steps timeline
-                    Ux4gJourneyTimeline(
-                      header: const Ux4gJourneyHeader(
-                        title: 'What happens next',
-                      ),
-                      indicatorCardSpacing: 16,
-                      indicatorSize: 24,
-                      steps: [
-                        Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.completed,
-                          stepNumber: '1',
-                          date: 'Date',
-                          title: 'Title',
-                          helpingText: 'Helping Text',
-                        ),
-                        Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.completed,
-                          stepNumber: '2',
-                          date: 'Date',
-                          title: 'Title',
-                          helpingText: 'Helping Text',
-                        ),
-                        Ux4gJourneyStep(
-                          state: Ux4gJourneyStepState.completed,
-                          stepNumber: '3',
-                          date: 'Date',
-                          title: 'Title',
-                          helpingText: 'Helping Text',
-                        ),
-                      ],
-                    ),
+                    const _ApplicationProgressTimeline(),
                     SizedBox(height: 24),
 
                     // Notification row
@@ -790,8 +1078,10 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -802,10 +1092,10 @@ class _ApplicationSubmittedMockup extends StatelessWidget {
                           : Ux4gColors.neutral400),
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     _digitalIndiaLogoPath,
-                    height: 24,
+                    height: 22,
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : null,
@@ -905,6 +1195,34 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                               Icon(Icons.blur_on, size: 32, color: Colors.blue),
                         ),
                       ],
+                      actions: [
+                        Ux4gAppHeaderAction(
+                          customWidget: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.neutral800
+                                    : const Color(0xFFE5E7EB),
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.menu,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? Ux4gColors.primary400
+                                    : Ux4gColors.primary600,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      verticalPadding: 16,
+                      horizontalPadding: 16,
+                      leadingSpacing: 8,
                     ),
                     Divider(height: 1, color: Color(0xFFE5E7EB)),
                   ],
@@ -927,7 +1245,7 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.06),
+                          color: Colors.black.withValues(alpha: 0.06),
                           blurRadius: 20,
                           spreadRadius: 2,
                           offset: const Offset(0, 4),
@@ -1001,60 +1319,26 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                         SizedBox(height: 20),
 
                         // Next steps timeline
-                        Ux4gJourneyTimeline(
-                          header: const Ux4gJourneyHeader(
-                            title: 'What happens next',
-                          ),
-                          indicatorCardSpacing: 16,
-                          indicatorSize: 24,
-                          steps: [
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '1',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '2',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '3',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                          ],
-                        ),
+                        const _ApplicationProgressTimeline(),
                         SizedBox(height: 24),
 
                         // Notification row
                         const _NotificationRow(),
+                        const SizedBox(height: 24),
+                        const _ActionButtons(),
                       ],
                     ),
                   ),
                 ),
               ),
 
-              // Actions
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: const _ActionButtons(),
-              ),
-
               // Footer
               Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -1065,10 +1349,10 @@ class _ApplicationSubmittedCardMockup extends StatelessWidget {
                             : Ux4gColors.neutral400),
                       ),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       _digitalIndiaLogoPath,
-                      height: 24,
+                      height: 22,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
                           : null,

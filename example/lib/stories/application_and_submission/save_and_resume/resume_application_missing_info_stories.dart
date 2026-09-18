@@ -10,7 +10,7 @@ bool _isDark(BuildContext context) =>
 Color _getBg(BuildContext context) =>
     _isDark(context) ? Ux4gColors.neutral950 : const Color(0xFFFAFAFA);
 Color _getCardBg(BuildContext context) =>
-    _isDark(context) ? Ux4gColors.primary900 : Ux4gColors.primary100;
+    _isDark(context) ? Ux4gColors.primary900 : const Color(0xFFDCD4FF);
 Color _getTitleColor(BuildContext context) =>
     _isDark(context) ? Ux4gColors.neutral50 : const Color(0xFF111827);
 Color _getSubtleText(BuildContext context) =>
@@ -63,7 +63,7 @@ final resumeApplicationMissingInfoComponent = WidgetbookComponent(
 // Step status model
 // ───────────────────────────────────────────────────────────────────────
 
-enum _StepStatus { completed, inProgress, error, notStarted }
+enum _StepStatus { completed, warning, inProgress, notStarted }
 
 class _StepData {
   final String title;
@@ -79,22 +79,22 @@ class _StepData {
 
 const List<_StepData> _steps = [
   _StepData(
-    title: 'Personal information',
+    title: 'Eligibility check',
     subtitle: 'Completed',
     status: _StepStatus.completed,
   ),
   _StepData(
+    title: 'Personal information',
+    subtitle: 'Completed',
+    status: _StepStatus.warning,
+  ),
+  _StepData(
     title: 'Upload documents',
     subtitle: '1 required document missing',
-    status: _StepStatus.error,
+    status: _StepStatus.inProgress,
   ),
   _StepData(
-    title: 'Review',
-    subtitle: 'Not started',
-    status: _StepStatus.notStarted,
-  ),
-  _StepData(
-    title: 'Payment',
+    title: 'Submit',
     subtitle: 'Not started',
     status: _StepStatus.notStarted,
   ),
@@ -127,10 +127,8 @@ class _ProgressStepList extends StatelessWidget {
                       ? (_isDark(context)
                             ? Ux4gColors.green500
                             : Ux4gColors.green600)
-                      : step.status == _StepStatus.error
-                      ? (_isDark(context)
-                            ? Ux4gColors.orange300
-                            : Ux4gColors.orange600)
+                      : step.status == _StepStatus.warning
+                      ? const Color(0xFFF59E0B)
                       : step.status == _StepStatus.inProgress
                       ? (_isDark(context)
                             ? Ux4gColors.neutral800
@@ -143,10 +141,8 @@ class _ProgressStepList extends StatelessWidget {
                         ? (_isDark(context)
                               ? Ux4gColors.green500
                               : Ux4gColors.green600)
-                        : step.status == _StepStatus.error
-                        ? (_isDark(context)
-                              ? Ux4gColors.orange300
-                              : Ux4gColors.orange600)
+                        : step.status == _StepStatus.warning
+                        ? const Color(0xFFF59E0B)
                         : step.status == _StepStatus.inProgress
                         ? (_isDark(context)
                               ? Ux4gColors.neutral500
@@ -159,7 +155,7 @@ class _ProgressStepList extends StatelessWidget {
                 ),
                 child: step.status == _StepStatus.completed
                     ? const Icon(Icons.check, color: Colors.white, size: 12)
-                    : step.status == _StepStatus.error
+                    : step.status == _StepStatus.warning
                     ? const Icon(
                         Icons.priority_high,
                         color: Colors.white,
@@ -175,14 +171,18 @@ class _ProgressStepList extends StatelessWidget {
                   children: [
                     Text(
                       step.title,
-                      style: (Theme.of(context).extension<Ux4gTypography>()?.bM_strong ?? const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)).copyWith(
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bM_strong ??
+                              const TextStyle(fontSize: 15, fontWeight: FontWeight.w600))
+                          .copyWith(
                         color: _isDark(context) ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
                       ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       step.subtitle,
-                      style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ??
+                              const TextStyle(fontSize: 13))
+                          .copyWith(
                         color: _isDark(context) ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
                       ),
                     ),
@@ -221,19 +221,35 @@ class ResumeApplicationMissingInfoScreen extends StatelessWidget {
             Ux4gAppHeader(
               variant: Ux4gAppHeaderVariant.light,
               leadingWidgets: [
-                SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 40),
                 Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
                 SvgPicture.asset(
-                  Ux4gIcons.union, 
+                  Ux4gIcons.union,
                   height: 32,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.primary300
-                        : Ux4gColors.primary600,
+                  colorFilter: const ColorFilter.mode(
+                    Ux4gColors.primary600,
                     BlendMode.srcIn,
                   ),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFFE5E7EB)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Center(
+                      child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             const Divider(height: 1, color: Color(0xFFE5E7EB)),
 
@@ -246,7 +262,12 @@ class ResumeApplicationMissingInfoScreen extends StatelessWidget {
                   children: [
                     const Text(
                       'Continue your\napplication?',
-                      style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xFF111827),
+                        height: 1.2,
+                      ),
                     ),
                     const SizedBox(height: 8),
                     const Text(
@@ -256,19 +277,27 @@ class ResumeApplicationMissingInfoScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     const Text(
                       'Your progress',
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF111827)),
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF111827),
+                      ),
                     ),
                     const SizedBox(height: 20),
 
-                    // Progress steps list with status indicators
-                    // ... (step items with completed/in-progress/not-started states)
-
+                    // Progress steps list
+                    _buildStepItem('Eligibility check', 'Completed', isCompleted: true),
                     const SizedBox(height: 20),
-                    Text(
+                    _buildStepItem('Personal information', 'Completed', isWarning: true),
+                    const SizedBox(height: 20),
+                    _buildStepItem('Upload documents', '1 required document missing', isInProgress: true),
+                    const SizedBox(height: 20),
+                    _buildStepItem('Submit', 'Not started'),
+
+                    const SizedBox(height: 24),
+                    const Text(
                       'Last saved 10 Apr 2026 at 3:12 PM',
-                      style: (Theme.of(context).extension<Ux4gTypography>()?.bS_default ?? const TextStyle(fontSize: 13)).copyWith(
-                        color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral200 : Ux4gColors.neutral700,
-                      ),
+                      style: TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
                     ),
                   ],
                 ),
@@ -280,9 +309,24 @@ class ResumeApplicationMissingInfoScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  Ux4gButton(text: 'Go to incomplete section', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
+                  Ux4gButton(
+                    height: 48,
+                    text: 'Go to incomplete section',
+                    onPressed: () {},
+                    size: Ux4gButtonSize.large,
+                    width: double.infinity,
+                  ),
                   const SizedBox(height: 12),
-                  Ux4gButton(height: 48, text: 'Continue from beginning', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, height: 48),
+                  Ux4gButton(
+                    height: 48,
+                    text: 'Continue from beginning',
+                    onPressed: () {},
+                    variant: Ux4gButtonVariant.outline,
+                    size: Ux4gButtonSize.large,
+                    width: double.infinity,
+                    contentColor: const Color(0xFF4A2BC2),
+                    borderColor: const Color(0xFF4A2BC2),
+                  ),
                 ],
               ),
             ),
@@ -290,18 +334,72 @@ class ResumeApplicationMissingInfoScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  static Widget _buildStepItem(String title, String subtitle, {bool isCompleted = false, bool isWarning = false, bool isInProgress = false}) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isCompleted
+                ? Ux4gColors.green600
+                : isWarning
+                    ? const Color(0xFFF59E0B)
+                    : Colors.white,
+            border: Border.all(
+              color: isCompleted
+                  ? Ux4gColors.green600
+                  : isWarning
+                      ? const Color(0xFFF59E0B)
+                      : isInProgress
+                          ? const Color(0xFFD1D5DB)
+                          : const Color(0xFFE5E7EB),
+              width: isInProgress ? 2 : 1.5,
+            ),
+          ),
+          child: isCompleted
+              ? const Icon(Icons.check, color: Colors.white, size: 12)
+              : isWarning
+                  ? const Icon(Icons.priority_high, color: Colors.white, size: 12)
+                  : null,
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF111827)),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -317,6 +415,8 @@ class ResumeApplicationMissingInfoCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: const Color(0xFFDCD4FF),
       body: SafeArea(
@@ -324,25 +424,41 @@ class ResumeApplicationMissingInfoCardScreen extends StatelessWidget {
           children: [
             // Header
             Container(
-              color: Colors.white,
+              color: isDark ? Ux4gColors.neutral950 : Colors.white,
               child: Column(
                 children: [
                   Ux4gAppHeader(
                     variant: Ux4gAppHeaderVariant.light,
                     leadingWidgets: [
-                      SvgPicture.asset(Ux4gIcons.nationalEmblem,  height: 40),
+                      SvgPicture.asset(Ux4gIcons.nationalEmblem, height: 40),
                       Container(height: 32, width: 1, color: const Color(0xFFD1D5DB)),
                       SvgPicture.asset(
-                  Ux4gIcons.union, 
-                  height: 32,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.primary300
-                        : Ux4gColors.primary600,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                        Ux4gIcons.union,
+                        height: 32,
+                        colorFilter: ColorFilter.mode(
+                          isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0xFFE5E7EB)),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Center(
+                            child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   const Divider(height: 1, color: Color(0xFFE5E7EB)),
                 ],
@@ -352,22 +468,31 @@ class ResumeApplicationMissingInfoCardScreen extends StatelessWidget {
             // Card Content
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Container(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? Ux4gColors.neutral900 : Colors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
-                      BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4)),
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
                     ],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Continue your\napplication?',
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: Color(0xFF111827), height: 1.2),
+                        'Continue your application?',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF111827),
+                          height: 1.2,
+                        ),
                       ),
                       const SizedBox(height: 8),
                       const Text(
@@ -377,17 +502,48 @@ class ResumeApplicationMissingInfoCardScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       const Text(
                         'Your progress',
-                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF111827)),
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF111827),
+                        ),
                       ),
                       const SizedBox(height: 20),
 
-                      // Progress steps list with status indicators
-                      // ... (step items with completed/in-progress/not-started states)
-
+                      // Progress steps list
+                      _buildStepItem('Eligibility check', 'Completed', isCompleted: true),
                       const SizedBox(height: 20),
+                      _buildStepItem('Personal information', 'Completed', isWarning: true),
+                      const SizedBox(height: 20),
+                      _buildStepItem('Upload documents', '1 required document missing', isInProgress: true),
+                      const SizedBox(height: 20),
+                      _buildStepItem('Submit', 'Not started'),
+
+                      const SizedBox(height: 24),
                       const Text(
                         'Last saved 10 Apr 2026 at 3:12 PM',
                         style: TextStyle(fontSize: 13, color: Color(0xFF9CA3AF)),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Actions
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Go to incomplete section',
+                        onPressed: () {},
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                      ),
+                      const SizedBox(height: 12),
+                      Ux4gButton(
+                        height: 48,
+                        text: 'Continue from beginning',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.outline,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        contentColor: const Color(0xFF4A2BC2),
+                        borderColor: const Color(0xFF4A2BC2),
                       ),
                     ],
                   ),
@@ -395,33 +551,75 @@ class ResumeApplicationMissingInfoCardScreen extends StatelessWidget {
               ),
             ),
 
-            // Actions
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(text: 'Go to incomplete section', onPressed: () {}, size: Ux4gButtonSize.large, width: double.infinity, height: 48),
-                  const SizedBox(height: 12),
-                  Ux4gButton(height: 48, text: 'Continue from beginning', onPressed: () {}, variant: Ux4gButtonVariant.outline, size: Ux4gButtonSize.large, width: double.infinity, contentColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, borderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, height: 48),
-                ],
-              ),
-            ),
-
             // Footer
             Padding(
-              padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              padding: const EdgeInsets.only(bottom: 24, top: 4),
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
-                  Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24),
+                  const SizedBox(width: 8),
+                  Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  static Widget _buildStepItem(String title, String subtitle, {bool isCompleted = false, bool isWarning = false, bool isInProgress = false}) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isCompleted
+                ? Ux4gColors.green600
+                : isWarning
+                    ? const Color(0xFFF59E0B)
+                    : Colors.white,
+            border: Border.all(
+              color: isCompleted
+                  ? Ux4gColors.green600
+                  : isWarning
+                      ? const Color(0xFFF59E0B)
+                      : isInProgress
+                          ? const Color(0xFFD1D5DB)
+                          : const Color(0xFFE5E7EB),
+              width: isInProgress ? 2 : 1.5,
+            ),
+          ),
+          child: isCompleted
+              ? const Icon(Icons.check, color: Colors.white, size: 12)
+              : isWarning
+                  ? const Icon(Icons.priority_high, color: Colors.white, size: 12)
+                  : null,
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF111827)),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -436,9 +634,8 @@ class _ResumeApplicationMissingInfoMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
     return Scaffold(
-      backgroundColor: _isDark(context) ? Ux4gColors.neutral950 : Colors.white,
+      backgroundColor: _getBg(context),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -482,6 +679,34 @@ class _ResumeApplicationMissingInfoMockup extends StatelessWidget {
                       const Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: _isDark(context)
+                            ? Ux4gColors.neutral800
+                            : Ux4gColors.neutral200,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: _isDark(context)
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Divider(height: 1, color: _getBorderColor(context)),
 
@@ -497,9 +722,12 @@ class _ResumeApplicationMissingInfoMockup extends StatelessWidget {
                   children: [
                     Text(
                       'Continue your\napplication?',
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w800,
+                      style: (Theme.of(context).extension<Ux4gTypography>()?.hM_strong ??
+                              const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700,
+                              ))
+                          .copyWith(
                         color: _getTitleColor(context),
                         height: 1.2,
                       ),
@@ -565,8 +793,10 @@ class _ResumeApplicationMissingInfoMockup extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -577,10 +807,10 @@ class _ResumeApplicationMissingInfoMockup extends StatelessWidget {
                           : const Color(0xFF9CA3AF),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     _digitalIndiaLogoPath,
-                    height: 24,
+                    height: 22,
                     color: _isDark(context) ? Colors.white : null,
                     errorBuilder: (c, e, s) => const Text(
                       'Digital India',
@@ -605,14 +835,13 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF432CBB);
     return Container(
       decoration: BoxDecoration(
         color: _getCardBg(context),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 24,
             offset: const Offset(0, 6),
           ),
@@ -674,21 +903,49 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
                           ),
                         ),
                       ],
+                      actions: [
+                        Ux4gAppHeaderAction(
+                          customWidget: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: _isDark(context)
+                                    ? Ux4gColors.neutral800
+                                    : Ux4gColors.neutral200,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.menu,
+                                color: _isDark(context)
+                                    ? Ux4gColors.primary400
+                                    : Ux4gColors.primary600,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                      verticalPadding: 16,
+                      horizontalPadding: 16,
+                      leadingSpacing: 8,
                     ),
                     Divider(height: 1, color: _getBorderColor(context)),
                   ],
                 ),
               ),
 
-              // Card Content
+              // Card Content (wrapping title, subtitle, progress, timestamp, and actions)
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 32,
+                    horizontal: 16,
+                    vertical: 16,
                   ),
                   child: Container(
-                    padding: const EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: _isDark(context)
                           ? Ux4gColors.neutral900
@@ -699,7 +956,7 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
                           : null,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withValues(alpha: 0.05),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
@@ -709,10 +966,13 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Continue your\napplication?',
-                          style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.w800,
+                          'Continue your application?',
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.hM_strong ??
+                                  const TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w700,
+                                  ))
+                              .copyWith(
                             color: _getTitleColor(context),
                             height: 1.2,
                           ),
@@ -736,7 +996,7 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         const _ProgressStepList(),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 24),
                         Text(
                           'Last saved 10 Apr 2026 at 3:12 PM',
                           style: TextStyle(
@@ -746,47 +1006,38 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
                                 : const Color(0xFF9CA3AF),
                           ),
                         ),
+                        const SizedBox(height: 20),
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Go to incomplete section',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                          height: 48,
+                          text: 'Continue from beginning',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          contentColor: _getStartFreshColor(context),
+                          borderColor: _getStartFreshColor(context),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
 
-              // Actions
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      height: 48,
-                      text: 'Go to incomplete section',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                    ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      height: 48,
-                      text: 'Continue from beginning',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      contentColor: _getStartFreshColor(context),
-                      borderColor: _getStartFreshColor(context),
-                    ),
-                  ],
-                ),
-              ),
-
               // Footer
               Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -797,10 +1048,10 @@ class _ResumeApplicationMissingInfoCardMockup extends StatelessWidget {
                             : const Color(0xFF9CA3AF),
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       _digitalIndiaLogoPath,
-                      height: 24,
+                      height: 22,
                       color: _isDark(context) ? Colors.white : null,
                       errorBuilder: (c, e, s) => const Text(
                         'Digital India',

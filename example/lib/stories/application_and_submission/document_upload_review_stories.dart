@@ -907,43 +907,36 @@ SizedBox(height: 4),
                             ],
                           ),
                         ),
+                        const SizedBox(height: 24),
+                        Ux4gButton(
+                          text: 'Continue',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          height: 40,
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                          text: 'Back',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          height: 40,
+                          contentColor: primaryColor,
+                          borderColor: primaryColor,
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      text: 'Continue',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      height: 40,
-                    ),
-                    SizedBox(height: 12),
-                    Ux4gButton(
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      height: 40,
-                      contentColor: primaryColor,
-                      borderColor: primaryColor,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -952,12 +945,13 @@ SizedBox(height: 4),
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Ux4gColors.neutral500
                             : Ux4gColors.neutral400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       _digitalIndiaLogoPath,
-                      height: 24,
+                      height: 22,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
                           : null,

@@ -73,6 +73,105 @@ class _QueuedIcon extends StatelessWidget {
   }
 }
 
+class _ApplicationProgressTimeline extends StatelessWidget {
+  const _ApplicationProgressTimeline();
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'What happens next',
+          style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+              .copyWith(
+            color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isDark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+            border: Border.all(
+              color: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Application Progress',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: isDark ? Ux4gColors.neutral50 : Ux4gColors.neutral900,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Your application is queued and will be submitted once you\'re back online',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Ux4gJourneyTimeline(
+                activeColor: isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                indicatorSize: 20,
+                lineWidth: 3,
+                indicatorCardSpacing: 12,
+                stepSpacing: 12,
+                cardColor: isDark ? Ux4gColors.neutral900 : Colors.white,
+                cardBorderColor: isDark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                cardBorderRadius: 8,
+                steps: [
+                  Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.completed,
+                    date: '02 Sep 2026',
+                    title: 'Application Saved Locally',
+                    status: Ux4gJourneyStepStatus(
+                      text: '',
+                      badgeText: 'Saved',
+                      badgeColor: isDark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                      badgeTextColor: isDark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                    ),
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.current,
+                    date: '03 Sep 2026',
+                    title: 'Document Verification',
+                    tag: 'Upcoming',
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.upcoming,
+                    date: '06 Sep 2026',
+                    title: 'Field Enquiry',
+                    tag: 'Upcoming',
+                  ),
+                  const Ux4gJourneyStep(
+                    state: Ux4gJourneyStepState.upcoming,
+                    date: '10 Sep 2026',
+                    title: 'Certificate Issued',
+                    tag: 'Upcoming',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _ToastCard extends StatelessWidget {
   final VoidCallback? onClose;
   const _ToastCard({this.onClose});
@@ -88,7 +187,7 @@ class _ToastCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 16,
             offset: const Offset(0, -4),
           ),
@@ -200,6 +299,24 @@ class ApplicationQueuedScreen extends StatelessWidget {
                       ),
                     ),
                   ],
+                  actions: [
+                    Ux4gAppHeaderAction(
+                      customWidget: Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xFFE5E7EB)),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Center(
+                          child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                        ),
+                      ),
+                    ),
+                  ],
+                  verticalPadding: 16,
+                  horizontalPadding: 16,
+                  leadingSpacing: 8,
                 ),
                 Divider(height: 1, color: Color(0xFFE5E7EB)),
 
@@ -252,31 +369,95 @@ class ApplicationQueuedScreen extends StatelessWidget {
                         SizedBox(height: 32),
 
                         // What happens next - Journey Timeline
-                        Ux4gJourneyTimeline(
-                          header: const Ux4gJourneyHeader(title: 'What happens next'),
-                          steps: const [
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '1',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
+                        Text(
+                          'What happens next',
+                          style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                              .copyWith(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral50
+                                : Ux4gColors.neutral900,
+                          ),
+                        ),
+                        SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
                             ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '2',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '3',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                          ],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Application Progress',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? Ux4gColors.neutral50
+                                      : Ux4gColors.neutral900,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                'Your application is queued and will be submitted once you\'re back online',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? Ux4gColors.neutral400
+                                      : Ux4gColors.neutral600,
+                                  height: 1.4,
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Ux4gJourneyTimeline(
+                                activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                                indicatorSize: 20,
+                                lineWidth: 3,
+                                indicatorCardSpacing: 12,
+                                stepSpacing: 12,
+                                cardColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                                cardBorderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                                cardBorderRadius: 8,
+                                steps: [
+                                  Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.completed,
+                                    date: '02 Sep 2026',
+                                    title: 'Application Saved Locally',
+                                    status: Ux4gJourneyStepStatus(
+                                      text: '',
+                                      badgeText: 'Saved',
+                                      badgeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                                      badgeTextColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                                      badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                    ),
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.current,
+                                    date: '03 Sep 2026',
+                                    title: 'Document Verification',
+                                    tag: 'Upcoming',
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.upcoming,
+                                    date: '06 Sep 2026',
+                                    title: 'Field Enquiry',
+                                    tag: 'Upcoming',
+                                  ),
+                                  const Ux4gJourneyStep(
+                                    state: Ux4gJourneyStepState.upcoming,
+                                    date: '10 Sep 2026',
+                                    title: 'Certificate Issued',
+                                    tag: 'Upcoming',
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -298,12 +479,14 @@ class ApplicationQueuedScreen extends StatelessWidget {
                 // Footer
                 Padding(
                   padding: const EdgeInsets.only(bottom: 24),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                      SizedBox(height: 6),
-                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                      SizedBox(width: 8),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
@@ -407,6 +590,24 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                   ),
                 ),
                         ],
+                        actions: [
+                          Ux4gAppHeaderAction(
+                            customWidget: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color(0xFFE5E7EB)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Center(
+                                child: Icon(Icons.menu, color: Color(0xFF4A2BC2), size: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                        verticalPadding: 16,
+                        horizontalPadding: 16,
+                        leadingSpacing: 8,
                       ),
                       const Divider(height: 1, color: Color(0xFFE5E7EB)),
                     ],
@@ -463,31 +664,95 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                           SizedBox(height: 32),
 
                           // Journey Timeline
-                          Ux4gJourneyTimeline(
-                            header: const Ux4gJourneyHeader(title: 'What happens next'),
-                            steps: const [
-                              Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.completed,
-                                stepNumber: '1',
-                                date: 'Date',
-                                title: 'Title',
-                                helpingText: 'Helping Text',
+                          Text(
+                            'What happens next',
+                            style: (Theme.of(context).extension<Ux4gTypography>()?.hS_strong ??
+                                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                                .copyWith(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral50
+                                  : Ux4gColors.neutral900,
+                            ),
+                          ),
+                          SizedBox(height: 12),
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Ux4gColors.neutral0,
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
                               ),
-                              Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.completed,
-                                stepNumber: '2',
-                                date: 'Date',
-                                title: 'Title',
-                                helpingText: 'Helping Text',
-                              ),
-                              Ux4gJourneyStep(
-                                state: Ux4gJourneyStepState.completed,
-                                stepNumber: '3',
-                                date: 'Date',
-                                title: 'Title',
-                                helpingText: 'Helping Text',
-                              ),
-                            ],
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Application Progress',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.neutral50
+                                        : Ux4gColors.neutral900,
+                                  ),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'Your application is queued and will be submitted once you\'re back online',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.neutral400
+                                        : Ux4gColors.neutral600,
+                                    height: 1.4,
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Ux4gJourneyTimeline(
+                                  activeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600,
+                                  indicatorSize: 20,
+                                  lineWidth: 3,
+                                  indicatorCardSpacing: 12,
+                                  stepSpacing: 12,
+                                  cardColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral900 : Colors.white,
+                                  cardBorderColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : const Color(0xFFE5E7EB),
+                                  cardBorderRadius: 8,
+                                  steps: [
+                                    Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.completed,
+                                      date: '02 Sep 2026',
+                                      title: 'Application Saved Locally',
+                                      status: Ux4gJourneyStepStatus(
+                                        text: '',
+                                        badgeText: 'Saved',
+                                        badgeColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green900 : const Color(0xFFDCFCE7),
+                                        badgeTextColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.green400 : const Color(0xFF15803D),
+                                        badgePosition: Ux4gJourneyBadgePosition.topRight,
+                                      ),
+                                    ),
+                                    const Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.current,
+                                      date: '03 Sep 2026',
+                                      title: 'Document Verification',
+                                      tag: 'Upcoming',
+                                    ),
+                                    const Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.upcoming,
+                                      date: '06 Sep 2026',
+                                      title: 'Field Enquiry',
+                                      tag: 'Upcoming',
+                                    ),
+                                    const Ux4gJourneyStep(
+                                      state: Ux4gJourneyStepState.upcoming,
+                                      date: '10 Sep 2026',
+                                      title: 'Certificate Issued',
+                                      tag: 'Upcoming',
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -510,12 +775,14 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
                 // Footer
                 Padding(
                   padding: const EdgeInsets.only(bottom: 24),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                      SizedBox(height: 6),
-                      Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
+                      SizedBox(width: 8),
+                      Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                     ],
                   ),
                 ),
@@ -583,7 +850,7 @@ class ApplicationQueuedCardScreen extends StatelessWidget {
 // ───────────────────────────────────────────────────────────────────────
 
 class _ApplicationQueuedMockup extends StatefulWidget {
-  _ApplicationQueuedMockup();
+  const _ApplicationQueuedMockup();
 
   @override
   State<_ApplicationQueuedMockup> createState() =>
@@ -648,6 +915,34 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                           Icon(Icons.blur_on, size: 32, color: Colors.blue),
                     ),
                   ],
+                  actions: [
+                    Ux4gAppHeaderAction(
+                      customWidget: Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral800
+                                : const Color(0xFFE5E7EB),
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.menu,
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.primary400
+                                : Ux4gColors.primary600,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                  verticalPadding: 16,
+                  horizontalPadding: 16,
+                  leadingSpacing: 8,
                 ),
                 Divider(height: 1, color: Color(0xFFE5E7EB)),
 
@@ -730,34 +1025,7 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                         SizedBox(height: 32),
 
                         // What happens next - Journey Timeline
-                        Ux4gJourneyTimeline(
-                          header: const Ux4gJourneyHeader(
-                            title: 'What happens next',
-                          ),
-                          steps: const [
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '1',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '2',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                            Ux4gJourneyStep(
-                              state: Ux4gJourneyStepState.completed,
-                              stepNumber: '3',
-                              date: 'Date',
-                              title: 'Title',
-                              helpingText: 'Helping Text',
-                            ),
-                          ],
-                        ),
+                        const _ApplicationProgressTimeline(),
                       ],
                     ),
                   ),
@@ -810,8 +1078,10 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                 // Footer
                 Padding(
                   padding: const EdgeInsets.only(bottom: 24),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         'Powered by -',
@@ -820,10 +1090,10 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
                           color: Color(0xFF9CA3AF),
                         ),
                       ),
-                      SizedBox(height: 6),
+                      const SizedBox(width: 8),
                       Image.asset(
                         _digitalIndiaLogoPath,
-                        height: 24,
+                        height: 22,
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Colors.white
                             : null,
@@ -859,7 +1129,7 @@ class _ApplicationQueuedMockupState extends State<_ApplicationQueuedMockup> {
 }
 
 class _ApplicationQueuedCardMockup extends StatefulWidget {
-  _ApplicationQueuedCardMockup();
+  const _ApplicationQueuedCardMockup();
 
   @override
   State<_ApplicationQueuedCardMockup> createState() =>
@@ -880,7 +1150,7 @@ class _ApplicationQueuedCardMockupState
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 24,
             offset: const Offset(0, 6),
           ),
@@ -946,6 +1216,34 @@ class _ApplicationQueuedCardMockupState
                               ),
                             ),
                           ],
+                          actions: [
+                            Ux4gAppHeaderAction(
+                              customWidget: Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.neutral800
+                                        : const Color(0xFFE5E7EB),
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.menu,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.primary400
+                                        : Ux4gColors.primary600,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                          verticalPadding: 16,
+                          horizontalPadding: 16,
+                          leadingSpacing: 8,
                         ),
                         const Divider(height: 1, color: Color(0xFFE5E7EB)),
                       ],
@@ -968,7 +1266,7 @@ class _ApplicationQueuedCardMockupState
                           borderRadius: BorderRadius.circular(16),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.06),
+                              color: Colors.black.withValues(alpha: 0.06),
                               blurRadius: 20,
                               spreadRadius: 2,
                               offset: const Offset(0, 4),
@@ -1047,33 +1345,39 @@ class _ApplicationQueuedCardMockupState
                             SizedBox(height: 32),
 
                             // What happens next - Journey Timeline
-                            Ux4gJourneyTimeline(
-                              header: const Ux4gJourneyHeader(
-                                title: 'What happens next',
-                              ),
-                              steps: const [
-                                Ux4gJourneyStep(
-                                  state: Ux4gJourneyStepState.completed,
-                                  stepNumber: '1',
-                                  date: 'Date',
-                                  title: 'Title',
-                                  helpingText: 'Helping Text',
-                                ),
-                                Ux4gJourneyStep(
-                                  state: Ux4gJourneyStepState.completed,
-                                  stepNumber: '2',
-                                  date: 'Date',
-                                  title: 'Title',
-                                  helpingText: 'Helping Text',
-                                ),
-                                Ux4gJourneyStep(
-                                  state: Ux4gJourneyStepState.completed,
-                                  stepNumber: '3',
-                                  date: 'Date',
-                                  title: 'Title',
-                                  helpingText: 'Helping Text',
-                                ),
-                              ],
+                            const _ApplicationProgressTimeline(),
+                            const SizedBox(height: 24),
+                            Ux4gButton(
+                              text: 'Try submitting now',
+                              onPressed: () => setState(() => _showToast = true),
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              height: 48,
+                              backgroundColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
+                              contentColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral900
+                                  : Ux4gColors.neutral50,
+                            ),
+                            const SizedBox(height: 12),
+                            Ux4gButton(
+                              text: 'Save draft and exit',
+                              onPressed: () {},
+                              variant: Ux4gButtonVariant.outline,
+                              size: Ux4gButtonSize.large,
+                              width: double.infinity,
+                              height: 48,
+                              contentColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary300
+                                  : Ux4gColors.primary600,
+                              borderColor:
+                                  Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary600
+                                  : Ux4gColors.primary300,
                             ),
                           ],
                         ),
@@ -1081,55 +1385,13 @@ class _ApplicationQueuedCardMockupState
                     ),
                   ),
 
-                  // Actions
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 16,
-                    ),
-                    child: Column(
-                      children: [
-                        Ux4gButton(
-                          text: 'Try submitting now',
-                          onPressed: () => setState(() => _showToast = true),
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          height: 48,
-                          backgroundColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary300
-                              : Ux4gColors.primary600,
-                          contentColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.neutral900
-                              : Ux4gColors.neutral50,
-                        ),
-                        SizedBox(height: 12),
-                        Ux4gButton(
-                          text: 'Save draft and exit',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.outline,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          height: 48,
-                          contentColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary300
-                              : Ux4gColors.primary600,
-                          borderColor:
-                              Theme.of(context).brightness == Brightness.dark
-                              ? Ux4gColors.primary600
-                              : Ux4gColors.primary300,
-                        ),
-                      ],
-                    ),
-                  ),
-
                   // Footer
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    child: Column(
+                    padding: const EdgeInsets.only(bottom: 24, top: 4),
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Powered by -',
@@ -1138,10 +1400,10 @@ class _ApplicationQueuedCardMockupState
                             color: Color(0xFF9CA3AF),
                           ),
                         ),
-                        SizedBox(height: 6),
+                        const SizedBox(width: 8),
                         Image.asset(
                           _digitalIndiaLogoPath,
-                          height: 24,
+                          height: 22,
                           color: Theme.of(context).brightness == Brightness.dark
                               ? Colors.white
                               : null,

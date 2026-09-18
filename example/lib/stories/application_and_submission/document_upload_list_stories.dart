@@ -1445,6 +1445,29 @@ class _DocumentUploadListCardMockup extends StatelessWidget {
                                       height: 1.4,
                                     ),
                                   ),
+                        const SizedBox(height: 24),
+                        Ux4gButton(
+                        height: 48,
+                        text: 'Continue',
+                        onPressed: () {},
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                        height: 48,
+                        text: 'Back',
+                        onPressed: () {},
+                        variant: Ux4gButtonVariant.outline,
+                        size: Ux4gButtonSize.large,
+                        width: double.infinity,
+                        contentColor: _isDark(context)
+                        ? Ux4gColors.neutral400
+                        : const Color(0xFF6B7280),
+                        borderColor: _isDark(context)
+                        ? Ux4gColors.neutral700
+                        : const Color(0xFFD1D5DB),
+                        ),
                       ],
                     ),
                   ),
@@ -1452,44 +1475,12 @@ class _DocumentUploadListCardMockup extends StatelessWidget {
               ),
 
               // Actions
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      height: 48,
-                      text: 'Continue',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                    ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      height: 48,
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      contentColor: _isDark(context)
-                          ? Ux4gColors.neutral400
-                          : const Color(0xFF6B7280),
-                      borderColor: _isDark(context)
-                          ? Ux4gColors.neutral700
-                          : const Color(0xFFD1D5DB),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Footer
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                            Padding(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -1497,13 +1488,14 @@ class _DocumentUploadListCardMockup extends StatelessWidget {
                         fontSize: 11,
                         color: _isDark(context)
                             ? Ux4gColors.neutral500
-                            : const Color(0xFF9CA3AF),
+                            : Ux4gColors.neutral400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       _digitalIndiaLogoPath,
-                      height: 24,
+                      height: 22,
                       color: _isDark(context) ? Colors.white : null,
                       errorBuilder: (c, e, s) => const Text(
                         'Digital India',
@@ -1514,6 +1506,9 @@ class _DocumentUploadListCardMockup extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+              ),
+],
                 ),
               ),
             ],

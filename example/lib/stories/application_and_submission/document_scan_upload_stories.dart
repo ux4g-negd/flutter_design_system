@@ -940,49 +940,42 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                             height: 1.4,
                           ),
                         ),
+                        const SizedBox(height: 24),
+                        Ux4gButton(
+                          text: 'Continue',
+                          onPressed: () {},
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          height: 40,
+                        ),
+                        const SizedBox(height: 12),
+                        Ux4gButton(
+                          text: 'Back',
+                          onPressed: () {},
+                          variant: Ux4gButtonVariant.outline,
+                          size: Ux4gButtonSize.large,
+                          width: double.infinity,
+                          height: 40,
+                          contentColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary300
+                              : Ux4gColors.primary600,
+                          borderColor:
+                              Theme.of(context).brightness == Brightness.dark
+                              ? Ux4gColors.primary600
+                              : Ux4gColors.primary300,
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
-                ),
-                child: Column(
-                  children: [
-                    Ux4gButton(
-                      text: 'Continue',
-                      onPressed: () {},
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      height: 40,
-                    ),
-                    const SizedBox(height: 12),
-                    Ux4gButton(
-                      text: 'Back',
-                      onPressed: () {},
-                      variant: Ux4gButtonVariant.outline,
-                      size: Ux4gButtonSize.large,
-                      width: double.infinity,
-                      height: 40,
-                      contentColor:
-                          Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gColors.primary300
-                          : Ux4gColors.primary600,
-                      borderColor:
-                          Theme.of(context).brightness == Brightness.dark
-                          ? Ux4gColors.primary600
-                          : Ux4gColors.primary300,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 24, top: 4),
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Powered by -',
@@ -991,12 +984,13 @@ class _DocumentUploadCardMockup extends StatelessWidget {
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Ux4gColors.neutral500
                             : Ux4gColors.neutral400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(width: 8),
                     Image.asset(
                       _digitalIndiaLogoPath,
-                      height: 24,
+                      height: 22,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
                           : null,

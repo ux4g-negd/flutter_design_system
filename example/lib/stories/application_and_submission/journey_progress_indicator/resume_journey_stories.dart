@@ -88,7 +88,36 @@ class _ResumeJourneyScreenState extends State<ResumeJourneyScreen> {
                   height: 32,
                         colorFilter: ColorFilter.mode(Theme.of(context).brightness == Brightness.dark ? Ux4gColors.primary300 : Ux4gColors.primary600, BlendMode.srcIn), 
                   errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
-                ),],
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
 
@@ -197,14 +226,16 @@ height: 48, text: 'Back',
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,  
-                    height: 24,
+                    height: 22,
                     color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
                     errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                   ),
@@ -266,6 +297,34 @@ class _ResumeJourneyCardScreenState extends State<ResumeJourneyCardScreen> {
                         errorBuilder: (c, e, s) => Icon(Icons.blur_on, size: 32, color: Colors.blue)
                       ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   Ux4gDivider(color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral800 : Ux4gColors.neutral200),
                 ],
@@ -388,14 +447,16 @@ height: 48, text: 'Back',
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text('Powered by -', style: TextStyle(fontSize: 11, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral500 : Ux4gColors.neutral400)),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(
                     Ux4gIcons.digitalIndiaLogoPng,  
-                    height: 24,
+                    height: 22,
                     color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null, 
                     errorBuilder: (c, e, s) => Text('Digital India', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                   ),
@@ -472,6 +533,34 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                       Icon(Icons.blur_on, size: 32, color: Colors.blue),
                 ),
               ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.neutral800
+                            : const Color(0xFFE5E7EB),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Ux4gColors.primary400
+                            : Ux4gColors.primary600,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              verticalPadding: 16,
+              horizontalPadding: 16,
+              leadingSpacing: 8,
             ),
             Ux4gDivider(
               color: Theme.of(context).brightness == Brightness.dark
@@ -632,8 +721,10 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -644,10 +735,10 @@ class _ResumeJourneyMockupState extends State<_ResumeJourneyMockup> {
                           : Ux4gColors.neutral400,
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     _digitalIndiaLogoPath,
-                    height: 24,
+                    height: 22,
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : null,
@@ -736,6 +827,34 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                             Icon(Icons.blur_on, size: 32, color: Colors.blue),
                       ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   Ux4gDivider(
                     color: Theme.of(context).brightness == Brightness.dark
@@ -877,6 +996,27 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                             onChanged: (val) =>
                                 setState(() => _acceptTerms = val ?? false),
                           ),
+                          const SizedBox(height: 24),
+                          Ux4gButton(
+                            height: 48,
+                            text: 'Continue',
+                            onPressed: _acceptTerms ? () {} : null,
+                            size: Ux4gButtonSize.large,
+                            width: double.infinity,
+                          ),
+                          const SizedBox(height: 12),
+                          Ux4gButton(
+                            height: 48,
+                            text: 'Back',
+                            onPressed: () {},
+                            variant: Ux4gButtonVariant.ghost,
+                            size: Ux4gButtonSize.large,
+                            width: double.infinity,
+                            contentColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Ux4gColors.neutral400
+                                : Ux4gColors.neutral500,
+                          ),
                         ],
                       ),
                     ),
@@ -885,40 +1025,15 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
               ),
             ),
 
-            // Actions
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                children: [
-                  Ux4gButton(
-                    height: 48,
-                    text: 'Continue',
-                    onPressed: _acceptTerms ? () {} : null,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                  ),
-                  SizedBox(height: 12),
-                  Ux4gButton(
-                    height: 48,
-                    text: 'Back',
-                    onPressed: () {},
-                    variant: Ux4gButtonVariant.ghost,
-                    size: Ux4gButtonSize.large,
-                    width: double.infinity,
-                    contentColor:
-                        Theme.of(context).brightness == Brightness.dark
-                        ? Ux4gColors.neutral400
-                        : Ux4gColors.neutral500,
-                  ),
-                ],
-              ),
-            ),
+
 
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'Powered by -',
@@ -929,10 +1044,10 @@ class _ResumeJourneyCardMockupState extends State<_ResumeJourneyCardMockup> {
                           : Ux4gColors.neutral400,
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(
                     _digitalIndiaLogoPath,
-                    height: 24,
+                    height: 22,
                     color: Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : null,

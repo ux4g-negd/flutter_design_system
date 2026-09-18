@@ -153,6 +153,34 @@ class GovernmentFormScreenState extends State<GovernmentFormScreen> {
                         ),
                       ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   Divider(
                     height: 1,
@@ -409,47 +437,42 @@ class GovernmentFormScreenState extends State<GovernmentFormScreen> {
                             onChanged: (v) =>
                                 setState(() => _acceptTerms = v ?? false),
                           ),
-      
+                          const SizedBox(height: 24),
+                          Ux4gButton(
+                            height: 48,
+                            text: 'Continue',
+                            onPressed: _acceptTerms
+                                ? () {
+                                    setState(() => _showBanner = true);
+                                    Future.delayed(Duration(seconds: 3), () {
+                                      if (mounted)
+                                        setState(() => _showBanner = false);
+                                    });
+                                  }
+                                : null,
+                            size: Ux4gButtonSize.large,
+                            width: double.infinity,
+                          ),
+                          const SizedBox(height: 12),
+                          Ux4gButton(
+                            height: 48,
+                            text: 'Save as Draft',
+                            onPressed: () {},
+                            variant: Ux4gButtonVariant.ghost,
+                            size: Ux4gButtonSize.large,
+                            width: double.infinity,
+                            contentColor: primaryColor,
+                          ),
                         ],
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    child: Column(
-                      children: [
-                        Ux4gButton(
-                          height: 48,
-                          text: 'Continue',
-                          onPressed: _acceptTerms
-                              ? () {
-                                  setState(() => _showBanner = true);
-                                  Future.delayed(Duration(seconds: 3), () {
-                                    if (mounted)
-                                      setState(() => _showBanner = false);
-                                  });
-                                }
-                              : null,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                        ),
-                        SizedBox(height: 12),
-                        Ux4gButton(
-                          height: 48,
-                          text: 'Save as Draft',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.ghost,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          contentColor: primaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
                     padding: EdgeInsets.only(bottom: 24),
-                    child: Column(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Powered by -',
@@ -461,8 +484,14 @@ class GovernmentFormScreenState extends State<GovernmentFormScreen> {
                                 : Ux4gColors.neutral400,
                           ),
                         ),
-                        SizedBox(height: 6),
-                        Image.asset(_digitalIndiaLogoPath, height: 24),
+                        const SizedBox(width: 8),
+                        Image.asset(
+                          _digitalIndiaLogoPath,
+                          height: 22,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : null,
+                        ),
                       ],
                     ),
                   ),
@@ -583,6 +612,34 @@ class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
                         ),
                       ),
                     ],
+                    actions: [
+                      Ux4gAppHeaderAction(
+                        customWidget: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.neutral800
+                                  : const Color(0xFFE5E7EB),
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Ux4gColors.primary400
+                                  : Ux4gColors.primary600,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    verticalPadding: 16,
+                    horizontalPadding: 16,
+                    leadingSpacing: 8,
                   ),
                   Divider(
                     height: 1,
@@ -878,8 +935,10 @@ class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 24),
-                    child: Column(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Powered by -',
@@ -891,8 +950,14 @@ class _GovernmentFormMockupState extends State<_GovernmentFormMockup> {
                                 : Ux4gColors.neutral400,
                           ),
                         ),
-                        SizedBox(height: 6),
-                        Image.asset(_digitalIndiaLogoPath, height: 24),
+                        const SizedBox(width: 8),
+                        Image.asset(
+                          _digitalIndiaLogoPath,
+                          height: 22,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : null,
+                        ),
                       ],
                     ),
                   ),
@@ -1010,6 +1075,34 @@ class _GovernmentFormCardMockupState extends State<_GovernmentFormCardMockup> {
                               ),
                             ),
                           ],
+                          actions: [
+                            Ux4gAppHeaderAction(
+                              customWidget: Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.neutral800
+                                        : const Color(0xFFE5E7EB),
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.menu,
+                                    color: Theme.of(context).brightness == Brightness.dark
+                                        ? Ux4gColors.primary400
+                                        : Ux4gColors.primary600,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                          verticalPadding: 16,
+                          horizontalPadding: 16,
+                          leadingSpacing: 8,
                         ),
                         Divider(
                           height: 1,
@@ -1209,6 +1302,32 @@ class _GovernmentFormCardMockupState extends State<_GovernmentFormCardMockup> {
                                     () => _acceptTerms = val ?? false,
                                   ),
                                 ),
+                                SizedBox(height: 24),
+                                Ux4gButton(
+                                  height: 48,
+                                  text: 'Continue',
+                                  onPressed: _acceptTerms
+                                      ? () {
+                                          setState(() => _showBanner = true);
+                                          Future.delayed(Duration(seconds: 3), () {
+                                            if (mounted)
+                                              setState(() => _showBanner = false);
+                                          });
+                                        }
+                                      : null,
+                                  size: Ux4gButtonSize.large,
+                                  width: double.infinity,
+                                ),
+                                SizedBox(height: 12),
+                                Ux4gButton(
+                                  height: 48,
+                                  text: 'Save as Draft',
+                                  onPressed: () {},
+                                  variant: Ux4gButtonVariant.ghost,
+                                  size: Ux4gButtonSize.large,
+                                  width: double.infinity,
+                                  contentColor: primaryColor,
+                                ),
                               ],
                             ),
                           ),
@@ -1218,41 +1337,11 @@ class _GovernmentFormCardMockupState extends State<_GovernmentFormCardMockup> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    child: Column(
-                      children: [
-                        Ux4gButton(
-                          height: 48,
-                          text: 'Continue',
-                          onPressed: _acceptTerms
-                              ? () {
-                                  setState(() => _showBanner = true);
-                                  Future.delayed(Duration(seconds: 3), () {
-                                    if (mounted)
-                                      setState(() => _showBanner = false);
-                                  });
-                                }
-                              : null,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                        ),
-                        SizedBox(height: 12),
-                        Ux4gButton(
-                          height: 48,
-                          text: 'Save as Draft',
-                          onPressed: () {},
-                          variant: Ux4gButtonVariant.ghost,
-                          size: Ux4gButtonSize.large,
-                          width: double.infinity,
-                          contentColor: primaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
                     padding: EdgeInsets.only(bottom: 24),
-                    child: Column(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Powered by -',
@@ -1264,8 +1353,14 @@ class _GovernmentFormCardMockupState extends State<_GovernmentFormCardMockup> {
                                 : Ux4gColors.neutral400,
                           ),
                         ),
-                        SizedBox(height: 6),
-                        Image.asset(_digitalIndiaLogoPath, height: 24),
+                        const SizedBox(width: 8),
+                        Image.asset(
+                          _digitalIndiaLogoPath,
+                          height: 22,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : null,
+                        ),
                       ],
                     ),
                   ),
