@@ -64,9 +64,10 @@ class InlineFeedbackScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos and elevation
+            // App Header with logos, elevation and right menu button
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingSpacing: 8,
@@ -74,7 +75,7 @@ class InlineFeedbackScreen extends StatelessWidget {
                 SvgPicture.asset(
                   Ux4gIcons.nationalEmblem,
                   height: 40,
-                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                  colorFilter: isDark
                       ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
@@ -91,6 +92,59 @@ class InlineFeedbackScreen extends StatelessWidget {
                   colorFilter: ColorFilter.mode(
                     isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -202,9 +256,10 @@ class InlineFeedbackCardScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // App Header with logos and elevation
+            // App Header with logos, elevation and right menu button
             Ux4gAppHeader(
               elevation: 2,
+              verticalPadding: 16,
               variant: Ux4gAppHeaderVariant.light,
               title: '',
               leadingSpacing: 8,
@@ -212,7 +267,7 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                 SvgPicture.asset(
                   Ux4gIcons.nationalEmblem,
                   height: 40,
-                  colorFilter: Theme.of(context).brightness == Brightness.dark
+                  colorFilter: isDark
                       ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
                       : null,
                 ),
@@ -229,6 +284,59 @@ class InlineFeedbackCardScreen extends StatelessWidget {
                   colorFilter: ColorFilter.mode(
                     isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                     BlendMode.srcIn,
+                  ),
+                ),
+              ],
+              actions: [
+                Ux4gAppHeaderAction(
+                  customWidget: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 38,
+                      height: 38,
+                      decoration: BoxDecoration(
+                        color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark ? Ux4gColors.primary600 : const Color(0xFFC7D2FE),
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Container(
+                              width: 16,
+                              height: 2.2,
+                              decoration: BoxDecoration(
+                                color: isDark ? Ux4gColors.primary300 : const Color(0xFF432CBB),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -353,20 +461,21 @@ class _InlineFeedbackMockup extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              // App Header with logos and elevation
+              // App Header with logos, elevation and right menu button
               Ux4gAppHeader(
                 elevation: 2,
+                verticalPadding: 16,
                 variant: Ux4gAppHeaderVariant.light,
                 title: '',
                 leadingSpacing: 8,
                 leadingWidgets: [
                   SvgPicture.asset(
-                  Ux4gIcons.nationalEmblem,
-                  height: 40,
-                  colorFilter: Theme.of(context).brightness == Brightness.dark
-                      ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
-                      : null,
-                ),
+                    Ux4gIcons.nationalEmblem,
+                    height: 40,
+                    colorFilter: Theme.of(context).brightness == Brightness.dark
+                        ? const ColorFilter.mode(Ux4gColors.neutral50, BlendMode.srcIn)
+                        : null,
+                  ),
                   SizedBox(
                     height: 32,
                     child: Ux4gDivider(
@@ -380,6 +489,67 @@ class _InlineFeedbackMockup extends StatelessWidget {
                     colorFilter: ColorFilter.mode(
                       isDark ? Ux4gColors.primary300 : Ux4gColors.primary600,
                       BlendMode.srcIn,
+                    ),
+                  ),
+                ],
+                actions: [
+                  Ux4gAppHeaderAction(
+                    customWidget: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 38,
+                        height: 38,
+                        decoration: BoxDecoration(
+                          color: isDark ? Ux4gColors.neutral900 : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: isDark
+                                ? Ux4gColors.primary600
+                                : const Color(0xFFC7D2FE),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                              const SizedBox(height: 3),
+                              Container(
+                                width: 16,
+                                height: 2.2,
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? Ux4gColors.primary300
+                                      : const Color(0xFF432CBB),
+                                  borderRadius: BorderRadius.circular(2),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
