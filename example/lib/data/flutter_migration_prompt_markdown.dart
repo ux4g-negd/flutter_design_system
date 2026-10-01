@@ -100,7 +100,7 @@ Where applicable, upgrade custom manual input logic to UX4G's official Governmen
 - **PAN Card Input:** `Ux4gPanInputField` (built-in format validator)
 - **OTP Verification:** `Ux4gOtpInput` (6-digit / 4-digit auto-focus PIN box)
 - **Journey / Stepper:** `Ux4gJourneyTimeline` (application tracking pipeline)
-- **Biometric Face Verification:** `Ux4gBiometricFaceAuth` (MLKit face detection & liveness)
+- **Biometric Face Verification:** `BiometricVerificationFlow` (MLKit face detection & liveness)
 - **Empty States:** `Ux4gEmptyState`
 - **Feedback Collection:** `Ux4gFeedbackFormStar`, `Ux4gFeedbackFormCsat`, `Ux4gFeedbackFormNps`
 
