@@ -173,13 +173,14 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
     id: 10,
     name: 'Segmented Button',
     category: 'Core Components',
-    ux4gTag: 'Ux4gSegmentedButton',
-    ux4gStatus: StatusParity.yes,
+    ux4gTag: 'No (Use Ux4gChipGroup)',
+    ux4gStatus: StatusParity.no,
+    ux4gNote: 'Ux4gChipGroup, Ux4gChoiceChip',
     m3Name: 'SegmentedButton',
     m3Status: StatusParity.yes,
     cupertinoName: 'CupertinoSlidingSegmentedControl',
     cupertinoStatus: StatusParity.yes,
-    notes: 'Single and multi-select segmented pill toggles for view switching and service filtering.',
+    notes: 'Single and multi-select segmented pill toggles. Use Ux4gChipGroup with Ux4gChoiceChip or Flutter SegmentedButton with Ux4gTheme.',
   ),
   FlutterComponentItem(
     id: 11,
@@ -543,8 +544,9 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
     id: 40,
     name: 'Slot Grid (Appointment Booking)',
     category: 'Government Specific',
-    ux4gTag: 'Ux4gSlotGrid',
+    ux4gTag: 'Ux4gTimeslot',
     ux4gStatus: StatusParity.yes,
+    ux4gNote: 'Ux4gTimeSlot, SlotGrid',
     m3Name: 'No (Custom GridView)',
     m3Status: StatusParity.no,
     cupertinoName: 'No',
@@ -555,8 +557,9 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
     id: 41,
     name: 'Spinner / Loader',
     category: 'Feedback & Status',
-    ux4gTag: 'Ux4gLoader',
+    ux4gTag: 'Ux4gSpinner',
     ux4gStatus: StatusParity.yes,
+    ux4gNote: 'Ux4gLoader (Deprecated)',
     m3Name: 'CircularProgressIndicator',
     m3Status: StatusParity.yes,
     cupertinoName: 'CupertinoActivityIndicator',
@@ -591,8 +594,9 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
     id: 44,
     name: 'Switch / Toggle',
     category: 'Inputs & Forms',
-    ux4gTag: 'Ux4gToggle',
+    ux4gTag: 'Ux4gSwitch',
     ux4gStatus: StatusParity.yes,
+    ux4gNote: 'Ux4gToggle (Deprecated)',
     m3Name: 'Switch / SwitchListTile',
     m3Status: StatusParity.yes,
     cupertinoName: 'CupertinoSwitch',
@@ -1021,14 +1025,14 @@ const List<FlutterPropMappingItem> kFlutterPropsMappingData = [
     description: 'Search input with leading magnifying glass and clear button.',
   ),
 
-  // Slot Grid
+  // Slot Grid / Timeslot
   FlutterPropMappingItem(
-    component: 'Ux4gSlotGrid',
+    component: 'Ux4gTimeslot',
     propGroup: 'Booking Slots',
-    ux4gProp: 'slots: List<AppointmentSlot>, selectedSlotId: String?, onSlotSelected: ValueChanged<AppointmentSlot>',
+    ux4gProp: 'data: Ux4gTimeslotData, onDateSelected: ValueChanged<DateTime>?, timeSlotProvider: Function?',
     m3Prop: 'GridView.builder(itemBuilder: ...)',
     cupertinoProp: 'GridView.builder(...)',
-    description: 'Appointment slot grid (Available, Selected, Booked, Inactive) for Seva Kendras.',
+    description: 'Appointment slot calendar grid (Available, Selected, Booked, Inactive) for Seva Kendras.',
   ),
 
   // Status Banner
@@ -1045,7 +1049,7 @@ const List<FlutterPropMappingItem> kFlutterPropsMappingData = [
   FlutterPropMappingItem(
     component: 'Ux4gStepper',
     propGroup: 'Steps & Navigation',
-    ux4gProp: 'steps: List<Ux4gStep>, currentStep: int, onStepTapped: ValueChanged<int>?, isHorizontal: bool',
+    ux4gProp: 'steps: List<Ux4gStepItem>, currentStep: int, totalSteps: int, orientation: StepperOrientation',
     m3Prop: 'Stepper(steps: ..., currentStep: ..., onStepTapped: ...)',
     cupertinoProp: 'Custom Column / Row',
     description: 'Multi-step form stepper with numbered step bubbles and completed checkmarks.',
@@ -1053,12 +1057,12 @@ const List<FlutterPropMappingItem> kFlutterPropsMappingData = [
 
   // Switch / Toggle
   FlutterPropMappingItem(
-    component: 'Ux4gToggle',
+    component: 'Ux4gSwitch',
     propGroup: 'Toggle State',
-    ux4gProp: 'value: bool, onChanged: ValueChanged<bool>?, label: String?, description: String?',
+    ux4gProp: 'checked: bool, onCheckedChange: ValueChanged<bool>?, label: String?, description: String?, size: Ux4gSwitchSize',
     m3Prop: 'Switch(value: bool, onChanged: ...)',
     cupertinoProp: 'CupertinoSwitch(value: bool, onChanged: ...)',
-    description: 'Standard Boolean toggle with integrated label and description.',
+    description: 'Standard Boolean toggle switch with integrated label and description.',
   ),
 
   // Toast
@@ -2966,7 +2970,7 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
       },
       {
         'title': 'Seva Kendra Slot Grid',
-        'widget': '<Ux4gSlotGrid />',
+        'widget': '<Ux4gTimeslot />',
         'desc': 'Appointment booking grid (Available, Selected, Booked, Inactive) for citizen kiosk service centres.',
         'icon': Icons.grid_view,
       },

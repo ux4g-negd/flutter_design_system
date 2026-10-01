@@ -55,7 +55,7 @@ flutter pub get
 
 ## 3. Theme Integration (`Ux4gTheme`)
 
-Wrap your `MaterialApp` with `Ux4gTheme.lightTheme()` and `Ux4gTheme.darkTheme()`:
+Configure your `MaterialApp` with `Ux4gTheme.themeData()`:
 
 ```dart
 // lib/main.dart
@@ -74,8 +74,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Gov Application',
       debugShowCheckedModeBanner: false,
-      theme: Ux4gTheme.lightTheme(),
-      darkTheme: Ux4gTheme.darkTheme(),
+      theme: Ux4gTheme.themeData(isDark: false),
+      darkTheme: Ux4gTheme.themeData(isDark: true),
       themeMode: ThemeMode.system,
       home: const DashboardScreen(),
     );
@@ -115,7 +115,7 @@ class MyApp extends StatelessWidget {
 | **Aadhaar Input** | Custom Regex Formatter | N/A | `Ux4gAadhaarInputField` (Built-in Verhoeff checksum) |
 | **PAN Card Input** | Custom Uppercase Formatter | N/A | `Ux4gPanInputField` (Built-in format validator) |
 | **OTP Input** | Custom PIN Row | N/A | `Ux4gOtpInput` (Auto-focus & SMS autofill) |
-| **Biometric Auth** | Custom MLKit / Camera | N/A | `Ux4gBiometricFaceAuth` (Liveness & blink check) |
+| **Biometric Auth** | Custom MLKit / Camera | N/A | `BiometricVerificationFlow` (Liveness & blink check) |
 | **Journey Timeline** | Custom Stepper | N/A | `Ux4gJourneyTimeline` (Multi-step application tracker) |
 | **Status Pipeline** | Custom Breadcrumbs | N/A | `Ux4gStatusPipeline` |
 | **Empty State** | Custom Column | N/A | `Ux4gEmptyState` |
@@ -269,12 +269,12 @@ Ux4gOtpInput(
 #### Multi-Stage Application Journey Tracker
 ```dart
 Ux4gJourneyTimeline(
-  currentStepIndex: 2,
+  currentStep: 2,
   steps: const [
-    Ux4gTimelineStep(title: 'Application Submitted', date: '01 Mar 2026', status: Ux4gStepStatus.completed),
-    Ux4gTimelineStep(title: 'Document Verification', date: '04 Mar 2026', status: Ux4gStepStatus.completed),
-    Ux4gTimelineStep(title: 'Under Review by Officer', date: '08 Mar 2026', status: Ux4gStepStatus.inProgress),
-    Ux4gTimelineStep(title: 'Final Approval & Certificate Issuance', status: Ux4gStepStatus.pending),
+    Ux4gJourneyStep(title: 'Application Submitted', date: '01 Mar 2026', state: Ux4gJourneyStepState.completed),
+    Ux4gJourneyStep(title: 'Document Verification', date: '04 Mar 2026', state: Ux4gJourneyStepState.completed),
+    Ux4gJourneyStep(title: 'Under Review by Officer', date: '08 Mar 2026', state: Ux4gJourneyStepState.current),
+    Ux4gJourneyStep(title: 'Final Approval & Certificate Issuance', state: Ux4gJourneyStepState.upcoming),
   ],
 )
 ```
@@ -302,7 +302,7 @@ Ux4gJourneyTimeline(
 
 ## 7. Step-by-Step Gradual Migration Workflow
 
-1. **Step 1 — Configure Theme**: Add `Ux4gTheme.lightTheme()` to `MaterialApp`.
+1. **Step 1 — Configure Theme**: Add `Ux4gTheme.themeData(isDark: false)` to `MaterialApp`.
 2. **Step 2 — Forms & Inputs**: Replace standard text inputs and buttons with `<Ux4gInputField>` and `<Ux4gButton>`.
 3. **Step 3 — App Navigation**: Replace standard `AppBar` with `<Ux4gAppHeader>` featuring Government Emblem logo and notification counters.
 4. **Step 4 — Gov Integrations**: Adopt `<Ux4gAadhaarInputField>`, `<Ux4gPanInputField>`, `<Ux4gOtpInput>`, and `<Ux4gJourneyTimeline>`.
@@ -316,4 +316,4 @@ Ux4gJourneyTimeline(
 - [ ] Color contrast meets WCAG 2.1 AA (>= 4.5:1 ratio).
 - [ ] Responsive UI renders correctly on mobile, tablet, and desktop layouts.
 - [ ] Aadhaar and PAN validators correctly verify checksums on citizen data.
-- [ ] Dark Mode transitions smoothly with `Ux4gTheme.darkTheme()`.
+- [ ] Dark Mode transitions smoothly with `Ux4gTheme.themeData(isDark: true)`.
