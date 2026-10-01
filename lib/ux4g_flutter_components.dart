@@ -16,6 +16,7 @@ export 'src/components/divider.dart';
 export 'src/components/card.dart';
 export 'src/components/modal.dart';
 export 'src/components/bottom_sheet.dart';
+export 'src/components/bottom_navigation_bar.dart';
 export 'src/components/checkbox.dart';
 export 'src/components/pagination.dart';
 export 'src/components/pagination_dotted.dart';

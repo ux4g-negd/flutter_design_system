@@ -4599,6 +4599,49 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         ),
                       ),
 
+                      // ─── 28B. Bottom Navigation Bar ────────────────────────────
+                      _showcaseCard(
+                        title: 'Bottom Navigation Bar (Ux4gBottomNavigationBar)',
+                        typography: typography,
+                        colors: colors,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Complete navigation bar matching UX4G Design System guidelines: 3 active indicator variants (Pill, Bar, Plain), 5 layout shapes (Labelled, Top-Rounded, Icon-Only, Centre-Action FAB, Floating Pill Capsule), custom badges, and responsive dark/light themes.',
+                              style: typography.bS_default.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.7),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                Ux4gTag(text: 'Pill Indicator', colorScheme: Ux4gTagColor.brand),
+                                Ux4gTag(text: 'Top Bar Indicator', colorScheme: Ux4gTagColor.brand),
+                                Ux4gTag(text: 'Floating Capsule', colorScheme: Ux4gTagColor.info),
+                                Ux4gTag(text: 'Center FAB Action', colorScheme: Ux4gTagColor.success),
+                                Ux4gTag(text: 'Badges & Counts', colorScheme: Ux4gTagColor.warning),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            Ux4gButton(
+                              text: 'Open Fullscreen Navigation Bar Demo',
+                              variant: Ux4gButtonVariant.primary,
+                              trailingIcon: Icons.open_in_new,
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => const Ux4gBottomNavShowcaseScreen(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+
                       // ─── 29. Compact Stepper ──────────────────────────
                       _showcaseCard(
                         title: 'Compact Stepper',
@@ -5557,3 +5600,1063 @@ class _Ux4gTimeslotShowcaseState extends State<Ux4gTimeslotShowcase> {
     );
   }
 }
+
+// ─── Ux4gBottomNavShowcaseScreen ──────────────────────────────────────────────
+
+class Ux4gBottomNavShowcaseScreen extends StatefulWidget {
+  const Ux4gBottomNavShowcaseScreen({super.key});
+
+  @override
+  State<Ux4gBottomNavShowcaseScreen> createState() =>
+      _Ux4gBottomNavShowcaseScreenState();
+}
+
+class _Ux4gBottomNavShowcaseScreenState
+    extends State<Ux4gBottomNavShowcaseScreen> {
+  bool _isDark = false;
+  String _lastActionMessage = 'Tap any tab in the matrix or playground to interact';
+
+  // 5x3 Matrix state: [row][col]
+  final List<List<int>> _matrixIndices = [
+    [0, 0, 0], // Labelled (Pill, Bar, Plain)
+    [0, 0, 0], // Top-rounded (Pill, Bar, Plain)
+    [0, 0, 0], // Icon only (Pill, Bar, Plain)
+    [0, 0, 0], // Centre action (Pill, Bar, Plain)
+    [0, 0, 0], // Pill floating (Pill, Bar, Plain)
+  ];
+
+  // Playground state
+  int _playgroundIndex = 0;
+  Ux4gBottomNavIndicatorVariant _playgroundIndicator =
+      Ux4gBottomNavIndicatorVariant.pill;
+  Ux4gBottomNavVariant _playgroundVariant = Ux4gBottomNavVariant.labelled;
+  bool _showBadges = true;
+  bool _showLabels = true;
+
+  // Full Screen interactive modal state
+  int _fullScreenIndex = 0;
+  Ux4gBottomNavIndicatorVariant _fullScreenIndicator =
+      Ux4gBottomNavIndicatorVariant.pill;
+  Ux4gBottomNavVariant _fullScreenVariant = Ux4gBottomNavVariant.labelled;
+
+  // Base 5 items matching Image 1 exactly
+  List<Ux4gBottomNavItem> _buildStandardItems({bool showBadges = false}) {
+    return [
+      const Ux4gBottomNavItem(
+        key: 'home',
+        label: 'Home',
+        icon: Icons.home_outlined,
+        activeIcon: Icons.home,
+      ),
+      const Ux4gBottomNavItem(
+        key: 'services',
+        label: 'Services',
+        icon: Icons.grid_view_outlined,
+        activeIcon: Icons.grid_view,
+      ),
+      const Ux4gBottomNavItem(
+        key: 'status',
+        label: 'Status',
+        icon: Icons.assignment_outlined,
+        activeIcon: Icons.assignment,
+      ),
+      Ux4gBottomNavItem(
+        key: 'alerts',
+        label: 'Alerts',
+        icon: Icons.notifications_none_outlined,
+        activeIcon: Icons.notifications,
+        badge: showBadges ? 3 : null,
+      ),
+      const Ux4gBottomNavItem(
+        key: 'profile',
+        label: 'Profile',
+        icon: Icons.person_outline,
+        activeIcon: Icons.person,
+      ),
+    ];
+  }
+
+  // 4 items for Centre Action mode (Home, Services | Status, Alerts)
+  List<Ux4gBottomNavItem> _buildCentreActionItems({bool showBadges = false}) {
+    return [
+      const Ux4gBottomNavItem(
+        key: 'home',
+        label: 'Home',
+        icon: Icons.home_outlined,
+        activeIcon: Icons.home,
+      ),
+      const Ux4gBottomNavItem(
+        key: 'services',
+        label: 'Services',
+        icon: Icons.grid_view_outlined,
+        activeIcon: Icons.grid_view,
+      ),
+      const Ux4gBottomNavItem(
+        key: 'status',
+        label: 'Status',
+        icon: Icons.assignment_outlined,
+        activeIcon: Icons.assignment,
+      ),
+      Ux4gBottomNavItem(
+        key: 'alerts',
+        label: 'Alerts',
+        icon: Icons.notifications_none_outlined,
+        activeIcon: Icons.notifications,
+        badge: showBadges ? '!' : null,
+      ),
+    ];
+  }
+
+  void _updateMatrixIndex(int row, int col, int idx, String label) {
+    setState(() {
+      _matrixIndices[row][col] = idx;
+      _lastActionMessage = '[Row ${row + 1}, Col ${col + 1}] selected "$label"';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Ux4gTheme(
+      isDark: _isDark,
+      child: Builder(
+        builder: (ctx) {
+          final colors = Ux4gTheme.colors(ctx);
+          final typography = Ux4gTheme.typography(ctx);
+
+          final matrixRows = [
+            (label: 'Labelled', variant: Ux4gBottomNavVariant.labelled, items: _buildStandardItems(showBadges: _showBadges), showLabels: true),
+            (label: 'Top-rounded', variant: Ux4gBottomNavVariant.topRounded, items: _buildStandardItems(showBadges: _showBadges), showLabels: true),
+            (label: 'Icon only', variant: Ux4gBottomNavVariant.iconOnly, items: _buildStandardItems(showBadges: _showBadges), showLabels: false),
+            (label: 'Centre action', variant: Ux4gBottomNavVariant.centreAction, items: _buildCentreActionItems(showBadges: _showBadges), showLabels: true),
+            (label: 'Pill (floating)', variant: Ux4gBottomNavVariant.floatingPill, items: _buildStandardItems(showBadges: _showBadges), showLabels: true),
+          ];
+
+          final matrixCols = [
+            (title: 'Pill', indicator: Ux4gBottomNavIndicatorVariant.pill),
+            (title: 'Bar', indicator: Ux4gBottomNavIndicatorVariant.bar),
+            (title: 'Plain', indicator: Ux4gBottomNavIndicatorVariant.plain),
+          ];
+
+          return Scaffold(
+            backgroundColor: colors.background,
+            appBar: AppBar(
+              backgroundColor: colors.surface,
+              elevation: 0,
+              title: Text(
+                'UX4G Bottom Navigation Bar',
+                style: typography.hS_strong.copyWith(color: colors.onSurface),
+              ),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: colors.onSurface),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              actions: [
+                FilledButton.icon(
+                  onPressed: () => _openFullScreenDemo(context),
+                  icon: const Icon(Icons.phone_android, size: 16),
+                  label: const Text('Live Demo'),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: colors.primary,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  icon: Icon(
+                    _isDark ? Icons.light_mode : Icons.dark_mode,
+                    color: colors.onSurface,
+                  ),
+                  tooltip: 'Toggle Theme',
+                  onPressed: () => setState(() => _isDark = !_isDark),
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
+            body: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ─── Header & Description ─────────────────────────────────────
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: colors.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: colors.onSurface.withValues(alpha: 0.1),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: colors.primary.withValues(alpha: 0.12),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                'UX4G NAVIGATION',
+                                style: typography.bXS_strong.copyWith(
+                                  color: colors.primary,
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: colors.onSurface.withValues(alpha: 0.06),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                '5 Rows × 3 Indicators',
+                                style: typography.bXS_default.copyWith(
+                                  color: colors.onSurface.withValues(alpha: 0.7),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Bottom Navigation Bar Matrix',
+                          style: typography.hM_strong.copyWith(
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Complete design system matrix featuring Pill, Bar, and Plain active indicators across Labelled, Top-rounded, Icon only, Centre action (+ FAB), and Pill (floating) shapes matching the official design specification.',
+                          style: typography.bS_default.copyWith(
+                            color: colors.onSurface.withValues(alpha: 0.7),
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        // Last Action Bar
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: colors.primary.withValues(alpha: 0.08),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: colors.primary.withValues(alpha: 0.2),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.touch_app_outlined,
+                                size: 16,
+                                color: colors.primary,
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  _lastActionMessage,
+                                  style: typography.bXS_strong.copyWith(
+                                    color: colors.primary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ─── SECTION 1: 5x3 DESIGN SYSTEM MATRIX (Image 1) ───────────
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: colors.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: colors.onSurface.withValues(alpha: 0.1),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Design System Matrix (5 Rows × 3 Indicators)',
+                          style: typography.hS_strong.copyWith(
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Interactive reference gallery. Tap any tab within any cell to switch its active state.',
+                          style: typography.bS_default.copyWith(
+                            color: colors.onSurface.withValues(alpha: 0.6),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+
+                        // Horizontal Scroll for Responsive Matrix Table
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: SizedBox(
+                            width: 1100,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // ─── Column Header Row ───
+                                Row(
+                                  children: [
+                                    const SizedBox(width: 130), // Label space
+                                    for (final col in matrixCols)
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8,
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                col.title,
+                                                style: typography.hS_strong.copyWith(
+                                                  color: colors.onSurface,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 6),
+                                              Container(
+                                                height: 2,
+                                                width: 160,
+                                                decoration: BoxDecoration(
+                                                  color: colors.primary.withValues(alpha: 0.4),
+                                                  borderRadius: BorderRadius.circular(1),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+
+                                const SizedBox(height: 20),
+
+                                // ─── 5 Matrix Rows ───
+                                for (int rIdx = 0; rIdx < matrixRows.length; rIdx++) ...[
+                                  Builder(builder: (c) {
+                                    final row = matrixRows[rIdx];
+                                    return Padding(
+                                      padding: const EdgeInsets.only(bottom: 24),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          // Row Label
+                                          SizedBox(
+                                            width: 130,
+                                            child: Text(
+                                              row.label,
+                                              style: typography.bM_strong.copyWith(
+                                                color: colors.onSurface,
+                                              ),
+                                            ),
+                                          ),
+
+                                          // 3 Columns: Pill, Bar, Plain
+                                          for (int cIdx = 0; cIdx < matrixCols.length; cIdx++) ...[
+                                            Builder(builder: (c2) {
+                                              final col = matrixCols[cIdx];
+                                              final selectedIdx = _matrixIndices[rIdx][cIdx];
+
+                                              return Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets.symmetric(
+                                                    horizontal: 8,
+                                                  ),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: _isDark
+                                                          ? Ux4gColors.neutral950
+                                                          : Ux4gColors.neutral50,
+                                                      borderRadius: BorderRadius.circular(12),
+                                                      border: Border.all(
+                                                        color: _isDark
+                                                            ? Ux4gColors.neutral800
+                                                            : Ux4gColors.neutral200,
+                                                      ),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          color: Colors.black.withValues(
+                                                            alpha: _isDark ? 0.25 : 0.05,
+                                                          ),
+                                                          blurRadius: 6,
+                                                          offset: const Offset(0, 2),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      children: [
+                                                        // Top Mock Placeholder
+                                                        Container(
+                                                          height: 38,
+                                                          alignment: Alignment.center,
+                                                          child: Container(
+                                                            width: 100,
+                                                            height: 6,
+                                                            decoration: BoxDecoration(
+                                                              color: (_isDark
+                                                                      ? Ux4gColors.neutral800
+                                                                      : Ux4gColors.neutral300)
+                                                                  .withValues(alpha: 0.5),
+                                                              borderRadius:
+                                                                  BorderRadius.circular(3),
+                                                            ),
+                                                          ),
+                                                        ),
+
+                                                        // Bottom Navigation Bar
+                                                        Ux4gBottomNavigationBar(
+                                                          items: row.items,
+                                                          variant: row.variant,
+                                                          indicatorVariant: col.indicator,
+                                                          showLabels: row.showLabels,
+                                                          selectedIndex: selectedIdx,
+                                                          onTabChange: (idx, item) {
+                                                            _updateMatrixIndex(
+                                                              rIdx,
+                                                              cIdx,
+                                                              idx,
+                                                              item.label,
+                                                            );
+                                                          },
+                                                          centerAction: row.variant ==
+                                                                  Ux4gBottomNavVariant.centreAction
+                                                              ? Ux4gBottomNavCenterAction(
+                                                                  onPressed: () {
+                                                                    setState(() {
+                                                                      _lastActionMessage =
+                                                                          '[Row ${rIdx + 1}, Col ${cIdx + 1}] Center Action (+) pressed!';
+                                                                    });
+                                                                  },
+                                                                )
+                                                              : null,
+                                                          useSafeArea: false,
+                                                        ),
+
+                                                        // iOS Home Indicator Line
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                            top: 4,
+                                                            bottom: 8,
+                                                          ),
+                                                          child: Container(
+                                                            width: 72,
+                                                            height: 4,
+                                                            decoration: BoxDecoration(
+                                                              color: _isDark
+                                                                  ? Colors.white38
+                                                                  : Colors.black87,
+                                                              borderRadius:
+                                                                  BorderRadius.circular(2),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                          ],
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ─── SECTION 2: INTERACTIVE LIVE PLAYGROUND ───────────────────
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: colors.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: colors.onSurface.withValues(alpha: 0.1),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Interactive Live Playground',
+                          style: typography.hS_strong.copyWith(
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Customize indicator style, shape variants, labels, and badges in real-time.',
+                          style: typography.bS_default.copyWith(
+                            color: colors.onSurface.withValues(alpha: 0.6),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Indicator Selector
+                        Text(
+                          '1. Indicator Style:',
+                          style: typography.bXS_strong.copyWith(
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            for (final ind in Ux4gBottomNavIndicatorVariant.values)
+                              Ux4gChoiceChip(
+                                text: ind.name.toUpperCase(),
+                                selected: _playgroundIndicator == ind,
+                                onClick: () =>
+                                    setState(() => _playgroundIndicator = ind),
+                              ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 14),
+
+                        // Shape / Variant Selector
+                        Text(
+                          '2. Shape & Layout Variant:',
+                          style: typography.bXS_strong.copyWith(
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            for (final v in Ux4gBottomNavVariant.values)
+                              Ux4gChoiceChip(
+                                text: v.name,
+                                selected: _playgroundVariant == v,
+                                onClick: () => setState(() {
+                                  _playgroundVariant = v;
+                                  _playgroundIndex = 0;
+                                }),
+                              ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 14),
+
+                        // Badges & Labels Toggles
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Ux4gCheckbox(
+                                value: _showBadges,
+                                onChanged: (v) =>
+                                    setState(() => _showBadges = v ?? true),
+                                label: 'Show Badges',
+                              ),
+                            ),
+                            Expanded(
+                              child: Ux4gCheckbox(
+                                value: _showLabels,
+                                onChanged: (v) =>
+                                    setState(() => _showLabels = v ?? true),
+                                label: 'Show Labels',
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 20),
+
+                        // Live Simulated Phone Frame
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: _isDark
+                                ? Ux4gColors.neutral950
+                                : Ux4gColors.neutral100,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: _isDark
+                                  ? Ux4gColors.neutral800
+                                  : Ux4gColors.neutral300,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Simulator Header & Tab Content
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Builder(builder: (c) {
+                                      final items = _playgroundVariant ==
+                                              Ux4gBottomNavVariant.centreAction
+                                          ? _buildCentreActionItems(showBadges: _showBadges)
+                                          : _buildStandardItems(showBadges: _showBadges);
+                                      final safeIdx = _playgroundIndex.clamp(0, items.length - 1);
+                                      final current = items[safeIdx];
+
+                                      return Container(
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          color: colors.surface,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(
+                                            color: colors.onSurface.withValues(alpha: 0.08),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              width: 48,
+                                              height: 48,
+                                              decoration: BoxDecoration(
+                                                color: colors.primary.withValues(alpha: 0.12),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Icon(
+                                                current.activeIcon as IconData? ?? Icons.home,
+                                                color: colors.primary,
+                                                size: 24,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 14),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    '${current.label} Screen',
+                                                    style: typography.hS_strong.copyWith(
+                                                      color: colors.onSurface,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 2),
+                                                  Text(
+                                                    'Variant: ${_playgroundVariant.name} • Indicator: ${_playgroundIndicator.name}',
+                                                    style: typography.bXS_default.copyWith(
+                                                      color: colors.onSurface.withValues(alpha: 0.6),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                  ],
+                                ),
+                              ),
+
+                              // Bottom Nav Component inside Simulator
+                              Builder(builder: (c) {
+                                final items = _playgroundVariant ==
+                                        Ux4gBottomNavVariant.centreAction
+                                    ? _buildCentreActionItems(showBadges: _showBadges)
+                                    : _buildStandardItems(showBadges: _showBadges);
+                                final safeIdx = _playgroundIndex.clamp(0, items.length - 1);
+
+                                return Ux4gBottomNavigationBar(
+                                  items: items,
+                                  selectedIndex: safeIdx,
+                                  indicatorVariant: _playgroundIndicator,
+                                  variant: _playgroundVariant,
+                                  showLabels: _showLabels,
+                                  onTabChange: (idx, item) {
+                                    setState(() {
+                                      _playgroundIndex = idx;
+                                      _lastActionMessage =
+                                          'Playground tab switched to: ${item.label} (Index $idx)';
+                                    });
+                                  },
+                                  centerAction: _playgroundVariant ==
+                                          Ux4gBottomNavVariant.centreAction
+                                      ? Ux4gBottomNavCenterAction(
+                                          onPressed: () {
+                                            setState(() {
+                                              _lastActionMessage =
+                                                  'Center Action (+) pressed in Live Playground!';
+                                            });
+                                          },
+                                        )
+                                      : null,
+                                  useSafeArea: false,
+                                );
+                              }),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ─── SECTION 3: CODE SNIPPET REFERENCE ───────────────────────
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: colors.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: colors.onSurface.withValues(alpha: 0.1),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Developer Usage & Component Presets',
+                          style: typography.hS_strong.copyWith(
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Use modular props on Ux4gBottomNavigationBar or convenient preset widgets:',
+                          style: typography.bS_default.copyWith(
+                            color: colors.onSurface.withValues(alpha: 0.6),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: _isDark
+                                ? Ux4gColors.neutral950
+                                : Ux4gColors.neutral900,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '''// 1. Standard Pill Navigation Bar
+Ux4gBottomNavigationBar(
+  items: items,
+  indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
+  variant: Ux4gBottomNavVariant.labelled,
+  selectedIndex: selectedIndex,
+  onTabChange: (index, item) => setState(() => selectedIndex = index),
+)
+
+// 2. Top-Rounded Bar Indicator
+Ux4gBarBottomNavBar(
+  items: items,
+  variant: Ux4gBottomNavVariant.topRounded,
+  selectedIndex: selectedIndex,
+  onTabChange: (index, item) => setState(() => selectedIndex = index),
+)
+
+// 3. Centre Action Button Bar (+)
+Ux4gCenterActionBottomNavBar(
+  items: items,
+  indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
+  centerAction: Ux4gBottomNavCenterAction(
+    onPressed: () => openQuickActionSheet(),
+  ),
+)
+
+// 4. Floating Capsule Navigation Bar
+Ux4gFloatingBottomNavBar(
+  items: items,
+  indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
+)''',
+                            style: const TextStyle(
+                              color: Color(0xFF86E1FC),
+                              fontFamily: 'monospace',
+                              fontSize: 12,
+                              height: 1.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 32),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  // ─── FULL SCREEN LIVE DEMO DIALOG ───────────────────────────────────────────
+
+  void _openFullScreenDemo(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) {
+        return StatefulBuilder(
+          builder: (modalCtx, setModalState) {
+            final colors = Ux4gTheme.colors(modalCtx);
+            final typography = Ux4gTheme.typography(modalCtx);
+
+            final items = _fullScreenVariant == Ux4gBottomNavVariant.centreAction
+                ? _buildCentreActionItems(showBadges: true)
+                : _buildStandardItems(showBadges: true);
+            final clampedIdx = _fullScreenIndex.clamp(0, items.length - 1);
+            final activeTab = items[clampedIdx];
+
+            return Container(
+              height: MediaQuery.of(context).size.height * 0.95,
+              decoration: BoxDecoration(
+                color: colors.background,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              child: Scaffold(
+                backgroundColor: colors.background,
+                appBar: AppBar(
+                  backgroundColor: colors.surface,
+                  elevation: 0,
+                  title: Text(
+                    'Live Citizen Portal App',
+                    style: typography.hS_strong.copyWith(color: colors.onSurface),
+                  ),
+                  leading: IconButton(
+                    icon: Icon(Icons.close, color: colors.onSurface),
+                    onPressed: () => Navigator.of(modalCtx).pop(),
+                  ),
+                ),
+                body: Column(
+                  children: [
+                    // Controller Strip
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      color: colors.surface,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Text(
+                              'INDICATOR: ',
+                              style: typography.bXS_strong.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.6),
+                              ),
+                            ),
+                            for (final ind in Ux4gBottomNavIndicatorVariant.values)
+                              Padding(
+                                padding: const EdgeInsets.only(right: 6),
+                                child: ChoiceChip(
+                                  label: Text(ind.name.toUpperCase()),
+                                  selected: _fullScreenIndicator == ind,
+                                  onSelected: (sel) {
+                                    if (sel) {
+                                      setModalState(() => _fullScreenIndicator = ind);
+                                      setState(() => _fullScreenIndicator = ind);
+                                    }
+                                  },
+                                ),
+                              ),
+                            const SizedBox(width: 8),
+                            Text(
+                              'SHAPE: ',
+                              style: typography.bXS_strong.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.6),
+                              ),
+                            ),
+                            for (final v in Ux4gBottomNavVariant.values)
+                              Padding(
+                                padding: const EdgeInsets.only(right: 6),
+                                child: ChoiceChip(
+                                  label: Text(v.name),
+                                  selected: _fullScreenVariant == v,
+                                  onSelected: (sel) {
+                                    if (sel) {
+                                      setModalState(() {
+                                        _fullScreenVariant = v;
+                                        _fullScreenIndex = 0;
+                                      });
+                                      setState(() {
+                                        _fullScreenVariant = v;
+                                        _fullScreenIndex = 0;
+                                      });
+                                    }
+                                  },
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Active Tab Screen Content
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Greeting Hero Card
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: colors.primary,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'DIGITAL CITIZEN PORTAL',
+                                    style: typography.bXS_strong.copyWith(
+                                      color: Colors.white70,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    'Welcome, Priya Sharma 👋',
+                                    style: typography.hM_strong.copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'Active Tab: ${activeTab.label} • Key: "${activeTab.key}"',
+                                    style: typography.bS_default.copyWith(
+                                      color: Colors.white70,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(height: 20),
+
+                            // Quick Service Cards
+                            Text(
+                              'Popular Services',
+                              style: typography.hS_strong.copyWith(
+                                color: colors.onSurface,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            GridView.count(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 12,
+                              mainAxisSpacing: 12,
+                              childAspectRatio: 1.4,
+                              children: [
+                                _buildServiceCard(colors, typography, 'Apply Certificate', '📄'),
+                                _buildServiceCard(colors, typography, 'Pay Utility Bill', '⚡'),
+                                _buildServiceCard(colors, typography, 'Locker & Aadhaar', '🔒'),
+                                _buildServiceCard(colors, typography, 'File Grievance', '📢'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Bottom Navigation Bar
+                    Ux4gBottomNavigationBar(
+                      items: items,
+                      selectedIndex: clampedIdx,
+                      indicatorVariant: _fullScreenIndicator,
+                      variant: _fullScreenVariant,
+                      onTabChange: (idx, item) {
+                        setModalState(() => _fullScreenIndex = idx);
+                        setState(() => _fullScreenIndex = idx);
+                      },
+                      centerAction: _fullScreenVariant ==
+                              Ux4gBottomNavVariant.centreAction
+                          ? Ux4gBottomNavCenterAction(
+                              onPressed: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Centre Action (+) pressed!'),
+                                    duration: Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                            )
+                          : null,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildServiceCard(
+    Ux4gThemeColors colors,
+    Ux4gTypography typography,
+    String title,
+    String icon,
+  ) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: colors.onSurface.withValues(alpha: 0.1),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(icon, style: const TextStyle(fontSize: 24)),
+          const SizedBox(height: 8),
+          Text(
+            title,
+            style: typography.bS_strong.copyWith(color: colors.onSurface),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
