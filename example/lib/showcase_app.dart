@@ -119,6 +119,16 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
   int _otpAttemptsLeft = 3;
   bool _otpIsLocked = false;
 
+  // Floating Action Button (FAB) Showcase State
+  Ux4gFabColorTheme _fabPlaygroundTheme = Ux4gFabColorTheme.brand;
+  Ux4gFabVariant _fabPlaygroundVariant = Ux4gFabVariant.menuJoined;
+  Ux4gFabSize _fabPlaygroundSize = Ux4gFabSize.medium;
+  bool _fabPlaygroundDisabled = false;
+  bool _fabPlaygroundBackdrop = false;
+  bool _fabPlaygroundShowIcon = true;
+  bool _fabPlaygroundOpen = false;
+  String _fabActionLog = 'Tap the FAB or action items to interact!';
+
   List<Ux4gDropdownOption> get _stateOptions => [
     Ux4gDropdownOption(id: 'ap', label: 'Andhra Pradesh'),
     Ux4gDropdownOption(id: 'arp', label: 'Arunachal Pradesh'),
@@ -5178,6 +5188,11 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                         child: Ux4gTimeslotShowcase(),
                       ),
 
+                      const SizedBox(height: 24),
+
+                      // ─── Floating Action Button (FAB) & Speed-Dial ────
+                      _buildFabShowcase(colors, typography, context),
+
                       const SizedBox(height: 80),
                     ],
                   ),
@@ -5294,6 +5309,743 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
       label: inlineMeta ? null : valueText,
       description: inlineMeta ? null : 'Description',
       gap: 6,
+    );
+  }
+
+  // ─── FAB SHOWCASE BUILDER ──────────────────────────────────────────────────
+
+  Widget _buildFabShowcase(
+    Ux4gThemeColors colors,
+    Ux4gTypography typography,
+    BuildContext context,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Title & Description
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: colors.primary.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                'NEW COMPONENT',
+                style: typography.bXS_strong.copyWith(
+                  color: colors.primary,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              'Floating Action Button (FAB)',
+              style: typography.hM_strong.copyWith(color: colors.onSurface),
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Text(
+          'Modular floating action buttons with Brand & Surface styling, circular and labelled variants, and 3 speed-dial layouts (Joined Capsule, Spaced Circles, and Labelled Pills).',
+          style: typography.bS_default.copyWith(
+            color: colors.onSurface.withValues(alpha: 0.7),
+          ),
+        ),
+        const SizedBox(height: 20),
+
+        // ─── SECTION 1: DESIGN SPECIFICATION MATRIX (BRAND vs SURFACE) ─────────
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: colors.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: colors.onSurface.withValues(alpha: 0.1),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Design Specification Matrix',
+                style: typography.hS_strong.copyWith(color: colors.onSurface),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Side-by-side comparison of Brand (Purple filled) and Surface (White elevated) variants across all button types and speed-dial layouts:',
+                style: typography.bS_default.copyWith(
+                  color: colors.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Matrix Container with Dashed Border
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 720),
+                  child: Column(
+                    children: [
+                      // Header Row: Brand vs Surface
+                      Row(
+                        children: [
+                          const SizedBox(width: 130), // Column for row labels
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Brand',
+                                  style: typography.bM_strong.copyWith(
+                                    color: colors.onSurface,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Container(
+                                  height: 2.5,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    color: colors.primary.withValues(alpha: 0.5),
+                                    borderRadius: BorderRadius.circular(2),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Surface',
+                                  style: typography.bM_strong.copyWith(
+                                    color: colors.onSurface,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Container(
+                                  height: 2.5,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    color: colors.primary.withValues(alpha: 0.5),
+                                    borderRadius: BorderRadius.circular(2),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+
+                      // Dashed Container with Matrix Rows
+                      CustomPaint(
+                        painter: _DashedBorderPainter(
+                          color: colors.primary.withValues(alpha: 0.4),
+                          borderRadius: 16,
+                          strokeWidth: 1.5,
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 28,
+                            horizontal: 16,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _isDark
+                                ? Ux4gColors.neutral950.withValues(alpha: 0.4)
+                                : const Color(0xFFFAF9FF),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Column(
+                            children: [
+                              // Row 1: Icon
+                              _buildMatrixRow(
+                                label: 'Icon',
+                                typography: typography,
+                                colors: colors,
+                                brandChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.icon,
+                                  colorTheme: Ux4gFabColorTheme.brand,
+                                ),
+                                surfaceChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.icon,
+                                  colorTheme: Ux4gFabColorTheme.surface,
+                                ),
+                              ),
+                              const SizedBox(height: 36),
+
+                              // Row 2: Labelled (with icon)
+                              _buildMatrixRow(
+                                label: 'Labelled',
+                                typography: typography,
+                                colors: colors,
+                                brandChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.labelled,
+                                  colorTheme: Ux4gFabColorTheme.brand,
+                                  label: 'Button',
+                                  showIcon: true,
+                                ),
+                                surfaceChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.labelled,
+                                  colorTheme: Ux4gFabColorTheme.surface,
+                                  label: 'Button',
+                                  showIcon: true,
+                                ),
+                              ),
+                              const SizedBox(height: 36),
+
+                              // Row 3: Labelled (without icon)
+                              _buildMatrixRow(
+                                label: 'Labelled (no icon)',
+                                typography: typography,
+                                colors: colors,
+                                brandChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.labelled,
+                                  colorTheme: Ux4gFabColorTheme.brand,
+                                  label: 'Button',
+                                  showIcon: false,
+                                ),
+                                surfaceChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.labelled,
+                                  colorTheme: Ux4gFabColorTheme.surface,
+                                  label: 'Button',
+                                  showIcon: false,
+                                ),
+                              ),
+                              const SizedBox(height: 36),
+
+                              // Row 4: Menu - joined
+                              _buildMatrixRow(
+                                label: 'Menu - joined',
+                                typography: typography,
+                                colors: colors,
+                                brandChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.menuJoined,
+                                  colorTheme: Ux4gFabColorTheme.brand,
+                                  isOpen: true,
+                                  animated: false,
+                                ),
+                                surfaceChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.menuJoined,
+                                  colorTheme: Ux4gFabColorTheme.surface,
+                                  isOpen: true,
+                                  animated: false,
+                                ),
+                              ),
+                              const SizedBox(height: 36),
+
+                              // Row 5: Menu - spaced
+                              _buildMatrixRow(
+                                label: 'Menu - spaced',
+                                typography: typography,
+                                colors: colors,
+                                brandChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.menuSpaced,
+                                  colorTheme: Ux4gFabColorTheme.brand,
+                                  isOpen: true,
+                                  animated: false,
+                                ),
+                                surfaceChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.menuSpaced,
+                                  colorTheme: Ux4gFabColorTheme.surface,
+                                  isOpen: true,
+                                  animated: false,
+                                ),
+                              ),
+                              const SizedBox(height: 36),
+
+                              // Row 6: Menu - labelled
+                              _buildMatrixRow(
+                                label: 'Menu - labelled',
+                                typography: typography,
+                                colors: colors,
+                                brandChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.menuLabelled,
+                                  colorTheme: Ux4gFabColorTheme.brand,
+                                  isOpen: true,
+                                  animated: false,
+                                ),
+                                surfaceChild: const Ux4gFab(
+                                  variant: Ux4gFabVariant.menuLabelled,
+                                  colorTheme: Ux4gFabColorTheme.surface,
+                                  isOpen: true,
+                                  animated: false,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        // ─── SECTION 2: LIVE INTERACTIVE PLAYGROUND ────────────────────────────
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: colors.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: colors.onSurface.withValues(alpha: 0.1),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Interactive Live Playground & Speed-Dial Simulator',
+                    style: typography.hS_strong.copyWith(color: colors.onSurface),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: colors.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      'Live Interactive',
+                      style: typography.bXS_strong.copyWith(color: colors.primary),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Customize FAB properties, test smooth open/close expansion animations, and trigger real-time actions:',
+                style: typography.bS_default.copyWith(
+                  color: colors.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              // Control Bars
+              Wrap(
+                spacing: 16,
+                runSpacing: 12,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  // Color Theme Selector
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('THEME: ', style: typography.bXS_strong.copyWith(color: colors.onSurface.withValues(alpha: 0.7))),
+                      for (final theme in Ux4gFabColorTheme.values)
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6),
+                          child: ChoiceChip(
+                            label: Text(theme.name.toUpperCase()),
+                            selected: _fabPlaygroundTheme == theme,
+                            onSelected: (sel) {
+                              if (sel) setState(() => _fabPlaygroundTheme = theme);
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+
+                  // Variant Selector
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('VARIANT: ', style: typography.bXS_strong.copyWith(color: colors.onSurface.withValues(alpha: 0.7))),
+                      for (final v in Ux4gFabVariant.values)
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6),
+                          child: ChoiceChip(
+                            label: Text(v.name),
+                            selected: _fabPlaygroundVariant == v,
+                            onSelected: (sel) {
+                              if (sel) setState(() => _fabPlaygroundVariant = v);
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+
+                  // Sizing Selector
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('SIZE: ', style: typography.bXS_strong.copyWith(color: colors.onSurface.withValues(alpha: 0.7))),
+                      for (final sz in Ux4gFabSize.values)
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6),
+                          child: ChoiceChip(
+                            label: Text(sz.name.toUpperCase()),
+                            selected: _fabPlaygroundSize == sz,
+                            onSelected: (sel) {
+                              if (sel) setState(() => _fabPlaygroundSize = sz);
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+
+                  // Show Icon Switch (for labelled variant)
+                  if (_fabPlaygroundVariant == Ux4gFabVariant.labelled)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('ICON: ', style: typography.bXS_strong.copyWith(color: colors.onSurface.withValues(alpha: 0.7))),
+                        Switch(
+                          value: _fabPlaygroundShowIcon,
+                          onChanged: (v) => setState(() => _fabPlaygroundShowIcon = v),
+                          activeTrackColor: colors.primary,
+                        ),
+                      ],
+                    ),
+
+                  // Disabled Switch
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('DISABLED: ', style: typography.bXS_strong.copyWith(color: colors.onSurface.withValues(alpha: 0.7))),
+                      Switch(
+                        value: _fabPlaygroundDisabled,
+                        onChanged: (v) => setState(() => _fabPlaygroundDisabled = v),
+                        activeTrackColor: colors.primary,
+                      ),
+                    ],
+                  ),
+
+                  // Backdrop Switch
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('BACKDROP SCRIM: ', style: typography.bXS_strong.copyWith(color: colors.onSurface.withValues(alpha: 0.7))),
+                      Switch(
+                        value: _fabPlaygroundBackdrop,
+                        onChanged: (v) => setState(() => _fabPlaygroundBackdrop = v),
+                        activeTrackColor: colors.primary,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 16),
+
+              // Action Feedback Status Banner
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                decoration: BoxDecoration(
+                  color: colors.primary.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: colors.primary.withValues(alpha: 0.2),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.touch_app_rounded, color: colors.primary, size: 18),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Event Feed: $_fabActionLog • [Menu: ${_fabPlaygroundOpen ? "OPEN" : "CLOSED"}]',
+                        style: typography.bS_strong.copyWith(color: colors.primary),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              // Live Playground Phone Container
+              Container(
+                height: 380,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: _isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral100,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: _isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral300,
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    // Mock App Content
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: colors.surface,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: colors.onSurface.withValues(alpha: 0.08),
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 18,
+                                  backgroundColor: colors.primary,
+                                  child: const Text('PS', style: TextStyle(color: Colors.white, fontSize: 13)),
+                                ),
+                                const SizedBox(width: 12),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Citizen Dashboard', style: typography.bS_strong.copyWith(color: colors.onSurface)),
+                                    Text('Speed-Dial Demo Surface', style: typography.bXS_default.copyWith(color: colors.onSurface.withValues(alpha: 0.6))),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Click the floating action button at the bottom-right corner to test speed-dial opening, item actions, and backdrop dismissals.',
+                            style: typography.bS_default.copyWith(
+                              color: colors.onSurface.withValues(alpha: 0.7),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Interactive FAB Positioned
+                    Ux4gFab(
+                      key: ValueKey(
+                        '${_fabPlaygroundTheme.name}_${_fabPlaygroundVariant.name}_${_fabPlaygroundSize.name}_${_fabPlaygroundShowIcon}_${_fabPlaygroundDisabled}_$_fabPlaygroundBackdrop',
+                      ),
+                      colorTheme: _fabPlaygroundTheme,
+                      variant: _fabPlaygroundVariant,
+                      size: _fabPlaygroundSize,
+                      showIcon: _fabPlaygroundShowIcon,
+                      disabled: _fabPlaygroundDisabled,
+                      showBackdrop: _fabPlaygroundBackdrop,
+                      position: Ux4gFabPosition.bottomRight,
+                      offset: const EdgeInsets.all(20),
+                      label: 'Create New',
+                      actions: [
+                        Ux4gFabActionItem(
+                          id: 'add',
+                          label: 'Add',
+                          icon: Icons.add,
+                          onPressed: () {
+                            setState(() => _fabActionLog = 'Action tapped: [Add (+)]');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Add action tapped!'),
+                                duration: Duration(milliseconds: 1200),
+                              ),
+                            );
+                          },
+                        ),
+                        Ux4gFabActionItem(
+                          id: 'message',
+                          label: 'Message',
+                          icon: Icons.chat_bubble_outline_rounded,
+                          onPressed: () {
+                            setState(() => _fabActionLog = 'Action tapped: [Message (💬)]');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Message action tapped!'),
+                                duration: Duration(milliseconds: 1200),
+                              ),
+                            );
+                          },
+                        ),
+                        Ux4gFabActionItem(
+                          id: 'share',
+                          label: 'Share',
+                          icon: Icons.share_outlined,
+                          onPressed: () {
+                            setState(() => _fabActionLog = 'Action tapped: [Share (🔗)]');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Share action tapped!'),
+                                duration: Duration(milliseconds: 1200),
+                              ),
+                            );
+                          },
+                        ),
+                        Ux4gFabActionItem(
+                          id: 'call',
+                          label: 'Call',
+                          icon: Icons.phone_outlined,
+                          onPressed: () {
+                            setState(() => _fabActionLog = 'Action tapped: [Call (📞)]');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Call action tapped!'),
+                                duration: Duration(milliseconds: 1200),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                      onToggle: (isOpen) {
+                        setState(() {
+                          _fabPlaygroundOpen = isOpen;
+                          _fabActionLog = isOpen ? 'FAB menu expanded' : 'FAB menu collapsed';
+                        });
+                      },
+                      onPressed: () {
+                        if (_fabPlaygroundVariant == Ux4gFabVariant.icon ||
+                            _fabPlaygroundVariant == Ux4gFabVariant.labelled) {
+                          setState(() => _fabActionLog = 'Main FAB button pressed');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Main FAB button pressed!'),
+                              duration: Duration(milliseconds: 1000),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        // ─── SECTION 3: DEVELOPER USAGE REFERENCE ──────────────────────────────
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: colors.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: colors.onSurface.withValues(alpha: 0.1),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Developer Usage & API Reference',
+                style: typography.hS_strong.copyWith(color: colors.onSurface),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Use modular props on Ux4gFab for standard circular buttons, extended pills, or speed-dials:',
+                style: typography.bS_default.copyWith(
+                  color: colors.onSurface.withValues(alpha: 0.6),
+                ),
+              ),
+              const SizedBox(height: 14),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: _isDark ? Ux4gColors.neutral950 : Ux4gColors.neutral900,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Text(
+                  '''// 1. Standard Circular FAB (Brand / Surface)
+Ux4gFab(
+  variant: Ux4gFabVariant.icon,
+  colorTheme: Ux4gFabColorTheme.brand,
+  icon: Icons.add,
+  onPressed: () => handleCreate(),
+)
+
+// 2. Extended Labelled Pill FAB
+Ux4gFab(
+  variant: Ux4gFabVariant.labelled,
+  colorTheme: Ux4gFabColorTheme.brand,
+  label: 'Create Ticket',
+  icon: Icons.add,
+  onPressed: () => handleCreate(),
+)
+
+// 3. Joined Speed-Dial Menu
+Ux4gFab(
+  variant: Ux4gFabVariant.menuJoined,
+  colorTheme: Ux4gFabColorTheme.brand,
+  actions: [
+    Ux4gFabActionItem(id: 'add', label: 'Add', icon: Icons.add, onPressed: () {}),
+    Ux4gFabActionItem(id: 'chat', label: 'Chat', icon: Icons.chat, onPressed: () {}),
+  ],
+)
+
+// 4. Spaced Speed-Dial Circles
+Ux4gFab(
+  variant: Ux4gFabVariant.menuSpaced,
+  colorTheme: Ux4gFabColorTheme.surface,
+  actions: myActions,
+)
+
+// 5. Labelled Speed-Dial Pills with Positioning & Backdrop
+Ux4gFab(
+  variant: Ux4gFabVariant.menuLabelled,
+  colorTheme: Ux4gFabColorTheme.brand,
+  position: Ux4gFabPosition.bottomRight,
+  offset: EdgeInsets.all(24),
+  showBackdrop: true,
+  actions: myActions,
+)''',
+                  style: TextStyle(
+                    color: Color(0xFF86E1FC),
+                    fontFamily: 'monospace',
+                    fontSize: 12,
+                    height: 1.5,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMatrixRow({
+    required String label,
+    required Ux4gTypography typography,
+    required Ux4gThemeColors colors,
+    required Widget brandChild,
+    required Widget surfaceChild,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 120,
+          child: Text(
+            label,
+            style: typography.bM_strong.copyWith(
+              color: colors.onSurface,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: brandChild,
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: surfaceChild,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -6658,5 +7410,56 @@ Ux4gFloatingBottomNavBar(
       ),
     );
   }
+}
+
+// ─── DASHED BORDER PAINTER ───────────────────────────────────────────────────
+
+class _DashedBorderPainter extends CustomPainter {
+  final Color color;
+  final double strokeWidth;
+  final double dashWidth;
+  final double dashSpace;
+  final double borderRadius;
+
+  _DashedBorderPainter({
+    required this.color,
+    this.strokeWidth = 1.5,
+    this.dashWidth = 5.0,
+    this.dashSpace = 4.0,
+    this.borderRadius = 16.0,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+
+    final rrect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+      Radius.circular(borderRadius),
+    );
+    final path = Path()..addRRect(rrect);
+
+    final pathMetrics = path.computeMetrics();
+    for (final metric in pathMetrics) {
+      double distance = 0.0;
+      while (distance < metric.length) {
+        final double len = math.min(dashWidth, metric.length - distance);
+        final extractPath = metric.extractPath(distance, distance + len);
+        canvas.drawPath(extractPath, paint);
+        distance += dashWidth + dashSpace;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _DashedBorderPainter oldDelegate) =>
+      oldDelegate.color != color ||
+      oldDelegate.strokeWidth != strokeWidth ||
+      oldDelegate.dashWidth != dashWidth ||
+      oldDelegate.dashSpace != dashSpace ||
+      oldDelegate.borderRadius != borderRadius;
 }
 
