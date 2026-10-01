@@ -4212,139 +4212,388 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
 
                       // ─── 28. Bottom Sheets ────────────────────────────
                       _showcaseCard(
-                        title: 'Bottom Sheets',
+                        title: 'Bottom Sheet (Ux4gBottomSheet)',
                         typography: typography,
                         colors: colors,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Ux4gButton(
-                              onPressed: () => Ux4gBottomSheet.show(
-                                context,
-                                title: 'Simple Sheet',
-                                content: const Text(
-                                  'This is a simple bottom sheet with just a title and body content. It automatically adjusts its height to fit the content.',
-                                ),
+                            Text(
+                              'Modal bottom sheet built strictly to UX4G Figma Bottom Sheet component set: 4 size presets, header/footer variants, draggable multi-snap expansion (peek 26% -> half 50% -> expanded 75% -> full 94%), fixed bottom action buttons, and full dark/light theme support.',
+                              style: typography.bS_default.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.7),
                               ),
-                              text: 'Open Basic Bottom Sheet',
                             ),
-                            const SizedBox(height: 8),
-                            Ux4gButton(
-                              onPressed: () => Ux4gBottomSheet.show(
-                                context,
-                                title: 'Header',
-                                subtitle: 'Subtle text',
-                                icon: Icons.info_outline,
-                                description: 'Write description here',
-                                footerType:
-                                    Ux4gCardFooterType.primaryAndSecondary,
-                                footerAlignment:
-                                    Ux4gBottomSheetFooterAlignment.justified,
-                                primaryButtonText: 'Action',
-                                secondaryButtonText: 'Cancel',
-                                content: const Text(
-                                  'A Drawer is a panel that slides out from the edge of the screen to show extra information or options. It follows the same footer structure as the Card component.',
-                                ),
+                            const SizedBox(height: 16),
+
+                            // 1. Sizes
+                            Text(
+                              '1. Sizes (peek, half, expanded, full)',
+                              style: typography.lS_strong.copyWith(
+                                color: colors.primary,
                               ),
-                              text: 'Open Full Bottom Sheet (Justified)',
-                              backgroundColor: Ux4gColors.primary700,
-                              contentColor: Ux4gColors.white,
                             ),
-                            const SizedBox(height: 8),
-                            Ux4gButton(
-                              onPressed: () => Ux4gBottomSheet.show(
-                                context,
-                                title: 'Non-Draggable Sheet',
-                                isDraggable: false,
-                                description:
-                                    'The drag handle is hidden and swipe gestures are handled by the system (usually minimal interaction).',
-                                content: const Text(
-                                  "This sheet has the 'isDraggable' property set to false.",
-                                ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'Heights come from Figma Size variant as screen ratio: peek 26%, half 50%, expanded 75%, full 94%.',
+                              style: typography.bXS_default.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.6),
                               ),
-                              text: 'Open Non-Draggable Sheet',
-                              backgroundColor: Ux4gColors.gray800,
-                              contentColor: Ux4gColors.white,
                             ),
-                            const SizedBox(height: 8),
-                            Ux4gButton(
-                              onPressed: () => Ux4gBottomSheet.show(
-                                context,
-                                title: 'Complex Settings',
-                                description:
-                                    'You can add any custom UI inside this central area.',
-                                footerType: Ux4gCardFooterType.primaryOnly,
-                                primaryButtonText: 'Apply Settings',
-                                content: Column(
-                                  children: [
-                                    Text(
-                                      'Pick your notification types:',
-                                      style: typography.tS_strong,
-                                    ),
-                                    Ux4gCheckbox(
-                                      value: true,
-                                      onChanged: (_) {},
-                                      label: 'Email',
-                                    ),
-                                    Ux4gCheckbox(
-                                      value: false,
-                                      onChanged: (_) {},
-                                      label: 'Push',
-                                    ),
-                                    const SizedBox(height: 8),
-                                    const Ux4gDivider(),
-                                    const SizedBox(height: 8),
-                                    Ux4gSlider(
-                                      value: 75,
-                                      onValueChange: (_) {},
-                                      showMarksAndValues: true,
-                                      steps: 4,
-                                    ),
-                                    const SizedBox(height: 8),
-                                    Text(
-                                      'Notice how the sheet automatically expands to fit these custom components.',
-                                      style: typography.bS_default.copyWith(
+                            const SizedBox(height: 10),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                for (final size in Ux4gBottomSheetSize.values)
+                                  Ux4gButton(
+                                    variant: Ux4gButtonVariant.outline,
+                                    size: Ux4gButtonSize.small,
+                                    text: size.name,
+                                    onPressed: () => Ux4gBottomSheet.show(
+                                      context,
+                                      size: size,
+                                      title: 'Size = ${size.name}',
+                                      description:
+                                          'Drag the handle or header down to collapse/dismiss or up to expand.',
+                                      primaryButtonText: 'Confirm',
+                                      secondaryButtonText: 'Cancel',
+                                      content: _demoBottomSheetBody(
+                                        lines: 10,
                                         color: colors.onSurface.withValues(
-                                          alpha: 0.5,
+                                          alpha: 0.75,
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                              text: 'Open Custom Content Sheet',
-                              backgroundColor: Ux4gColors.green700,
-                              contentColor: Ux4gColors.white,
+                                  ),
+                              ],
                             ),
-                            const SizedBox(height: 8),
-                            Ux4gButton(
-                              onPressed: () => Ux4gBottomSheet.show(
-                                context,
-                                title: 'Scrollable Content',
-                                description:
-                                    'Header and footer stay fixed. Only middle scrolls.',
-                                footerType:
-                                    Ux4gCardFooterType.primaryAndSecondary,
-                                footerAlignment:
-                                    Ux4gBottomSheetFooterAlignment.justified,
-                                primaryButtonText: 'Got it',
-                                secondaryButtonText: 'Cancel',
-                                content: Column(
-                                  children: List.generate(
-                                    20,
-                                    (i) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 8,
-                                      ),
-                                      child: Text(
-                                        'Item #$i: This long text demonstrates that even when the content grows beyond the screen height, only the inner body remains scrollable while the top header and bottom buttons stay pinned.',
+
+                            const SizedBox(height: 20),
+
+                            // 2. Header variations
+                            Text(
+                              '2. Header Variations',
+                              style: typography.lS_strong.copyWith(
+                                color: colors.primary,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'Title + Description',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.half,
+                                    title: 'Header',
+                                    description: 'Write description here',
+                                    primaryButtonText: 'Confirm',
+                                    secondaryButtonText: 'Cancel',
+                                    content: _demoBottomSheetBody(
+                                      lines: 6,
+                                      color: colors.onSurface.withValues(
+                                        alpha: 0.75,
                                       ),
                                     ),
                                   ),
                                 ),
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'Icon + Subtle Text',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.half,
+                                    icon: Icons.info_outline,
+                                    title: 'Header',
+                                    subtleText: 'Subtle text',
+                                    description:
+                                        'The description aligns with the title when an icon is present.',
+                                    primaryButtonText: 'Confirm',
+                                    secondaryButtonText: 'Cancel',
+                                    content: _demoBottomSheetBody(
+                                      lines: 6,
+                                      color: colors.onSurface.withValues(
+                                        alpha: 0.75,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'No Header',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.peek,
+                                    showHeader: false,
+                                    content: Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: Text(
+                                        'showHeader: false hides the whole header block — useful for simple action sheets.',
+                                        style: typography.bS_default.copyWith(
+                                          color: colors.onSurface.withValues(
+                                            alpha: 0.75,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            const SizedBox(height: 20),
+
+                            // 3. Footer variations
+                            Text(
+                              '3. Footer Variations (footerAlign, isDestructive, showFooter)',
+                              style: typography.lS_strong.copyWith(
+                                color: colors.primary,
                               ),
-                              text: 'Open Long Content Sheet',
-                              backgroundColor: Ux4gColors.cyan600,
-                              contentColor: Ux4gColors.white,
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'split is the Figma default — both actions stretch 50/50 across the row.',
+                              style: typography.bXS_default.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.6),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                for (final align in [
+                                  Ux4gBottomSheetFooterAlign.split,
+                                  Ux4gBottomSheetFooterAlign.left,
+                                  Ux4gBottomSheetFooterAlign.center,
+                                  Ux4gBottomSheetFooterAlign.right,
+                                ])
+                                  Ux4gButton(
+                                    variant: Ux4gButtonVariant.outline,
+                                    size: Ux4gButtonSize.small,
+                                    text: align.name,
+                                    onPressed: () => Ux4gBottomSheet.show(
+                                      context,
+                                      size: Ux4gBottomSheetSize.peek,
+                                      title: 'footerAlign = ${align.name}',
+                                      footerAlign: align,
+                                      primaryButtonText: 'Confirm',
+                                      secondaryButtonText: 'Cancel',
+                                      content: Text(
+                                        'Notice the footer alignment: ${align.name}.',
+                                        style: typography.bS_default.copyWith(
+                                          color: colors.onSurface.withValues(
+                                            alpha: 0.75,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'Destructive',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.peek,
+                                    title: 'Delete this item?',
+                                    description:
+                                        'This action cannot be undone.',
+                                    isDestructive: true,
+                                    primaryButtonText: 'Delete',
+                                    secondaryButtonText: 'Cancel',
+                                    content: Text(
+                                      'isDestructive renders the primary action in the danger/error theme color.',
+                                      style: typography.bS_default.copyWith(
+                                        color: colors.onSurface.withValues(
+                                          alpha: 0.75,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'No Footer',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.half,
+                                    title: 'No Footer',
+                                    showFooter: false,
+                                    content: _demoBottomSheetBody(
+                                      lines: 8,
+                                      color: colors.onSurface.withValues(
+                                        alpha: 0.75,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            const SizedBox(height: 20),
+
+                            // 4. Options
+                            Text(
+                              '4. Options (showBottomDivider, showHeaderDivider, showBackdrop)',
+                              style: typography.lS_strong.copyWith(
+                                color: colors.primary,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'Dividers (Header & Bottom)',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.half,
+                                    title: 'Dividers Enabled',
+                                    description:
+                                        'Figma dividers under header and above fixed footer.',
+                                    showHeaderDivider: true,
+                                    showBottomDivider: true,
+                                    primaryButtonText: 'Confirm',
+                                    secondaryButtonText: 'Cancel',
+                                    content: _demoBottomSheetBody(
+                                      lines: 7,
+                                      color: colors.onSurface.withValues(
+                                        alpha: 0.75,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Ux4gButton(
+                                  variant: Ux4gButtonVariant.outline,
+                                  size: Ux4gButtonSize.small,
+                                  text: 'No Backdrop Scrim',
+                                  onPressed: () => Ux4gBottomSheet.show(
+                                    context,
+                                    size: Ux4gBottomSheetSize.peek,
+                                    title: 'No Backdrop',
+                                    showBackdrop: false,
+                                    primaryButtonText: 'Close',
+                                    showSecondaryButton: false,
+                                    content: Text(
+                                      'The scrim is hidden, so background content stays completely visible. Tap close or drag down to dismiss.',
+                                      style: typography.bS_default.copyWith(
+                                        color: colors.onSurface.withValues(
+                                          alpha: 0.75,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            const SizedBox(height: 20),
+
+                            // 5. Draggable Multi-Snap Sheet
+                            Text(
+                              '5. Draggable & Multi-Snap Points',
+                              style: typography.lS_strong.copyWith(
+                                color: colors.primary,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'Drag the top pill handle or header UP to expand through snap points (peek 26% -> half 50% -> expanded 75% -> full 94%), or drag DOWN to collapse and dismiss. Bottom action buttons remain fixed at all times.',
+                              style: typography.bXS_default.copyWith(
+                                color: colors.onSurface.withValues(alpha: 0.6),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Ux4gButton(
+                              variant: Ux4gButtonVariant.primary,
+                              size: Ux4gButtonSize.medium,
+                              text: 'Open Draggable Multi-Snap Sheet',
+                              onPressed: () => Ux4gBottomSheet.show(
+                                context,
+                                size: Ux4gBottomSheetSize.half,
+                                title: 'Interactive Multi-Snap Sheet',
+                                description:
+                                    'Drag up/down freely across all 4 snap levels.',
+                                showHeaderDivider: true,
+                                showBottomDivider: true,
+                                primaryButtonText: 'Save Changes',
+                                secondaryButtonText: 'Discard',
+                                content: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Notification Preferences',
+                                      style: typography.tS_strong.copyWith(
+                                        color: colors.onSurface,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Ux4gCheckbox(
+                                      value: true,
+                                      onChanged: (_) {},
+                                      label: 'Email Notifications',
+                                    ),
+                                    Ux4gCheckbox(
+                                      value: false,
+                                      onChanged: (_) {},
+                                      label: 'Push Notifications',
+                                    ),
+                                    Ux4gCheckbox(
+                                      value: true,
+                                      onChanged: (_) {},
+                                      label: 'SMS Alerts',
+                                    ),
+                                    const SizedBox(height: 12),
+                                    const Ux4gDivider(),
+                                    const SizedBox(height: 12),
+                                    Text(
+                                      'Volume Level',
+                                      style: typography.tS_strong.copyWith(
+                                        color: colors.onSurface,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 6),
+                                    Ux4gSlider(
+                                      value: 65,
+                                      onValueChange: (_) {},
+                                      showMarksAndValues: true,
+                                      steps: 4,
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Text(
+                                      'Scrollable Activity Logs',
+                                      style: typography.tS_strong.copyWith(
+                                        color: colors.onSurface,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    for (int i = 1; i <= 15; i++)
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom: 8),
+                                        child: Text(
+                                          'Log entry #$i: Body content scrolls smoothly while the action buttons stay anchored at the bottom.',
+                                          style: typography.bS_default.copyWith(
+                                            color: colors.onSurface.withValues(
+                                              alpha: 0.7,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -4950,6 +5199,27 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
               const SizedBox(height: 16),
               child,
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _demoBottomSheetBody({int lines = 6, required Color color}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(
+        lines,
+        (i) => Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: Text(
+            '${i + 1}. Bottom sheet body content. Pass anything you like as `children` or `content` — this slot maps to the Content slot in the Figma component.',
+            style: TextStyle(
+              color: color,
+              fontSize: 14,
+              height: 1.4,
+            ),
           ),
         ),
       ),
