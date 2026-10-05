@@ -91,6 +91,9 @@ class Ux4gEmptyState extends StatelessWidget {
   /// width. Defaults to `24` on each side.
   final double bodyHorizontalPadding;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gEmptyState({
     super.key,
     this.variant = Ux4gEmptyStateVariant.custom,
@@ -108,6 +111,7 @@ class Ux4gEmptyState extends StatelessWidget {
     this.buttonLeadingIcon,
     this.padding,
     this.bodyHorizontalPadding = 24,
+    this.semanticLabel,
   });
 
   // ── Variant defaults ─────────────────────────────────────────────────────
@@ -152,12 +156,14 @@ class Ux4gEmptyState extends StatelessWidget {
         .withValues(alpha: 0.12);
     final buttonFg = uxColors?.primary ?? materialTheme.colorScheme.primary;
 
-    return Padding(
-      padding: padding ?? const EdgeInsets.all(Ux4gSpace.space24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+    return Semantics(
+      label: semanticLabel ?? title,
+      child: Padding(
+        padding: padding ?? const EdgeInsets.all(Ux4gSpace.space24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
           // ── Icon (no background) ────────────────────────────────────────
           Icon(
             effectiveIcon,
@@ -208,6 +214,7 @@ class Ux4gEmptyState extends StatelessWidget {
           ],
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

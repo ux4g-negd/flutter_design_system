@@ -51,6 +51,9 @@ class Ux4gInputField extends StatefulWidget {
   final double borderWidth;
   final double disabledBorderWidth;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gInputField({
     super.key,
     required this.value,
@@ -84,6 +87,7 @@ class Ux4gInputField extends StatefulWidget {
     this.disabledBorderColor,
     this.borderWidth = 1.0,
     this.disabledBorderWidth = 0.0,
+    this.semanticLabel,
   });
 
   @override
@@ -166,7 +170,11 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
         widget.backgroundColor ??
         (widget.enabled ? defaultBgColor : onSurface.withValues(alpha: 0.05));
 
-    return Column(
+    return Semantics(
+      textField: true,
+      enabled: widget.enabled,
+      label: widget.semanticLabel ?? widget.label ?? widget.placeholder ?? 'Input field',
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Label Section
@@ -365,8 +373,9 @@ class _Ux4gInputFieldState extends State<Ux4gInputField> {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 
   Color _getBorderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =

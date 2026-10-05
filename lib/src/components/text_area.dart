@@ -32,6 +32,9 @@ class Ux4gTextArea extends StatefulWidget {
   final bool readOnly;
   final int? maxLength;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gTextArea({
     super.key,
     required this.value,
@@ -49,6 +52,7 @@ class Ux4gTextArea extends StatefulWidget {
     this.enabled = true,
     this.readOnly = false,
     this.maxLength,
+    this.semanticLabel,
   });
 
   @override
@@ -165,7 +169,11 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
 
     final contentPadding = widget.size == Ux4gTextAreaSize.large ? 16.0 : 12.0;
 
-    return Column(
+    return Semantics(
+      textField: true,
+      enabled: widget.enabled,
+      label: widget.semanticLabel ?? widget.label ?? widget.placeholder ?? 'Text area',
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null) ...[
@@ -278,8 +286,9 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 
   Color _getBorderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =

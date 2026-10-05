@@ -439,6 +439,9 @@ class Ux4gOtpInput extends StatefulWidget {
 
   final bool enabled;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gOtpInput({
     super.key,
     this.length = 6,
@@ -462,6 +465,7 @@ class Ux4gOtpInput extends StatefulWidget {
     this.autoCountdownSeconds,
     this.onCountdownComplete,
     this.enabled = true,
+    this.semanticLabel,
   });
 
   @override
@@ -700,7 +704,12 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
       }
     }
 
-    return Column(
+    return Semantics(
+      textField: true,
+      enabled: widget.enabled && widget.status != Ux4gOtpInputStatus.locked,
+      label: widget.semanticLabel ?? widget.label ?? 'OTP input field',
+      value: widget.value,
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -822,6 +831,7 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 }

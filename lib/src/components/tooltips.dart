@@ -39,6 +39,7 @@ class Ux4gTooltip extends StatefulWidget {
   final Widget? action;
   final Widget? customContent;
   final double? maxWidth;
+  final String? semanticLabel;
 
   const Ux4gTooltip({
     super.key,
@@ -58,6 +59,7 @@ class Ux4gTooltip extends StatefulWidget {
     this.action,
     this.customContent,
     this.maxWidth,
+    this.semanticLabel,
   });
 
   @override
@@ -79,6 +81,7 @@ class Ux4gRichTooltip extends StatelessWidget {
   final Widget? action;
   final Widget? customContent;
   final double? maxWidth;
+  final String? semanticLabel;
 
   const Ux4gRichTooltip({
     super.key,
@@ -96,6 +99,7 @@ class Ux4gRichTooltip extends StatelessWidget {
     this.action,
     this.customContent,
     this.maxWidth,
+    this.semanticLabel,
   });
 
   @override
@@ -115,6 +119,7 @@ class Ux4gRichTooltip extends StatelessWidget {
       action: action,
       customContent: customContent,
       maxWidth: maxWidth,
+      semanticLabel: semanticLabel,
       child: child,
     );
   }
@@ -378,35 +383,38 @@ class _Ux4gTooltipState extends State<Ux4gTooltip>
 
   @override
   Widget build(BuildContext context) {
-    return CompositedTransformTarget(
-      link: _layerLink,
-      child: GestureDetector(
-        key: _anchorKey,
-        behavior: HitTestBehavior.translucent,
-        onLongPress: widget.enableUserInput
-            ? () => _showTooltip(persistent: _isRich || widget.isPersistent)
-            : null,
-        onTap: () {
-          if (_isVisible) {
-            _removeTooltip();
-          }
-        },
-        child: MouseRegion(
-          onEnter: widget.enableUserInput
-              ? (_) {
-                  _pointerInsideAnchor = true;
-                  _showTooltip(persistent: _isRich || widget.isPersistent);
-                }
+    return Semantics(
+      tooltip: widget.semanticLabel ?? widget.tooltipText ?? widget.title,
+      child: CompositedTransformTarget(
+        link: _layerLink,
+        child: GestureDetector(
+          key: _anchorKey,
+          behavior: HitTestBehavior.translucent,
+          onLongPress: widget.enableUserInput
+              ? () => _showTooltip(persistent: _isRich || widget.isPersistent)
               : null,
-          onExit: widget.enableUserInput
-              ? (_) {
-                  _pointerInsideAnchor = false;
-                  if (!_isRich && !widget.isPersistent) {
-                    _scheduleAutoDismiss();
+          onTap: () {
+            if (_isVisible) {
+              _removeTooltip();
+            }
+          },
+          child: MouseRegion(
+            onEnter: widget.enableUserInput
+                ? (_) {
+                    _pointerInsideAnchor = true;
+                    _showTooltip(persistent: _isRich || widget.isPersistent);
                   }
-                }
-              : null,
-          child: widget.child,
+                : null,
+            onExit: widget.enableUserInput
+                ? (_) {
+                    _pointerInsideAnchor = false;
+                    if (!_isRich && !widget.isPersistent) {
+                      _scheduleAutoDismiss();
+                    }
+                  }
+                : null,
+            child: widget.child,
+          ),
         ),
       ),
     );

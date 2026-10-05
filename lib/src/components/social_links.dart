@@ -63,6 +63,7 @@ class Ux4gSocialLink extends StatelessWidget {
   final Color? containerColor;
   final bool enableBackground;
   final bool useColoredIcon;
+  final String? semanticLabel;
 
   const Ux4gSocialLink({
     super.key,
@@ -75,6 +76,7 @@ class Ux4gSocialLink extends StatelessWidget {
     this.containerColor,
     this.enableBackground = false,
     this.useColoredIcon = false,
+    this.semanticLabel,
   });
 
   @override
@@ -135,7 +137,12 @@ class Ux4gSocialLink extends StatelessWidget {
       );
     }
 
-    return iconWidget;
+    return Semantics(
+      button: onPressed != null,
+      link: true,
+      label: semanticLabel ?? tooltip ?? icon.name,
+      child: iconWidget,
+    );
   }
 }
 

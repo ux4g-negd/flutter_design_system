@@ -23,6 +23,7 @@ class Ux4gTag extends StatelessWidget {
   final Color? customContentColor;
   final Color? customBorderColor;
   final BorderRadius? customBorderRadius;
+  final String? semanticLabel;
 
   const Ux4gTag({
     super.key,
@@ -37,6 +38,7 @@ class Ux4gTag extends StatelessWidget {
     this.customContentColor,
     this.customBorderColor,
     this.customBorderRadius,
+    this.semanticLabel,
   });
 
   @override
@@ -70,36 +72,39 @@ class Ux4gTag extends StatelessWidget {
             ? BorderRadius.circular(999)
             : BorderRadius.circular(Ux4gRadius.radius4));
 
-    return Container(
-      height: height,
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: borderRadius,
-        border: style == Ux4gTagStyle.outline
-            ? Border.all(color: borderColor)
-            : null,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (leadingContent != null) ...[
-            leadingContent!,
-            const SizedBox(width: 6),
-          ],
-          Text(text, style: textStyle.copyWith(color: contentColor, height: 1)),
-          if (onDismiss != null) ...[
-            const SizedBox(width: 4),
-            GestureDetector(
-              onTap: onDismiss,
-              child: Icon(
-                Icons.close,
-                size: size == Ux4gTagSize.m ? 12 : 14,
-                color: contentColor.withValues(alpha: 0.6),
+    return Semantics(
+      label: semanticLabel ?? text,
+      child: Container(
+        height: height,
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: borderRadius,
+          border: style == Ux4gTagStyle.outline
+              ? Border.all(color: borderColor)
+              : null,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (leadingContent != null) ...[
+              leadingContent!,
+              const SizedBox(width: 6),
+            ],
+            Text(text, style: textStyle.copyWith(color: contentColor, height: 1)),
+            if (onDismiss != null) ...[
+              const SizedBox(width: 4),
+              GestureDetector(
+                onTap: onDismiss,
+                child: Icon(
+                  Icons.close,
+                  size: size == Ux4gTagSize.m ? 12 : 14,
+                  color: contentColor.withValues(alpha: 0.6),
+                ),
               ),
-            ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

@@ -44,6 +44,9 @@ class Ux4gRadioButton<T> extends StatelessWidget {
 
   final bool enabled;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gRadioButton({
     super.key,
     required this.value,
@@ -61,6 +64,7 @@ class Ux4gRadioButton<T> extends StatelessWidget {
     this.labelStyle,
     this.descriptionStyle,
     this.enabled = true,
+    this.semanticLabel,
   });
 
   @override
@@ -147,7 +151,12 @@ class Ux4gRadioButton<T> extends StatelessWidget {
     final disabledFillColor = onSurface.withValues(alpha: 0.1);
     final disabledBorderColor = onSurface.withValues(alpha: 0.2);
 
-    return InkWell(
+    return Semantics(
+      selected: isSelected,
+      enabled: enabled,
+      inMutuallyExclusiveGroup: true,
+      label: semanticLabel ?? label ?? 'Radio button',
+      child: InkWell(
       onTap: enabled ? () => onChanged(value) : null,
       borderRadius: BorderRadius.circular(Ux4gRadius.radius4),
       child: Padding(
@@ -259,6 +268,7 @@ class Ux4gRadioButton<T> extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

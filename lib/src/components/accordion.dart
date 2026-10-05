@@ -23,6 +23,9 @@ class Ux4gAccordion extends StatelessWidget {
   final Ux4gAccordionChevronPosition chevronPosition;
   final Widget child;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gAccordion({
     super.key,
     required this.title,
@@ -40,6 +43,7 @@ class Ux4gAccordion extends StatelessWidget {
     this.disabledIconColor,
     this.leadingIcon,
     this.chevronPosition = Ux4gAccordionChevronPosition.trailing,
+    this.semanticLabel,
   });
 
   @override
@@ -85,7 +89,12 @@ class Ux4gAccordion extends StatelessWidget {
       ),
     );
 
-    return Column(
+    return Semantics(
+      button: true,
+      enabled: enabled,
+      expanded: expanded,
+      label: semanticLabel ?? title,
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Material(
@@ -174,8 +183,9 @@ class Ux4gAccordion extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
 }
 
 class Ux4gAccordionItem {

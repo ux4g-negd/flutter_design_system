@@ -2830,12 +2830,11 @@ final socialLinkComponent = WidgetbookComponent(
           description:
               'SVG social-media icon buttons. Choose from the SocialMediaIcon enum. '
               'Enable background for a contained pill appearance.',
-          code:
-              '''Ux4gSocialLink(
-  icon: SocialMediaIcon.${icon.name},
-  size: SocialLinkSize.${size.name},
-  useColoredIcon: $useColoredIcon,
-  enableBackground: $enableBackground,
+          code: '''Ux4gSocialLink(
+  icon: SocialMediaIcon.facebook,
+  size: SocialLinkSize.m,
+  useColoredIcon: false,
+  enableBackground: false,
 );''',
           props: const [
             PropRow(
@@ -4464,7 +4463,7 @@ final timeSlotComponent = WidgetbookComponent(
 
   const Ux4gTimeslotShowcase({
     super.key,
-    this.viewMode = $enumStr,
+    this.viewMode = SlotPickerViewMode.compact,
   });
 
   @override
@@ -4491,7 +4490,7 @@ class _Ux4gTimeslotShowcaseState extends State<Ux4gTimeslotShowcase> {
       "weeklyOffWeekdays": [6, 7],
       "allowTapOnPublicHoliday": false,
       "allowTapOnWeeklyOff": false,
-      "viewMode": "$viewModeStr",
+      "viewMode": "compact",
       "dates": [
         {
           "date": '\${now.year}-\${now.month.toString().padLeft(2, '0')}-\${_pad(now.day + 2)}',

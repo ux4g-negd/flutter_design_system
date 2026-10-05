@@ -57,7 +57,11 @@ class Ux4gCircularProgress extends StatelessWidget {
     this.labelStyle,
     this.descriptionStyle,
     this.gap = Ux4gSpace.space8,
+    this.semanticLabel,
   }) : assert(value >= 0 && value <= 1, 'value must be between 0 and 1');
+
+  /// Accessibility label for the circular progress.
+  final String? semanticLabel;
 
   double _resolvedDiameter() {
     if (diameter != null) return diameter!;
@@ -320,7 +324,13 @@ class Ux4gCircularProgress extends StatelessWidget {
       ],
     );
 
-    return padding == null ? child : Padding(padding: padding!, child: child);
+    final result = padding == null ? child : Padding(padding: padding!, child: child);
+
+    return Semantics(
+      value: '${(value * 100).round()}%',
+      label: semanticLabel ?? label ?? 'Circular progress',
+      child: result,
+    );
   }
 }
 
@@ -350,6 +360,7 @@ class Ux4gAnimatedCircularProgress extends StatelessWidget {
   final TextStyle? descriptionStyle;
   final Duration duration;
   final Curve curve;
+  final String? semanticLabel;
 
   const Ux4gAnimatedCircularProgress({
     super.key,
@@ -378,6 +389,7 @@ class Ux4gAnimatedCircularProgress extends StatelessWidget {
     this.gap = Ux4gSpace.space8,
     this.duration = const Duration(milliseconds: 700),
     this.curve = Curves.easeInOut,
+    this.semanticLabel,
   });
 
   @override
@@ -411,6 +423,7 @@ class Ux4gAnimatedCircularProgress extends StatelessWidget {
           crossAxisAlignment: crossAxisAlignment,
           textAlign: textAlign,
           gap: gap,
+          semanticLabel: semanticLabel,
         );
       },
     );

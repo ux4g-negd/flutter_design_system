@@ -43,6 +43,7 @@ class Ux4gCard extends StatelessWidget {
   final String secondaryButtonText;
   final VoidCallback? onPrimaryClick;
   final VoidCallback? onSecondaryClick;
+  final String? semanticLabel;
 
   const Ux4gCard({
     super.key,
@@ -71,6 +72,7 @@ class Ux4gCard extends StatelessWidget {
     this.secondaryButtonText = 'Cancel',
     this.onPrimaryClick,
     this.onSecondaryClick,
+    this.semanticLabel,
   });
 
   @override
@@ -90,22 +92,27 @@ class Ux4gCard extends StatelessWidget {
 
     final content = child ?? _buildRichCard(context, contentColor);
 
-    return Card(
-      color: resolvedBg,
-      elevation: elevation,
-      margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(cornerRadius),
-        side: hasBorder
-            ? BorderSide(color: borderColor, width: borderWidth)
-            : BorderSide.none,
-      ),
-      child: InkWell(
-        onTap: isClickable ? onPressed : null,
-        child: child != null
-            ? SizedBox(width: double.infinity, child: content)
-            : content,
+    return Semantics(
+      button: isClickable,
+      enabled: !isClickable || onPressed != null,
+      label: semanticLabel ?? title,
+      child: Card(
+        color: resolvedBg,
+        elevation: elevation,
+        margin: EdgeInsets.zero,
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(cornerRadius),
+          side: hasBorder
+              ? BorderSide(color: borderColor, width: borderWidth)
+              : BorderSide.none,
+        ),
+        child: InkWell(
+          onTap: isClickable ? onPressed : null,
+          child: child != null
+              ? SizedBox(width: double.infinity, child: content)
+              : content,
+        ),
       ),
     );
   }

@@ -25,6 +25,9 @@ class Ux4gCheckbox extends StatelessWidget {
   final bool enabled;
   final CrossAxisAlignment crossAxisAlignment;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gCheckbox({
     super.key,
     required this.value,
@@ -37,6 +40,7 @@ class Ux4gCheckbox extends StatelessWidget {
     this.descriptionVariant = Ux4gCheckboxDescriptionVariant.helper,
     this.enabled = true,
     this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.semanticLabel,
   });
 
   @override
@@ -75,7 +79,11 @@ class Ux4gCheckbox extends StatelessWidget {
     final hasDescription = description != null && description!.trim().isNotEmpty;
     final hasLabel = label != null && label!.trim().isNotEmpty;
 
-    return InkWell(
+    return Semantics(
+      checked: value ?? false,
+      enabled: enabled,
+      label: semanticLabel ?? label ?? 'Checkbox',
+      child: InkWell(
       onTap: enabled ? () => onChanged(value == null ? true : !value!) : null,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
@@ -174,6 +182,7 @@ class Ux4gCheckbox extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

@@ -3743,15 +3743,14 @@ final datePickerComponent = WidgetbookComponent(
               name: 'DatePicker — Single',
               description:
                   'Date Picker component allows users to select a single date or a range of dates using a calendar interface. It ensures accurate and consistent date selection across workflows.',
-              code:
-                  '''Ux4gDatePicker(
+              code: '''Ux4gDatePicker(
   mode: Ux4gDatePickerMode.single,
-  label: ${label.isEmpty ? 'null' : "'$label'"},
-  description: ${description.isEmpty ? 'null' : "'$description'"},
-  isRequired: $isRequired,
-  status: $status,
-  placeholder: '$placeholder',
-  enabled: $enabled,
+  label: 'Date of Birth',
+  description: 'Enter your date of birth as per records',
+  isRequired: false,
+  status: Ux4gDatePickerStatus.none,
+  placeholder: 'Select DOB',
+  enabled: true,
   maxDate: DateTime.now(),
   onDateSelected: (date) {
     print('Selected: \$date');
@@ -3890,15 +3889,14 @@ final datePickerComponent = WidgetbookComponent(
               description:
                   'Date range selection. First tap sets the start date, second tap sets '
                   'the end date. The selected range is displayed as "DD/MM/YYYY – DD/MM/YYYY".',
-              code:
-                  '''Ux4gDatePicker(
+              code: '''Ux4gDatePicker(
   mode: Ux4gDatePickerMode.range,
-  label: ${label.isEmpty ? 'null' : "'$label'"},
-  description: ${description.isEmpty ? 'null' : "'$description'"},
-  isRequired: $isRequired,
-  status: $status,
-  placeholder: '$placeholder',
-  enabled: $enabled,
+  label: 'Date Range',
+  description: 'Select start and end date',
+  isRequired: false,
+  status: Ux4gDatePickerStatus.none,
+  placeholder: 'Select range',
+  enabled: true,
   maxDate: DateTime.now(),
   onDateRangeSelected: (range) {
     print('From \${range.start} to \${range.end}');
@@ -4186,14 +4184,13 @@ final fileUploadComponent = WidgetbookComponent(
           name: 'FileUpload',
           description:
               'File upload allows users to upload and attach one or more files. It shows the upload progress and status of each file.',
-          code:
-              '''Ux4gFileUpload(
+          code: '''Ux4gFileUpload(
   maxFiles: 5,
   maxFileSize: 5 * 1024 * 1024,  // 5 MB
   allowedExtensions: const ['jpg', 'png', 'pdf'],
-  borderStyle: Ux4gFileUploadBorderStyle.${borderStyle.name},
-  errorTitle: '$errorTitle',
-  errorText: '$errorText',
+  borderStyle: Ux4gFileUploadBorderStyle.solid,
+  errorTitle: 'Could not scan',
+  errorText: '[File Name] exceeds the 5MB upload limit. Please compress it or select a smaller file.',
   onFilesChanged: (files) {
     // files is List<UploadedFile>
   },

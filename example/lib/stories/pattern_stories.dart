@@ -70,7 +70,7 @@ final signInDefaultComponent = WidgetbookComponent(
         // Right-side knob lets the user toggle layout variants without
         // cluttering the tree with multiple entries. Both variants share
         // the same intent ("sign in to your account") so they belong
-        // together � different actual patterns (OTP, Aadhaar, Success)
+        // together - different actual patterns (OTP, Aadhaar, Success)
         // remain separate components.
         final variant = context.knobs.list(
           label: 'Variant',
@@ -113,7 +113,7 @@ final signInWithMobileComponent = WidgetbookComponent(
     WidgetbookUseCase(
       name: 'Default',
       builder: (context) {
-        // Same knob pattern as the Username/Password component � toggles
+        // Same knob pattern as the Username/Password component - toggles
         // between the flat layout and the soft-purple card layout.
         final variant = context.knobs.list(
           label: 'Variant',
@@ -940,7 +940,7 @@ final sessionExpiringDialogComponent = WidgetbookComponent(
 );
 
 // -----------------------------------------------------------------------
-// OTP Verification � sibling folder of SignIn
+// OTP Verification - sibling folder of SignIn
 // -----------------------------------------------------------------------
 
 final otpVerifyMobileComponent = WidgetbookComponent(
@@ -986,13 +986,13 @@ final otpVerifyMobileComponent = WidgetbookComponent(
 );
 
 // ---------------------------------------------------------------------
-// OTP verified � success state shown right after a correct OTP, before
+// OTP verified - success state shown right after a correct OTP, before
 // the auto-redirect kicks in. Filled OTP boxes are tinted green via
 // the design-system's success status, and a built-in
 // "Verification successful" caption appears below.
 // ---------------------------------------------------------------------
 final otpVerifiedSuccessComponent = WidgetbookComponent(
-  name: 'OTP verified � success',
+  name: 'OTP verified - success',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1017,10 +1017,10 @@ final otpVerifiedSuccessComponent = WidgetbookComponent(
         };
 
         return ComponentDocs(
-          name: 'OTP verified � success',
+          name: 'OTP verified - success',
           description:
               'Success confirmation shown immediately after a correct '
-              'OTP � green check badge, filled OTP field tinted green '
+              'OTP - green check badge, filled OTP field tinted green '
               'via [Ux4gOtpInputStatus.success], and a built-in '
               '"Verification successful" caption. '
               'Use the [Variant] knob on the right to toggle between '
@@ -1036,13 +1036,13 @@ final otpVerifiedSuccessComponent = WidgetbookComponent(
 );
 
 // ---------------------------------------------------------------------
-// Verify mobile with account locked � terminal state after too many
+// Verify mobile with account locked - terminal state after too many
 // failed attempts. Shows a lock badge, disabled OTP boxes with a
 // live "Locked for mm:ss" caption, an inline error banner, and a
 // support phone number.
 // ---------------------------------------------------------------------
 final otpVerifyAccountLockedComponent = WidgetbookComponent(
-  name: 'Verify mobile � account locked',
+  name: 'Verify mobile - account locked',
   useCases: [
     WidgetbookUseCase(
       name: 'Default',
@@ -1067,7 +1067,7 @@ final otpVerifyAccountLockedComponent = WidgetbookComponent(
         };
 
         return ComponentDocs(
-          name: 'Verify mobile � account locked',
+          name: 'Verify mobile - account locked',
           description:
               'Terminal lockout state shown after the user exhausts all '
               'OTP attempts. Includes a disabled OTP field, a live '
@@ -1086,7 +1086,7 @@ final otpVerifyAccountLockedComponent = WidgetbookComponent(
 );
 
 // ---------------------------------------------------------------------
-// Verify mobile with last-attempt warning � like the attempt-warning
+// Verify mobile with last-attempt warning - like the attempt-warning
 // pattern but escalated to error styling for the *final* attempt.
 // ---------------------------------------------------------------------
 final otpVerifyLastAttemptComponent = WidgetbookComponent(
@@ -1117,7 +1117,7 @@ final otpVerifyLastAttemptComponent = WidgetbookComponent(
         return ComponentDocs(
           name: 'Verify mobile with last-attempt warning',
           description:
-              'Mobile-number OTP verification on the *final* attempt � '
+              'Mobile-number OTP verification on the *final* attempt - '
               'shows an error-styled banner warning the user that one '
               'more wrong entry will lock the account for 30 minutes. '
               'Use the [Variant] knob on the right to toggle between the '
@@ -1133,7 +1133,7 @@ final otpVerifyLastAttemptComponent = WidgetbookComponent(
 );
 
 // ---------------------------------------------------------------------
-// Verify mobile with attempt warning � adds an inline warning banner
+// Verify mobile with attempt warning - adds an inline warning banner
 // counting down failed attempts before a 30-minute lockout.
 // ---------------------------------------------------------------------
 final otpVerifyAttemptWarningComponent = WidgetbookComponent(
@@ -1179,7 +1179,7 @@ final otpVerifyAttemptWarningComponent = WidgetbookComponent(
 );
 
 // ---------------------------------------------------------------------
-// Verify mobile with voice-call fallback � adds a Back button at top,
+// Verify mobile with voice-call fallback - adds a Back button at top,
 // shows the resend timer in its expired state (active "Resend OTP"
 // link), and a secondary outlined "Get OTP via voice call" CTA.
 // ---------------------------------------------------------------------
@@ -1259,7 +1259,7 @@ class _PhoneFrame extends StatelessWidget {
   }
 }
 
-/// Government-style header used by every screen � national emblem, a thin
+/// Government-style header used by every screen - national emblem, a thin
 /// vertical divider, and the brand union logo.
 class _BrandHeader extends StatelessWidget {
   const _BrandHeader({this.onMenuPressed});
@@ -1408,7 +1408,7 @@ class _BackButton extends StatelessWidget {
 }
 
 /// Reusable "New user? Register here" link, styled to match the
-/// reference design � soft purple (primary @ 75% alpha), bold,
+/// reference design - soft purple (primary @ 75% alpha), bold,
 /// 16px with a slight negative letter-spacing.
 class _RegisterLink extends StatelessWidget {
   const _RegisterLink();
@@ -1428,7 +1428,7 @@ class _RegisterLink extends StatelessWidget {
 }
 
 // -----------------------------------------------------------------------
-// 1. Sign in to your account � mobile mockup
+// 1. Sign in to your account - mobile mockup
 // -----------------------------------------------------------------------
 class _SignInMobileMockup extends StatefulWidget {
   const _SignInMobileMockup();
@@ -1494,7 +1494,7 @@ class _SignInMobileMockupState extends State<_SignInMobileMockup> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Error banner � uses the design-system [Ux4gStatusBanner]
+                  // Error banner - uses the design-system [Ux4gStatusBanner]
                   // with [margin: EdgeInsets.zero] so it aligns flush with
                   // the inputs above. The Username-not-found message uses
                   // the regular [title], "Take action" the bold [subtitle],
@@ -1619,7 +1619,7 @@ class _SignInMobileMockupState extends State<_SignInMobileMockup> {
 }
 
 // -----------------------------------------------------------------------
-// 2. Enter OTP � mobile mockup
+// 2. Enter OTP - mobile mockup
 // -----------------------------------------------------------------------
 class _EnterOtpMobileMockup extends StatefulWidget {
   const _EnterOtpMobileMockup();
@@ -1631,7 +1631,7 @@ class _EnterOtpMobileMockup extends StatefulWidget {
 class _EnterOtpMobileMockupState extends State<_EnterOtpMobileMockup> {
   String _otp = '';
 
-  // Bumped every time the user taps "Resend OTP" � used as a [ValueKey]
+  // Bumped every time the user taps "Resend OTP" - used as a [ValueKey]
   // for the OTP input so it remounts and restarts its built-in countdown.
   int _resendNonce = 0;
 
@@ -1728,7 +1728,7 @@ class _EnterOtpMobileMockupState extends State<_EnterOtpMobileMockup> {
 }
 
 // -----------------------------------------------------------------------
-// 3. Sign in with Aadhaar � mobile mockup
+// 3. Sign in with Aadhaar - mobile mockup
 // -----------------------------------------------------------------------
 class _SignInAadhaarMobileMockup extends StatefulWidget {
   const _SignInAadhaarMobileMockup();
@@ -1741,10 +1741,10 @@ class _SignInAadhaarMobileMockup extends StatefulWidget {
 class _SignInAadhaarMobileMockupState
     extends State<_SignInAadhaarMobileMockup> {
   String _aadhaar = '';
-  String _method = 'otp'; // 'otp' | 'face' � Send OTP selected by default
+  String _method = 'otp'; // 'otp' | 'face' - Send OTP selected by default
 
   /// Live validation state derived from the current Aadhaar value.
-  /// We only show an error once the user has typed all 12 digits � so
+  /// We only show an error once the user has typed all 12 digits - so
   /// they don't see a red error while they're still typing.
   ({Ux4gInputFieldStatus status, String? caption}) _validate() {
     final digits = _aadhaar.replaceAll(' ', '');
@@ -1853,7 +1853,7 @@ class _SignInAadhaarMobileMockupState
                     text: 'Continue',
                     onPressed: () {},
                     // Only enable Continue once we have a valid 12-digit
-                    // Aadhaar � the button automatically renders in its
+                    // Aadhaar - the button automatically renders in its
                     // disabled style otherwise.
                     enabled: validation.status == Ux4gInputFieldStatus.success,
                     size: Ux4gButtonSize.large,
@@ -1894,7 +1894,7 @@ class _SignInAadhaarMobileMockupState
 }
 
 // -----------------------------------------------------------------------
-// 4. Signed in success � mobile mockup
+// 4. Signed in success - mobile mockup
 // -----------------------------------------------------------------------
 class _SignedInSuccessMobileMockup extends StatefulWidget {
   const _SignedInSuccessMobileMockup();
@@ -1906,7 +1906,7 @@ class _SignedInSuccessMobileMockup extends StatefulWidget {
 
 class _SignedInSuccessMobileMockupState
     extends State<_SignedInSuccessMobileMockup> {
-  // Brand greens � independent of theme so the success messaging always
+  // Brand greens - independent of theme so the success messaging always
   // reads as "success" regardless of how the host app is themed.
   static const _successDark = Ux4gColors.green700;
   static const _successMid = Ux4gColors.green;
@@ -1950,7 +1950,7 @@ class _SignedInSuccessMobileMockupState
               padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
               child: Column(
                 children: [
-                  // Success badge � concentric circles + check icon.
+                  // Success badge - concentric circles + check icon.
                   Container(
                     width: 64,
                     height: 64,
@@ -2089,7 +2089,7 @@ Container(
             ),
             SizedBox(height: 16),
 
-            // Error banner � design-system Ux4gStatusBanner.
+            // Error banner - design-system Ux4gStatusBanner.
             Ux4gStatusBanner(
               variant: Ux4gBannerVariant.errorLight,
               title: 'Username not found.',
@@ -2247,7 +2247,7 @@ height: 48,
             style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
           SizedBox(height: 24),
 
-          // 6 OTP boxes � built-in 60s countdown + tap-to-resend.
+          // 6 OTP boxes - built-in 60s countdown + tap-to-resend.
           Ux4gOtpInput(
             key: ValueKey('otp_$resendNonce'),
             length: 6,
@@ -2331,7 +2331,7 @@ height: 48,
             style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
           SizedBox(height: 24),
 
-          // Live Verhoeff validation � only flag errors once all
+          // Live Verhoeff validation - only flag errors once all
           // 12 digits are entered so the user isn't yelled at while
           // they're still typing.
           (() {
@@ -2432,7 +2432,7 @@ Column(
       padding: EdgeInsets.fromLTRB(20, 40, 20, 0),
       child: Column(
         children: [
-          // Success badge � concentric circles + check icon.
+          // Success badge - concentric circles + check icon.
           Container(
             width: 64, height: 64,
             decoration: BoxDecoration(color: Ux4gColors.green100, shape: BoxShape.circle),
@@ -2493,7 +2493,7 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// 5. Sign in account with Mobile No � mobile mockup
+// 5. Sign in account with Mobile No - mobile mockup
 // -----------------------------------------------------------------------
 class _SignInWithMobileMockup extends StatefulWidget {
   const _SignInWithMobileMockup();
@@ -2720,7 +2720,7 @@ Column(
           ),
           SizedBox(height: 16),
 
-          // Error banner � design-system Ux4gStatusBanner.
+          // Error banner - design-system Ux4gStatusBanner.
           Ux4gStatusBanner(
             variant: Ux4gBannerVariant.errorLight,
             title: 'Your status message goes here',
@@ -2839,7 +2839,7 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// Sign in to your account � Card-style variant
+// Sign in to your account - Card-style variant
 // (toggled via the [Variant] knob on signInDefaultComponent)
 // -----------------------------------------------------------------------
 class _SignInCardMockup extends StatefulWidget {
@@ -2853,7 +2853,7 @@ class _SignInCardMockupState extends State<_SignInCardMockup> {
   String _username = '';
   String _password = '';
 
-  // Card-variant background � soft purple tint behind the white card.
+  // Card-variant background - soft purple tint behind the white card.
   Color _getCardBg(BuildContext context) =>
       _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100;
 
@@ -3285,7 +3285,7 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// Sign in account with Mobile No � Card-style variant
+// Sign in account with Mobile No - Card-style variant
 // (toggled via the [Variant] knob on signInWithMobileComponent)
 // -----------------------------------------------------------------------
 class _SignInWithMobileCardMockup extends StatefulWidget {
@@ -3706,7 +3706,7 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// Enter OTP � Card-style variant
+// Enter OTP - Card-style variant
 // (toggled via the [Variant] knob on signInEnterOtpComponent)
 // -----------------------------------------------------------------------
 class _EnterOtpCardMockup extends StatefulWidget {
@@ -3735,7 +3735,7 @@ class _EnterOtpCardMockupState extends State<_EnterOtpCardMockup> {
                 children: [
                   // White card holds the OTP form. Sits at the top of the
                   // soft-purple area; the area below stays empty so the
-                  // footer can pin to the bottom � exactly like the
+                  // footer can pin to the bottom - exactly like the
                   // reference image.
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
@@ -3825,7 +3825,7 @@ class _EnterOtpCardMockupState extends State<_EnterOtpCardMockup> {
                     ),
                   ),
 
-                  // Empty soft-purple area between card and footer �
+                  // Empty soft-purple area between card and footer -
                   // matches the reference image where the card hugs
                   // the top and the footer sits at the bottom.
                   const Spacer(),
@@ -3954,7 +3954,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Sign in with Aadhaar � Card-style variant
+// Sign in with Aadhaar - Card-style variant
 // (toggled via the [Variant] knob on signInAadhaarComponent)
 // -----------------------------------------------------------------------
 class _SignInAadhaarCardMockup extends StatefulWidget {
@@ -4119,7 +4119,7 @@ class _SignInAadhaarCardMockupState extends State<_SignInAadhaarCardMockup> {
                   ),
 
                   // Encrypted hint sits *outside* the card, on the
-                  // soft-purple area � exactly like the reference image.
+                  // soft-purple area - exactly like the reference image.
                   const SizedBox(height: 14),
                   Center(
                     child: Row(
@@ -4208,7 +4208,7 @@ height: 48,
                       style: TextStyle(fontSize: 14, color: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.neutral400 : Ux4gColors.neutral500)),
                     SizedBox(height: 20),
 
-                    // Live Verhoeff validation � see Default variant for details.
+                    // Live Verhoeff validation - see Default variant for details.
                     Ux4gAadhaarInputField(
                       value: aadhaar,
                       onValueChange: (v) => setState(() => aadhaar = v),
@@ -4290,7 +4290,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Signed in success � Card-style variant
+// Signed in success - Card-style variant
 // (toggled via the [Variant] knob on signInSuccessComponent)
 // -----------------------------------------------------------------------
 class _SignedInSuccessCardMockup extends StatefulWidget {
@@ -4350,7 +4350,7 @@ class _SignedInSuccessCardMockupState
               child: Column(
                 children: [
                   // White card hugs the top of the soft-purple area.
-                  // Full-bleed horizontally � only top spacing,
+                  // Full-bleed horizontally - only top spacing,
                   // no left/right outer padding.
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -4371,7 +4371,7 @@ class _SignedInSuccessCardMockupState
                       ),
                       child: Column(
                         children: [
-                          // Success badge � concentric circles + check.
+                          // Success badge - concentric circles + check.
                           Container(
                             width: 64,
                             height: 64,
@@ -4498,7 +4498,7 @@ Column(
                 ),
                 child: Column(
                   children: [
-                    // Success badge � concentric circles + check.
+                    // Success badge - concentric circles + check.
                     Container(
                       width: 64, height: 64,
                       decoration: BoxDecoration(
@@ -4574,7 +4574,7 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// Verify your mobile number � mobile mockup (OTP Verification folder)
+// Verify your mobile number - mobile mockup (OTP Verification folder)
 // -----------------------------------------------------------------------
 class _VerifyMobileOtpMockup extends StatefulWidget {
   const _VerifyMobileOtpMockup();
@@ -4586,7 +4586,7 @@ class _VerifyMobileOtpMockup extends StatefulWidget {
 class _VerifyMobileOtpMockupState extends State<_VerifyMobileOtpMockup> {
   String _otp = '';
 
-  // Bumped every time the user taps "Resend OTP" � used as a [ValueKey]
+  // Bumped every time the user taps "Resend OTP" - used as a [ValueKey]
   // for the OTP input so it remounts and restarts its built-in countdown.
   int _resendNonce = 0;
 
@@ -4656,7 +4656,7 @@ class _VerifyMobileOtpMockupState extends State<_VerifyMobileOtpMockup> {
                   ),
                   SizedBox(height: 8),
 
-                  // "Change mobile number" � ghost-style link button.
+                  // "Change mobile number" - ghost-style link button.
                   Center(
                     child: Ux4gButton(
                       height: 48,
@@ -4734,7 +4734,7 @@ Column(
           ),
           SizedBox(height: 8),
 
-          // "Change mobile number" � ghost-style link button.
+          // "Change mobile number" - ghost-style link button.
           Center(child: Ux4gButton(
 height: 48,
             text: 'Change mobile number',
@@ -4761,7 +4761,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify your mobile number � Card-style variant
+// Verify your mobile number - Card-style variant
 // (toggled via the [Variant] knob on otpVerifyMobileComponent)
 // -----------------------------------------------------------------------
 class _VerifyMobileOtpCardMockup extends StatefulWidget {
@@ -4792,7 +4792,7 @@ class _VerifyMobileOtpCardMockupState
               color: _getCardBg(context),
               child: Column(
                 children: [
-                  // Soft-purple gap above the card � image shows the
+                  // Soft-purple gap above the card - image shows the
                   // card sitting in the upper-middle of the body, not
                   // flush at the top.
                   SizedBox(height: 56),
@@ -5008,7 +5008,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile with voice fallback � mobile mockup
+// Verify mobile with voice fallback - mobile mockup
 // -----------------------------------------------------------------------
 class _VerifyMobileVoiceMockup extends StatefulWidget {
   const _VerifyMobileVoiceMockup();
@@ -5058,7 +5058,7 @@ class _VerifyMobileVoiceMockupState extends State<_VerifyMobileVoiceMockup> {
                   ),
                   SizedBox(height: 24),
 
-                  // 6 OTP boxes � caption is in [resendAction] mode so
+                  // 6 OTP boxes - caption is in [resendAction] mode so
                   // "Resend OTP" appears as a tap-able link (the timer
                   // has already expired in this state).
                   Ux4gOtpInput(
@@ -5088,7 +5088,7 @@ class _VerifyMobileVoiceMockupState extends State<_VerifyMobileVoiceMockup> {
                   ),
                   SizedBox(height: 12),
 
-                  // Secondary action � voice-call fallback for users
+                  // Secondary action - voice-call fallback for users
                   // who couldn't receive the SMS.
                   Ux4gButton(
                     height: 48,
@@ -5201,7 +5201,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile with voice fallback � Card-style variant
+// Verify mobile with voice fallback - Card-style variant
 // (toggled via the [Variant] knob on otpVerifyVoiceComponent)
 // -----------------------------------------------------------------------
 class _VerifyMobileVoiceCardMockup extends StatefulWidget {
@@ -5444,7 +5444,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile with attempt warning � mobile mockup
+// Verify mobile with attempt warning - mobile mockup
 // -----------------------------------------------------------------------
 class _VerifyMobileAttemptWarningMockup extends StatefulWidget {
   const _VerifyMobileAttemptWarningMockup();
@@ -5494,7 +5494,7 @@ class _VerifyMobileAttemptWarningMockupState
                   ),
                   SizedBox(height: 24),
 
-                  // 6 OTP boxes � caption suppressed since the warning
+                  // 6 OTP boxes - caption suppressed since the warning
                   // banner below carries the resend message.
                   Ux4gOtpInput(
                     length: 6,
@@ -5506,7 +5506,7 @@ class _VerifyMobileAttemptWarningMockupState
                   ),
                   const SizedBox(height: 16),
 
-                  // Warning banner � uses the design-system component
+                  // Warning banner - uses the design-system component
                   // with warningLight variant and an Attempt pill on
                   // the trailing side.
                   Ux4gStatusBanner(
@@ -5655,7 +5655,7 @@ height: 48,
           ),
           SizedBox(height: 16),
 
-          // Warning banner � design-system Ux4gStatusBanner.
+          // Warning banner - design-system Ux4gStatusBanner.
           Ux4gStatusBanner(
             variant: Ux4gBannerVariant.warningLight,
             backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.orange900 : Ux4gColors.orange50,
@@ -5741,7 +5741,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile with attempt warning � Card-style variant
+// Verify mobile with attempt warning - Card-style variant
 // (toggled via the [Variant] knob on otpVerifyAttemptWarningComponent)
 // -----------------------------------------------------------------------
 class _VerifyMobileAttemptWarningCardMockup extends StatefulWidget {
@@ -6093,7 +6093,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile with last-attempt warning � mobile mockup
+// Verify mobile with last-attempt warning - mobile mockup
 // -----------------------------------------------------------------------
 class _VerifyMobileLastAttemptMockup extends StatefulWidget {
   const _VerifyMobileLastAttemptMockup();
@@ -6153,7 +6153,7 @@ class _VerifyMobileLastAttemptMockupState
                   ),
                   SizedBox(height: 16),
 
-                  // Error-styled banner � escalated from warning since
+                  // Error-styled banner - escalated from warning since
                   // this is the final attempt before lockout.
                   Ux4gStatusBanner(
                     variant: Ux4gBannerVariant.errorLight,
@@ -6301,7 +6301,7 @@ height: 48,
           ),
           SizedBox(height: 16),
 
-          // Error-styled banner � final attempt before lockout.
+          // Error-styled banner - final attempt before lockout.
           Ux4gStatusBanner(
             variant: Ux4gBannerVariant.errorLight,
             backgroundColor: Theme.of(context).brightness == Brightness.dark ? Ux4gColors.red900 : Ux4gColors.red50,
@@ -6387,7 +6387,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile with last-attempt warning � Card-style variant
+// Verify mobile with last-attempt warning - Card-style variant
 // -----------------------------------------------------------------------
 class _VerifyMobileLastAttemptCardMockup extends StatefulWidget {
   const _VerifyMobileLastAttemptCardMockup();
@@ -6737,7 +6737,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile � account locked (mobile mockup)
+// Verify mobile - account locked (mobile mockup)
 // -----------------------------------------------------------------------
 class _VerifyAccountLockedMockup extends StatefulWidget {
   const _VerifyAccountLockedMockup();
@@ -6801,7 +6801,7 @@ class _VerifyAccountLockedMockupState
                   ),
                   SizedBox(height: 24),
 
-                  // 6 disabled OTP boxes with the [locked] caption � the
+                  // 6 disabled OTP boxes with the [locked] caption - the
                   // design-system component renders "?? Locked for mm:ss"
                   // on the leading side and "Resend OTP" on the trailing
                   // side automatically.
@@ -7010,7 +7010,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// Verify mobile � account locked (Card-style variant)
+// Verify mobile - account locked (Card-style variant)
 // -----------------------------------------------------------------------
 class _VerifyAccountLockedCardMockup extends StatefulWidget {
   const _VerifyAccountLockedCardMockup();
@@ -7231,12 +7231,12 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// OTP verified � success (mobile mockup)
+// OTP verified - success (mobile mockup)
 // -----------------------------------------------------------------------
 class _OtpVerifiedSuccessMockup extends StatelessWidget {
   const _OtpVerifiedSuccessMockup();
 
-  // Brand greens � independent of theme so the success messaging
+  // Brand greens - independent of theme so the success messaging
   // always reads as "success" regardless of how the host app is themed.
   static const _successMid = Ux4gColors.green;
   static const _successLight = Ux4gColors.green100;
@@ -7252,7 +7252,7 @@ class _OtpVerifiedSuccessMockup extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 64, 20, 0),
               child: Column(
                 children: [
-                  // Success badge � same concentric-circles as the
+                  // Success badge - same concentric-circles as the
                   // "Signed in success" pattern.
                   Container(
                     width: 64,
@@ -7339,7 +7339,7 @@ Column(
       padding: EdgeInsets.fromLTRB(20, 64, 20, 0),
       child: Column(
         children: [
-          // Success badge � concentric circles + check.
+          // Success badge - concentric circles + check.
           Container(
             width: 64, height: 64,
             decoration: BoxDecoration(
@@ -7397,7 +7397,7 @@ Column(
 )''';
 
 // -----------------------------------------------------------------------
-// OTP verified � success (Card-style variant)
+// OTP verified - success (Card-style variant)
 // -----------------------------------------------------------------------
 class _OtpVerifiedSuccessCardMockup extends StatelessWidget {
   const _OtpVerifiedSuccessCardMockup();
@@ -14996,7 +14996,7 @@ height: 48,
 // Each component has a [Variant] knob: Default (flat) ? Card style (purple-bg).
 // ---------------------------------------------------------------------------
 
-/// "Already have an account? Sign in" link � mirror of [_RegisterLink].
+/// "Already have an account? Sign in" link - mirror of [_RegisterLink].
 class _SignInLink extends StatelessWidget {
   const _SignInLink({this.fontSize = 15});
   final double fontSize;
@@ -15091,7 +15091,7 @@ Color _getSuCardBg(BuildContext context) =>
     _isDark(context) ? Ux4gColors.primary800 : Ux4gColors.primary100;
 
 // -----------------------------------------------------------------------
-// STEP 1 � Create your account
+// STEP 1 - Create your account
 // -----------------------------------------------------------------------
 
 final signUpStep1Component = WidgetbookComponent(
@@ -15298,7 +15298,7 @@ class _SignUpStep1CardMockupState extends State<_SignUpStep1CardMockup> {
   }
 }
 
-const _signUpStep1Code = r'''// Step 1 � Create your account (360 � 760)
+const _signUpStep1Code = r'''// Step 1 - Create your account (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -15360,7 +15360,7 @@ Container(
 )''';
 
 const _signUpStep1CardCode =
-    r'''// Step 1 � Create your account, card style (360 � 760)
+    r'''// Step 1 - Create your account, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -15440,7 +15440,7 @@ Container(
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 2 � Verify your mobile
+// STEP 2 - Verify your mobile
 // -----------------------------------------------------------------------
 
 final signUpStep2Component = WidgetbookComponent(
@@ -15643,7 +15643,7 @@ class _SignUpStep2CardMockupState extends State<_SignUpStep2CardMockup> {
   }
 }
 
-const _signUpStep2Code = r'''// Step 2 � Verify your mobile (360 � 760)
+const _signUpStep2Code = r'''// Step 2 - Verify your mobile (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -15704,7 +15704,7 @@ Container(
 )''';
 
 const _signUpStep2CardCode =
-    r'''// Step 2 � Verify your mobile, card style (360 � 760)
+    r'''// Step 2 - Verify your mobile, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -15783,7 +15783,7 @@ Container(
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 3 � Complete your profile
+// STEP 3 - Complete your profile
 // -----------------------------------------------------------------------
 
 final signUpStep3Component = WidgetbookComponent(
@@ -16046,7 +16046,7 @@ class _SignUpStep3CardMockupState extends State<_SignUpStep3CardMockup> {
   }
 }
 
-const _signUpStep3Code = r'''// Step 3 � Complete your profile (360 � 760)
+const _signUpStep3Code = r'''// Step 3 - Complete your profile (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -16120,7 +16120,7 @@ Container(
 )''';
 
 const _signUpStep3CardCode =
-    r'''// Step 3 � Complete your profile, card style (360 � 760)
+    r'''// Step 3 - Complete your profile, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -16212,7 +16212,7 @@ Container(
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 4 � Password setup
+// STEP 4 - Password setup
 // -----------------------------------------------------------------------
 
 final signUpStep4Component = WidgetbookComponent(
@@ -16429,7 +16429,7 @@ class _SignUpStep4CardMockupState extends State<_SignUpStep4CardMockup> {
   }
 }
 
-const _signUpStep4Code = r'''// Step 4 � Password setup (360 � 760)
+const _signUpStep4Code = r'''// Step 4 - Password setup (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -16490,7 +16490,7 @@ Container(
 )''';
 
 const _signUpStep4CardCode =
-    r'''// Step 4 � Password setup, card style (360 � 760)
+    r'''// Step 4 - Password setup, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -16569,7 +16569,7 @@ Container(
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 5 � Account Created
+// STEP 5 - Account Created
 // -----------------------------------------------------------------------
 
 final signUpStep5Component = WidgetbookComponent(
@@ -16876,7 +16876,7 @@ class _SignUpStep5CardMockup extends StatelessWidget {
   }
 }
 
-const _signUpStep5Code = r'''// Step 5 � Account Created (360 � 760)
+const _signUpStep5Code = r'''// Step 5 - Account Created (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -16968,7 +16968,7 @@ Container(
 )''';
 
 const _signUpStep5CardCode =
-    r'''// Step 5 � Account Created, card style (360 � 760)
+    r'''// Step 5 - Account Created, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -17508,7 +17508,7 @@ class _FpStep1CardMockupState extends State<_FpStep1CardMockup> {
   }
 }
 
-const _fpStep1Code = r'''// FP Step 1 � Reset Password (360 � 760)
+const _fpStep1Code = r'''// FP Step 1 - Reset Password (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -17596,7 +17596,7 @@ height: 48,
 )''';
 
 const _fpStep1CardCode =
-    r'''// FP Step 1 � Reset Password, card style (360 � 760)
+    r'''// FP Step 1 - Reset Password, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -17702,7 +17702,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 2 � Enter OTP
+// STEP 2 - Enter OTP
 // -----------------------------------------------------------------------
 
 final fpStep2Component = WidgetbookComponent(
@@ -17919,7 +17919,7 @@ class _FpStep2CardMockupState extends State<_FpStep2CardMockup> {
   }
 }
 
-const _fpStep2Code = r'''// FP Step 2 � Enter OTP (360 � 760)
+const _fpStep2Code = r'''// FP Step 2 - Enter OTP (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -17995,7 +17995,7 @@ height: 48,
   ]),
 )''';
 
-const _fpStep2CardCode = r'''// FP Step 2 � Enter OTP, card style (360 � 760)
+const _fpStep2CardCode = r'''// FP Step 2 - Enter OTP, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -18082,7 +18082,7 @@ height: 48,
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 3 � Create new password
+// STEP 3 - Create new password
 // -----------------------------------------------------------------------
 
 final fpStep3Component = WidgetbookComponent(
@@ -18339,7 +18339,7 @@ class _FpStep3CardMockupState extends State<_FpStep3CardMockup> {
   }
 }
 
-const _fpStep3Code = r'''// FP Step 3 � Create new password (360 � 760)
+const _fpStep3Code = r'''// FP Step 3 - Create new password (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -18461,7 +18461,7 @@ Container(
 )''';
 
 const _fpStep3CardCode =
-    r'''// FP Step 3 � Create new password, card style (360 � 760)
+    r'''// FP Step 3 - Create new password, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -18583,7 +18583,7 @@ Container(
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 4 � Password reset successfully
+// STEP 4 - Password reset successfully
 // -----------------------------------------------------------------------
 
 final fpStep4Component = WidgetbookComponent(
@@ -18797,7 +18797,7 @@ class _FpStep4CardMockup extends StatelessWidget {
   }
 }
 
-const _fpStep4Code = r'''// FP Step 4 � Password reset successfully (360 � 760)
+const _fpStep4Code = r'''// FP Step 4 - Password reset successfully (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -18864,7 +18864,7 @@ Container(
 )''';
 
 const _fpStep4CardCode =
-    r'''// FP Step 4 � Password reset successfully, card style (360 � 760)
+    r'''// FP Step 4 - Password reset successfully, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -18947,7 +18947,7 @@ Container(
 )''';
 
 // -----------------------------------------------------------------------
-// STEP 5 � Account recovery
+// STEP 5 - Account recovery
 // -----------------------------------------------------------------------
 
 final fpStep5Component = WidgetbookComponent(
@@ -19151,7 +19151,7 @@ class _FpStep5CardMockupState extends State<_FpStep5CardMockup> {
   }
 }
 
-const _fpStep5Code = r'''// FP Step 5 � Account recovery (360 � 760)
+const _fpStep5Code = r'''// FP Step 5 - Account recovery (360 x 760)
 Container(
   width: 360, height: 760, color: Ux4gColors.neutral50,
   child: Column(children: [
@@ -19223,7 +19223,7 @@ Container(
 )''';
 
 const _fpStep5CardCode =
-    r'''// FP Step 5 � Account recovery, card style (360 � 760)
+    r'''// FP Step 5 - Account recovery, card style (360 x 760)
 Container(
   width: 360, height: 760, color: Colors.white,
   child: Column(children: [
@@ -19967,8 +19967,8 @@ class _NotifEmptyMockup extends StatelessWidget {
   const _NotifEmptyMockup();
 
   // Icon container background varies by empty-state condition:
-  //   � allCaughtUp  (default) ? neutral gray  0xFFF3F4F6
-  //   � neverHadAny            ? soft blue tint 0xFFEFF6FF
+  //   - allCaughtUp  (default) ? neutral gray  0xFFF3F4F6
+  //   - neverHadAny            ? soft blue tint 0xFFEFF6FF
   @override
   Widget build(BuildContext context) {
     final isDark = _isDark(context);

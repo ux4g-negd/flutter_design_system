@@ -45,6 +45,9 @@ class Ux4gFeedbackFormNps extends StatefulWidget {
   final Color highScoreBackgroundColor;
   final Color highScoreTextColor;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gFeedbackFormNps({
     super.key,
     required this.onSubmit,
@@ -75,6 +78,7 @@ class Ux4gFeedbackFormNps extends StatefulWidget {
     this.mediumScoreTextColor = Ux4gColors.orange800,
     this.highScoreBackgroundColor = Ux4gColors.green100,
     this.highScoreTextColor = Ux4gColors.green800,
+    this.semanticLabel,
   });
 
   @override
@@ -117,25 +121,28 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
-    return Container(
-      width: double.infinity,
-      constraints: const BoxConstraints(maxWidth: 400),
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: onSurface.withValues(alpha: 0.1)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+    return Semantics(
+      label: widget.semanticLabel ?? widget.title,
+      child: Container(
+        width: double.infinity,
+        constraints: const BoxConstraints(maxWidth: 400),
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: onSurface.withValues(alpha: 0.1)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: _isSubmitted
+            ? _buildSuccessView(materialTheme, ux4gColors, ux4gTypography)
+            : _buildFormView(materialTheme, ux4gColors, ux4gTypography),
       ),
-      child: _isSubmitted
-          ? _buildSuccessView(materialTheme, ux4gColors, ux4gTypography)
-          : _buildFormView(materialTheme, ux4gColors, ux4gTypography),
     );
   }
 
@@ -242,27 +249,32 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
               scoreText = resolvedHighText;
             }
 
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedScore = index;
-                });
-              },
-              child: Container(
-                width: 32,
-                height: 32,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: isHighlighted ? scoreBg : surface,
-                  borderRadius: BorderRadius.circular(4),
-                  border: isHighlighted
-                      ? null
-                      : Border.all(color: onSurface.withValues(alpha: 0.15)),
-                ),
-                child: Text(
-                  '$index',
-                  style: bmStrong.copyWith(
-                    color: isHighlighted ? scoreText : onBackground,
+            return Semantics(
+              button: true,
+              label: 'Score $index',
+              selected: isHighlighted,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _selectedScore = index;
+                  });
+                },
+                child: Container(
+                  width: 32,
+                  height: 32,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: isHighlighted ? scoreBg : surface,
+                    borderRadius: BorderRadius.circular(4),
+                    border: isHighlighted
+                        ? null
+                        : Border.all(color: onSurface.withValues(alpha: 0.15)),
+                  ),
+                  child: Text(
+                    '$index',
+                    style: bmStrong.copyWith(
+                      color: isHighlighted ? scoreText : onBackground,
+                    ),
                   ),
                 ),
               ),
@@ -353,10 +365,13 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
         materialTheme.textTheme.bodyMedium ??
         const TextStyle(fontSize: 16);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+    return Semantics(
+      liveRegion: true,
+      label: '${widget.successTitle}. ${widget.successMessage}',
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
           decoration: BoxDecoration(
@@ -412,6 +427,7 @@ class _Ux4gFeedbackFormNpsState extends State<Ux4gFeedbackFormNps> {
           },
         ),
       ],
+    ),
     );
   }
 }

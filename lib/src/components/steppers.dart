@@ -43,6 +43,7 @@ class Ux4gStepper extends StatelessWidget {
   final bool activeStepBackground;
   final double stepSpacing;
   final bool alignIconWithDescription;
+  final String? semanticLabel;
 
   const Ux4gStepper({
     super.key,
@@ -58,12 +59,14 @@ class Ux4gStepper extends StatelessWidget {
     this.activeStepBackground = false,
     this.stepSpacing = 24.0,
     this.alignIconWithDescription = false,
+    this.semanticLabel,
   });
 
   @override
   Widget build(BuildContext context) {
+    final Widget stepperWidget;
     if (orientation == StepperOrientation.horizontal) {
-      return _HorizontalStepper(
+      stepperWidget = _HorizontalStepper(
         totalSteps: totalSteps,
         currentStep: currentStep,
         lineStyle: lineStyle,
@@ -74,17 +77,22 @@ class Ux4gStepper extends StatelessWidget {
         edgeLabelAlignment: edgeLabelAlignment,
         activeStepBackground: activeStepBackground,
       );
+    } else {
+      stepperWidget = _VerticalStepper(
+        totalSteps: totalSteps,
+        currentStep: currentStep,
+        lineStyle: lineStyle,
+        steps: steps,
+        stepSize: stepSize,
+        showLabels: showLabels,
+        stepSpacing: stepSpacing,
+        alignIconWithDescription: alignIconWithDescription,
+      );
     }
 
-    return _VerticalStepper(
-      totalSteps: totalSteps,
-      currentStep: currentStep,
-      lineStyle: lineStyle,
-      steps: steps,
-      stepSize: stepSize,
-      showLabels: showLabels,
-      stepSpacing: stepSpacing,
-      alignIconWithDescription: alignIconWithDescription,
+    return Semantics(
+      label: semanticLabel ?? 'Step $currentStep of $totalSteps',
+      child: stepperWidget,
     );
   }
 }

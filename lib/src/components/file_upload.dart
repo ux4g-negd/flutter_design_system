@@ -73,6 +73,9 @@ class Ux4gFileUpload extends StatefulWidget {
   final TextStyle? errorTitleStyle;
   final TextStyle? errorTextStyle;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gFileUpload({
     super.key,
     this.maxFiles = 5,
@@ -89,6 +92,7 @@ class Ux4gFileUpload extends StatefulWidget {
     this.errorText,
     this.errorTitleStyle,
     this.errorTextStyle,
+    this.semanticLabel,
   });
 
   @override
@@ -303,7 +307,10 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
         materialTheme.textTheme.bodySmall ??
         const TextStyle(fontSize: 14);
 
-    return Column(
+    return Semantics(
+      button: true,
+      label: widget.semanticLabel ?? 'File upload',
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Upload area with icon and buttons
@@ -370,8 +377,9 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
                 .toList(),
           ),
       ],
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildUploadContent(
     Color primary,

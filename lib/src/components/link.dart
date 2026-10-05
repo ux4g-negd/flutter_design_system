@@ -10,10 +10,14 @@ class Ux4gLink extends StatelessWidget {
   /// The URL to be opened in the browser.
   final String url;
 
+  /// Accessibility label for the link.
+  final String? semanticLabel;
+
   const Ux4gLink({
     super.key,
     required this.child,
     required this.url,
+    this.semanticLabel,
   });
 
   Future<void> _launchUrl() async {
@@ -25,12 +29,16 @@ class Ux4gLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _launchUrl,
-      behavior: HitTestBehavior.opaque,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: child,
+    return Semantics(
+      link: true,
+      label: semanticLabel ?? url,
+      child: GestureDetector(
+        onTap: _launchUrl,
+        behavior: HitTestBehavior.opaque,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: child,
+        ),
       ),
     );
   }

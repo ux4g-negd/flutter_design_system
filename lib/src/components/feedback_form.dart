@@ -43,6 +43,9 @@ class Ux4gFeedbackFormStar extends StatefulWidget {
   final Color? successIconColor;
   final Color? successBackgroundColor;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   /// Number of stars at or below which [lowRatingColor] is used.
   /// Default is 2 (1-2 stars = lowRatingColor, 3-5 stars = highRatingColor).
   final int lowRatingThreshold;
@@ -77,6 +80,7 @@ class Ux4gFeedbackFormStar extends StatefulWidget {
     this.inactiveRatingColor,
     this.successIconColor,
     this.successBackgroundColor,
+    this.semanticLabel,
   });
 
   @override
@@ -122,25 +126,28 @@ class _Ux4gFeedbackFormStarState extends State<Ux4gFeedbackFormStar> {
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
-    return Container(
-      width: double.infinity,
-      constraints: const BoxConstraints(maxWidth: 400),
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: onSurface.withValues(alpha: 0.1)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+    return Semantics(
+      label: widget.semanticLabel ?? widget.title,
+      child: Container(
+        width: double.infinity,
+        constraints: const BoxConstraints(maxWidth: 400),
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: onSurface.withValues(alpha: 0.1)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: _isSubmitted
+            ? _buildSuccessView(materialTheme, ux4gColors, ux4gTypography)
+            : _buildFormView(materialTheme, ux4gColors, ux4gTypography),
       ),
-      child: _isSubmitted
-          ? _buildSuccessView(materialTheme, ux4gColors, ux4gTypography)
-          : _buildFormView(materialTheme, ux4gColors, ux4gTypography),
     );
   }
 
@@ -207,22 +214,27 @@ class _Ux4gFeedbackFormStarState extends State<Ux4gFeedbackFormStar> {
                   : (widget.highRatingColor ?? info);
             }
 
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _rating = starIndex;
-                });
-              },
-              behavior: HitTestBehavior.opaque,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: Icon(
-                  widget.ratingIcon,
-                  size: 32,
-                  color: isSelected
-                      ? activeColor
-                      : (widget.inactiveRatingColor ??
-                            onSurface.withValues(alpha: 0.15)),
+            return Semantics(
+              button: true,
+              label: '$starIndex star${starIndex > 1 ? "s" : ""}',
+              selected: isSelected,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _rating = starIndex;
+                  });
+                },
+                behavior: HitTestBehavior.opaque,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Icon(
+                    widget.ratingIcon,
+                    size: 32,
+                    color: isSelected
+                        ? activeColor
+                        : (widget.inactiveRatingColor ??
+                              onSurface.withValues(alpha: 0.15)),
+                  ),
                 ),
               ),
             );
@@ -328,10 +340,13 @@ class _Ux4gFeedbackFormStarState extends State<Ux4gFeedbackFormStar> {
         materialTheme.textTheme.bodyMedium ??
         const TextStyle(fontSize: 16);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+    return Semantics(
+      liveRegion: true,
+      label: '${widget.successTitle}. ${widget.successMessage}',
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
           decoration: BoxDecoration(
@@ -388,6 +403,7 @@ class _Ux4gFeedbackFormStarState extends State<Ux4gFeedbackFormStar> {
           },
         ),
       ],
+    ),
     );
   }
 }

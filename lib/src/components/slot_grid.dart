@@ -269,6 +269,9 @@ class Ux4gTimeslot extends StatefulWidget {
   /// Receives the tapped [date] and the confirmed [SlotTimeEntry].
   final void Function(DateTime date, SlotTimeEntry slot)? onSlotConfirmed;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gTimeslot({
     super.key,
     required this.data,
@@ -276,6 +279,7 @@ class Ux4gTimeslot extends StatefulWidget {
     this.onMonthChanged,
     this.timeSlotProvider,
     this.onSlotConfirmed,
+    this.semanticLabel,
   });
 
   @override
@@ -380,31 +384,34 @@ class _Ux4gTimeslotState extends State<Ux4gTimeslot> {
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: onSurface.withValues(alpha: 0.12), width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildHeader(ux4gColors, ux4gTypography, materialTheme),
-          const SizedBox(height: 12),
-          _buildWeekdayRow(ux4gColors, ux4gTypography, materialTheme),
-          const SizedBox(height: 4),
-          _buildDatesGrid(ux4gColors, ux4gTypography, materialTheme),
-          const SizedBox(height: 12),
-          _buildLegend(ux4gColors, ux4gTypography, materialTheme),
-        ],
+    return Semantics(
+      label: widget.semanticLabel ?? 'Time slot calendar',
+      child: Container(
+        decoration: BoxDecoration(
+          color: surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: onSurface.withValues(alpha: 0.12), width: 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.06),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildHeader(ux4gColors, ux4gTypography, materialTheme),
+            const SizedBox(height: 12),
+            _buildWeekdayRow(ux4gColors, ux4gTypography, materialTheme),
+            const SizedBox(height: 4),
+            _buildDatesGrid(ux4gColors, ux4gTypography, materialTheme),
+            const SizedBox(height: 12),
+            _buildLegend(ux4gColors, ux4gTypography, materialTheme),
+          ],
+        ),
       ),
     );
   }
@@ -595,56 +602,62 @@ class _Ux4gTimeslotState extends State<Ux4gTimeslot> {
             (status == SlotDateStatus.weeklyOff &&
                 widget.data.allowTapOnWeeklyOff));
 
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: canTap
-          ? () {
-              if (widget.timeSlotProvider != null) {
-                final slots = widget.timeSlotProvider!(date);
-                final today = widget.data.today ?? DateTime.now();
-                final currentViewMode = widget.data.viewMode;
-                SlotTimePickerSheet.show(
-                  context,
-                  date: date,
-                  slots: slots,
-                  today: today,
-                  viewMode: currentViewMode,
-                  onConfirm: (slotTime) {
-                    setState(() => _selectedDate = date);
-                    widget.onDateSelected?.call(date);
-                    widget.onSlotConfirmed?.call(date, slotTime);
-                  },
-                  onPreviousDay: (newDate) async {
-                    return widget.timeSlotProvider!(newDate);
-                  },
-                  onNextDay: (newDate) async {
-                    return widget.timeSlotProvider!(newDate);
-                  },
-                );
-              } else {
-                setState(() => _selectedDate = date);
-                widget.onDateSelected?.call(date);
+    return Semantics(
+      button: canTap,
+      selected: isSelected,
+      enabled: canTap,
+      label: '${date.day} ${_monthName(date.month)} ${date.year}, ${status.name}',
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: canTap
+            ? () {
+                if (widget.timeSlotProvider != null) {
+                  final slots = widget.timeSlotProvider!(date);
+                  final today = widget.data.today ?? DateTime.now();
+                  final currentViewMode = widget.data.viewMode;
+                  SlotTimePickerSheet.show(
+                    context,
+                    date: date,
+                    slots: slots,
+                    today: today,
+                    viewMode: currentViewMode,
+                    onConfirm: (slotTime) {
+                      setState(() => _selectedDate = date);
+                      widget.onDateSelected?.call(date);
+                      widget.onSlotConfirmed?.call(date, slotTime);
+                    },
+                    onPreviousDay: (newDate) async {
+                      return widget.timeSlotProvider!(newDate);
+                    },
+                    onNextDay: (newDate) async {
+                      return widget.timeSlotProvider!(newDate);
+                    },
+                  );
+                } else {
+                  setState(() => _selectedDate = date);
+                  widget.onDateSelected?.call(date);
+                }
               }
-            }
-          : null,
-      child: SizedBox(
-        width: double.infinity,
-        height: 48,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildDateLabel(
-                date,
-                status,
-                isSelected,
-                isPast,
-                colors,
-                typography,
-                materialTheme,
-              ),
-              if (isToday && !isSelected) _buildTodayDot(colors, materialTheme),
-            ],
+            : null,
+        child: SizedBox(
+          width: double.infinity,
+          height: 48,
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildDateLabel(
+                  date,
+                  status,
+                  isSelected,
+                  isPast,
+                  colors,
+                  typography,
+                  materialTheme,
+                ),
+                if (isToday && !isSelected) _buildTodayDot(colors, materialTheme),
+              ],
+            ),
           ),
         ),
       ),
@@ -907,22 +920,27 @@ class _NavArrow extends StatelessWidget {
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
 
-    return GestureDetector(
-      onTap: disabled ? null : onTap,
-      child: Container(
-        width: 32,
-        height: 32,
-        decoration: BoxDecoration(
-          color: disabled ? onSurface.withValues(alpha: 0.05) : surface,
-          borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: onSurface.withValues(alpha: 0.12)),
-        ),
-        child: Icon(
-          icon,
-          size: 18,
-          color: disabled
-              ? onSurface.withValues(alpha: 0.12)
-              : onSurface.withValues(alpha: 0.6),
+    return Semantics(
+      button: !disabled,
+      enabled: !disabled,
+      label: icon == Icons.chevron_left_rounded ? 'Previous month' : 'Next month',
+      child: GestureDetector(
+        onTap: disabled ? null : onTap,
+        child: Container(
+          width: 32,
+          height: 32,
+          decoration: BoxDecoration(
+            color: disabled ? onSurface.withValues(alpha: 0.05) : surface,
+            borderRadius: BorderRadius.circular(6),
+            border: Border.all(color: onSurface.withValues(alpha: 0.12)),
+          ),
+          child: Icon(
+            icon,
+            size: 18,
+            color: disabled
+                ? onSurface.withValues(alpha: 0.12)
+                : onSurface.withValues(alpha: 0.6),
+          ),
         ),
       ),
     );

@@ -43,6 +43,9 @@ class Ux4gButton extends StatelessWidget {
   final double? elevation;
   final TextStyle? textStyle;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gButton({
     super.key,
     required this.onPressed,
@@ -67,6 +70,7 @@ class Ux4gButton extends StatelessWidget {
     this.height,
     this.elevation,
     this.textStyle,
+    this.semanticLabel,
   }) : assert(
          text != null ||
              child != null ||
@@ -124,84 +128,89 @@ class Ux4gButton extends StatelessWidget {
 
     final currentContentColor = enabled ? effectiveContentColor : effectiveDisabledContentColor;
 
-    return SizedBox(
-      width: width,
-      height: effectiveHeight,
-      child: OutlinedButton(
-        onPressed: enabled ? (isLoading ? () {} : onPressed) : null,
-        style: OutlinedButton.styleFrom(
-          minimumSize: Size(width ?? 0, effectiveHeight),
-          backgroundColor: effectiveBgColor,
-          foregroundColor: effectiveContentColor,
-          disabledBackgroundColor: effectiveDisabledBgColor,
-          disabledForegroundColor: effectiveDisabledContentColor,
-          elevation: elevation ?? 0,
-          padding:
-              padding ??
-                EdgeInsets.symmetric(
-                  horizontal: size.horizontalPadding,
-                  vertical: size.verticalPadding,
+    return Semantics(
+      button: true,
+      enabled: enabled,
+      label: semanticLabel ?? text ?? '',
+      child: SizedBox(
+        width: width,
+        height: effectiveHeight,
+        child: OutlinedButton(
+          onPressed: enabled ? (isLoading ? () {} : onPressed) : null,
+          style: OutlinedButton.styleFrom(
+            minimumSize: Size(width ?? 0, effectiveHeight),
+            backgroundColor: effectiveBgColor,
+            foregroundColor: effectiveContentColor,
+            disabledBackgroundColor: effectiveDisabledBgColor,
+            disabledForegroundColor: effectiveDisabledContentColor,
+            elevation: elevation ?? 0,
+            padding:
+                padding ??
+                  EdgeInsets.symmetric(
+                    horizontal: size.horizontalPadding,
+                    vertical: size.verticalPadding,
+                  ),
+              side: !enabled && variant != Ux4gButtonVariant.ghost
+                  ? BorderSide(
+                      color: isDark ? Colors.transparent : Ux4gColors.neutral300,
+                      width: 1.0,
+                    )
+                  : (effectiveBorderColor != Colors.transparent
+                      ? BorderSide(
+                          color: effectiveBorderColor,
+                          width: effectiveBorderWidth,
+                        )
+                      : BorderSide.none),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  borderRadius ?? Ux4gRadius.radius8,
                 ),
-            side: !enabled && variant != Ux4gButtonVariant.ghost
-                ? BorderSide(
-                    color: isDark ? Colors.transparent : Ux4gColors.neutral300,
-                    width: 1.0,
-                  )
-                : (effectiveBorderColor != Colors.transparent
-                    ? BorderSide(
-                        color: effectiveBorderColor,
-                        width: effectiveBorderWidth,
-                      )
-                    : BorderSide.none),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                borderRadius ?? Ux4gRadius.radius8,
               ),
             ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (isLoading) ...[
-                Ux4gSpinner(
-                  size: 16,
-                  color: currentContentColor,
-                  strokeWidth: 2,
-                ),
-                const SizedBox(width: 8),
-              ],
-              if (leadingIcon != null && !isLoading) ...[
-                Icon(
-                  leadingIcon,
-                  size: iconSize ?? 18,
-                  color: currentContentColor,
-                ),
-                if (text != null || child != null) const SizedBox(width: 8),
-              ],
-              Flexible(
-                child: DefaultTextStyle(
-                  style: effectiveTextStyle.copyWith(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (isLoading) ...[
+                  Ux4gSpinner(
+                    size: 16,
+                    color: currentContentColor,
+                    strokeWidth: 2,
+                  ),
+                  const SizedBox(width: 8),
+                ],
+                if (leadingIcon != null && !isLoading) ...[
+                  Icon(
+                    leadingIcon,
+                    size: iconSize ?? 18,
                     color: currentContentColor,
                   ),
-                  child:
-                      child ??
-                      (text != null
-                          ? Text(text!, overflow: TextOverflow.ellipsis)
-                          : const SizedBox.shrink()),
+                  if (text != null || child != null) const SizedBox(width: 8),
+                ],
+                Flexible(
+                  child: DefaultTextStyle(
+                    style: effectiveTextStyle.copyWith(
+                      color: currentContentColor,
+                    ),
+                    child:
+                        child ??
+                        (text != null
+                            ? Text(text!, overflow: TextOverflow.ellipsis)
+                            : const SizedBox.shrink()),
+                  ),
                 ),
-              ),
-              if (trailingIcon != null) ...[
-                if (text != null || child != null || leadingIcon != null)
-                  const SizedBox(width: 8),
-                Icon(
-                  trailingIcon,
-                  size: iconSize ?? 18,
-                  color: currentContentColor,
-                ),
+                if (trailingIcon != null) ...[
+                  if (text != null || child != null || leadingIcon != null)
+                    const SizedBox(width: 8),
+                  Icon(
+                    trailingIcon,
+                    size: iconSize ?? 18,
+                    color: currentContentColor,
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
-        ),
+      ),
     );
   }
 
@@ -286,6 +295,9 @@ class Ux4gIconButton extends StatelessWidget {
   final double size;
   final bool enabled;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gIconButton({
     super.key,
     required this.icon,
@@ -293,6 +305,7 @@ class Ux4gIconButton extends StatelessWidget {
     this.variant = Ux4gButtonVariant.primary,
     this.size = 40,
     this.enabled = true,
+    this.semanticLabel,
   });
 
   @override
@@ -329,28 +342,33 @@ class Ux4gIconButton extends StatelessWidget {
         : Colors.transparent;
     final disabledFgColor = isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral400;
 
-    return IconButton(
-      onPressed: enabled ? onPressed : null,
-      icon: Icon(icon, size: size * 0.6),
-      style: IconButton.styleFrom(
-        backgroundColor: bgColor,
-        foregroundColor: contentColor,
-        disabledBackgroundColor: disabledBgColor,
-        disabledForegroundColor: disabledFgColor,
-        fixedSize: Size(size, size),
-        side: !enabled && variant != Ux4gButtonVariant.ghost
-            ? BorderSide(
-                color: isDark ? Colors.transparent : Ux4gColors.neutral300,
-                width: 1.0,
-              )
-            : (variant == Ux4gButtonVariant.outline
-                ? BorderSide(
-                    color: primary,
-                    width: 1.0,
-                  )
-                : null),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+    return Semantics(
+      button: true,
+      enabled: enabled,
+      label: semanticLabel ?? 'Icon button',
+      child: IconButton(
+        onPressed: enabled ? onPressed : null,
+        icon: Icon(icon, size: size * 0.6),
+        style: IconButton.styleFrom(
+          backgroundColor: bgColor,
+          foregroundColor: contentColor,
+          disabledBackgroundColor: disabledBgColor,
+          disabledForegroundColor: disabledFgColor,
+          fixedSize: Size(size, size),
+          side: !enabled && variant != Ux4gButtonVariant.ghost
+              ? BorderSide(
+                  color: isDark ? Colors.transparent : Ux4gColors.neutral300,
+                  width: 1.0,
+                )
+              : (variant == Ux4gButtonVariant.outline
+                  ? BorderSide(
+                      color: primary,
+                      width: 1.0,
+                    )
+                  : null),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+          ),
         ),
       ),
     );

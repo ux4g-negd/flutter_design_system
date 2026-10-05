@@ -33,6 +33,9 @@ class Ux4gAadhaarInputField extends StatelessWidget {
   /// Optional override for the caption / helper text style.
   final TextStyle? captionStyle;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gAadhaarInputField({
     super.key,
     required this.value,
@@ -52,6 +55,7 @@ class Ux4gAadhaarInputField extends StatelessWidget {
     this.style,
     this.labelStyle,
     this.captionStyle,
+    this.semanticLabel,
   });
 
   @override
@@ -92,6 +96,7 @@ class Ux4gAadhaarInputField extends StatelessWidget {
       labelStyle: labelStyle,
       placeholderStyle: placeholderStyle,
       captionStyle: captionStyle,
+      semanticLabel: semanticLabel ?? 'Aadhaar number input',
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         _AadhaarNumberFormatter(),

@@ -48,6 +48,9 @@ class Ux4gSwitch extends StatelessWidget {
   final bool isSecondaryRequired;
   final Widget? secondaryIcon;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gSwitch({
     super.key,
     required this.checked,
@@ -64,6 +67,7 @@ class Ux4gSwitch extends StatelessWidget {
     this.secondaryLabel,
     this.isSecondaryRequired = false,
     this.secondaryIcon,
+    this.semanticLabel,
   });
 
   @override
@@ -98,46 +102,51 @@ class Ux4gSwitch extends StatelessWidget {
     final endOffset = size.width - size.thumbSize - size.thumbPadding;
     final startOffset = size.thumbPadding;
 
-    Widget toggleControl = MouseRegion(
-      cursor: enabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
-      child: GestureDetector(
-        onTap: enabled && onCheckedChange != null
-            ? () => onCheckedChange!(!checked)
-            : null,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          width: size.width,
-          height: size.height,
-          decoration: BoxDecoration(
-            color: trackColor,
-            borderRadius: BorderRadius.circular(size.height / 2),
-          ),
-          child: Stack(
-            alignment: Alignment.centerLeft,
-            children: [
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 150),
-                curve: Curves.easeInOut,
-                left: checked ? endOffset : startOffset,
-                child: Container(
-                  width: size.thumbSize,
-                  height: size.thumbSize,
-                  decoration: BoxDecoration(
-                    color: thumbColor,
-                    shape: BoxShape.circle,
-                    boxShadow: enabled
-                        ? [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.2),
-                              blurRadius: 2,
-                              offset: const Offset(0, 1),
-                            ),
-                          ]
-                        : [],
+    Widget toggleControl = Semantics(
+      toggled: checked,
+      enabled: enabled,
+      label: semanticLabel ?? label ?? 'Switch',
+      child: MouseRegion(
+        cursor: enabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
+        child: GestureDetector(
+          onTap: enabled && onCheckedChange != null
+              ? () => onCheckedChange!(!checked)
+              : null,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            width: size.width,
+            height: size.height,
+            decoration: BoxDecoration(
+              color: trackColor,
+              borderRadius: BorderRadius.circular(size.height / 2),
+            ),
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 150),
+                  curve: Curves.easeInOut,
+                  left: checked ? endOffset : startOffset,
+                  child: Container(
+                    width: size.thumbSize,
+                    height: size.thumbSize,
+                    decoration: BoxDecoration(
+                      color: thumbColor,
+                      shape: BoxShape.circle,
+                      boxShadow: enabled
+                          ? [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.2),
+                                blurRadius: 2,
+                                offset: const Offset(0, 1),
+                              ),
+                            ]
+                          : [],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

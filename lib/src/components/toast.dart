@@ -102,6 +102,7 @@ class Ux4gToast extends StatelessWidget {
   final IconData? icon;
   final Color? iconColor;
   final Color? actionColor;
+  final String? semanticLabel;
 
   const Ux4gToast({
     super.key,
@@ -117,6 +118,7 @@ class Ux4gToast extends StatelessWidget {
     this.icon,
     this.iconColor,
     this.actionColor,
+    this.semanticLabel,
   });
 
   @override
@@ -136,41 +138,45 @@ class Ux4gToast extends StatelessWidget {
       icon: icon ?? baseStyle.icon,
     );
 
-    return Material(
-      color: Colors.transparent,
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: style.backgroundColor,
-          borderRadius: BorderRadius.circular(Ux4gRadius.radius4),
+    return Semantics(
+      liveRegion: true,
+      label: semanticLabel ?? (subtitle != null ? '$title, $subtitle' : title),
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: style.backgroundColor,
+            borderRadius: BorderRadius.circular(Ux4gRadius.radius4),
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: resolvedLayout == Ux4gToastLayout.full
+                ? Ux4gSpace.space16
+                : Ux4gSpace.space12,
+            vertical: resolvedLayout == Ux4gToastLayout.full
+                ? Ux4gSpace.space8
+                : Ux4gSpace.space12,
+          ),
+          child: resolvedLayout == Ux4gToastLayout.full
+              ? _FullLayout(
+                  style: style,
+                  title: title,
+                  subtitle: subtitle,
+                  actionText: actionText,
+                  onActionClick: onActionClick,
+                  onCloseClick: onCloseClick,
+                  showCloseButton: showCloseButton,
+                )
+              : _StackedLayout(
+                  style: style,
+                  title: title,
+                  subtitle: subtitle,
+                  actionText: actionText,
+                  onActionClick: onActionClick,
+                  onCloseClick: onCloseClick,
+                  showCloseButton: showCloseButton,
+                ),
         ),
-        padding: EdgeInsets.symmetric(
-          horizontal: resolvedLayout == Ux4gToastLayout.full
-              ? Ux4gSpace.space16
-              : Ux4gSpace.space12,
-          vertical: resolvedLayout == Ux4gToastLayout.full
-              ? Ux4gSpace.space8
-              : Ux4gSpace.space12,
-        ),
-        child: resolvedLayout == Ux4gToastLayout.full
-            ? _FullLayout(
-                style: style,
-                title: title,
-                subtitle: subtitle,
-                actionText: actionText,
-                onActionClick: onActionClick,
-                onCloseClick: onCloseClick,
-                showCloseButton: showCloseButton,
-              )
-            : _StackedLayout(
-                style: style,
-                title: title,
-                subtitle: subtitle,
-                actionText: actionText,
-                onActionClick: onActionClick,
-                onCloseClick: onCloseClick,
-                showCloseButton: showCloseButton,
-              ),
       ),
     );
   }

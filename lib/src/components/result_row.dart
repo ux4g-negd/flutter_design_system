@@ -54,6 +54,9 @@ class Ux4gResultList extends StatefulWidget {
   final bool showBottomDivider;
   final EdgeInsetsGeometry contentPadding;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gResultList({
     super.key,
     required this.title,
@@ -77,6 +80,7 @@ class Ux4gResultList extends StatefulWidget {
       horizontal: Ux4gSpace.space16,
       vertical: Ux4gSpace.space16,
     ),
+    this.semanticLabel,
   });
 
   @override
@@ -110,12 +114,16 @@ class _Ux4gResultListState extends State<Ux4gResultList>
         ? Ux4gColors.neutral800
         : Ux4gColors.neutral300;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        InkWell(
-          onTap: _handleToggle,
-          child: Padding(
+    return Semantics(
+      button: true,
+      expanded: _isExpanded,
+      label: widget.semanticLabel ?? widget.title,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          InkWell(
+            onTap: _handleToggle,
+            child: Padding(
             padding: widget.contentPadding,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -368,6 +376,7 @@ class _Ux4gResultListState extends State<Ux4gResultList>
                     .withValues(alpha: 0.1),
           ),
       ],
+    ),
     );
   }
 }

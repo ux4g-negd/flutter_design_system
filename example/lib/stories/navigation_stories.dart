@@ -366,14 +366,13 @@ Ux4gAccordion(
           name: 'Accordion — States Showcase',
           description:
               'A visual showcase of the various interaction states of the accordion item.',
-          code:
-              '''Column(
+          code: '''Column(
   mainAxisSize: MainAxisSize.min,
   children: [
     // 1. Default
     Ux4gAccordion(
       title: 'Accordion Item',
-${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: false,
+      expanded: false,
       onExpandedChange: (_) {},
       child: const Text(''),
     ),
@@ -393,7 +392,7 @@ ${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expa
     // 3. Expanded
     Ux4gAccordion(
       title: 'Accordion Item',
-${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: true,
+      expanded: true,
       onExpandedChange: (_) {},
       child: Text('...'),
     ),
@@ -402,7 +401,7 @@ ${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expa
     // 4. Active/Focused (simulated)
     Ux4gAccordion(
       title: 'Accordion Item',
-${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: false,
+      expanded: false,
       collapsedBorderColor: const Color(0xFFA5B4FC), // primaryColor
       onExpandedChange: (_) {},
       child: const Text(''),
@@ -412,7 +411,7 @@ ${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expa
     // 5. Disabled
     Ux4gAccordion(
       title: 'Accordion Item',
-${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: false,
+      expanded: false,
       enabled: false,
       child: const Text(''),
     ),
@@ -511,23 +510,22 @@ ${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expa
               name: 'Accordion — Leading Chevron',
               description:
                   'The chevron arrow can be positioned on the left side (leading) instead of the right side.',
-              code:
-                  '''Column(
+              code: '''Column(
   mainAxisSize: MainAxisSize.min,
   children: [
     Ux4gAccordion(
       title: 'Accordion Item',
       chevronPosition: Ux4gAccordionChevronPosition.leading,
-${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: expanded1,
-      onExpandedChange: (val) => setState(() => expanded1 = val),
+      expanded: true,
+      onExpandedChange: (val) {},
       child: Text('...'),
     ),
     const SizedBox(height: 16),
     Ux4gAccordion(
       title: 'Accordion Item',
       chevronPosition: Ux4gAccordionChevronPosition.leading,
-${hasBackground ? '' : '      backgroundColor: Colors.transparent,\n'}      expanded: expanded2,
-      onExpandedChange: (val) => setState(() => expanded2 = val),
+      expanded: false,
+      onExpandedChange: (val) {},
       child: Text('...'),
     ),
   ],

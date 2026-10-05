@@ -208,6 +208,9 @@ class Ux4gSelectionDropdown extends StatefulWidget {
   final TextStyle? valueTextStyle;
   final IconData? leadingIcon;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gSelectionDropdown({
     super.key,
     required this.options,
@@ -225,6 +228,7 @@ class Ux4gSelectionDropdown extends StatefulWidget {
     this.labelTextStyle,
     this.valueTextStyle,
     this.leadingIcon,
+    this.semanticLabel,
   });
 
   @override
@@ -535,7 +539,11 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
       _ => (uxColors?.onSurface ?? materialTheme.colorScheme.onSurface).withValues(alpha: 0.7),
     };
 
-    return Column(
+    return Semantics(
+      button: true,
+      enabled: widget.status != Ux4gDropdownStatus.disabled,
+      label: widget.semanticLabel ?? widget.label ?? widget.placeholder,
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null) ...[
@@ -689,6 +697,7 @@ class _Ux4gSelectionDropdownState extends State<Ux4gSelectionDropdown> {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 }

@@ -12,6 +12,7 @@ class Ux4gSpinner extends StatefulWidget {
   final double percentage; // 0 to 100
   final double strokeWidth;
   final int rotationDurationMillis;
+  final String? semanticLabel;
 
   const Ux4gSpinner({
     super.key,
@@ -21,6 +22,7 @@ class Ux4gSpinner extends StatefulWidget {
     this.percentage = 100,
     this.strokeWidth = 4,
     this.rotationDurationMillis = 1200,
+    this.semanticLabel,
   });
 
   @override
@@ -50,16 +52,19 @@ class _Ux4gSpinnerState extends State<Ux4gSpinner>
   Widget build(BuildContext context) {
     final color = widget.color ?? Ux4gTheme.colors(context).primary;
 
-    return RotationTransition(
-      turns: _controller,
-      child: RepaintBoundary(
-        child: CustomPaint(
-          size: Size(widget.size, widget.size),
-          painter: _LoaderPainter(
-            color: color,
-            gradientColors: widget.gradientColors,
-            percentage: widget.percentage,
-            strokeWidth: widget.strokeWidth,
+    return Semantics(
+      label: widget.semanticLabel ?? 'Loading',
+      child: RotationTransition(
+        turns: _controller,
+        child: RepaintBoundary(
+          child: CustomPaint(
+            size: Size(widget.size, widget.size),
+            painter: _LoaderPainter(
+              color: color,
+              gradientColors: widget.gradientColors,
+              percentage: widget.percentage,
+              strokeWidth: widget.strokeWidth,
+            ),
           ),
         ),
       ),

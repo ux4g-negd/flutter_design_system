@@ -11,6 +11,9 @@ class Ux4gCarousel extends StatefulWidget {
   final double height;
   final double viewportFraction;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gCarousel({
     super.key,
     required this.items,
@@ -19,6 +22,7 @@ class Ux4gCarousel extends StatefulWidget {
     this.showPagination = true,
     this.height = 200.0,
     this.viewportFraction = 1.0,
+    this.semanticLabel,
   });
 
   @override
@@ -102,31 +106,35 @@ class _Ux4gCarouselState extends State<Ux4gCarousel> {
       return SizedBox(height: widget.height);
     }
 
-    return SizedBox(
-      height: widget.height,
-      child: Stack(
-        children: [
-          PageView(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
-            children: widget.items,
-          ),
-          if (widget.showPagination)
-            Positioned(
-              bottom: 16,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Ux4gPaginationDotted(
-                  totalPageCount: widget.items.length,
-                  currentPageIndex: _currentIndex,
-                  onPageChange: _handleManualPageChange,
-                  variant: Ux4gPaginationVariant.defaultVariant,
-                  size: Ux4gPaginationSize.small,
+    return Semantics(
+      label: widget.semanticLabel ??
+          'Carousel, page ${_currentIndex + 1} of ${widget.items.length}',
+      child: SizedBox(
+        height: widget.height,
+        child: Stack(
+          children: [
+            PageView(
+              controller: _pageController,
+              onPageChanged: _onPageChanged,
+              children: widget.items,
+            ),
+            if (widget.showPagination)
+              Positioned(
+                bottom: 16,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: Ux4gPaginationDotted(
+                    totalPageCount: widget.items.length,
+                    currentPageIndex: _currentIndex,
+                    onPageChange: _handleManualPageChange,
+                    variant: Ux4gPaginationVariant.defaultVariant,
+                    size: Ux4gPaginationSize.small,
+                  ),
                 ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

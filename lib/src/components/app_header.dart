@@ -130,6 +130,9 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
   /// Whether to wrap the header with SafeArea to avoid status bar overlap.
   final bool useSafeArea;
 
+  /// Accessibility label for the header.
+  final String? semanticLabel;
+
   const Ux4gAppHeader({
     super.key,
     this.title = 'Title',
@@ -156,6 +159,7 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
     this.actionSpacing = Ux4gSpace.space4,
     this.elevation = 0,
     this.useSafeArea = true,
+    this.semanticLabel,
   });
 
   Color _resolveBackgroundColor(
@@ -322,21 +326,24 @@ class Ux4gAppHeader extends StatelessWidget implements PreferredSizeWidget {
         ),
     );
 
-    return Container(
-      decoration: BoxDecoration(
-        color: bg,
-        border: bottomBorder,
-        boxShadow: elevation > 0
-            ? [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
-                  blurRadius: elevation,
-                  offset: Offset(0, elevation / 2),
-                ),
-              ]
-            : null,
+    return Semantics(
+      label: semanticLabel ?? title,
+      child: Container(
+        decoration: BoxDecoration(
+          color: bg,
+          border: bottomBorder,
+          boxShadow: elevation > 0
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.1),
+                    blurRadius: elevation,
+                    offset: Offset(0, elevation / 2),
+                  ),
+                ]
+              : null,
+        ),
+        child: useSafeArea ? SafeArea(bottom: false, child: content) : content,
       ),
-      child: useSafeArea ? SafeArea(bottom: false, child: content) : content,
     );
   }
 }
@@ -359,14 +366,18 @@ class _HeaderIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final button = GestureDetector(
-      onTap: onPressed,
-      behavior: HitTestBehavior.opaque,
-      child: SizedBox(
-        width: 40,
-        height: 40,
-        child: Center(
-          child: Icon(icon, color: color, size: size),
+    final button = Semantics(
+      button: true,
+      label: tooltip ?? 'Header button',
+      child: GestureDetector(
+        onTap: onPressed,
+        behavior: HitTestBehavior.opaque,
+        child: SizedBox(
+          width: 40,
+          height: 40,
+          child: Center(
+            child: Icon(icon, color: color, size: size),
+          ),
         ),
       ),
     );

@@ -64,6 +64,7 @@ class Ux4gModal extends StatelessWidget {
   final bool showCloseButton;
   final Color? backgroundColor;
   final double cornerRadius;
+  final String? semanticLabel;
 
   const Ux4gModal({
     super.key,
@@ -109,6 +110,7 @@ class Ux4gModal extends StatelessWidget {
     this.showCloseButton = true,
     this.backgroundColor,
     this.cornerRadius = Ux4gRadius.radius16,
+    this.semanticLabel,
   });
 
   static Future<void> show(BuildContext context, {required Ux4gModal modal}) {
@@ -170,6 +172,7 @@ class Ux4gModal extends StatelessWidget {
         showCloseButton: showCloseButton,
         backgroundColor: backgroundColor ?? surface,
         cornerRadius: cornerRadius,
+        semanticLabel: semanticLabel,
       ),
     );
   }
@@ -217,6 +220,7 @@ class Ux4gModalContent extends StatelessWidget {
   final bool showCloseButton;
   final Color backgroundColor;
   final double cornerRadius;
+  final String? semanticLabel;
 
   const Ux4gModalContent({
     super.key,
@@ -261,6 +265,7 @@ class Ux4gModalContent extends StatelessWidget {
     this.showCloseButton = true,
     required this.backgroundColor,
     this.cornerRadius = Ux4gRadius.radius16,
+    this.semanticLabel,
   });
 
   @override
@@ -285,130 +290,155 @@ class Ux4gModalContent extends StatelessWidget {
         (headerImageContent != null || headerImageUrl != null);
     final primaryColor = isDestructive ? error : primary;
 
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 560),
-      child: Material(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(cornerRadius),
-        clipBehavior: Clip.antiAlias,
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (hasImage) _buildHeaderImage(context),
-                  if (leadingItem == Ux4gModalLeadingItem.avatar &&
-                      isCentered &&
-                      showHeader)
-                    Padding(
-                      padding: const EdgeInsets.only(top: Ux4gSpace.space16),
-                      child: Center(child: _buildAvatar(centered: true)),
-                    ),
-                  if (showHeader)
-                    _buildHeaderSection(
-                      context,
-                      hasImage: hasImage,
-                      textAlign: textAlign,
-                      horizAlign: horizAlign,
-                      ux4gColors: ux4gColors,
-                      ux4gTypography: ux4gTypography,
-                      materialTheme: materialTheme,
-                    ),
-                  if (showSubtitle || showBody || bodyContent != null)
-                    Padding(
-                      padding: const EdgeInsets.all(Ux4gSpace.space16),
-                      child: Column(
-                        crossAxisAlignment: horizAlign,
-                        children: [
-                          if (showSubtitle)
-                            Text(
-                              subtitleText,
-                              style:
-                                  (ux4gTypography?.tS_strong ??
-                                          materialTheme.textTheme.titleSmall
-                                              ?.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                              ))
-                                      ?.copyWith(color: onSurface),
-                              textAlign: textAlign,
-                            ),
-                          if (showBody) ...[
-                            const SizedBox(height: Ux4gSpace.space8),
-                            if (bodyContent != null)
-                              bodyContent!
-                            else
+    return Semantics(
+      namesRoute: true,
+      scopesRoute: true,
+      explicitChildNodes: true,
+      label: semanticLabel ?? (showHeader ? headerTitle : 'Modal Dialog'),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 560),
+        child: Material(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(cornerRadius),
+          clipBehavior: Clip.antiAlias,
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (hasImage) _buildHeaderImage(context),
+                    if (leadingItem == Ux4gModalLeadingItem.avatar &&
+                        isCentered &&
+                        showHeader)
+                      Padding(
+                        padding: const EdgeInsets.only(top: Ux4gSpace.space16),
+                        child: Center(child: _buildAvatar(centered: true)),
+                      ),
+                    if (showHeader)
+                      _buildHeaderSection(
+                        context,
+                        hasImage: hasImage,
+                        textAlign: textAlign,
+                        horizAlign: horizAlign,
+                        ux4gColors: ux4gColors,
+                        ux4gTypography: ux4gTypography,
+                        materialTheme: materialTheme,
+                      ),
+                    if (showSubtitle || showBody || bodyContent != null)
+                      Padding(
+                        padding: const EdgeInsets.all(Ux4gSpace.space16),
+                        child: Column(
+                          crossAxisAlignment: horizAlign,
+                          children: [
+                            if (showSubtitle)
                               Text(
-                                bodyText,
+                                subtitleText,
                                 style:
-                                    (ux4gTypography?.bM_default ??
-                                            materialTheme.textTheme.bodyMedium)
-                                        ?.copyWith(
-                                          color: onSurface.withValues(
-                                            alpha: 0.6,
-                                          ),
-                                        ),
+                                    (ux4gTypography?.tS_strong ??
+                                            materialTheme.textTheme.titleSmall
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                ))
+                                        ?.copyWith(color: onSurface),
                                 textAlign: textAlign,
                               ),
+                            if (showBody) ...[
+                              const SizedBox(height: Ux4gSpace.space8),
+                              if (bodyContent != null)
+                                bodyContent!
+                              else
+                                Text(
+                                  bodyText,
+                                  style:
+                                      (ux4gTypography?.bM_default ??
+                                              materialTheme
+                                                  .textTheme
+                                                  .bodyMedium)
+                                          ?.copyWith(
+                                            color: onSurface.withValues(
+                                              alpha: 0.8,
+                                            ),
+                                          ),
+                                  textAlign: textAlign,
+                                ),
+                            ],
                           ],
+                        ),
+                      ),
+                    if (showFooter)
+                      Column(
+                        children: [
+                          if (showDividers)
+                            Ux4gDivider(
+                              color: onSurface.withValues(alpha: 0.2),
+                            ),
+                          _Ux4gModalFooter(
+                            footerButtons: footerButtons,
+                            footerAlign: footerAlign,
+                            isDestructive: isDestructive,
+                            primaryColor: primaryColor,
+                            primaryButtonText: primaryButtonText,
+                            secondaryButtonText: secondaryButtonText,
+                            leadingActionIcon: leadingActionIcon,
+                            onPrimaryClick: onPrimaryClick ?? onDismiss,
+                            onSecondaryClick: onSecondaryClick ?? onDismiss,
+                            onLeadingIconClick:
+                                onLeadingIconPressed ?? () {},
+                            ux4gColors: ux4gColors,
+                            materialTheme: materialTheme,
+                          ),
                         ],
                       ),
-                    ),
-                  if (showFooter)
-                    Column(
-                      children: [
-                        if (showDividers)
-                          Ux4gDivider(color: onSurface.withValues(alpha: 0.2)),
-                        _Ux4gModalFooter(
-                          footerButtons: footerButtons,
-                          footerAlign: footerAlign,
-                          isDestructive: isDestructive,
-                          primaryColor: primaryColor,
-                          primaryButtonText: primaryButtonText,
-                          secondaryButtonText: secondaryButtonText,
-                          leadingActionIcon: leadingActionIcon,
-                          onPrimaryClick: onPrimaryClick ?? onDismiss,
-                          onSecondaryClick: onSecondaryClick ?? onDismiss,
-                          onLeadingIconClick: onLeadingIconPressed ?? () {},
-                          ux4gColors: ux4gColors,
-                          materialTheme: materialTheme,
-                        ),
-                      ],
-                    ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            if (showCloseButton &&
-                headerImageStyle != Ux4gModalHeaderImage.padded)
-              Positioned(
-                top: Ux4gSpace.space16,
-                right: Ux4gSpace.space16,
-                child: hasImage
-                    ? Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          color: onSurface.withValues(alpha: 0.65),
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: onDismiss,
-                          icon: Icon(Icons.close, size: 16, color: surface),
-                        ),
-                      )
-                    : IconButton(
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(
-                          minWidth: 32,
-                          minHeight: 32,
-                        ),
-                        onPressed: onDismiss,
-                        icon: Icon(Icons.close, size: 20, color: onSurface),
-                      ),
-              ),
-          ],
+              if (showCloseButton &&
+                  headerImageStyle != Ux4gModalHeaderImage.padded)
+                Positioned(
+                  top: Ux4gSpace.space16,
+                  right: Ux4gSpace.space16,
+                  child: Semantics(
+                    button: true,
+                    label: 'Close dialog',
+                    child: hasImage
+                        ? Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              color: onSurface.withValues(alpha: 0.65),
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              tooltip: 'Close',
+                              onPressed: onDismiss,
+                              icon: Icon(
+                                Icons.close,
+                                size: 16,
+                                color: surface,
+                              ),
+                            ),
+                          )
+                        : IconButton(
+                            padding: EdgeInsets.zero,
+                            tooltip: 'Close',
+                            constraints: const BoxConstraints(
+                              minWidth: 32,
+                              minHeight: 32,
+                            ),
+                            onPressed: onDismiss,
+                            icon: Icon(
+                              Icons.close,
+                              size: 20,
+                              color: onSurface,
+                            ),
+                          ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

@@ -19,6 +19,9 @@ class Ux4gPanInputField extends StatelessWidget {
   final bool enabled;
   final bool readOnly;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gPanInputField({
     super.key,
     required this.value,
@@ -34,6 +37,7 @@ class Ux4gPanInputField extends StatelessWidget {
     this.onTrailingIconPressed,
     this.enabled = true,
     this.readOnly = false,
+    this.semanticLabel,
   });
 
   @override
@@ -73,6 +77,7 @@ class Ux4gPanInputField extends StatelessWidget {
         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
         _UpperCaseTextFormatter(),
       ],
+      semanticLabel: semanticLabel ?? 'PAN number input',
     );
   }
 

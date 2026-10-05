@@ -80,7 +80,11 @@ class Ux4gHalfCircleProgress extends StatelessWidget {
     this.descriptionStyle,
     this.scaleStyle,
     this.gap = Ux4gSpace.space4,
+    this.semanticLabel,
   }) : assert(value >= 0 && value <= 1, 'value must be between 0 and 1');
+
+  /// Accessibility label for the half-circle progress.
+  final String? semanticLabel;
 
   double _resolvedWidth() {
     if (width != null) return width!;
@@ -185,102 +189,106 @@ class Ux4gHalfCircleProgress extends StatelessWidget {
     final scaleLabelHeight = showScale ? _scaleFontSize(w) * 1.3 : 0.0;
 
     // Build the arc + text area
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Arc + centered text + scale labels
-        SizedBox(
-          width: w,
-          height: arcHeight + scaleLabelHeight,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              CustomPaint(
-                size: Size(w, arcHeight),
-                painter: _HalfCirclePainter(
-                  value: value,
-                  strokeWidth: sw,
-                  progressColor: resolvedProgressColor,
-                  trackColor: resolvedTrackColor,
-                  progressGradient:
-                      progressGradient ??
-                      (progressColor == null
-                          ? LinearGradient(
-                              colors: [
-                                isDark
-                                    ? Ux4gColors.primary300
-                                    : Ux4gColors.primary600,
-                                isDark
-                                    ? Ux4gColors.primary950
-                                    : Ux4gColors.primary200,
-                              ],
-                            )
-                          : null),
-                  strokeCap: strokeCap,
+    return Semantics(
+      value: displayValue,
+      label: semanticLabel ?? description ?? 'Half circle progress',
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Arc + centered text + scale labels
+          SizedBox(
+            width: w,
+            height: arcHeight + scaleLabelHeight,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                CustomPaint(
+                  size: Size(w, arcHeight),
+                  painter: _HalfCirclePainter(
+                    value: value,
+                    strokeWidth: sw,
+                    progressColor: resolvedProgressColor,
+                    trackColor: resolvedTrackColor,
+                    progressGradient:
+                        progressGradient ??
+                        (progressColor == null
+                            ? LinearGradient(
+                                colors: [
+                                  isDark
+                                      ? Ux4gColors.primary300
+                                      : Ux4gColors.primary600,
+                                  isDark
+                                      ? Ux4gColors.primary950
+                                      : Ux4gColors.primary200,
+                                ],
+                              )
+                            : null),
+                    strokeCap: strokeCap,
+                  ),
                 ),
-              ),
-              // Percentage always inside; description inside only if fits
-              Positioned(
-                left: sw,
-                right: sw,
-                bottom: scaleLabelHeight,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        displayValue,
-                        style: resolvedValueStyle,
-                        maxLines: 1,
-                      ),
-                    ),
-                    if (description != null && descriptionFitsInside) ...[
-                      SizedBox(height: gap * 0.25),
+                // Percentage always inside; description inside only if fits
+                Positioned(
+                  left: sw,
+                  right: sw,
+                  bottom: scaleLabelHeight,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
                       FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
-                          description!,
-                          style: resolvedDescriptionStyle,
+                          displayValue,
+                          style: resolvedValueStyle,
                           maxLines: 1,
                         ),
                       ),
+                      if (description != null && descriptionFitsInside) ...[
+                        SizedBox(height: gap * 0.25),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            description!,
+                            style: resolvedDescriptionStyle,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-              // Scale labels at arc endpoints (directly below arc ends)
-              if (showScale) ...[
-                Positioned(
-                  left: 0,
-                  bottom: 0,
-                  child: Text('0%', style: resolvedScaleStyle),
-                ),
-                Positioned(
-                  right: -sw,
-                  bottom: 0,
-                  child: Text('100%', style: resolvedScaleStyle),
-                ),
+                // Scale labels at arc endpoints (directly below arc ends)
+                if (showScale) ...[
+                  Positioned(
+                    left: 0,
+                    bottom: 0,
+                    child: Text('0%', style: resolvedScaleStyle),
+                  ),
+                  Positioned(
+                    right: -sw,
+                    bottom: 0,
+                    child: Text('100%', style: resolvedScaleStyle),
+                  ),
+                ],
               ],
-            ],
-          ),
-        ),
-
-        // Description below the arc for small sizes
-        if (description != null && !descriptionFitsInside) ...[
-          SizedBox(height: gap * 0.5),
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              description!,
-              style: resolvedDescriptionStyle.copyWith(
-                fontSize: _descriptionFontSize(w) * 0.85,
-              ),
-              maxLines: 1,
             ),
           ),
+
+          // Description below the arc for small sizes
+          if (description != null && !descriptionFitsInside) ...[
+            SizedBox(height: gap * 0.5),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                description!,
+                style: resolvedDescriptionStyle.copyWith(
+                  fontSize: _descriptionFontSize(w) * 0.85,
+                ),
+                maxLines: 1,
+              ),
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
@@ -304,6 +312,7 @@ class Ux4gAnimatedHalfCircleProgress extends StatelessWidget {
   final double gap;
   final Duration duration;
   final Curve curve;
+  final String? semanticLabel;
 
   const Ux4gAnimatedHalfCircleProgress({
     super.key,
@@ -324,6 +333,7 @@ class Ux4gAnimatedHalfCircleProgress extends StatelessWidget {
     this.gap = Ux4gSpace.space4,
     this.duration = const Duration(milliseconds: 700),
     this.curve = Curves.easeInOut,
+    this.semanticLabel,
   });
 
   @override
@@ -350,6 +360,7 @@ class Ux4gAnimatedHalfCircleProgress extends StatelessWidget {
           descriptionStyle: descriptionStyle,
           scaleStyle: scaleStyle,
           gap: gap,
+          semanticLabel: semanticLabel,
         );
       },
     );

@@ -27,6 +27,9 @@ class Ux4gChoiceChip extends StatelessWidget {
   final double selectedBorderWidth;
   final double unselectedBorderWidth;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gChoiceChip({
     super.key,
     required this.text,
@@ -45,6 +48,7 @@ class Ux4gChoiceChip extends StatelessWidget {
     this.unselectedTextColor,
     this.selectedBorderWidth = 1,
     this.unselectedBorderWidth = 1,
+    this.semanticLabel,
   });
 
   @override
@@ -84,41 +88,47 @@ class Ux4gChoiceChip extends StatelessWidget {
         : (unselectedTextColor ??
               (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface));
 
-    return InkWell(
-      onTap: enabled ? onClick : null,
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: Opacity(
-        opacity: enabled ? 1.0 : 0.5,
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: paddingH,
-            vertical: paddingV,
-          ),
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(borderRadius),
-            border: Border.all(color: borderColor, width: borderWidth),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (leadingContent != null) ...[
-                leadingContent!,
-                const SizedBox(width: 8),
-              ],
-              Flexible(
-                child: Text(
-                  text,
-                  style: textStyle.copyWith(color: textColor),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+    return Semantics(
+      button: true,
+      selected: selected,
+      enabled: enabled,
+      label: semanticLabel ?? text,
+      child: InkWell(
+        onTap: enabled ? onClick : null,
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: Opacity(
+          opacity: enabled ? 1.0 : 0.5,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: paddingH,
+              vertical: paddingV,
+            ),
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: BorderRadius.circular(borderRadius),
+              border: Border.all(color: borderColor, width: borderWidth),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (leadingContent != null) ...[
+                  leadingContent!,
+                  const SizedBox(width: 8),
+                ],
+                Flexible(
+                  child: Text(
+                    text,
+                    style: textStyle.copyWith(color: textColor),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-              if (trailingContent != null) ...[
-                const SizedBox(width: 8),
-                trailingContent!,
+                if (trailingContent != null) ...[
+                  const SizedBox(width: 8),
+                  trailingContent!,
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),
@@ -147,6 +157,9 @@ class Ux4gFilterChip extends StatelessWidget {
   final double selectedBorderWidth;
   final double unselectedBorderWidth;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gFilterChip({
     super.key,
     required this.text,
@@ -164,6 +177,7 @@ class Ux4gFilterChip extends StatelessWidget {
     this.unselectedTextColor,
     this.selectedBorderWidth = 1,
     this.unselectedBorderWidth = 1,
+    this.semanticLabel,
   });
 
   @override
@@ -204,35 +218,41 @@ class Ux4gFilterChip extends StatelessWidget {
         : (unselectedTextColor ??
               (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface));
 
-    return InkWell(
-      onTap: enabled ? onClick : null,
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: Opacity(
-        opacity: enabled ? 1.0 : 0.5,
-        child: Container(
-          height: height,
-          padding: EdgeInsets.symmetric(horizontal: paddingH),
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(borderRadius),
-            border: Border.all(color: borderColor, width: borderWidth),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (leadingContent != null) ...[
-                leadingContent!,
-                const SizedBox(width: 8),
-              ],
-              Flexible(
-                child: Text(
-                  text,
-                  style: textStyle.copyWith(color: textColor),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+    return Semantics(
+      button: true,
+      selected: selected,
+      enabled: enabled,
+      label: semanticLabel ?? text,
+      child: InkWell(
+        onTap: enabled ? onClick : null,
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: Opacity(
+          opacity: enabled ? 1.0 : 0.5,
+          child: Container(
+            height: height,
+            padding: EdgeInsets.symmetric(horizontal: paddingH),
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: BorderRadius.circular(borderRadius),
+              border: Border.all(color: borderColor, width: borderWidth),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (leadingContent != null) ...[
+                  leadingContent!,
+                  const SizedBox(width: 8),
+                ],
+                Flexible(
+                  child: Text(
+                    text,
+                    style: textStyle.copyWith(color: textColor),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -256,6 +276,9 @@ class Ux4gInputChip extends StatelessWidget {
   final Color? textColor;
   final double borderWidth;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gInputChip({
     super.key,
     required this.text,
@@ -268,6 +291,7 @@ class Ux4gInputChip extends StatelessWidget {
     this.borderColor,
     this.textColor,
     this.borderWidth = 1,
+    this.semanticLabel,
   });
 
   @override
@@ -313,41 +337,44 @@ class Ux4gInputChip extends StatelessWidget {
         textColor ??
         (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface);
 
-    return Opacity(
-      opacity: enabled ? 1.0 : 0.5,
-      child: Container(
-        height: height,
-        padding: EdgeInsets.symmetric(horizontal: paddingH),
-        decoration: BoxDecoration(
-          color: finalBgColor,
-          borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(color: finalBorderColor, width: borderWidth),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (leadingContent != null) ...[
-              leadingContent!,
+    return Semantics(
+      label: semanticLabel ?? text,
+      child: Opacity(
+        opacity: enabled ? 1.0 : 0.5,
+        child: Container(
+          height: height,
+          padding: EdgeInsets.symmetric(horizontal: paddingH),
+          decoration: BoxDecoration(
+            color: finalBgColor,
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(color: finalBorderColor, width: borderWidth),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (leadingContent != null) ...[
+                leadingContent!,
+                const SizedBox(width: 8),
+              ],
+              Flexible(
+                child: Text(
+                  text,
+                  style: textStyle.copyWith(color: finalTextColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
               const SizedBox(width: 8),
+              GestureDetector(
+                onTap: enabled ? onDismiss : null,
+                child: Icon(
+                  Icons.close,
+                  size: iconSize,
+                  color: finalTextColor.withValues(alpha: 0.8),
+                ),
+              ),
             ],
-            Flexible(
-              child: Text(
-                text,
-                style: textStyle.copyWith(color: finalTextColor),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            const SizedBox(width: 8),
-            GestureDetector(
-              onTap: enabled ? onDismiss : null,
-              child: Icon(
-                Icons.close,
-                size: iconSize,
-                color: finalTextColor.withValues(alpha: 0.8),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

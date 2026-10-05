@@ -17,6 +17,9 @@ class Ux4gDivider extends StatelessWidget {
   final double? width;
   final double? height;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gDivider({
     super.key,
     this.orientation = Ux4gDividerOrientation.horizontal,
@@ -29,6 +32,7 @@ class Ux4gDivider extends StatelessWidget {
     this.labelSpacing = 8.0,
     this.width,
     this.height,
+    this.semanticLabel,
   });
 
   @override
@@ -40,6 +44,7 @@ class Ux4gDivider extends StatelessWidget {
         (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface)
             .withValues(alpha: 0.2);
 
+    Widget result;
     if (label != null) {
       Widget labeledWidget;
       if (orientation == Ux4gDividerOrientation.horizontal) {
@@ -108,20 +113,26 @@ class Ux4gDivider extends StatelessWidget {
         );
       }
       if (width != null || height != null) {
-        return SizedBox(width: width, height: height, child: labeledWidget);
+        result = SizedBox(width: width, height: height, child: labeledWidget);
+      } else {
+        result = labeledWidget;
       }
-      return labeledWidget;
+    } else {
+      result = _Ux4gDividerLine(
+        orientation: orientation,
+        color: dividerColor,
+        thickness: thickness,
+        style: style,
+        startIndent: startIndent,
+        endIndent: endIndent,
+        width: width,
+        height: height,
+      );
     }
 
-    return _Ux4gDividerLine(
-      orientation: orientation,
-      color: dividerColor,
-      thickness: thickness,
-      style: style,
-      startIndent: startIndent,
-      endIndent: endIndent,
-      width: width,
-      height: height,
+    return Semantics(
+      label: semanticLabel ?? 'Divider',
+      child: result,
     );
   }
 }

@@ -672,33 +672,38 @@ class _Ux4gFabState extends State<Ux4gFab>
         ? colors.primary.withValues(alpha: 0.35)
         : Colors.black.withValues(alpha: 0.12);
 
-    return Opacity(
-      opacity: widget.disabled ? 0.45 : 1.0,
-      child: Material(
-        color: mainBg,
-        elevation: elevationVal,
-        shadowColor: shadowColor,
-        borderRadius: BorderRadius.circular(borderRadius),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: widget.disabled ? null : _handleMainPress,
-          child: Container(
-            height: btnHeight,
-            constraints: isLabelled
-                ? BoxConstraints(minHeight: btnHeight)
-                : BoxConstraints(
-                    minWidth: diameter,
-                    minHeight: diameter,
-                    maxWidth: diameter,
-                    maxHeight: diameter,
-                  ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius),
-              border: !isBrand
-                  ? Border.all(color: const Color(0xFFE2E8F0), width: 1.0)
-                  : null,
+    return Semantics(
+      button: true,
+      enabled: !widget.disabled,
+      label: widget.semanticLabel ?? widget.tooltip ?? widget.label ?? 'Floating action button',
+      child: Opacity(
+        opacity: widget.disabled ? 0.45 : 1.0,
+        child: Material(
+          color: mainBg,
+          elevation: elevationVal,
+          shadowColor: shadowColor,
+          borderRadius: BorderRadius.circular(borderRadius),
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: widget.disabled ? null : _handleMainPress,
+            child: Container(
+              height: btnHeight,
+              constraints: isLabelled
+                  ? BoxConstraints(minHeight: btnHeight)
+                  : BoxConstraints(
+                      minWidth: diameter,
+                      minHeight: diameter,
+                      maxWidth: diameter,
+                      maxHeight: diameter,
+                    ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(borderRadius),
+                border: !isBrand
+                    ? Border.all(color: const Color(0xFFE2E8F0), width: 1.0)
+                    : null,
+              ),
+              child: buttonContent,
             ),
-            child: buttonContent,
           ),
         ),
       ),

@@ -173,6 +173,9 @@ class Ux4gBottomSheet extends StatefulWidget {
   /// Custom description text style override.
   final TextStyle? descriptionStyle;
 
+  /// Accessibility label for the bottom sheet.
+  final String? semanticLabel;
+
   const Ux4gBottomSheet({
     super.key,
     required this.onDismiss,
@@ -214,6 +217,7 @@ class Ux4gBottomSheet extends StatefulWidget {
     this.contentPadding,
     this.titleStyle,
     this.descriptionStyle,
+    this.semanticLabel,
     // Aliases for developer convenience & backwards compatibility
     String? headerTitle,
     String? headerSubtleText,
@@ -633,9 +637,14 @@ class _Ux4gBottomSheetState extends State<Ux4gBottomSheet>
     final downOffset = _currentHeight < minSafeH ? (minSafeH - _currentHeight) : 0.0;
     final totalBottomPadding = math.max(widget.bottomInset, safeBottom) + viewInsetsBottom;
 
-    return Transform.translate(
-      offset: Offset(0, downOffset),
-      child: Material(
+    return Semantics(
+      namesRoute: true,
+      scopesRoute: true,
+      explicitChildNodes: true,
+      label: widget.semanticLabel ?? widget.title ?? 'Bottom sheet',
+      child: Transform.translate(
+        offset: Offset(0, downOffset),
+        child: Material(
         color: Colors.transparent,
         child: Container(
           height: effectiveHeight + totalBottomPadding,
@@ -765,15 +774,22 @@ class _Ux4gBottomSheetState extends State<Ux4gBottomSheet>
 
                               // Close Button
                               if (widget.showCloseButton)
-                                InkWell(
-                                  onTap: widget.onCloseClick ?? widget.onDismiss,
-                                  borderRadius: BorderRadius.circular(14),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4),
-                                    child: Icon(
-                                      Icons.close,
-                                      size: 18,
-                                      color: onSurface,
+                                Tooltip(
+                                  message: 'Close',
+                                  child: Semantics(
+                                    button: true,
+                                    label: 'Close bottom sheet',
+                                    child: InkWell(
+                                      onTap: widget.onCloseClick ?? widget.onDismiss,
+                                      borderRadius: BorderRadius.circular(14),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4),
+                                        child: Icon(
+                                          Icons.close,
+                                          size: 18,
+                                          color: onSurface,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -839,6 +855,7 @@ class _Ux4gBottomSheetState extends State<Ux4gBottomSheet>
             ),
           ),
         ),
+      ),
       ),
     );
   }

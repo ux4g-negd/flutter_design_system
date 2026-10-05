@@ -27,6 +27,7 @@ class Ux4gAvatar extends StatelessWidget {
   final Color? containerColor;
   final Color? contentColor;
   final Color? iconColor;
+  final String? semanticLabel;
 
   const Ux4gAvatar({
     super.key,
@@ -38,6 +39,7 @@ class Ux4gAvatar extends StatelessWidget {
     this.containerColor,
     this.contentColor,
     this.iconColor,
+    this.semanticLabel,
   });
 
   @override
@@ -54,18 +56,22 @@ class Ux4gAvatar extends StatelessWidget {
     final finalContentColor = contentColor ?? resolvedPrimary;
     final finalIconColor = iconColor ?? resolvedPrimary;
 
-    return Container(
-      width: size.size,
-      height: size.size,
-      decoration: ShapeDecoration(color: finalContainerColor, shape: shape),
-      clipBehavior: Clip.antiAlias,
-      child: Center(
-        child: _buildContent(
-          context,
-          ux4gTypography,
-          materialTheme,
-          finalContentColor,
-          finalIconColor,
+    return Semantics(
+      label: semanticLabel ?? (initials != null ? 'Avatar $initials' : 'User Avatar'),
+      image: true,
+      child: Container(
+        width: size.size,
+        height: size.size,
+        decoration: ShapeDecoration(color: finalContainerColor, shape: shape),
+        clipBehavior: Clip.antiAlias,
+        child: Center(
+          child: _buildContent(
+            context,
+            ux4gTypography,
+            materialTheme,
+            finalContentColor,
+            finalIconColor,
+          ),
         ),
       ),
     );

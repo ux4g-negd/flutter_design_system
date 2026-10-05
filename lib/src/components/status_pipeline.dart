@@ -162,7 +162,11 @@ class Ux4gStatusPipeline extends StatelessWidget {
     this.upcomingLineColor,
     this.labelSpacing,
     this.circleSize,
+    this.semanticLabel,
   });
+
+  /// Accessibility label for the status pipeline.
+  final String? semanticLabel;
 
   // ── Resolved sizes ──
 
@@ -271,10 +275,14 @@ class Ux4gStatusPipeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (orientation == Ux4gPipelineOrientation.vertical) {
-      return _buildVertical(context);
-    }
-    return _buildHorizontal(context);
+    final pipelineWidget = orientation == Ux4gPipelineOrientation.vertical
+        ? _buildVertical(context)
+        : _buildHorizontal(context);
+
+    return Semantics(
+      label: semanticLabel ?? 'Status pipeline (${steps.length} steps)',
+      child: pipelineWidget,
+    );
   }
 
   // ══════════════════════════════════════════════════════════════════════════

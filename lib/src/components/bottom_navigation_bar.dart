@@ -195,6 +195,9 @@ class Ux4gBottomNavigationBar extends StatefulWidget {
   /// Custom text style for active tab label
   final TextStyle? activeLabelStyle;
 
+  /// Accessibility label for the bottom navigation bar
+  final String? semanticLabel;
+
   const Ux4gBottomNavigationBar({
     super.key,
     required this.items,
@@ -222,6 +225,7 @@ class Ux4gBottomNavigationBar extends StatefulWidget {
     this.paddingHorizontal,
     this.labelStyle,
     this.activeLabelStyle,
+    this.semanticLabel,
   });
 
   @override
@@ -393,17 +397,21 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
       );
     }
 
-    if (widget.useSafeArea) {
-      return Container(
-        color: isFloating ? Colors.transparent : resolvedBgColor,
-        child: SafeArea(
-          top: false,
-          child: content,
-        ),
-      );
-    }
+    final result = widget.useSafeArea
+        ? Container(
+            color: isFloating ? Colors.transparent : resolvedBgColor,
+            child: SafeArea(
+              top: false,
+              child: content,
+            ),
+          )
+        : content;
 
-    return content;
+    return Semantics(
+      container: true,
+      label: widget.semanticLabel ?? 'Bottom navigation bar',
+      child: result,
+    );
   }
 
   List<Widget> _buildAllItems({
@@ -584,6 +592,14 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
       itemWidget = Tooltip(message: item.tooltip!, child: itemWidget);
     }
 
+    itemWidget = Semantics(
+      button: true,
+      selected: isActive,
+      enabled: !item.disabled,
+      label: item.tooltip ?? item.label,
+      child: itemWidget,
+    );
+
     return Expanded(child: itemWidget);
   }
 
@@ -682,6 +698,12 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     if (action.tooltip != null) {
       btn = Tooltip(message: action.tooltip!, child: btn);
     }
+
+    btn = Semantics(
+      button: true,
+      label: action.tooltip ?? 'Center action',
+      child: btn,
+    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 6),

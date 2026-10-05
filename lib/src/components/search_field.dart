@@ -48,6 +48,9 @@ class Ux4gSearchField extends StatefulWidget {
   final double dropdownMinHeight;
   final double dropdownMaxHeight;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gSearchField({
     super.key,
     required this.value,
@@ -73,6 +76,7 @@ class Ux4gSearchField extends StatefulWidget {
     this.placeholderStyle,
     this.dropdownMinHeight = 0.0,
     this.dropdownMaxHeight = 350.0,
+    this.semanticLabel,
   });
 
   @override
@@ -441,7 +445,11 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
 
     final borderColor = _getBorderColor(materialTheme, ux4gColors);
 
-    return Column(
+    return Semantics(
+      textField: true,
+      enabled: widget.enabled,
+      label: widget.semanticLabel ?? widget.label ?? widget.placeholder ?? 'Search',
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null) ...[
@@ -595,8 +603,9 @@ class _Ux4gSearchFieldState extends State<Ux4gSearchField> {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 
   Color _getBorderColor(ThemeData materialTheme, Ux4gThemeColors? ux4gColors) {
     final onSurface =

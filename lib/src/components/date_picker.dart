@@ -23,6 +23,9 @@ class Ux4gDatePicker extends StatefulWidget {
   final bool isRequired;
   final Ux4gInputFieldStatus status;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gDatePicker({
     super.key,
     this.mode = Ux4gDatePickerMode.single,
@@ -38,6 +41,7 @@ class Ux4gDatePicker extends StatefulWidget {
     this.description,
     this.isRequired = false,
     this.status = Ux4gInputFieldStatus.defaultStatus,
+    this.semanticLabel,
   });
 
   @override
@@ -151,6 +155,34 @@ class _Ux4gDatePickerState extends State<Ux4gDatePicker> {
         ? (ux4gColors?.primary ?? materialTheme.colorScheme.primary)
         : onSurface.withValues(alpha: 0.38);
 
+    final bsStrong = (ux4gTypography?.bS_strong ??
+            materialTheme.textTheme.bodySmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ) ??
+            const TextStyle(fontWeight: FontWeight.bold));
+    final bxsDefault = (ux4gTypography?.bXS_default ??
+            materialTheme.textTheme.bodySmall ??
+            const TextStyle());
+    final labelColor =
+        widget.enabled ? onBackground : onSurface.withValues(alpha: 0.38);
+
+    Color descriptionColor;
+    IconData statusIcon;
+    switch (widget.status) {
+      case Ux4gInputFieldStatus.error:
+        descriptionColor = errorColor;
+        statusIcon = Icons.error_outline;
+      case Ux4gInputFieldStatus.warning:
+        descriptionColor = warningColor;
+        statusIcon = Icons.warning_amber_outlined;
+      case Ux4gInputFieldStatus.success:
+        descriptionColor = successColor;
+        statusIcon = Icons.check_circle_outline;
+      case Ux4gInputFieldStatus.defaultStatus:
+        descriptionColor = onSurface.withValues(alpha: 0.6);
+        statusIcon = Icons.info_outline;
+    }
+
     Widget buildBox(String text) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -205,86 +237,55 @@ class _Ux4gDatePickerState extends State<Ux4gDatePicker> {
       );
     }
 
-    if (widget.label == null && widget.description == null) {
-      return pickerWidget;
-    }
-
-    final bsStrong =
-        ux4gTypography?.bS_strong ??
-        materialTheme.textTheme.bodySmall?.copyWith(
-          fontWeight: FontWeight.w700,
-        ) ??
-        const TextStyle(fontWeight: FontWeight.w700, fontSize: 14);
-    final bxsDefault =
-        ux4gTypography?.bXS_default ??
-        materialTheme.textTheme.bodySmall ??
-        const TextStyle(fontSize: 12);
-
-    Color labelColor;
-    if (!widget.enabled) {
-      labelColor = onSurface.withValues(alpha: 0.4);
-    } else {
-      labelColor = onBackground;
-    }
-
-    Color descriptionColor;
-    if (!widget.enabled) {
-      descriptionColor = onSurface.withValues(alpha: 0.4);
-    } else {
-      descriptionColor = switch (widget.status) {
-        Ux4gInputFieldStatus.error => errorColor,
-        Ux4gInputFieldStatus.warning => warningColor,
-        Ux4gInputFieldStatus.success => successColor,
-        Ux4gInputFieldStatus.defaultStatus => onSurface.withValues(alpha: 0.6),
-      };
-    }
-    
-    IconData? statusIcon = switch (widget.status) {
-      Ux4gInputFieldStatus.error => Icons.error,
-      Ux4gInputFieldStatus.warning => Icons.warning,
-      Ux4gInputFieldStatus.success => Icons.check_circle,
-      Ux4gInputFieldStatus.defaultStatus => Icons.info_outline,
-    };
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (widget.label != null) ...[
-          Row(
+    final mainWidget = (widget.label == null && widget.description == null)
+        ? pickerWidget
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(widget.label!, style: bsStrong.copyWith(color: labelColor)),
-              if (widget.isRequired) ...[
-                const SizedBox(width: 4),
-                Text("*", style: bsStrong.copyWith(color: errorColor)),
+              if (widget.label != null) ...[
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(widget.label!, style: bsStrong.copyWith(color: labelColor)),
+                    if (widget.isRequired) ...[
+                      const SizedBox(width: 4),
+                      Text("*", style: bsStrong.copyWith(color: errorColor)),
+                    ],
+                  ],
+                ),
+                const SizedBox(height: 8),
+              ],
+              pickerWidget,
+              if (widget.description != null) ...[
+                const SizedBox(height: 4),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      statusIcon,
+                      size: 14,
+                      color: descriptionColor,
+                    ),
+                    const SizedBox(width: 6),
+                    Flexible(
+                      child: Text(
+                        widget.description!,
+                        style: bxsDefault.copyWith(color: descriptionColor),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ],
-          ),
-          const SizedBox(height: 8),
-        ],
-        pickerWidget,
-        if (widget.description != null) ...[
-          const SizedBox(height: 4),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                statusIcon,
-                size: 14,
-                color: descriptionColor,
-              ),
-              const SizedBox(width: 6),
-              Flexible(
-                child: Text(
-                  widget.description!,
-                  style: bxsDefault.copyWith(color: descriptionColor),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ],
+          );
+
+    return Semantics(
+      button: true,
+      enabled: widget.enabled,
+      label: widget.semanticLabel ?? widget.label ?? 'Date picker',
+      value: _getFormattedValue(),
+      child: mainWidget,
     );
   }
 }

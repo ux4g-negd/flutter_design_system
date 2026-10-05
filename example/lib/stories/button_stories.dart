@@ -610,26 +610,25 @@ Ux4gButton(
           name: 'Button — Variants',
           description:
               'Different visual variants, loading states, and icon configurations including Tonal options.',
-          code:
-              '''// Basic
-Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}onPressed: () {});
-Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}onPressed: () {});
-Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, ${outlineFgStr}onPressed: () {});
-Ux4gButton(text: 'Ghost', variant: Ux4gButtonVariant.ghost, ${ghostFgStr}onPressed: () {});
+          code: '''// Basic
+Ux4gButton(text: 'Primary', variant: Ux4gButtonVariant.primary, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: Ux4gColors.primary100, contentColor: Ux4gColors.primary600, onPressed: () {});
+Ux4gButton(text: 'Outline', variant: Ux4gButtonVariant.outline, onPressed: () {});
+Ux4gButton(text: 'Ghost', variant: Ux4gButtonVariant.ghost, onPressed: () {});
 
 // Loading
-Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}isLoading: true, onPressed: () {});
-Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}isLoading: true, onPressed: () {});
-Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.outline, ${outlineFgStr}isLoading: true, onPressed: () {});
-Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.ghost, ${ghostFgStr}isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: Ux4gColors.primary100, contentColor: Ux4gColors.primary600, isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.outline, isLoading: true, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.ghost, isLoading: true, onPressed: () {});
 
 // Icons
-Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}leadingIcon: Icons.add, onPressed: () {});
-Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}leadingIcon: Icons.add, onPressed: () {});
-Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}trailingIcon: Icons.arrow_drop_down, onPressed: () {});
-Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}trailingIcon: Icons.arrow_drop_down, onPressed: () {});
-Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, ${bgStr}${fgStr}leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {});
-Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, ${tonalBgStr}${tonalFgStr}leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {});''',
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, leadingIcon: Icons.add, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: Ux4gColors.primary100, contentColor: Ux4gColors.primary600, leadingIcon: Icons.add, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, trailingIcon: Icons.arrow_drop_down, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: Ux4gColors.primary100, contentColor: Ux4gColors.primary600, trailingIcon: Icons.arrow_drop_down, onPressed: () {});
+Ux4gButton(text: 'Button', variant: Ux4gButtonVariant.primary, leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {});
+Ux4gButton(text: 'Tonal', variant: Ux4gButtonVariant.primary, backgroundColor: Ux4gColors.primary100, contentColor: Ux4gColors.primary600, leadingIcon: Icons.add, trailingIcon: Icons.arrow_drop_down, onPressed: () {});''',
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,

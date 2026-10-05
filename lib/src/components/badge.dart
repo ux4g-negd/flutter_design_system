@@ -23,6 +23,7 @@ class Ux4gBadge extends StatelessWidget {
   final AlignmentGeometry alignment;
   final bool showBorder;
   final Color? borderColor;
+  final String? semanticLabel;
 
   const Ux4gBadge.dot({
     super.key,
@@ -31,6 +32,7 @@ class Ux4gBadge extends StatelessWidget {
     this.alignment = Alignment.topRight,
     this.showBorder = false,
     this.borderColor,
+    this.semanticLabel,
   }) : _type = _Ux4gBadgeInternalType.dot,
        label = null,
        count = null,
@@ -49,6 +51,7 @@ class Ux4gBadge extends StatelessWidget {
     this.alignment = Alignment.topRight,
     this.showBorder = false,
     this.borderColor,
+    this.semanticLabel,
   }) : _type = _Ux4gBadgeInternalType.text,
        label = null,
        icon = null,
@@ -63,6 +66,7 @@ class Ux4gBadge extends StatelessWidget {
     this.alignment = Alignment.topRight,
     this.showBorder = false,
     this.borderColor,
+    this.semanticLabel,
   }) : _type = _Ux4gBadgeInternalType.label,
        count = null,
        limit = Ux4gBadgeLimit.singleDigit,
@@ -78,6 +82,7 @@ class Ux4gBadge extends StatelessWidget {
     this.alignment = Alignment.topRight,
     this.showBorder = false,
     this.borderColor,
+    this.semanticLabel,
   }) : _type = _Ux4gBadgeInternalType.icon,
        label = null,
        count = null,
@@ -92,6 +97,7 @@ class Ux4gBadge extends StatelessWidget {
     this.alignment = Alignment.topRight,
     this.showBorder = false,
     this.borderColor,
+    this.semanticLabel,
   }) : _type = _Ux4gBadgeInternalType.readyToUse,
        label = null,
        count = null,
@@ -153,13 +159,15 @@ class Ux4gBadge extends StatelessWidget {
     final resolvedBorderColor = borderColor ?? materialTheme.colorScheme.surface;
     final border = showBorder ? Border.all(color: resolvedBorderColor, width: 1.5) : null;
 
+    Widget badgeWidget;
     switch (_type) {
       case _Ux4gBadgeInternalType.dot:
-        return Container(
+        badgeWidget = Container(
           width: 8,
           height: 8,
           decoration: BoxDecoration(color: resolvedBg, shape: BoxShape.circle, border: border),
         );
+        break;
       case _Ux4gBadgeInternalType.text:
         if (count == null) return const SizedBox.shrink();
         final displayCount = limit == Ux4gBadgeLimit.singleDigit
@@ -168,7 +176,7 @@ class Ux4gBadge extends StatelessWidget {
 
         final isSingleChar = displayCount.length == 1;
 
-        return Container(
+        badgeWidget = Container(
           constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
           padding: EdgeInsets.symmetric(horizontal: isSingleChar ? 0 : 6),
           decoration: BoxDecoration(
@@ -201,9 +209,10 @@ class Ux4gBadge extends StatelessWidget {
             ],
           ),
         );
+        break;
       case _Ux4gBadgeInternalType.label:
         if (label == null) return const SizedBox.shrink();
-        return Container(
+        badgeWidget = Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
             color: resolvedBg,
@@ -221,15 +230,17 @@ class Ux4gBadge extends StatelessWidget {
                     .copyWith(color: resolvedContent, height: 1),
           ),
         );
+        break;
       case _Ux4gBadgeInternalType.icon:
         if (icon == null) return const SizedBox.shrink();
-        return Container(
+        badgeWidget = Container(
           width: 18,
           height: 18,
           decoration: BoxDecoration(color: resolvedBg, shape: BoxShape.circle, border: border),
           alignment: Alignment.center,
           child: Icon(icon, size: 12, color: resolvedContent),
         );
+        break;
       case _Ux4gBadgeInternalType.readyToUse:
         if (assetPath == null) return const SizedBox.shrink();
         Widget imageWidget;
@@ -239,7 +250,7 @@ class Ux4gBadge extends StatelessWidget {
           imageWidget = Image.asset(assetPath!.trim(), width: 18, height: 18);
         }
         if (showBorder) {
-          return Container(
+          badgeWidget = Container(
             width: 20,
             height: 20,
             decoration: BoxDecoration(
@@ -249,10 +260,20 @@ class Ux4gBadge extends StatelessWidget {
             alignment: Alignment.center,
             child: imageWidget,
           );
+        } else {
+          badgeWidget = imageWidget;
         }
-        return imageWidget;
+        break;
       default:
         return const SizedBox.shrink();
     }
+
+    return Semantics(
+      label: semanticLabel ??
+          (_type == _Ux4gBadgeInternalType.dot
+              ? 'Notification dot'
+              : (label ?? (count != null ? '$count notifications' : 'Badge'))),
+      child: badgeWidget,
+    );
   }
 }

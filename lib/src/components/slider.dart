@@ -36,6 +36,9 @@ class Ux4gSlider extends StatelessWidget {
   final String Function(double)? valueFormatter;
   final Widget? rightLabelWidget;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gSlider({
     super.key,
     required this.value,
@@ -58,6 +61,7 @@ class Ux4gSlider extends StatelessWidget {
     this.showValueLabels = false,
     this.valueFormatter,
     this.rightLabelWidget,
+    this.semanticLabel,
   });
 
   @override
@@ -77,7 +81,12 @@ class Ux4gSlider extends StatelessWidget {
         (ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface)
             .withValues(alpha: 0.12);
 
-    return Column(
+    return Semantics(
+      slider: true,
+      enabled: enabled,
+      label: semanticLabel ?? label ?? 'Slider',
+      value: value.toStringAsFixed(1),
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (label != null || showValueLabels || showInputFields)
@@ -162,8 +171,9 @@ class Ux4gSlider extends StatelessWidget {
           ),
         ],
       ],
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildTopRow(
     BuildContext context,

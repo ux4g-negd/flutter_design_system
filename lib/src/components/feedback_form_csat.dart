@@ -53,6 +53,9 @@ class Ux4gFeedbackFormCsat extends StatefulWidget {
   /// Unselected face icon/SVG color.
   final Color unselectedIconColor;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gFeedbackFormCsat({
     super.key,
     required this.onSubmit,
@@ -106,6 +109,7 @@ class Ux4gFeedbackFormCsat extends StatefulWidget {
     ],
     this.unselectedBackgroundColor = Ux4gColors.neutral100,
     this.unselectedIconColor = Ux4gColors.neutral500,
+    this.semanticLabel,
   });
 
   @override
@@ -149,25 +153,28 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
     final onSurfaceColor =
         uxColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
-    return Container(
-      width: double.infinity,
-      constraints: const BoxConstraints(maxWidth: 400),
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: surfaceColor,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: onSurfaceColor.withValues(alpha: 0.1)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
+    return Semantics(
+      label: widget.semanticLabel ?? widget.title,
+      child: Container(
+        width: double.infinity,
+        constraints: const BoxConstraints(maxWidth: 400),
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: surfaceColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: onSurfaceColor.withValues(alpha: 0.1)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: _isSubmitted
+            ? _buildSuccessView(uxColors, uxTypography, materialTheme)
+            : _buildFormView(uxColors, uxTypography, materialTheme),
       ),
-      child: _isSubmitted
-          ? _buildSuccessView(uxColors, uxTypography, materialTheme)
-          : _buildFormView(uxColors, uxTypography, materialTheme),
     );
   }
 
@@ -251,47 +258,52 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
                 : unselectedIconColor;
 
             return Flexible(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: 48,
-                    maxHeight: 48,
-                  ),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _selectedScore = index;
-                        });
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: bgColor,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FittedBox(
-                            child: widget.useSvgFaces && index < widget.ratingFaceAssets.length
-                                ? SvgPicture.asset(
-                                    widget.ratingFaceAssets[index],
-                                    package: widget.ratingFaceAssets[index].startsWith('packages/')
-                                        ? null
-                                        : 'ux4g_flutter_components',
-                                    colorFilter: ColorFilter.mode(
-                                      iconColor,
-                                      BlendMode.srcIn,
+              child: Semantics(
+                button: true,
+                label: 'Rating ${index + 1} of 5',
+                selected: isSelected,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 48,
+                      maxHeight: 48,
+                    ),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _selectedScore = index;
+                          });
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: bgColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FittedBox(
+                              child: widget.useSvgFaces && index < widget.ratingFaceAssets.length
+                                  ? SvgPicture.asset(
+                                      widget.ratingFaceAssets[index],
+                                      package: widget.ratingFaceAssets[index].startsWith('packages/')
+                                          ? null
+                                          : 'ux4g_flutter_components',
+                                      colorFilter: ColorFilter.mode(
+                                        iconColor,
+                                        BlendMode.srcIn,
+                                      ),
+                                    )
+                                  : Icon(
+                                      index < widget.ratingIcons.length
+                                          ? widget.ratingIcons[index]
+                                          : Icons.sentiment_neutral,
+                                      color: iconColor,
                                     ),
-                                  )
-                                : Icon(
-                                    index < widget.ratingIcons.length
-                                        ? widget.ratingIcons[index]
-                                        : Icons.sentiment_neutral,
-                                    color: iconColor,
-                                  ),
+                            ),
                           ),
                         ),
                       ),
@@ -390,10 +402,13 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
     final onSurfaceColor =
         uxColors?.onSurface ?? materialTheme.colorScheme.onSurface;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
+    return Semantics(
+      liveRegion: true,
+      label: '${widget.successTitle}. ${widget.successMessage}',
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
           decoration: BoxDecoration(
@@ -455,6 +470,7 @@ class _Ux4gFeedbackFormCsatState extends State<Ux4gFeedbackFormCsat> {
           },
         ),
       ],
+    ),
     );
   }
 }

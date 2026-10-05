@@ -217,6 +217,9 @@ class Ux4gJourneyTimeline extends StatelessWidget {
   /// Optional default title text style override for all steps.
   final TextStyle? titleStyle;
 
+  /// Accessibility label for the journey timeline.
+  final String? semanticLabel;
+
   const Ux4gJourneyTimeline({
     super.key,
     required this.steps,
@@ -235,6 +238,7 @@ class Ux4gJourneyTimeline extends StatelessWidget {
     this.cardBorderColor,
     this.dateStyle,
     this.titleStyle,
+    this.semanticLabel,
   });
 
   Ux4gJourneyStepState _resolveState(int index) {
@@ -260,39 +264,42 @@ class Ux4gJourneyTimeline extends StatelessWidget {
     final resolvedInactiveColor =
         inactiveColor ?? onSurface.withValues(alpha: 0.25);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Header
-        if (header != null) ...[
-          _JourneyHeaderWidget(
-            header: header!,
-            ux4gTypography: ux4gTypography,
-            ux4gColors: ux4gColors,
-            materialTheme: materialTheme,
-          ),
-          const SizedBox(height: Ux4gSpace.space16),
-        ],
+    return Semantics(
+      label: semanticLabel ?? (header?.title ?? 'Journey timeline (${steps.length} steps)'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Header
+          if (header != null) ...[
+            _JourneyHeaderWidget(
+              header: header!,
+              ux4gTypography: ux4gTypography,
+              ux4gColors: ux4gColors,
+              materialTheme: materialTheme,
+            ),
+            const SizedBox(height: Ux4gSpace.space16),
+          ],
 
-        // Orientation
-        if (orientation == Ux4gJourneyOrientation.vertical)
-          _buildVertical(
-            resolvedActiveColor,
-            resolvedInactiveColor,
-            ux4gTypography,
-            ux4gColors,
-            materialTheme,
-          )
-        else
-          _buildHorizontal(
-            resolvedActiveColor,
-            resolvedInactiveColor,
-            ux4gTypography,
-            ux4gColors,
-            materialTheme,
-          ),
-      ],
+          // Orientation
+          if (orientation == Ux4gJourneyOrientation.vertical)
+            _buildVertical(
+              resolvedActiveColor,
+              resolvedInactiveColor,
+              ux4gTypography,
+              ux4gColors,
+              materialTheme,
+            )
+          else
+            _buildHorizontal(
+              resolvedActiveColor,
+              resolvedInactiveColor,
+              ux4gTypography,
+              ux4gColors,
+              materialTheme,
+            ),
+        ],
+      ),
     );
   }
 

@@ -315,9 +315,9 @@ final appHeaderComponent = WidgetbookComponent(
               'A top app-bar component with optional back button, leading widgets, '
               'title, and action buttons. Supports three visual variants: light, filled, and outlined.',
           code: '''Ux4gAppHeader(
-  title: '$title',
-  variant: Ux4gAppHeaderVariant.${variant.name},
-  showBackButton: $showBackButton,
+  title: 'Page Title',
+  variant: Ux4gAppHeaderVariant.light,
+  showBackButton: true,
   leadingWidgets: [
     Icon(Icons.menu_rounded),
   ],
@@ -331,9 +331,9 @@ final appHeaderComponent = WidgetbookComponent(
       onPressed: () {},
     ),
   ],
-  showAvatar: $showAvatar,
+  showAvatar: true,
   avatarSize: Ux4gAvatarSize.s,
-  useSafeArea: $useSafeArea,
+  useSafeArea: false,
 );''',
           props: const [
             PropRow(

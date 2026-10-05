@@ -31,6 +31,9 @@ class Ux4gPaginationDotted extends StatelessWidget {
   final double? width;
   final double? height;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gPaginationDotted({
     super.key,
     required this.totalPageCount,
@@ -46,6 +49,7 @@ class Ux4gPaginationDotted extends StatelessWidget {
     this.inactiveBorderColor,
     this.width,
     this.height,
+    this.semanticLabel,
   });
 
   @override
@@ -172,8 +176,9 @@ class Ux4gPaginationDotted extends StatelessWidget {
       }
     }
 
+    Widget result = mainContent;
     if (width != null || height != null) {
-      return SizedBox(
+      result = SizedBox(
         width: width,
         height: height,
         child: FittedBox(
@@ -183,7 +188,10 @@ class Ux4gPaginationDotted extends StatelessWidget {
       );
     }
 
-    return mainContent;
+    return Semantics(
+      label: semanticLabel ?? 'Pagination, page ${currentPageIndex + 1} of $totalPageCount',
+      child: result,
+    );
   }
 
   Widget _buildDot(

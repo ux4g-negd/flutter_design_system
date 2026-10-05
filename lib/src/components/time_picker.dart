@@ -12,6 +12,9 @@ class Ux4gTimePicker extends StatefulWidget {
   final bool enabled;
   final int minuteInterval;
 
+  /// Accessibility semantic label for screen readers.
+  final String? semanticLabel;
+
   const Ux4gTimePicker({
     super.key,
     this.initialTime,
@@ -19,6 +22,7 @@ class Ux4gTimePicker extends StatefulWidget {
     this.placeholder = 'Select time',
     this.enabled = true,
     this.minuteInterval = 1,
+    this.semanticLabel,
   });
 
   @override
@@ -87,7 +91,12 @@ class _Ux4gTimePickerState extends State<Ux4gTimePicker> {
 
     final isSelected = _selectedTime != null;
 
-    return MouseRegion(
+    return Semantics(
+      button: true,
+      enabled: widget.enabled,
+      label: widget.semanticLabel ?? 'Time picker',
+      value: _getFormattedValue(),
+      child: MouseRegion(
       cursor: widget.enabled
           ? SystemMouseCursors.click
           : SystemMouseCursors.forbidden,
@@ -126,8 +135,9 @@ class _Ux4gTimePickerState extends State<Ux4gTimePicker> {
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }
 
 class _Ux4gTimePickerDialog extends StatefulWidget {

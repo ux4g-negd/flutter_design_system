@@ -117,10 +117,14 @@ class Ux4gLinearProgressBar extends StatelessWidget {
     this.showPercentage = false,
     this.labelPosition = Ux4gProgressLabelPosition.outside,
     this.insideLabelStyle,
+    this.semanticLabel,
   }) : assert(
          value >= 0.0 && value <= 1.0,
          'value must be between 0.0 and 1.0',
        );
+
+  /// Accessibility label for the linear progress bar.
+  final String? semanticLabel;
 
   double _resolvedRadius() {
     if (customBorderRadius != null) return customBorderRadius!;
@@ -151,9 +155,12 @@ class Ux4gLinearProgressBar extends StatelessWidget {
         hint != null ||
         (showPercentage && labelPosition == Ux4gProgressLabelPosition.outside);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+    return Semantics(
+      value: '$percent%',
+      label: semanticLabel ?? label ?? 'Linear progress',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
       children: [
         // ── Header row ────────────────────────────────────────────────
         if (hasHeader) ...[
@@ -275,6 +282,7 @@ class Ux4gLinearProgressBar extends StatelessWidget {
                   ),
         ),
       ],
+      ),
     );
   }
 }
@@ -453,6 +461,7 @@ class Ux4gAnimatedLinearProgressBar extends StatelessWidget {
   final TextStyle? insideLabelStyle;
   final Duration duration;
   final Curve curve;
+  final String? semanticLabel;
 
   const Ux4gAnimatedLinearProgressBar({
     super.key,
@@ -473,6 +482,7 @@ class Ux4gAnimatedLinearProgressBar extends StatelessWidget {
     this.insideLabelStyle,
     this.duration = const Duration(milliseconds: 600),
     this.curve = Curves.easeInOut,
+    this.semanticLabel,
   });
 
   @override
@@ -497,6 +507,7 @@ class Ux4gAnimatedLinearProgressBar extends StatelessWidget {
         showPercentage: showPercentage,
         labelPosition: labelPosition,
         insideLabelStyle: insideLabelStyle,
+        semanticLabel: semanticLabel,
       ),
     );
   }

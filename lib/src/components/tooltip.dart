@@ -12,6 +12,7 @@ class Ux4gTooltip extends StatelessWidget {
   final IconData? icon;
   final Ux4gTooltipPlacement placement;
   final Widget? action;
+  final String? semanticLabel;
 
   const Ux4gTooltip({
     super.key,
@@ -21,6 +22,7 @@ class Ux4gTooltip extends StatelessWidget {
     this.icon,
     this.placement = Ux4gTooltipPlacement.top,
     this.action,
+    this.semanticLabel,
   });
 
   @override
@@ -42,36 +44,39 @@ class Ux4gTooltip extends StatelessWidget {
         materialTheme.textTheme.labelSmall ??
         const TextStyle();
 
-    return Tooltip(
-      message: text,
-      richMessage: (title != null || icon != null || action != null)
-          ? TextSpan(
-              children: [
-                if (icon != null)
-                  WidgetSpan(
-                    child: Icon(icon, size: 14, color: Colors.white),
-                    alignment: PlaceholderAlignment.middle,
-                  ),
-                if (title != null)
+    return Semantics(
+      tooltip: semanticLabel ?? text,
+      child: Tooltip(
+        message: text,
+        richMessage: (title != null || icon != null || action != null)
+            ? TextSpan(
+                children: [
+                  if (icon != null)
+                    WidgetSpan(
+                      child: Icon(icon, size: 14, color: Colors.white),
+                      alignment: PlaceholderAlignment.middle,
+                    ),
+                  if (title != null)
+                    TextSpan(
+                      text: " $title\n",
+                      style: hXXSStrong.copyWith(color: Colors.white),
+                    ),
                   TextSpan(
-                    text: " $title\n",
-                    style: hXXSStrong.copyWith(color: Colors.white),
+                    text: text,
+                    style: lSDefault.copyWith(color: Colors.white),
                   ),
-                TextSpan(
-                  text: text,
-                  style: lSDefault.copyWith(color: Colors.white),
-                ),
-              ],
-            )
-          : null,
-      decoration: ShapeDecoration(
-        color: onSurface,
-        shape: _TooltipShape(placement: placement),
+                ],
+              )
+            : null,
+        decoration: ShapeDecoration(
+          color: onSurface,
+          shape: _TooltipShape(placement: placement),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        margin: const EdgeInsets.all(8),
+        preferBelow: placement == Ux4gTooltipPlacement.bottom,
+        child: child,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      margin: const EdgeInsets.all(8),
-      preferBelow: placement == Ux4gTooltipPlacement.bottom,
-      child: child,
     );
   }
 }

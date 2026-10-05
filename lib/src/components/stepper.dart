@@ -27,6 +27,7 @@ class Ux4gStepper extends StatelessWidget {
   final Ux4gStepperLineStyle lineStyle;
   final List<Ux4gStepItem> steps;
   final bool showLabels;
+  final String? semanticLabel;
 
   const Ux4gStepper({
     super.key,
@@ -36,15 +37,19 @@ class Ux4gStepper extends StatelessWidget {
     this.lineStyle = Ux4gStepperLineStyle.solid,
     this.steps = const [],
     this.showLabels = true,
+    this.semanticLabel,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (orientation == Ux4gStepperOrientation.horizontal) {
-      return _buildHorizontalStepper(context);
-    } else {
-      return _buildVerticalStepper(context);
-    }
+    final stepperWidget = orientation == Ux4gStepperOrientation.horizontal
+        ? _buildHorizontalStepper(context)
+        : _buildVerticalStepper(context);
+
+    return Semantics(
+      label: semanticLabel ?? 'Step $currentStep of $totalSteps',
+      child: stepperWidget,
+    );
   }
 
   Widget _buildHorizontalStepper(BuildContext context) {
