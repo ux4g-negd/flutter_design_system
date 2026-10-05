@@ -129,6 +129,11 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
   bool _fabPlaygroundOpen = false;
   String _fabActionLog = 'Tap the FAB or action items to interact!';
 
+  // Side Menu (Ux4gSideMenu / Ux4gDrawer) Showcase State
+  int _selectedSideMenuPreset = 0;
+  String _sideMenuActionLog = 'Select a preset or tap items in the live drawer preview below';
+
+
   List<Ux4gDropdownOption> get _stateOptions => [
     Ux4gDropdownOption(id: 'ap', label: 'Andhra Pradesh'),
     Ux4gDropdownOption(id: 'arp', label: 'Arunachal Pradesh'),
@@ -5193,6 +5198,11 @@ class _ComponentShowcasePageState extends State<ComponentShowcasePage> {
                       // ─── Floating Action Button (FAB) & Speed-Dial ────
                       _buildFabShowcase(colors, typography, context),
 
+                      const SizedBox(height: 32),
+
+                      // ─── Side Menu (Ux4gSideMenu / Ux4gDrawer) ─────────
+                      _buildSideMenuShowcase(colors, typography, context),
+
                       const SizedBox(height: 80),
                     ],
                   ),
@@ -6047,6 +6057,514 @@ Ux4gFab(
         ),
       ],
     );
+  }
+
+  // ─── SIDE MENU (UX4GSIDEMENU / UX4GDRAWER) SHOWCASE BUILDER ─────────────
+
+  Widget _buildSideMenuShowcase(
+    Ux4gThemeColors colors,
+    Ux4gTypography typography,
+    BuildContext context,
+  ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final presetNames = [
+      '1. Standard Gov Navigation',
+      '2. Officer Inbox',
+      '3. Profile Menu',
+      '4. Action Required Banner',
+      '5. Department Switcher',
+      '6. Citizen Simple Navigation',
+    ];
+
+    Widget currentLiveMenu;
+    switch (_selectedSideMenuPreset) {
+      case 1:
+        currentLiveMenu = Ux4gSideMenuPresets.officerInbox(
+          name: 'Ramesh Kumar',
+          email: 'ramesh.kumar@gov.in',
+          division: 'Kanpur division',
+          onItemSelected: (item) {
+            setState(() {
+              _sideMenuActionLog = 'Selected mailbox item: "${item.label}" (${item.key})';
+            });
+          },
+          onCustomizeInbox: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Customize inbox"';
+            });
+          },
+          onSignOut: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Sign out"';
+            });
+          },
+        );
+        break;
+
+      case 2:
+        currentLiveMenu = Ux4gSideMenuPresets.citizenProfile(
+          name: 'Ramesh Kumar',
+          role: 'Citizen',
+          metaText: '12 applications · 3 actions required',
+          onViewProfile: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "View profile" button';
+            });
+          },
+          onItemSelected: (item) {
+            setState(() {
+              _sideMenuActionLog = 'Selected profile item: "${item.label}"';
+            });
+          },
+          onSignOut: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Sign out"';
+            });
+          },
+        );
+        break;
+
+      case 3:
+        currentLiveMenu = Ux4gSideMenuPresets.actionRequired(
+          title: 'Revenue Department',
+          subtitle: 'Kanpur division',
+          onVerifyAadhaar: () {
+            setState(() {
+              _sideMenuActionLog = 'Action card CTA tapped: "Verify now"';
+            });
+          },
+          onItemSelected: (item) {
+            setState(() {
+              _sideMenuActionLog = 'Selected menu item: "${item.label}"';
+            });
+          },
+        );
+        break;
+
+      case 4:
+        currentLiveMenu = Ux4gSideMenuPresets.departmentSwitcher(
+          title: 'Departments',
+          subtitle: 'Choose a department to work in.',
+          selectedDepartmentKey: 'dept-revenue',
+          onSelectDepartment: (dept) {
+            setState(() {
+              _sideMenuActionLog = 'Switched to department: "${dept.label}"';
+            });
+          },
+          onRequestAccess: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "+ Request department access"';
+            });
+          },
+          onSettings: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Settings"';
+            });
+          },
+          onHelp: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Help & support"';
+            });
+          },
+        );
+        break;
+
+      case 5:
+        currentLiveMenu = Ux4gSideMenuPresets.citizenSimple(
+          name: 'Ramesh Kumar',
+          role: 'Citizen',
+          onItemSelected: (item) {
+            setState(() {
+              _sideMenuActionLog = 'Selected item: "${item.label}"';
+            });
+          },
+          onSignOut: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Sign out"';
+            });
+          },
+        );
+        break;
+
+      case 0:
+      default:
+        currentLiveMenu = Ux4gSideMenuPresets.standard(
+          onItemSelected: (item) {
+            setState(() {
+              _sideMenuActionLog = 'Selected navigation item: "${item.label}" (${item.key})';
+            });
+          },
+          onSignOut: () {
+            setState(() {
+              _sideMenuActionLog = 'Action tapped: "Sign out"';
+            });
+          },
+        );
+        break;
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Title & Badge
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: colors.primary.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                'NEW COMPONENT',
+                style: typography.bXS_strong.copyWith(
+                  color: colors.primary,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              'Side Menu (Ux4gSideMenu / Ux4gDrawer)',
+              style: typography.hM_strong.copyWith(color: colors.onSurface),
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Text(
+          'Accessible, responsive navigation drawer supporting all 6 UX4G design system state presets (Standard Government Navigation, Officer Inbox, Citizen Profile Menu, Action Required Banner, Department Switcher, and Simple Navigation), real-time search filtering, collapsible sub-menu tree with connector lines, and modal presentation.',
+          style: typography.bS_default.copyWith(
+            color: colors.onSurface.withValues(alpha: 0.7),
+          ),
+        ),
+        const SizedBox(height: 20),
+
+        // Preset selector chips
+        Text(
+          'SELECT DESIGN SYSTEM STATE PRESET',
+          style: typography.lS_strong.copyWith(
+            color: colors.onSurface.withValues(alpha: 0.6),
+            letterSpacing: 0.8,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(presetNames.length, (index) {
+            final isSelected = _selectedSideMenuPreset == index;
+            return ChoiceChip(
+              label: Text(presetNames[index]),
+              selected: isSelected,
+              onSelected: (selected) {
+                if (selected) {
+                  setState(() {
+                    _selectedSideMenuPreset = index;
+                    _sideMenuActionLog = 'Switched to ${presetNames[index]}';
+                  });
+                }
+              },
+              selectedColor: colors.primary.withValues(alpha: 0.18),
+              backgroundColor: isDark ? Ux4gColors.neutral800 : Ux4gColors.neutral100,
+              labelStyle: TextStyle(
+                color: isSelected ? colors.primary : colors.onSurface,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                fontSize: 12,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+                side: BorderSide(
+                  color: isSelected
+                      ? colors.primary
+                      : (isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300),
+                ),
+              ),
+            );
+          }),
+        ),
+
+        const SizedBox(height: 16),
+
+        // Interactive Action Toolbar
+        Row(
+          children: [
+            Ux4gButton(
+              onPressed: () {
+                _launchModalDrawer(context, Ux4gSideMenuPosition.left);
+              },
+              text: 'Launch Modal (Left Slide)',
+              leadingIcon: Icons.menu_open_rounded,
+              size: Ux4gButtonSize.small,
+              variant: Ux4gButtonVariant.primary,
+            ),
+            const SizedBox(width: 12),
+            Ux4gButton(
+              onPressed: () {
+                _launchModalDrawer(context, Ux4gSideMenuPosition.right);
+              },
+              text: 'Launch Modal (Right Slide)',
+              leadingIcon: Icons.arrow_back_rounded,
+              size: Ux4gButtonSize.small,
+              variant: Ux4gButtonVariant.outline,
+            ),
+          ],
+        ),
+
+        const SizedBox(height: 16),
+
+        // Action feedback log card
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF1E1E1E) : const Color(0xFFF7F5FF),
+            borderRadius: BorderRadius.circular(Ux4gRadius.radius8),
+            border: Border.all(
+              color: colors.primary.withValues(alpha: 0.25),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.info_outline, size: 18, color: colors.primary),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  _sideMenuActionLog,
+                  style: typography.bXS_default.copyWith(
+                    color: isDark ? Ux4gColors.neutral200 : colors.primary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        // Live interactive embedded preview canvas
+        Center(
+          child: Container(
+            width: 340,
+            height: 640,
+            decoration: BoxDecoration(
+              color: isDark ? Ux4gColors.neutral900 : Ux4gColors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral300,
+                width: 1.5,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: isDark ? 0.4 : 0.1),
+                  blurRadius: 24,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: currentLiveMenu,
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _launchModalDrawer(BuildContext context, Ux4gSideMenuPosition position) {
+    switch (_selectedSideMenuPreset) {
+      case 1:
+        Ux4gSideMenu.show(
+          context,
+          position: position,
+          headerType: Ux4gSideMenuHeaderType.compactUser,
+          title: 'Ramesh Kumar',
+          subtitle: 'ramesh.kumar@gov.in',
+          showSearch: false,
+          sections: [
+            Ux4gSideMenuSection(
+              key: 'mailbox',
+              title: 'MAILBOX',
+              items: [
+                Ux4gSideMenuItem(
+                  key: 'inbox',
+                  label: 'Inbox',
+                  icon: Icons.mail_outline,
+                  badge: 9,
+                  badgeColor: Ux4gColors.primary600,
+                ),
+                const Ux4gSideMenuItem(
+                  key: 'assigned-to-me',
+                  label: 'Assigned to me',
+                  icon: Icons.assignment_ind_outlined,
+                ),
+              ],
+            ),
+            const Ux4gSideMenuSection(
+              key: 'folders',
+              title: 'FOLDERS',
+              actionText: 'Customize inbox',
+              items: [
+                Ux4gSideMenuItem(key: 'sent', label: 'Sent', icon: Icons.arrow_outward),
+                Ux4gSideMenuItem(key: 'drafts', label: 'Drafts', icon: Icons.edit_note_outlined),
+                Ux4gSideMenuItem(key: 'archive', label: 'Archive', icon: Icons.layers_outlined),
+                Ux4gSideMenuItem(key: 'rejected', label: 'Rejected applications', icon: Icons.error_outline_rounded),
+              ],
+            ),
+          ],
+          footerItems: const [
+            Ux4gSideMenuItem(key: 'settings', label: 'Inbox settings', icon: Icons.more_vert),
+          ],
+          showSignOut: false,
+          bottomBranding: const Ux4gSideMenuBottomBranding(
+            title: 'Revenue Department',
+            subtitle: 'Kanpur division',
+          ),
+        );
+        break;
+
+      case 2:
+        Ux4gSideMenu.show(
+          context,
+          position: position,
+          headerType: Ux4gSideMenuHeaderType.prominentUser,
+          title: 'Ramesh Kumar',
+          subtitle: 'Citizen',
+          userMetaText: '12 applications · 3 actions required',
+          userActionButtonText: 'View profile',
+          showSearch: false,
+          sections: const [
+            Ux4gSideMenuSection(
+              key: 'account',
+              title: 'ACCOUNT',
+              items: [
+                Ux4gSideMenuItem(key: 'profile', label: 'Profile & settings', icon: Icons.account_circle_outlined),
+                Ux4gSideMenuItem(key: 'saved', label: 'Saved items', icon: Icons.layers_outlined),
+              ],
+            ),
+            Ux4gSideMenuSection(
+              key: 'apps',
+              title: 'APPLICATIONS',
+              items: [
+                Ux4gSideMenuItem(key: 'my-apps', label: 'My applications', icon: Icons.assignment_outlined),
+                Ux4gSideMenuItem(key: 'track', label: 'Track an application', icon: Icons.location_on_outlined),
+              ],
+            ),
+          ],
+        );
+        break;
+
+      case 3:
+        Ux4gSideMenu.show(
+          context,
+          position: position,
+          title: 'Revenue Department',
+          subtitle: 'Kanpur division',
+          showSearch: false,
+          showSignOut: false,
+          sections: [
+            Ux4gSideMenuSection(
+              key: 'services',
+              title: 'SERVICES',
+              items: [
+                const Ux4gSideMenuItem(key: 'dash', label: 'Dashboard', icon: Icons.grid_view_rounded),
+                const Ux4gSideMenuItem(
+                  key: 'apps',
+                  label: 'Applications',
+                  icon: Icons.assignment_outlined,
+                  defaultExpanded: true,
+                  children: [
+                    Ux4gSideMenuItem(key: 'new', label: 'New applications'),
+                    Ux4gSideMenuItem(key: 'review', label: 'Under review'),
+                    Ux4gSideMenuItem(key: 'approved', label: 'Approved applications'),
+                  ],
+                ),
+                Ux4gSideMenuItem(key: 'inbox', label: 'Inbox', icon: Icons.mail_outline, badge: 8),
+              ],
+            ),
+          ],
+          actionCard: const Ux4gSideMenuActionCard(
+            title: 'Verify your Aadhaar',
+            description: 'Complete identity verification to continue.',
+            buttonText: 'Verify now',
+          ),
+        );
+        break;
+
+      case 4:
+        Ux4gSideMenu.show(
+          context,
+          position: position,
+          headerType: Ux4gSideMenuHeaderType.plain,
+          title: 'Departments',
+          subtitle: 'Choose a department to work in.',
+          showSearch: false,
+          sections: [
+            Ux4gSideMenuSection(
+              items: [
+                const Ux4gSideMenuItem(
+                  key: 'dept-revenue',
+                  label: 'Revenue Department',
+                  subtitle: 'Current department',
+                  avatarInitials: 'RD',
+                  isCard: true,
+                ),
+                const Ux4gSideMenuItem(
+                  key: 'dept-transport',
+                  label: 'Transport Department',
+                  subtitle: 'transport.up.gov.in',
+                  avatarInitials: 'TD',
+                  tag: '3 applications pending',
+                  isCard: true,
+                ),
+              ],
+            ),
+          ],
+          footerItems: const [
+            Ux4gSideMenuItem(key: 'access', label: 'Request department access', icon: Icons.add),
+            Ux4gSideMenuItem(key: 'settings', label: 'Settings', icon: Icons.more_vert),
+            Ux4gSideMenuItem(key: 'help', label: 'Help & support', icon: Icons.help_outline_rounded),
+          ],
+          showSignOut: false,
+        );
+        break;
+
+      case 5:
+        Ux4gSideMenu.show(
+          context,
+          position: position,
+          headerType: Ux4gSideMenuHeaderType.compactUser,
+          title: 'Ramesh Kumar',
+          subtitle: 'Citizen',
+          showSearch: false,
+          sections: [
+            Ux4gSideMenuSection(
+              items: [
+                const Ux4gSideMenuItem(key: 'apps', label: 'My applications', icon: Icons.assignment_outlined),
+                const Ux4gSideMenuItem(key: 'docs', label: 'My documents', icon: Icons.layers_outlined),
+                Ux4gSideMenuItem(key: 'notifs', label: 'Notifications', icon: Icons.notifications_none_outlined, badge: 3),
+              ],
+            ),
+          ],
+          bottomBranding: const Ux4gSideMenuBottomBranding(
+            title: 'Revenue Department',
+            subtitle: 'Government of India',
+          ),
+        );
+        break;
+
+      case 0:
+      default:
+        Ux4gSideMenu.show(
+          context,
+          position: position,
+          title: 'Revenue Department',
+          subtitle: 'Government of India',
+          showSearch: true,
+        );
+        break;
+    }
   }
 }
 
@@ -7411,8 +7929,6 @@ Ux4gFloatingBottomNavBar(
     );
   }
 }
-
-// ─── DASHED BORDER PAINTER ───────────────────────────────────────────────────
 
 class _DashedBorderPainter extends CustomPainter {
   final Color color;
