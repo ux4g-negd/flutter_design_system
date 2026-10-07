@@ -579,10 +579,6 @@ class _TooltipBubble extends StatelessWidget {
     final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
-    final onSurface =
-        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-    final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
-
     final lSDefault =
         ux4gTypography?.lS_default ??
         materialTheme.textTheme.labelSmall ??
