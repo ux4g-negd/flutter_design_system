@@ -1,12 +1,12 @@
 ## 1.5.0
-* **New Components**:
-  * **Side Menu (`Ux4gSideMenu`)**: Added comprehensive side navigation drawer supporting header, user profiles, collapsible sub-items, badge notifications, and custom footer actions.
+* **New & Updated Components**:
+  * **Side Menu (`Ux4gSideMenu`)**: Added comprehensive side navigation drawer supporting header, user profiles, collapsible sub-items, badge notifications, search filtering, and custom footer actions.
   * **Bottom Navigation Bar (`Ux4gBottomNavigationBar`)**: Added configurable bottom navigation bar with support for badges, active states, custom styling, and FAB notches.
-  * **Floating Action Button (`Ux4gFab`)**: Added Floating Action Button component supporting standard, mini, extended labels, and responsive color styles.
+  * **Floating Action Button (`Ux4gFab`)**: Added Floating Action Button component supporting standard, mini, extended labels, speed-dial menus, and responsive color themes.
+  * **Bottom Sheet (`Ux4gBottomSheet`)**: Added complete UX4G Modal Bottom Sheet implementation with responsive snap presets (`peek`, `half`, `expanded`, `full`), smooth velocity drag gestures, anchored fixed footer actions, drag handle indicator, and full theme support.
 * **Component Improvements & Bug Fixes**:
-  * **Bottom Sheet**: Enhanced bottom sheet component with refined drag handlers and responsive sheet sizing.
-  * **Accessibility & Semantics**: Improved accessibility traits and semantic labels across buttons, headers, and navigation widgets.
-  * **Package Optimization**: Excluded internal development tools and build files for a lighter, optimized pub.dev distribution.
+  * **Accessibility & Semantics**: Improved accessibility traits and semantic labels across buttons, headers, forms, and navigation widgets.
+  * **Package Optimization**: Excluded internal development tools and build artifacts via `.pubignore` for a clean, lightweight pub.dev distribution.
 
 ## 1.4.0
 * **Foundation Updates**:
