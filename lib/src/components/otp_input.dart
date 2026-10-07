@@ -684,10 +684,6 @@ class _Ux4gOtpInputState extends State<Ux4gOtpInput> {
           fontWeight: FontWeight.w700,
         ) ??
         const TextStyle(fontWeight: FontWeight.w700, fontSize: 14);
-    final bmDefault =
-        ux4gTypography?.bM_default ??
-        materialTheme.textTheme.bodyMedium ??
-        const TextStyle(fontSize: 16);
 
     // Resolve effective caption variant
     Ux4gOtpCaptionVariant? effectiveVariant = widget.captionVariant;

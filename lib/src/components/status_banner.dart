@@ -234,7 +234,6 @@ class Ux4gStatusBanner extends StatelessWidget {
 /// A service to show top snackbars (banners) overlaying the screen.
 class Ux4gBannerManager {
   static OverlayEntry? _currentEntry;
-  static AnimationController? _animationController;
 
   static void show(
     BuildContext context, {

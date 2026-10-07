@@ -149,7 +149,6 @@ class Ux4gRadioButton<T> extends StatelessWidget {
     // 1.5px outlined circle.
     final selectedRingThickness = size.size * 0.28;
     final disabledFillColor = onSurface.withValues(alpha: 0.1);
-    final disabledBorderColor = onSurface.withValues(alpha: 0.2);
 
     return Semantics(
       selected: isSelected,

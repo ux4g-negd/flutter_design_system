@@ -264,8 +264,6 @@ class Ux4gBadge extends StatelessWidget {
           badgeWidget = imageWidget;
         }
         break;
-      default:
-        return const SizedBox.shrink();
     }
 
     return Semantics(

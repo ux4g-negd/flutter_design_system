@@ -354,14 +354,12 @@ class _HeaderIconButton extends StatelessWidget {
   final Color color;
   final VoidCallback? onPressed;
   final String? tooltip;
-  final double size;
 
   const _HeaderIconButton({
     required this.icon,
     required this.color,
     this.onPressed,
     this.tooltip,
-    this.size = 24.0,
   });
 
   @override
@@ -376,7 +374,7 @@ class _HeaderIconButton extends StatelessWidget {
           width: 40,
           height: 40,
           child: Center(
-            child: Icon(icon, color: color, size: size),
+            child: Icon(icon, color: color, size: 24.0),
           ),
         ),
       ),

@@ -89,9 +89,6 @@ class Ux4gButton extends StatelessWidget {
     final effectiveBgColor = backgroundColor ?? style.backgroundColor;
     final effectiveContentColor = contentColor ?? style.contentColor;
 
-    final onSurface =
-        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
-
     final isDark = materialTheme.brightness == Brightness.dark;
 
     final effectiveDisabledBgColor =

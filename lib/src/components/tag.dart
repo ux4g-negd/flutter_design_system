@@ -280,7 +280,6 @@ class Ux4gUnifiedPillTag extends StatelessWidget {
         ) ??
         const TextStyle();
 
-    final height = size == Ux4gTagSize.m ? 20.0 : 24.0;
     final horizontalPadding = size == Ux4gTagSize.m ? 8.0 : 12.0;
     final textStyleDefault = size == Ux4gTagSize.m ? lSDefault : lMDefault;
     final textStyleBold = size == Ux4gTagSize.m ? lSStrong : lMStrong;

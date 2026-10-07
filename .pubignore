@@ -1,3 +1,32 @@
-example/lib/showcase_app.dart
-.vscode/
+# Build & Cache
+build/
+.dart_tool/
 .idea/
+.vscode/
+.gemini/
+
+# Example builds
+example/build/
+example/.dart_tool/
+example/packages/widgetbook/build/
+example/packages/widgetbook/.dart_tool/
+example/android/build/
+example/android/.gradle/
+
+# Internal Tooling, Scripts & Reports
+tooling/
+scripts/
+scratch/
+*.py
+*.ps1
+*.html
+*.patch
+urls_map.json
+variables.json
+sast_report.html
+migration-prompt.md
+MIGRATION_PROMPT.md
+MIGRATION.md
+Dockerfile
+nginx.conf
+netlify.toml

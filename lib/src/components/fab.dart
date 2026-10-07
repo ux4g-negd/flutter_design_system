@@ -675,7 +675,9 @@ class _Ux4gFabState extends State<Ux4gFab>
     return Semantics(
       button: true,
       enabled: !widget.disabled,
-      label: widget.semanticLabel ?? widget.tooltip ?? widget.label ?? 'Floating action button',
+      label: widget.semanticLabel ??
+          widget.tooltip ??
+          (widget.label.isNotEmpty ? widget.label : 'Floating action button'),
       child: Opacity(
         opacity: widget.disabled ? 0.45 : 1.0,
         child: Material(

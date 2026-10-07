@@ -29,7 +29,9 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 /build/
 example/build/
+example/**/build/
 example/.dart_tool/
+example/**/.dart_tool/
 /coverage/
 
 # Gemini AI config (contains API tokens)
@@ -51,4 +53,5 @@ clean_diff.txt
 diff.txt
 temp_*.dart
 fix_*.dart
-*.html
+sast_report.html
+*SECURITY_REPORT.html

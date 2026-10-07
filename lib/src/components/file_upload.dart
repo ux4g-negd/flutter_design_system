@@ -490,8 +490,6 @@ class _Ux4gFileUploadState extends State<Ux4gFileUpload> {
     Ux4gThemeColors? ux4gColors,
     Ux4gTypography? ux4gTypography,
   ) {
-    final onSurface =
-        ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
 
     final tsStrong =
@@ -683,15 +681,13 @@ class _DashedBorderPainter extends CustomPainter {
   final Color color;
   final double strokeWidth;
   final double borderRadius;
-  final double dashWidth;
-  final double dashSpace;
+  static const double dashWidth = 8.0;
+  static const double dashSpace = 5.0;
 
   _DashedBorderPainter({
     required this.color,
     required this.strokeWidth,
     required this.borderRadius,
-    this.dashWidth = 8.0,
-    this.dashSpace = 5.0,
   });
 
   @override
@@ -726,8 +722,6 @@ class _DashedBorderPainter extends CustomPainter {
   bool shouldRepaint(covariant _DashedBorderPainter oldDelegate) {
     return oldDelegate.color != color ||
         oldDelegate.strokeWidth != strokeWidth ||
-        oldDelegate.borderRadius != borderRadius ||
-        oldDelegate.dashWidth != dashWidth ||
-        oldDelegate.dashSpace != dashSpace;
+        oldDelegate.borderRadius != borderRadius;
   }
 }

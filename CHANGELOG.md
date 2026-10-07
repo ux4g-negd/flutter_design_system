@@ -1,3 +1,13 @@
+## 1.5.0
+* **New Components**:
+  * **Side Menu (`Ux4gSideMenu`)**: Added comprehensive side navigation drawer supporting header, user profiles, collapsible sub-items, badge notifications, and custom footer actions.
+  * **Bottom Navigation Bar (`Ux4gBottomNavigationBar`)**: Added configurable bottom navigation bar with support for badges, active states, custom styling, and FAB notches.
+  * **Floating Action Button (`Ux4gFab`)**: Added Floating Action Button component supporting standard, mini, extended labels, and responsive color styles.
+* **Component Improvements & Bug Fixes**:
+  * **Bottom Sheet**: Enhanced bottom sheet component with refined drag handlers and responsive sheet sizing.
+  * **Accessibility & Semantics**: Improved accessibility traits and semantic labels across buttons, headers, and navigation widgets.
+  * **Package Optimization**: Excluded internal development tools and build files for a lighter, optimized pub.dev distribution.
+
 ## 1.4.0
 * **Foundation Updates**:
   * **Shadow**: Renamed the elevation foundation class to `Ux4gShadow` for better clarity and added comprehensive test cases.
