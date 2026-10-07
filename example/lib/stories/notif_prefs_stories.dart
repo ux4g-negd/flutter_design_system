@@ -115,7 +115,9 @@ class _BrandFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
@@ -125,7 +127,7 @@ class _BrandFooter extends StatelessWidget {
               color: _getMutedText(context),
             ),
           ),
-          const SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(
             _digitalIndiaLogoPath,
             height: 22,
@@ -954,11 +956,13 @@ class BrandFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text('Powered by -', style: TextStyle(fontSize: 11, color: _getMutedText(context))),
-          const SizedBox(height: 6),
+          const SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 22, color: _isDark(context) ? Colors.white : null),
         ],
       ),

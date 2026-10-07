@@ -738,11 +738,13 @@ class DraftExpiryUploadScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -1090,11 +1092,13 @@ class DraftExpiryUploadCardScreen extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text('Powered by -', style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
-                  const SizedBox(height: 6),
+                  const SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 24, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : null),
                 ],
               ),
@@ -1327,7 +1331,9 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
             // Footer
             Padding(
               padding: const EdgeInsets.only(bottom: 24),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -1339,7 +1345,7 @@ class _DraftExpiryUploadMockup extends StatelessWidget {
                           : const Color(0xFF9CA3AF),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(
                     _digitalIndiaLogoPath,
                     height: 24,

@@ -285,7 +285,7 @@ class LiveChatSupportScreen extends StatelessWidget {
                         borderRadius: 10,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(width: 8),
                   ],
                 ),
               ),

@@ -4147,7 +4147,9 @@ Column(
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -4158,7 +4160,7 @@ Column(
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
@@ -5016,7 +5018,9 @@ Column(
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
@@ -5027,7 +5031,7 @@ Column(
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
@@ -5315,7 +5319,9 @@ Column(
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -5326,7 +5332,7 @@ Column(
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
@@ -6047,7 +6053,9 @@ Column(
     // Footer
     Padding(
       padding: EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
@@ -6058,7 +6066,7 @@ Column(
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
@@ -6308,7 +6316,9 @@ Column(
             // Footer
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -6319,7 +6329,7 @@ Column(
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),
@@ -7422,7 +7432,9 @@ Column(
     // Footer Logo
     Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 8),
-      child: Column(
+      child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
@@ -7433,7 +7445,7 @@ Column(
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 6),
+          SizedBox(width: 8),
           Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
         ],
       ),
@@ -7766,7 +7778,9 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20, top: 8),
-            child: Column(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -7781,7 +7795,7 @@ class _ConsentHistoryMockupState extends State<_ConsentHistoryMockup> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: 6),
+                SizedBox(width: 8),
                 Image.asset(
                   _digitalIndiaLogoPath,
                   height: 22,
@@ -8217,7 +8231,9 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20, top: 8),
-                    child: Column(
+                    child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
@@ -8232,7 +8248,7 @@ class _ConsentHistoryCardMockupState extends State<_ConsentHistoryCardMockup> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: 6),
+                        SizedBox(width: 8),
                         Image.asset(
                           _digitalIndiaLogoPath,
                           height: 22,
@@ -8595,14 +8611,16 @@ Column(
             // Powered by
             Padding(
               padding: const EdgeInsets.only(bottom: 20, top: 8),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     'Powered by -',
                     style: TextStyle(fontSize: 11, color: _isDark(context) ? Ux4gColors.neutral500 : Ux4gColors.neutral400, fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(height: 6),
+                  SizedBox(width: 8),
                   Image.asset(Ux4gIcons.digitalIndiaLogoPng,  height: 22),
                 ],
               ),

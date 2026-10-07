@@ -310,7 +310,7 @@ class _InlineLanguageToggleScreenState extends State<InlineLanguageToggleScreen>
                       value: '2,40,000',
                       isDark: isDark,
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(width: 8),
                   ],
                 ),
               ),

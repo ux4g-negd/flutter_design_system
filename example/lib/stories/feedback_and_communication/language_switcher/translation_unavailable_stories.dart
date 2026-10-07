@@ -162,7 +162,7 @@ class TranslationUnavailableScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(width: 8),
             // Powered by Digital India
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
@@ -305,7 +305,7 @@ class TranslationUnavailableCardScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(width: 8),
             // Powered by Digital India
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
@@ -414,7 +414,7 @@ class _TranslationUnavailableMockup extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(width: 8),
 
               // Powered by
               Padding(

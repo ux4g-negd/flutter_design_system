@@ -253,7 +253,7 @@ class ContactSupportScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(width: 8),
                   ],
                 ),
               ),

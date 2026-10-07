@@ -194,10 +194,12 @@ class _ProactiveStatusMockup extends StatelessWidget {
 
                       // Footer
                       Center(
-                        child: Column(
+                        child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text('Powered by -', style: TextStyle(fontSize: 10, color: subtle)),
-                            const SizedBox(height: 4),
+                            const SizedBox(width: 8),
                             Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 18, color: isDark ? Colors.white : null),
                           ],
                         ),
@@ -417,10 +419,12 @@ class ProactiveStatusTrackerScreen extends StatelessWidget {
 
                         // Footer
                         Center(
-                          child: Column(
+                          child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text('Powered by -', style: TextStyle(fontSize: 10, color: Colors.grey)),
-                              const SizedBox(height: 4),
+                              const SizedBox(width: 8),
                               Image.asset(Ux4gIcons.digitalIndiaLogoPng, height: 18),
                             ],
                           ),
