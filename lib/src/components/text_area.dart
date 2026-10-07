@@ -132,12 +132,6 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
         ux4gTypography?.bM_default ??
         materialTheme.textTheme.bodyMedium ??
         const TextStyle(fontSize: 16);
-    final bmStrong =
-        ux4gTypography?.bM_strong ??
-        materialTheme.textTheme.bodyMedium?.copyWith(
-          fontWeight: FontWeight.w700,
-        ) ??
-        const TextStyle(fontWeight: FontWeight.w700, fontSize: 16);
     final bsStrong =
         ux4gTypography?.bS_strong ??
         materialTheme.textTheme.bodySmall?.copyWith(
@@ -148,10 +142,6 @@ class _Ux4gTextAreaState extends State<Ux4gTextArea> {
         ux4gTypography?.bXS_default ??
         materialTheme.textTheme.bodySmall ??
         const TextStyle(fontSize: 12);
-    final bsDefault =
-        ux4gTypography?.bS_default ??
-        materialTheme.textTheme.bodySmall ??
-        const TextStyle(fontSize: 14);
     final llDefault =
         ux4gTypography?.lL_default ??
         materialTheme.textTheme.labelLarge ??

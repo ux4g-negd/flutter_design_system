@@ -227,7 +227,6 @@ class _Ux4gTimePickerDialogState extends State<_Ux4gTimePickerDialog> {
     final ux4gColors = materialTheme.extension<Ux4gThemeColors>();
     final ux4gTypography = materialTheme.extension<Ux4gTypography>();
 
-    final primary = ux4gColors?.primary ?? materialTheme.colorScheme.primary;
     final onSurface =
         ux4gColors?.onSurface ?? materialTheme.colorScheme.onSurface;
     final surface = ux4gColors?.surface ?? materialTheme.colorScheme.surface;
