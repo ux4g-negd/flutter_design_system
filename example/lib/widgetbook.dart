@@ -7,6 +7,10 @@ import 'theme_notifier.dart';
 import 'stories/avatar_stories.dart';
 import 'stories/badge_stories.dart';
 import 'stories/button_stories.dart';
+import 'stories/side_menu_stories.dart';
+import 'stories/bottom_navigation_bar_stories.dart';
+import 'stories/fab_stories.dart';
+import 'stories/bottom_sheet_stories.dart';
 import 'stories/utils_stories.dart';
 import 'stories/welcome_page.dart';
 import 'stories/migration_stories.dart';
@@ -163,6 +167,27 @@ class UX4GWidgetbook extends StatelessWidget {
                 ),
                 badgeComponent,
                 biometricComponent,
+                WidgetbookFolder(
+                  name: 'Bottom Navigation Bar',
+                  isInitiallyExpanded: false,
+                  children: [
+                    bottomNavigationIntroductionComponent,
+                    bottomNavLabelledComponent,
+                    bottomNavTopRoundedComponent,
+                    bottomNavIconOnlyComponent,
+                    bottomNavCentreActionComponent,
+                    bottomNavFloatingPillComponent,
+                    bottomNavIndicatorsComponent,
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'Bottom Sheet',
+                  isInitiallyExpanded: false,
+                  children: [
+                    bottomSheetIntroductionComponent,
+                    bottomSheetComponent,
+                  ],
+                ),
                 buttonComponent,
                 cardComponent,
                 carouselComponent,
@@ -192,6 +217,19 @@ class UX4GWidgetbook extends StatelessWidget {
                   ],
                 ),
                 emptyStateComponent,
+                WidgetbookFolder(
+                  name: 'Floating Action Button',
+                  isInitiallyExpanded: false,
+                  children: [
+                    fabIntroductionComponent,
+                    fabCircularIconComponent,
+                    fabExtendedLabelledComponent,
+                    fabMenuJoinedComponent,
+                    fabMenuSpacedComponent,
+                    fabMenuLabelledComponent,
+                    fabThemesComponent,
+                  ],
+                ),
                 WidgetbookFolder(
                   name: 'Feedback',
                   isInitiallyExpanded: false,
@@ -254,7 +292,20 @@ class UX4GWidgetbook extends StatelessWidget {
                   children: [searchIntroductionComponent, searchFieldComponent],
                 ),
                 sliderComponent,
-
+                WidgetbookFolder(
+                  name: 'Side Menu',
+                  isInitiallyExpanded: false,
+                  children: [
+                    sideMenuIntroductionComponent,
+                    sideMenuStandardComponent,
+                    sideMenuOfficerInboxComponent,
+                    sideMenuCitizenProfileComponent,
+                    sideMenuActionRequiredComponent,
+                    sideMenuDepartmentSwitcherComponent,
+                    sideMenuCitizenSimpleComponent,
+                    sideMenuPositionsComponent,
+                  ],
+                ),
                 spinnerComponent, // ux4gSpinner
                 statusPipelineComponent,
                 WidgetbookFolder(
@@ -687,6 +738,7 @@ class _SidebarLogo extends StatelessWidget {
               onTap: () {
                 // ignore: invalid_use_of_internal_member
                 final state = WidgetbookState.of(context);
+                // ignore: invalid_use_of_internal_member
                 state.updatePath('introduction/welcome');
               },
               child: FittedBox(

@@ -123,27 +123,28 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
   ),
   FlutterComponentItem(
     id: 6,
-    name: 'Bottom Navigation (Tabs)',
+    name: 'Bottom Navigation Bar',
     category: 'Navigation & Layout',
-    ux4gTag: 'No (Use NavigationBar)',
-    ux4gStatus: StatusParity.no,
+    ux4gTag: 'Ux4gBottomNavigationBar',
+    ux4gStatus: StatusParity.yes,
+    ux4gNote: 'Ux4gBottomNavItem',
     m3Name: 'NavigationBar / BottomNavigationBar',
     m3Status: StatusParity.yes,
     cupertinoName: 'CupertinoTabBar',
     cupertinoStatus: StatusParity.yes,
-    notes: 'Bottom tab navigation. In UX4G Flutter, developers use Flutter NavigationBar with Ux4gTheme tokens.',
+    notes: 'Accessible government bottom navigation bar supporting 5 layout variations (Labelled, Top-rounded, Icon-only, Center FAB action, Floating Pill) with 3 indicator types (pill, bar, plain).',
   ),
   FlutterComponentItem(
     id: 7,
-    name: 'Bottom Sheet (Modal Sheet)',
-    category: 'Navigation & Layout',
+    name: 'Bottom Sheet (Modal Drawer)',
+    category: 'Feedback & Status',
     ux4gTag: 'Ux4gBottomSheet',
     ux4gStatus: StatusParity.yes,
-    m3Name: 'showModalBottomSheet',
+    m3Name: 'showModalBottomSheet / BottomSheet',
     m3Status: StatusParity.yes,
-    cupertinoName: 'showCupertinoModalPopup',
-    cupertinoStatus: StatusParity.yes,
-    notes: 'Slide-up modal sheet with drag handle, title bar, sticky CTA buttons, and scrollable content area.',
+    cupertinoName: 'showCupertinoModalPopup / CupertinoActionSheet',
+    cupertinoStatus: StatusParity.partial,
+    notes: 'Accessible modal bottom sheet with draggable snap height presets (peek 26%, half 50%, expanded 75%, full 94%), top drag handle indicator, and fixed bottom action buttons.',
   ),
   FlutterComponentItem(
     id: 8,
@@ -321,15 +322,16 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
   ),
   FlutterComponentItem(
     id: 22,
-    name: 'Drawer (Side Menu)',
+    name: 'Side Menu (Navigation Drawer)',
     category: 'Navigation & Layout',
-    ux4gTag: 'No (Use Drawer)',
-    ux4gStatus: StatusParity.no,
-    m3Name: 'Drawer / NavigationDrawer',
+    ux4gTag: 'Ux4gSideMenu',
+    ux4gStatus: StatusParity.yes,
+    ux4gNote: 'Ux4gSideMenuItem, Ux4gSideMenuGroup',
+    m3Name: 'NavigationDrawer / Drawer',
     m3Status: StatusParity.yes,
-    cupertinoName: 'No',
+    cupertinoName: 'No (Custom Drawer)',
     cupertinoStatus: StatusParity.no,
-    notes: 'Side navigation drawer for app menus. Developers use standard Flutter Drawer with Ux4gTheme.',
+    notes: 'Multi-state responsive drawer/sidebar with brand banner, citizen profile header, status indicators, badges, section headers, and department switcher.',
   ),
   FlutterComponentItem(
     id: 23,
@@ -383,15 +385,16 @@ const List<FlutterComponentItem> kFlutterComponentsData = [
   ),
   FlutterComponentItem(
     id: 27,
-    name: 'Floating Action Button (FAB)',
+    name: 'Floating Action Button (FAB & Speed Dial)',
     category: 'Core Components',
-    ux4gTag: 'No (Use FloatingActionButton)',
-    ux4gStatus: StatusParity.no,
+    ux4gTag: 'Ux4gFab',
+    ux4gStatus: StatusParity.yes,
+    ux4gNote: 'Ux4gFabActionItem',
     m3Name: 'FloatingActionButton / ExtendedFAB',
     m3Status: StatusParity.yes,
     cupertinoName: 'No',
     cupertinoStatus: StatusParity.no,
-    notes: 'FAB button. In UX4G Flutter, developers style standard FloatingActionButton with Ux4gColors tokens.',
+    notes: 'Floating action button with circular icon, labelled pill, and speed dial action menu (Joined capsule, Spaced circles, Labelled pills) supporting Brand & Surface themes.',
   ),
   FlutterComponentItem(
     id: 28,
@@ -770,11 +773,73 @@ const List<FlutterPropMappingItem> kFlutterPropsMappingData = [
   // Bottom Sheet
   FlutterPropMappingItem(
     component: 'Ux4gBottomSheet',
-    propGroup: 'Modal Sheet',
-    ux4gProp: 'title: String, child: Widget, primaryAction: Widget?, isDismissible: bool',
-    m3Prop: 'showModalBottomSheet(builder: (ctx) => ...)',
+    propGroup: 'Height Presets & Gestures',
+    ux4gProp: 'size: Ux4gBottomSheetSize (peek 26%, half 50%, expanded 75%, full 94%), isDraggable: bool, onDismiss: VoidCallback',
+    m3Prop: 'showModalBottomSheet(isScrollControlled: bool, builder: (ctx) => ...)',
     cupertinoProp: 'showCupertinoModalPopup(...)',
-    description: 'Slide-up modal sheet with drag handle, title bar, sticky CTA buttons, and scrollable content.',
+    description: 'Draggable modal bottom sheet with spring physics, snap height ratios, and drag handle pill indicator.',
+  ),
+  FlutterPropMappingItem(
+    component: 'Ux4gBottomSheet',
+    propGroup: 'Header & Actions',
+    ux4gProp: 'title: String?, description: String?, icon: dynamic, primaryButtonText: String, onPrimaryPress: VoidCallback?, secondaryButtonText: String, onSecondaryPress: VoidCallback?, content: Widget?',
+    m3Prop: 'BottomSheet(builder: (ctx) => ...)',
+    cupertinoProp: 'CupertinoActionSheet(...)',
+    description: 'Structured bottom sheet header with icon/emblem, description, scrollable content body, and fixed bottom action buttons.',
+  ),
+
+  // Bottom Navigation Bar
+  FlutterPropMappingItem(
+    component: 'Ux4gBottomNavigationBar',
+    propGroup: 'Items & Active Selection',
+    ux4gProp: 'items: List<Ux4gBottomNavItem>, currentIndex: int, onTap: ValueChanged<int>',
+    m3Prop: 'NavigationBar(destinations: ..., selectedIndex: ..., onDestinationSelected: ...)',
+    cupertinoProp: 'CupertinoTabBar(items: ..., currentIndex: ..., onTap: ...)',
+    description: 'Primary bottom navigation bar with active state selection and callback trigger.',
+  ),
+  FlutterPropMappingItem(
+    component: 'Ux4gBottomNavigationBar',
+    propGroup: 'Layout Style & Indicator',
+    ux4gProp: 'layoutStyle: Ux4gBottomNavLayoutStyle, indicatorType: Ux4gBottomNavIndicatorType (pill, bar, plain), centerAction: Widget?',
+    m3Prop: 'NavigationBar(indicatorColor: ..., labelBehavior: ...)',
+    cupertinoProp: 'CupertinoTabBar(...)',
+    description: '5 layout styles (Labelled, Top-rounded, Icon-only, Center FAB action, Floating Pill) with 3 active indicator types.',
+  ),
+
+  // Floating Action Button
+  FlutterPropMappingItem(
+    component: 'Ux4gFab',
+    propGroup: 'Type & Visual Theme',
+    ux4gProp: 'type: Ux4gFabType (circular, labelledPill, speedDial), theme: Ux4gFabTheme (brand, surface), icon: IconData, label: String?',
+    m3Prop: 'FloatingActionButton(child: Icon) / FloatingActionButton.extended(icon: Icon, label: Text)',
+    cupertinoProp: 'No direct equivalent',
+    description: 'Floating action button with circular icon, labelled pill, and speed dial actions in Brand and Surface themes.',
+  ),
+  FlutterPropMappingItem(
+    component: 'Ux4gFab',
+    propGroup: 'Speed Dial Actions',
+    ux4gProp: 'speedDialStyle: Ux4gSpeedDialStyle (joinedCapsule, spacedCircles, labelledPills), actions: List<Ux4gFabActionItem>',
+    m3Prop: 'Not Available (Requires 3rd-party flutter_speed_dial package)',
+    cupertinoProp: 'Not Available',
+    description: 'Expandable speed dial secondary action launcher with 3 distinct menu layouts.',
+  ),
+
+  // Side Menu (Navigation Drawer)
+  FlutterPropMappingItem(
+    component: 'Ux4gSideMenu',
+    propGroup: 'Items & Groups',
+    ux4gProp: 'items: List<Ux4gSideMenuItem>?, groups: List<Ux4gSideMenuGroup>?, selectedId: String, onItemSelected: ValueChanged<String>',
+    m3Prop: 'NavigationDrawer(children: [NavigationDrawerDestination(...)]) / Drawer(child: ListView(...))',
+    cupertinoProp: 'Custom Drawer / SplitView',
+    description: 'Responsive sidebar/drawer navigation with grouped sections, active route highlighting, and item selection callbacks.',
+  ),
+  FlutterPropMappingItem(
+    component: 'Ux4gSideMenu',
+    propGroup: 'Headers, Badges & Footers',
+    ux4gProp: 'header: Widget?, footer: Widget?, brandBanner: Widget?, showCloseButton: bool, departmentSwitcher: Widget?',
+    m3Prop: 'DrawerHeader(child: ...) / NavigationDrawer header',
+    cupertinoProp: 'Custom Drawer Header',
+    description: 'Citizen profile header card, officer inbox with count badges, status indicators, department selector, and bottom actions.',
   ),
 
   // Button
@@ -1255,6 +1320,55 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
     );
   }
 
+  Widget _buildCopyPromptButton(bool isDark, Color borderColor, Color onSurface) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: _handleCopyPromptText,
+        borderRadius: BorderRadius.circular(10),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          decoration: BoxDecoration(
+            color: _copiedPromptSuccess
+                ? (isDark ? const Color(0xFF166534).withValues(alpha: 0.3) : const Color(0xFFF0FDF4))
+                : (isDark ? const Color(0xFF1E293B) : Colors.white),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: _copiedPromptSuccess
+                  ? const Color(0xFF86EFAC)
+                  : (isDark ? const Color(0xFF334155) : const Color(0xFFCBD5E1)),
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                _copiedPromptSuccess ? Icons.check_rounded : Icons.copy_rounded,
+                size: 17,
+                color: _copiedPromptSuccess
+                    ? const Color(0xFF15803D)
+                    : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569)),
+              ),
+              const SizedBox(width: 7),
+              Text(
+                _copiedPromptSuccess ? 'Copied!' : 'Copy AI Prompt',
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.1,
+                  color: _copiedPromptSuccess
+                      ? const Color(0xFF15803D)
+                      : (isDark ? const Color(0xFFE2E8F0) : const Color(0xFF334155)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildDownloadButtonsGroup(bool isDark, Color borderColor, Color onSurface) {
     return Wrap(
       spacing: 8,
@@ -1263,6 +1377,7 @@ class _Ux4gMigrationPageState extends State<Ux4gMigrationPage> {
       children: [
         _buildDownloadButton(isDark, borderColor, onSurface),
         _buildDownloadPromptButton(isDark, borderColor, onSurface),
+        _buildCopyPromptButton(isDark, borderColor, onSurface),
       ],
     );
   }

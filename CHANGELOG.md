@@ -1,3 +1,17 @@
+## 1.5.1
+* **Component Bug Fixes & Improvements**:
+  * **Floating Action Button (`Ux4gFab`)**:
+    * Fixed layout spacing and 2.0px overflow issue when speed-dial sub-action menus are closed using `Offstage` visibility handling.
+    * Ensured speed-dial expand/collapse animations maintain accurate anchoring without horizontal shifting.
+  * **Bottom Navigation Bar (`Ux4gBottomNavigationBar`)**:
+    * Refined active pill capsule and top bar indicator positioning across compact and wide mobile viewports.
+    * Improved touch ripple and background transparency on active items.
+  * **Side Menu (`Ux4gSideMenu`)**:
+    * Enhanced responsive drawer wrapping for header actions, preset items, and drawer slide transitions.
+* **Widgetbook & Documentation Updates**:
+    * Made all 4 newly added components (`Side Menu`, `Bottom Navigation Bar`, `Floating Action Button`, `Bottom Sheet`) 100% responsive across all mobile (320px–375px), tablet, and desktop viewports.
+    * Added dedicated Widgetbook components and stories for all 6 Side Menu state presets and modal drawer configurations.
+
 ## 1.5.0
 * **New & Updated Components**:
   * **Side Menu (`Ux4gSideMenu`)**: Added comprehensive side navigation drawer supporting header, user profiles, collapsible sub-items, badge notifications, search filtering, and custom footer actions.

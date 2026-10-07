@@ -44,7 +44,7 @@ Add `ux4g_flutter_components` to your Flutter project's `pubspec.yaml`:
 dependencies:
   flutter:
     sdk: flutter
-  ux4g_flutter_components: ^1.1.0 # Or use path / git reference
+  ux4g_flutter_components: ^1.5.1 # Or use path / git reference
 ```
 
 Run `flutter pub get`:
@@ -92,10 +92,13 @@ class MyApp extends StatelessWidget {
 | :--- | :--- | :--- | :--- |
 | **Buttons** | `ElevatedButton`, `FilledButton` | `CupertinoButton` | `Ux4gButton` |
 | **Icon Buttons** | `IconButton`, `IconButton.filled` | `CupertinoButton` | `Ux4gIconButton` |
+| **Floating Action Button** | `FloatingActionButton`, `FAB.extended` | N/A | `Ux4gFab` (Circular, Labelled Pill, Speed Dial) |
 | **Text Inputs** | `TextField`, `TextFormField` | `CupertinoTextField` | `Ux4gInputField` |
 | **Text Area** | `TextField(maxLines: 4)` | `CupertinoTextField(maxLines: 4)` | `Ux4gTextArea` |
 | **Search Bar** | `SearchBar`, `SearchAnchor` | `CupertinoSearchTextField` | `Ux4gSearchField` |
 | **App Headers** | `AppBar`, `SliverAppBar` | `CupertinoNavigationBar` | `Ux4gAppHeader` |
+| **Side Menu / Drawer** | `NavigationDrawer`, `Drawer` | Custom Drawer | `Ux4gSideMenu` |
+| **Bottom Navigation** | `NavigationBar`, `BottomNavigationBar` | `CupertinoTabBar` | `Ux4gBottomNavigationBar` |
 | **Accordions** | `ExpansionTile`, `ExpansionPanel` | Custom Collapsible | `Ux4gAccordion`, `Ux4gAccordionGroup` |
 | **Checkboxes** | `Checkbox`, `CheckboxListTile` | `CupertinoCheckbox` | `Ux4gCheckbox`, `Ux4gCheckboxGroup` |
 | **Radio Buttons** | `Radio`, `RadioListTile` | `CupertinoRadio` | `Ux4gRadioButton`, `Ux4gRadioGroup` |
@@ -111,6 +114,7 @@ class MyApp extends StatelessWidget {
 | **Date Picker** | `showDatePicker`, `DatePickerDialog` | `CupertinoDatePicker` | `Ux4gDatePicker` |
 | **Time Picker** | `showTimePicker`, `TimePickerDialog` | `CupertinoTimerPicker` | `Ux4gTimePicker` |
 | **Dialogs / Modals** | `showDialog`, `AlertDialog` | `showCupertinoDialog` | `Ux4gModal` |
+| **Bottom Sheet** | `showModalBottomSheet`, `BottomSheet` | `showCupertinoModalPopup` | `Ux4gBottomSheet` (Snap height presets) |
 | **Snackbars / Toasts**| `ScaffoldMessenger.showSnackBar` | Custom Toast | `Ux4gToast`, `Ux4gToastController` |
 | **Status Banners** | `MaterialBanner` | N/A | `Ux4gStatusBanner` |
 | **Aadhaar Input** | Custom Regex Formatter | N/A | `Ux4gAadhaarInputField` (Built-in Verhoeff checksum) |
@@ -150,6 +154,150 @@ Ux4gButton(
   size: Ux4gButtonSize.medium,
   isLoading: isSubmitting,
   onPressed: handleSave,
+)
+```
+
+---
+
+### Bottom Navigation Bar
+
+#### Before (Material 3)
+```dart
+NavigationBar(
+  selectedIndex: _currentIndex,
+  onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
+  destinations: const [
+    NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
+    NavigationDestination(icon: Icon(Icons.folder_outlined), label: 'Applications'),
+    NavigationDestination(icon: Icon(Icons.notifications_outlined), label: 'Alerts'),
+    NavigationDestination(icon: Icon(Icons.person_outline), label: 'Profile'),
+  ],
+)
+```
+
+#### After (UX4G Flutter)
+```dart
+Ux4gBottomNavigationBar(
+  currentIndex: _currentIndex,
+  onTap: (idx) => setState(() => _currentIndex = idx),
+  indicatorType: Ux4gBottomNavIndicatorType.pill,
+  items: const [
+    Ux4gBottomNavItem(icon: Icons.home_outlined, activeIcon: Icons.home, label: 'Home'),
+    Ux4gBottomNavItem(icon: Icons.folder_outlined, activeIcon: Icons.folder, label: 'Applications', badgeCount: 3),
+    Ux4gBottomNavItem(icon: Icons.notifications_outlined, activeIcon: Icons.notifications, label: 'Alerts', hasNotificationDot: true),
+    Ux4gBottomNavItem(icon: Icons.person_outline, activeIcon: Icons.person, label: 'Profile'),
+  ],
+)
+```
+
+---
+
+### Side Menu / Navigation Drawer
+
+#### Before (Material 3)
+```dart
+NavigationDrawer(
+  selectedIndex: _selectedIdx,
+  onDestinationSelected: (idx) => setState(() => _selectedIdx = idx),
+  children: const [
+    DrawerHeader(child: Text('Government Portal')),
+    NavigationDrawerDestination(icon: Icon(Icons.dashboard_outlined), label: Text('Dashboard')),
+    NavigationDrawerDestination(icon: Icon(Icons.assignment_outlined), label: Text('Services')),
+  ],
+)
+```
+
+#### After (UX4G Flutter)
+```dart
+Ux4gSideMenu(
+  selectedId: _selectedRouteId,
+  onItemSelected: (id) => setState(() => _selectedRouteId = id),
+  brandBanner: const Ux4gSideMenuBrandBanner(portalName: 'National Service Portal'),
+  header: const Ux4gSideMenuCitizenHeader(name: 'Aarav Sharma', role: 'Citizen Account'),
+  groups: [
+    Ux4gSideMenuGroup(
+      title: 'CORE SERVICES',
+      items: [
+        Ux4gSideMenuItem(id: 'home', label: 'Dashboard', icon: Icons.dashboard_outlined),
+        Ux4gSideMenuItem(id: 'inbox', label: 'Officer Inbox', icon: Icons.inbox_outlined, badgeCount: 7),
+      ],
+    ),
+  ],
+)
+```
+
+---
+
+### Modal Bottom Sheet
+
+#### Before (Material 3)
+```dart
+showModalBottomSheet(
+  context: context,
+  isScrollControlled: true,
+  builder: (ctx) => Container(
+    padding: const EdgeInsets.all(16),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Text('Application Verification', style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 12),
+        const Text('Please review the submitted citizen documents.'),
+        ElevatedButton(onPressed: () => Navigator.pop(ctx), child: const Text('Confirm')),
+      ],
+    ),
+  ),
+);
+```
+
+#### After (UX4G Flutter)
+```dart
+showModalBottomSheet(
+  context: context,
+  isScrollControlled: true,
+  backgroundColor: Colors.transparent,
+  builder: (ctx) => Ux4gBottomSheet(
+    size: Ux4gBottomSheetSize.half,
+    title: 'Application Verification',
+    description: 'Confirm citizen identity details before final submission.',
+    icon: Icons.verified_user_outlined,
+    primaryButtonText: 'Verify Details',
+    onPrimaryPress: () => Navigator.pop(ctx),
+    secondaryButtonText: 'Cancel',
+    onSecondaryPress: () => Navigator.pop(ctx),
+    onDismiss: () => Navigator.pop(ctx),
+    content: const Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Text('Please review the submitted citizen documents.'),
+    ),
+  ),
+);
+```
+
+---
+
+### Floating Action Button (FAB & Speed Dial)
+
+#### Before (Material 3)
+```dart
+FloatingActionButton.extended(
+  onPressed: () => openNewApplication(),
+  icon: const Icon(Icons.add),
+  label: const Text('New Application'),
+)
+```
+
+#### After (UX4G Flutter)
+```dart
+Ux4gFab(
+  type: Ux4gFabType.speedDial,
+  theme: Ux4gFabTheme.brand,
+  icon: Icons.add,
+  label: 'Quick Action',
+  actions: [
+    Ux4gFabActionItem(icon: Icons.description_outlined, label: 'New File', onPressed: () => handleNewFile()),
+    Ux4gFabActionItem(icon: Icons.upload_file_outlined, label: 'Upload Doc', onPressed: () => handleUpload()),
+  ],
 )
 ```
 

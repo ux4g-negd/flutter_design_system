@@ -50,7 +50,7 @@ final quickGuideComponent = WidgetbookComponent(
             label:
                 "This will add a line like this to your package's pubspec.yaml\n"
                 "(and run an implicit flutter pub get):",
-            code: 'dependencies:\n  ux4g_flutter_components: ^1.4.0',
+            code: 'dependencies:\n  ux4g_flutter_components: ^1.5.1',
           ),
         ],
         trailingSections: const [
@@ -1955,13 +1955,11 @@ class _SemanticTileState extends State<_SemanticTile> {
 class _PaletteView extends StatelessWidget {
   final String label;
   final List<_Swatch> swatches;
-  final bool compact;
   final EdgeInsetsGeometry padding;
 
   const _PaletteView({
     required this.label,
     required this.swatches,
-    this.compact = false,
     this.padding = const EdgeInsets.all(24),
   });
 
@@ -1988,7 +1986,7 @@ class _PaletteView extends StatelessWidget {
             spacing: 14,
             runSpacing: 14,
             children: swatches
-                .map((s) => _SwatchTile(s, compact: compact))
+                .map((s) => _SwatchTile(s))
                 .toList(),
           ),
         ],
@@ -1999,8 +1997,7 @@ class _PaletteView extends StatelessWidget {
 
 class _SwatchTile extends StatefulWidget {
   final _Swatch swatch;
-  final bool compact;
-  const _SwatchTile(this.swatch, {this.compact = false});
+  const _SwatchTile(this.swatch);
 
   @override
   State<_SwatchTile> createState() => _SwatchTileState();
@@ -2023,8 +2020,8 @@ class _SwatchTileState extends State<_SwatchTile> {
   Widget build(BuildContext context) {
     final hex = _toHex(widget.swatch.color);
     final fg = _isDark(widget.swatch.color) ? Colors.white : Colors.black;
-    final w = widget.compact ? 160.0 : 220.0;
-    final h = widget.compact ? 64.0 : 76.0;
+    const w = 220.0;
+    const h = 76.0;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     final codeSnippet = 'Ux4gColors.${widget.swatch.token.replaceAll('-', '')}';
 

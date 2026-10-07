@@ -7,7 +7,7 @@ UX4G provides a comprehensive suite of UI components and patterns to build scala
 
 ## Categories
 1. **Tokens**: Theme Color, Typography, Shadow, Dimensions (Spacing, Radius, Border).
-2. **Components**: Foundational UI elements like Buttons, Avatars, Cards, Inputs, Modals, Sliders, and Steppers.
+2. **Components**: Foundational UI elements like Buttons, Side Menu, Bottom Navigation Bar, Floating Action Button (FAB), Bottom Sheet, Avatars, Cards, Inputs, Modals, Sliders, and Steppers.
 3. **Patterns**: Complex flows such as Identity and Access (SignIn/OTP/Aadhaar), Notifications, Payments, Form Submissions, Dashboards, and Search.
 
 For a full list of all components and patterns, please refer to [llms-full.txt](llms-full.txt).

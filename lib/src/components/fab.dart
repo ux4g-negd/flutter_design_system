@@ -229,8 +229,7 @@ class Ux4gFab extends StatefulWidget {
   State<Ux4gFab> createState() => _Ux4gFabState();
 }
 
-class _Ux4gFabState extends State<Ux4gFab>
-    with SingleTickerProviderStateMixin {
+class _Ux4gFabState extends State<Ux4gFab> with SingleTickerProviderStateMixin {
   late bool _internalOpen;
   late AnimationController _animController;
   late Animation<double> _expandAnimation;
@@ -279,7 +278,10 @@ class _Ux4gFabState extends State<Ux4gFab>
       curve: const Cubic(0.2, 0.0, 0.0, 1.0),
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_expandAnimation);
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(_expandAnimation);
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, 0.15),
       end: Offset.zero,
@@ -455,7 +457,11 @@ class _Ux4gFabState extends State<Ux4gFab>
                   height: 40.0,
                   alignment: Alignment.center,
                   margin: const EdgeInsets.symmetric(vertical: 2.0),
-                  child: _buildIcon(action.icon ?? Icons.circle, iconColor, 20.0),
+                  child: _buildIcon(
+                    action.icon ?? Icons.circle,
+                    iconColor,
+                    20.0,
+                  ),
                 ),
               ),
             ),
@@ -480,7 +486,8 @@ class _Ux4gFabState extends State<Ux4gFab>
       children: actions.asMap().entries.map((entry) {
         final action = entry.value;
         final itemBg = action.backgroundColor ?? surfaceBg;
-        final itemFg = action.contentColor ??
+        final itemFg =
+            action.contentColor ??
             (isBrand ? const Color(0xFF262626) : colors.primary);
 
         return Padding(
@@ -510,7 +517,11 @@ class _Ux4gFabState extends State<Ux4gFab>
                   width: 44.0,
                   height: 44.0,
                   child: Center(
-                    child: _buildIcon(action.icon ?? Icons.circle, itemFg, 20.0),
+                    child: _buildIcon(
+                      action.icon ?? Icons.circle,
+                      itemFg,
+                      20.0,
+                    ),
                   ),
                 ),
               ),
@@ -640,7 +651,8 @@ class _Ux4gFabState extends State<Ux4gFab>
             if (widget.label.isNotEmpty)
               Text(
                 widget.label,
-                style: widget.labelStyle ??
+                style:
+                    widget.labelStyle ??
                     typography.bM_strong.copyWith(
                       color: mainFg,
                       fontSize: fontSize,
@@ -657,7 +669,8 @@ class _Ux4gFabState extends State<Ux4gFab>
         child: Center(
           child: AnimatedSwitcher(
             duration: const Duration(milliseconds: 200),
-            transitionBuilder: (child, anim) => ScaleTransition(scale: anim, child: child),
+            transitionBuilder: (child, anim) =>
+                ScaleTransition(scale: anim, child: child),
             child: KeyedSubtree(
               key: ValueKey<bool>(_isMenuVariant && _isMenuOpen),
               child: _buildIcon(currentIcon, mainFg, iconSize),
@@ -675,7 +688,8 @@ class _Ux4gFabState extends State<Ux4gFab>
     return Semantics(
       button: true,
       enabled: !widget.disabled,
-      label: widget.semanticLabel ??
+      label:
+          widget.semanticLabel ??
           widget.tooltip ??
           (widget.label.isNotEmpty ? widget.label : 'Floating action button'),
       child: Opacity(
@@ -731,13 +745,28 @@ class _Ux4gFabState extends State<Ux4gFab>
       Widget menuContent;
       switch (widget.variant) {
         case Ux4gFabVariant.menuJoined:
-          menuContent = _buildJoinedMenu(context, colors, typography, actionsList);
+          menuContent = _buildJoinedMenu(
+            context,
+            colors,
+            typography,
+            actionsList,
+          );
           break;
         case Ux4gFabVariant.menuSpaced:
-          menuContent = _buildSpacedMenu(context, colors, typography, actionsList);
+          menuContent = _buildSpacedMenu(
+            context,
+            colors,
+            typography,
+            actionsList,
+          );
           break;
         case Ux4gFabVariant.menuLabelled:
-          menuContent = _buildLabelledMenu(context, colors, typography, actionsList);
+          menuContent = _buildLabelledMenu(
+            context,
+            colors,
+            typography,
+            actionsList,
+          );
           break;
         default:
           menuContent = const SizedBox.shrink();
@@ -760,16 +789,18 @@ class _Ux4gFabState extends State<Ux4gFab>
       }
     }
 
+    final isOpeningOrOpen = _isMenuOpen || !_animController.isDismissed;
+
     final column = Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: crossAxis,
       children: [
         if (_isMenuVariant) ...[
-          IgnorePointer(
-            ignoring: !_isMenuOpen,
-            child: menuWidget,
+          Offstage(
+            offstage: !isOpeningOrOpen,
+            child: IgnorePointer(ignoring: !_isMenuOpen, child: menuWidget),
           ),
-          const SizedBox(height: 12.0),
+          if (isOpeningOrOpen) const SizedBox(height: 12.0),
         ],
         _buildMainButton(context, colors, typography),
       ],
@@ -829,9 +860,7 @@ class _Ux4gFabState extends State<Ux4gFab>
             child: GestureDetector(
               onTap: _handleBackdropPress,
               behavior: HitTestBehavior.opaque,
-              child: Container(
-                color: Colors.black.withValues(alpha: 0.35),
-              ),
+              child: Container(color: Colors.black.withValues(alpha: 0.35)),
             ),
           ),
           positionedContent,

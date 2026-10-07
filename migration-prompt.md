@@ -2,7 +2,7 @@
 
 ## Context
 
-I have an existing Flutter application that currently uses [Current UI Library: Flutter Material 3 (M3) / Material 2 / Cupertino (iOS) / Custom Widgets]. I need to migrate it to the **UX4G Flutter Design System** (`ux4g_flutter_components` package v1.4.0+) **without altering my existing application flow, working functionality, custom color combinations, brand theme, or typography hierarchy**.
+I have an existing Flutter application that currently uses [Current UI Library: Flutter Material 3 (M3) / Material 2 / Cupertino (iOS) / Custom Widgets]. I need to migrate it to the **UX4G Flutter Design System** (`ux4g_flutter_components` package v1.5.1+) **without altering my existing application flow, working functionality, custom color combinations, brand theme, or typography hierarchy**.
 
 ## Project Details
 
@@ -82,10 +82,14 @@ MaterialApp(
 Replace standard Material/Cupertino widgets with their designated `Ux4g*` equivalents while preserving all properties:
 - `ElevatedButton` / `FilledButton` / `CupertinoButton` → `Ux4gButton`
 - `IconButton` → `Ux4gIconButton`
+- `FloatingActionButton` / `FAB.extended` → `Ux4gFab` (Circular, Labelled Pill, Speed Dial)
 - `TextField` / `TextFormField` → `Ux4gInputField`
 - `AppBar` / `CupertinoNavigationBar` → `Ux4gAppHeader`
+- `NavigationDrawer` / `Drawer` → `Ux4gSideMenu`
+- `NavigationBar` / `BottomNavigationBar` / `CupertinoTabBar` → `Ux4gBottomNavigationBar`
 - `Card` → `Ux4gCard`
 - `ExpansionTile` → `Ux4gAccordion` / `Ux4gAccordionGroup`
+- `showModalBottomSheet` / `BottomSheet` → `Ux4gBottomSheet` (Draggable snap height presets)
 - `Checkbox` → `Ux4gCheckbox` / `Ux4gCheckboxGroup`
 - `Radio` → `Ux4gRadioButton` / `Ux4gRadioGroup`
 - `Switch` → `Ux4gSwitch`
@@ -218,7 +222,151 @@ Ux4gAppHeader(
 
 ---
 
-### 4. Custom Cards & Surfaces
+### 4. Bottom Navigation Bar
+
+#### Before (Material 3):
+```dart
+NavigationBar(
+  selectedIndex: _currentIndex,
+  onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
+  destinations: const [
+    NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
+    NavigationDestination(icon: Icon(Icons.folder_outlined), label: 'Applications'),
+    NavigationDestination(icon: Icon(Icons.notifications_outlined), label: 'Alerts'),
+    NavigationDestination(icon: Icon(Icons.person_outline), label: 'Profile'),
+  ],
+)
+```
+
+#### After (UX4G Flutter):
+```dart
+Ux4gBottomNavigationBar(
+  currentIndex: _currentIndex,
+  onTap: (idx) => setState(() => _currentIndex = idx),
+  indicatorType: Ux4gBottomNavIndicatorType.pill,
+  items: const [
+    Ux4gBottomNavItem(icon: Icons.home_outlined, activeIcon: Icons.home, label: 'Home'),
+    Ux4gBottomNavItem(icon: Icons.folder_outlined, activeIcon: Icons.folder, label: 'Applications', badgeCount: 3),
+    Ux4gBottomNavItem(icon: Icons.notifications_outlined, activeIcon: Icons.notifications, label: 'Alerts', hasNotificationDot: true),
+    Ux4gBottomNavItem(icon: Icons.person_outline, activeIcon: Icons.person, label: 'Profile'),
+  ],
+)
+```
+
+---
+
+### 5. Side Menu / Navigation Drawer
+
+#### Before (Material 3):
+```dart
+NavigationDrawer(
+  selectedIndex: _selectedIdx,
+  onDestinationSelected: (idx) => setState(() => _selectedIdx = idx),
+  children: const [
+    DrawerHeader(child: Text('Government Portal')),
+    NavigationDrawerDestination(icon: Icon(Icons.dashboard_outlined), label: Text('Dashboard')),
+    NavigationDrawerDestination(icon: Icon(Icons.assignment_outlined), label: Text('Services')),
+  ],
+)
+```
+
+#### After (UX4G Flutter):
+```dart
+Ux4gSideMenu(
+  selectedId: _selectedRouteId,
+  onItemSelected: (id) => setState(() => _selectedRouteId = id),
+  brandBanner: const Ux4gSideMenuBrandBanner(portalName: 'National Service Portal'),
+  header: const Ux4gSideMenuCitizenHeader(name: 'Aarav Sharma', role: 'Citizen Account'),
+  groups: [
+    Ux4gSideMenuGroup(
+      title: 'CORE SERVICES',
+      items: [
+        Ux4gSideMenuItem(id: 'home', label: 'Dashboard', icon: Icons.dashboard_outlined),
+        Ux4gSideMenuItem(id: 'inbox', label: 'Officer Inbox', icon: Icons.inbox_outlined, badgeCount: 7),
+      ],
+    ),
+  ],
+)
+```
+
+---
+
+### 6. Modal Bottom Sheet
+
+#### Before (Material 3):
+```dart
+showModalBottomSheet(
+  context: context,
+  isScrollControlled: true,
+  builder: (ctx) => Container(
+    padding: const EdgeInsets.all(16),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Text('Application Verification', style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 12),
+        const Text('Please review the submitted citizen documents.'),
+        ElevatedButton(onPressed: () => Navigator.pop(ctx), child: const Text('Confirm')),
+      ],
+    ),
+  ),
+);
+```
+
+#### After (UX4G Flutter):
+```dart
+showModalBottomSheet(
+  context: context,
+  isScrollControlled: true,
+  backgroundColor: Colors.transparent,
+  builder: (ctx) => Ux4gBottomSheet(
+    size: Ux4gBottomSheetSize.half,
+    title: 'Application Verification',
+    description: 'Confirm citizen identity details before final submission.',
+    icon: Icons.verified_user_outlined,
+    primaryButtonText: 'Verify Details',
+    onPrimaryPress: () => Navigator.pop(ctx),
+    secondaryButtonText: 'Cancel',
+    onSecondaryPress: () => Navigator.pop(ctx),
+    onDismiss: () => Navigator.pop(ctx),
+    content: const Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Text('Please review the submitted citizen documents.'),
+    ),
+  ),
+);
+```
+
+---
+
+### 7. Floating Action Button (FAB & Speed Dial)
+
+#### Before (Material 3):
+```dart
+FloatingActionButton.extended(
+  onPressed: () => openNewApplication(),
+  icon: const Icon(Icons.add),
+  label: const Text('New Application'),
+)
+```
+
+#### After (UX4G Flutter):
+```dart
+Ux4gFab(
+  type: Ux4gFabType.speedDial,
+  theme: Ux4gFabTheme.brand,
+  icon: Icons.add,
+  label: 'Quick Action',
+  actions: [
+    Ux4gFabActionItem(icon: Icons.description_outlined, label: 'New File', onPressed: () => handleNewFile()),
+    Ux4gFabActionItem(icon: Icons.upload_file_outlined, label: 'Upload Doc', onPressed: () => handleUpload()),
+  ],
+)
+```
+
+---
+
+### 8. Custom Cards & Surfaces
 
 #### Before (Material 3):
 ```dart
@@ -266,7 +414,7 @@ Ux4gCard(
 
 1. **Step 1 — Codebase & Dependency Audit**:
    - Inspect `pubspec.yaml`, dependencies, state management architecture, and custom styling patterns.
-   - Add `ux4g_flutter_components: ^1.4.0` to `pubspec.yaml` and run `flutter pub get`.
+   - Add `ux4g_flutter_components: ^1.5.1` to `pubspec.yaml` and run `flutter pub get`.
 
 2. **Step 2 — Safe Theme Setup**:
    - Keep existing `ThemeData` intact and add UX4G theme extensions non-destructively so existing material theme functionality remains 100% unaffected.
@@ -301,4 +449,4 @@ Begin by inspecting my Flutter project structure. Present a structured screen-by
 
 ---
 
-*UX4G Flutter Design System | ux4g_flutter_components v1.4.0 | National e-Governance Division (NeGD) | Government of India*
+*UX4G Flutter Design System | ux4g_flutter_components v1.5.1 | National e-Governance Division (NeGD) | Government of India*

@@ -1,7 +1,7 @@
 {
   "name": "UX4G Flutter Design System Widgetbook",
   "description": "Comprehensive Widgetbook catalog detailing all components, tokens, and patterns for the UX4G Flutter Design System.",
-  "version": "1.0.0",
+  "version": "1.5.1",
   "base_url": "https://flutter.ux4g.gov.in/",
   "categories": [
     {
@@ -86,8 +86,24 @@
           "url": "https://flutter.ux4g.gov.in/?path=components/biometric-verification/introduction"
         },
         {
+          "name": "BottomNavigationBar",
+          "url": "https://flutter.ux4g.gov.in/?path=components/bottom-navigation-bar/introduction"
+        },
+        {
+          "name": "BottomSheet",
+          "url": "https://flutter.ux4g.gov.in/?path=components/bottom-sheet/introduction"
+        },
+        {
           "name": "Button",
           "url": "https://flutter.ux4g.gov.in/?path=components/buttons/introduction"
+        },
+        {
+          "name": "Fab",
+          "url": "https://flutter.ux4g.gov.in/?path=components/floating-action-button/introduction"
+        },
+        {
+          "name": "SideMenu",
+          "url": "https://flutter.ux4g.gov.in/?path=components/side-menu/introduction"
         },
         {
           "name": "Card",

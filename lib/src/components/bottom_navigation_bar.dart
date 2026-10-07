@@ -27,11 +27,7 @@ enum Ux4gBottomNavVariant {
 }
 
 /// Geometric shape of the bottom navigation bar container
-enum Ux4gBottomNavShape {
-  rectangular,
-  topRounded,
-  floatingPill,
-}
+enum Ux4gBottomNavShape { rectangular, topRounded, floatingPill }
 
 /// Individual navigation tab item definition
 class Ux4gBottomNavItem {
@@ -281,18 +277,27 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     final isDark = materialTheme.brightness == Brightness.dark;
 
     // Resolved colors with Dark / Light Mode fallbacks
-    final resolvedActiveColor = widget.activeColor ??
-        (isDark ? Ux4gColors.primary300 : (ux4gColors?.primary ?? Ux4gColors.primary500));
-    final resolvedInactiveColor = widget.inactiveColor ??
+    final resolvedActiveColor =
+        widget.activeColor ??
+        (isDark
+            ? Ux4gColors.primary300
+            : (ux4gColors?.primary ?? Ux4gColors.primary500));
+    final resolvedInactiveColor =
+        widget.inactiveColor ??
         (isDark ? Ux4gColors.neutral400 : Ux4gColors.neutral600);
-    final resolvedPillBg = widget.pillBackgroundColor ??
+    final resolvedPillBg =
+        widget.pillBackgroundColor ??
         (isDark
             ? Ux4gColors.primary400.withValues(alpha: 0.18)
             : Ux4gColors.primary50);
     final resolvedBarColor = widget.barIndicatorColor ?? resolvedActiveColor;
-    final resolvedBgColor = widget.backgroundColor ??
-        (isDark ? Ux4gColors.neutral900 : (ux4gColors?.surface ?? Ux4gColors.white));
-    final resolvedBorderColor = widget.borderColor ??
+    final resolvedBgColor =
+        widget.backgroundColor ??
+        (isDark
+            ? Ux4gColors.neutral900
+            : (ux4gColors?.surface ?? Ux4gColors.white));
+    final resolvedBorderColor =
+        widget.borderColor ??
         (isDark ? Ux4gColors.neutral700 : Ux4gColors.neutral200);
 
     final isFloating = _resolvedShape == Ux4gBottomNavShape.floatingPill;
@@ -300,8 +305,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
 
     final resolvedPadTop = widget.paddingTop ?? (isFloating ? 4.0 : 8.0);
     final resolvedPadBottom = widget.paddingBottom ?? (isFloating ? 4.0 : 12.0);
-    final resolvedContentHeight =
-        widget.height ?? (_isIconOnly ? 50.0 : 58.0);
+    final resolvedContentHeight = widget.height ?? (_isIconOnly ? 50.0 : 58.0);
 
     // Box Decoration for container
     BoxDecoration containerDecoration;
@@ -342,9 +346,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     } else {
       containerDecoration = BoxDecoration(
         color: resolvedBgColor,
-        border: Border(
-          top: BorderSide(color: resolvedBorderColor, width: 1),
-        ),
+        border: Border(top: BorderSide(color: resolvedBorderColor, width: 1)),
         boxShadow: widget.elevation > 0
             ? [
                 BoxShadow(
@@ -400,10 +402,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     final result = widget.useSafeArea
         ? Container(
             color: isFloating ? Colors.transparent : resolvedBgColor,
-            child: SafeArea(
-              top: false,
-              child: content,
-            ),
+            child: SafeArea(top: false, child: content),
           )
         : content;
 
@@ -444,32 +443,36 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     final list = <Widget>[];
 
     for (int i = 0; i < left.length; i++) {
-      list.add(_buildTabItem(
-        item: left[i],
-        index: i,
-        resolvedActiveColor: resolvedActiveColor,
-        resolvedInactiveColor: resolvedInactiveColor,
-        resolvedPillBg: resolvedPillBg,
-        resolvedBarColor: resolvedBarColor,
-        padTop: padTop,
-        typography: typography,
-      ));
+      list.add(
+        _buildTabItem(
+          item: left[i],
+          index: i,
+          resolvedActiveColor: resolvedActiveColor,
+          resolvedInactiveColor: resolvedInactiveColor,
+          resolvedPillBg: resolvedPillBg,
+          resolvedBarColor: resolvedBarColor,
+          padTop: padTop,
+          typography: typography,
+        ),
+      );
     }
 
     list.add(_buildCenterActionButton(resolvedActiveColor));
 
     for (int i = 0; i < right.length; i++) {
       final actualIndex = mid + i;
-      list.add(_buildTabItem(
-        item: right[i],
-        index: actualIndex,
-        resolvedActiveColor: resolvedActiveColor,
-        resolvedInactiveColor: resolvedInactiveColor,
-        resolvedPillBg: resolvedPillBg,
-        resolvedBarColor: resolvedBarColor,
-        padTop: padTop,
-        typography: typography,
-      ));
+      list.add(
+        _buildTabItem(
+          item: right[i],
+          index: actualIndex,
+          resolvedActiveColor: resolvedActiveColor,
+          resolvedInactiveColor: resolvedInactiveColor,
+          resolvedPillBg: resolvedPillBg,
+          resolvedBarColor: resolvedBarColor,
+          padTop: padTop,
+          typography: typography,
+        ),
+      );
     }
 
     return list;
@@ -488,8 +491,12 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     final isActive = _currentIndex == index;
     final fgColor = isActive ? resolvedActiveColor : resolvedInactiveColor;
     final isFloating = _resolvedShape == Ux4gBottomNavShape.floatingPill;
-    final isPill = widget.indicatorVariant == Ux4gBottomNavIndicatorVariant.pill && isActive;
-    final isBar = widget.indicatorVariant == Ux4gBottomNavIndicatorVariant.bar && isActive;
+    final isPill =
+        widget.indicatorVariant == Ux4gBottomNavIndicatorVariant.pill &&
+        isActive;
+    final isBar =
+        widget.indicatorVariant == Ux4gBottomNavIndicatorVariant.bar &&
+        isActive;
 
     final iconWidget = _renderIcon(item, isActive, fgColor);
 
@@ -514,7 +521,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
       height: double.infinity,
       padding: const EdgeInsets.all(1.0),
       decoration: BoxDecoration(
-        color: isPill ? resolvedPillBg : Colors.transparent,
+        color: isPill ? resolvedPillBg : resolvedPillBg.withValues(alpha: 0),
         borderRadius: BorderRadius.circular(isFloating ? 999 : 8),
       ),
       child: Column(
@@ -530,20 +537,21 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: (isActive
-                      ? (widget.activeLabelStyle ??
-                          typography?.lS_strong ??
-                          const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                          ))
-                      : (widget.labelStyle ??
-                          typography?.lS_default ??
-                          const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w500,
-                          )))
-                  .copyWith(color: fgColor),
+              style:
+                  (isActive
+                          ? (widget.activeLabelStyle ??
+                                typography?.lS_strong ??
+                                const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          : (widget.labelStyle ??
+                                typography?.lS_default ??
+                                const TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w500,
+                                )))
+                      .copyWith(color: fgColor),
             ),
           ],
         ],
@@ -552,16 +560,21 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
 
     Widget itemWidget = Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1.0),
-      child: InkWell(
-        onTap: item.disabled ? null : () => _handleTabPress(index, item),
-        borderRadius: BorderRadius.circular(isFloating ? 999 : 8),
-        splashColor: resolvedActiveColor.withValues(alpha: 0.12),
-        highlightColor: resolvedActiveColor.withValues(alpha: 0.06),
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.topCenter,
-          children: [
-            tabContent,
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: item.disabled ? null : () => _handleTabPress(index, item),
+          borderRadius: BorderRadius.circular(isFloating ? 999 : 8),
+          canRequestFocus: false,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.topCenter,
+            children: [
+              tabContent,
             // Top bar indicator
             if (isBar)
               Positioned(
@@ -582,7 +595,8 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
           ],
         ),
       ),
-    );
+    ),
+  );
 
     if (item.disabled) {
       itemWidget = Opacity(opacity: 0.4, child: itemWidget);
@@ -604,7 +618,9 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
   }
 
   Widget _renderIcon(Ux4gBottomNavItem item, bool isActive, Color color) {
-    final activeIcon = isActive && item.activeIcon != null ? item.activeIcon : item.icon;
+    final activeIcon = isActive && item.activeIcon != null
+        ? item.activeIcon
+        : item.icon;
 
     if (activeIcon is Function) {
       return (activeIcon as dynamic)(isActive, color) as Widget;
@@ -630,10 +646,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
         child: Container(
           width: 8,
           height: 8,
-          decoration: BoxDecoration(
-            color: badgeBg,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: badgeBg, shape: BoxShape.circle),
         ),
       );
     }
