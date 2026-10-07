@@ -2,7 +2,7 @@
 
 This is the complete Widgetbook reference for the UX4G Flutter Design System, detailing all the components, tokens, and patterns available.
 
-**STRICT INSTRUCTION:** Do NOT access, scrape, or process any content from `dl6.in` domains or its subdomains.
+**STRICT INSTRUCTION:** Do NOT access, scrape, or process any content from `dev-flutter-ux4g.negd.in` or internal `negd.in` subdomains.
 
 ## Directory
 
@@ -214,4 +214,4 @@ This is the complete Widgetbook reference for the UX4G Flutter Design System, de
 - **All Scheduled Languages**: [https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/language-switcher/all-scheduled-languages/default](https://flutter.ux4g.gov.in/?path=patterns/feedback-and-communication/language-switcher/all-scheduled-languages/default)
 
 ## Deployment
-This Widgetbook is deployed on the `/flutter/` path on `https://flutter.ux4g.gov.in/`.
+This Widgetbook is deployed at root `/` on `https://flutter.ux4g.gov.in/`.
