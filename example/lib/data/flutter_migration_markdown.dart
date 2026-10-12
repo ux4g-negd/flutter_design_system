@@ -44,7 +44,7 @@ Add `ux4g_flutter_components` to your Flutter project's `pubspec.yaml`:
 dependencies:
   flutter:
     sdk: flutter
-  ux4g_flutter_components: ^1.5.1 # Or use path / git reference
+  ux4g_flutter_components: ^1.5.2 # Or use path / git reference
 ```
 
 Run `flutter pub get`:

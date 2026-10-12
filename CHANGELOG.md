@@ -1,3 +1,17 @@
+## 1.5.2
+* **Component Bug Fixes & Improvements**:
+  * **Bottom Sheet (`Ux4gBottomSheet`)**:
+    * Fixed backdrop dismiss tap gesture handling using `HitTestBehavior.opaque` so tapping the backdrop background dismisses the sheet reliably.
+    * Improved description layout to auto-wrap long text descriptions across multiple lines without truncating.
+  * **Bottom Navigation Bar (`Ux4gBottomNavigationBar`)**:
+    * Fixed label truncation (e.g., "Services" clipping) on 5-item bars using responsive label scale-down (`FittedBox`).
+    * Fixed centre action FAB margin and padding clearance to avoid clipping against adjacent navigation items.
+* **Widgetbook & Documentation Updates**:
+  * **Side Menu (`Ux4gSideMenu`)**:
+    * Fixed modal drawer launch ("Launch Left Drawer" and "Launch Right Drawer") in the Introduction showcase to accurately open the currently selected preset.
+  * **Widgetbook Deep Linking**:
+    * Fixed deep linking and browser refresh issue for component and use-case paths containing `&` characters.
+
 ## 1.5.1
 * **Component Bug Fixes & Improvements**:
   * **Floating Action Button (`Ux4gFab`)**:

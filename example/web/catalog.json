@@ -1,7 +1,7 @@
 {
   "name": "UX4G Flutter Design System Widgetbook",
   "description": "Comprehensive Widgetbook catalog detailing all components, tokens, and patterns for the UX4G Flutter Design System.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "base_url": "https://flutter.ux4g.gov.in/",
   "categories": [
     {

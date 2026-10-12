@@ -2,7 +2,7 @@
 
 ## Context
 
-I have an existing Flutter application that currently uses [Current UI Library: Flutter Material 3 (M3) / Material 2 / Cupertino (iOS) / Custom Widgets]. I need to migrate it to the **UX4G Flutter Design System** (`ux4g_flutter_components` package v1.5.1+) **without altering my existing application flow, working functionality, custom color combinations, brand theme, or typography hierarchy**.
+I have an existing Flutter application that currently uses [Current UI Library: Flutter Material 3 (M3) / Material 2 / Cupertino (iOS) / Custom Widgets]. I need to migrate it to the **UX4G Flutter Design System** (`ux4g_flutter_components` package v1.5.2+) **without altering my existing application flow, working functionality, custom color combinations, brand theme, or typography hierarchy**.
 
 ## Project Details
 
@@ -414,7 +414,7 @@ Ux4gCard(
 
 1. **Step 1 — Codebase & Dependency Audit**:
    - Inspect `pubspec.yaml`, dependencies, state management architecture, and custom styling patterns.
-   - Add `ux4g_flutter_components: ^1.5.1` to `pubspec.yaml` and run `flutter pub get`.
+   - Add `ux4g_flutter_components: ^1.5.2` to `pubspec.yaml` and run `flutter pub get`.
 
 2. **Step 2 — Safe Theme Setup**:
    - Keep existing `ThemeData` intact and add UX4G theme extensions non-destructively so existing material theme functionality remains 100% unaffected.
@@ -449,4 +449,4 @@ Begin by inspecting my Flutter project structure. Present a structured screen-by
 
 ---
 
-*UX4G Flutter Design System | ux4g_flutter_components v1.5.1 | National e-Governance Division (NeGD) | Government of India*
+*UX4G Flutter Design System | ux4g_flutter_components v1.5.2 | National e-Governance Division (NeGD) | Government of India*
