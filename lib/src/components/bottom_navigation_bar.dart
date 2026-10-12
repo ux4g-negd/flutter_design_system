@@ -453,6 +453,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
           resolvedBarColor: resolvedBarColor,
           padTop: padTop,
           typography: typography,
+          marginRight: i == left.length - 1 ? 4.0 : 0.0,
         ),
       );
     }
@@ -471,6 +472,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
           resolvedBarColor: resolvedBarColor,
           padTop: padTop,
           typography: typography,
+          marginLeft: i == 0 ? 4.0 : 0.0,
         ),
       );
     }
@@ -487,6 +489,8 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     required Color resolvedBarColor,
     required double padTop,
     required Ux4gTypography? typography,
+    double marginLeft = 0.0,
+    double marginRight = 0.0,
   }) {
     final isActive = _currentIndex == index;
     final fgColor = isActive ? resolvedActiveColor : resolvedInactiveColor;
@@ -532,26 +536,32 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
           iconWithBadge,
           if (!_isIconOnly) ...[
             const SizedBox(height: 3),
-            Text(
-              item.label,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style:
-                  (isActive
-                          ? (widget.activeLabelStyle ??
-                                typography?.lS_strong ??
-                                const TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                ))
-                          : (widget.labelStyle ??
-                                typography?.lS_default ??
-                                const TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                )))
-                      .copyWith(color: fgColor),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.center,
+                child: Text(
+                  item.label,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  style:
+                      (isActive
+                              ? (widget.activeLabelStyle ??
+                                    typography?.lS_strong ??
+                                    const TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w600,
+                                    ))
+                              : (widget.labelStyle ??
+                                    typography?.lS_default ??
+                                    const TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w500,
+                                    )))
+                          .copyWith(color: fgColor),
+                ),
+              ),
             ),
           ],
         ],
@@ -559,7 +569,10 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     );
 
     Widget itemWidget = Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 1.0),
+      padding: EdgeInsets.only(
+        left: 1.0 + marginLeft,
+        right: 1.0 + marginRight,
+      ),
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
@@ -719,7 +732,7 @@ class _Ux4gBottomNavigationBarState extends State<Ux4gBottomNavigationBar> {
     );
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Center(child: btn),
     );
   }

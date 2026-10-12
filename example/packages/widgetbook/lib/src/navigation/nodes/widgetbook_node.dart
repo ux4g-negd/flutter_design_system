@@ -47,8 +47,10 @@ abstract class WidgetbookNode {
   String get path => nodesPath
       .map((pathNode) => pathNode.name)
       .join('/')
+      .replaceAll('&', 'and')
       .replaceAll(' ', '-')
       .toLowerCase()
+      .replaceAll(RegExp(r'-+'), '-')
       .replaceFirst('/', '');
 
   /// Gets the nodes path from root to this node.

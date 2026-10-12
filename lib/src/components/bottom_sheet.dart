@@ -315,52 +315,67 @@ class Ux4gBottomSheet extends StatefulWidget {
       barrierColor: resolvedScrim,
       backgroundColor: Colors.transparent,
       builder: (modalContext) {
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 640),
-            child: Ux4gBottomSheet(
-              onDismiss: () {
-                if (Navigator.of(modalContext).canPop()) {
-                  Navigator.of(modalContext).pop();
+        final canDismiss = isDismissible && dismissOnBackdropPress;
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: canDismiss
+              ? () {
+                  if (Navigator.of(modalContext).canPop()) {
+                    Navigator.of(modalContext).pop();
+                  }
                 }
-              },
-              size: effectiveSize,
-              height: height,
-              showHeader: showHeader,
-              title: effectiveTitle,
-              description: description,
-              subtleText: effectiveSubtle,
-              icon: effectiveIcon,
-              showCloseButton: showCloseButton,
-              onCloseClick: onCloseClick,
-              showHeaderDivider: showHeaderDivider,
-              content: content,
-              scrollable: scrollable,
-              showBottomDivider: showBottomDivider,
-              showDividers: showDividers,
-              showFooter: showFooter,
-              showPrimaryButton: showPrimaryButton,
-              showSecondaryButton: showSecondaryButton,
-              primaryButtonText: primaryButtonText,
-              secondaryButtonText: secondaryButtonText,
-              onPrimaryPress: effectivePrimaryClick,
-              onSecondaryPress: effectiveSecondaryClick,
-              isDestructive: isDestructive,
-              footerAlign: effectiveFooterAlign,
-              footerContent: footerContent,
-              footerType: footerType,
-              isDraggable: effectiveDraggable,
-              enableDragToExpand: enableDragToExpand,
-              snapPoints: snapPoints,
-              onSnapChange: onSnapChange,
-              showDragHandle: showDragHandle,
-              backgroundColor: effectiveBg,
-              cornerRadius: cornerRadius,
-              contentPadding: contentPadding,
-              titleStyle: titleStyle,
-              descriptionStyle: descriptionStyle,
-              children: children,
+              : null,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 640),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {}, // Absorb taps within the sheet to prevent backdrop dismissal
+                child: Ux4gBottomSheet(
+                  onDismiss: () {
+                    if (Navigator.of(modalContext).canPop()) {
+                      Navigator.of(modalContext).pop();
+                    }
+                  },
+                  size: effectiveSize,
+                  height: height,
+                  showHeader: showHeader,
+                  title: effectiveTitle,
+                  description: description,
+                  subtleText: effectiveSubtle,
+                  icon: effectiveIcon,
+                  showCloseButton: showCloseButton,
+                  onCloseClick: onCloseClick,
+                  showHeaderDivider: showHeaderDivider,
+                  content: content,
+                  scrollable: scrollable,
+                  showBottomDivider: showBottomDivider,
+                  showDividers: showDividers,
+                  showFooter: showFooter,
+                  showPrimaryButton: showPrimaryButton,
+                  showSecondaryButton: showSecondaryButton,
+                  primaryButtonText: primaryButtonText,
+                  secondaryButtonText: secondaryButtonText,
+                  onPrimaryPress: effectivePrimaryClick,
+                  onSecondaryPress: effectiveSecondaryClick,
+                  isDestructive: isDestructive,
+                  footerAlign: effectiveFooterAlign,
+                  footerContent: footerContent,
+                  footerType: footerType,
+                  isDraggable: effectiveDraggable,
+                  enableDragToExpand: enableDragToExpand,
+                  snapPoints: snapPoints,
+                  onSnapChange: onSnapChange,
+                  showDragHandle: showDragHandle,
+                  backgroundColor: effectiveBg,
+                  cornerRadius: cornerRadius,
+                  contentPadding: contentPadding,
+                  titleStyle: titleStyle,
+                  descriptionStyle: descriptionStyle,
+                  children: children,
+                ),
+              ),
             ),
           ),
         );
@@ -744,8 +759,6 @@ class _Ux4gBottomSheetState extends State<Ux4gBottomSheet>
                                       const SizedBox(height: 2),
                                       Text(
                                         widget.description!,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
                                         style: (widget.descriptionStyle ??
                                                 ux4gTypography?.bS_default ??
                                                 const TextStyle(

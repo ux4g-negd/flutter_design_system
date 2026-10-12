@@ -88,10 +88,16 @@ class _BottomNavIntroductionShowcaseState
 
   final List<int> _selectedIndices = [0, 0, 0, 0];
 
-  void _onTabSelected(int variantIndex, int tabIndex, String label, String variantName) {
+  void _onTabSelected(
+    int variantIndex,
+    int tabIndex,
+    String label,
+    String variantName,
+  ) {
     setState(() {
       _selectedIndices[variantIndex] = tabIndex;
-      _lastActionMessage = '[$variantName] selected tab "$label" (index $tabIndex)';
+      _lastActionMessage =
+          '[$variantName] selected tab "$label" (index $tabIndex)';
     });
   }
 
@@ -133,7 +139,10 @@ class _BottomNavIntroductionShowcaseState
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: primary.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(6),
@@ -162,16 +171,25 @@ class _BottomNavIntroductionShowcaseState
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              color: isDark
+                                  ? Colors.white
+                                  : const Color(0xFF0F172A),
                             ),
                           ),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 2,
+                            ),
                             decoration: BoxDecoration(
-                              color: isDark ? Colors.white10 : Colors.grey.shade100,
+                              color: isDark
+                                  ? Colors.white10
+                                  : Colors.grey.shade100,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: isDark ? Colors.white24 : Colors.grey.shade300,
+                                color: isDark
+                                    ? Colors.white24
+                                    : Colors.grey.shade300,
                               ),
                             ),
                             child: Text(
@@ -179,7 +197,9 @@ class _BottomNavIntroductionShowcaseState
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
-                                color: isDark ? Colors.white70 : Colors.grey[700],
+                                color: isDark
+                                    ? Colors.white70
+                                    : Colors.grey[700],
                               ),
                             ),
                           ),
@@ -207,10 +227,14 @@ class _BottomNavIntroductionShowcaseState
               color: isDark ? const Color(0xFF161925) : const Color(0xFFF1F5F9),
               border: Border(
                 top: BorderSide(
-                  color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+                  color: isDark
+                      ? const Color(0xFF2D3348)
+                      : Colors.grey.shade200,
                 ),
                 bottom: BorderSide(
-                  color: isDark ? const Color(0xFF2D3348) : Colors.grey.shade200,
+                  color: isDark
+                      ? const Color(0xFF2D3348)
+                      : Colors.grey.shade200,
                 ),
               ),
             ),
@@ -273,7 +297,9 @@ class _BottomNavIntroductionShowcaseState
             child: Container(
               padding: EdgeInsets.all(isCompact ? 14.0 : 24.0),
               decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF161925) : const Color(0xFFF9FAFB),
+                color: isDark
+                    ? const Color(0xFF161925)
+                    : const Color(0xFFF9FAFB),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Column(
@@ -287,7 +313,10 @@ class _BottomNavIntroductionShowcaseState
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: primary.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(20),
@@ -304,9 +333,12 @@ class _BottomNavIntroductionShowcaseState
                       ),
                       Text(
                         'Bottom Navigation Bar',
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(
                               fontWeight: FontWeight.bold,
-                              color: isDark ? Colors.white : const Color(0xFF0F172A),
+                              color: isDark
+                                  ? Colors.white
+                                  : const Color(0xFF0F172A),
                             ),
                       ),
                     ],
@@ -315,15 +347,18 @@ class _BottomNavIntroductionShowcaseState
                   Text(
                     'Explore the 4 primary UX4G bottom navigation styles featuring responsive layout shapes, active indicator animations, notification badges, and center actions.',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: isDark ? Colors.white60 : Colors.grey[700],
-                        ),
+                      color: isDark ? Colors.white60 : Colors.grey[700],
+                    ),
                   ),
                   const SizedBox(height: 16),
 
                   // Action feedback bar
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: primary.withValues(alpha: 0.08),
                       borderRadius: BorderRadius.circular(8),
@@ -331,7 +366,11 @@ class _BottomNavIntroductionShowcaseState
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.touch_app_outlined, size: 16, color: primary),
+                        Icon(
+                          Icons.touch_app_outlined,
+                          size: 16,
+                          color: primary,
+                        ),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
@@ -355,7 +394,8 @@ class _BottomNavIntroductionShowcaseState
                     number: '1',
                     title: 'Standard Labelled',
                     badgeText: 'Pill Indicator',
-                    description: 'Full width bar with icons, text labels, and purple capsule pill highlight.',
+                    description:
+                        'Full width bar with icons, text labels, and purple capsule pill highlight.',
                     isDark: isDark,
                     primary: primary,
                     navBar: Ux4gBottomNavigationBar(
@@ -379,7 +419,8 @@ class _BottomNavIntroductionShowcaseState
                     number: '2',
                     title: 'Top Rounded Shape',
                     badgeText: 'Bar Indicator + Badge',
-                    description: 'Curved top corners, top line indicator bar, and high-contrast unread count badge.',
+                    description:
+                        'Curved top corners, top line indicator bar, and high-contrast unread count badge.',
                     isDark: isDark,
                     primary: primary,
                     navBar: Ux4gBottomNavigationBar(
@@ -403,7 +444,8 @@ class _BottomNavIntroductionShowcaseState
                     number: '3',
                     title: 'Centre Action (FAB)',
                     badgeText: 'Central Action Button',
-                    description: '4 navigation destinations with an elevated prominent central circular action button.',
+                    description:
+                        '4 navigation destinations with an elevated prominent central circular action button.',
                     isDark: isDark,
                     primary: primary,
                     navBar: Ux4gBottomNavigationBar(
@@ -418,7 +460,8 @@ class _BottomNavIntroductionShowcaseState
                       centerAction: Ux4gBottomNavCenterAction(
                         onPressed: () {
                           setState(() {
-                            _lastActionMessage = '[Centre Action] Prominent (+) action button tapped!';
+                            _lastActionMessage =
+                                '[Centre Action] Prominent (+) action button tapped!';
                           });
                         },
                         tooltip: 'Create New Application',
@@ -435,7 +478,8 @@ class _BottomNavIntroductionShowcaseState
                     number: '4',
                     title: 'Floating Pill Bar',
                     badgeText: 'Detached Capsule',
-                    description: 'Modern detached pill navigation bar with rounded borders and ambient shadow.',
+                    description:
+                        'Modern detached pill navigation bar with rounded borders and ambient shadow.',
                     isDark: isDark,
                     primary: primary,
                     navBar: Padding(
@@ -470,19 +514,22 @@ const _bottomNavProps = [
     name: 'variant',
     type: 'Ux4gBottomNavVariant',
     defaultValue: 'labelled',
-    description: 'Layout & shape variant (labelled, topRounded, iconOnly, centreAction, floatingPill).',
+    description:
+        'Layout & shape variant (labelled, topRounded, iconOnly, centreAction, floatingPill).',
   ),
   PropRow(
     name: 'indicatorVariant',
     type: 'Ux4gBottomNavIndicatorVariant',
     defaultValue: 'pill',
-    description: 'Active tab indicator style (pill capsule, bar top line, plain tinted).',
+    description:
+        'Active tab indicator style (pill capsule, bar top line, plain tinted).',
   ),
   PropRow(
     name: 'items',
     type: 'List<Ux4gBottomNavItem>',
     defaultValue: '[]',
-    description: 'List of navigation items with icons, active icons, labels, and badges.',
+    description:
+        'List of navigation items with icons, active icons, labels, and badges.',
     required: true,
   ),
   PropRow(
@@ -522,10 +569,7 @@ const _bottomNavProps = [
 Widget _buildResponsiveContainer(Widget child) {
   return ConstrainedBox(
     constraints: const BoxConstraints(maxWidth: 420),
-    child: SizedBox(
-      width: double.infinity,
-      child: child,
-    ),
+    child: SizedBox(width: double.infinity, child: child),
   );
 }
 
@@ -539,7 +583,7 @@ final bottomNavigationIntroductionComponent = WidgetbookComponent(
       builder: (context) => const ComponentDocs(
         name: 'Bottom Navigation Bar',
         description:
-            'Ux4gBottomNavigationBar provides accessible, mobile-first bottom navigation supporting 5 shape styles, 3 active indicators, badges, and prominent center action buttons.',
+            'Ux4gBottomNavigationBar provides accessible, mobile-first bottom navigation supporting 4 shape styles, 3 active indicators, badges, and prominent center action buttons.',
         showPreview: false,
         child: _BottomNavIntroductionShowcase(),
       ),
@@ -581,7 +625,8 @@ final bottomNavLabelledComponent = WidgetbookComponent(
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.labelled,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
                   items: _buildStandardItems(alertsBadge: 3),
@@ -614,7 +659,8 @@ final bottomNavLabelledComponent = WidgetbookComponent(
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.labelled,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.bar,
                   items: _buildStandardItems(alertsBadge: 3),
@@ -647,7 +693,8 @@ final bottomNavLabelledComponent = WidgetbookComponent(
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.labelled,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.plain,
                   items: _buildStandardItems(alertsBadge: 3),
@@ -688,7 +735,8 @@ final bottomNavTopRoundedComponent = WidgetbookComponent(
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.topRounded,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.bar,
                   items: _buildStandardItems(alertsBadge: 99),
@@ -708,11 +756,13 @@ final bottomNavTopRoundedComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Top Rounded — Pill Indicator',
-              description: 'Top-rounded shape combined with active pill capsule indicator.',
+              description:
+                  'Top-rounded shape combined with active pill capsule indicator.',
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.topRounded,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
                   items: _buildStandardItems(alertsBadge: 5),
@@ -754,7 +804,8 @@ final bottomNavIconOnlyComponent = WidgetbookComponent(
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.iconOnly,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
                   showLabels: false,
@@ -775,11 +826,13 @@ final bottomNavIconOnlyComponent = WidgetbookComponent(
           builder: (ctx, setState) {
             return ComponentDocs(
               name: 'Icon Only — Bar Indicator',
-              description: 'Minimalist icon-only navigation with top bar indicator line.',
+              description:
+                  'Minimalist icon-only navigation with top bar indicator line.',
               child: _buildResponsiveContainer(
                 Ux4gBottomNavigationBar(
                   selectedIndex: selectedIndex,
-                  onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                  onTabChange: (idx, item) =>
+                      setState(() => selectedIndex = idx),
                   variant: Ux4gBottomNavVariant.iconOnly,
                   indicatorVariant: Ux4gBottomNavIndicatorVariant.bar,
                   showLabels: false,
@@ -837,7 +890,10 @@ final bottomNavCentreActionComponent = WidgetbookComponent(
                   children: [
                     Container(
                       margin: const EdgeInsets.only(bottom: 12),
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFF4F46E5).withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(6),
@@ -865,7 +921,8 @@ final bottomNavCentreActionComponent = WidgetbookComponent(
                       centerAction: Ux4gBottomNavCenterAction(
                         onPressed: () {
                           setState(() {
-                            fabMessage = 'FAB pressed! Quick create modal triggered.';
+                            fabMessage =
+                                'FAB pressed! Quick create modal triggered.';
                           });
                         },
                         tooltip: 'Create New Item',
@@ -911,7 +968,8 @@ final bottomNavFloatingPillComponent = WidgetbookComponent(
                   padding: const EdgeInsets.all(8.0),
                   child: Ux4gBottomNavigationBar(
                     selectedIndex: selectedIndex,
-                    onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                    onTabChange: (idx, item) =>
+                        setState(() => selectedIndex = idx),
                     variant: Ux4gBottomNavVariant.floatingPill,
                     indicatorVariant: Ux4gBottomNavIndicatorVariant.pill,
                     items: _buildStandardItems(alertsBadge: null),
@@ -938,7 +996,8 @@ final bottomNavFloatingPillComponent = WidgetbookComponent(
                   padding: const EdgeInsets.all(8.0),
                   child: Ux4gBottomNavigationBar(
                     selectedIndex: selectedIndex,
-                    onTabChange: (idx, item) => setState(() => selectedIndex = idx),
+                    onTabChange: (idx, item) =>
+                        setState(() => selectedIndex = idx),
                     variant: Ux4gBottomNavVariant.floatingPill,
                     indicatorVariant: Ux4gBottomNavIndicatorVariant.bar,
                     items: _buildStandardItems(alertsBadge: null),
@@ -997,7 +1056,10 @@ Ux4gBottomNavigationBar(
                   children: [
                     const Text(
                       'Pill Capsule Indicator',
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 6),
                     Ux4gBottomNavigationBar(
@@ -1011,7 +1073,10 @@ Ux4gBottomNavigationBar(
                     const SizedBox(height: 20),
                     const Text(
                       'Bar Top Line Indicator',
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 6),
                     Ux4gBottomNavigationBar(
@@ -1025,12 +1090,16 @@ Ux4gBottomNavigationBar(
                     const SizedBox(height: 20),
                     const Text(
                       'Plain Active Tint Indicator',
-                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const SizedBox(height: 6),
                     Ux4gBottomNavigationBar(
                       selectedIndex: plainIdx,
-                      onTabChange: (idx, item) => setState(() => plainIdx = idx),
+                      onTabChange: (idx, item) =>
+                          setState(() => plainIdx = idx),
                       variant: Ux4gBottomNavVariant.labelled,
                       indicatorVariant: Ux4gBottomNavIndicatorVariant.plain,
                       items: _buildStandardItems(alertsBadge: 3),

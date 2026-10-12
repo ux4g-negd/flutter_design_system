@@ -116,117 +116,128 @@ class _SideMenuShowcaseWidgetState extends State<_SideMenuShowcaseWidget> {
     '6. Citizen Simple Navigation',
   ];
 
-  Widget _buildPresetWidget(int index) {
+  Widget _buildPresetWidget(
+    int index, {
+    VoidCallback? onClose,
+    bool isModal = false,
+  }) {
+    final prefix = isModal ? 'Modal Drawer: ' : '';
     switch (index) {
       case 1:
         return Ux4gSideMenuPresets.officerInbox(
+          onClose: onClose,
           name: 'Ramesh Kumar',
           email: 'ramesh.kumar@gov.in',
           division: 'Kanpur division',
           onItemSelected: (item) {
             setState(() {
-              _actionLog = 'Selected mailbox: "${item.label}" (${item.key})';
+              _actionLog = '${prefix}Selected mailbox: "${item.label}" (${item.key})';
             });
           },
           onCustomizeInbox: () {
             setState(() {
-              _actionLog = 'Action tapped: "Customize inbox"';
+              _actionLog = '${prefix}Action tapped: "Customize inbox"';
             });
           },
           onSignOut: () {
             setState(() {
-              _actionLog = 'Action tapped: "Sign out"';
+              _actionLog = '${prefix}Action tapped: "Sign out"';
             });
           },
         );
       case 2:
         return Ux4gSideMenuPresets.citizenProfile(
+          onClose: onClose,
           name: 'Ramesh Kumar',
           role: 'Citizen',
           metaText: '12 applications · 3 actions required',
           onViewProfile: () {
             setState(() {
-              _actionLog = 'Action tapped: "View profile" button';
+              _actionLog = '${prefix}Action tapped: "View profile" button';
             });
           },
           onItemSelected: (item) {
             setState(() {
-              _actionLog = 'Selected profile item: "${item.label}"';
+              _actionLog = '${prefix}Selected profile item: "${item.label}"';
             });
           },
           onSignOut: () {
             setState(() {
-              _actionLog = 'Action tapped: "Sign out"';
+              _actionLog = '${prefix}Action tapped: "Sign out"';
             });
           },
         );
       case 3:
         return Ux4gSideMenuPresets.actionRequired(
+          onClose: onClose,
           title: 'Revenue Department',
           subtitle: 'Kanpur division',
           onVerifyAadhaar: () {
             setState(() {
-              _actionLog = 'Action card CTA tapped: "Verify now"';
+              _actionLog = '${prefix}Action card CTA tapped: "Verify now"';
             });
           },
           onItemSelected: (item) {
             setState(() {
-              _actionLog = 'Selected menu item: "${item.label}"';
+              _actionLog = '${prefix}Selected menu item: "${item.label}"';
             });
           },
         );
       case 4:
         return Ux4gSideMenuPresets.departmentSwitcher(
+          onClose: onClose,
           title: 'Departments',
           subtitle: 'Choose a department to work in.',
           selectedDepartmentKey: 'dept-revenue',
           onSelectDepartment: (dept) {
             setState(() {
-              _actionLog = 'Switched to department: "${dept.label}"';
+              _actionLog = '${prefix}Switched to department: "${dept.label}"';
             });
           },
           onRequestAccess: () {
             setState(() {
-              _actionLog = 'Action tapped: "+ Request department access"';
+              _actionLog = '${prefix}Action tapped: "+ Request department access"';
             });
           },
           onSettings: () {
             setState(() {
-              _actionLog = 'Action tapped: "Settings"';
+              _actionLog = '${prefix}Action tapped: "Settings"';
             });
           },
           onHelp: () {
             setState(() {
-              _actionLog = 'Action tapped: "Help & support"';
+              _actionLog = '${prefix}Action tapped: "Help & support"';
             });
           },
         );
       case 5:
         return Ux4gSideMenuPresets.citizenSimple(
+          onClose: onClose,
           name: 'Ramesh Kumar',
           role: 'Citizen',
           onItemSelected: (item) {
             setState(() {
-              _actionLog = 'Selected item: "${item.label}"';
+              _actionLog = '${prefix}Selected item: "${item.label}"';
             });
           },
           onSignOut: () {
             setState(() {
-              _actionLog = 'Action tapped: "Sign out"';
+              _actionLog = '${prefix}Action tapped: "Sign out"';
             });
           },
         );
       case 0:
       default:
         return Ux4gSideMenuPresets.standard(
+          onClose: onClose,
           onItemSelected: (item) {
             setState(() {
-              _actionLog = 'Selected navigation item: "${item.label}" (${item.key})';
+              _actionLog = '${prefix}Selected navigation item: "${item.label}" (${item.key})';
             });
           },
           onSignOut: () {
             setState(() {
-              _actionLog = 'Action tapped: "Sign out"';
+              _actionLog = '${prefix}Action tapped: "Sign out"';
             });
           },
         );
@@ -234,16 +245,41 @@ class _SideMenuShowcaseWidgetState extends State<_SideMenuShowcaseWidget> {
   }
 
   void _launchModal(BuildContext context, Ux4gSideMenuPosition position) {
-    Ux4gSideMenu.show(
-      context,
-      position: position,
-      title: 'Revenue Department',
-      subtitle: 'Government of India',
-      showSearch: true,
-      onItemSelected: (item) {
-        setState(() {
-          _actionLog = 'Modal Drawer: selected "${item.label}"';
-        });
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Dismiss Side Menu',
+      barrierColor: const Color(0x80000000),
+      transitionDuration: const Duration(milliseconds: 280),
+      pageBuilder: (dialogContext, animation, secondaryAnimation) {
+        return Align(
+          alignment: position == Ux4gSideMenuPosition.left
+              ? Alignment.centerLeft
+              : Alignment.centerRight,
+          child: Material(
+            color: Colors.transparent,
+            child: _buildPresetWidget(
+              _selectedPreset,
+              onClose: () => Navigator.of(dialogContext).pop(),
+              isModal: true,
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        final curve = CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeOutCubic,
+          reverseCurve: Curves.easeInCubic,
+        );
+        final offsetTween = position == Ux4gSideMenuPosition.left
+            ? Tween<Offset>(begin: const Offset(-1, 0), end: Offset.zero)
+            : Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero);
+
+        return SlideTransition(
+          position: offsetTween.animate(curve),
+          child: child,
+        );
       },
     );
   }

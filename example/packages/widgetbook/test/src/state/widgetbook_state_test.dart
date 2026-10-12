@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:widgetbook/src/knobs/string_knob.dart';
 import 'package:widgetbook/src/routing/routing.dart';
@@ -277,6 +278,51 @@ void main() {
               ),
             ),
           );
+        },
+      );
+
+      test(
+        'given a use case with ampersand in the name, '
+        'resolves useCase via exact, ampersand, or truncated path',
+        () {
+          final targetUseCase = WidgetbookUseCase(
+            name: 'Overview & Presets',
+            builder: (_) => Container(),
+          );
+          final root = WidgetbookRoot(
+            children: [
+              WidgetbookFolder(
+                name: 'Bottom Sheet',
+                children: [
+                  WidgetbookComponent(
+                    name: 'Introduction',
+                    useCases: [targetUseCase],
+                  ),
+                ],
+              ),
+            ],
+          );
+
+          // 1. Clean generated path ('overview-and-presets')
+          final stateClean = WidgetbookState(
+            path: 'bottom-sheet/introduction/overview-and-presets',
+            root: root,
+          );
+          expect(stateClean.useCase, equals(targetUseCase));
+
+          // 2. Encoded / raw path with ampersand ('overview-&-presets')
+          final stateAmp = WidgetbookState(
+            path: 'bottom-sheet/introduction/overview-&-presets',
+            root: root,
+          );
+          expect(stateAmp.useCase, equals(targetUseCase));
+
+          // 3. Truncated path when unescaped & splits query param ('overview-')
+          final stateTruncated = WidgetbookState(
+            path: 'bottom-sheet/introduction/overview-',
+            root: root,
+          );
+          expect(stateTruncated.useCase, equals(targetUseCase));
         },
       );
     },

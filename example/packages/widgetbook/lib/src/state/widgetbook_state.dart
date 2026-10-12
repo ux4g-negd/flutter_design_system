@@ -156,7 +156,24 @@ class WidgetbookState extends ChangeNotifier {
 
   /// Returns the current [WidgetbookUseCase] based on the [path].
   /// If the [path] is not found, it returns `null`.
-  WidgetbookUseCase? get useCase => path == null ? null : root.table[path!];
+  WidgetbookUseCase? get useCase {
+    if (path == null) return null;
+    final exact = root.table[path!];
+    if (exact != null) return exact;
+
+    final normalized = path!.replaceAll('&', 'and').replaceAll(RegExp(r'-+'), '-');
+    final normMatch = root.table[normalized];
+    if (normMatch != null) return normMatch;
+
+    // If an unescaped '&' truncated the path (e.g. 'overview-'), match by prefix
+    final prefix = path!.endsWith('-') ? path! : '$path-';
+    for (final entry in root.table.entries) {
+      if (entry.key.startsWith(prefix) || entry.key.replaceAll('and', '&').startsWith(prefix)) {
+        return entry.value;
+      }
+    }
+    return null;
+  }
 
   /// Same as [addons] but without the ones that have no fields.
   @internal

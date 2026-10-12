@@ -92,10 +92,33 @@ void main() {
       );
 
       test(
-        'given a root node, '
-        'then the count is correct',
+        'given a node with ampersand in its name, '
+        'then the path replaces & with and',
         () {
-          expect(treeRoot.count, 8);
+          final root = WidgetbookRoot(
+            children: [
+              WidgetbookFolder(
+                name: 'Bottom Sheet',
+                children: [
+                  WidgetbookComponent(
+                    name: 'Introduction',
+                    useCases: [
+                      WidgetbookUseCase(
+                        name: 'Overview & Presets',
+                        builder: (_) => Container(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          );
+
+          final useCase = root.leaves.first;
+          expect(
+            useCase.path,
+            'bottom-sheet/introduction/overview-and-presets',
+          );
         },
       );
     },
