@@ -90,10 +90,14 @@ import 'stories/feedback_and_communication/contact_and_support/find_service_cent
 import 'stories/feedback_and_communication/contact_and_support/was_this_helpful_stories.dart';
 import 'stories/feedback_and_communication/language_switcher/language_switcher_stories.dart';
 import 'stories/feedback_and_communication/language_switcher/inline_language_toggle_stories.dart';
+import 'package:flutter/rendering.dart';
 import 'stories/feedback_and_communication/language_switcher/translation_unavailable_stories.dart';
 import 'stories/feedback_and_communication/language_switcher/all_scheduled_languages_stories.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Force Flutter Web to generate and expose the browser accessibility / semantics tree
+  SemanticsBinding.instance.ensureSemantics();
   runApp(const UX4GWidgetbook());
 }
 
