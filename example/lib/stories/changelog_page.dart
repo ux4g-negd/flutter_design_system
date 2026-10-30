@@ -192,23 +192,31 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
             builder: (context, constraints) {
               final isDesktop = constraints.maxWidth >= 960;
               final isTablet = constraints.maxWidth >= 640 && !isDesktop;
+              final isSmallMobile = constraints.maxWidth < 400;
+
+              final double hPadding = isDesktop
+                  ? 48.0
+                  : (isTablet ? 28.0 : (isSmallMobile ? 12.0 : 18.0));
+              final double vPadding = isDesktop ? 48.0 : (isTablet ? 30.0 : 20.0);
               final maxW = constraints.maxWidth > 1160 ? 1160.0 : constraints.maxWidth;
 
               return SingleChildScrollView(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isDesktop ? 48 : (isTablet ? 32 : 18),
-                  vertical: isDesktop ? 48 : 28,
+                  horizontal: hPadding,
+                  vertical: vPadding,
                 ),
                 child: Center(
                   child: ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: maxW),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // ── Header ──────────────────────────────────────────────
                         _buildHeader(
                           context,
                           isDesktop,
+                          isTablet,
+                          isSmallMobile,
                           isDark,
                           onSurface,
                           subColor,
@@ -218,13 +226,15 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                           latestRelease,
                         ),
 
-                        const SizedBox(height: 28),
+                        SizedBox(height: isSmallMobile ? 20 : 28),
 
                         // ── Spotlight Card for Latest Version ───────────────────
                         if (showSpotlight) ...[
                           _buildSpotlightCard(
                             context,
                             isDesktop,
+                            isTablet,
+                            isSmallMobile,
                             isDark,
                             cardBg,
                             borderColor,
@@ -234,13 +244,15 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                             primaryAccent,
                             latestRelease,
                           ),
-                          const SizedBox(height: 28),
+                          SizedBox(height: isSmallMobile ? 20 : 28),
                         ],
 
                         // ── Controls & Filters Bar ──────────────────────────────
                         _buildControlsCard(
                           context,
                           isDesktop,
+                          isTablet,
+                          isSmallMobile,
                           isDark,
                           cardBg,
                           borderColor,
@@ -249,7 +261,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                           primary,
                         ),
 
-                        const SizedBox(height: 28),
+                        SizedBox(height: isSmallMobile ? 20 : 28),
 
                         // ── Timeline / Releases List ────────────────────────────
                         if (filteredReleases.isEmpty)
@@ -257,11 +269,13 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                         else
                           ...filteredReleases.map(
                             (release) => Padding(
-                              padding: const EdgeInsets.only(bottom: 24),
+                              padding: EdgeInsets.only(bottom: isSmallMobile ? 16 : 24),
                               child: _buildReleaseCard(
                                 context,
                                 release,
                                 isDesktop,
+                                isTablet,
+                                isSmallMobile,
                                 isDark,
                                 cardBg,
                                 borderColor,
@@ -272,7 +286,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                             ),
                           ),
 
-                        const SizedBox(height: 48),
+                        SizedBox(height: isSmallMobile ? 32 : 48),
 
                         // ── Footer ──────────────────────────────────────────────
                         _buildFooter(isDark, subColor, primary),
@@ -293,6 +307,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
   Widget _buildHeader(
     BuildContext context,
     bool isDesktop,
+    bool isTablet,
+    bool isSmallMobile,
     bool isDark,
     Color onSurface,
     Color subColor,
@@ -306,8 +322,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
       children: [
         // Top Badges Row
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
+          spacing: 8,
+          runSpacing: 8,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             // UX4G Design System badge with live pulse dot
@@ -403,13 +419,13 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
           ],
         ),
 
-        const SizedBox(height: 18),
+        SizedBox(height: isSmallMobile ? 12 : 18),
 
         // Title
         Text(
           'Changes Logs',
           style: TextStyle(
-            fontSize: isDesktop ? 38 : 28,
+            fontSize: isDesktop ? 38 : (isTablet ? 30 : (isSmallMobile ? 24 : 26)),
             fontWeight: FontWeight.w900,
             letterSpacing: -0.8,
             color: onSurface,
@@ -425,14 +441,14 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
           child: Text(
             'Keep track of recent updates, new components, bug fixes, enhancements, and breaking changes across every release of the UX4G Flutter component library.',
             style: TextStyle(
-              fontSize: isDesktop ? 16 : 14.5,
+              fontSize: isDesktop ? 16 : (isSmallMobile ? 13.5 : 14.5),
               color: subColor,
               height: 1.55,
             ),
           ),
         ),
 
-        const SizedBox(height: 20),
+        SizedBox(height: isSmallMobile ? 16 : 20),
 
         // Action Buttons Row (flutter pub add command)
         Wrap(
@@ -448,6 +464,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
               borderColor: borderColor,
               onSurface: onSurface,
               primary: primary,
+              isSmallMobile: isSmallMobile,
             ),
           ],
         ),
@@ -463,6 +480,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     required Color borderColor,
     required Color onSurface,
     required Color primary,
+    required bool isSmallMobile,
   }) {
     final isCopied = _copiedKey == copyKey;
 
@@ -473,7 +491,10 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
         borderRadius: BorderRadius.circular(10),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          padding: EdgeInsets.symmetric(
+            horizontal: isSmallMobile ? 10 : 14,
+            vertical: isSmallMobile ? 6 : 8,
+          ),
           decoration: BoxDecoration(
             color: isCopied
                 ? (isDark
@@ -492,71 +513,75 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
               ),
             ],
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: isCopied
-                      ? const Color(0xFF16A34A)
-                      : (isDark ? const Color(0xFFE2E8F0) : const Color(0xFF1E293B)),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: isSmallMobile ? 12 : 13,
+                    fontWeight: FontWeight.w600,
+                    color: isCopied
+                        ? const Color(0xFF16A34A)
+                        : (isDark ? const Color(0xFFE2E8F0) : const Color(0xFF1E293B)),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Container(
-                height: 14,
-                width: 1,
-                color: borderColor,
-              ),
-              const SizedBox(width: 10),
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 150),
-                child: isCopied
-                    ? const Row(
-                        key: ValueKey('copied'),
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.check_rounded,
-                            size: 14,
-                            color: Color(0xFF16A34A),
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            'Copied',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
+                const SizedBox(width: 8),
+                Container(
+                  height: 14,
+                  width: 1,
+                  color: borderColor,
+                ),
+                const SizedBox(width: 8),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 150),
+                  child: isCopied
+                      ? const Row(
+                          key: ValueKey('copied'),
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.check_rounded,
+                              size: 14,
                               color: Color(0xFF16A34A),
                             ),
-                          ),
-                        ],
-                      )
-                    : Row(
-                        key: const ValueKey('copy'),
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.content_copy_rounded,
-                            size: 14,
-                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            'Copy',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
+                            SizedBox(width: 4),
+                            Text(
+                              'Copied',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF16A34A),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Row(
+                          key: const ValueKey('copy'),
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.content_copy_rounded,
+                              size: 14,
                               color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
                             ),
-                          ),
-                        ],
-                      ),
-              ),
-            ],
+                            const SizedBox(width: 4),
+                            Text(
+                              'Copy',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -568,6 +593,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
   Widget _buildSpotlightCard(
     BuildContext context,
     bool isDesktop,
+    bool isTablet,
+    bool isSmallMobile,
     bool isDark,
     Color cardBg,
     Color borderColor,
@@ -578,7 +605,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     ChangelogRelease latest,
   ) {
     return Container(
-      padding: EdgeInsets.all(isDesktop ? 26 : 20),
+      width: double.infinity,
+      padding: EdgeInsets.all(isDesktop ? 26 : (isSmallMobile ? 14 : 20)),
       decoration: BoxDecoration(
         color: cardBg,
         borderRadius: BorderRadius.circular(16),
@@ -597,7 +625,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Spotlight Top Row
           Wrap(
@@ -619,30 +647,34 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                         : Ux4gColors.primary100,
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.star_rounded,
-                      size: 15,
-                      color: primaryAccent,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      'Latest Version Highlights • v${latest.version}',
-                      style: TextStyle(
-                        fontSize: 12.5,
-                        fontWeight: FontWeight.w700,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.star_rounded,
+                        size: 15,
                         color: primaryAccent,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 5),
+                      Text(
+                        'Latest Version Highlights • v${latest.version}',
+                        style: TextStyle(
+                          fontSize: isSmallMobile ? 11.5 : 12.5,
+                          fontWeight: FontWeight.w700,
+                          color: primaryAccent,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Text(
                 'Released ${latest.relativeDate} (${latest.date})',
                 style: TextStyle(
-                  fontSize: 12.5,
+                  fontSize: isSmallMobile ? 11.5 : 12.5,
                   fontWeight: FontWeight.w500,
                   color: subColor,
                 ),
@@ -650,13 +682,13 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
             ],
           ),
 
-          const SizedBox(height: 14),
+          SizedBox(height: isSmallMobile ? 10 : 14),
 
           // Title
           Text(
             latest.title,
             style: TextStyle(
-              fontSize: isDesktop ? 22 : 18,
+              fontSize: isDesktop ? 22 : (isSmallMobile ? 17 : 18),
               fontWeight: FontWeight.w800,
               color: onSurface,
               letterSpacing: -0.3,
@@ -669,14 +701,14 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
           Text(
             latest.overview,
             style: TextStyle(
-              fontSize: 14.5,
+              fontSize: isSmallMobile ? 13.5 : 14.5,
               color: subColor,
               height: 1.5,
             ),
           ),
 
           if (latest.highlights.isNotEmpty) ...[
-            const SizedBox(height: 18),
+            SizedBox(height: isSmallMobile ? 14 : 18),
             LayoutBuilder(
               builder: (context, constraints) {
                 final is2Col = constraints.maxWidth >= 720;
@@ -691,7 +723,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                       Expanded(
                         child: Column(
                           children: leftCol
-                              .map((h) => _buildHighlightRow(h, isDark, onSurface, subColor))
+                              .map((h) => _buildHighlightRow(h, isDark, onSurface, subColor, isSmallMobile))
                               .toList(),
                         ),
                       ),
@@ -699,7 +731,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                       Expanded(
                         child: Column(
                           children: rightCol
-                              .map((h) => _buildHighlightRow(h, isDark, onSurface, subColor))
+                              .map((h) => _buildHighlightRow(h, isDark, onSurface, subColor, isSmallMobile))
                               .toList(),
                         ),
                       ),
@@ -708,7 +740,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                 } else {
                   return Column(
                     children: leftCol
-                        .map((h) => _buildHighlightRow(h, isDark, onSurface, subColor))
+                        .map((h) => _buildHighlightRow(h, isDark, onSurface, subColor, isSmallMobile))
                         .toList(),
                   );
                 }
@@ -720,7 +752,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     );
   }
 
-  Widget _buildHighlightRow(String text, bool isDark, Color onSurface, Color subColor) {
+  Widget _buildHighlightRow(String text, bool isDark, Color onSurface, Color subColor, bool isSmallMobile) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
@@ -739,7 +771,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 13.5,
+                fontSize: isSmallMobile ? 12.5 : 13.5,
                 color: isDark ? const Color(0xFFCBD5E1) : const Color(0xFF334155),
                 height: 1.45,
               ),
@@ -755,6 +787,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
   Widget _buildControlsCard(
     BuildContext context,
     bool isDesktop,
+    bool isTablet,
+    bool isSmallMobile,
     bool isDark,
     Color cardBg,
     Color borderColor,
@@ -763,7 +797,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     Color primary,
   ) {
     return Container(
-      padding: EdgeInsets.all(isDesktop ? 20 : 16),
+      width: double.infinity,
+      padding: EdgeInsets.all(isDesktop ? 20 : (isSmallMobile ? 12 : 16)),
       decoration: BoxDecoration(
         color: cardBg,
         borderRadius: BorderRadius.circular(16),
@@ -777,7 +812,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Row 1: Search Box + Version Dropdown
           LayoutBuilder(
@@ -806,13 +841,15 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                         controller: _searchController,
                         onChanged: (val) => setState(() => _searchQuery = val),
                         style: TextStyle(
-                          fontSize: 13.5,
+                          fontSize: isSmallMobile ? 12.5 : 13.5,
                           color: onSurface,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'Search updates, components, or bug fixes...',
+                          hintText: isSmallMobile
+                              ? 'Search updates...'
+                              : 'Search updates, components, or bug fixes...',
                           hintStyle: TextStyle(
-                            fontSize: 13.5,
+                            fontSize: isSmallMobile ? 12.5 : 13.5,
                             color: subColor.withValues(alpha: 0.8),
                           ),
                           border: InputBorder.none,
@@ -848,6 +885,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                 ),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
+                    isExpanded: true,
                     value: _selectedVersion,
                     icon: Icon(Icons.arrow_drop_down_rounded, color: subColor),
                     dropdownColor: isDark ? const Color(0xFF161925) : Colors.white,
@@ -882,7 +920,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                   children: [
                     Expanded(child: searchBox),
                     const SizedBox(width: 14),
-                    versionDropdown,
+                    SizedBox(width: 230, child: versionDropdown),
                   ],
                 );
               } else {
@@ -897,7 +935,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
             },
           ),
 
-          const SizedBox(height: 16),
+          SizedBox(height: isSmallMobile ? 12 : 16),
 
           // Row 2: Version Pills Scroll Row
           SingleChildScrollView(
@@ -923,12 +961,12 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
             ),
           ),
 
-          const SizedBox(height: 14),
+          SizedBox(height: isSmallMobile ? 10 : 14),
 
           // Divider
           Divider(color: borderColor, height: 1),
 
-          const SizedBox(height: 14),
+          SizedBox(height: isSmallMobile ? 10 : 14),
 
           // Row 3: Category Filter Chips
           Wrap(
@@ -1064,6 +1102,8 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     BuildContext context,
     ChangelogRelease release,
     bool isDesktop,
+    bool isTablet,
+    bool isSmallMobile,
     bool isDark,
     Color cardBg,
     Color borderColor,
@@ -1076,6 +1116,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     final isCopied = _copiedKey == copyKey;
 
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
         color: cardBg,
         borderRadius: BorderRadius.circular(16),
@@ -1096,13 +1137,14 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Card Header
           Container(
+            width: double.infinity,
             padding: EdgeInsets.symmetric(
-              horizontal: isDesktop ? 24 : 18,
-              vertical: 16,
+              horizontal: isDesktop ? 24 : (isSmallMobile ? 14 : 18),
+              vertical: isSmallMobile ? 12 : 16,
             ),
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF1E2235) : const Color(0xFFF8FAFC),
@@ -1117,14 +1159,14 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
               children: [
                 // Left: Version + Tag + Date
                 Wrap(
-                  spacing: 10,
+                  spacing: 8,
                   runSpacing: 6,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     Text(
                       'v${release.version}',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: isSmallMobile ? 16 : 18,
                         fontWeight: FontWeight.w800,
                         color: onSurface,
                         letterSpacing: -0.2,
@@ -1135,7 +1177,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                     Text(
                       '• Released ${release.date} (${release.relativeDate})',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: isSmallMobile ? 12 : 13,
                         color: subColor,
                         fontWeight: FontWeight.w500,
                       ),
@@ -1166,28 +1208,32 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                           color: isCopied ? const Color(0xFF86EFAC) : borderColor,
                         ),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            isCopied ? Icons.check_rounded : Icons.content_copy_rounded,
-                            size: 13,
-                            color: isCopied
-                                ? const Color(0xFF16A34A)
-                                : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(
-                            isCopied ? 'Copied' : 'pub add @${release.version}',
-                            style: TextStyle(
-                              fontSize: 11.5,
-                              fontWeight: FontWeight.w600,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              isCopied ? Icons.check_rounded : Icons.content_copy_rounded,
+                              size: 13,
                               color: isCopied
                                   ? const Color(0xFF16A34A)
-                                  : (isDark ? const Color(0xFFCBD5E1) : const Color(0xFF475569)),
+                                  : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B)),
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 5),
+                            Text(
+                              isCopied ? 'Copied' : 'pub add @${release.version}',
+                              style: TextStyle(
+                                fontSize: 11.5,
+                                fontWeight: FontWeight.w600,
+                                color: isCopied
+                                    ? const Color(0xFF16A34A)
+                                    : (isDark ? const Color(0xFFCBD5E1) : const Color(0xFF475569)),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -1198,7 +1244,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
 
           // Card Body
           Padding(
-            padding: EdgeInsets.all(isDesktop ? 24 : 18),
+            padding: EdgeInsets.all(isDesktop ? 24 : (isSmallMobile ? 14 : 18)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -1206,7 +1252,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                 Text(
                   release.title,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: isDesktop ? 17 : (isSmallMobile ? 15 : 16),
                     fontWeight: FontWeight.w700,
                     color: onSurface,
                   ),
@@ -1218,18 +1264,18 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                 Text(
                   release.overview,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: isSmallMobile ? 13 : 14,
                     color: subColor,
                     height: 1.5,
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                SizedBox(height: isSmallMobile ? 16 : 20),
 
                 // Categories
                 ...release.categories.map((category) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 18),
+                    padding: EdgeInsets.only(bottom: isSmallMobile ? 14 : 18),
                     child: _buildCategoryBlock(
                       context,
                       category,
@@ -1237,6 +1283,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                       onSurface,
                       subColor,
                       borderColor,
+                      isSmallMobile,
                     ),
                   );
                 }),
@@ -1301,6 +1348,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     Color onSurface,
     Color subColor,
     Color borderColor,
+    bool isSmallMobile,
   ) {
     Color typeBg;
     Color typeBorder;
@@ -1351,12 +1399,14 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
               ),
             ),
             const SizedBox(width: 8),
-            Text(
-              category.label,
-              style: TextStyle(
-                fontSize: 13.5,
-                fontWeight: FontWeight.w700,
-                color: onSurface,
+            Expanded(
+              child: Text(
+                category.label,
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w700,
+                  color: onSurface,
+                ),
               ),
             ),
           ],
@@ -1367,26 +1417,35 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
         // Items List
         ...category.items.map((item) {
           return Padding(
-            padding: const EdgeInsets.only(left: 6, bottom: 12),
+            padding: const EdgeInsets.only(left: 4, bottom: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Item Header (Component Pill + Summary)
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 6,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    _buildComponentPill(context, item, isDark, borderColor),
-                    Text(
-                      item.summary,
-                      style: TextStyle(
-                        fontSize: 13.5,
-                        fontWeight: FontWeight.w600,
-                        color: isDark ? Colors.white : const Color(0xFF1E293B),
-                      ),
-                    ),
-                  ],
+                LayoutBuilder(
+                  builder: (context, itemConstraints) {
+                    return Wrap(
+                      spacing: 8,
+                      runSpacing: 6,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        _buildComponentPill(context, item, isDark, borderColor),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: itemConstraints.maxWidth,
+                          ),
+                          child: Text(
+                            item.summary,
+                            style: TextStyle(
+                              fontSize: isSmallMobile ? 12.5 : 13.5,
+                              fontWeight: FontWeight.w600,
+                              color: isDark ? Colors.white : const Color(0xFF1E293B),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
 
                 // Details List
@@ -1394,7 +1453,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                   const SizedBox(height: 6),
                   ...item.details.map((detail) {
                     return Padding(
-                      padding: const EdgeInsets.only(left: 12, top: 4),
+                      padding: EdgeInsets.only(left: isSmallMobile ? 6 : 12, top: 4),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -1410,7 +1469,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
                             child: Text(
                               detail,
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: isSmallMobile ? 12 : 13,
                                 color: subColor,
                                 height: 1.45,
                               ),
@@ -1447,28 +1506,32 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
               : borderColor,
         ),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            item.component,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              color: isDark
-                  ? const Color(0xFFA391FF)
-                  : Ux4gColors.primary,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.centerLeft,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              item.component,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: isDark
+                    ? const Color(0xFFA391FF)
+                    : Ux4gColors.primary,
+              ),
             ),
-          ),
-          if (hasLink) ...[
-            const SizedBox(width: 4),
-            Icon(
-              Icons.arrow_forward_rounded,
-              size: 12,
-              color: isDark ? const Color(0xFFA391FF) : Ux4gColors.primary,
-            ),
+            if (hasLink) ...[
+              const SizedBox(width: 4),
+              Icon(
+                Icons.arrow_forward_rounded,
+                size: 12,
+                color: isDark ? const Color(0xFFA391FF) : Ux4gColors.primary,
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
 
@@ -1559,6 +1622,7 @@ class _Ux4gChangelogPageState extends State<Ux4gChangelogPage> {
     return Center(
       child: Text(
         'UX4G Flutter Component Library • Unified Experience for Government',
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 12.5,
           color: subColor.withValues(alpha: 0.8),
