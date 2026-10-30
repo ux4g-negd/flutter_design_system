@@ -43,6 +43,8 @@ class DesktopLayout extends StatelessWidget implements BaseLayout {
         currentPath.startsWith('introduction') ||
         currentPath.startsWith('quick-start-guide') ||
         currentPath.startsWith('migration') ||
+        currentPath.startsWith('changelog') ||
+        currentPath.startsWith('changes-logs') ||
         currentPath.startsWith('component-mapping') ||
         currentPath.startsWith('overview') ||
         currentPath.startsWith('quick-guide') ||

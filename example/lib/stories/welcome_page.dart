@@ -288,6 +288,32 @@ class Ux4gWelcomePage extends StatelessWidget {
               ),
               child: const Text('Component Library'),
             ),
+            OutlinedButton.icon(
+              onPressed: () {
+                final state = WidgetbookState.maybeOf(context);
+                // ignore: invalid_use_of_internal_member
+                state?.updatePath('changelog/changes-logs');
+              },
+              icon: const Icon(Icons.history_rounded, size: 18),
+              label: const Text('Changes Logs'),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: isDark ? Colors.white : const Color(0xFF334155),
+                side: BorderSide(
+                  color: isDark ? Colors.white24 : const Color(0xFFCBD5E1),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 18,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                textStyle: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
           ],
         ),
       ],

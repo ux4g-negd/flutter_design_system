@@ -114,7 +114,39 @@ void main() {
 
           await tester.pumpAndSettle();
 
-          expect(find.text('Knobs'), findsNothing);
+                    expect(find.text('Knobs'), findsNothing);
+
+          addTearDown(tester.view.resetPhysicalSize);
+        },
+      );
+
+      testWidgets(
+        'given a changelog path, ' 
+        'then settings panel is not displayed',
+        (tester) async {
+          tester.view.physicalSize = const Size(1200, 800);
+          tester.view.devicePixelRatio = 1.0;
+
+          await tester.pumpWidget(
+            Widgetbook.material(
+              directories: [
+                WidgetbookComponent(
+                  name: 'Changelog',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Changes Logs',
+                      builder: (context) => const Text('Changelog'),
+                    ),
+                  ],
+                ),
+              ],
+              initialRoute: '?path=changelog/changes-logs',
+            ),
+          );
+
+          await tester.pumpAndSettle();
+
+          expect(find.byType(SettingsPanel), findsNothing);
 
           addTearDown(tester.view.resetPhysicalSize);
         },

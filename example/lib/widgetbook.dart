@@ -14,6 +14,7 @@ import 'stories/bottom_sheet_stories.dart';
 import 'stories/utils_stories.dart';
 import 'stories/welcome_page.dart';
 import 'stories/migration_stories.dart';
+import 'stories/changelog_stories.dart';
 import 'stories/data_stories.dart';
 import 'stories/link_stories.dart';
 import 'stories/display_stories.dart';
@@ -122,6 +123,7 @@ class UX4GWidgetbook extends StatelessWidget {
             overviewComponent,
             quickGuideComponent,
             migrationComponent,
+            changelogComponent,
 
             // ── Token ─────────────────────────────────────────────────────────────
             WidgetbookCategory(
